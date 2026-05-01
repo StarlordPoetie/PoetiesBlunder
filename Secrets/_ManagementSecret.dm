@@ -756,8 +756,9 @@ SecretInformation
 				var/domainName = input(p, "Name your Domain Expansion.", "Cursed Energy - Domain Name") as text|null
 				if(!domainName || !length(domainName))
 					domainName = "Unnamed Domain"
+				var/icon/customTile = input(p, "Upload a custom Domain floor tile icon? (Optional)", "Cursed Energy - Domain Tile", null) as icon|null
 				d.demonName = copytext("[domainName]", 1, 65)
-				d.customTurfIcon = 'WhiteTurfShift.dmi'
+				d.customTurfIcon = customTile ? customTile : 'WhiteTurfShift.dmi'
 				d.customRoofIcon = null
 				d.ActiveMessage = "says: Domain Expansion.. [d.demonName]!"
 				d.OffMessage = "conceals the domain of [d.demonName]..."
