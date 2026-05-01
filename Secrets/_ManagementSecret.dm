@@ -840,6 +840,8 @@ mob
 				switch(selectedTrait)
 					if("Serrated")
 						passive_handler.Set("FavoredPrey", "Mortal")
+						findOrAddSkill(/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist)
+						findOrAddSkill(/obj/Skills/AutoHit/Shutter_Doors)
 						src << "Your cursed energy obtains the unique property of <b>serrating</b> your opponents on hit."
 					if("Electricity")
 						passive_handler.Set("FavoredPrey", "Saga")
