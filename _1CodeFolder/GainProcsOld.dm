@@ -7,6 +7,10 @@ mob/proc/Meditation()
 	if(med.delay)
 		sleep(5)
 		return
+	if(hasSecret("Cursed Energy"))
+		var/SecretInformation/CursedEnergy/ce = secretDatum
+		if(ce && ce.currentTier >= 1)
+			setupCursedEnergyAwakening()
 
 	spawn()
 		if(src.VaizardHealth>0)
@@ -21,5 +25,4 @@ mob/proc/Meditation()
 		/*if(length(magatamaBeads))
 			loseMagatama()*/
 		med.delayTimer()
-
 

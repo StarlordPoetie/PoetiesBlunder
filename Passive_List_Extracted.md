@@ -1,0 +1,653 @@
+# Extracted Passive Keys
+
+Total unique extracted passive keys: 649
+
+- `1`
+- `Absolute Despair`
+- `AbsoluteZero`
+- `AbsorbingDamage`
+- `AbyssMod`
+- `ActiveBuffLock`
+- `Acupuncture`
+- `Adaptation`
+- `AdminVision`
+- `AdrenalBoost`
+- `Adrenaline`
+- `AfterImages`
+- `Afterimages`
+- `AgileCasting`
+- `AirBend`
+- `AirSpellCooldown`
+- `AirSpellDamage`
+- `AirSpellManaCost`
+- `AllOutAttack`
+- `AllOutPU`
+- `AllowedPower`
+- `AlphainForce`
+- `Alter the Future`
+- `Amplify`
+- `AmuletBeaming`
+- `Anaerobic`
+- `AngelicInfusion`
+- `AngerAdaptiveForce`
+- `AngerMult`
+- `AngerThreshold`
+- `Antsy`
+- `ApathyFactor`
+- `ApplySlow`
+- `ArcaneBladework`
+- `ArmorAccuracy`
+- `ArmorAscension`
+- `ArmorDamage`
+- `ArmorDelay`
+- `ArmorPeeling`
+- `Ashen One`
+- `Aspect of Death`
+- `AsuraStrike`
+- `Atomizer`
+- `AttackSpeed`
+- `Attracting`
+- `AutoAnger`
+- `BackTrack`
+- `Backshot`
+- `Backstabber`
+- `BetterAim`
+- `BeyondPurity`
+- `BladeFisting`
+- `BleedHit`
+- `BlindingVenom`
+- `BlizzardBringer`
+- `BlockChance`
+- `BloodEruption`
+- `Blubber`
+- `Blurring Strikes`
+- `BlurringStrikes`
+- `Brutalize`
+- `BuffMastery`
+- `BulletKill`
+- `BurnHit`
+- `BurnResist`
+- `Burning`
+- `BurningShot`
+- `CallousedHands`
+- `CallousedHands `
+- `CalmAnger`
+- `CancelDemonicDura`
+- `CashCow`
+- `CastingTime`
+- `Certain Progress`
+- `Chaos`
+- `ChaosQueen`
+- `ChaosRuler`
+- `ChargeDelay`
+- `CheapShot`
+- `ChillResist`
+- `ChillResistance`
+- `Chilling`
+- `Cleansing`
+- `Color of Courage`
+- `ComboMaster`
+- `Combustion`
+- `Compassion`
+- `Conductor`
+- `ConfuseAffected`
+- `Confusing`
+- `Constellation`
+- `ContinuallyStun`
+- `ControlResist`
+- `Controlled Chaos`
+- `Controlled Darkness`
+- `CooldownDrag`
+- `CoolerAfterImages`
+- `CoolerAfterimages`
+- `CoolingDown`
+- `CorruptAffected`
+- `Corruption`
+- `CounterMaster`
+- `CounterSpell`
+- `CreateTheHeavens`
+- `Crimson Grimoire`
+- `CrippleResist`
+- `Crippling`
+- `CriticalBlock`
+- `CriticalChance`
+- `CriticalDamage`
+- `CriticalParalyze`
+- `CriticalSpark`
+- `Crushing`
+- `Cryokenesis`
+- `Curse`
+- `CursedSheath`
+- `CursedWounds`
+- `CyberStigma`
+- `DamageMult`
+- `DarkSpellCooldown`
+- `DarkSpellDamage`
+- `DarkSpellManaCost`
+- `DarknessFlame`
+- `DashCount`
+- `DashCountLimit`
+- `DashMaster`
+- `Death Incarnate`
+- `Death X-Antibody`
+- `Death-X-Evolution`
+- `DeathDefied`
+- `DeathField`
+- `DebuffDurationReduction`
+- `DebuffResistance`
+- `DebuffReversal`
+- `Defiance`
+- `Deflection`
+- `Deicide`
+- `DemonicDurability`
+- `DemonicInfluence`
+- `DemonicInfusion`
+- `DenkoSekka`
+- `Deport`
+- `Desperation`
+- `Deterioration`
+- `Determination`
+- `Determination(Black)`
+- `Determination(Green)`
+- `Determination(Orange)`
+- `Determination(Purple)`
+- `Determination(Red)`
+- `Determination(White)`
+- `Determination(Yellow)`
+- `Dim Mak`
+- `DisableGodKi`
+- `Disarm`
+- `Disarmed`
+- `Disorienting`
+- `DivineArmory`
+- `Don't Move`
+- `DormantDemon`
+- `DoubleHelix`
+- `DoubleStrike`
+- `Drained`
+- `DrainlessMana`
+- `DrainlessPUSpike`
+- `DualCast`
+- `Duelist`
+- `EarthHerald`
+- `EarthSpellCooldown`
+- `EarthSpellDamage`
+- `EarthSpellManaCost`
+- `Emptiness`
+- `EmptyFlashStep`
+- `EndlessAnger`
+- `EndlessNine`
+- `EnergyExpenditure`
+- `EnergyGeneration`
+- `EnergyHeal`
+- `EnergyLeak`
+- `EnergySteal`
+- `EnhancedHearing`
+- `EnhancedSmell`
+- `Enrage`
+- `Enraged`
+- `Enraging`
+- `Enshrine`
+- `EntanglingRoots`
+- `Entropic`
+- `EnvyFactor`
+- `Erosion`
+- `EvilResist`
+- `Extend`
+- `Fa Jin`
+- `FakePeace`
+- `Familiar`
+- `FatigueDrain`
+- `FatigueImmune`
+- `FatigueLeak`
+- `FavoredPrey`
+- `Field of Destruction`
+- `FireAbsorb`
+- `FireHerald`
+- `FireSpellCooldown`
+- `FireSpellDamage`
+- `FireSpellManaCost`
+- `Fishman`
+- `FlashDOT`
+- `Flicker`
+- `Flow`
+- `FluidForm`
+- `Flying Thunder God`
+- `ForceField`
+- `ForcefulCasting`
+- `FreeTeleport`
+- `Freezing`
+- `FrenzyCarrier`
+- `Full Manifestation`
+- `FullTensionLock`
+- `FullyEffecient`
+- `Fury`
+- `GiantForm`
+- `GiantSwings`
+- `Gluttony`
+- `GluttonyFactor`
+- `GodCloth`
+- `GodKi`
+- `GodSpeed`
+- `GodlyCalm`
+- `Godspeed`
+- `GodspeedDisabled`
+- `GoodResist`
+- `Gravity`
+- `GreedFactor`
+- `Grippy`
+- `Grit`
+- `Gum Gum`
+- `Gun Kata`
+- `Half Manifestation`
+- `Half-Sword`
+- `HardStyle`
+- `Harden`
+- `HardenedFrame`
+- `Hardeng`
+- `HealReverse`
+- `HealThroughTempHP`
+- `HealthPU`
+- `Heart of Darkness`
+- `HeatingUp`
+- `Heavy Attack`
+- `Heavy Strike`
+- `HeavyHitter`
+- `HellPower`
+- `HellRisen`
+- `Hellpower`
+- `Herald of the End`
+- `Hidden Potential`
+- `HighTension`
+- `Hit Scan`
+- `Holding Back`
+- `HolyMod`
+- `Holymod`
+- `Honor`
+- `HopeFactor`
+- `Hopes and Dreams`
+- `HotHundred`
+- `Hustle`
+- `HybridStrike`
+- `HybridStyle`
+- `Iaido`
+- `Iaijutsu`
+- `IceAge`
+- `IceHerald`
+- `IdealStrike`
+- `Illusion`
+- `ImbuedSoul`
+- `InBlue`
+- `InBlueEvolved`
+- `Incomplete`
+- `Inevitable`
+- `Infatuated`
+- `InjuryImmune`
+- `Innovation`
+- `Instinct`
+- `Interception`
+- `IronGrip`
+- `Judged`
+- `Juggernaut`
+- `Justice`
+- `KBAdd`
+- `KBMult`
+- `KBRes`
+- `Kaioken`
+- `Kaioken Blue`
+- `Kensei`
+- `KiBlade`
+- `KiControl`
+- `KiControlMastery`
+- `KillerInstinct`
+- `Knight of the Empty Seat`
+- `LegendarySaiyan`
+- `Life Fiber Rending`
+- `LifeGeneration`
+- `LifeSteal`
+- `LifeStealTrue`
+- `LightSpellCooldown`
+- `LightSpellDamage`
+- `LightSpellManaCost`
+- `Like Water`
+- `LikeWater`
+- `LimitBroken`
+- `Limited Rank-Up`
+- `LimitlessMagic`
+- `LingeringPoison`
+- `Longing`
+- `LunarAnger`
+- `LunarDurability`
+- `LunarWrath`
+- `LustFactor`
+- `MagicFocus`
+- `MagicSword`
+- `Magmic`
+- `MagmicInfusion`
+- `MagnifiedDef`
+- `MagnifiedEnd`
+- `MagnifiedFor`
+- `MagnifiedOff`
+- `MagnifiedSSJ1`
+- `MagnifiedSSJ2`
+- `MagnifiedSpd`
+- `MagnifiedStr`
+- `MaimMastery`
+- `MaimStrike`
+- `Maimstrike`
+- `Maki`
+- `ManaCapMult`
+- `ManaDrain`
+- `ManaGeneration`
+- `ManaLeak`
+- `ManaPU`
+- `ManaStats`
+- `ManaSteal`
+- `Manic`
+- `MaouKi`
+- `MartialMagic`
+- `Masochist`
+- `Masquerade`
+- `MasterfulCasting`
+- `Meaty Paws`
+- `Mechanized`
+- `MeleeResist`
+- `MeltyBlood`
+- `Miracle`
+- `MirrorStats`
+- `Momentum`
+- `MonkeyKing`
+- `Mortal Will`
+- `MortalStacks`
+- `MortalStrike`
+- `Motivation`
+- `MovementMastery`
+- `MovingCast`
+- `MovingCharge`
+- `Muscle Power`
+- `Musoken`
+- `Musubi`
+- `Mystic`
+- `Mythical`
+- `NeedStaff`
+- `NeedsSecondSword`
+- `NeedsSword`
+- `NeedsThirdSword`
+- `NerveOverload`
+- `Neverending Hope`
+- `Nightmare`
+- `NoAnger`
+- `NoDodge`
+- `NoForcedWhiff`
+- `NoMiss`
+- `NoRevert`
+- `NoStaff`
+- `NoSword`
+- `NoWhiff`
+- `Null`
+- `Obfuscated Origin`
+- `Ocean Bringer`
+- `Omnipotent`
+- `Orange Namekian`
+- `Our Future`
+- `Overdrive`
+- `Overwhelming`
+- `PUDrainReduction`
+- `PULock`
+- `PUSpike`
+- `Pacifying`
+- `PainSplit`
+- `Paralyzing`
+- `Parry`
+- `Perfect Counter`
+- `Perseverance`
+- `Persistence`
+- `PhysPleroma`
+- `PhysicalHitsLimit`
+- `Piloting`
+- `PilotingProwess`
+- `Poisoning`
+- `Possessive`
+- `Power of Destruction`
+- `PowerAppearance`
+- `PowerPole`
+- `PowerReplacement`
+- `PowerStressed`
+- `PowerfulCasting`
+- `Powerhouse`
+- `Pressure`
+- `Pride`
+- `PrideFactor`
+- `PridefulRage`
+- `PrimordialInvocation`
+- `Prismatic`
+- `PureDamage`
+- `PureReduction`
+- `Purity`
+- `Pursuer`
+- `Quaker`
+- `QuakerMod`
+- `QuickCast`
+- `Rage`
+- `Rain`
+- `Rebel Heart`
+- `Red Hot Rage`
+- `RedPUSpike`
+- `Reflected`
+- `RefreshingBlows`
+- `Reinforcement`
+- `Rekkaken`
+- `Relentlessness`
+- `RenameMana`
+- `Restoration`
+- `ReturnToSender`
+- `Reversal`
+- `Ripple`
+- `Ruckus`
+- `RuckusRace`
+- `Rust`
+- `Rusting`
+- `SSJ4LimitBreaker`
+- `SSJRose`
+- `Sadist`
+- `SaiyanPower`
+- `SaiyanPower1`
+- `SaiyanPower2`
+- `SaiyanPower3`
+- `SaiyanPower4`
+- `SaiyanPowerGod`
+- `SaiyanPowerVoid`
+- `Sajire Rush`
+- `Sanctify`
+- `Scarlet-Overdriven`
+- `Scoop`
+- `Scorching`
+- `Secret Knives`
+- `Seki`
+- `Sekizou`
+- `Sense Replacement`
+- `Serrated`
+- `Shadowbringer`
+- `Shameful Display`
+- `Shatter Fate`
+- `ShatterResist`
+- `Shattering`
+- `ShearImmunity`
+- `ShearResist`
+- `Shearing`
+- `Shellshocked`
+- `Shijima`
+- `ShiningBrightly`
+- `ShockResist`
+- `Shocking`
+- `ShockwaveBlows`
+- `Shonen`
+- `ShonenPower`
+- `Silence`
+- `Silenced`
+- `Siphon`
+- `SkillLeech`
+- `Skimming`
+- `SlayerMod`
+- `SlothFactor`
+- `Smokin' Sick Style!!!`
+- `Smokin'!`
+- `Snared`
+- `SoftStyle`
+- `SoulFire`
+- `SoulSteal`
+- `SoulTug`
+- `SpaceSpellCooldown`
+- `SpaceSpellDamage`
+- `SpaceSpellManaCost`
+- `SpaceWalk`
+- `Sparks of Black`
+- `SpecialBuffLock`
+- `SpecialStrike`
+- `Speed Force`
+- `SpellRange`
+- `SpiralEngine`
+- `SpiralPowerUnlocked`
+- `SpiralSpark`
+- `SpiritFlow`
+- `SpiritForm`
+- `SpiritHand`
+- `SpiritHitsLimit`
+- `SpiritPower`
+- `SpiritStrike`
+- `SpiritSword`
+- `SpiritualDamage`
+- `StableBP`
+- `StaffAscension`
+- `Staked`
+- `StalwartCasting`
+- `StarCrossed`
+- `StarPower`
+- `StaticWalk`
+- `Steady`
+- `StealsStats`
+- `StunningStrike`
+- `StyleMastery`
+- `Stylish`
+- `Sunyata`
+- `Super Kaioken`
+- `SuperCharge`
+- `SuperDash`
+- `SuperHighTension`
+- `SuperSaiyanSignature`
+- `Superglide`
+- `Sure-Strike Black Flash`
+- `Sweeping Strikes`
+- `SweepingStrike`
+- `Sword Master`
+- `SwordAccuracy`
+- `SwordAscension`
+- `SwordAscensionSecond`
+- `SwordAscensionThird`
+- `SwordDamage`
+- `SwordDelay`
+- `SwordHitsLimit`
+- `TaxThreshold`
+- `TeamFighter`
+- `TeamHater`
+- `Technique Mastery`
+- `TechniqueMastery`
+- `Tenacity`
+- `TensionLock`
+- `TensionPowered`
+- `Terrifying`
+- `That One Grudge From Ten Years Ago You Can't Let Go Like Come On Dude Move On With Your Fucking Life`
+- `The Almighty`
+- `The Clock Is Ticking`
+- `The Comeback King`
+- `The Crownless King`
+- `The Echo`
+- `The Flame of Youth`
+- `The Immovable Object`
+- `The Inkstone`
+- `The Legend of REBIRTH`
+- `The Power of Stories`
+- `The Roaring`
+- `The Unstoppable Force`
+- `The Way`
+- `ThunderHerald`
+- `TimeSpellCooldown`
+- `TimeSpellDamage`
+- `TimeSpellManaCost`
+- `To Govern Strength`
+- `Tossing`
+- `TotalDeflection`
+- `TotalReversal`
+- `Toxic`
+- `Trample`
+- `TransMimic`
+- `Transformation Power`
+- `Triple Helix`
+- `TripleStrike`
+- `True Inheritor`
+- `TrueToxic`
+- `TrueZenkai`
+- `TrueZenkaiPower`
+- `TurfBurn`
+- `TurfMud`
+- `TurningCharge`
+- `Two Become One`
+- `Ultimate Defense`
+- `Ultimate Desperation`
+- `UnarmedDamage`
+- `UnarmedHitsLimit`
+- `Unbreakable`
+- `Unbroken`
+- `UnderDog`
+- `Undeterred`
+- `Undying`
+- `Undying Rage`
+- `UnleashToggle`
+- `UnlimitedHighTension`
+- `Unnerve`
+- `Unreality`
+- `Unrelenting Wrath`
+- `UnstableSpace`
+- `Unstoppable`
+- `Utterly Powerless`
+- `VaizardHealth`
+- `Vanishing`
+- `VenomBlood`
+- `VenomImmune`
+- `VenomResistance`
+- `Void`
+- `VoidBlade`
+- `VoidField`
+- `Vortex`
+- `Vulnerable Behind`
+- `WalkThroughHell`
+- `Warp`
+- `WarpPoint`
+- `Warping`
+- `WaterSpellCooldown`
+- `WaterSpellDamage`
+- `WaterSpellManaCost`
+- `WaterWalk`
+- `WaveDancer`
+- `WeaponBreaker`
+- `WeaponBreakerQOL`
+- `Whirlwind`
+- `WindRelease`
+- `WoundCost`
+- `WrathFactor`
+- `Wrathful`
+- `Wuju`
+- `X-Antibody`
+- `Xenobiology`
+- `YataNoKagami`
+- `Yosuga`
+- `You Thought`
+- `Zeal`
+- `ZenkaiPower`
+- `Zornhau`
+- `[buff]`
+- `[debuff]`
+- `[element]SpellCooldown`
+- `[element]SpellDamage`
+- `[element]SpellManaCost`
+- `[selectedPassive]`

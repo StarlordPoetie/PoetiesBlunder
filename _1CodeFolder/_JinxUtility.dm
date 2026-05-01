@@ -317,12 +317,24 @@ mob
 			if(defender.HasManaLeak())
 				defender.LoseMana((defender.GetManaLeak()*0.25*leakVal)/4, 1)
 
-			if(src.HasBleedHit())
-				src.WoundSelf(src.GetBleedHit()*0.15*leakVal)
-			if(src.HasBurnHit())
-				src.AddBurn(src.GetBurnHit()*0.15*leakVal, src)
+				if(src.HasBleedHit())
+					src.WoundSelf(src.GetBleedHit()*0.15*leakVal)
+				if(src.HasBurnHit())
+					src.AddBurn(src.GetBurnHit()*0.15*leakVal, src)
+				if(src.cursedEnergyTrait && hasSecret("Cursed Energy"))
+					var/traitPotency = src.CheckSlotless("120% Potential") ? 2 : 1
+					switch(src.cursedEnergyTrait)
+						if("Serrated")
+							defender.AddShearing(2 * traitPotency, src)
+							defender.AddShatter(2 * traitPotency, src)
+						if("Electricity")
+							defender.AddShock(2 * traitPotency, src)
+							defender.AddBurn(2 * traitPotency, src)
+						if("Slash")
+							defender.AddCrippling(2 * traitPotency, src)
+							defender.AddShearing(2 * traitPotency, src)
 
-			//If you are burned and have debuff reversal, smack fire into the other fighter
+				//If you are burned and have debuff reversal, smack fire into the other fighter
 			var/debuffRev = src.GetDebuffReversal();
 			if(src.Burn && debuffRev)
 				defender.AddBurn(src.Burn/50*debuffRev, src);

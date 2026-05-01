@@ -9194,7 +9194,7 @@ NEW VARIABLES
 			var/demonName = null
 			var/icon/customTurfIcon = null
 			var/icon/customRoofIcon = null
-			var/useShroud = TRUE
+			var/useShroud = FALSE
 			Cooldown = -1
 			ActiveMessage="releases their Domain!"
 			OffMessage="conceals their Domain...."
@@ -9210,32 +9210,86 @@ NEW VARIABLES
 				sleep(6)
 				for(var/atom/M in effected)
 					spawn()animate(M, color = null, time = 3)
-			verb/Domain_Expansion_Target()
+			verb/Domain_Expansion()
 				set category = "Skills"
+				set name = "Domain Expansion"
 				src.Trigger(usr)
 				if(usr.BuffOn(src))
 					animation(usr, range)
 					usr.DomainExpansion(src)
 				else
 					usr.stopDomainExapansion()
-			verb/Domain_Expansion_Wide()
-				set category = "Skills"
-				src.Trigger(usr)
-				if(usr.BuffOn(src))
-					animation(usr, range)
-					usr.DomainExpansion(src)
-				else
-					usr.stopDomainExapansion()
-		Domain_Lock
-			Slotless = 1
+			Domain_Lock
+				Slotless = 1
 			BuffName = "Domain Lock"
 			TimerLimit = 300
 			ActiveMessage = "is sealed from manifesting domains and duels!"
 			OffMessage = "is no longer domain locked."
 			IconLock = 'BLANK.dmi'
-			LockX = -32
-			LockY = -32
-		Dividing_Driver
+				LockX = -32
+				LockY = -32
+			Hollow_Wicker_Basket_Aegis
+				TimerLimit = 10
+				IconLock = 'BLANK.dmi'
+				LockX = -32
+				LockY = -32
+				BuffName = "Hollow Wicker Basket Aegis"
+				passives = list("PureReduction" = 9999)
+				ActiveMessage = "is safeguarded by a woven anti-domain aegis!"
+				OffMessage = "is no longer covered by the wicker aegis."
+			Hollow_Wicker_Basket
+				Slotless = 1
+				TimerLimit = 10
+				Cooldown = 120
+				BuffName = "Hollow Wicker Basket"
+				IconLock = 'BLANK.dmi'
+				LockX = -32
+				LockY = -32
+				ActiveMessage = "forms a Hollow Wicker Basket, nullifying all incoming damage nearby!"
+				OffMessage = "disperses their Hollow Wicker Basket."
+				verb/Hollow_Wicker_Basket()
+					set category = "Skills"
+					set name = "Hollow Wicker Basket"
+					src.Trigger(usr)
+					if(usr.BuffOn(src))
+						usr.Frozen = 2
+						for(var/mob/m in view(2, usr))
+							var/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket_Aegis/a = locate(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket_Aegis) in m
+							if(!a)
+								a = m.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket_Aegis)
+							if(a)
+								a.TimerLimit = 10
+								a.Trigger(m)
+					else
+						usr.Frozen = 0
+			Simple_Domain
+				Slotless = 1
+				TimerLimit = 20
+				Cooldown = 90
+				BuffName = "Simple Domain"
+				IconLock='zekkai.dmi'
+				IconLockBlend=1
+				IconUnder=1
+				OverlaySize=1.2
+				TopOverlayLock='DarknessGlow.dmi'
+				TopOverlayX=-32
+				TopOverlayY=-32
+				passives = list("Siphon" = 5, "FluidForm" = 1, "PureReduction" = 1.5, "SpaceWalk" = 1, "StaticWalk" = 1, "Void" = 1)
+				ActiveMessage = "expands a Simple Domain around themselves."
+				OffMessage = "lets their Simple Domain collapse."
+				verb/Simple_Domain()
+					set category = "Skills"
+					set name = "Simple Domain"
+					src.Trigger(usr)
+					if(usr.BuffOn(src))
+						spawn while(usr && usr.BuffOn(src))
+							var/drain = max(1, usr.ManaMax * 0.02)
+							usr.LoseMana(drain, 1)
+							if(usr.ManaAmount <= 0)
+								src.Trigger(usr)
+								break
+							sleep(10)
+			Dividing_Driver
 			WarpZone=1
 			Duel=1
 			passives = list("Duelist" = 1, "CoolerAfterImages" = 3)

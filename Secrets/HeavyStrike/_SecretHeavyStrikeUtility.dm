@@ -53,24 +53,30 @@
     hasHakiStrike()
         if(hasSecret("Haki")) return 1;
         return 0;
-    hasBlackFlashStrike()
-        if(hasSecret("Black Flash"))
-            if(canBlackFlashStrike()) return 1;
-        return 0;
+	    hasBlackFlashStrike()
+	        if(hasSecret("Black Flash") || hasSecret("Cursed Energy"))
+	            if(canBlackFlashStrike()) return 1;
+	        return 0;
     canBlackFlashStrike()//only gamba if all of your heavy strikes are off cd
         for(var/obj/Skills/Queue/Heavy_Strike/hs in src)
             if(hs.Using) return 0;
         for(var/obj/Skills/Queue/Secret_Heavy_Strike/shs in src)
             if(shs.Using) return 0;
         return 1;
-    getBlackFlashStrike()
+	    getBlackFlashStrike()
         if(!secretDatum)
             admins << "<b><font size=+1>DEBUG:</font size></b> Somehow, [src] called getBlackFlashStrike() while not having a secretDatum...That's a bug!";
             src << "Your character has called getBlackFlashStrike() while not having a defined secret datum. Admins have been notified, but you can drop a bug report in the Discord as well.";
             return 0;
-        var/usedChance = getBlackFlashChance();
-        if(prob(usedChance)) return findOrAddSkill(/obj/Skills/Queue/Secret_Heavy_Strike/Black_Flash/Black_Flash_Strike);
-        return findOrAddSkill(/obj/Skills/Queue/Secret_Heavy_Strike/Black_Flash/Divergent_Fist);
+	        var/usedChance = hasSecret("Black Flash") ? getBlackFlashChance() : getCursedEnergyBlackFlashChance();
+	        if(prob(usedChance)) return findOrAddSkill(/obj/Skills/Queue/Secret_Heavy_Strike/Black_Flash/Black_Flash_Strike);
+	        return findOrAddSkill(/obj/Skills/Queue/Secret_Heavy_Strike/Black_Flash/Divergent_Fist);
+	    getCursedEnergyBlackFlashChance()
+	        if(!secretDatum) return 0;
+	        switch(secretDatum.currentTier)
+	            if(1) return 5
+	            if(2) return 25
+	        return 25
     getHakiStrike()
         if(!secretDatum)
             admins << "<b><font size=+1>DEBUG:</font size></b> Somehow, [src] called getHakiStrike() while not having a secretDatum...That's a bug!";
