@@ -267,6 +267,7 @@
         KBMult = 10
         BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/BlackFlash_Potential"
         adjust(mob/p)
+            if(!p.hasSecret("Black Flash")) return
             var/SecretInformation/BlackFlash/bf = p.secretDatum
             var/sparks = p.passive_handler.Get("Sparks of Black")
             if (sparks == 1)
