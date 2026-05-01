@@ -723,30 +723,30 @@ SecretInformation
 					p.passive_handler.Set("Sparks of Black",1)
 				if(4)
 					BlackFlashBaseChance = 35;
-				if(5)
-					BlackFlashBaseChance = 50;
-					p << "The Blessing of the Sparks of Black allow you to force a Black Flash out no matter what!"
-					p << "(Black Flash SureStrike: A 5 second Slotless Buff that forces your chance to land a Black Flash to 100%.)"
-					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike)
+					if(5)
+						BlackFlashBaseChance = 50;
+						p << "The Blessing of the Sparks of Black allow you to force a Black Flash out no matter what!"
+						p << "(Black Flash SureStrike: A 5 second Slotless Buff that forces your chance to land a Black Flash to 100%.)"
+						p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike)
 					if(6) // are you out of your motherfucking miiiiiiiiiind
 						BlackFlashBaseChance = 60;
 
-			CursedEnergy
+		CursedEnergy
 			name = "Cursed Energy"
 			maxTier = 5
 			givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_Potential")
-				var/awakeningConfigured = 0
-				proc/updateSlashCursedTechniques(mob/p)
-					if(!p || p.cursedEnergyTrait != "Slash")
-						return
-					var/scale = 1 + (0.5 * max(0, currentTier - 1))
-					var/obj/Skills/Queue/Cursed_Technique_Dismantle/d = locate(/obj/Skills/Queue/Cursed_Technique_Dismantle) in p
-					if(d)
-						d.DamageMult = 3 * scale
-					var/obj/Skills/Queue/Cursed_Technique_Cleave/c = locate(/obj/Skills/Queue/Cursed_Technique_Cleave) in p
-					if(c)
-						c.DamageMult = 4.5 * scale
-				proc/grantDomainExpansion(mob/p)
+			var/awakeningConfigured = 0
+			proc/updateSlashCursedTechniques(mob/p)
+				if(!p || p.cursedEnergyTrait != "Slash")
+					return
+				var/scale = 1 + (0.5 * max(0, currentTier - 1))
+				var/obj/Skills/Queue/Cursed_Technique_Dismantle/d = locate(/obj/Skills/Queue/Cursed_Technique_Dismantle) in p
+				if(d)
+					d.DamageMult = 3 * scale
+				var/obj/Skills/Queue/Cursed_Technique_Cleave/c = locate(/obj/Skills/Queue/Cursed_Technique_Cleave) in p
+				if(c)
+					c.DamageMult = 4.5 * scale
+			proc/grantDomainExpansion(mob/p)
 				var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in p.Buffs
 				if(d)
 					return
@@ -765,13 +765,13 @@ SecretInformation
 				p << "You have gained Domain Expansion!"
 			applySecret(mob/p)
 				switch(currentTier)
-						if(1)
-							p << "You awaken to the flow of Cursed Energy."
-							giveSkills(p) // Keep T1 Black Flash access (120% Potential buff)
-							p.passive_handler.Set("RenameMana", "Cursed Energy")
-							if(prob(10))
-								grantDomainExpansion(p)
-							nextTierUp = 3
+					if(1)
+						p << "You awaken to the flow of Cursed Energy."
+						giveSkills(p) // Keep T1 Black Flash access (120% Potential buff)
+						p.passive_handler.Set("RenameMana", "Cursed Energy")
+						if(prob(10))
+							grantDomainExpansion(p)
+						nextTierUp = 3
 					if(2)
 						p << "Your Cursed Energy control improves."
 						if(prob(20))
@@ -786,18 +786,18 @@ SecretInformation
 						if(prob(35))
 							grantDomainExpansion(p)
 						nextTierUp = 4
-						if(4)
-							p << "Your Cursed Energy reaches a breakthrough: Domain Expansion is now yours by default."
-							p.passive_handler.Set("Sparks of Black", 0)
-							p.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket)
-							p.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain)
-							grantDomainExpansion(p)
-							nextTierUp = 4
-						if(5)
-							p << "Your Domain mastery deepens."
-							p.passive_handler.Set("Sparks of Black", 0)
-							grantDomainExpansion(p)
-					updateSlashCursedTechniques(p)
+					if(4)
+						p << "Your Cursed Energy reaches a breakthrough: Domain Expansion is now yours by default."
+						p.passive_handler.Set("Sparks of Black", 0)
+						p.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket)
+						p.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain)
+						grantDomainExpansion(p)
+						nextTierUp = 4
+					if(5)
+						p << "Your Domain mastery deepens."
+						p.passive_handler.Set("Sparks of Black", 0)
+						grantDomainExpansion(p)
+				updateSlashCursedTechniques(p)
 
 
 mob
