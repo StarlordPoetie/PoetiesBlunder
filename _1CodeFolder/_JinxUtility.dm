@@ -314,8 +314,8 @@ mob
 
 			if(src.HasManaLeak())
 				src.LoseMana(src.GetManaLeak()*0.25*leakVal, 1)
-			if(defender.HasManaLeak())
-				defender.LoseMana((defender.GetManaLeak()*0.25*leakVal)/4, 1)
+				if(defender.HasManaLeak())
+					defender.LoseMana((defender.GetManaLeak()*0.25*leakVal)/4, 1)
 
 				if(src.HasBleedHit())
 					src.WoundSelf(src.GetBleedHit()*0.15*leakVal)
