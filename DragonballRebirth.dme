@@ -799,6 +799,8 @@
 #include "Sagas\Weapon Soul\Soul Edge\Soul_Edge.dm"
 #include "Sagas\Weapon Soul\Soul Edge\Symbiotic_Connection.dm"
 #include "Secrets\_ManagementSecret.dm"
+#include "Secrets\Cursed Secret\CursedEnergy.dm"
+#include "Secrets\Cursed Secret\CursedTechniques.dm"
 #include "Secrets\ArsGoetia.dm"
 #include "Secrets\Senjutsu.dm"
 #include "Secrets\WitchCraft.dm"
