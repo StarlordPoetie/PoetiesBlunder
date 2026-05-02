@@ -9194,7 +9194,7 @@ NEW VARIABLES
 			var/demonName = null
 			var/icon/customTurfIcon = null
 			var/icon/customRoofIcon = null
-				var/useShroud = TRUE
+			var/useShroud = FALSE
 			Cooldown = -1
 			ActiveMessage="releases their Domain!"
 			OffMessage="conceals their Domain...."
@@ -9210,28 +9210,15 @@ NEW VARIABLES
 				sleep(6)
 				for(var/atom/M in effected)
 					spawn()animate(M, color = null, time = 3)
-				verb/Domain_Expansion()
+			verb/Domain_Expansion()
 				set category = "Skills"
 				set name = "Domain Expansion"
 				src.Trigger(usr)
 				if(usr.BuffOn(src))
 					animation(usr, range)
 					usr.DomainExpansion(src)
-					else
-						usr.stopDomainExapansion()
-			Cursed_Domain_Expansion
-				parent_type = /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
-				useShroud = FALSE
-				range = 20
-				verb/Domain_Expansion()
-					set category = "Skills"
-					set name = "Domain Expansion"
-					src.Trigger(usr)
-					if(usr.BuffOn(src))
-						animation(usr, range)
-						usr.DomainExpansion(src)
-					else
-						usr.stopDomainExapansion()
+				else
+					usr.stopDomainExapansion()
 			Domain_Lock
 				Slotless = 1
 			BuffName = "Domain Lock"

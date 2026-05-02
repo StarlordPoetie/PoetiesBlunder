@@ -747,8 +747,8 @@ SecretInformation
 				if(c)
 					c.DamageMult = 4.5 * scale
 			proc/grantDomainExpansion(mob/p)
-				var/obj/Skills/Buffs/SlotlessBuffs/Cursed_Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Cursed_Domain_Expansion) in p.Buffs
-				if(d || locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in p.Buffs)
+				var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in p.Buffs
+				if(d)
 					return
 				d = new()
 				d.range = 20

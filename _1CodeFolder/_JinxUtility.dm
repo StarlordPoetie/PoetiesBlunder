@@ -312,8 +312,8 @@ mob
 			if(defender.HasFatigueLeak())
 				defender.GainFatigue((src.GetFatigueLeak()*0.25*leakVal)/4)
 
-				if(src.HasManaLeak())
-					src.LoseMana(src.GetManaLeak()*0.25*leakVal, 1)
+			if(src.HasManaLeak())
+				src.LoseMana(src.GetManaLeak()*0.25*leakVal, 1)
 				if(defender.HasManaLeak())
 					defender.LoseMana((defender.GetManaLeak()*0.25*leakVal)/4, 1)
 
