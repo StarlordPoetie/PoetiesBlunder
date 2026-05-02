@@ -9187,7 +9187,7 @@ NEW VARIABLES
 			verb/Plasma_Hold()
 				set category="Skills"
 				src.Trigger(usr)
-		Domain_Expansion
+			Domain_Expansion
 			var/tmp/effected = list()
 			var/range = 10
 			var/identifier = null
