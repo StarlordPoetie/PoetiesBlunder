@@ -334,6 +334,9 @@ obj/Skills
 			set name="Reverse Dash"
 			set category="Skills"
 			if(AntiMash) return
+			// Check for Cursed Energy Reverse Dash override
+			if(usr.attemptCursedReverseDash())
+				return
 			if(usr.HasDashMaster())
 				src.Using=0
 			if(usr.Knockback)

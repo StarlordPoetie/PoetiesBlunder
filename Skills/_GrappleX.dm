@@ -75,6 +75,9 @@ obj/Skills/Grapple
 			DashAfter = FALSE
 		verb/Toss()
 			set category="Skills"
+			// Check for Cursed Energy Toss override
+			if(usr.attemptCursedToss())
+				return
 			if(!usr.Grab && !src.Using)
 				if(usr.Saga=="Unlimited Blade Works"&&usr.GetSlotless("GaeBolg"))
 					for(var/obj/Skills/Buffs/SlotlessBuffs/GaeBolg/GB in usr)

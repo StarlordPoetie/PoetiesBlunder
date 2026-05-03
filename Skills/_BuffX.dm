@@ -9243,8 +9243,8 @@ NEW VARIABLES
 				OffMessage = "is no longer covered by the wicker aegis."
 			Hollow_Wicker_Basket
 				Slotless = 1
-				TimerLimit = 10
-				Cooldown = 120
+				TimerLimit = 7
+				Cooldown = 45
 				BuffName = "Hollow Wicker Basket"
 				IconLock = 'HolyDome_Wicker_Shimmer.dmi'
 				LockX = -158
@@ -9268,8 +9268,8 @@ NEW VARIABLES
 						usr.Frozen = 0
 			Simple_Domain
 				Slotless = 1
-				TimerLimit = 20
-				Cooldown = 90
+				TimerLimit = 7
+				Cooldown = 45
 				BuffName = "Simple Domain"
 				IconLock='Bubbly_Cursed_Energy_Aura.dmi'
 				LockX = -16

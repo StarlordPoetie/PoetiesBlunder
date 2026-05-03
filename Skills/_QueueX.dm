@@ -863,6 +863,9 @@ obj
 					set category="Skills"
 					if(usr.Secret=="Heavenly Restriction" && usr.secretDatum?:hasRestriction("Heavy Strike"))
 						return
+					// Check for Cursed Energy Heavy Strike override
+					if(usr.attemptCursedHeavyStrike())
+						return
 					var/maxTension = usr.getMaxTensionValue();
 					if(usr.Tension>=maxTension)
 						if(usr.HasTensionLock())
