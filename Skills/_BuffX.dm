@@ -4952,7 +4952,7 @@ NEW VARIABLES
 				TimerLimit=0
 				Cooldown=30
 				ManaCost = 8
-				IconLock='zekkai.dmi'
+				IconLock='Bubbly_Cursed_Energy_Aura.dmi'
 				IconLockBlend=2
 				IconLayer=-1
 				IconApart=1
@@ -9230,9 +9230,9 @@ NEW VARIABLES
 				LockY = -32
 			Hollow_Wicker_Basket_Aegis
 				TimerLimit = 10
-				IconLock = 'BLANK.dmi'
-				LockX = -32
-				LockY = -32
+				IconLock = 'HolyDome_Wicker_Shimmer.dmi'
+				LockX = -158
+				LockY = -96
 				BuffName = "Hollow Wicker Basket Aegis"
 				passives = list("PureReduction" = 9999)
 				ActiveMessage = "is safeguarded by a woven anti-domain aegis!"
@@ -9242,9 +9242,9 @@ NEW VARIABLES
 				TimerLimit = 10
 				Cooldown = 120
 				BuffName = "Hollow Wicker Basket"
-				IconLock = 'BLANK.dmi'
-				LockX = -32
-				LockY = -32
+				IconLock = 'HolyDome_Wicker_Shimmer.dmi'
+				LockX = -158
+				LockY = -96
 				ActiveMessage = "forms a Hollow Wicker Basket, nullifying all incoming damage nearby!"
 				OffMessage = "disperses their Hollow Wicker Basket."
 				verb/Hollow_Wicker_Basket()
@@ -9267,7 +9267,9 @@ NEW VARIABLES
 				TimerLimit = 20
 				Cooldown = 90
 				BuffName = "Simple Domain"
-				IconLock='zekkai.dmi'
+				IconLock='Bubbly_Cursed_Energy_Aura.dmi'
+				LockX = -16
+				LockY = -9
 				IconLockBlend=1
 				IconUnder=1
 				OverlaySize=1.2
