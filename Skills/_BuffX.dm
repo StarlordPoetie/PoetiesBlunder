@@ -644,9 +644,13 @@ NEW VARIABLES
 				vars["[selectedStats[1]]Mult"] = 1.15
 				vars["[selectedStats[2]]Mult"] = 1.1
 				vars["[selectedStats[3]]Mult"] = 1.05
-			Trigger(var/mob/User, Override=0)
-				init(User)
-				..()
+				Trigger(var/mob/User, Override=0)
+					init(User)
+					if(User && User.hasSecret("Cursed Energy"))
+						AuraLock = 1
+						ManaGlow = "#ffffeb"
+						ManaGlowSize = 1.5
+					..()
 
 
 
