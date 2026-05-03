@@ -3,41 +3,6 @@
 			maxTier = 5
 			givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_Potential")
 			var/awakeningConfigured = 0
-			proc/chooseSpecialization(mob/p)
-				if(!p || p.cursedEnergySpecialization)
-					return
-				var/list/options = list("Unarmed", "Caster", "Swordsmanship")
-				var/selected = input(p, "Choose your Cursed Energy specialization.", "Cursed Energy - Specialization") in options
-				if(!selected)
-					selected = "Unarmed"
-				p.cursedEnergySpecialization = selected
-				switch(selected)
-					if("Unarmed")
-						p.passive_handler.Set("UnarmedDamage", 3)
-						p.passive_handler.Set("CriticalDamage", 2)
-						p.passive_handler.Set("CriticalChance", 2)
-						p.passive_handler.Set("CriticalBlock", 2)
-						p.passive_handler.Set("PureReduction", 2)
-						p.passive_handler.Set("Flow", 4)
-						p.passive_handler.Set("Adrenaline", 3)
-						p.passive_handler.Set("Fury", 2)
-					if("Caster")
-						p.passive_handler.Set("Adrenaline", 3)
-						p.passive_handler.Set("MeleeResist", 2)
-						p.passive_handler.Set("ManaSteal", 20)
-						p.passive_handler.Set("ManaGeneration", 3)
-						p.passive_handler.Set("PowerfulCasting", 2)
-						p.passive_handler.Set("StalwartCasting", 2)
-						p.passive_handler.Set("FluidForm", 3)
-						p.passive_handler.Set("Fury", 2)
-					if("Swordsmanship")
-						p.passive_handler.Set("Fury", 2)
-						p.passive_handler.Set("Parry", 2)
-						p.passive_handler.Set("Reversal", 2)
-						p.passive_handler.Set("Instinct", 4)
-						p.passive_handler.Set("SwordDamage", 2)
-						p.passive_handler.Set("Adrenaline", 3)
-						p.passive_handler.Set("SwordAscension", 1)
 			proc/updateSlashCursedTechniques(mob/p)
 				if(!p || p.cursedEnergyTrait != "Slash")
 					return
@@ -147,4 +112,5 @@ mob
 						var/SecretInformation/CursedEnergy/ce2 = getCursedEnergySecret()
 						if(ce2) ce2.updateSlashCursedTechniques(src)
 						src << "Your cursed energy obtains the unique property of <b>slashing</b> your opponents on hit."
+			ce.awakeningConfigured = 1
 			ce.awakeningConfigured = 1
