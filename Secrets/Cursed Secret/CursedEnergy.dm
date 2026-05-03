@@ -42,6 +42,7 @@
 						nextTierUp = 3
 					if(2)
 						p << "Your Cursed Energy control improves."
+						chooseSpecialization(p)
 						if(prob(20))
 							grantDomainExpansion(p)
 						nextTierUp = 3
@@ -72,6 +73,7 @@ mob
 	var
 		cursedEnergyAuraColor
 		cursedEnergyTrait
+		cursedEnergySpecialization
 
 	proc
 		getCursedEnergySecret()
@@ -110,4 +112,5 @@ mob
 						var/SecretInformation/CursedEnergy/ce2 = getCursedEnergySecret()
 						if(ce2) ce2.updateSlashCursedTechniques(src)
 						src << "Your cursed energy obtains the unique property of <b>slashing</b> your opponents on hit."
+			ce.awakeningConfigured = 1
 			ce.awakeningConfigured = 1
