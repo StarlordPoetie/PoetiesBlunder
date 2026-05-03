@@ -76,6 +76,7 @@
 	        switch(secretDatum.currentTier)
 	            if(1) return 5
 	            if(2) return 25
+	            if(3) return 40
 	        return 25
     getHakiStrike()
         if(!secretDatum)
