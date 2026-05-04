@@ -44,7 +44,16 @@ obj
 				verb/Cursed_Technique_Dismantle()
 					set category="Skills"
 					set name = "Dismantle"
-					usr.SetQueue(src)
+					var/obj/Skills/Projectile/Divine_Departure/proxy = usr.findOrAddSkill(/obj/Skills/Projectile/Divine_Departure)
+					proxy.EnergyCost = src.EnergyCost
+					proxy.Cooldown = src.Cooldown
+					proxy.DamageMult = src.DamageMult
+					proxy.AccMult = src.AccuracyMult
+					proxy.MultiHit = src.InstantStrikes
+					proxy.HitSparkIcon = src.HitSparkIcon
+					proxy.HitSparkX = src.HitSparkX
+					proxy.HitSparkY = src.HitSparkY
+					usr.UseProjectile(proxy)
 			Cursed_Technique_Cleave
 				SkillCost=0
 				Copyable=0
@@ -70,7 +79,14 @@ obj
 				verb/Cursed_Technique_Cleave()
 					set category="Skills"
 					set name = "Cleave"
-					usr.SetQueue(src)
+					var/obj/Skills/Grapple/Sword/Eviscerate/proxy = usr.findOrAddSkill(/obj/Skills/Grapple/Sword/Eviscerate)
+					proxy.DamageMult = src.DamageMult
+					proxy.Cooldown = src.Cooldown
+					proxy.MultiHit = src.InstantStrikes
+					proxy.KBMult = src.KBMult
+					proxy.NeedsSword = src.NeedsSword
+					proxy.EnergyCost = src.EnergyCost
+					proxy.Activate(usr)
 		AutoHit
 			Shutter_Doors
 				NeedsSword=0
