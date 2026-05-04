@@ -9223,6 +9223,8 @@ NEW VARIABLES
 					usr.DomainExpansion(src)
 				else
 					usr.stopDomainExapansion()
+					if(src.Cooldown < 200)
+						src.Cooldown = 200
 			Domain_Lock
 				Slotless = 1
 			BuffName = "Domain Lock"
