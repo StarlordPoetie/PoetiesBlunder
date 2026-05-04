@@ -15,7 +15,7 @@
 			if(c)
 				c.DamageMult = 4.5 * scale
 		proc/grantDomainExpansion(mob/p)
-			var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in p.Buffs
+			var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in p
 			if(d)
 				return
 			d = new()
@@ -45,6 +45,22 @@
 					else if(findtext(choice, "Hollow Wicker Basket"))
 						p.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket)
 						p.cursedEnergyDomainChoice = "Hollow Wicker Basket"
+		proc/chooseSpecialization(mob/p)
+			if(!p)
+				return
+			if(p.cursedEnergySpecialization)
+				return
+			var/list/options = list("Reinforcement", "Technique")
+			var/choice = input(p, "Choose your Cursed Energy specialization.", "Cursed Energy - Specialization") in options
+			if(!choice)
+				choice = "Reinforcement"
+			p.cursedEnergySpecialization = choice
+			if(choice == "Reinforcement")
+				p.passive_handler.Set("CursedReinforcement", 1)
+				p << "You focus on amplifying your body through Cursed Energy reinforcement."
+			else
+				p.passive_handler.Set("CursedTechniqueAffinity", 1)
+				p << "You focus on refined control for Cursed Technique output."
 		proc/applySecret(mob/p)
 			switch(currentTier)
 				if(1)
@@ -53,7 +69,7 @@
 					p.passive_handler.Set("RenameMana", "Cursed Energy")
 					if(prob(10))
 						grantDomainExpansion(p)
-					nextTierUp = 3
+					nextTierUp = 2
 				if(2)
 					p << "Your Cursed Energy control improves."
 					chooseSpecialization(p)
@@ -73,7 +89,7 @@
 					p << "Your Cursed Energy reaches a breakthrough: Domain Expansion is now yours by default."
 					p.passive_handler.Set("Sparks of Black", 0)
 					grantDomainExpansion(p)
-					nextTierUp = 4
+					nextTierUp = 5
 				if(5)
 					p << "Your Domain mastery deepens."
 					p.passive_handler.Set("Sparks of Black", 0)
