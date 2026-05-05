@@ -4,6 +4,15 @@
 		givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_Potential")
 		var/awakeningConfigured = 0
 		var/domainChoicePrompted = 0
+		var/CursedEnergyBlackFlashChance = 0
+		var/CursedEnergyBlackFlashBaseChance = 5
+		var/CursedEnergyBlackFlashFirstTimeUse = 1
+		proc/removeBlackFlashSureStrike(mob/p)
+			if(!p)
+				return
+			p.passive_handler.Set("Sure-Strike Black Flash", 0)
+			for(var/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike/ss in p.Buffs)
+				p.DeleteSkill(ss)
 		proc/updateSlashCursedTechniques(mob/p)
 			if(!p || p.cursedEnergyTrait != "Slash")
 				return
@@ -97,38 +106,41 @@
 					p.passive_handler.Set("SwordAscension", 1)
 					p << "You focus on Cursed Energy Enhancement, sharpening weapon flow and reactions."
 		proc/applySecret(mob/p)
+			removeBlackFlashSureStrike(p)
 			switch(currentTier)
 				if(1)
 					p << "You awaken to the flow of Cursed Energy."
-					giveSkills(p) // Keep T1 Black Flash access (120% Potential buff)
+					giveSkills(p)
+					CursedEnergyBlackFlashBaseChance = 5
 					p.passive_handler.Set("RenameMana", "Cursed Energy")
 					if(prob(10))
 						grantDomainExpansion(p)
 					nextTierUp = 2
 				if(2)
 					p << "Your Cursed Energy control improves."
+					CursedEnergyBlackFlashBaseChance = 25
+					p.passive_handler.Set("Sparks of Black", 1)
 					chooseSpecialization(p)
 					if(prob(20))
 						grantDomainExpansion(p)
 					nextTierUp = 3
 				if(3)
 					p << "Your Cursed Energy grows denser and more precise."
-					p.passive_handler.Set("Sparks of Black", 0)
-					for(var/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike/ss in p.Buffs)
-						p.Buffs -= ss
-						del(ss)
+					CursedEnergyBlackFlashBaseChance = 35
 					if(prob(35))
 						grantDomainExpansion(p)
 					nextTierUp = 4
 				if(4)
 					p << "Your Cursed Energy reaches a breakthrough: Domain Expansion is now yours by default."
-					p.passive_handler.Set("Sparks of Black", 0)
+					CursedEnergyBlackFlashBaseChance = 35
 					grantDomainExpansion(p)
 					nextTierUp = 5
 				if(5)
 					p << "Your Domain mastery deepens."
-					p.passive_handler.Set("Sparks of Black", 0)
+					CursedEnergyBlackFlashBaseChance = 35
 					grantDomainExpansion(p)
+			CursedEnergyBlackFlashBaseChance = min(CursedEnergyBlackFlashBaseChance, 35)
+			CursedEnergyBlackFlashChance = clamp(CursedEnergyBlackFlashChance, CursedEnergyBlackFlashBaseChance, 35)
 			updateSlashCursedTechniques(p)
 
 
@@ -144,6 +156,19 @@ mob/proc/getCursedEnergySecret()
 	if(hasSecret("Cursed Energy"))
 		return secretDatum
 	return null
+
+
+mob/proc/isCursedEnergyBlackFlashFirstUse()
+	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
+	if(ce)
+		return ce.CursedEnergyBlackFlashFirstTimeUse
+	return 0
+
+
+mob/proc/setCursedEnergyBlackFlashFirstUse()
+	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
+	if(ce)
+		ce.CursedEnergyBlackFlashFirstTimeUse = 0
 
 
 mob/proc/setupCursedEnergyAwakening()
@@ -184,17 +209,25 @@ mob/proc/attemptCursedHeavyStrike()
 
 	if(cursedEnergyTrait == "Slash")
 		var/obj/Skills/Queue/Cursed_Technique_Cleave/c = locate(/obj/Skills/Queue/Cursed_Technique_Cleave) in src
-		if(c)
+		if(c && !c.Using)
 			SetQueue(c)
 			return 1
 
 	if(cursedEnergyTrait == "Serrated")
 		var/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist/gf = locate(/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist) in src
-		if(gf)
+		if(gf && !gf.Using)
 			SetQueue(gf)
 			return 1
 
-	return 0
+	if(!canBlackFlashStrike())
+		return 1
+
+	var/obj/Skills/Queue/Secret_Heavy_Strike/hs = getBlackFlashStrike()
+	if(hs)
+		hs.adjust(src)
+		SetQueue(hs)
+
+	return 1
 
 
 mob/proc/attemptCursedToss()

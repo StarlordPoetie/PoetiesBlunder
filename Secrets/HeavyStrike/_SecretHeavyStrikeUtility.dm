@@ -83,12 +83,11 @@
 		return findOrAddSkill(/obj/Skills/Queue/Secret_Heavy_Strike/Black_Flash/Divergent_Fist);
 
 	getCursedEnergyBlackFlashChance()
-		if(!secretDatum) return 0;
-		switch(secretDatum.currentTier)
-			if(1) return 5
-			if(2) return 25
-			if(3) return 40
-		return 25;
+		var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret();
+		if(!ce) return 0;
+		var/usedChance = clamp(ce.CursedEnergyBlackFlashChance, ce.CursedEnergyBlackFlashBaseChance, 35);
+		ce.CursedEnergyBlackFlashChance = min(usedChance + 5, 35);
+		return usedChance;
 
 	getHakiStrike()
 		if(!secretDatum)
