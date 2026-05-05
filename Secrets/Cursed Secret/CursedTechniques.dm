@@ -44,7 +44,16 @@ obj
 				verb/Cursed_Technique_Dismantle()
 					set category="Skills"
 					set name = "Dismantle"
-					usr.SetQueue(src)
+					var/obj/Skills/Projectile/Divine_Departure/proxy = usr.findOrAddSkill(/obj/Skills/Projectile/Divine_Departure)
+					proxy.EnergyCost = src.EnergyCost
+					proxy.Cooldown = src.Cooldown
+					proxy.DamageMult = src.DamageMult
+					proxy.AccMult = src.AccuracyMult
+					proxy.MultiHit = src.InstantStrikes
+					proxy.HitSparkIcon = src.HitSparkIcon
+					proxy.HitSparkX = src.HitSparkX
+					proxy.HitSparkY = src.HitSparkY
+					usr.UseProjectile(proxy)
 			Cursed_Technique_Cleave
 				SkillCost=0
 				Copyable=0
@@ -70,7 +79,14 @@ obj
 				verb/Cursed_Technique_Cleave()
 					set category="Skills"
 					set name = "Cleave"
-					usr.SetQueue(src)
+					var/obj/Skills/Grapple/Sword/Eviscerate/proxy = usr.findOrAddSkill(/obj/Skills/Grapple/Sword/Eviscerate)
+					proxy.DamageMult = src.DamageMult
+					proxy.Cooldown = src.Cooldown
+					proxy.MultiHit = src.InstantStrikes
+					proxy.KBMult = src.KBMult
+					proxy.NeedsSword = src.NeedsSword
+					proxy.EnergyCost = src.EnergyCost
+					proxy.Activate(usr)
 		AutoHit
 			Shutter_Doors
 				NeedsSword=0
@@ -103,3 +119,35 @@ obj
 				verb/Shutter_Doors()
 					set category="Skills"
 					usr.Activate(src)
+
+		Buffs
+			SlotlessBuffs
+
+				Cursed_Energy_Domain_Boost
+					Slotless = 1
+					BuffName = "Cursed Domain Boost"
+					Mastery = -1
+					UnrestrictedBuff = 1
+					TimerLimit = 200
+					StrMult = 1.25
+					ForMult = 1.25
+					EndMult = 1.25
+					SpdMult = 1.25
+					DefMult = 1.25
+					OffMult = 1.25
+					ActiveMessage = "is empowered by their Domain's sure-hit supremacy!"
+					OffMessage = "loses their Domain's overwhelming edge."
+				Reversed_Curse_Technique
+					Slotless = 1
+					Cooldown = 90
+					ManaCost = 20
+					ActiveMessage = "focuses cursed energy inward and invokes Reversed Curse Technique!"
+					verb/Reversed_Curse_Technique()
+						set category = "Skills"
+						set name = "Reversed Curse Technique"
+						if(!src.usable())
+							return
+						src.Trigger(usr)
+						if(usr.icon_state == "Train")
+							usr.icon_state = ""
+						usr.activateReversedCursedTechnique()

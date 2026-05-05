@@ -31,6 +31,8 @@ obj/DomainExpansionRoof
 	// hittable by punches / AOE, which both broke immersion and let players
 	// destructively interact with what is supposed to be a passive backdrop.
 	Attackable = 0
+	Health = 9999999
+	Destructable = 0
 
 /mob/Admin3/verb/GiveDomainExpansion()
 	set category = "Admin"
@@ -132,6 +134,20 @@ mob
 			src.domainExpansionFloors = floors
 			src.domainExpansionBarriers = barriers
 			src.domainExpansionActive = 1
+			if(src.hasSecret("Cursed Energy"))
+				var/obj/Skills/Buffs/SlotlessBuffs/Cursed_Energy_Domain_Boost/db = locate(/obj/Skills/Buffs/SlotlessBuffs/Cursed_Energy_Domain_Boost) in src
+				if(db && !src.BuffOn(db))
+					db.Trigger(src)
+
+			spawn(Second(200))
+				if(src && src.domainExpansionActive)
+					src.stopDomainExapansion()
+					var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in src
+					if(d)
+						if(src.BuffOn(d))
+							d.Trigger(src)
+						if(d.Cooldown < 200)
+							d.Cooldown = 200
 
 
 		stopDomainExapansion()
@@ -149,6 +165,10 @@ mob
 			src.domainExpansionFloors = null
 			src.domainExpansionBarriers = null
 			src.domainExpansionActive = 0
+			if(src.hasSecret("Cursed Energy"))
+				var/obj/Skills/Buffs/SlotlessBuffs/Cursed_Energy_Domain_Boost/db = locate(/obj/Skills/Buffs/SlotlessBuffs/Cursed_Energy_Domain_Boost) in src
+				if(db && src.BuffOn(db))
+					db.Trigger(src)
 			spawn()
 				var/processed = 0
 				if(oldBarriers)

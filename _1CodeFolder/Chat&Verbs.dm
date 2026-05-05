@@ -1074,8 +1074,12 @@ mob/Players/verb
 		if(src.icon_state=="Train")
 			src.icon_state=""
 			// Check for Cursed Energy Reversed Technique
-			if(src.CheckSlotless("Cursed Energy"))
-				src.activateReversedCursedTechnique()
+			if(src.hasSecret("Cursed Energy"))
+				var/obj/Skills/Buffs/SlotlessBuffs/Reversed_Curse_Technique/rct = locate(/obj/Skills/Buffs/SlotlessBuffs/Reversed_Curse_Technique) in src
+				if(rct && rct.usable())
+					rct.useSkill()
+				else if(!rct)
+					src.activateReversedCursedTechnique()
 			if(!src.PoseEnhancement)
 				if(!src.CheckSlotless("Half Moon Form")&&!src.CheckSlotless("Full Moon Form"))
 					if(src.PoseTime>=5&&(src.RippleActive()||src.Secret=="Vampire"||src.Secret=="Senjutsu"&&src.CheckSlotless("Senjutsu Focus"))||Secret=="Eldritch"||Secret=="Spiral")
