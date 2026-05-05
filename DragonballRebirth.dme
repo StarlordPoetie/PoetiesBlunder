@@ -574,6 +574,7 @@
 #include "Skills\__debugVerbs.dm"
 #include "Skills\_AutoHitX.dm"
 #include "Skills\_BuffX.dm"
+#include "Skills\_CursedEnergyBuffs.dm"
 #include "Skills\_GrappleX.dm"
 #include "Skills\_HeldSkill.dm"
 #include "Skills\_NuMartialArts.dm"
