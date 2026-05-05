@@ -106,6 +106,8 @@
 						SS1pot=5
 					passives["Transformation Power"] = SS1pot //MATH COMES LATER
 					passives["BuffMastery"] = 5 + p.AscensionsAcquired
+					passives["PureReduction"] = 2 + p.AscensionsAcquired
+					passives["PureDamage"] = 1 + p.AscensionsAcquired
 					VaizardHealth =25
 		if(p.Potential > OOZARU_POTENTIAL_TRANS&&p.oozaru_type!="Demonic")
 			passives["Transformation Power"] = p.AscensionsAcquired
