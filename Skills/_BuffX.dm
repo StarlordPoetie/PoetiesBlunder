@@ -9200,44 +9200,39 @@ NEW VARIABLES
 				set category="Skills"
 				src.Trigger(usr)
 			Domain_Expansion
-				var/tmp/effected = list()
-				var/range = 10
-				var/identifier = null
-				var/demonName = null
-				var/icon/customTurfIcon = null
-				var/icon/customRoofIcon = null
-				var/useShroud = 0
-				Cooldown = -1
-				ActiveMessage = "releases their Domain!"
-				OffMessage = "conceals their Domain...."
-
-				proc/animation(mob/p, range)
-					if(!range) range = 8
-					for(var/atom/M in range(range, p))
-						spawn()
-							animate(M, color = list(-1,0,0, 0,-1,0, 0,0,-1, 1,1,1), time = 7)
-						effected += M
-					sleep(3)
-					for(var/atom/M in effected)
-						spawn()
-							animate(M, color = null, time = 3)
-						spawn()
-							animate(M, color = list(0.6,0,0.1, 0,0.6,0.1, 0,0,0.7, 0,0,0), time = 3)
-					sleep(6)
-					for(var/atom/M in effected)
-						spawn()
-							animate(M, color = null, time = 3)
-
-				verb/Domain_Expansion()
-					set category = "Skills"
-					set name = "Domain Expansion"
-					src.Trigger(usr)
-					if(usr.BuffOn(src))
-						animation(usr, range)
-						usr.DomainExpansion(src)
-					else
-						usr.stopDomainExapansion()
-
+			var/tmp/effected = list()
+			var/range = 10
+			var/identifier = null
+			var/demonName = null
+			var/icon/customTurfIcon = null
+			var/icon/customRoofIcon = null
+			var/useShroud = FALSE
+			Cooldown = -1
+			ActiveMessage="releases their Domain!"
+			OffMessage="conceals their Domain...."
+			proc/animation(mob/p, range)
+				if(!range) range = 8
+				for(var/atom/M in range(range, p))
+					spawn()animate(M, color = list(-1,0,0, 0,-1,0, 0,0,-1, 1,1,1), time = 7)
+					effected += M
+				sleep(3)
+				for(var/atom/M in effected)
+					spawn()animate(M, color = null, time = 3)
+					spawn()animate(M, color = list(0.6,0,0.1, 0,0.6,0.1, 0,0,0.7, 0,0,0), time = 3)
+				sleep(6)
+				for(var/atom/M in effected)
+					spawn()animate(M, color = null, time = 3)
+			verb/Domain_Expansion()
+				set category = "Skills"
+				set name = "Domain Expansion"
+				src.Trigger(usr)
+				if(usr.BuffOn(src))
+					animation(usr, range)
+					usr.DomainExpansion(src)
+				else
+					usr.stopDomainExapansion()
+					if(src.Cooldown < 200)
+						src.Cooldown = 200
 			Domain_Lock
 				Slotless = 1
 				BuffName = "Domain Lock"
