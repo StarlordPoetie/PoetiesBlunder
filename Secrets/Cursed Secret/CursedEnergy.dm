@@ -216,7 +216,7 @@ mob/proc/attemptCursedToss()
 	return 0
 
 
-mob/proc/attemptCursedReverseDash()
+mmob/proc/attemptCursedReverseDash()
 	if(!getCursedEnergySecret())
 		return 0
 
@@ -237,37 +237,38 @@ mob/proc/attemptCursedReverseDash()
 
 	return 0
 
-		activateReversedCursedTechnique()
-			var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
-			if(!ce)
-				return
-			
-			// Reversed Curse Technique: heal % of missing health, scales by tier (8% -> 14%)
-			var/healPercent = 0
-			switch(ce.currentTier)
-				if(1) healPercent = 0.08
-				if(2) healPercent = 0.095
-				if(3) healPercent = 0.11
-				if(4) healPercent = 0.125
-				if(5) healPercent = 0.14
-				else healPercent = 0.08
-			
-			var/missingHealth = max(0, maxHealth - Health)
-			var/healAmount = round(missingHealth * healPercent)
-			Health += healAmount
-			if(Health > maxHealth)
-				Health = maxHealth
-			
-			// Instantly recover injury and undo maims / mortal wounds
-			if(TotalInjury > 0)
-				HealWounds(TotalInjury, 1)
-			Maimed = 0
-			HealthCut = 0
-			for(var/obj/Effects/Buff/injury in src.buffs)
-				if(injury.type in list(
-					/obj/Effects/Buff/Injuries/SeriousInjury,
-					/obj/Effects/Buff/Injuries/Maim))
-					src.buffs -= injury
-					del(injury)
-			
-			visible_message("<span class='notice'>[src.name] utilizes Reversed Curse Technique and restores their body instantly!</span>")
+
+mob/proc/activateReversedCursedTechnique()
+	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
+	if(!ce)
+		return
+	
+	// Reversed Curse Technique: heal % of missing health, scales by tier (8% -> 14%)
+	var/healPercent = 0
+	switch(ce.currentTier)
+		if(1) healPercent = 0.08
+		if(2) healPercent = 0.095
+		if(3) healPercent = 0.11
+		if(4) healPercent = 0.125
+		if(5) healPercent = 0.14
+		else healPercent = 0.08
+	
+	var/missingHealth = max(0, maxHealth - Health)
+	var/healAmount = round(missingHealth * healPercent)
+	Health += healAmount
+	if(Health > maxHealth)
+		Health = maxHealth
+	
+	// Instantly recover injury and undo maims / mortal wounds
+	if(TotalInjury > 0)
+		HealWounds(TotalInjury, 1)
+	Maimed = 0
+	HealthCut = 0
+	for(var/obj/Effects/Buff/injury in src.buffs)
+		if(injury.type in list(
+			/obj/Effects/Buff/Injuries/SeriousInjury,
+			/obj/Effects/Buff/Injuries/Maim))
+			src.buffs -= injury
+			del(injury)
+	
+	visible_message("<span class='notice'>[src.name] utilizes Reversed Curse Technique and restores their body instantly!</span>")
