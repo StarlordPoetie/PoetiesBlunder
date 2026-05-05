@@ -4470,14 +4470,14 @@ obj
 				StyleNeeded="Ansatsuken"
 				proc/alter(mob/player)
 					ManaCost = 0
-					var/damage = 1 + (0.5 * sagaLevel)
+					var/damage = 1 + (0.5 * player.SagaLevel)
 					var/path = player.AnsatsukenPath == "Tatsumaki" ? 1 : 0
 					var/rounds = 3
 					var/cooldown = 40
 					var/launch = 0
 					if(path)
 						cooldown = 30
-						damage = 2 + (1.5 * sagaLevel)
+						damage = 2 + (1.5 * player.SagaLevel)
 						rounds = 3
 					DamageMult = damage
 					Cooldown = cooldown

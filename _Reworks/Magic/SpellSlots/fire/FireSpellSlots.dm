@@ -4,7 +4,7 @@
 	SpellSlot=1
 	MagicNeeded=1
 	Blazing_Whip
-		ElementalOffense="Fire"
+		ElementalClass="Fire"
 		Area="Arc"
 		Distance=5
 		DamageMult=4
