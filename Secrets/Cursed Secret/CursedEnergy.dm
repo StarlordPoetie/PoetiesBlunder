@@ -141,95 +141,109 @@ mob
 
 	proc
 		getCursedEnergySecret()
-			if(hasSecret("Cursed Energy")) return secretDatum
+			if(hasSecret("Cursed Energy"))
+				return secretDatum
 			return null
+
 		setupCursedEnergyAwakening()
 			var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
 			if(!ce || ce.awakeningConfigured)
 				return
+
 			var/chosenColor = input(src, "Choose your Cursed Energy aura color.", "Cursed Energy - Aura Color", rgb(120, 80, 200)) as color|null
 			if(chosenColor)
 				cursedEnergyAuraColor = chosenColor
+
 			var/list/availableTraits = list("Serrated", "Electricity", "Slash")
+
 			for(var/trait in cursed_energy_taken_traits)
 				availableTraits -= trait
+
 			if(!availableTraits.len)
 				src << "No unique Cursed Energy traits remain to be awakened."
 				ce.awakeningConfigured = 1
 				return
+
 			var/selectedTrait = pick(availableTraits)
 			cursed_energy_taken_traits += selectedTrait
 			cursedEnergyTrait = selectedTrait
+
 			switch(selectedTrait)
 				if("Serrated")
 					passive_handler.Set("FavoredPrey", "Mortal")
 					findOrAddSkill(/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist)
 					findOrAddSkill(/obj/Skills/AutoHit/Shutter_Doors)
-					src << "Your cursed energy obtains the unique property of <b>serrating</b> your opponents on hit."
+					src << "Your cursed energy obtains the unique property of serrating your opponents on hit."
+
 				if("Electricity")
 					passive_handler.Set("FavoredPrey", "Saga")
-					src << "Your cursed energy obtains the unique property of <b>electrifying</b> your opponents on hit."
+					src << "Your cursed energy obtains the unique property of electrifying your opponents on hit."
+
 				if("Slash")
 					passive_handler.Set("FavoredPrey", "All")
 					findOrAddSkill(/obj/Skills/Queue/Cursed_Technique_Dismantle)
 					findOrAddSkill(/obj/Skills/Queue/Cursed_Technique_Cleave)
-					var/SecretInformation/CursedEnergy/ce2 = getCursedEnergySecret()
-					if(ce2) ce2.updateSlashCursedTechniques(src)
-					src << "Your cursed energy obtains the unique property of <b>slashing</b> your opponents on hit."
+					ce.updateSlashCursedTechniques(src)
+					src << "Your cursed energy obtains the unique property of slashing your opponents on hit."
+
 			ce.awakeningConfigured = 1
-		
+
 		attemptCursedHeavyStrike()
-			var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
-			if(!ce)
-				return 0 // Not a Cursed Energy user
-			
-			switch(cursedEnergyTrait)
-				if("Serrated")
-					var/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist/gf = locate(/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist) in src
-					if(gf && gf.usable())
-						gf.useSkill()
-						return 1
-				if("Slash")
-					var/obj/Skills/Queue/Cursed_Technique_Cleave/c = locate(/obj/Skills/Queue/Cursed_Technique_Cleave) in src
-					if(c && c.usable())
-						c.useSkill()
-						return 1
+			if(!getCursedEnergySecret())
+				return 0
+
+			if(cursedEnergyTrait == "Serrated")
+				var/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist/gf = locate(/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist) in src
+				if(gf)
+					SetQueue(gf)
+					return 1
+
+			if(cursedEnergyTrait == "Slash")
+				var/obj/Skills/Queue/Cursed_Technique_Cleave/c = locate(/obj/Skills/Queue/Cursed_Technique_Cleave) in src
+				if(c)
+					SetQueue(c)
+					return 1
+
 			return 0
-		
+
 		attemptCursedToss()
-			var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
-			if(!ce)
+			if(!getCursedEnergySecret())
 				return 0
-			
-			switch(cursedEnergyTrait)
-				if("Serrated")
-					var/obj/Skills/AutoHit/Shutter_Doors/sd = locate(/obj/Skills/AutoHit/Shutter_Doors) in src
-					if(sd && sd.usable())
-						sd.useSkill()
-						return 1
-				if("Slash")
-					var/obj/Skills/Queue/Cursed_Technique_Dismantle/d = locate(/obj/Skills/Queue/Cursed_Technique_Dismantle) in src
-					if(d && d.usable())
-						d.useSkill()
-						return 1
+
+			if(cursedEnergyTrait == "Serrated")
+				var/obj/Skills/AutoHit/Shutter_Doors/sd = locate(/obj/Skills/AutoHit/Shutter_Doors) in src
+				if(sd)
+					Activate(sd)
+					return 1
+
+			if(cursedEnergyTrait == "Slash")
+				var/obj/Skills/Queue/Cursed_Technique_Dismantle/d = locate(/obj/Skills/Queue/Cursed_Technique_Dismantle) in src
+				if(d)
+					SetQueue(d)
+					return 1
+
 			return 0
-		
+
 		attemptCursedReverseDash()
-			var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
-			if(!ce || !cursedEnergyDomainChoice)
+			if(!getCursedEnergySecret())
 				return 0
-			
-			var/defensiveSkill
+			if(!cursedEnergyDomainChoice)
+				return 0
+
 			if(cursedEnergyDomainChoice == "Simple Domain")
-				defensiveSkill = locate(/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain) in src
-			else if(cursedEnergyDomainChoice == "Hollow Wicker Basket")
-				defensiveSkill = locate(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket) in src
-			
-			if(defensiveSkill && defensiveSkill.usable())
-				defensiveSkill.useSkill()
-				return 1
+				var/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain/sd = locate(/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain) in Buffs
+				if(sd)
+					sd.Trigger(src)
+					return 1
+
+			if(cursedEnergyDomainChoice == "Hollow Wicker Basket")
+				var/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket/hwb = locate(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket) in Buffs
+				if(hwb)
+					hwb.Trigger(src)
+					return 1
+
 			return 0
-		
+
 		activateReversedCursedTechnique()
 			var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
 			if(!ce)

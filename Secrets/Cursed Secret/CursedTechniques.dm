@@ -6,7 +6,7 @@ obj
 				Copyable=0
 				name="Gamblers Fist"
 				DamageMult=9
-				AccuracyMult = 1.7
+				AccuracyMult=1.7
 				Duration=8
 				KBAdd=5
 				PushOut=5
@@ -24,12 +24,14 @@ obj
 				Cooldown=30
 				verb/Cursed_Technique_Gamblers_Fist()
 					set category="Skills"
-					set name = "Gamblers Fist"
+					set name="Gamblers Fist"
 					usr.SetQueue(src)
+
 			Cursed_Technique_Dismantle
 				SkillCost=0
 				Copyable=0
-				ActiveMessage="unleashes Dismantle!"
+				name="Dismantle"
+				ActiveMessage="flicks their finger, unleashing Dismantle."
 				DamageMult=3
 				AccuracyMult=1.2
 				InstantStrikes=2
@@ -37,7 +39,7 @@ obj
 				NeedsSword=0
 				EnergyCost=4
 				Cooldown=30
-				HitSparkIcon='Slash - Zero.dmi'
+				HitSparkIcon='Large Dismantle.dmi'
 				HitSparkX=-32
 				HitSparkY=-32
 				HitSparkSize=1.25
@@ -57,7 +59,8 @@ obj
 			Cursed_Technique_Cleave
 				SkillCost=0
 				Copyable=0
-				ActiveMessage="prepares Cleave!"
+				name="Cleave"
+				ActiveMessage="announces Cleave."
 				DamageMult=4.5
 				AccuracyMult=1.15
 				KBMult=0.00001
@@ -105,12 +108,12 @@ obj
 				DelayTime=1
 				Stunner=6
 				ComboMaster=2
-				Icon='BLANK.dmi'
-				Size=0.1
+				Icon='Cursed_Train_Closing_Doors.dmi'
+				Size=0.5
 				IconX=0
 				IconY=0
 				Falling=0
-				ActiveMessage="snaps their hands as invisible shutters slam in from all sides, crushing down around the target in an instant!"
+				ActiveMessage="snaps their hands as invisible shutters slam in from all sides, crushing down around the target instantly."
 				HitSparkIcon='BLANK.dmi'
 				HitSparkX=0
 				HitSparkY=0

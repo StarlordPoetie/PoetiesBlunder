@@ -666,71 +666,81 @@ SecretInformation
 	Shin
 		name = "Shin"
 		givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/Shin_Radiance")
-		maxTier = 6;
-		var/Mang = 0; // The current amount of mang used
-		var/MangMastery = 0; // The maximum amount of mang you can use
+		maxTier = 6
+		var/Mang = 0
+		var/MangMastery = 0
+
 		applySecret(mob/p)
-		// This code checks for the maximum Mang you can have, wheras var/Mang checks for your current mang :3
 			if(currentTier >= 2)
-				MangMastery = (currentTier-1)
+				MangMastery = currentTier - 1
 			else
 				MangMastery = 0
-		// This code switches your Secret Tier
+
 			switch(currentTier)
-				if(1) //Unlocks Shin
+				if(1)
 					p << "You let go of all things... except for your most intense memories. You have awakened the power of Shin."
-					giveSkills(p) // This only adds Shin_Radiance, Mang is on the next tier
+					giveSkills(p)
 					giveVariables(p)
-				if(2) //Unlocks 1 Mang Ring
-					p << "You fill your empty self with the emotions born from intense of Memories. You have awakened the power of Mang."
+
+				if(2)
+					p << "You fill your empty self with the emotions born from intense memories. You have awakened the power of Mang."
 					nextTierUp = 2
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Mang_Resonance)
-				if(3) // 2 Mang Rings
+
+				if(3)
 					p << "Your mastery over Shin and Mang improves."
 					nextTierUp = 2
-				if(4) // 3 Mang Rings
-					p << "You further refine your mastery over Shin and Mang"
+
+				if(4)
+					p << "You further refine your mastery over Shin and Mang."
 					nextTierUp = 4
-				if(5) // 4 Mang Rings
-					p << "You're at the cusp of perfecting the arts of Shin and Mang, your very presence begins to weigh upon others."
+
+				if(5)
+					p << "You're at the cusp of perfecting the arts of Shin and Mang."
 					nextTierUp = 4
-				if(6) // 5 Mang Rings
-					p << "You have refined both Shin and Mang to perfection, leveraging perfect control over your sense of self to invoke that intense emotion."
+
+				if(6)
+					p << "You have refined both Shin and Mang to perfection."
 
 
-		BlackFlash
+	BlackFlash
 		name = "Black Flash"
 		givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_Potential")
-		maxTier = 6;
-		var/BlackFlashCount = 0; //Tracks how many were fired off during a fight
-		var/BFlashPotential = 0; // If 120 Potential is up
-		var/BlackFlashChance = 0; // Usually a raising chance to land one per Heavy Strike
-		var/BlackFlashBaseChance = 5; // The chance it goes back to after med or too much time passed
-		var/BlackFlashForcedChance = 0; // If above 0, is used to force a certain chance to BFlash
-		var/BlackFlashFirstTimeUse = 1; // Literally just to do some funny narrative yapping like in the series
+		maxTier = 6
+		var/BlackFlashCount = 0
+		var/BFlashPotential = 0
+		var/BlackFlashChance = 0
+		var/BlackFlashBaseChance = 5
+		var/BlackFlashForcedChance = 0
+		var/BlackFlashFirstTimeUse = 1
+
 		applySecret(mob/p)
 			p << "You feel a new resonance with your own energy..."
+
 			switch(currentTier)
 				if(1)
 					giveSkills(p)
 					giveVariables(p)
-					BlackFlashBaseChance = 5;
-				if(2)
-					BlackFlashBaseChance = 15;
-				if(3)
-					BlackFlashBaseChance = 25;
-					p << "You now have a chance to keep your focus when landing a Black Flash! (Your Chance to land a Black Flash has a 50% chance to not reset when landing one.)"
-					p.passive_handler.Set("Sparks of Black",1)
-				if(4)
-					BlackFlashBaseChance = 35;
-					if(5)
-						BlackFlashBaseChance = 50;
-						p << "The Blessing of the Sparks of Black allow you to force a Black Flash out no matter what!"
-						p << "(Black Flash SureStrike: A 5 second Slotless Buff that forces your chance to land a Black Flash to 100%.)"
-						p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike)
-					if(6) // are you out of your motherfucking miiiiiiiiiind
-						BlackFlashBaseChance = 60;
+					BlackFlashBaseChance = 5
 
+				if(2)
+					BlackFlashBaseChance = 15
+
+				if(3)
+					BlackFlashBaseChance = 25
+					p << "You now have a chance to keep your focus when landing a Black Flash."
+					p.passive_handler.Set("Sparks of Black", 1)
+
+				if(4)
+					BlackFlashBaseChance = 35
+
+				if(5)
+					BlackFlashBaseChance = 50
+					p << "The Blessing of the Sparks of Black allows you to force a Black Flash."
+					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike)
+
+				if(6)
+					BlackFlashBaseChance = 60
 
 
 mob
@@ -741,89 +751,103 @@ mob
 		HakiCounterObservation
 
 		//HAMON
-		Ripple//Breathing
+		Ripple
 
 		//VAMPIRISM
 		BloodPower
 
-		giveSecret(path)
-			path = text2path("/SecretInformation/[path]")
-			var/SecretInformation/secret = new path
-			secretDatum = secret
-			secret.init(src)
+
+/mob/proc/giveSecret(secretPath)
+	var/secretTypePath = text2path("/SecretInformation/[secretPath]")
+
+	if(!secretTypePath)
+		src << "Invalid secret path: [secretPath]"
+		return
+
+	var/SecretInformation/secret = new secretTypePath
+	secretDatum = secret
+	secret.init(src)
+
 
 mob/Admin3/verb
 	SecretManagement(var/mob/P in players)
 		set category="Admin"
-		if(!P.client) return
-		var/list/Secrets=list("Spirits of The World","Jagan Eye", "Hamon of the Sun", "Werewolf", "Vampire", "Sage Arts", "Haki", "Eldritch", "Heavenly Restriction", "Shin", "Black Flash", "Spiral", "Cursed Energy")
-		var/Selection=input(src, "Which aspect of power does [P] awaken to?", "Secret Management") in Secrets
+
+		if(!P.client)
+			return
+
+		var/list/Secrets = list("Spirits of The World", "Jagan Eye", "Hamon of the Sun", "Werewolf", "Vampire", "Sage Arts", "Haki", "Eldritch", "Heavenly Restriction", "Shin", "Black Flash", "Spiral", "Cursed Energy")
+		var/Selection = input(src, "Which aspect of power does [P] awaken to?", "Secret Management") in Secrets
+
 		if(P.Secret)
 			src << "They already have a secret."
 			return
-		else
-			switch(Selection)
-				if("Spirits of The World")
-					var/path = input(src, "Which path of Spirits of The World do you wish to follow?", "Spirits of The World") in list("Goetic Virtue", "Stellar Constellation", "Elven Sanctuary")
-					// for now, admins pick it, as there
-					P.Secret = path
-					var/newpath = replacetext(path, " ", "_")
-					newpath = "Spirits_Of_The_World/[newpath]"
-					P.giveSecret(newpath)
-				if("Heavenly Restriction")
-					P.Secret = "Heavenly Restriction"
-					P.giveSecret("HeavenlyRestriction")
-				if("Jagan")
-					P.Secret = "Jagan Eye"
-					P.giveSecret("Jagan")
-				if("Hamon of the Sun")
-					P.ModifyPrime+=1
-					P.Secret="Hamon"
-					P.giveSecret("Hamon")
-				if("Sage Arts")
-					P.ModifyPrime+=1
-					P.Secret="Senjutsu"
-					P.giveSecret("SageArts")
-				if("Haki")
-					// P.ModifyPrime+=1
-					P.Secret="Haki"
-					P.giveSecret("Haki")
-					// P.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Armament)
-					// P.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Observation)
-					// P.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Armor_Lite)
-					// P.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Armor)
-					// P.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Shield_Lite)
-					// P.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Shield)
-					// P.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Relax_Lite)
-					// P.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Relax)
-					// P.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Future_Flash_Lite)
-					// P.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Haki/Haki_Future_Flash)
-					P << "Possessing such an overwhelming amount of willpower, you learn to chart destiny through your own ambition!"
-				if("Werewolf")
-					P.Secret="Werewolf"
-					P.giveSecret("Werewolf")
-				if("Eldritch")
-					P.Secret = "Eldritch"
-					P.giveSecret("Eldritch")
-				if("Vampire")
-					P.Secret="Vampire"
-					P.giveSecret("Vampire")
-				if("Shin")
-					P.Secret="Shin"
-					P.giveSecret("Shin")
-				if("Black Flash")
-					P.Secret="Black Flash"
-					P.giveSecret("BlackFlash")
-				if("Spiral")
-					P.Secret="Spiral"
-					P.giveSecret("Spiral")
-				if("Cursed Energy")
-					P.Secret="Cursed Energy"
-					P.giveSecret("CursedEnergy")
+
+		switch(Selection)
+			if("Spirits of The World")
+				var/spiritPath = input(src, "Which path of Spirits of The World do you wish to follow?", "Spirits of The World") in list("Goetic Virtue", "Stellar Constellation", "Elven Sanctuary")
+				P.Secret = spiritPath
+				var/newpath = replacetext(spiritPath, " ", "_")
+				newpath = "Spirits_Of_The_World/[newpath]"
+				P.giveSecret(newpath)
+
+			if("Heavenly Restriction")
+				P.Secret = "Heavenly Restriction"
+				P.giveSecret("HeavenlyRestriction")
+
+			if("Jagan Eye")
+				P.Secret = "Jagan Eye"
+				P.giveSecret("Jagan")
+
+			if("Hamon of the Sun")
+				P.ModifyPrime += 1
+				P.Secret = "Hamon"
+				P.giveSecret("Hamon")
+
+			if("Sage Arts")
+				P.ModifyPrime += 1
+				P.Secret = "Senjutsu"
+				P.giveSecret("SageArts")
+
+			if("Haki")
+				P.Secret = "Haki"
+				P.giveSecret("Haki")
+				P << "Possessing such an overwhelming amount of willpower, you learn to chart destiny through your own ambition!"
+
+			if("Werewolf")
+				P.Secret = "Werewolf"
+				P.giveSecret("Werewolf")
+
+			if("Eldritch")
+				P.Secret = "Eldritch"
+				P.giveSecret("Eldritch")
+
+			if("Vampire")
+				P.Secret = "Vampire"
+				P.giveSecret("Vampire")
+
+			if("Shin")
+				P.Secret = "Shin"
+				P.giveSecret("Shin")
+
+			if("Black Flash")
+				P.Secret = "Black Flash"
+				P.giveSecret("BlackFlash")
+
+			if("Spiral")
+				P.Secret = "Spiral"
+				P.giveSecret("Spiral")
+
+			if("Cursed Energy")
+				P.Secret = "Cursed Energy"
+				P.giveSecret("CursedEnergy")
+
+
 mob
 	proc
 		AddHaki(var/Type)
 			src.secretDatum.secretVariable["HakiCounter[Type]"]++
-			if(src.secretDatum.secretVariable["HakiCounter[Type]"]>=100&&!src.secretDatum.secretVariable["HakiSpecialization"])
-				src.secretDatum.secretVariable["HakiSpecialization"]="[Type]"
+
+			if(src.secretDatum.secretVariable["HakiCounter[Type]"] >= 100 && !src.secretDatum.secretVariable["HakiSpecialization"])
+				src.secretDatum.secretVariable["HakiSpecialization"] = "[Type]"
 				src << "Your Haki becomes centered around the Color of [Type]!"

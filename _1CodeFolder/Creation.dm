@@ -552,49 +552,52 @@ client/Del()
 	..()
 
 mob/Creation
+mob/Creation
 	Login()
 		winset(usr, null, "browser-options=find")
-		client.perspective=MOB_PERSPECTIVE | EDGE_PERSPECTIVE
-		usr.client.view=18
-		usr<<browse("[basehtml][Notes]")
+		client.perspective = MOB_PERSPECTIVE | EDGE_PERSPECTIVE
+		usr.client.view = 18
+		usr << browse("[basehtml][Notes]")
+
 		winshow(usr, "HungerLabel", 0)
 		winshow(usr, "Hunger", 0)
-		if(copytext(usr.key,1,6)=="Guest")
-			usr<<"Guest keys are disabled at this time, please login using a real key!"
+
+		if(copytext(usr.key, 1, 6) == "Guest")
+			usr << "Guest keys are disabled at this time, please login using a real key!"
 			sleep(10)
 			del(usr)
+			return
 
-		for(var/e in list("Health","Energy","Power","Mana"))
-			winset(src,"Bar[e]","is-visible=false")
+		for(var/e in list("Health", "Energy", "Power", "Mana"))
+			winset(src, "Bar[e]", "is-visible=false")
+
 		usr.CheckPunishment("Ban")
-		usr.Gender="Male"
-		if(usr.gender=="female")
-			usr.Gender="Female"
-		else if(usr.gender =="Neuter")
-			usr.Gender = "Neuter"
-		for(var/W in list("Grid1","Grid2","Finalize_Screen","Race_Screen"))
-			winshow(usr,"[W]",0)
-		usr.Admin("Check")
+		usr.Gender = "Male"
 
-		usr<<"<font color='red'><b>READ THIS BEFORE PLAYING:</b></font><br>"
-		usr<<"Wipe Topic: <a href='[WIPE_TOPIC]'>Click Here</a>"
-		usr<<"We have a Discord server at: [DISCORD_INVITE]<br>"
-		usr<<"<br><font color=#FFFF00>Welcome to [world.name]!"
-		usr<<"<b><small>Click the title screen to continue...</b><br>"
-		if(glob.TESTER_MODE)
-			usr<<"<font color=red><b>TESTER MODE IS ENABLED!</b></font>"
-		usr.loc=locate(1,1,13)
+		for(var/W in list("Grid1", "Grid2", "Finalize_Screen", "Race_Screen"))
+			winshow(usr, "[W]", 0)
+
+		usr.Admin("Check")
+		usr << "<font color='red'><b>READ THIS BEFORE PLAYING:</b></font><br>"
+		usr << "Wipe Topic: <a href='[WIPE_TOPIC]'>Click Here</a>"
+		usr << "We have a Discord server at: [DISCORD_INVITE]<br>"
+		usr << "<br><font color=#FFFF00>Welcome to [world.name]!"
+		usr << "<b><small>Click the title screen to continue...</b><br>"
+
+		usr.loc = locate(115, 355, 1)
+
 		client.client_plane_master = new()
 		client.screen += client.client_plane_master
+
+		var/obj/Login/Screenz/title = new()
+		title.screen_loc = "1,1"
+		client.screen += title
+
 	Logout()
 		if(src in admins)
 			admins -= src
 		..()
 		del(usr)
-
-
-
-
 
 mob/var/tmp/race_selecting = 1
 mob/Creation/verb
@@ -910,55 +913,82 @@ mob/proc/UpdateRaceScreen(change = 1)
 	src << output(race.desc,"raceblurb")
 
 obj/Login
-	name="\[            \]"
-	Savable=0
-	Grabbable=0
+	name = "\[            \]"
+	Savable = 0
+	Grabbable = 0
+
 	Screenz
-		layer=555
-		icon='FourthFateTitleScreen.png'
-		density=1
-	Newz
-		icon='ArtificalObj.dmi'
-		icon_state="Misc"
-		layer=999
-	//	alpha=0
+		layer = 555
+		icon = 'CreationPics/FourthFateTitleScreen.png'
+		density = 1
+
 		Click()
-			if(WorldLoading)
-				usr<<"Please wait until the world is done loading..."
+			if(!usr)
 				return
+
+			usr << "TITLE CLICK WORKS"
+
+			if(WorldLoading)
+				usr << "Please wait until the world is done loading..."
+				return
+
 			if(usr.race)
-				usr<<"You're already making!"
+				usr << "You're already making!"
 				return
-			if(fexists("Saves/Players/[usr.ckey]"))
-				var/savefile/f=new("Saves/Players/[usr.ckey]")
-				var/cc
-				f["name"] >> cc
-				del f
-				switch(alert("WARNING: You already have a character save on this key ([cc]). Do you wish to forsake them to start anew?","Oh snaps!","Yes","No"))
-					if("Yes")
-						winshow(usr,"Race_Screen",1)
-						spawn()usr.UpdateRaceScreen()
-					if("No")
-						return
-			else
-				winshow(usr,"Race_Screen",1)
-				spawn()usr.UpdateRaceScreen()
-	Loadz
-		icon='ArtificalObj.dmi'
-		icon_state="Misc"
-		layer=999
-	//	alpha=0
+
+			winshow(usr, "Race_Screen", 1)
+			usr.client.screen -= src
+			spawn()
+				usr.UpdateRaceScreen()
+
+	Newz
+		icon = 'ArtificalObj.dmi'
+		icon_state = "Misc"
+		layer = 999
+		alpha = 255
+
 		Click()
-			if(WorldLoading)
-				usr<<"Please wait until the world is done loading..."
+			if(!usr)
 				return
-			if(usr.race)return
+			winshow(usr, "Race_Screen", 1)
+			spawn()
+				usr.UpdateRaceScreen()
+
+	Loadz
+		icon = 'ArtificalObj.dmi'
+		icon_state = "Misc"
+		layer = 999
+		alpha = 255
+
+		Click()
+			if(!usr)
+				return
+
+			if(WorldLoading)
+				usr << "Please wait until the world is done loading..."
+				return
+
+			if(usr.race)
+				return
+
 			if(fexists("Saves/Players/[usr.ckey]"))
 				usr.client.LoadChar()
 			else
-				usr<<"<font color=yellow><b>Attention:</b>Savefile for [usr.key] not found!"
+				usr << "<font color=yellow><b>Attention:</b> Savefile for [usr.key] not found!"
+		Click()
+			if(!usr) return
 
+			if(WorldLoading)
+				usr << "Please wait until the world is done loading..."
+				return
 
+			if(usr.race)
+				return
+
+			if(fexists("Saves/Players/[usr.ckey]"))
+				usr.client.LoadChar()
+			else
+				usr << "<font color=yellow><b>Attention:</b> Savefile for [usr.key] not found!"
 
 
 mob/var
