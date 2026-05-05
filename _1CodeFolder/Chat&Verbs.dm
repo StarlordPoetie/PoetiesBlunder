@@ -1074,7 +1074,7 @@ mob/Players/verb
 		if(src.icon_state=="Train")
 			src.icon_state=""
 			// Check for Cursed Energy Reversed Technique
-			if(src.CheckSlotless("Cursed Energy"))
+			if(src.hasSecret("Cursed Energy"))
 				src.activateReversedCursedTechnique()
 			if(!src.PoseEnhancement)
 				if(!src.CheckSlotless("Half Moon Form")&&!src.CheckSlotless("Full Moon Form"))

@@ -20,14 +20,22 @@
 				return
 			d = new()
 			d.range = 20
-			d.useShroud = FALSE
 			var/domainName = input(p, "Name your Domain Expansion.", "Cursed Energy - Domain Name") as text|null
 			if(!domainName || !length(domainName))
 				domainName = "Unnamed Domain"
-			var/icon/customTile = input(p, "Upload a custom Domain floor tile icon? (Optional)", "Cursed Energy - Domain Tile", null) as icon|null
+			var/icon/customTile = input(p, "Upload the custom floor icon for the Domain (32x32 .dmi, single state).", "Domain Expansion - Turf Icon") as icon|null
 			d.demonName = copytext("[domainName]", 1, 65)
-			d.customTurfIcon = customTile ? customTile : 'WhiteTurfShift.dmi'
-			d.customRoofIcon = null
+			if(!customTile)
+				p << "Cancelled. No custom turf icon provided."
+				return
+			var/shroudChoice = input(p, "Should the Domain use a shroud overlay on top of the floor? (Selecting No leaves only the custom floor.)", "Domain Expansion - Shroud") in list("Yes","No")
+			var/useShroud = (shroudChoice == "Yes")
+			var/icon/customRoofIcon = null
+			if(useShroud)
+				customRoofIcon = input(p, "Upload the custom shroud icon for the Domain (32x32 .dmi, single state). Cancel to fall back to the default Roofs.dmi shroud.", "Domain Expansion - Shroud Icon") as icon|null
+			d.customTurfIcon = customTile
+			d.customRoofIcon = customRoofIcon
+			d.useShroud = useShroud
 			d.ActiveMessage = "says: Domain Expansion.. [d.demonName]!"
 			d.OffMessage = "conceals the domain of [d.demonName]..."
 			p.AddSkill(d)
@@ -50,17 +58,44 @@
 				return
 			if(p.cursedEnergySpecialization)
 				return
-			var/list/options = list("Reinforcement", "Technique")
+			var/list/options = list("Cursed Energy Reinforcement", "Cursed Energy Enrichment", "Cursed Energy Enhancement")
 			var/choice = input(p, "Choose your Cursed Energy specialization.", "Cursed Energy - Specialization") in options
 			if(!choice)
-				choice = "Reinforcement"
+				choice = "Cursed Energy Reinforcement"
 			p.cursedEnergySpecialization = choice
-			if(choice == "Reinforcement")
-				p.passive_handler.Set("CursedReinforcement", 1)
-				p << "You focus on amplifying your body through Cursed Energy reinforcement."
-			else
-				p.passive_handler.Set("CursedTechniqueAffinity", 1)
-				p << "You focus on refined control for Cursed Technique output."
+			switch(choice)
+				if("Cursed Energy Reinforcement")
+					p.passive_handler.Set("Cursed Energy Reinforcement", 1)
+					p.passive_handler.Set("UnarmedDamage", 3)
+					p.passive_handler.Set("CriticalDamage", 2)
+					p.passive_handler.Set("CriticalChance", 2)
+					p.passive_handler.Set("CriticalBlock", 2)
+					p.passive_handler.Set("PureReduction", 2)
+					p.passive_handler.Set("Flow", 4)
+					p.passive_handler.Set("Adrenaline", 3)
+					p.passive_handler.Set("Fury", 2)
+					p << "You focus on Cursed Energy Reinforcement, hardening body and impact."
+				if("Cursed Energy Enrichment")
+					p.passive_handler.Set("Cursed Energy Enrichment", 1)
+					p.passive_handler.Set("Adrenaline", 3)
+					p.passive_handler.Set("MeleeResist", 2)
+					p.passive_handler.Set("ManaSteal", 20)
+					p.passive_handler.Set("ManaGeneration", 3)
+					p.passive_handler.Set("PowerfulCasting", 2)
+					p.passive_handler.Set("StalwartCasting", 2)
+					p.passive_handler.Set("FluidForm", 3)
+					p.passive_handler.Set("Fury", 2)
+					p << "You focus on Cursed Energy Enrichment, improving flow and technique conversion."
+				if("Cursed Energy Enhancement")
+					p.passive_handler.Set("Cursed Energy Enhancement", 1)
+					p.passive_handler.Set("Fury", 2)
+					p.passive_handler.Set("Parry", 2)
+					p.passive_handler.Set("Reversal", 2)
+					p.passive_handler.Set("Instinct", 4)
+					p.passive_handler.Set("SwordDamage", 2)
+					p.passive_handler.Set("Adrenaline", 3)
+					p.passive_handler.Set("SwordAscension", 1)
+					p << "You focus on Cursed Energy Enhancement, sharpening weapon flow and reactions."
 		proc/applySecret(mob/p)
 			switch(currentTier)
 				if(1)
@@ -213,31 +248,33 @@ mob
 			var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
 			if(!ce)
 				return
-
-			var/healPercent = 0.065
-
+			
+			// Reversed Curse Technique: heal % of missing health, scales by tier (8% -> 14%)
+			var/healPercent = 0
 			switch(ce.currentTier)
-				if(1)
-					healPercent = 0.065
-				if(2)
-					healPercent = 0.08
-				if(3)
-					healPercent = 0.095
-				if(4)
-					healPercent = 0.11
-				if(5)
-					healPercent = 0.125
-
-			var/currentHealth = vars["Health"]
-			var/maximumHealth = vars["MaxHealth"]
-
-			if(!maximumHealth)
-				maximumHealth = currentHealth
-
-			var/healAmount = round(maximumHealth * healPercent)
-			var/healedAmount = min(maximumHealth - currentHealth, healAmount)
-
-			if(healedAmount > 0)
-				vars["Health"] = currentHealth + healedAmount
-
-			world << "[src] utilizes Reverse Cursed Technique to heal their body."
+				if(1) healPercent = 0.08
+				if(2) healPercent = 0.095
+				if(3) healPercent = 0.11
+				if(4) healPercent = 0.125
+				if(5) healPercent = 0.14
+				else healPercent = 0.08
+			
+			var/missingHealth = max(0, maxHealth - Health)
+			var/healAmount = round(missingHealth * healPercent)
+			Health += healAmount
+			if(Health > maxHealth)
+				Health = maxHealth
+			
+			// Instantly recover injury and undo maims / mortal wounds
+			if(TotalInjury > 0)
+				HealWounds(TotalInjury, 1)
+			Maimed = 0
+			HealthCut = 0
+			for(var/obj/Effects/Buff/injury in src.buffs)
+				if(injury.type in list(
+					/obj/Effects/Buff/Injuries/SeriousInjury,
+					/obj/Effects/Buff/Injuries/Maim))
+					src.buffs -= injury
+					del(injury)
+			
+			visible_message("<span class='notice'>[src.name] utilizes Reversed Curse Technique and restores their body instantly!</span>")
