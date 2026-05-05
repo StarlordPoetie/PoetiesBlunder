@@ -19,7 +19,7 @@
 		ActiveMessage="...!"
 		OffMessage="cools down."
 		adjust(mob/p)
-			if(p.isBlackFlashFirstUse()) spawn() p.BlackFlashGlazing(src)
+			if(p.isBlackFlashFirstUse() || p.isCursedEnergyBlackFlashFirstUse()) spawn() p.BlackFlashGlazing(src)
 			else ActiveMessage = "gets in tune with their energy output, unlocking 120% of their potential!"
 
 /obj/Skills/Buffs/SlotlessBuffs
@@ -42,6 +42,7 @@
 
 /mob/proc/BlackFlashGlazing(obj/Skills/Buffs/bfSkill)
 	setBlackFlashFirstUse();
+	setCursedEnergyBlackFlashFirstUse();
 	JJKNarrate("It is not a technique you'd be able to see commonly. Not in these parts.");
 	sleep(30)
 	JJKNarrate("Most would simply use their energy to empower their whole body all at once- But this tends to cause a lag of sort, between your body and your energy.");
@@ -70,7 +71,7 @@
 		if(bf) return bf.BlackFlashFirstTimeUse;
 	setBlackFlashFirstUse()
 		var/SecretInformation/BlackFlash/bf = getBlackFlashSecret();
-		bf.BlackFlashFirstTimeUse=0;
+		if(bf) bf.BlackFlashFirstTimeUse=0;
 	getBlackFlashChance()
 		var/SecretInformation/BlackFlash/bf = getBlackFlashSecret();
 		var/force = bf.BlackFlashForcedChance;
