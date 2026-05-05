@@ -620,6 +620,7 @@ NEW VARIABLES
 	ActiveBuffs
 		ActiveSlot=1
 		passives = list()
+
 //THE ONE, THE ONLY!
 		Ki_Control
 			BuffName="Ki Control"
@@ -636,29 +637,32 @@ NEW VARIABLES
 			OffMessage="loosens the control on their ki..."
 			var/selectedPassive = "None"
 			var/selectedStats = list()
+
 			proc/init(mob/p)
 				if(altered) return
 				if(selectedPassive == "None")
 					p.PoweredFormSetup()
 				passives = list("[selectedPassive]" = 1, "KiControl" = 1, "EnergyLeak" = 1)
-				vars["[selectedStats[1]]Mult"] = 1.15
-				vars["[selectedStats[2]]Mult"] = 1.1
-				vars["[selectedStats[3]]Mult"] = 1.05
-				Trigger(var/mob/User, Override=0)
-					init(User)
-					if(User && User.hasSecret("Cursed Energy"))
-						AuraLock = 1
-						ManaGlow = "#ffffeb"
-						ManaGlowSize = 1.5
-					..()
+				if(selectedStats && length(selectedStats) >= 3)
+					vars["[selectedStats[1]]Mult"] = 1.15
+					vars["[selectedStats[2]]Mult"] = 1.1
+					vars["[selectedStats[3]]Mult"] = 1.05
 
-
+			Trigger(var/mob/User, Override=0)
+				src.init(User)
+				if(User && User.hasSecret("Cursed Energy"))
+					AuraLock = 1
+					ManaGlow = "#ffffeb"
+					ManaGlowSize = 1.5
+				..()
 
 			verb/Customize_Powered_State()
 				set category="Utility"
 				var/list/Options=list("Cancel", "Overlay", "Top Overlay", "Aura", "Hair", "Text")
 				Options.Add("Base")
+
 				var/Option=input("What aspect do you wish to customize?", "Ki Control Customize") in Options
+
 				if(Option=="Cancel")
 					return
 				else
@@ -667,25 +671,29 @@ NEW VARIABLES
 							src.IconLock=input(usr, "What icon do you want to display when activating Ki Control?", "Ki Control") as icon|null
 							src.LockX=input(usr, "X offset?", "Ki Control") as num|null
 							src.LockY=input(usr, "Y offset?", "Ki Control") as num|null
+
 							var/Under=alert(usr, "Should this icon be displayed under the base rather than as an overlay?", "Ki Control", "No", "Yes")
 							if(Under=="Yes")
 								src.IconUnder=1
 							else
 								src.IconUnder=0
+
 							var/Layer=alert(usr, "Should this icon force a relayer to appear under Top Overlays?", "Ki Control", "Yes", "No")
 							if(Layer=="Yes")
 								src.IconRelayer=1
 							else
-								src.IconRelayer=0
 						if("Top Overlay")
-							src.TopOverlayLock=input(usr, "What Top Overlay do you want to display when using Ki Control?", "Ki Control") as icon|null
-							src.TopOverlayX=input(usr, "X offset?", "Ki Control") as num|null
-							src.TopOverlayY=input(usr, "Y offset?", "Ki Control") as num|null
+							src.TopOverlayLock = input(usr, "What Top Overlay do you want to display when using Ki Control?", "Ki Control") as icon|null
+							src.TopOverlayX = input(usr, "X offset?", "Ki Control") as num|null
+							src.TopOverlayY = input(usr, "Y offset?", "Ki Control") as num|null
+
 						if("Aura")
-							var/Lock=alert(usr, "Should the aura displayed be your standard one?", "Ki Control", "No", "Yes")
-							if(Lock=="Yes")
-								src.AuraLock=1
+							var/AuraChoice = alert(usr, "Should the aura displayed be your standard one?", "Ki Control", "No", "Yes")
+							if(AuraChoice == "Yes")
+								src.AuraLock = 0
 							else
+								src.AuraLock = 1
+								src.IconLock = input(usr, "Select your custom aura icon.", "Ki Control") as icon|null
 								src.AuraLock=input(usr, "What aura should be forced to display when using Ki Control?", "Ki Control") as icon|null
 								src.AuraX=input(usr, "X offset?", "Ki Control") as num|null
 								src.AuraY=input(usr, "Y offset?", "Ki Control") as num|null
@@ -9227,14 +9235,16 @@ NEW VARIABLES
 						src.Cooldown = 200
 			Domain_Lock
 				Slotless = 1
-			BuffName = "Domain Lock"
-			TimerLimit = 300
-			ActiveMessage = "is sealed from manifesting domains and duels!"
-			OffMessage = "is no longer domain locked."
-			IconLock = 'BLANK.dmi'
+				BuffName = "Domain Lock"
+				TimerLimit = 300
+				ActiveMessage = "is sealed from manifesting domains and duels!"
+				OffMessage = "is no longer domain locked."
+				IconLock = 'BLANK.dmi'
 				LockX = -32
 				LockY = -32
+				
 			Hollow_Wicker_Basket_Aegis
+				Slotless = 1
 				TimerLimit = 10
 				IconLock = 'HolyDome_Wicker_Shimmer.dmi'
 				LockX = -158
@@ -9243,6 +9253,7 @@ NEW VARIABLES
 				passives = list("PureReduction" = 9999)
 				ActiveMessage = "is safeguarded by a woven anti-domain aegis!"
 				OffMessage = "is no longer covered by the wicker aegis."
+
 			Hollow_Wicker_Basket
 				Slotless = 1
 				TimerLimit = 7
@@ -9251,52 +9262,36 @@ NEW VARIABLES
 				IconLock = 'HolyDome_Wicker_Shimmer.dmi'
 				LockX = -158
 				LockY = -96
-				ActiveMessage = "forms a Hollow Wicker Basket, nullifying all incoming damage nearby!"
+				ActiveMessage = "forms a Hollow Wicker Basket."
 				OffMessage = "disperses their Hollow Wicker Basket."
+
 				verb/Hollow_Wicker_Basket()
 					set category = "Skills"
 					set name = "Hollow Wicker Basket"
 					src.Trigger(usr)
-					if(usr.BuffOn(src))
-						usr.Frozen = 2
-						for(var/mob/m in view(2, usr))
-							var/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket_Aegis/a = locate(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket_Aegis) in m
-							if(!a)
-								a = m.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket_Aegis)
-							if(a)
-								a.TimerLimit = 10
-								a.Trigger(m)
-					else
-						usr.Frozen = 0
+
 			Simple_Domain
 				Slotless = 1
 				TimerLimit = 7
 				Cooldown = 45
 				BuffName = "Simple Domain"
-				IconLock='Bubbly_Cursed_Energy_Aura.dmi'
+				IconLock = 'Bubbly_Cursed_Energy_Aura.dmi'
 				LockX = -16
 				LockY = -9
-				IconLockBlend=1
-				IconUnder=1
-				OverlaySize=1.2
-				TopOverlayLock='DarknessGlow.dmi'
-				TopOverlayX=-32
-				TopOverlayY=-32
+				IconLockBlend = 1
+				IconUnder = 1
+				OverlaySize = 1.2
+				TopOverlayLock = 'DarknessGlow.dmi'
+				TopOverlayX = -32
+				TopOverlayY = -32
 				passives = list("Siphon" = 5, "FluidForm" = 1, "PureReduction" = 1.5, "SpaceWalk" = 1, "StaticWalk" = 1, "Void" = 1)
 				ActiveMessage = "expands a Simple Domain around themselves."
 				OffMessage = "lets their Simple Domain collapse."
+
 				verb/Simple_Domain()
 					set category = "Skills"
 					set name = "Simple Domain"
 					src.Trigger(usr)
-					if(usr.BuffOn(src))
-						spawn while(usr && usr.BuffOn(src))
-							var/drain = max(1, usr.ManaMax * 0.02)
-							usr.LoseMana(drain, 1)
-							if(usr.ManaAmount <= 0)
-								src.Trigger(usr)
-								break
-							sleep(10)
 			Dividing_Driver
 			WarpZone=1
 			Duel=1

@@ -1,0 +1,1899 @@
+loading DragonballRebirth.dme
+loading _Reworks/libs/anymacro.dms
+loading skintest.dmf
+Effects\_Effects.dm:583:error: 'KenShockwave.dmi': cannot find file
+Effects\Effects_Specific\AnimatedEffects.dm:512:error: 'StarPixel.dmi': cannot find file
+Effects\Effects_Specific\AnimatedEffects.dm:516:error: 'Mandala.dmi': cannot find file
+Effects\Effects_Specific\AnimatedEffects.dm:523:error: 'amaterasu.dmi': cannot find file
+Effects\Effects_Specific\Zanzoken.dm:39:error: 'Dodge.dmi': cannot find file
+Effects\Effects_Specific\Zanzoken.dm:381:error: 'KenShockwave.dmi': cannot find file
+Feva\StunMechanics.dm:51:error: 'IceCoffin.dmi': cannot find file
+Races\eldritch\Lunacy.dm:22:error: 'KenShockwaveBloodlust.dmi': cannot find file
+Races\eldritch\Lunacy.dm:25:error: 'KenShockwavePurple.dmi': cannot find file
+Sagas\DevilSummoner\_DemonSkills.dm:171:error: 'BLANK.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:438:error: return'KingdomKey.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:440:error: return'KingdomKeyD.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:442:error: return'Flame Liberator.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:444:error: return'WaywardWind.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:446:error: return'Rainfell.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:448:error: return'Oathkeeper.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:450:error: return'WayToTheDawn.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:452:error: return'Bond of Flame.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:454:error: return'Sweetstack.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:456:error: return'Two Become One.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:459:error: return'Oblivion.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:461:error: return'Fenrir.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:463:error: return'NoName.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:465:error: return'Lionheart.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:467:error: return'Spellbinder.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:469:error: return'Star Seeker.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:471:error: return'Lost Memory.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:473:error: return'Ultima Keyblade.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:476:error: return'Earthshaker.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:478:error: return'ChaosRipper.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:480:error: return'One Winged Angel.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:482:error: return'Moogle O Glory.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:484:error: return'X-Blade NEOBIG.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:486:error: return'Fusion Keyblade - Dark.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:488:error: return'Fusion Keyblade - Light.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:493:error: return'KingdomKeySync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:495:error: return'KingdomKeyDSync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:497:error: return'Flame Liberator - Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:499:error: return'WaywardWindSync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:501:error: return'RainfellSync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:503:error: return'OathkeeperSync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:505:error: return'WayToTheDawnSync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:507:error: return'Bond of Flame - Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:509:error: return'Sweetstack - Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:511:error: return'Two Become One - Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:514:error: return'OblivionSync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:516:error: return'FenrirSync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:518:error: return'NoNameSync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:520:error: return'Lionheart - Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:522:error: return'Spellbinder - Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:524:error: return'Starseeker - Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:526:error: return'Lost Memory - Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:531:error: return'EarthshakerSync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:533:error: return'ChaosRipperSync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:535:error: return'One Winged Angel - Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:537:error: return'Moogle O Glory - Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:541:error: return'Fusion Keyblade - Dark Sync.dmi': cannot find file
+Sagas\NewKeyblades\Keyblades.dm:543:error: return'Fusion Keyblade - Light Sync.dmi': cannot find file
+OldMapTilesBecauseIAmGayAndDesperate.dm:222:error: 'ArtificalObj.dmi': cannot find file
+OldMapTilesBecauseIAmGayAndDesperate.dm:230:error: 'Lab.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:168:error: 'Soap.png': cannot find file
+_1CodeFolder\ItemsTech.dm:198:error: 'Tech.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:219:error: 'Doors.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:250:error: 'Lazerdoor.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:257:error: 'LazerdoorLeft.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:263:error: 'LazerdoorRight.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:269:error: 'LazerdoorMiddle.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:355:error: 'Lockpick.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:668:error: 'Armor-Modern.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:824:error: 'Lab.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:1089:error: 'Steroid.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:1155:error: 'Anesthetics.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:1515:error: 'Communicator.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:1599:error: 'Beacon.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:1621:error: 'device.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:1726:error: 'HDevice.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:1779:error: 'security.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:1977:error: 'Binoculars.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2088:error: 'GreenScouter.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2284:error: 'Projector.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2318:error: 'GreenDay.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2338:error: 'BrightDay.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2355:error: 'PProjector.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2467:error: 'Vaultdoor.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2659:error: 'Charger.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2847:error: 'powerpack.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:4079:error: 'Drill 3.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:4137:error: 'BreathingPiece.dmi': cannot find file
+OldMapTilesBecauseIAmGayAndDesperate.dm:320:error: 'shipalarm.dmi': cannot find file
+OldMapTilesBecauseIAmGayAndDesperate.dm:327:error: 'Tech.dmi': cannot find file
+_1CodeFolder\Items.dm:368:error: 'GreenScouter.dmi': cannot find file
+_1CodeFolder\Items.dm:370:error: 'BlueScouter.dmi': cannot find file
+_1CodeFolder\Items.dm:372:error: 'RedScouter.dmi': cannot find file
+_1CodeFolder\Items.dm:374:error: 'PurpleScouter.dmi': cannot find file
+_1CodeFolder\Items.dm:426:error: 'MageStaff.dmi': cannot find file
+_1CodeFolder\Items.dm:429:error: 'MageStaff2.dmi': cannot find file
+_1CodeFolder\Items.dm:432:error: 'MageStaff3.dmi': cannot find file
+_1CodeFolder\Items.dm:435:error: 'MageStaff4.dmi': cannot find file
+_1CodeFolder\Items.dm:438:error: 'MageStaff5.dmi': cannot find file
+_1CodeFolder\Items.dm:441:error: 'MageStaff6.dmi': cannot find file
+_1CodeFolder\Items.dm:444:error: 'MageStaff8.dmi': cannot find file
+_1CodeFolder\Items.dm:474:error: 'Foods.dmi': cannot find file
+_1CodeFolder\Items.dm:482:error: 'Senzu.dmi': cannot find file
+_1CodeFolder\Items.dm:585:error: 'Eyes.dmi': cannot find file
+_1CodeFolder\Items.dm:586:error: 'buttonup-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:587:error: 'buttonup-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:588:error: 'buttonup-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:589:error: 'hoodie-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:590:error: 'hoodie-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:591:error: 'hoodie-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:592:error: 'jacketsuit-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:593:error: 'jacketsuit-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:594:error: 'jacketsuit-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:595:error: 'jackettrench-female-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:596:error: 'jackettrench-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:597:error: 'jackettrench-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:598:error: 'longsleeve-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:599:error: 'longsleeve-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:600:error: 'longsleeve-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:601:error: 'longsleevevneck-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:602:error: 'longsleevevneck-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:603:error: 'longsleevevneck-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:604:error: 'sweater-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:605:error: 'sweater-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:606:error: 'sweater-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:607:error: 'tanktop-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:608:error: 'tanktop-male-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:609:error: 'tanktop-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:610:error: 'tshirt-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:611:error: 'tshirt-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:612:error: 'tshirt-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:613:error: 'tuniclongsleeve-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:614:error: 'tuniclongsleeve-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:615:error: 'tuniclongsleeve-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:616:error: 'tunicmidsleeve-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:617:error: 'tunicmidsleeve-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:618:error: 'tunicmidsleeve-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:619:error: 'tunictank-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:620:error: 'tunictank-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:621:error: 'tunictank-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:622:error: 'turtleneck-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:623:error: 'turtleneck-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:624:error: 'turtleneck-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:625:error: 'vestclosed-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:626:error: 'vestclosed-male-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:627:error: 'vestclosed-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:628:error: 'vestopen-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:629:error: 'vestopen-male-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:630:error: 'vestopen-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:631:error: 'baggypants-female-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:632:error: 'baggypants-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:633:error: 'bballshorts-female-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:634:error: 'bballshorts-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:635:error: 'bballshorts-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:636:error: 'pants-female-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:637:error: 'pants-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:638:error: 'pants-male_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:639:error: 'shortshorts-female-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:640:error: 'shortshorts-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:641:error: 'skirtlong-female-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:642:error: 'skirtlong-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:643:error: 'skirtshort-female-femmale_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:644:error: 'skirtshort-female_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:645:error: 'shoes_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:646:error: 'glasses_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:647:error: 'headband-long_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:648:error: 'headband_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:649:error: 'sunglasses_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:650:error: 'cape_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:651:error: 'cape_under_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:652:error: 'scarf_mono.dmi': cannot find file
+_1CodeFolder\Items.dm:653:error: 'Gaja Neck Mantle.dmi': cannot find file
+_1CodeFolder\Items.dm:654:error: 'Gaja Cloak.dmi': cannot find file
+_1CodeFolder\Items.dm:655:error: 'Gaja Furs.dmi': cannot find file
+_1CodeFolder\Items.dm:656:error: 'Gaja Mask.dmi': cannot find file
+Races\Angels\AngelRacials.dm:93:error: 'MachoBrace.dmi': cannot find file
+Races\Angels\AngelRacials.dm:118:error: 'shoes_mono.dmi': cannot find file
+Races\Angels\AngelRacials.dm:127:error: 'goldsaintlibra_helmet.dmi': cannot find file
+Races\Angels\AngelRacials.dm:136:error: 'Shield of Faith.dmi': cannot find file
+_1CodeFolder\Items.dm:671:error: 'Eyes.dmi': invalid expression
+_1CodeFolder\Items.dm:715:error: 'MachoBrace.dmi': cannot find file
+_1CodeFolder\Items.dm:776:error: 'Blast_Shield.dmi': cannot find file
+_1CodeFolder\Items.dm:804:error: 'ArmorLight-White.dmi': cannot find file
+_1CodeFolder\Items.dm:815:error: 'ArmorBalanced-White.dmi': cannot find file
+_1CodeFolder\Items.dm:826:error: 'ArmorBulky-Black.dmi': cannot find file
+_1CodeFolder\Items.dm:833:error: 'ArmorLight-Black.dmi': cannot find file
+_1CodeFolder\Items.dm:835:error: 'ArmorBalanced-Black.dmi': cannot find file
+_1CodeFolder\Items.dm:837:error: 'ArmorBulky-White.dmi': cannot find file
+Races\Angels\AngelRacials.dm:110:error: 'ArmorLight-White.dmi': cannot find file
+_1CodeFolder\Items.dm:896:error: 'Bokken.dmi': cannot find file
+_1CodeFolder\Items.dm:902:error: 'Hit Effect.dmi': cannot find file
+Sagas\Weapon Soul\Ruyi Jingu Bang\Ruyi_Jingu_Bang.dm:3:error: 'WukongSheathe-32-32.dmi': cannot find file
+Sagas\Weapon Soul\Ruyi Jingu Bang\Ruyi_Jingu_Bang.dm:4:error: 'WukongStaff-32-32.dmi': cannot find file
+_1CodeFolder\Items.dm:932:error: 'Bokken.dmi': invalid expression
+_1CodeFolder\Items.dm:935:error: 'Hit Effect.dmi': invalid expression
+_1CodeFolder\Items.dm:942:error: 'LightSword.dmi': cannot find file
+_1CodeFolder\Items.dm:956:error: 'KATANA SILVER.dmi': cannot find file
+_1CodeFolder\Items.dm:983:error: 'Yukianesa.dmi': cannot find file
+Sagas\Weapon Soul\Masamune\Masamune.dm:3:error: 'Masamune.dmi': cannot find file
+Sagas\Weapon Soul\Muramasa\Muramasa.dm:3:error: 'Muramasa.dmi': cannot find file
+Sagas\Kamui\Junketsu.dm:85:error: 'Kouryu Sword 2.dmi': cannot find file
+Secrets\Nox\Ouroboros.dm:16:error: 'ouroboros (1).dmi': cannot find file
+_1CodeFolder\Items.dm:1001:error: 'MediumSword.dmi': cannot find file
+_1CodeFolder\Items.dm:1010:error: 'Kagata.dmi': cannot find file
+_1CodeFolder\Items.dm:1021:error: 'Soul_Eater.dmi': cannot find file
+_1CodeFolder\Items.dm:1069:error: 'Better_Ea.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:3:error: 'Caledfwlch.dmi': cannot find file
+Sagas\Weapon Soul\Dainsleif\Dainsleif.dm:5:error: 'Dainsleif.dmi': cannot find file
+Sagas\Weapon Soul\Kusanagi\Kusanagi.dm:3:error: 'KusanagibutSharper.dmi': cannot find file
+Sagas\Weapon Soul\Soul Calibur\Soul_Calibur.dm:3:error: 'SoulCalibur.dmi': cannot find file
+Sagas\Finn\FinnSword.dm:2:error: 'LightSword.dmi': cannot find file
+Sagas\Kamui\Junketsu.dm:76:error: 'Gako Sword2.dmi': cannot find file
+Sagas\Kamui\Scissor_Blade.dm:7:error: 'scissorcasetilted.dmi': cannot find file
+Sagas\Kamui\Scissor_Blade.dm:8:error: 'scissorcasetilted_under.dmi': cannot find file
+Sagas\Kamui\Scissor_Blade.dm:12:error: 'Scissor_blade_decap.dmi': cannot find file
+Sagas\Kamui\Scissor_Blade.dm:21:error: 'scissor_blade.dmi': cannot find file
+Sagas\Kamui\Scissor_Blade.dm:50:error: 'scissorcase_under.dmi': cannot find file
+Sagas\Kamui\Scissor_Blade.dm:51:error: 'scissorcase.dmi': cannot find file
+_1CodeFolder\Items.dm:1108:error: 'Sheath Taco In Sword.dmi': cannot find file
+_1CodeFolder\Items.dm:1118:error: 'Taco Blade.dmi': cannot find file
+_1CodeFolder\Items.dm:1121:error: 'Sheath Taco Empty.dmi': cannot find file
+_1CodeFolder\Items.dm:1133:error: 'Ookami.dmi': cannot find file
+_1CodeFolder\Items.dm:1157:error: 'GreenDragonCrescentBlade_NoTrain.dmi': cannot find file
+Sagas\Weapon Soul\Guan Yu\Guan_Yu.dm:5:error: 'GreenDragonCrescentBlade_NoTrain.dmi': cannot find file
+_1CodeFolder\Items.dm:1166:error: 'MLGS.dmi': cannot find file
+Sagas\Weapon Soul\Durendal\Durendal.dm:3:error: 'Durendal.dmi': cannot find file
+Sagas\Weapon Soul\Soul Edge\Soul_Edge.dm:3:error: 'SoulEdge.dmi': cannot find file
+Sagas\Kamui\Junketsu.dm:56:error: 'cybox_sword.dmi': cannot find file
+_1CodeFolder\Items.dm:1221:error: 'HeavySword.dmi': cannot find file
+Races\Angels\AngelRacials.dm:84:error: 'Samurai_sword_3.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:152:error: 'Lol_Sword_reg.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:166:error: 'Lol_Sword_Red.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:181:error: 'willKnifev2.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:200:error: 'Bone-Ish_Blade.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:215:error: 'Aestus_Estus.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:229:error: 'Fanta-sword.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:248:error: 'MONADO.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:262:error: 'Vile Hammer Vortigern.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:276:error: 'Ragnarok Blade Forme.dmi': cannot find file
+_1CodeFolder\Items.dm:1233:error: 'Potara Earrings - Right.dmi': cannot find file
+_1CodeFolder\Items.dm:1236:error: 'Potara Earrings - Left.dmi': cannot find file
+_1CodeFolder\Items.dm:1247:error: 'Pandora_Box.dmi': cannot find file
+_1CodeFolder\Items.dm:1262:error: 'Pandora_Box.dmi': invalid expression
+_1CodeFolder\Items.dm:1274:error: 'Golden_Pandora_Box.dmi': cannot find file
+_1CodeFolder\Items.dm:1295:error: 'Golden_Pandora_Box.dmi': invalid expression
+_1CodeFolder\Items.dm:1303:error: 'senketsu.dmi': cannot find file
+_1CodeFolder\Items.dm:1309:error: 'junketsu.dmi': cannot find file
+_1CodeFolder\Items.dm:1315:error: 'shinrakoketsu.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2982:error: 'AAD.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2991:error: 'HazmatSuit.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:2999:error: 'SealedSuit.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3007:error: 'TacticalShield.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3016:error: 'TacticalShield.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:3025:error: 'JetBoots.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3034:error: 'JetPack.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3044:error: 'Blaster.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3054:error: 'AssaultRifle.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3063:error: 'Minigun.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3069:error: 'Minigun.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:3080:error: 'HomingMissile.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3107:error: 'ProgressiveHilt.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3143:error: 'JetGear.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3152:error: 'JetGear.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:3309:error: 'Ironman.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3521:error: 'IronmanBurly.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3627:error: 'IronmanBlitz.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3733:error: 'ImpactGloves.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3742:error: 'PowerFist.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3750:error: 'PileBunker.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3767:error: 'PowerClaw.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3776:error: 'PowerClaw.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:3786:error: 'AutomailArmLeft.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:71:error: 'AzureArm.dmi': cannot find file
+_1CodeFolder\ItemsTech.dm:3958:error: 'Gundam.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:60:error: 'CrimsonOrb.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:67:error: 'Demon_Blood_Talismans.dmi': cannot find file
+_Reworks\Tech\LightsaberItems.dm:8:error: 'ProgressiveHilt.dmi': cannot find file
+_Reworks\Tech\LightsaberItems.dm:62:error: 'ProgressiveHiltDouble.dmi': cannot find file
+_Reworks\Tech\LightsaberItems.dm:77:error: 'GLightsaberHilt.dmi': cannot find file
+_Reworks\Tech\LightsaberItems.dm:92:error: 'CrossguardHilt.dmi': cannot find file
+_Reworks\Tech\LightsaberItems.dm:107:error: 'SProgressiveHilt.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:166:error: 'Lab.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:192:error: 'enchantmenticons.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:518:error: 'Magic Potion.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:676:error: 'TarotDeck.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:939:error: 'TarotDeckS.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:1139:error: 'BlankMask.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:1214:error: 'Skateboard.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:1252:error: 'Tome.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:1920:error: 'TeleportNexus.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:1983:error: 'TeleportAmulet.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2019:error: 'Caja.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2152:error: 'CrystalOfRecall.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2225:error: 'CrystalOfDuplicity.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2286:error: 'ReCrystal.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2331:error: 'ElixerOfLongevity.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2352:error: 'Phylactery.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2376:error: 'ElixerOfReincarnation.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2410:error: 'TimeDisplacer.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2475:error: 'BlackHole.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2606:error: 'MageStaff.dmi': cannot find file
+_1CodeFolder\ItemsWizardry.dm:2653:error: 'Bolverk.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:327:error: 'Slaughter Demon LH.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:341:error: 'Playful Cloud.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:356:error: 'Straw Doll - Hammer.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:376:error: 'Gae Bolg.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:391:error: 'Gungir Type.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:405:error: 'Murakumogiri .dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:424:error: 'Spirit Sword.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:439:error: 'MHLS.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:452:error: 'Yoru.dmi': cannot find file
+_Reworks\Tech\magic\scrolls.dm:8:error: 'Scroll.dmi': cannot find file
+_Reworks\Tech\magic\tomeRework.dm:49:error: 'Tome.dmi': cannot find file
+_Reworks\ai\minerals.dm:5:error: 'Crystal_Fragments.dmi': cannot find file
+_Reworks\Unsorted\Summoning\contracts.dm:41:error: 'SummoningContract.dmi': cannot find file
+OldMapTilesBecauseIAmGayAndDesperate.dm:313:error: 'Special.dmi': cannot find file
+OldMapTilesBecauseIAmGayAndDesperate.dm:331:error: 'Doors.dmi': cannot find file
+Effects\_Effects.dm:14:error: 'Effects.dmi': cannot find file
+Effects\_Effects.dm:29:error: 'Portal.dmi': cannot find file
+Effects\_Effects.dm:145:error: 'BlackHole.dmi': cannot find file
+Effects\_Effects.dm:183:error: 'enchantmenticons.dmi': cannot find file
+Effects\_Effects.dm:196:error: 'Tech.dmi': cannot find file
+Effects\_Effects.dm:203:error: 'Special.dmi': cannot find file
+Effects\_Effects.dm:215:error: 'Dust.dmi': cannot find file
+Effects\_Effects.dm:513:error: 'dust.dmi': cannot find file
+Effects\_Effects.dm:290:error: 'Stun.dmi': cannot find file
+Effects\_Effects.dm:292:error: 'RPMode.dmi': cannot find file
+Effects\_Effects.dm:294:error: 'Lightning2.dmi': cannot find file
+Effects\_Effects.dm:307:error: 'Lightning3.dmi': cannot find file
+Effects\_Effects.dm:320:error: 'LightningRed.dmi': cannot find file
+Effects\_Effects.dm:408:error: 'fevExplosion - Hellfire.dmi': cannot find file
+Effects\_Effects.dm:413:error: 'fevExplosion.dmi': cannot find file
+Effects\_Effects.dm:418:error: 'wordeffects.dmi': cannot find file
+Effects\_Effects.dm:424:error: 'wordeffects.dmi': invalid expression
+Effects\_Effects.dm:430:error: 'wordeffects.dmi': invalid expression
+Effects\_Effects.dm:436:error: 'wordeffects.dmi': invalid expression
+Effects\_Effects.dm:442:error: 'wordeffects.dmi': invalid expression
+Effects\_Effects.dm:448:error: 'fevExplosion - Dust.dmi': cannot find file
+Effects\_Effects.dm:453:error: 'SweepingKick.dmi': cannot find file
+Effects\_Effects.dm:459:error: 'CircleWind.dmi': cannot find file
+Effects\_Effects.dm:464:error: 'Slash.dmi': cannot find file
+Effects\_Effects.dm:470:error: 'Scuratchu.dmi': cannot find file
+Effects\_Effects.dm:476:error: 'Hit Effect.dmi': cannot find file
+Effects\_Effects.dm:489:error: 'RozanNew2.dmi': cannot find file
+Effects\_Effects.dm:493:error: 'UppercutEffect.dmi': cannot find file
+Effects\_Effects.dm:497:error: 'DarkUppercutEffect.dmi': cannot find file
+Effects\_Effects.dm:501:error: 'DropEffect.dmi': cannot find file
+Effects\_Effects.dm:505:error: 'Crater.dmi': cannot find file
+Effects\_Effects.dm:525:error: 'explosion.dmi': cannot find file
+Races\demon\Buffs.dm:58:error: 'KenShockwaveBloodlust.dmi': cannot find file
+Races\demon\Buffs.dm:172:error: 'fevExplosion - Hellfire.dmi': cannot find file
+Races\makyo\Unbreakable.dm:7:error: 'Blood Shield.dmi': cannot find file
+OldMapTilesBecauseIAmGayAndDesperate.dm:493:error: 'NewObjects.dmi': cannot find file
+_1CodeFolder\BeastTransforms.dm:22:error: 'Oozonew.dmi': cannot find file
+_1CodeFolder\BeastTransforms.dm:26:error: 'BLANK.dmi': cannot find file
+_1CodeFolder\BeastTransforms.dm:92:error: 'DTRed.dmi': cannot find file
+_1CodeFolder\BeastTransforms.dm:100:error: 'SDTBlue.dmi': cannot find file
+_1CodeFolder\BeastTransforms.dm:101:error: 'SDTRedWings.dmi': cannot find file
+_1CodeFolder\BeastTransforms.dm:113:error: 'SSJOozaru.dmi': cannot find file
+_Reworks\Combat\Skills\debuffs.dm:45:error: 'root.dmi': cannot find file
+_Reworks\Combat\Skills\debuffs.dm:59:error: 'drained.dmi': cannot find file
+_Reworks\Combat\Skills\debuffs.dm:77:error: 'marked.dmi': cannot find file
+_Reworks\Combat\Skills\debuffs.dm:101:error: 'Bleed.dmi': cannot find file
+_Reworks\Combat\Skills\debuffs.dm:166:error: 'Cornered.dmi': cannot find file
+_Reworks\Sigs\Scaling\FutureDiary\futurediary.dm:285:error: 'SweatDrop.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T1Finishers.dm:5:error: 'death_mark.dmi': cannot find file
+Skills\sorted\T5\chrono_devolution.dm:211:error: 'SweatDrop.dmi': cannot find file
+Races\Angels\Guardian Angel Buffs\Armament_Buffs.dm:9:error: 'WordOfGodSpark.dmi': cannot find file
+Races\Angels\MentorUI\SlotlessUI.dm:13:error: 'AuraMysticBig.dmi': cannot find file
+Races\Angels\MentorUI\SlotlessUI.dm:61:error: 'GentleDivine.dmi': cannot find file
+Races\beastkin\racial\nimbusrider.dm:4:error: 'Flying Nimbus.dmi': cannot find file
+Races\nobody\racials.dm:16:error: 'KenShockwavePurple.dmi': cannot find file
+Races\gajalaka\racials\crisis_buff.dm:50:error: 'Double Slaughter.dmi': cannot find file
+Races\gajalaka\racials\crisis_buff.dm:86:error: 'Skull Kid Hat.dmi': cannot find file
+Races\nobody\DesperationSkills.dm:226:error: 'SweatDrop.dmi': cannot find file
+Races\yokai\moves.dm:35:error: 'mist.dmi': cannot find file
+Skills\_BuffX.dm:10129:error: 'AuraSlowTensionBlue.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T0Finishers.dm:3:error: 'SweatDrop.dmi': cannot find file
+Skills\_BuffX.dm:10640:error: 'Slash - Ragna.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T0Finishers.dm:57:error: 'Stun.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T1Finishers.dm:23:error: 'SweatDrop.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T1Finishers.dm:88:error: 'Stun.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T1Finishers.dm:101:error: 'standard_shuriken.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T1Finishers.dm:102:error: 'Hit_Effect_KanjuriKanKan.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T1Finishers.dm:112:error: 'DarkShockD.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T1Finishers.dm:119:error: 'Ice_Aura_2.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T2Finishers.dm:58:error: 'Plasma1.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T2Finishers.dm:59:error: 'Trail - Plasma.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T2Finishers.dm:92:error: 'SweatDrop.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T2Finishers.dm:149:error: 'stake.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T2Finishers.dm:150:error: 'Hit_Effect_KanjuriKanKan.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T2Finishers.dm:178:error: 'Stun.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T2Finishers.dm:194:error: 'Bleed.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T3Finisher.dm:24:error: 'Slash - Ragna.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T3Finisher.dm:32:error: 'SweatDrop.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T3Finisher.dm:40:error: 'EyesSage.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T3Finisher.dm:60:error: 'Mist Veil.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T3Finisher.dm:72:error: 'Bleed.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T4Finishers.dm:3:error: 'SweatDrop.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\T4Finishers.dm:37:error: 'Mist Veil.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\UIHybridFinishers-queuebuff.dm:4:error: 'SweatDrop.dmi': cannot find file
+Skills\queues\finishers\FinishersWithoutStupidFuckingSpacing.dm:15:error: 'SweatDrop.dmi': cannot find file
+Sagas\UBW\ubwStyle.dm:88:error: 'SweatDrop.dmi': cannot find file
+Sagas\Weapon Soul\Dainsleif\Dainsleif.dm:108:error: 'Blood Shield.dmi': cannot find file
+Secrets\BlackFlash\skills.dm:12:error: 'WhiteTurfShift.dmi': cannot find file
+Secrets\BlackFlash\skills.dm:15:error: 'CE Divergent Fist.dmi': cannot find file
+Skills\_BuffX.dm:10784:error: 'fevExplosion - Hellfire.dmi': cannot find file
+Skills\_BuffX.dm:10802:error: 'Stun.dmi': cannot find file
+Skills\buffs\autonomous\queuebuff\UIHybridFinishers-queuebuff.dm:50:error: 'Stun.dmi': cannot find file
+Skills\_BuffX.dm:10830:error: 'SweatDrop.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenFinisher.dm:42:error: 'SweatDrop.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenSkills.dm:287:error: 'SlayerEyes.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:75:error: 'SparkleRed.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:80:error: 'senketsu_lifefiberbeserker.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:197:error: 'SweatDrop.dmi': cannot find file
+Sagas\Rinnegan\msDebuffs.dm:35:error: 'SweatDrop.dmi': cannot find file
+Sagas\Rinnegan\msDebuffs.dm:97:error: 'DarknessFlameAura.dmi': cannot find file
+Sagas\Rinnegan\msDebuffs.dm:124:error: 'LegendSparks.dmi': cannot find file
+Secrets\WitchCraft.dm:267:error: 'ExcaliTrail.dmi': cannot find file
+Secrets\WitchCraft.dm:280:error: 'Magicwish.dmi': cannot find file
+Secrets\WitchCraft.dm:299:error: 'SweatDrop.dmi': cannot find file
+Secrets\Nox\crisis.dm:4:error: 'Azure Crest.dmi': cannot find file
+Secrets\Nox\crisis.dm:14:error: 'Susanoo Blade.dmi': cannot find file
+Skills\_BuffX.dm:11130:error: 'AntiAura.dmi': cannot find file
+Skills\_BuffX.dm:11134:error: 'DarkKiai.dmi': cannot find file
+Skills\_BuffX.dm:11138:error: 'AntiEyes.dmi': cannot find file
+Skills\_BuffX.dm:11158:error: 'KenShockwaveGod.dmi': cannot find file
+Skills\_BuffX.dm:11181:error: 'CommandSparks.dmi': cannot find file
+Skills\_BuffX.dm:11189:error: 'KenShockwaveDivine.dmi': cannot find file
+Skills\_BuffX.dm:11200:error: 'KenShockwaveBloodlust.dmi': cannot find file
+Skills\_BuffX.dm:11208:error: 'BraveSparks.dmi': cannot find file
+Skills\_BuffX.dm:11351:error: 'EyesDragon.dmi': cannot find file
+Skills\_BuffX.dm:11368:error: 'RaginPart.dmi': cannot find file
+Skills\_BuffX.dm:11372:error: 'Slash - Hellfire.dmi': cannot find file
+Skills\_BuffX.dm:11462:error: 'KenShockwaveFocus.dmi': cannot find file
+Skills\_BuffX.dm:11480:error: 'KenShockwavePurple.dmi': cannot find file
+Skills\_BuffX.dm:11524:error: 'KenShockwaveLegend.dmi': cannot find file
+Skills\_BuffX.dm:11551:error: 'KenShockwaveGold.dmi': cannot find file
+Skills\_BuffX.dm:11621:error: 'SlayerEyes.dmi': cannot find file
+Skills\_BuffX.dm:11644:error: 'Hit Effect Satsui.dmi': cannot find file
+Skills\_BuffX.dm:11724:error: 'DarknessFlameAura.dmi': cannot find file
+Skills\_BuffX.dm:11754:error: 'preta.dmi': cannot find file
+Skills\_BuffX.dm:11775:error: 'Ripple Aura.dmi': cannot find file
+Skills\_BuffX.dm:11799:error: 'Vampire Transformation.dmi': cannot find file
+Skills\_BuffX.dm:11816:error: 'EyesSage.dmi': cannot find file
+_Reworks\Tech\magic\magicBuffs.dm:29:error: 'SparklePurple.dmi': cannot find file
+_Reworks\Tech\magic\magicBuffs.dm:39:error: 'KenShockwaveLegend.dmi': cannot find file
+Races\demon\Magic\Corruption\Corruption.dm:97:error: 'Caja.dmi': cannot find file
+Races\demon\Magic\Corruption\Corruption.dm:123:error: 'KenShockwaveDivine.dmi': cannot find file
+Races\demon\Magic\Corruption\Corruption.dm:124:error: 'BLANK.dmi': cannot find file
+Races\demon\Magic\Corruption\Corruption.dm:127:error: 'zekkai.dmi': cannot find file
+Races\demon\Magic\Corruption\Corruption.dm:129:error: 'Black Flash Alt.dmi': cannot find file
+Races\demon\Magic\Hellfire\Hellfire.dm:50:error: 'Flaming Rain.dmi': cannot find file
+Races\demon\Magic\Hellfire\Hellfire.dm:50:error: =: expected a constant expression
+Races\demon\Magic\Hellfire\Hellfire.dm:153:error: 'DarkShock.dmi': cannot find file
+Skills\_BuffX.dm:4966:error: 'Bubbly_Cursed_Energy_Aura.dmi': cannot find file
+Skills\_BuffX.dm:5239:error: 'Magic Time circle.dmi': cannot find file
+Skills\_BuffX.dm:5595:error: 'LancelotArmor.dmi': cannot find file
+Skills\_BuffX.dm:5736:error: 'StormArmor 2.dmi': cannot find file
+Skills\_BuffX.dm:5757:error: 'Overdrive.dmi': cannot find file
+Skills\_BuffX.dm:5782:error: 'StormArmor.dmi': cannot find file
+Skills\_BuffX.dm:5807:error: 'Android Shield.dmi': cannot find file
+Skills\_BuffX.dm:5932:error: 'Bubble Shield.dmi': cannot find file
+Skills\_BuffX.dm:5994:error: 'zekkai.dmi': cannot find file
+Skills\_BuffX.dm:6147:error: 'SparkleGreen.dmi': cannot find file
+Skills\_BuffX.dm:6212:error: 'SparkleYellow.dmi': cannot find file
+_Reworks\Magic\SpellSlots\fire\FirePassives\MagmicInfusion.dm:26:error: 'Magmic Shield.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:13:error: 'LightsaberBlueDouble.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:15:error: 'CLightsaberBlue.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:17:error: 'SLightsaberBlue.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:19:error: 'GLightsaberBlue.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:21:error: 'LightsaberBlue.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:24:error: 'LightsaberGreenDouble.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:26:error: 'CLightsaberGreen.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:28:error: 'SLightsaberGreen.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:30:error: 'GLightsaberGreen.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:32:error: 'LightsaberGreen.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:35:error: 'LightsaberPurpleDouble.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:37:error: 'CLightsaberPurple.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:39:error: 'SLightsaberPurple.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:41:error: 'GLightsaberPurple.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:43:error: 'LightsaberPurple.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:46:error: 'LightsaberRedDouble.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:48:error: 'CLightsaberRed.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:50:error: 'SLightsaberRed.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:52:error: 'GLightsaberRed.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:54:error: 'LightsaberRed.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:57:error: 'LightsaberYellowDouble.dmi': cannot find file
+_Reworks\Tech\LightsaberBuffs.dm:158:error: 'CProgressiveBlade.dmi': cannot find file
+Skills\_BuffX.dm:6283:error: 'BLANK.dmi': cannot find file
+Skills\_BuffX.dm:6284:error: 'SealedHelmet.dmi': cannot find file
+Skills\_BuffX.dm:6344:error: 'ProgressiveBlade.dmi': cannot find file
+Skills\_BuffX.dm:6360:error: 'fevExplosion.dmi': cannot find file
+Skills\_BuffX.dm:6378:error: 'Chainsaw.dmi': cannot find file
+Skills\_BuffX.dm:6457:error: 'LightsaberBlue.dmi': cannot find file
+Skills\_BuffX.dm:6470:error: 'LightsaberGreen.dmi': cannot find file
+Skills\_BuffX.dm:6472:error: 'LightsaberPurple.dmi': cannot find file
+Skills\_BuffX.dm:6474:error: 'LightsaberRed.dmi': cannot find file
+ai\arcane beasts.dm:203:error: 'SparkleBlue.dmi': cannot find file
+ai\arcane beasts.dm:322:error: 'Trance.dmi': cannot find file
+Races\beastkin\buffs.dm:46:error: 'Innovator Wings.dmi': cannot find file
+Races\beastkin\buffs.dm:47:error: 'feathers.dmi': cannot find file
+Races\beastkin\buffs.dm:48:error: 'Slash_-_Ragna.dmi': cannot find file
+Races\nobody\racials.dm:25:error: 'KATANA SILVER.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:197:error: 'SparkleYellow.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:533:error: 'SparkleIndigo.dmi': cannot find file
+Races\demon\Buffs.dm:7:error: 'GenesicR.dmi': cannot find file
+Races\demon\DevilArms.dm:9:error: 'SwordBroad.dmi': cannot find file
+Races\demon\DevilArms.dm:11:error: 'MageStaff.dmi': cannot find file
+Races\demon\DevilArms.dm:13:error: 'DevilScale.dmi': cannot find file
+Races\demon\Magic\Corruption\Corruption.dm:184:error: 'DoomAura1.dmi': cannot find file
+Races\Elf\buffs.dm:11:error: 'Ki-Blade.dmi': cannot find file
+Races\Elf\buffs.dm:16:error: 'Aether Blade Alternate.dmi': cannot find file
+Races\makyo\faeSkills.dm:63:error: 'Aether Blade.dmi': cannot find file
+Races\makyo\faeSkills.dm:70:error: 'Ripple Arms.dmi': cannot find file
+Races\makyo\faeSkills.dm:70:error: =: expected a constant expression
+Races\makyo\faeSkills.dm:106:error: 'Elf_Crown.dmi': cannot find file
+Races\makyo\Unbreakable.dm:59:error: 'KenShockwaveBloodlust.dmi': cannot find file
+Sagas\NewKeyblades\KeybladeSkills.dm:350:error: 'LancelotArmor.dmi': cannot find file
+Sagas\Rinnegan\rinneganBuff.dm:22:error: 'RinneganEyes.dmi': cannot find file
+Sagas\Weapon Soul\Ruyi Jingu Bang\MonkeySoldiers.dm:84:error: 'BLANK.dmi': cannot find file
+Sagas\Weapon Soul\Ruyi Jingu Bang\MonkeySoldiers.dm:85:error: 'UltraInstinct.dmi': cannot find file
+Sagas\Weapon Soul\Ruyi Jingu Bang\MonkeySoldiers.dm:89:error: 'UltraInstinctSpark.dmi': cannot find file
+Secrets\hats\hatsbuffs.dm:14:error: 'WitchHatBLACK.dmi': cannot find file
+Secrets\hats\hatsbuffs.dm:18:error: 'Witch Hat White.dmi': cannot find file
+Secrets\hats\hatsbuffs.dm:22:error: 'green_hat.dmi': cannot find file
+Secrets\hats\hatskills.dm:75:error: 'KenShockwaveBloodlust.dmi': cannot find file
+Secrets\hats\hatskills.dm:76:error: 'LavaTile.dmi': cannot find file
+Secrets\hats\hatskills.dm:109:error: 'SparkleFire.dmi': cannot find file
+Skills\_BuffX.dm:7109:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\_BuffX.dm:6913:error: 'DarknessGlow.dmi': cannot find file
+Skills\_BuffX.dm:6919:error: 'Azure Crest.dmi': cannot find file
+Skills\_BuffX.dm:6977:error: 'TornadoDirectedBrave.dmi': cannot find file
+Skills\_BuffX.dm:7071:error: 'Demon_Blood_Talismans Active.dmi': cannot find file
+Secrets\Nox\buffs.dm:22:error: 'Azure Crest.dmi': cannot find file
+Secrets\Spiral\SpiralWarrior.dm:30:error: 'SparkleGreen.dmi': cannot find file
+Secrets\Spiral\SpiralWarrior.dm:31:error: 'Spiral_Hitspark.dmi': cannot find file
+Secrets\Spiral\SpiralWarrior.dm:32:error: 'SpiralAura.dmi': cannot find file
+Secrets\Spiral\SpiralWarrior.dm:44:error: 'SparkleRed.dmi': cannot find file
+Secrets\Spiral\SpiralWarrior.dm:46:error: 'SpiralNemesisAura.dmi': cannot find file
+Skills\_BuffX.dm:9869:error: 'Spiral_Hitspark.dmi': cannot find file
+Skills\_BuffX.dm:9870:error: 'SpiralAura.dmi': cannot find file
+Secrets\Vampire\VampireBuffs.dm:4:error: 'SharinganEyes.dmi': cannot find file
+Skills\_BuffX.dm:4581:error: 'SSBGlow.dmi': cannot find file
+Skills\_BuffX.dm:4593:error: 'GodOrb.dmi': cannot find file
+Skills\_BuffX.dm:4865:error: 'Ki-Blade.dmi': cannot find file
+Skills\_BuffX.dm:7146:error: 'Necromorph.dmi': cannot find file
+Skills\_BuffX.dm:7189:error: 'Unbound.dmi': cannot find file
+Skills\_BuffX.dm:7216:error: 'SparkingBlastSparks.dmi': cannot find file
+Skills\_BuffX.dm:7221:error: 'SparkingBlast.dmi': cannot find file
+Skills\_BuffX.dm:7248:error: 'CroneMajinSparks.gif': cannot find file
+Skills\_BuffX.dm:7328:error: 'SwordBroad.dmi': cannot find file
+Skills\_BuffX.dm:7330:error: 'MageStaff.dmi': cannot find file
+Skills\_BuffX.dm:7332:error: 'DevilScale.dmi': cannot find file
+Skills\_BuffX.dm:7610:error: 'Elf_Crown.dmi': cannot find file
+Skills\_BuffX.dm:7663:error: 'MajinAura.dmi': cannot find file
+Skills\_BuffX.dm:7708:error: 'Aether Bow.dmi': cannot find file
+Skills\_BuffX.dm:7743:error: 'Aether Blade.dmi': cannot find file
+Skills\_BuffX.dm:7749:error: 'Aether Blade Alternate.dmi': cannot find file
+Skills\_BuffX.dm:7895:error: 'Bass.dmi': cannot find file
+Skills\_BuffX.dm:7967:error: 'Jagan Transformation.dmi': cannot find file
+Skills\_BuffX.dm:8000:error: 'DarknessFlame.dmi': cannot find file
+Skills\_BuffX.dm:8035:error: 'saintandromeda_chains.dmi': cannot find file
+Skills\_BuffX.dm:8036:error: 'Slash - Zero.dmi': cannot find file
+Skills\_BuffX.dm:8067:error: 'CrystalWall.dmi': cannot find file
+Skills\_BuffX.dm:8080:error: 'Mandala.dmi': cannot find file
+Skills\_BuffX.dm:8115:error: 'goldsaintlibra_sword_r.dmi': cannot find file
+Skills\_BuffX.dm:8146:error: 'goldsaintlibra_sword_l.dmi': cannot find file
+Skills\_BuffX.dm:8173:error: 'goldsaintlibra_trident.dmi': cannot find file
+Skills\_BuffX.dm:8266:error: 'LightningArm.dmi': cannot find file
+Skills\_BuffX.dm:8270:error: 'Slash - Zan.dmi': cannot find file
+Skills\_BuffX.dm:8285:error: 'SnowRing.dmi': cannot find file
+Skills\_BuffX.dm:8299:error: 'goldsaintsagittarius_bow.dmi': cannot find file
+Skills\_BuffX.dm:8345:error: 'Totsuka.dmi': cannot find file
+Skills\_BuffX.dm:8638:error: 'Bokken.dmi': cannot find file
+Skills\_BuffX.dm:8646:error: 'LightSword.dmi': cannot find file
+Skills\_BuffX.dm:8654:error: 'MediumSword.dmi': cannot find file
+Skills\_BuffX.dm:8662:error: 'HeavySword.dmi': cannot find file
+Skills\_BuffX.dm:8739:error: 'Gae Bolg.dmi': cannot find file
+Skills\_BuffX.dm:8849:error: 'Kanshakuya.dmi': cannot find file
+Skills\_BuffX.dm:8952:error: 'RuleBreaker.dmi': cannot find file
+Skills\_BuffX.dm:9062:error: 'RhoAias.dmi': cannot find file
+Skills\_BuffX.dm:9116:error: 'willKnifev2.dmi': cannot find file
+Skills\_BuffX.dm:9122:error: 'GaoGaoFists.dmi': cannot find file
+Skills\_BuffX.dm:9122:error: =: expected a constant expression
+Skills\_BuffX.dm:9169:error: 'wall.dmi': cannot find file
+Skills\_BuffX.dm:9190:error: 'BE.dmi': cannot find file
+Skills\_BuffX.dm:9244:error: 'HolyDome_Wicker_Shimmer.dmi': cannot find file
+Skills\_BuffX.dm:9268:error: /obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket_Aegis: undefined type path
+Skills\_BuffX.dm:9270:error: /obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket_Aegis: undefined type path
+Skills\_BuffX.dm:9314:error: 'StarPixel.dmi': cannot find file
+Skills\_BuffX.dm:9402:error: 'Susano-I.dmi': cannot find file
+Skills\_BuffX.dm:9405:error: 'Susano Itachi.dmi': cannot find file
+Skills\_BuffX.dm:9409:error: 'Susano-S.dmi': cannot find file
+Skills\_BuffX.dm:9412:error: 'Susano Sasuke.dmi': cannot find file
+Skills\_BuffX.dm:9416:error: 'Susano-M.dmi': cannot find file
+Skills\_BuffX.dm:9419:error: 'Susano Madara.dmi': cannot find file
+Skills\_BuffX.dm:9455:error: 'RinneganEyes.dmi': cannot find file
+Skills\_BuffX.dm:9699:error: 'Ripple Barrier.dmi': cannot find file
+Skills\_BuffX.dm:9721:error: 'NewMoon.dmi': cannot find file
+Skills\_BuffX.dm:9747:error: 'WolfFF.dmi': cannot find file
+Skills\_BuffX.dm:9755:error: 'HalfMoon.dmi': cannot find file
+Skills\_BuffX.dm:9793:error: 'Hit Effect Vampire.dmi': cannot find file
+Skills\_BuffX.dm:9801:error: 'FullMoon.dmi': cannot find file
+Skills\_BuffX.dm:9927:error: 'tenacles_underlay.dmi': cannot find file
+Skills\_BuffX.dm:9929:error: 'tentacles_overlay.dmi': cannot find file
+_Reworks\Sigs\Scaling\Sins\gluttony.dm:10:error: 'Black Rock Flame.dmi': cannot find file
+Races\Angels\Guardian Angel Buffs\Armament_Buffs.dm:30:error: 'AngelicGlow.dmi': cannot find file
+Races\Angels\Guardian Angel Buffs\Armament_Buffs.dm:62:error: 'CaledfwlchAura.dmi': cannot find file
+Races\Angels\Guardian Angel Buffs\Armament_Buffs.dm:81:error: 'KenShockwaveGold.dmi': cannot find file
+Sagas\Kamui\Junketsu.dm:213:error: 'SparkleBlue.dmi': cannot find file
+Sagas\Kamui\Junketsu.dm:225:error: 'junketsu_senpu.dmi': cannot find file
+Sagas\Kamui\Junketsu.dm:228:error: 'junketsu_senpu_headpiece.dmi': cannot find file
+Sagas\Kamui\Junketsu.dm:257:error: 'junketsu_senpuzenkan.dmi': cannot find file
+Sagas\Kamui\Junketsu.dm:260:error: 'junketsu_senpuzenkan_headpiece.dmi': cannot find file
+Sagas\Kamui\oldbuffs.dm:32:error: 'senketsu_kisaragi.dmi': cannot find file
+Sagas\Kamui\oldbuffs.dm:35:error: 'senketsu_kisaragi_headpiece.dmi': cannot find file
+Sagas\Kamui\oldbuffs.dm:42:error: 'junketsu_shinzui.dmi': cannot find file
+Sagas\Kamui\oldbuffs.dm:45:error: 'junketsu_shinzui_headpiece.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:154:error: 'senketsu_senjin.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:155:error: 'senketsu_senjin_headpiece.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:181:error: 'senketsu_shippu.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:184:error: 'senketsu_shippu_headpiece.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:213:error: 'senketsu_senjinshippu.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:216:error: 'senketsu_senjinshippu_headpiece.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:19:error: 'EyeFlameC.dmi': cannot find file
+Sagas\Weapon Soul\Dainsleif\Dainsleif.dm:58:error: 'EyeFlameC.dmi': cannot find file
+Sagas\Weapon Soul\Durendal\Durendal.dm:31:error: 'EyeFlameC.dmi': cannot find file
+Sagas\Weapon Soul\Guan Yu\Guan_Yu.dm:17:error: 'EyeFlameC.dmi': cannot find file
+Sagas\Weapon Soul\Kusanagi\Kusanagi.dm:47:error: 'EyeFlameC.dmi': cannot find file
+Sagas\Weapon Soul\Masamune\Masamune.dm:53:error: 'EyeFlameC.dmi': cannot find file
+Sagas\Weapon Soul\Muramasa\Muramasa.dm:16:error: 'EyeFlameC.dmi': cannot find file
+Sagas\Weapon Soul\Ruyi Jingu Bang\Ruyi_Jingu_Bang.dm:23:error: 'EyeFlameC.dmi': cannot find file
+Sagas\Weapon Soul\Soul Calibur\Soul_Calibur.dm:62:error: 'EyeFlameC.dmi': cannot find file
+Sagas\Weapon Soul\Soul Edge\Soul_Edge.dm:48:error: 'EyeFlameC.dmi': cannot find file
+Skills\_BuffX.dm:1505:error: 'KenShockwave.dmi': cannot find file
+Skills\_BuffX.dm:1570:error: 'SS2Sparks.dmi': cannot find file
+Skills\_BuffX.dm:1648:error: 'SSJ2Aura.dmi': cannot find file
+Skills\_BuffX.dm:1681:error: 'Amazing LSSj Aura.dmi': cannot find file
+Skills\_BuffX.dm:1709:error: 'Kaioken.dmi': cannot find file
+Skills\_BuffX.dm:1754:error: 'mist.dmi': cannot find file
+Skills\_BuffX.dm:1789:error: 'SSGAura.dmi': cannot find file
+Skills\_BuffX.dm:1863:error: 'SSj2SparksCoolFaster.dmi': cannot find file
+Skills\_BuffX.dm:1912:error: 'Third Eye.dmi': cannot find file
+Skills\_BuffX.dm:1954:error: 'BijuuV1.dmi': cannot find file
+Skills\_BuffX.dm:2132:error: 'Android Shield Gold.dmi': cannot find file
+Skills\_BuffX.dm:2133:error: 'AngelicGlow.dmi': cannot find file
+Skills\_BuffX.dm:2426:error: 'TranceArmor.dmi': cannot find file
+Skills\_BuffX.dm:2427:error: 'TranceHelm.dmi': cannot find file
+Skills\_BuffX.dm:2432:error: 'Trance.dmi': cannot find file
+Skills\_BuffX.dm:2505:error: 'Overlay SSJ4 Pink.dmi': cannot find file
+Skills\_BuffX.dm:2506:error: 'Tail SSJ4 Pink.dmi': cannot find file
+Skills\_BuffX.dm:2543:error: 'SparkleViolet.dmi': cannot find file
+Skills\_BuffX.dm:2588:error: 'UltraInstinct.dmi': cannot find file
+Skills\_BuffX.dm:2592:error: 'UltraInstinctSpark.dmi': cannot find file
+Skills\_BuffX.dm:2606:error: 'DA-Bellerophon.dmi': cannot find file
+Skills\_BuffX.dm:2802:error: 'EyeFlameC.dmi': cannot find file
+Skills\_BuffX.dm:2819:error: 'GentleDivine.dmi': cannot find file
+Skills\_BuffX.dm:2823:error: 'Slash - Power.dmi': cannot find file
+Skills\_BuffX.dm:2866:error: 'Slash - Black.dmi': cannot find file
+Skills\_BuffX.dm:2931:error: 'RipperMode.dmi': cannot find file
+Skills\_BuffX.dm:2967:error: 'BusoKoka.dmi': cannot find file
+Skills\_BuffX.dm:3064:error: 'goldsaintlibra_staff.dmi': cannot find file
+Skills\_BuffX.dm:3101:error: 'saintpegasus_armor.dmi': cannot find file
+Skills\_BuffX.dm:3102:error: 'saintpegasus_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3121:error: 'saintdragon_armor.dmi': cannot find file
+Skills\_BuffX.dm:3122:error: 'saintdragon_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3144:error: 'saintcygnus_armor.dmi': cannot find file
+Skills\_BuffX.dm:3145:error: 'saintcygnus_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3171:error: 'saintandromeda_armor.dmi': cannot find file
+Skills\_BuffX.dm:3172:error: 'saintandromeda_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3190:error: 'saintphoenix_armor.dmi': cannot find file
+Skills\_BuffX.dm:3191:error: 'saintphoenix_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3210:error: 'Unicorn_Cloth.dmi': cannot find file
+Skills\_BuffX.dm:3211:error: 'Unicorn_Cloth_Helmet.dmi': cannot find file
+Skills\_BuffX.dm:3240:error: 'saintpegasusv3_armor.dmi': cannot find file
+Skills\_BuffX.dm:3241:error: 'saintpegasusv3_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3261:error: 'saintdragonv3_armor.dmi': cannot find file
+Skills\_BuffX.dm:3262:error: 'saintdragonv3_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3288:error: 'saintcygnusv3_armor.dmi': cannot find file
+Skills\_BuffX.dm:3289:error: 'saintcygnusv3_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3315:error: 'saintandromedav3_armor.dmi': cannot find file
+Skills\_BuffX.dm:3316:error: 'saintandromedav3_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3341:error: 'saintphoenixv3_armor.dmi': cannot find file
+Skills\_BuffX.dm:3342:error: 'saintphoenixv3_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3361:error: 'Unicorn_ClothV3.dmi': cannot find file
+Skills\_BuffX.dm:3362:error: 'Unicorn_cloth_V2_Helmet.dmi': cannot find file
+Skills\_BuffX.dm:3419:error: 'goldsaint_cape.dmi': cannot find file
+Skills\_BuffX.dm:3440:error: 'goldsaintaries_armor.dmi': cannot find file
+Skills\_BuffX.dm:3441:error: 'goldsaintaries_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3468:error: 'goldsaintgemini_armor.dmi': cannot find file
+Skills\_BuffX.dm:3469:error: 'goldsaintgemini_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3491:error: 'goldsaintcancer_armor.dmi': cannot find file
+Skills\_BuffX.dm:3492:error: 'goldsaintcancer_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3515:error: 'goldsaintleo_armor.dmi': cannot find file
+Skills\_BuffX.dm:3516:error: 'goldsaintleo_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3536:error: 'goldsaintvirgo_armor.dmi': cannot find file
+Skills\_BuffX.dm:3537:error: 'goldsaintvirgo_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3558:error: 'goldsaintlibra_armor.dmi': cannot find file
+Skills\_BuffX.dm:3559:error: 'goldsaintlibra_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3583:error: 'goldsaintscorpio_armor.dmi': cannot find file
+Skills\_BuffX.dm:3584:error: 'goldsaintscorpio_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3606:error: 'goldsaintcapricorn_armor.dmi': cannot find file
+Skills\_BuffX.dm:3607:error: 'goldsaintcapricorn_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3630:error: 'goldsaintaquarius_armor.dmi': cannot find file
+Skills\_BuffX.dm:3631:error: 'goldsaintaquarius_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3652:error: 'goldsaintpisces_armor.dmi': cannot find file
+Skills\_BuffX.dm:3653:error: 'goldsaintpisces_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3670:error: 'goldsaintsagittarius_armor.dmi': cannot find file
+Skills\_BuffX.dm:3671:error: 'goldsaintsagittarius_helmet.dmi': cannot find file
+Skills\_BuffX.dm:3672:error: 'goldsaintsagittarius_wings.dmi': cannot find file
+Skills\_BuffX.dm:3693:error: 'Pegasus God Cloth Winged.dmi': cannot find file
+Skills\_BuffX.dm:3697:error: 'Pegasus God Cloth Headgear.dmi': cannot find file
+Skills\_BuffX.dm:3718:error: 'KingdomKey.dmi': cannot find file
+Skills\_BuffX.dm:3725:error: 'SparkleRed.dmi': cannot find file
+Skills\_BuffX.dm:3778:error: 'SparkleBlue.dmi': cannot find file
+Skills\_BuffX.dm:3878:error: 'SparkleFinal.dmi': cannot find file
+Skills\_BuffX.dm:3947:error: 'Ripple Arms.dmi': cannot find file
+Skills\_BuffX.dm:4065:error: 'SharinganEyes.dmi': cannot find file
+Races\Angels\AngelRacials.dm:170:error: 'AuraMysticBig.dmi': cannot find file
+Races\Angels\AngelRacials.dm:218:error: 'GentleDivine.dmi': cannot find file
+Skills\_NuMartialArts.dm:450:error: 'BLANK.dmi': cannot find file
+Skills\_NuMartialArts.dm:452:error: 'WingBlade.dmi': cannot find file
+Skills\_NuMartialArts.dm:505:error: 'DarknessGlow.dmi': cannot find file
+Secrets\Ultra Instinct\NonAngels.dm:12:error: 'AuraMysticBig.dmi': cannot find file
+Secrets\Ultra Instinct\NonAngels.dm:59:error: 'GentleDivine.dmi': cannot find file
+Skills\styles\hybrid\t1UIhybridstyles.dm:9:error: 'AuraMysticBig.dmi': cannot find file
+Skills\styles\hybrid\UIhybridstyles.dm:9:error: 'GentleDivine.dmi': cannot find file
+Skills\styles\mystic\t1mysticstyles.dm:12:error: 'SpriteG.dmi': cannot find file
+Skills\styles\mystic\t1mysticstyles.dm:13:error: 'Terra Might.dmi': cannot find file
+Skills\styles\mystic\t1mysticstyles.dm:37:error: 'SpriteC.dmi': cannot find file
+Skills\styles\mystic\t1mysticstyles.dm:61:error: 'SpriteY.dmi': cannot find file
+Skills\styles\mystic\t1mysticstyles.dm:85:error: 'SpriteR.dmi': cannot find file
+Sagas\Kamui\Junketsu.dm:19:error: 'junketsu_activated.dmi': cannot find file
+Sagas\Kamui\Junketsu.dm:20:error: 'junketsu_activated_headpiece.dmi': cannot find file
+Sagas\Kamui\oldbuffs.dm:11:error: 'SparkleRed.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:27:error: 'senketsu_activated.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:28:error: 'senketsu_activated_headpiece.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:51:error: 'senketsu_v2.dmi': cannot find file
+Sagas\Kamui\Senketsu.dm:52:error: 'senketsu_v2_headpiece.dmi': cannot find file
+Sagas\Kamui\Shinra_Koketsu.dm:8:error: 'SparkleRed.dmi': cannot find file
+Sagas\Kamui\Shinra_Koketsu.dm:20:error: 'shinrafinal.dmi': cannot find file
+Skills\_BuffX.dm:649:error: init: undefined proc
+Skills\_BuffX.dm:1031:error: 'FlameGlowHades.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:944:error: 'BLANK.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:1006:error: 'PlaceholderBlackScythe.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:1022:error: 'BlackShard.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:1078:error: 'KATANA SILVER.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:1158:error: 'Spookysword.dmi': cannot find file
+Skills\_BuffX.dm:240:error: 'fevKiai.dmi': cannot find file
+Skills\_BuffX.dm:240:error: =: expected a constant expression
+Skills\_BuffX.dm:247:error: 'fevKiai.dmi': invalid expression
+Skills\_BuffX.dm:247:error: =: expected a constant expression
+Skills\_BuffX.dm:544:error: 'Imitate.dmi': cannot find file
+Skills\_BuffX.dm:544:error: =: expected a constant expression
+_1CodeFolder\Skills.dm:261:error: 'Skillz.dmi': cannot find file
+_1CodeFolder\Skills.dm:374:error: 'Glow.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:734:error: 'GodGlow.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:746:error: 'GodOrb.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:757:error: 'KenShockwaveDivine.dmi': cannot find file
+Skills\_UtilityX.dm:427:error: 'Foods.dmi': cannot find file
+Skills\_UtilityX.dm:1436:error: 'PhilosopherSparks.dmi': cannot find file
+Skills\_UtilityX.dm:1737:error: 'Demon Gate.dmi': cannot find file
+Skills\_UtilityX.dm:1742:error: 'SparksCoolRed.dmi': cannot find file
+Skills\_ProjectileX.dm:6389:error: 'root.dmi': cannot find file
+_Reworks\Magic\SpellSlots\air\AirSpellSlots.dm:74:error: 'Air Render.dmi': cannot find file
+_Reworks\Magic\SpellSlots\dark\DarkSpellSlots.dm:41:error: 'Hit Effect Dark.dmi': cannot find file
+_Reworks\Magic\SpellSlots\light\LightSpellSlots.dm:32:error: 'AvalonLight.dmi': cannot find file
+_Reworks\Magic\SpellSlots\water\WaterSpellSlots.dm:75:error: 'Ice.dmi': cannot find file
+Races\Angels\Spells.dm:14:error: 'HolyBeam.dmi': cannot find file
+Races\demon\Magic\Dark\Darkmagic.dm:7:error: 'shadowflameball.dmi': cannot find file
+Races\demon\Magic\Dark\Darkmagic.dm:8:error: 'shadowfire.dmi': cannot find file
+Races\demon\Magic\Hellfire\Hellfire.dm:8:error: 'Fire Blessing.dmi': cannot find file
+Races\demon\Magic\Hellfire\Hellfire.dm:10:error: 'Aura_Fire_Small.dmi': cannot find file
+Skills\_ProjectileX.dm:3639:error: 'Fireball.dmi': cannot find file
+Skills\_ProjectileX.dm:3711:error: 'BLANK.dmi': cannot find file
+Skills\_ProjectileX.dm:3712:error: 'Trail - Plasma.dmi': cannot find file
+Skills\_ProjectileX.dm:3760:error: 'Boulder Normal.dmi': cannot find file
+Skills\_ProjectileX.dm:3837:error: 'LightStrike.dmi': cannot find file
+Skills\_ProjectileX.dm:3859:error: 'SunlightSpear.dmi': cannot find file
+Skills\_ProjectileX.dm:3884:error: 'Hellnova.dmi': cannot find file
+Skills\sorted\T5\magic.dm:15:error: 'Boulder Normal.dmi': cannot find file
+_Reworks\Magic\SpellSlots\fire\FireSpellSlots.dm:54:error: 'Fireball.dmi': cannot find file
+ai\arcane beasts.dm:101:error: 'ArcaneBullet.dmi': cannot find file
+ai\arcane beasts.dm:103:error: 'Trail - ArcaneBullet.dmi': cannot find file
+Races\Makaioshins\MakaioshinRacials.dm:120:error: 'BeamDodon.dmi': cannot find file
+Sagas\Mecha\KoC\skills.dm:38:error: 'BeamBig2.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:880:error: 'carefully.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:891:error: 'Pride Beam.dmi': cannot find file
+Skills\_ProjectileX.dm:4149:error: 'Beam14.dmi': cannot find file
+Skills\_ProjectileX.dm:4170:error: 'namekarm.dmi': cannot find file
+Skills\_ProjectileX.dm:4183:error: 'Beam21.dmi': cannot find file
+Skills\_ProjectileX.dm:4197:error: 'Beam8.dmi': cannot find file
+Skills\_ProjectileX.dm:4213:error: 'Beam20.dmi': cannot find file
+Skills\_ProjectileX.dm:4246:error: 'Beam17Dark.dmi': cannot find file
+Skills\_ProjectileX.dm:4262:error: 'Makkankosappo.dmi': cannot find file
+Skills\_ProjectileX.dm:4278:error: 'BeamKHH.dmi': cannot find file
+Skills\_ProjectileX.dm:4318:error: 'BeamGG.dmi': cannot find file
+Skills\_ProjectileX.dm:4346:error: 'BeamDodon.dmi': cannot find file
+Skills\_ProjectileX.dm:4375:error: 'BeamGKH.dmi': cannot find file
+Skills\_ProjectileX.dm:4400:error: 'Rozan_Beam.dmi': cannot find file
+Skills\_ProjectileX.dm:4451:error: 'Chain.dmi': cannot find file
+Skills\_ProjectileX.dm:4523:error: 'BeamFS.dmi': cannot find file
+Skills\_ProjectileX.dm:4541:error: 'DragonFist.dmi': cannot find file
+Skills\_ProjectileX.dm:4569:error: 'SupernovaBlue.dmi': cannot find file
+Skills\_ProjectileX.dm:4575:error: 'TrailBBK.dmi': cannot find file
+Skills\_ProjectileX.dm:4598:error: 'SnowBurst.dmi': cannot find file
+Skills\_ProjectileX.dm:4604:error: 'AquariusPot.dmi': cannot find file
+Skills\_ProjectileX.dm:4634:error: 'ChainLibra.dmi': cannot find file
+Skills\_ProjectileX.dm:4669:error: 'DOTDF-Beam.dmi': cannot find file
+Skills\_ProjectileX.dm:4683:error: 'Cero2.dmi': cannot find file
+Skills\_ProjectileX.dm:4704:error: 'BeamBig8.dmi': cannot find file
+Skills\_ProjectileX.dm:4724:error: 'BeamBig5.dmi': cannot find file
+Skills\_ProjectileX.dm:4746:error: 'LightningWave.dmi': cannot find file
+Skills\_ProjectileX.dm:4758:error: 'Ice Beam.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:313:error: 'SuperDuperRainbowBeam.dmi': cannot find file
+ai\arcane beasts.dm:123:error: 'Blast21.dmi': cannot find file
+Races\beastkin\foxfire\foxFireRacials.dm:16:error: 'Elec Ball Blue.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:469:error: 'Blast2.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:256:error: 'Tornado.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:504:error: 'DarkShock.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:589:error: 'IceCoffin.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:656:error: 'AvalonLight.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:1429:error: 'SparkleGreen.dmi': cannot find file
+Races\nobody\DesperationSkills.dm:82:error: 'UltimaLaser.dmi': cannot find file
+Races\nobody\DesperationSkills.dm:101:error: 'Blast2.dmi': cannot find file
+Races\nobody\DesperationSkills.dm:112:error: 'SweepingKick.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:918:error: 'Nyan2.dmi': cannot find file
+Skills\_ProjectileX.dm:3451:error: 'Boulder Normal2.dmi': cannot find file
+Skills\_ProjectileX.dm:3496:error: 'Meteor.dmi': cannot find file
+Skills\_ProjectileX.dm:3546:error: 'SekiZou.dmi': cannot find file
+Skills\_ProjectileX.dm:3561:error: 'Caladbolg.dmi': cannot find file
+Skills\_ProjectileX.dm:3601:error: 'Gae Bolg Projectile.dmi': cannot find file
+Skills\_ProjectileX.dm:3609:error: 'Trail - Scorpio.dmi': cannot find file
+Skills\queues\finishers\FinishersWithoutStupidFuckingSpacing.dm:67:error: 'ChaosBlast.dmi': cannot find file
+Skills\queues\finishers\T4Finishers.dm:184:error: 'ChaosBlast.dmi': cannot find file
+Skills\queues\finishers\T4Finishers.dm:198:error: 'Hellzone.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenSkills.dm:256:error: 'Boulder Normal2.dmi': cannot find file
+Skills\_ProjectileX.dm:3917:error: 'Air Render.dmi': cannot find file
+Skills\_ProjectileX.dm:4052:error: 'TornadoDirected.dmi': cannot find file
+Skills\_ProjectileX.dm:4075:error: 'Scarring Breeze.dmi': cannot find file
+Skills\_ProjectileX.dm:4112:error: 'Soundwave.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:799:error: 'RudeBuster2.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:818:error: 'RudeBuster.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:837:error: 'Burning Black.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:857:error: 'OmegaLava.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:102:error: 'Excaliblast.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:118:error: 'ExcaliTrail.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:168:error: 'DExcaliblast.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:175:error: 'Trail - Scorpio.dmi': cannot find file
+Skills\_ProjectileX.dm:3119:error: 'Excaliblast.dmi': cannot find file
+Skills\_ProjectileX.dm:3142:error: 'DExcaliblast.dmi': cannot find file
+Secrets\Haki\Skills.dm:199:error: 'Black_Flash_Hitspark_1.dmi': cannot find file
+Secrets\Haki\Skills.dm:200:error: 'BlackGetsuga.dmi': cannot find file
+Secrets\hats\hatskills.dm:184:error: 'Blast31.dmi': cannot find file
+Secrets\Nox\rekka.dm:118:error: 'ouroboros_blast.dmi': cannot find file
+Skills\_ProjectileX.dm:107:error: 'Blast - Basic.dmi': cannot find file
+Skills\_ProjectileX.dm:107:error: =: expected a constant expression
+Skills\_ProjectileX.dm:296:error: 'Hadoken.dmi': cannot find file
+Skills\_ProjectileX.dm:319:error: 'Dancing.dmi': cannot find file
+Skills\_ProjectileX.dm:335:error: 'FireBlast.dmi': cannot find file
+Skills\_ProjectileX.dm:387:error: 'Lightning.dmi': cannot find file
+Skills\_ProjectileX.dm:404:error: 'Trail - Death.dmi': cannot find file
+Skills\_ProjectileX.dm:423:error: 'lighting_proj.dmi': cannot find file
+Skills\_ProjectileX.dm:446:error: 'SnowBurst2.dmi': cannot find file
+Skills\_ProjectileX.dm:498:error: 'CheckmateKnives.dmi': cannot find file
+Skills\projectiles\secretknife.dm:283:error: 'CheckmateKnives.dmi': cannot find file
+Skills\_ProjectileX.dm:518:error: 'Arrow - Flare.dmi': cannot find file
+Skills\_ProjectileX.dm:520:error: 'Trail - Flare.dmi': cannot find file
+Skills\projectiles\secretknife.dm:303:error: 'Arrow - Flare.dmi': cannot find file
+Skills\projectiles\secretknife.dm:305:error: 'Trail - Flare.dmi': cannot find file
+Skills\_ProjectileX.dm:551:error: 'Boosting Winds.dmi': cannot find file
+Skills\_ProjectileX.dm:591:error: 'Kienzan.dmi': cannot find file
+Skills\_ProjectileX.dm:607:error: 'PoisonGas.dmi': cannot find file
+Skills\_ProjectileX.dm:651:error: 'Dancing.dmi': invalid expression
+Skills\_ProjectileX.dm:688:error: 'Arrow - Spirit.dmi': cannot find file
+Skills\_ProjectileX.dm:702:error: 'LightImpulse.dmi': cannot find file
+Skills\_ProjectileX.dm:705:error: 'LightImpulseTrail.dmi': cannot find file
+Skills\_ProjectileX.dm:719:error: 'Blast - Small.dmi': cannot find file
+Skills\_ProjectileX.dm:733:error: 'Blast - Rapid.dmi': cannot find file
+Skills\_ProjectileX.dm:756:error: 'MissileSmall.dmi': cannot find file
+Skills\_ProjectileX.dm:771:error: 'BlastTracer.dmi': cannot find file
+Skills\_ProjectileX.dm:796:error: 'TrailFire.dmi': cannot find file
+Skills\_ProjectileX.dm:810:error: 'RocketPunch.dmi': cannot find file
+Skills\_ProjectileX.dm:826:error: 'Blast - Charged.dmi': cannot find file
+Skills\_ProjectileX.dm:1310:error: 'DeathBeam.dmi': cannot find file
+Skills\_ProjectileX.dm:1362:error: 'Plasma2.dmi': cannot find file
+Skills\_ProjectileX.dm:1407:error: 'Supernova.dmi': cannot find file
+Skills\_ProjectileX.dm:1472:error: 'Blast2.dmi': cannot find file
+Skills\_ProjectileX.dm:1497:error: 'Blast31.dmi': cannot find file
+Skills\_ProjectileX.dm:1609:error: 'Blast23.dmi': cannot find file
+Skills\_ProjectileX.dm:1637:error: 'Blast - Small.dmi': invalid expression
+Skills\_ProjectileX.dm:1653:error: 'Blast12.dmi': cannot find file
+Skills\_ProjectileX.dm:1671:error: 'Blast12.dmi': invalid expression
+Skills\_ProjectileX.dm:1711:error: 'Blast10.dmi': cannot find file
+Skills\_ProjectileX.dm:1778:error: 'Blast28.dmi': cannot find file
+Skills\_ProjectileX.dm:1906:error: 'Saucer.dmi': cannot find file
+Skills\_ProjectileX.dm:1930:error: 'BlasterShell2.dmi': cannot find file
+Skills\_ProjectileX.dm:1954:error: 'SpiritGun2.dmi': cannot find file
+Skills\_ProjectileX.dm:2014:error: 'SYO!.dmi': cannot find file
+Skills\_ProjectileX.dm:2015:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\_ProjectileX.dm:2043:error: 'Plasma1.dmi': cannot find file
+Skills\_ProjectileX.dm:2062:error: 'OmegaBlaster.dmi': cannot find file
+Skills\_ProjectileX.dm:2130:error: 'deathball2.dmi': cannot find file
+Skills\_ProjectileX.dm:2197:error: 'GoldPile.dmi': cannot find file
+Skills\_ProjectileX.dm:2302:error: 'Plasma0.dmi': cannot find file
+Skills\_ProjectileX.dm:2406:error: 'shadowflameball.dmi': cannot find file
+Skills\_ProjectileX.dm:2490:error: 'FlashFist.dmi': cannot find file
+Skills\_ProjectileX.dm:2513:error: 'VDF-Burst.dmi': cannot find file
+Skills\_ProjectileX.dm:2515:error: 'VDF-Trail.dmi': cannot find file
+Skills\_ProjectileX.dm:2734:error: 'TornadoNebula.dmi': cannot find file
+Skills\_ProjectileX.dm:2781:error: 'TornadoPhoenix.dmi': cannot find file
+Skills\_ProjectileX.dm:2851:error: 'StarPixel.dmi': cannot find file
+Skills\_ProjectileX.dm:2858:error: 'PlanetBurst.dmi': cannot find file
+Skills\_ProjectileX.dm:2895:error: 'CrossbowBolt.dmi': cannot find file
+Skills\_ProjectileX.dm:2898:error: 'SparkleBlue.dmi': cannot find file
+Skills\_ProjectileX.dm:2927:error: 'LightningBolt2.dmi': cannot find file
+Skills\_ProjectileX.dm:3009:error: 'Seiken2.dmi': cannot find file
+Skills\_ProjectileX.dm:3035:error: 'RosePetals.dmi': cannot find file
+Skills\_ProjectileX.dm:3224:error: 'TornadoDirectedBrave-A.dmi': cannot find file
+Skills\_ProjectileX.dm:3329:error: 'Hadoken - Satsui.dmi': cannot find file
+Skills\_ProjectileX.dm:4780:error: 'Crystal.dmi': cannot find file
+Skills\projectiles\secretknife.dm:25:error: 'feathers.dmi': cannot find file
+Skills\projectiles\secretknife.dm:91:error: 'LightStrike.dmi': cannot find file
+Skills\projectiles\secretknife.dm:93:error: 'SparkleArcane.dmi': cannot find file
+Skills\projectiles\secretknife.dm:117:error: 'spear.dmi': cannot find file
+Skills\projectiles\secretknife.dm:142:error: 'SwordBlast2.dmi': cannot find file
+Skills\projectiles\secretknife.dm:167:error: 'stake.dmi': cannot find file
+Skills\projectiles\secretknife.dm:223:error: 'Ankh.dmi': cannot find file
+Skills\projectiles\T0Projectiles.dm:12:error: 'airblast.dmi': cannot find file
+Skills\projectiles\T1Finishers.dm:4:error: 'icespikes.dmi': cannot find file
+Skills\projectiles\T1Finishers.dm:22:error: 'FIRE_FIST.dmi': cannot find file
+Skills\projectiles\T1Finishers.dm:34:error: 'Supernova.dmi': cannot find file
+Skills\projectiles\T2Finisher.dm:3:error: 'Blast12.dmi': cannot find file
+Skills\projectiles\T2Finisher.dm:18:error: 'Blast - 10.dmi': cannot find file
+Skills\projectiles\T3Finisher.dm:10:error: 'GilgameshBlades.dmi': cannot find file
+Skills\queues\gear\SoulEater.dm:218:error: 'Comet.dmi': cannot find file
+Skills\queues\sagas\WeaponSoul\Durendal.dm:36:error: 'DurendalBurn.dmi': cannot find file
+Skills\sorted\T5\universal.dm:18:error: 'Plasma.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:124:error: 'WaterPrison.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:139:error: 'FireBlast.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:230:error: 'FireTornadoHead.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:235:error: 'FireTornadoTrail.dmi': cannot find file
+_Reworks\Magic\SpellSlots\air\AirSpellSlots.dm:20:error: 'Hit Effect Wind.dmi': cannot find file
+_Reworks\Magic\SpellSlots\air\AirSpellSlots.dm:25:error: 'Dirt1.dmi': cannot find file
+_Reworks\Magic\SpellSlots\dark\DarkSpellSlots.dm:23:error: 'Dark.dmi': cannot find file
+_Reworks\Magic\SpellSlots\earth\EarthSpellSlots.dm:19:error: 'Hit Effect Ripple.dmi': cannot find file
+_Reworks\Magic\SpellSlots\earth\EarthSpellSlots.dm:24:error: 'Dirt1.dmi': cannot find file
+_Reworks\Magic\SpellSlots\fire\FireSpellSlots.dm:20:error: 'Slash - Hellfire.dmi': cannot find file
+_Reworks\Magic\SpellSlots\fire\FireSpellSlots.dm:25:error: 'blackflameaura.dmi': cannot find file
+_Reworks\Magic\SpellSlots\space\SpaceSpellSlots.dm:19:error: 'Hit Effect Ripple.dmi': cannot find file
+_Reworks\Magic\SpellSlots\space\SpaceSpellSlots.dm:24:error: 'Gravity.dmi': cannot find file
+_Reworks\Magic\SpellSlots\time\TimeSpellSlots.dm:19:error: 'Magic Time circle.dmi': cannot find file
+_Reworks\Magic\SpellSlots\time\TimeSpellSlots.dm:24:error: 'Gravity.dmi': cannot find file
+_Reworks\Magic\SpellSlots\water\WaterSpellSlots.dm:46:error: 'SnowBurst2.dmi': cannot find file
+Races\Angels\Spells.dm:65:error: 'SwordHugeHolyJustice.dmi': cannot find file
+Races\Angels\Spells.dm:71:error: 'BLANK.dmi': cannot find file
+Races\Angels\Spells.dm:163:error: 'root.dmi': cannot find file
+Skills\_AutoHitX.dm:2748:error: 'SnowBurst2.dmi': cannot find file
+Skills\_AutoHitX.dm:2903:error: 'BLANK.dmi': cannot find file
+Skills\_AutoHitX.dm:3016:error: 'VR Cloud.png': cannot find file
+Skills\_AutoHitX.dm:3061:error: 'LightningBolt.dmi': cannot find file
+Skills\_AutoHitX.dm:3094:error: 'Gravity.dmi': cannot find file
+Skills\_AutoHitX.dm:3127:error: 'Magic Time circle.dmi': cannot find file
+Skills\_AutoHitX.dm:3161:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\_AutoHitX.dm:3170:error: 'Cure.dmi': cannot find file
+Skills\_AutoHitX.dm:3289:error: 'Hit Effect Pearl.dmi': cannot find file
+Skills\_AutoHitX.dm:3339:error: 'Demon Gate.dmi': cannot find file
+ai\arcane beasts.dm:549:error: 'BLANK.dmi': cannot find file
+Races\beastkin\buffs.dm:72:error: 'KenShockwave.dmi': cannot find file
+Races\beastkin\buffs.dm:80:error: 'roundhouse.dmi': cannot find file
+Races\beastkin\buffs.dm:83:error: 'Hit Effect.dmi': cannot find file
+Races\beastkin\buffs.dm:90:error: 'Dirt1.dmi': cannot find file
+Races\beastkin\racial\neverfall.dm:26:error: 'SweepingKick.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:35:error: 'SnowBurst2.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:93:error: 'FogBreath.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:100:error: 'BLANK.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:287:error: 'roundhouse.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:291:error: 'Hit Effect Wind.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:443:error: 'LightningBreath.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:560:error: 'SuperDarkness.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:621:error: 'Aurora.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:683:error: 'SparkleViolet.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:718:error: 'Slash - Ragna.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:1067:error: 'Impacts VFX1.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:1109:error: 'fevExplosion - Hellfire.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:1146:error: 'Slash - Hellfire.dmi': cannot find file
+Races\demi_fiend\demifiendskills.dm:1187:error: 'PoisonGas.dmi': cannot find file
+Races\dragon\skills.dm:20:error: 'KenShockwave.dmi': cannot find file
+Races\dragon\skills.dm:71:error: 'PlainWater.dmi': cannot find file
+Races\dragon\skills.dm:74:error: 'Hit Effect Pearl.dmi': cannot find file
+Races\Elf\racials.dm:22:error: 'BLANK.dmi': cannot find file
+Races\Makaioshins\MakaioshinRacials.dm:64:error: 'shadowfire.dmi': cannot find file
+Races\nobody\DesperationSkills.dm:17:error: 'Slash - Zan.dmi': cannot find file
+Races\nobody\DesperationSkills.dm:38:error: 'SparkleRed.dmi': cannot find file
+Races\yokai\moves.dm:14:error: 'Hit_Effect_Oath_2.dmi': cannot find file
+Sagas\Finn\FinnAttacks.dm:42:error: 'CircleWind.dmi': cannot find file
+Sagas\Finn\FinnAttacks.dm:45:error: 'Slash.dmi': cannot find file
+Sagas\Finn\FinnAttacks.dm:79:error: 'Dirt1.dmi': cannot find file
+Sagas\Finn\FinnAttacks.dm:81:error: 'Nest Slash.dmi': cannot find file
+Sagas\Gates\NuGates.dm:131:error: 'Dirt1.dmi': cannot find file
+Sagas\Gates\NuGates.dm:134:error: 'drill.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenFinisher.dm:32:error: 'Slash - Zan.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenSkills.dm:164:error: 'Nest Slash.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenSkills.dm:169:error: 'Slash.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenSkills.dm:199:error: 'Air Slash.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenSkills.dm:233:error: 'BLANK.dmi': cannot find file
+Sagas\Mecha\KoC\skills.dm:13:error: 'Hit Effect.dmi': cannot find file
+Sagas\Mecha\KoC\skills.dm:23:error: 'drill.dmi': cannot find file
+Sagas\Mecha\Spiral\Spiral.dm:75:error: 'Dirt1.dmi': cannot find file
+Sagas\Mecha\Spiral\Spiral.dm:78:error: 'drill.dmi': cannot find file
+Sagas\NewKeyblades\KeybladeSkills.dm:44:error: 'Hit Effect Pearl.dmi': cannot find file
+Sagas\NewKeyblades\KeybladeSkills.dm:80:error: 'BLANK.dmi': cannot find file
+Sagas\NewKeyblades\KeybladeSkills.dm:179:error: 'TornadoPhoenix.dmi': cannot find file
+Sagas\NewKeyblades\KeybladeSkills.dm:182:error: 'Slash - Zan.dmi': cannot find file
+Sagas\NewKeyblades\KeybladeSkills.dm:207:error: 'Ripple Radiance.dmi': cannot find file
+Sagas\NewKeyblades\KeybladeSkills.dm:220:error: 'StarPixel.dmi': cannot find file
+Sagas\NewKeyblades\KeybladeSkills.dm:246:error: 'Nest Slash.dmi': cannot find file
+Sagas\NewKeyblades\KeybladeSkills.dm:291:error: 'SweepingKick.dmi': cannot find file
+Sagas\NewKeyblades\KeybladeSkills.dm:297:error: 'KenShockwave.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:217:error: 'Chidori.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:221:error: 'Hit Effect Vampire.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:240:error: 'IceGround.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:312:error: 'Ripple Radiance.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:343:error: 'Hit Effect Pearl.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:444:error: 'KenShockwave.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:463:error: 'Amazing SSj4 Aura.dmi': cannot find file
+Sagas\UBW\ubwStyle.dm:117:error: 'Slash - Zan.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:66:error: 'fevKiaiDS.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:80:error: 'Hit Effect Excal.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:85:error: 'Excalitrail.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:90:error: 'Ripple Radiance.dmi': cannot find file
+Sagas\Weapon Soul\Dainsleif\Dainsleif.dm:99:error: 'Hit Effect Vampire.dmi': cannot find file
+Sagas\Weapon Soul\Dainsleif\Dainsleif.dm:131:error: 'KenShockwaveBloodlust.dmi': cannot find file
+Sagas\Weapon Soul\Dainsleif\Dainsleif.dm:136:error: 'BloodGather.dmi': cannot find file
+Sagas\Weapon Soul\Durendal\Durendal.dm:19:error: 'BLANK.dmi': cannot find file
+Sagas\Weapon Soul\Durendal\Oliphant.dm:13:error: 'BLANK.dmi': cannot find file
+Sagas\Weapon Soul\Kusanagi\Kusanagi.dm:26:error: 'SweepingKick.dmi': cannot find file
+Sagas\Weapon Soul\Masamune\Masamune.dm:23:error: 'ShockwaveIce.dmi': cannot find file
+Sagas\Weapon Soul\Masamune\Masamune.dm:24:error: 'HitEffectSnow.dmi': cannot find file
+Sagas\Weapon Soul\Masamune\Masamune.dm:29:error: 'SparkleBlue.dmi': cannot find file
+Sagas\Weapon Soul\Masamune\Masamune.dm:34:error: 'SnowFloor.dmi': cannot find file
+Sagas\Weapon Soul\Masamune\Snow_Sheath.dm:17:error: 'CircleWind.dmi': cannot find file
+Sagas\Weapon Soul\Masamune\Snow_Sheath.dm:20:error: 'Slash.dmi': cannot find file
+Sagas\Weapon Soul\Masamune\Snow_Sheath.dm:27:error: 'IceGround.dmi': cannot find file
+Sagas\Weapon Soul\Muramasa\Kuro_Obi.dm:15:error: 'MasterSlash.dmi': cannot find file
+Sagas\Weapon Soul\Muramasa\Kuro_Obi.dm:19:error: 'Slash - Zero.dmi': cannot find file
+Sagas\Weapon Soul\Soul Calibur\Soul_Calibur.dm:38:error: 'BLANK.dmi': cannot find file
+Sagas\Weapon Soul\Soul Calibur\Soul_Calibur.dm:41:error: 'BrightDay2.dmi': cannot find file
+Sagas\Weapon Soul\Soul Edge\Infernal_Eye.dm:19:error: 'KenShockwaveBloodlust.dmi': cannot find file
+Sagas\Weapon Soul\Soul Edge\Infernal_Eye.dm:28:error: 'Gravity.dmi': cannot find file
+Sagas\Weapon Soul\Soul Edge\Soul_Edge.dm:30:error: 'Gravity.dmi': cannot find file
+Secrets\WitchCraft.dm:233:error: 'BLANK.dmi': cannot find file
+Secrets\Cursed Secret\CursedTechniques.dm:97:error: 'Cursed_Train_Closing_Doors.dmi': cannot find file
+Secrets\Cursed Secret\CursedTechniques.dm:103:error: 'BLANK.dmi': cannot find file
+Secrets\Nox\rekka.dm:40:error: 'ouroborostile.dmi': cannot find file
+Secrets\Nox\rekka.dm:41:error: 'BLANK.dmi': cannot find file
+Secrets\Nox\skills.dm:17:error: 'Glow.dmi': cannot find file
+Secrets\Nox\skills.dm:54:error: 'ouroborostile.dmi': cannot find file
+Skills\_AutoHitX.dm:160:error: 'fevKiai.dmi': cannot find file
+Skills\_AutoHitX.dm:160:error: =: expected a constant expression
+Skills\_AutoHitX.dm:286:error: 'Hit Effect Wind.dmi': cannot find file
+Skills\_AutoHitX.dm:301:error: 'Slash.dmi': cannot find file
+Skills\_AutoHitX.dm:367:error: 'Ki Fist Sprite.dmi': cannot find file
+Skills\_AutoHitX.dm:392:error: 'KenShockwave.dmi': cannot find file
+Skills\_AutoHitX.dm:434:error: 'WolfFF.dmi': cannot find file
+Skills\_AutoHitX.dm:470:error: 'Slash - Zan.dmi': cannot find file
+Skills\_AutoHitX.dm:489:error: 'Hit Effect Divine.dmi': cannot find file
+Skills\_AutoHitX.dm:496:error: 'Dirt1.dmi': cannot find file
+Skills\_AutoHitX.dm:511:error: 'Hit Effect Oath.dmi': cannot find file
+Skills\_AutoHitX.dm:606:error: 'SweepingKick.dmi': cannot find file
+Skills\_AutoHitX.dm:745:error: 'MagicWish.dmi': cannot find file
+Skills\_AutoHitX.dm:761:error: 'SweepingKick.dmi': invalid expression
+Skills\_AutoHitX.dm:813:error: 'KenShockwaveGold.dmi': cannot find file
+Skills\_AutoHitX.dm:854:error: 'Tornado.dmi': cannot find file
+Skills\_AutoHitX.dm:876:error: 'fevExplosion - Susanoo.dmi': cannot find file
+Skills\_AutoHitX.dm:900:error: 'Ripple Radiance.dmi': cannot find file
+Skills\_AutoHitX.dm:933:error: 'BrightDay2.dmi': cannot find file
+Skills\_AutoHitX.dm:957:error: 'BladeCharge.dmi': cannot find file
+Skills\_AutoHitX.dm:960:error: 'Slash - Zero.dmi': cannot find file
+Skills\_AutoHitX.dm:989:error: 'Slash - Vampire.dmi': cannot find file
+Skills\_AutoHitX.dm:1072:error: 'SekiZou.dmi': cannot find file
+Skills\_AutoHitX.dm:1098:error: 'DarkKiai.dmi': cannot find file
+Skills\_AutoHitX.dm:1109:error: 'WolfFF.dmi': invalid expression
+Skills\_AutoHitX.dm:1156:error: 'Antenna Beam.dmi': cannot find file
+Skills\_AutoHitX.dm:1188:error: 'KenShockwaveFocus.dmi': cannot find file
+Skills\_AutoHitX.dm:1216:error: 'Nest Slash.dmi': cannot find file
+Skills\_AutoHitX.dm:1348:error: 'blackflameaura.dmi': cannot find file
+Skills\_AutoHitX.dm:1469:error: 'Hit Effect Dark.dmi': cannot find file
+Skills\_AutoHitX.dm:1622:error: 'Novabolt.dmi': cannot find file
+Skills\_AutoHitX.dm:1689:error: 'Glowing Electricity.dmi': cannot find file
+Skills\_AutoHitX.dm:1707:error: 'Hit Effect.dmi': cannot find file
+Skills\_AutoHitX.dm:1837:error: 'Ultima Arm.dmi': cannot find file
+Skills\_AutoHitX.dm:1944:error: 'Slash - Future.dmi': cannot find file
+Skills\_AutoHitX.dm:1972:error: 'JudgmentCut.dmi': cannot find file
+Skills\_AutoHitX.dm:2221:error: 'Chidori.dmi': cannot find file
+Skills\_AutoHitX.dm:2225:error: 'Hit Effect Vampire.dmi': cannot find file
+Skills\_AutoHitX.dm:2389:error: 'Lightning.dmi': cannot find file
+Skills\_AutoHitX.dm:2570:error: 'IceGround.dmi': cannot find file
+Skills\_AutoHitX.dm:2622:error: 'fevExplosion - Hellfire.dmi': cannot find file
+Skills\_AutoHitX.dm:2662:error: 'PoisonGas.dmi': cannot find file
+Skills\_AutoHitX.dm:2680:error: 'PlainWater.dmi': cannot find file
+Skills\_AutoHitX.dm:3458:error: 'Dark.dmi': cannot find file
+Skills\_AutoHitX.dm:3475:error: 'Slash - Hellfire.dmi': cannot find file
+Skills\_AutoHitX.dm:3563:error: 'SwordHugeHolyJustice.dmi': cannot find file
+Skills\_AutoHitX.dm:3594:error: 'SwordHugeDoomofDamocles.dmi': cannot find file
+Skills\_AutoHitX.dm:3674:error: 'reckless.dmi': cannot find file
+Skills\_AutoHitX.dm:3692:error: 'StormArmor.dmi': cannot find file
+Skills\_AutoHitX.dm:3716:error: 'Overdrive.dmi': cannot find file
+Skills\_AutoHitX.dm:3743:error: 'CircleWind.dmi': cannot find file
+Skills\_AutoHitX.dm:3799:error: 'Hit Effect Pegasus.dmi': cannot find file
+Skills\_AutoHitX.dm:3863:error: 'fevKiaiG.dmi': cannot find file
+Skills\_AutoHitX.dm:3952:error: 'AvalonLight.dmi': cannot find file
+Skills\_AutoHitX.dm:3986:error: 'Dimension Aura.dmi': cannot find file
+Skills\_AutoHitX.dm:3994:error: 'StarPixel.dmi': cannot find file
+Skills\_AutoHitX.dm:4018:error: 'KenShockwaveGod.dmi': cannot find file
+Skills\_AutoHitX.dm:4046:error: 'LightningPlasma.dmi': cannot find file
+Skills\_AutoHitX.dm:4084:error: 'fevKiaiDS.dmi': cannot find file
+Skills\_AutoHitX.dm:4169:error: 'KenShockwaveBloodlust.dmi': cannot find file
+Skills\_AutoHitX.dm:4185:error: 'Seiken2.dmi': cannot find file
+Skills\_AutoHitX.dm:4274:error: 'GaoGaoFists.dmi': cannot find file
+Skills\_AutoHitX.dm:4302:error: 'GGG_Hammer.dmi': cannot find file
+Skills\_AutoHitX.dm:4386:error: 'amaterasu.dmi': cannot find file
+Skills\_AutoHitX.dm:4590:error: 'BijuuInitial.dmi': cannot find file
+Skills\_AutoHitX.dm:4596:error: 'Hit Effect Satsui.dmi': cannot find file
+Skills\_AutoHitX.dm:4666:error: 'SparkleRed.dmi': cannot find file
+Skills\_HeldSkill.dm:213:error: 'Nest Slash.dmi': cannot find file
+Skills\_HeldSkill.dm:218:error: 'Dirt1.dmi': cannot find file
+Skills\_HeldSkill.dm:227:error: 'DarkShock.dmi': cannot find file
+Skills\autohit\extras.dm:17:error: 'KenShockwaveFocus.dmi': cannot find file
+Skills\autohit\T0Finishers.dm:14:error: 'Ki Fist Sprite.dmi': cannot find file
+Skills\autohit\T0Finishers.dm:20:error: 'BLANK.dmi': cannot find file
+Skills\autohit\T0Finishers.dm:28:error: 'GGG_Hammer.dmi': cannot find file
+Skills\autohit\T0Finishers.dm:54:error: 'Dirt.dmi': cannot find file
+Skills\autohit\T0Finishers.dm:78:error: 'poisoncloud.dmi': cannot find file
+Skills\autohit\T0Finishers.dm:138:error: 'FIRE_FIST.dmi': cannot find file
+Skills\autohit\T1Finishers.dm:19:error: 'KenShockwaveFocus.dmi': cannot find file
+Skills\autohit\T1Finishers.dm:36:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\autohit\T1Finishers.dm:43:error: 'Dirt1.dmi': cannot find file
+Skills\autohit\T1Finishers.dm:62:error: 'Slash - Zan.dmi': cannot find file
+Skills\autohit\T1Finishers.dm:68:error: 'SweepingKick.dmi': cannot find file
+Skills\autohit\T1Finishers.dm:106:error: 'MoonP.dmi': cannot find file
+Skills\autohit\T1Finishers.dm:112:error: 'Hit Effect Divine.dmi': cannot find file
+Skills\autohit\T1Finishers.dm:128:error: 'Slash - Black.dmi': cannot find file
+Skills\autohit\T1Finishers.dm:148:error: 'Elec Ball Blue.dmi': cannot find file
+Skills\autohit\T1Finishers.dm:159:error: 'BloodRain.dmi': cannot find file
+Skills\autohit\T2Finishers.dm:15:error: 'Hit Effect.dmi': cannot find file
+Skills\autohit\T2Finishers.dm:36:error: 'SweepingKick.dmi': cannot find file
+Skills\autohit\T2Finishers.dm:46:error: 'IceGround.dmi': cannot find file
+Skills\autohit\T2Finishers.dm:53:error: 'Flaming Rain.dmi': cannot find file
+Skills\autohit\T2Finishers.dm:62:error: 'BurnedGround.dmi': cannot find file
+Skills\autohit\T2Finishers.dm:79:error: 'HitsparkStar.dmi': cannot find file
+Skills\autohit\T2Finishers.dm:93:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\autohit\T2Finishers.dm:100:error: 'Dirt1.dmi': cannot find file
+Skills\autohit\T3Finisher.dm:19:error: 'KenShockwaveFocus.dmi': cannot find file
+Skills\autohit\T3Finisher.dm:36:error: 'Slash - Zan.dmi': cannot find file
+Skills\autohit\T3Finisher.dm:52:error: 'Hit Effect.dmi': cannot find file
+Skills\autohit\T4Finishers.dm:19:error: 'KenShockwaveFocus.dmi': cannot find file
+Skills\autohit\T4Finishers.dm:42:error: 'KenShockwaveFocus.dmi': invalid expression
+Skills\autohit\T4Finishers.dm:64:error: 'KenShockwaveGod.dmi': cannot find file
+Skills\autohit\T4Finishers.dm:68:error: 'Slash - Power.dmi': cannot find file
+Skills\autohit\UIHybridFinishers-autohit.dm:16:error: 'KenShockwaveGod.dmi': cannot find file
+Skills\autohit\UIHybridFinishers-autohit.dm:20:error: 'Slash - Power.dmi': cannot find file
+Skills\autohit\UIHybridFinishers-autohit.dm:42:error: 'SparkleRainbow.dmi': cannot find file
+Skills\autohit\UIHybridFinishers-autohit.dm:44:error: 'Hit Effect Divine.dmi': cannot find file
+Skills\autohit\UIHybridFinishers-autohit.dm:67:error: 'KenShockwaveDivine.dmi': cannot find file
+Skills\autohit\UIHybridFinishers-autohit.dm:73:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\projectiles\GatesOfBabylon.dm:529:error: 'Hellnova.dmi': cannot find file
+Skills\queues\finishers\FinishersWithoutStupidFuckingSpacing.dm:43:error: 'Dirt1.dmi': cannot find file
+Skills\queues\finishers\FinishersWithoutStupidFuckingSpacing.dm:46:error: 'drill.dmi': cannot find file
+Skills\queues\finishers\T4Finishers.dm:139:error: 'Dirt1.dmi': cannot find file
+Skills\queues\finishers\T4Finishers.dm:158:error: 'Slash - Vampire.dmi': cannot find file
+Skills\queues\finishers\T4Finishers.dm:165:error: 'StarPixel.dmi': cannot find file
+Skills\queues\gear\SoulEater.dm:43:error: 'Slash - Vampire.dmi': cannot find file
+Skills\queues\gear\SoulEater.dm:77:error: 'StarPixel.dmi': cannot find file
+Skills\queues\gear\SoulEater.dm:192:error: 'Slash - Zan.dmi': cannot find file
+Skills\queues\gear\SoulEater.dm:198:error: 'SweepingKick.dmi': cannot find file
+Skills\queues\sagas\KingOfBraves\KoB.dm:24:error: 'Overdrive.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:12:error: 'Hit Effect Pearl.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:54:error: 'Hit Effect Dark.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:117:error: 'Slash.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:153:error: 'Dirt1.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:172:error: 'roundhouse.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:230:error: 'Nest Slash.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:289:error: 'Slash - Zan.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:326:error: 'Slash - Hellfire.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:367:error: 'BladeCharge.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:397:error: 'DarknessFlameAura.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeAutoHits.dm:407:error: 'blackflameaura.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:17:error: 'KenShockwave.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:25:error: 'BLANK.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:35:error: 'Dirt1.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:84:error: 'Slash - Zan.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:137:error: 'KenShockwaveLegend.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:143:error: 'Hit Effect.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:171:error: 'roundhouse.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:193:error: 'SweepingKick.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:251:error: 'CircleWind.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:254:error: 'Slash.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:280:error: 'blackflameaura.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeAutoHits.dm:401:error: 'Hit Effect Dark.dmi': cannot find file
+Skills\sorted\T5\armed.dm:10:error: 'StormArmor.dmi': cannot find file
+Skills\sorted\T5\armed.dm:17:error: 'reckless.dmi': cannot find file
+Skills\sorted\T5\chrono_devolution.dm:16:error: 'BLANK.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:18:error: 'BLANK.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:164:error: 'bloodmiasma.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:165:error: 'Hit Effect Vampire.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:183:error: 'Hit Effect.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:187:error: 'Small Getsuga.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:190:error: 'Slash.dmi': cannot find file
+Skills\styles\mystic\mysticskills.dm:204:error: 'Hit Effect.dmi': invalid expression
+Skills\styles\mystic\mysticskills.dm:252:error: 'Hit Effect.dmi': invalid expression
+Skills\styles\mystic\mysticskills.dm:298:error: 'Hit Effect.dmi': invalid expression
+Skills\styles\mystic\t0mysticstyles.dm:85:error: 'WaterBlue.dmi': cannot find file
+Skills\styles\mystic\t0mysticstyles.dm:88:error: 'BLANK.dmi': cannot find file
+ai\arcane beasts.dm:517:error: 'Hit Effect Pearl.dmi': cannot find file
+ai\arcane beasts.dm:572:error: 'KenShockwaveDivine.dmi': cannot find file
+Races\beastkin\skills\buffs\beastkinbuffs.dm:11:error: 'MasterSlash.dmi': cannot find file
+Races\eldritch\eldritchDragonDash.dm:16:error: 'Slash - Vampire.dmi': cannot find file
+Races\nobody\DesperationSkills.dm:159:error: 'Slash - Power.dmi': cannot find file
+Races\nobody\DesperationSkills.dm:182:error: 'UltraInstinctSpark.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:1284:error: 'Slash_Multi.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:1287:error: 'Slash - Zan.dmi': cannot find file
+Skills\_QueueX.dm:186:error: 'fevKiai.dmi': cannot find file
+Skills\_QueueX.dm:402:error: 'CircleWind.dmi': cannot find file
+Skills\_QueueX.dm:600:error: 'Slash - Ragna.dmi': cannot find file
+Skills\queues\finishers\T1Finishers.dm:39:error: 'fevExplosion.dmi': cannot find file
+Skills\queues\finishers\T1Finishers.dm:95:error: 'Slash_Multi.dmi': cannot find file
+Skills\queues\finishers\T2Finishers.dm:40:error: 'fevExplosion.dmi': cannot find file
+Skills\queues\finishers\T2Finishers.dm:69:error: 'Slash_Multi.dmi': cannot find file
+Skills\queues\finishers\T3Finishers.dm:23:error: 'Slash_Multi.dmi': cannot find file
+Skills\queues\finishers\T3Finishers.dm:42:error: 'fevExplosion.dmi': cannot find file
+Skills\queues\finishers\T3Finishers.dm:67:error: 'Slash - Zan.dmi': cannot find file
+Skills\queues\finishers\T3Finishers.dm:88:error: 'Hit Effect.dmi': cannot find file
+Skills\queues\finishers\T4Finishers.dm:9:error: 'KenShockwaveGod.dmi': cannot find file
+Skills\queues\finishers\T4Finishers.dm:23:error: 'Slash - Zan.dmi': cannot find file
+Skills\queues\finishers\T4Finishers.dm:28:error: 'Slash_Multi.dmi': cannot find file
+Skills\queues\finishers\T4Finishers.dm:45:error: 'fevExplosion.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenSkills.dm:64:error: 'Hit Effect.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenSkills.dm:82:error: 'Hit Effect Ripple.dmi': cannot find file
+Sagas\Hiten Mitsurugi\HitenSkills.dm:113:error: 'Slash - Power.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:545:error: 'fevExplosion.dmi': cannot find file
+Sagas\PotHRebirth\RebirthSkills.dm:567:error: 'DarkKiai.dmi': cannot find file
+Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:35:error: 'KenShockwaveGold.dmi': cannot find file
+Secrets\Cursed Secret\CursedTechniques.dm:42:error: 'Large Dismantle.dmi': cannot find file
+Secrets\Cursed Secret\CursedTechniques.dm:69:error: 'Slash - Zero.dmi': cannot find file
+Secrets\hats\hatskills.dm:33:error: 'Slash - Vampire.dmi': cannot find file
+Secrets\hats\hatskills.dm:53:error: 'UltraInstinctSpark.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:52:error: 'BusoKoka.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:63:error: 'Ultima Arm.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:105:error: 'Ripple Arms.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:128:error: 'Hit Effect Vampire.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:136:error: 'Slash - Vampire.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:150:error: 'WolfFF.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:192:error: 'Hit Effect Wind.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:244:error: 'CE Hitspark.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:263:error: 'DarkKiai.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:264:error: 'Black_Flash_Hitspark_1.dmi': cannot find file
+Secrets\HeavyStrike\SecretHeavyStrike.dm:289:error: 'Spiral_Hitspark.dmi': cannot find file
+Skills\_QueueX.dm:37:error: 'fevKiai.dmi': invalid expression
+Skills\_QueueX.dm:37:error: =: expected a constant expression
+Skills\_QueueX.dm:59:error: 'BLANK.dmi': cannot find file
+Skills\_QueueX.dm:59:error: =: expected a constant expression
+Skills\_QueueX.dm:828:error: 'Hit Effect.dmi': cannot find file
+Skills\_QueueX.dm:849:error: 'Hit Effect.dmi': invalid expression
+Skills\_QueueX.dm:972:error: 'fevExplosion.dmi': cannot find file
+Skills\_QueueX.dm:990:error: 'fevExplosion - Steam.dmi': cannot find file
+Skills\_QueueX.dm:1007:error: 'SnowBurst2.dmi': cannot find file
+Skills\_QueueX.dm:1024:error: 'fevKiaiG.dmi': cannot find file
+Skills\_QueueX.dm:1057:error: 'Hit Effect Divine.dmi': cannot find file
+Skills\_QueueX.dm:1074:error: 'DarkKiai.dmi': cannot find file
+Skills\_QueueX.dm:1091:error: 'Slash - Power.dmi': cannot find file
+Skills\_QueueX.dm:1111:error: 'Hit Effect Satsui.dmi': cannot find file
+Skills\_QueueX.dm:1131:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\_QueueX.dm:1186:error: 'DancingLight.dmi': cannot find file
+Skills\_QueueX.dm:1291:error: 'Ragna Blade.dmi': cannot find file
+Skills\queues\gear\NoxNyoctore.dm:16:error: 'Slash - Power.dmi': cannot find file
+Skills\queues\gear\NoxNyoctore.dm:36:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\queues\gear\ScissorBlade.dm:7:error: 'SparkleRed.dmi': cannot find file
+Skills\queues\gear\SoulEater.dm:17:error: 'Slash - Black.dmi': cannot find file
+Skills\queues\gear\TechGear.dm:14:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\queues\gear\TechGear.dm:59:error: 'PowerClawDeployed.dmi': cannot find file
+Skills\queues\sagas\Ansatsuken\Ansatsuken.dm:130:error: 'BijuuInitial.dmi': cannot find file
+Skills\queues\sagas\EightGates\Gates.dm:80:error: 'Flaming_fists.dmi': cannot find file
+Skills\queues\sagas\EightGates\Gates.dm:81:error: 'fevExplosion.dmi': cannot find file
+Skills\queues\sagas\Kamui\Kamui.dm:12:error: 'PowerClawDeployed.dmi': cannot find file
+Skills\queues\sagas\Keyblade\Keyblade.dm:17:error: 'DarkKiai.dmi': cannot find file
+Skills\queues\sagas\Keyblade\Keyblade.dm:43:error: 'KenShockwaveGold.dmi': cannot find file
+Skills\queues\sagas\Keyblade\Keyblade.dm:79:error: 'KenShockwaveGold.dmi': invalid expression
+Skills\queues\sagas\KingOfBraves\KoB.dm:16:error: 'KenShockwaveLegend.dmi': cannot find file
+Skills\queues\sagas\Saint\Andromeda.dm:13:error: 'Slash - Zero.dmi': cannot find file
+Skills\queues\sagas\Saint\Pegasus.dm:14:error: 'BLANK.dmi': cannot find file
+Skills\queues\sagas\Saint\Phoenix.dm:14:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\queues\sagas\Saint\Gold\Cancer.dm:14:error: 'BLANK.dmi': cannot find file
+Skills\queues\sagas\Saint\Gold\Capricorn.dm:13:error: 'BLANK.dmi': cannot find file
+Skills\queues\sagas\Saint\Gold\Gemini.dm:12:error: 'Hit Effect Satsui.dmi': cannot find file
+Skills\queues\sagas\Saint\Gold\Leo.dm:16:error: 'LightningPlasma.dmi': cannot find file
+Skills\queues\sagas\Saint\Gold\Pisces.dm:13:error: 'fevExplosion - Hellfire.dmi': cannot find file
+Skills\queues\sagas\Saint\Gold\Scorpius.dm:13:error: 'KenShockwaveBloodlust.dmi': cannot find file
+Skills\queues\sagas\Saint\Gold\Scorpius.dm:16:error: 'Hit Effect Vampire.dmi': cannot find file
+Skills\queues\sagas\Saint\Gold\Virgo.dm:13:error: 'fevKiaiDS.dmi': cannot find file
+Skills\queues\sagas\Saint\Gold\Virgo.dm:16:error: 'BLANK.dmi': cannot find file
+Skills\queues\sagas\WeaponSoul\Dainsleif.dm:14:error: 'Slash - Zero.dmi': cannot find file
+Skills\queues\sagas\WeaponSoul\Durendal.dm:14:error: 'Fire Slash.dmi': cannot find file
+Skills\queues\secrets\Ripple.dm:9:error: 'Ripple Barrier.dmi': cannot find file
+Skills\queues\secrets\Ripple.dm:10:error: 'Ultima Arm.dmi': cannot find file
+Skills\queues\secrets\Ripple.dm:22:error: 'Ultima Arm.dmi': invalid expression
+Skills\queues\secrets\Ripple.dm:38:error: 'Ripple Arms.dmi': cannot find file
+Skills\queues\secrets\Ripple.dm:39:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\queues\secrets\SageMode.dm:18:error: 'Rasengan_DBR.dmi': cannot find file
+Skills\queues\secrets\SageMode.dm:19:error: 'Hit Effect Oath.dmi': cannot find file
+Skills\queues\secrets\Vampire.dm:12:error: 'Hit Effect Vampire.dmi': cannot find file
+Skills\queues\secrets\Vampire.dm:34:error: 'Slash - Vampire.dmi': cannot find file
+Skills\queues\signatures\T1SigQueues.dm:30:error: 'CommandSparks.dmi': cannot find file
+Skills\queues\signatures\T1SigQueues.dm:167:error: 'Slash - Future.dmi': cannot find file
+Skills\queues\signatures\T1SigQueues.dm:271:error: 'EyeFlame.dmi': cannot find file
+Skills\queues\signatures\T1SigQueues.dm:272:error: 'LightningPlasma.dmi': cannot find file
+Skills\queues\signatures\T1SigQueues.dm:295:error: 'Slash - Vampire.dmi': cannot find file
+Skills\queues\signatures\T2SigQueues.dm:120:error: 'Flaming_fists.dmi': cannot find file
+Skills\queues\signatures\T2SigQueues.dm:121:error: 'Hit Effect Ripple.dmi': cannot find file
+Skills\queues\signatures\T2SigQueues.dm:211:error: 'Slash - Power.dmi': cannot find file
+Skills\queues\signatures\T2SigQueues.dm:265:error: 'UltraInstinctSpark.dmi': cannot find file
+Skills\queues\signatures\T2SigQueues.dm:285:error: 'FevExplosion - Steam.dmi': cannot find file
+Skills\queues\signatures\T2SigQueues.dm:299:error: 'Claw Markings.dmi': cannot find file
+Skills\queues\signatures\T2SigQueues.dm:330:error: 'UltraInstinctSpark.dmi': invalid expression
+Skills\queues\signatures\T2SigQueues.dm:331:error: 'Slash - Power.dmi': invalid expression
+Skills\queues\skill tree\T1SkillTreeQueues.dm:57:error: 'dempsey.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeQueues.dm:61:error: 'BLANK.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeQueues.dm:78:error: 'Corkscrew.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeQueues.dm:203:error: 'Hit Effect Divine.dmi': cannot find file
+Skills\queues\skill tree\T1SkillTreeQueues.dm:232:error: 'Hit Effect Satsui.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeQueues.dm:17:error: 'BLANK.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeQueues.dm:22:error: 'Slash - Zero.dmi': cannot find file
+Skills\queues\skill tree\T2SkillTreeQueues.dm:45:error: 'Slash - Black.dmi': cannot find file
+ai\arcane beasts.dm:896:error: 'Emoting.dmi': cannot find file
+ai\companion.dm:11:error: 'Makyo1.dmi': cannot find file
+ai\companion.dm:11:error: =: expected a constant expression
+ai\companion.dm:485:error: 'Emoting.dmi': cannot find file
+Secrets\Nox\rekka.dm:168:error: 'root.dmi': cannot find file
+_1CodeFolder\BeastTransforms.dm:229:error: 'MoonP.dmi': cannot find file
+_1CodeFolder\Map.dm:4257:error: 'Edges.dmi': cannot find file
+_1CodeFolder\Map.dm:4261:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4265:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4269:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4273:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4277:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4281:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4285:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4289:error: 'grayrockedges.dmi': cannot find file
+_1CodeFolder\Map.dm:4292:error: 'grayrockedges.dmi': invalid expression
+_1CodeFolder\Map.dm:4295:error: 'grayrockedges.dmi': invalid expression
+_1CodeFolder\Map.dm:4298:error: 'grayrockedges.dmi': invalid expression
+_1CodeFolder\Map.dm:4301:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4305:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4309:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4313:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4317:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4321:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4325:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4329:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4333:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4337:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4341:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4345:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4349:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4353:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4357:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4361:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4365:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4369:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4373:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4377:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4381:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4385:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4389:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4393:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4397:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4401:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4405:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4409:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:4415:error: 'Surf.dmi': cannot find file
+_1CodeFolder\Map.dm:2221:error: 'NewOther.dmi': cannot find file
+_1CodeFolder\Map.dm:2380:error: 'NewObjects.dmi': cannot find file
+_1CodeFolder\Map.dm:2814:error: 'Doors.dmi': cannot find file
+_1CodeFolder\Map.dm:2818:error: 'Doors.dmi': invalid expression
+_1CodeFolder\Map.dm:2825:error: 'Lazerdoor.dmi': cannot find file
+_1CodeFolder\Map.dm:2832:error: 'LazerdoorLeft.dmi': cannot find file
+_1CodeFolder\Map.dm:2838:error: 'LazerdoorRight.dmi': cannot find file
+_1CodeFolder\Map.dm:2844:error: 'LazerdoorMiddle.dmi': cannot find file
+_1CodeFolder\Map.dm:2906:error: 'Midgar Tiles.dmi': cannot find file
+_1CodeFolder\Map.dm:2910:error: 'Midgar Tiles.dmi': invalid expression
+_1CodeFolder\Map.dm:2914:error: 'Midgar Tiles.dmi': invalid expression
+_1CodeFolder\Map.dm:2917:error: 'Midgar Tiles.dmi': invalid expression
+_1CodeFolder\Map.dm:2920:error: 'Midgar Tiles.dmi': invalid expression
+_1CodeFolder\Map.dm:2923:error: 'Midgar Tiles.dmi': invalid expression
+_1CodeFolder\Map.dm:2926:error: 'Midgar Tiles.dmi': invalid expression
+_1CodeFolder\Map.dm:2929:error: 'Midgar Tiles.dmi': invalid expression
+_1CodeFolder\Map.dm:2933:error: 'Stret Laump.dmi': cannot find file
+_1CodeFolder\Map.dm:2938:error: 'Lampost and chairs.dmi': cannot find file
+_1CodeFolder\Map.dm:2943:error: 'Lampost and chairs.dmi': invalid expression
+_1CodeFolder\Map.dm:2948:error: 'Lampost and chairs.dmi': invalid expression
+_1CodeFolder\Map.dm:2953:error: 'Lampost and chairs.dmi': invalid expression
+_1CodeFolder\Map.dm:2958:error: 'Lampost and chairs.dmi': invalid expression
+_1CodeFolder\Map.dm:2962:error: 'Lampost and chairs.dmi': invalid expression
+_1CodeFolder\Map.dm:2966:error: 'Lampost and chairs.dmi': invalid expression
+_1CodeFolder\Map.dm:2970:error: 'Lampost and chairs.dmi': invalid expression
+_1CodeFolder\Map.dm:2974:error: 'Lampost and chairs.dmi': invalid expression
+_1CodeFolder\Map.dm:2979:error: 'Lampost and chairs.dmi': invalid expression
+_1CodeFolder\Map.dm:2983:error: 'Objects.dmi': cannot find file
+_1CodeFolder\Map.dm:2988:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:2991:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:2994:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:2997:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3000:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3003:error: 'NewObjects.dmi': invalid expression
+_1CodeFolder\Map.dm:3007:error: 'ArtificalObj.dmi': cannot find file
+_1CodeFolder\Map.dm:3010:error: 'Gardening.dmi': cannot find file
+_1CodeFolder\Map.dm:3014:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3017:error: 'Lab2.dmi': cannot find file
+_1CodeFolder\Map.dm:3020:error: 'Lab2.dmi': invalid expression
+_1CodeFolder\Map.dm:3023:error: 'TurfOverlays.dmi': cannot find file
+_1CodeFolder\Map.dm:3026:error: 'TurfOverlays.dmi': invalid expression
+_1CodeFolder\Map.dm:3029:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3032:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3035:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3038:error: 'TurfOverlays.dmi': invalid expression
+_1CodeFolder\Map.dm:3041:error: 'TurfOverlays.dmi': invalid expression
+_1CodeFolder\Map.dm:3044:error: 'TurfOverlays.dmi': invalid expression
+_1CodeFolder\Map.dm:3047:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3052:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3056:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3060:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3064:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3068:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3071:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3075:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3080:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3084:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3087:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3091:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3095:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3098:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3102:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3106:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3110:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3114:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3118:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3122:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3126:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3130:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3134:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3138:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3141:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3144:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3147:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3151:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3154:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3157:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3160:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3163:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3167:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3171:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3175:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3179:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3183:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3187:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3191:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3195:error: 'Technology32x64.dmi': cannot find file
+_1CodeFolder\Map.dm:3200:error: 'Technology64x64.dmi': cannot find file
+_1CodeFolder\Map.dm:3207:error: 'Technology64x64.dmi': invalid expression
+_1CodeFolder\Map.dm:3214:error: 'Lab.dmi': cannot find file
+_1CodeFolder\Map.dm:3218:error: 'Lab.dmi': invalid expression
+_1CodeFolder\Map.dm:3222:error: 'Lab.dmi': invalid expression
+_1CodeFolder\Map.dm:3226:error: 'Lab.dmi': invalid expression
+_1CodeFolder\Map.dm:3230:error: 'Lab.dmi': invalid expression
+_1CodeFolder\Map.dm:3234:error: 'Lab.dmi': invalid expression
+_1CodeFolder\Map.dm:3238:error: 'Lab.dmi': invalid expression
+_1CodeFolder\Map.dm:3242:error: 'Lab.dmi': invalid expression
+_1CodeFolder\Map.dm:3246:error: 'ArtificalObj.dmi': invalid expression
+_1CodeFolder\Map.dm:3250:error: 'ArtificalObj.dmi': invalid expression
+_1CodeFolder\Map.dm:3254:error: 'Technology32x64.dmi': invalid expression
+_1CodeFolder\Map.dm:3259:error: 'Technology64x64.dmi': invalid expression
+_1CodeFolder\Map.dm:3265:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3269:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3273:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3277:error: 'Large_Fancy_Table_White.dmi': cannot find file
+_1CodeFolder\Map.dm:3281:error: 'Large_Fancy_Table_White.dmi': invalid expression
+_1CodeFolder\Map.dm:3285:error: 'Large_Fancy_Table_White.dmi': invalid expression
+_1CodeFolder\Map.dm:3289:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3292:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:3296:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:3300:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:3304:error: 'Edges.dmi': invalid expression
+_1CodeFolder\Map.dm:3308:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3311:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3320:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3323:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3326:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3332:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3348:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3353:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3357:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3361:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3381:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3385:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3389:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3394:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3399:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3403:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3412:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3420:error: 'LargeBed.dmi': cannot find file
+_1CodeFolder\Map.dm:3422:error: 'BedJapan.dmi': cannot find file
+_1CodeFolder\Map.dm:3433:error: 'BedJapanPink.dmi': cannot find file
+_1CodeFolder\Map.dm:3444:error: 'Pew.dmi': cannot find file
+_1CodeFolder\Map.dm:3453:error: 'Pew.dmi': invalid expression
+_1CodeFolder\Map.dm:3462:error: 'Bench.png': cannot find file
+_1CodeFolder\Map.dm:3464:error: 'Bench2.png': cannot find file
+_1CodeFolder\Map.dm:3466:error: 'BenchV.png': cannot find file
+_1CodeFolder\Map.dm:3468:error: 'BenchV2.png': cannot find file
+_1CodeFolder\Map.dm:3470:error: 'Toilet.png': cannot find file
+_1CodeFolder\Map.dm:3472:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3476:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3480:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3484:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3488:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3492:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3495:error: 'ArtificalObj.dmi': invalid expression
+_1CodeFolder\Map.dm:3498:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:3502:error: 'BasketLaundry.png': cannot find file
+_1CodeFolder\Map.dm:3506:error: 'BasketLaundryFull.png': cannot find file
+_1CodeFolder\Map.dm:3510:error: 'BasketLaundryFolded.png': cannot find file
+_1CodeFolder\Map.dm:3514:error: 'Clock2.png': cannot find file
+_1CodeFolder\Map.dm:3518:error: 'Drawers2.png': cannot find file
+_1CodeFolder\Map.dm:3524:error: 'Dryer.png': cannot find file
+_1CodeFolder\Map.dm:3528:error: 'Phone.png': cannot find file
+_1CodeFolder\Map.dm:3533:error: 'Plunger.png': cannot find file
+_1CodeFolder\Map.dm:3537:error: 'RadioStand.png': cannot find file
+_1CodeFolder\Map.dm:3541:error: 'SinkMirrorCombo.png': cannot find file
+_1CodeFolder\Map.dm:3546:error: 'Soap.png': cannot find file
+_1CodeFolder\Map.dm:3550:error: 'TowelRack.png': cannot find file
+_1CodeFolder\Map.dm:3554:error: 'Table_Lunchroom.dmi': cannot find file
+_1CodeFolder\Map.dm:3569:error: 'FloorFern.png': cannot find file
+_1CodeFolder\Map.dm:3575:error: 'TallFern.png': cannot find file
+_1CodeFolder\Map.dm:3581:error: 'FlowerFern.png': cannot find file
+_1CodeFolder\Map.dm:3587:error: 'FlowerFernRed.png': cannot find file
+_1CodeFolder\Map.dm:3593:error: 'JungleCurvedTree.png': cannot find file
+_1CodeFolder\Map.dm:3599:error: 'JungleStraightTree.png': cannot find file
+_1CodeFolder\Map.dm:3605:error: 'JungleFluffyTree.png': cannot find file
+_1CodeFolder\Map.dm:3611:error: 'JunglePalmTree.png': cannot find file
+_1CodeFolder\Map.dm:3617:error: 'JungleTrunk.png': cannot find file
+_1CodeFolder\Map.dm:3623:error: 'one.png': cannot find file
+_1CodeFolder\Map.dm:3629:error: 'two.png': cannot find file
+_1CodeFolder\Map.dm:3635:error: 'three.png': cannot find file
+_1CodeFolder\Map.dm:3641:error: 'four.png': cannot find file
+_1CodeFolder\Map.dm:3647:error: 'five.png': cannot find file
+_1CodeFolder\Map.dm:3653:error: 'six.png': cannot find file
+_1CodeFolder\Map.dm:3659:error: 'seven.png': cannot find file
+_1CodeFolder\Map.dm:3665:error: 'eight.png': cannot find file
+_1CodeFolder\Map.dm:3671:error: 'nine.png': cannot find file
+_1CodeFolder\Map.dm:3677:error: 'ten.png': cannot find file
+_1CodeFolder\Map.dm:3685:error: 'Trees.dmi': cannot find file
+_1CodeFolder\Map.dm:3711:error: 'Gardening.dmi': invalid expression
+_1CodeFolder\Map.dm:3742:error: 'Trees.dmi': invalid expression
+_1CodeFolder\Creation.dm:918:error: 'FourthFateTitleScreen.png': cannot find file
+_1CodeFolder\Creation.dm:921:error: 'ArtificalObj.dmi': cannot find file
+_1CodeFolder\Creation.dm:947:error: 'ArtificalObj.dmi': invalid expression
+_1CodeFolder\Customization.dm:387:error: 'Hair_Bald.dmi': cannot find file
+_1CodeFolder\Customization.dm:389:error: 'HairF1.dmi': cannot find file
+_1CodeFolder\Customization.dm:391:error: 'HairF2.dmi': cannot find file
+_1CodeFolder\Customization.dm:393:error: 'HairF3.dmi': cannot find file
+_1CodeFolder\Customization.dm:395:error: 'HairF4.dmi': cannot find file
+_1CodeFolder\Customization.dm:397:error: 'HairF4B.dmi': cannot find file
+_1CodeFolder\Customization.dm:399:error: _1CodeFolder\Customization.dm:403:error: _1CodeFolder\Customization.dm:407:error: _1CodeFolder\Customization.dm:413:error: _1CodeFolder\Customization.dm:427:error: _1CodeFolder\Customization.dm:429:error: _1CodeFolder\Customization.dm:433:error: _1CodeFolder\Customization.dm:437:error: _1CodeFolder\Customization.dm:441:error: _1CodeFolder\Customization.dm:445:error: _1CodeFolder\Customization.dm:449:error: _1CodeFolder\Customization.dm:459:error: _1CodeFolder\Customization.dm:463:error: _1CodeFolder\Customization.dm:467:error: _1CodeFolder\Customization.dm:469:error: _1CodeFolder\Customization.dm:473:error: _1CodeFolder\Customization.dm:477:error: _1CodeFolder\Customization.dm:481:error: cannot find fileHair24.dmi_1CodeFolder\Customization.dm:501:error: _1CodeFolder\Customization.dm:505:error: _1CodeFolder\Customization.dm:509:error: _1CodeFolder\Customization.dm:513:error: '_1CodeFolder\Customization.dm:1014:error: _1CodeFolder\Customization.dm:1018:error: _1CodeFolder\Customization.dm:1020:error: _1CodeFolder\Customization.dm:1024:error: '_1CodeFolder\Customization.dm:1040:error: _1CodeFolder\Customization.dm:1048:error: _1CodeFolder\Customization.dm:1069:error: _1CodeFolder\Customization.dm:1071:error: _1CodeFolder\Customization.dm:1073:error: _1CodeFolder\Customization.dm:1075:error: _1CodeFolder\Customization.dm:1080:error: _1CodeFolder\Customization.dm:1084:error: _1CodeFolder\Customization.dm:1090:error: _1CodeFolder\Customization.dm:1112:error: _1CodeFolder\Customization.dm:1120:error: 
+_1CodeFolder\Customization.dm:1128:error: _1CodeFolder\Customization.dm:1134:error: _1CodeFolder\Customization.dm:1140:error: _1CodeFolder\Customization.dm:1146:error: '_1CodeFolder\Customization.dm:1162:error: _1CodeFolder\Customization.dm:1168:error: ''_1CodeFolder\Customization.dm:1182:error: _1CodeFolder\Customization.dm:1186:error: _1CodeFolder\Customization.dm:1197:error: _1CodeFolder\Customization.dm:1218:error: 
+'_1CodeFolder\Customization.dm:1309:error: 'invalid expression
+_1CodeFolder\Customization.dm:1522:error: _1CodeFolder\Customization.dm:1525:error: _1CodeFolder\Customization.dm:1531:error: _1CodeFolder\Customization.dm:1537:error: _1CodeFolder\Customization.dm:1546:error: _1CodeFolder\Customization.dm:1549:error: _1CodeFolder\Customization.dm:1567:error: _1CodeFolder\hud_stack.dm:18:error: _1CodeFolder\hud_stack.dm:49:error: _1CodeFolder\hud_stack.dm:51:error: _1CodeFolder\hud_stack.dm:67:error: _1CodeFolder\hud_stack.dm:93:error: _1CodeFolder\hud_stack.dm:128:error: _1CodeFolder\KatieMap.dm:3:error: _1CodeFolder\KatieMap.dm:7:error: _1CodeFolder\KatieMap.dm:11:error: cannot find file_1CodeFolder\KatieMap.dm:115:error: _1CodeFolder\KatieMap.dm:117:error: _1CodeFolder\KatieMap.dm:121:error: _1CodeFolder\KatieMap.dm:135:error: _1CodeFolder\KatieMap.dm:139:error: _1CodeFolder\KatieMap.dm:143:error: _1CodeFolder\KatieMap.dm:147:error: _1CodeFolder\KatieMap.dm:153:error: _1CodeFolder\KatieMap.dm:155:error: _1CodeFolder\KatieMap.dm:159:error: '_1CodeFolder\KatieMap.dm:173:error: _1CodeFolder\KatieMap.dm:177:error: _1CodeFolder\KatieMap.dm:181:error: _1CodeFolder\KatieMap.dm:185:error: _1CodeFolder\KatieMap.dm:189:error: _1CodeFolder\KatieMap.dm:193:error: '_1CodeFolder\KatieMap.dm:209:error: _1CodeFolder\KatieMap.dm:213:error: _1CodeFolder\KatieMap.dm:217:error: _1CodeFolder\KatieMap.dm:221:error: _1CodeFolder\KatieMap.dm:225:error: _1CodeFolder\KatieMap.dm:229:error: _1CodeFolder\KatieMap.dm:237:error: _1CodeFolder\KatieMap.dm:239:error: cannot find file_1CodeFolder\KatieMap.dm:245:error: _1CodeFolder\KatieMap.dm:249:error: Ghetto Bed.png_1CodeFolder\KatieMap.dm:259:error: _1CodeFolder\KatieMap.dm:267:error: _1CodeFolder\KatieMap.dm:271:error: _1CodeFolder\KatieMap.dm:275:error: _1CodeFolder\KatieMap.dm:279:error: 
+'_1CodeFolder\KatieMap.dm:291:error: cannot find file_1CodeFolder\KatieMap.dm:307:error: _1CodeFolder\KatieMap.dm:311:error: _1CodeFolder\KatieMap.dm:315:error: '_1CodeFolder\KatieMap.dm:323:error: _1CodeFolder\KatieMap.dm:327:error: '_1CodeFolder\KatieMap.dm:343:error: _1CodeFolder\KatieMap.dm:347:error: _1CodeFolder\KatieMap.dm:351:error: _1CodeFolder\KatieMap.dm:355:error: _1CodeFolder\KatieMap.dm:359:error: _1CodeFolder\KatieMap.dm:363:error: '_1CodeFolder\KatieMap.dm:379:error: _1CodeFolder\KatieMap.dm:383:error: _1CodeFolder\KatieMap.dm:387:error: _1CodeFolder\KatieMap.dm:391:error: _1CodeFolder\KatieMap.dm:395:error: _1CodeFolder\KatieMap.dm:399:error: _1CodeFolder\KatieMap.dm:423:error: _1CodeFolder\KatieMap.dm:427:error: _1CodeFolder\KatieMap.dm:431:error: _1CodeFolder\KatieMap.dm:435:error: _1CodeFolder\KatieMap.dm:439:error: cannot find file_1CodeFolder\KatieMap.dm:447:error: _1CodeFolder\KatieMap.dm:459:error: '_1CodeFolder\KatieMap.dm:461:error: _1CodeFolder\KatieMap.dm:465:error: '_1CodeFolder\KatieMap.dm:471:error: _1CodeFolder\KatieMap.dm:473:error: _1CodeFolder\KatieMap.dm:485:error: _1CodeFolder\KatieMap.dm:489:error: _1CodeFolder\KatieMap.dm:493:error: _1CodeFolder\KatieMap.dm:497:error: _1CodeFolder\KatieMap.dm:501:error: _1CodeFolder\KatieMap.dm:505:error: _1CodeFolder\KatieMap.dm:509:error: _1CodeFolder\KatieMap.dm:523:error: _1CodeFolder\KatieMap.dm:527:error: _1CodeFolder\KatieMap.dm:531:error: _1CodeFolder\KatieMap.dm:535:error: _1CodeFolder\KatieMap.dm:539:error: _1CodeFolder\KatieMap.dm:543:error: _1CodeFolder\KatieMap.dm:547:error: _1CodeFolder\KatieMap.dm:559:error: _1CodeFolder\KatieMap.dm:563:error: _1CodeFolder\KatieMap.dm:567:error: _1CodeFolder\KatieMap.dm:571:error: _1CodeFolder\KatieMap.dm:575:error: _1CodeFolder\KatieMap.dm:579:error: _1CodeFolder\KatieMap.dm:583:error: _1CodeFolder\KatieMap.dm:595:error: 
+_1CodeFolder\KatieMap.dm:601:error: _1CodeFolder\KatieMap.dm:603:error: _1CodeFolder\KatieMap.dm:607:error: _1CodeFolder\KatieMap.dm:611:error: _1CodeFolder\KatieMap.dm:615:error: _1CodeFolder\KatieMap.dm:627:error: _1CodeFolder\KatieMap.dm:631:error: 
+_1CodeFolder\KatieMap.dm:639:error: _1CodeFolder\KatieMap.dm:643:error: '_1CodeFolder\KatieMap.dm:651:error: _1CodeFolder\KatieMap.dm:659:error: _1CodeFolder\KatieMap.dm:661:error: _1CodeFolder\KatieMap.dm:663:error: _1CodeFolder\KatieMap.dm:978:error: _1CodeFolder\KatieMap.dm:982:error: _1CodeFolder\KatieMap.dm:986:error: _1CodeFolder\KatieMap.dm:990:error: _1CodeFolder\KatieMap.dm:1000:error: _1CodeFolder\KatieMap.dm:1004:error: _1CodeFolder\KatieMap.dm:1008:error: _1CodeFolder\KatieMap.dm:1012:error: _1CodeFolder\KatieMap.dm:1016:error: _1CodeFolder\KatieMap.dm:1020:error: _1CodeFolder\KatieMap.dm:1024:error: _1CodeFolder\KatieMap.dm:1040:error: _1CodeFolder\KatieMap.dm:1042:error: _1CodeFolder\KatieMap.dm:1046:error: _1CodeFolder\KatieMap.dm:1050:error: _1CodeFolder\KatieMap.dm:1054:error: _1CodeFolder\KatieMap.dm:1058:error: _1CodeFolder\KatieMap.dm:1064:error: _1CodeFolder\KatieMap.dm:1082:error: _1CodeFolder\KatieMap.dm:1088:error: _1CodeFolder\KatieMap.dm:1090:error: _1CodeFolder\KatieMap.dm:1096:error: _1CodeFolder\KatieMap.dm:1100:error: _1CodeFolder\KatieMap.dm:1104:error: _1CodeFolder\KatieMap.dm:1108:error: _1CodeFolder\KatieMap.dm:1116:error: _1CodeFolder\KatieMap.dm:1120:error: _1CodeFolder\KatieMap.dm:1124:error: _1CodeFolder\KatieMap.dm:1128:error: _1CodeFolder\KatieMap.dm:1263:error: _1CodeFolder\KatieMap.dm:1267:error: _1CodeFolder\KatieMap.dm:1271:error: '_1CodeFolder\KatieMap.dm:1287:error: _1CodeFolder\KatieMap.dm:1291:error: _1CodeFolder\KatieMap.dm:1295:error: _1CodeFolder\KatieMap.dm:1297:error: _1CodeFolder\KatieMap.dm:1301:error: _1CodeFolder\KatieMap.dm:1305:error: _1CodeFolder\KatieMap.dm:1317:error: _1CodeFolder\KatieMap.dm:1321:error: cannot find file: '_1CodeFolder\KatieMap.dm:1337:error: _1CodeFolder\KatieMap.dm:1341:error: _1CodeFolder\KatieMap.dm:1353:error: _1CodeFolder\KatieMap.dm:1357:error: _1CodeFolder\KatieMap.dm:1365:error: _1CodeFolder\KatieMap.dm:1369:error: _1CodeFolder\KatieMap.dm:1373:error: _1CodeFolder\KatieMap.dm:1377:error: _1CodeFolder\KatieMap.dm:1381:error: '_1CodeFolder\KatieMap.dm:1397:error: _1CodeFolder\KatieMap.dm:1401:error: _1CodeFolder\KatieMap.dm:1405:error: _1CodeFolder\KatieMap.dm:1409:error: _1CodeFolder\KatieMap.dm:1413:error: _1CodeFolder\KatieMap.dm:1417:error: _1CodeFolder\KatieMap.dm:1429:error: _1CodeFolder\KatieMap.dm:1433:error: _1CodeFolder\KatieMap.dm:1446:error: _1CodeFolder\KatieMap.dm:1467:error: _1CodeFolder\KatieMap.dm:1494:error: : _1CodeFolder\KatieMap.dm:1560:error: 
+_1CodeFolder\KatieMap.dm:1645:error: _1CodeFolder\KatieMap.dm:2677:error: '_1CodeFolder\KnowledgeTree.dm:84:error: _1CodeFolder\Map.dm:4114:error: 
+_1CodeFolder\Map.dm:4214:error: 
+_Reworks\ai\_AISpot.dm:66:error: _Reworks\ai\minerals.dm:136:error: _Reworks\Combat\leaveBehind.dm:52:error: 'BloodRain.dmi': : _Reworks\Combat\Ooze.dm:3:error: _Reworks\Combat\Damage\Melee\extras.dm:13:error: _Reworks\Combat\Damage\Melee\extras.dm:83:error: _Reworks\Unsorted\AdminSandstorm.dm:28:error: Races\dragon\Gold.dm:2:error: Races\eldritch\Reflected.dm:243:error: : Races\half_saiyan\beastanimation.dm:19:error: 'cannot find fileSagas\UBW\UnlimitedBladeWorks.dm:10:error: Secrets\Nox\Ouroboros.dm:55:error: 'orohud.dmiSecrets\Vampire\BloodGauge.dm:52:error: Skills\projectiles\GatesOfBabylon.dm:352:error: 'SwordBlast2.dmi': cannot find file
+Secrets\_ManagementSecret.dm:12:error: secretDatum: duplicate definition
+Secrets\_ManagementSecret.dm:752:error: secretDatum: previous definition
+_1CodeFolder\_Appearance.dm:214:error: '_1CodeFolder\_Appearance.dm:215:error: _1CodeFolder\_Appearance.dm:218:error: _1CodeFolder\_Appearance.dm:245:error: _1CodeFolder\_JinxUtility.dm:537:error: 'IceCoffin.dmi': cannot find file
+_1CodeFolder\_JinxUtility.dm:3371:error: 'KenShockwave.dmi': cannot find file
+_1CodeFolder\_JinxUtility.dm:3485:error: path: duplicate definition
+Secrets\_ManagementSecret.dm:749:error: path: previous definition
+_1CodeFolder\_TransNew.dm:206:error: 'HTAura.dmi': cannot find file
+_1CodeFolder\_TransNew.dm:207:error: 'HighTension.dmi': cannot find file
+_1CodeFolder\_TransNew.dm:210:error: 'EyesHT.dmi': cannot find file
+_1CodeFolder\_TransNew.dm:349:error: 'fevKiai.dmi': cannot find file
+_1CodeFolder\_TransNew.dm:364:error: 'AvalonLight.dmi': cannot find file
+_1CodeFolder\_TransNew.dm:376:error: 'KenShockwaveGold.dmi': cannot find file
+_1CodeFolder\_TransNew.dm:425:error: 'Dark.dmi': cannot find file_1CodeFolder\_TransNew.dm:451:error: _1CodeFolder\_TransNew.dm:462:error: '_1CodeFolder\_TransNew.dm:499:error: _1CodeFolder\_TransNew.dm:523:error: _1CodeFolder\_TransNew.dm:538:error: cannot find file_1CodeFolder\BattleSystem.dm:689:error: 'ArtificalObj.dmi': cannot find file
+_1CodeFolder\BattleSystem.dm:1102:error: 'Halo.dmi': cannot find file
+_1CodeFolder\BattleSystem.dm:1136:error: 'GodGlow.dmi': cannot find file
+_1CodeFolder\BattleSystem.dm:1157:error: _1CodeFolder\BeastTransforms.dm:186:error: 'Roar.wav': cannot find file_1CodeFolder\Creation.dm:1076:error: _1CodeFolder\Customization.dm:39:error: '_1CodeFolder\Customization.dm:40:error: _1CodeFolder\Customization.dm:42:error: _1CodeFolder\Customization.dm:44:error: _1CodeFolder\Customization.dm:46:error: _1CodeFolder\Customization.dm:54:error: _1CodeFolder\Customization.dm:68:error: _1CodeFolder\Customization.dm:86:error: : _1CodeFolder\Customization.dm:110:error: _1CodeFolder\Customization.dm:162:error: '_1CodeFolder\Customization.dm:190:error: 
+'_1CodeFolder\Customization.dm:317:error: _1CodeFolder\Gains.dm:15:error: 'WaterOverlay.dmi': cannot find file
+_1CodeFolder\Gains.dm:16:error: '_1CodeFolder\Gains.dm:666:error: 'SE.dmi': cannot find file
+_1CodeFolder\Gains.dm:857:error: 'Aurora.dmi
+_1CodeFolder\NewSkillProcs.dm:12:error: 'KenShockwaveLegend.dmi': cannot find file
+_1CodeFolder\Skills_.dm:435:error: 'KenShockwave.dmi': cannot find file
+_1CodeFolder\Skills_.dm:1023:error: 'fevKiai.dmi': cannot find file
+_1CodeFolder\SkillTree.dm:504:error: KC.init: undefined proc
+_1CodeFolder\SkillTreeMerge.dm:82:error: path: duplicate definition
+_Reworks\_Standalones\Gain_Rewrite.dm:288:error: 'The Ripple.dmi': cannot find file
+_Reworks\_Standalones\Gain_Rewrite.dm:323:error: 'WaterOverlay.dmi': cannot find file
+_Reworks\_Standalones\Gain_Rewrite.dm:332:error: 'LavaTileOverlay.dmi'_Reworks\Combat\Voiding.dm:177:error: 'Injured Blood.dmi': cannot find file
+_Reworks\Combat\Voiding.dm:178:error: 'EyesDragon.dmi': _Reworks\Combat\Voiding.dm:265:error: _Reworks\Combat\Damage\Melee\animations.dm:7:error: 'fevKiai.dmi': _Reworks\Combat\Damage\Melee\Melee.dm:37:error: _Reworks\Combat\Damage\Melee\Melee.dm:922:error: 'KenShockwave.dmi': cannot find file_Reworks\Tech\magic\magicRemoval.dm:13:error: path: duplicate definition
+Effects\Effects_Specific\AnimatedEffects.dm:610:error: 'Force Field.dmi': cannot find file
+Effects\Effects_Specific\AnimatedEffects.dm:621:error: 'AvalonMode.dmi': cannot find file
+Effects\Effects_Specific\AnimatedEffects.dm:670:error: 'ice aura.dmi': cannot find file
+Races\Celestials\CelestialRacials.dm:76:error: path: duplicate definition
+Races\eldritch\eldritchGrab.dm:36:error: 'Novabolt.dmi': cannot find file
+Races\eldritch\Lunacy.dm:12:error: 'Novabolt.dmi': cannot find file
+Races\half_saiyan\beastanimation.dm:66:error: 'Cut in Overlay.dmi': cannot find file
+Races\half_saiyan\beastanimation.dm:67:error: 'Cut in Underlay-min.dmi'Races\saiyan\hellssj4animation.dm:67:error: 'HellSSJ4AnimationRock.dmi': cannot find file
+Races\saiyan\hellssj4animation.dm:87:error: Sagas\_ManagementSaga.dm:507:error: 'Hiyori.dmiSagas\_ManagementSaga.dm:507:error: Sagas\_ManagementSaga.dm:507:error: Sagas\_ManagementSaga.dm:507:error: Sagas\_ManagementSaga.dm:1330:error: /obj/Skills/Buffs/SlotlessBuffs/Dividing_Driver: undefined type path
+Sagas\_ManagementSaga.dm:1331:error: /obj/Skills/Buffs/SlotlessBuffs/Dividing_Driver: undefined type path
+Sagas\UBW\UnlimitedBladeWorks.dm:77:error: buff: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Sagas\UBW\UnlimitedBladeWorks.dm:82:error: buff.customTurfIcon: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Sagas\UBW\UnlimitedBladeWorks.dm:88:error: buff.range: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Sagas\UBW\UnlimitedBladeWorks.dm:96:error: buff.customTurfIcon: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Sagas\UBW\UnlimitedBladeWorks.dm:97:error: buff.customRoofIcon: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Sagas\UBW\UnlimitedBladeWorks.dm:98:error: buff.useShroud: Secrets\BlackFlash\skills.dm:70:error: bf: : 
+Secrets\Cursed Secret\CursedEnergy.dm:168:error: Secrets\Cursed Secret\CursedEnergy.dm:198:error: Skills\_AutoHitX.dm:5447:error: 'Night.dmi': cannot find file
+Skills\_AutoHitX.dm:5450:error: 'Rain.dmi'Skills\_AutoHitX.dm:5464:error: Skills\_AutoHitX.dm:5833:error: path: duplicate definition
+Skills\_BuffX.dm:12529:error: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion: undefined type path
+Skills\_BuffX.dm:12532:error: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion: undefined type pathSkills\_BuffX.dm:14158:error: path: duplicate definition
+Skills\_BuffX.dm:14816:error: path: duplicate definition
+Skills\_ProjectileX.dm:5137:error: 'KenShockwaveFocus.dmi': cannot find file
+Skills\_QueueX.dm:1546:error: 'KenShockwaveBloodlust.dmi': cannot find file
+Skills\_QueueX.dm:1896:error: 'KenShockwaveFocus.dmi': cannot find file
+Skills\sorted\T5\unarmed.dm:48:error: 'small_shadow.dmi': cannot find file
+_1CodeFolder\Chat&Verbs.dm:274:error: 'afk.dmi': cannot find file
+_1CodeFolder\Creation.dm:92:error: 'Emoting.dmi': cannot find file
+_1CodeFolder\Creation.dm:433:error: path: duplicate definition
+_1CodeFolder\Creation.dm:439:error: path: duplicate definition
+_Reworks\Ags\AugmentedGear.dm:105:error: 'ClothesShoes_Flat.dmi': cannot find file
+_Reworks\Ags\AugmentedGear.dm:108:error: 'Samurai_sword_3.dmi': cannot find file
+_Reworks\Ags\AugmentedGear.dm:112:error: 'DevilScale.dmi': cannot find file
+_Reworks\Ags\AugmentedGear.dm:116:error: 'Staff2.dmi'_Reworks\Combat\Damage\Melee\flow.dm:11:error: 'Namek1.dmi': cannot find file
+_Reworks\_Standalones\fastrefund.dm:35:error: path: duplicate definition
+Sagas\_ManagementSaga.dm:148:error: path: duplicate definition
+Sagas\UBW\UnlimitedBladeWorks.dm:63:error: d.demonName: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Sagas\UBW\UnlimitedBladeWorks.dm:64:error: d.customTurfIcon: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Sagas\UBW\UnlimitedBladeWorks.dm:65:error: d.customRoofIcon: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Sagas\UBW\UnlimitedBladeWorks.dm:66:error: d.useShroud: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+_1CodeFolder\_Variables.dm:279:error: 'EyesSSJ.dmi': cannot find file
+_1CodeFolder\_Variables.dm:279:error: expected a constant expression_1CodeFolder\_Variables.dm:283:error: _1CodeFolder\_Variables.dm:290:error: '_1CodeFolder\_Variables.dm:370:error: '_1CodeFolder\_Variables.dm:379:error: _1CodeFolder\_Variables.dm:444:error: _Reworks\ai\aiGain.dm:93:error: 'WaterOverlay.dmi': cannot find file
+_Reworks\ai\aiGain.dm:95:error: 'LavaTileOverlay.dmi': cannot find file
+ai\_gal ai.dm:646:error: path: duplicate definition
+ai\_gal ai.dm:1392:error: 'ai\_gal ai.dm:1879:error: 'WaterOverlay.dmi'ai\_gal ai.dm:1881:error: ai\_gal ai.dm:509:error: Secrets\_ManagementSecret.dm:750:error: path: invalid variable
+Secrets\_ManagementSecret.dm:750:error: =: expected a constant expression
+Secrets\_ManagementSecret.dm:753:error: secret.init: missing =
+Secrets\_ManagementSecret.dm:753:error: src: bad variable definition
+OldMapTilesBecauseIAmGayAndDesperate.dm:28:error: 'Underwater.dmi': cannot find file
+OldMapTilesBecauseIAmGayAndDesperate.dm:34:error: 'Dark.dmi': OldMapTilesBecauseIAmGayAndDesperate.dm:139:error: OldMapTilesBecauseIAmGayAndDesperate.dm:340:error: cannot find file_1CodeFolder\Map.dm:3943:error: _1CodeFolder\Map.dm:4007:error: _1CodeFolder\Map.dm:4089:error: _1CodeFolder\KatieMap.dm:18:error: _1CodeFolder\KatieMap.dm:20:error: _1CodeFolder\KatieMap.dm:24:error: _1CodeFolder\KatieMap.dm:28:error: FactoryFloor.png_1CodeFolder\KatieMap.dm:40:error: _1CodeFolder\KatieMap.dm:44:error: _1CodeFolder\KatieMap.dm:48:error: _1CodeFolder\KatieMap.dm:56:error: 
+_1CodeFolder\KatieMap.dm:66:error: ''_1CodeFolder\KatieMap.dm:88:error: _1CodeFolder\KatieMap.dm:92:error: _1CodeFolder\KatieMap.dm:96:error: _1CodeFolder\KatieMap.dm:100:error: _1CodeFolder\KatieMap.dm:104:error: ': _1CodeFolder\KatieMap.dm:708:error: _1CodeFolder\KatieMap.dm:722:error: _1CodeFolder\KatieMap.dm:736:error: _1CodeFolder\KatieMap.dm:750:error: cannot find file_1CodeFolder\KatieMap.dm:792:error: Heaven Wall Left Topper.png_1CodeFolder\KatieMap.dm:813:error: _1CodeFolder\KatieMap.dm:827:error: _1CodeFolder\KatieMap.dm:841:error: : _1CodeFolder\KatieMap.dm:869:error: _1CodeFolder\KatieMap.dm:911:error: Blue Roof Thin.png_1CodeFolder\KatieMap.dm:932:error: 
+_1CodeFolder\KatieMap.dm:944:error: _1CodeFolder\KatieMap.dm:953:error: _1CodeFolder\KatieMap.dm:962:error: _1CodeFolder\KatieMap.dm:974:error: _1CodeFolder\KatieMap.dm:1134:error: _1CodeFolder\KatieMap.dm:1143:error: _1CodeFolder\KatieMap.dm:1149:error: : _1CodeFolder\KatieMap.dm:1158:error: _1CodeFolder\KatieMap.dm:1164:error: '_1CodeFolder\KatieMap.dm:1188:error: _1CodeFolder\KatieMap.dm:1194:error: _1CodeFolder\KatieMap.dm:1200:error: '
+_1CodeFolder\KatieMap.dm:1221:error: _1CodeFolder\KatieMap.dm:1236:error: _1CodeFolder\KatieMap.dm:1242:error: _1CodeFolder\KatieMap.dm:1248:error: _1CodeFolder\KatieMap.dm:1254:error: _1CodeFolder\KatieMap.dm:1667:error: invalid expression_1CodeFolder\KatieMap.dm:1727:error: : invalid expression_1CodeFolder\KatieMap.dm:1841:error: _1CodeFolder\KatieMap.dm:1865:error: _1CodeFolder\KatieMap.dm:1892:error: _1CodeFolder\KatieMap.dm:1913:error: invalid expression_1CodeFolder\KatieMap.dm:2045:error: 
+: floors_4.dmi_1CodeFolder\KatieMap.dm:2129:error: _1CodeFolder\KatieMap.dm:2156:error: _1CodeFolder\KatieMap.dm:2171:error: '_1CodeFolder\KatieMap.dm:2270:error: _1CodeFolder\KatieMap.dm:2294:error: _1CodeFolder\KatieMap.dm:2321:error: : _1CodeFolder\KatieMap.dm:2372:error: _1CodeFolder\KatieMap.dm:2396:error: '_1CodeFolder\KatieMap.dm:2492:error: _1CodeFolder\KatieMap.dm:2519:error: _1CodeFolder\KatieMap.dm:2546:error: floors_4.dmi_1CodeFolder\KatieMap.dm:2606:error: _1CodeFolder\KatieMap.dm:2636:error: _1CodeFolder\KatieMap.dm:2762:error: _1CodeFolder\KatieMap.dm:2826:error: _1CodeFolder\KatieMap.dm:2882:error: invalid expression_1CodeFolder\KatieMap.dm:2994:error: _1CodeFolder\KatieMap.dm:3058:error: _1CodeFolder\KatieMap.dm:3114:error: _1CodeFolder\Map.dm:261:error: _1CodeFolder\Map.dm:406:error: _1CodeFolder\Map.dm:432:error: _1CodeFolder\Map.dm:477:error: invalid expression_1CodeFolder\Map.dm:541:error: _1CodeFolder\Map.dm:581:error: '_1CodeFolder\Map.dm:722:error: _1CodeFolder\Map.dm:726:error: _1CodeFolder\Map.dm:734:error: _1CodeFolder\Map.dm:742:error: _1CodeFolder\Map.dm:746:error: '_1CodeFolder\Map.dm:770:error: _1CodeFolder\Map.dm:774:error: _1CodeFolder\Map.dm:782:error: _1CodeFolder\Map.dm:790:error: _1CodeFolder\Map.dm:798:error: _1CodeFolder\Map.dm:817:error: _1CodeFolder\Map.dm:847:error: _1CodeFolder\Map.dm:914:error: _1CodeFolder\Map.dm:935:error: _1CodeFolder\Map.dm:962:error: _1CodeFolder\Map.dm:981:error: _1CodeFolder\Map.dm:1005:error: _1CodeFolder\Map.dm:1035:error: 'invalid expressioninvalid expressioninvalid expression_1CodeFolder\Map.dm:1181:error: _1CodeFolder\Map.dm:1197:error: _1CodeFolder\Map.dm:1235:error: _1CodeFolder\Map.dm:1271:error: : _1CodeFolder\Map.dm:1385:error: _1CodeFolder\Map.dm:1421:error: _1CodeFolder\Map.dm:1501:error: _1CodeFolder\Map.dm:1670:error: _1CodeFolder\Map.dm:1802:error: ': _1CodeFolder\Map.dm:1924:error: _1CodeFolder\Map.dm:1963:error: _1CodeFolder\Map.dm:1970:error: _1CodeFolder\Map.dm:2032:error: _1CodeFolder\Map.dm:2058:error: _1CodeFolder\Map.dm:2094:error: 'Races\dragon\water.dm:53:error: 'Secrets\hats\datums\makespace.dm:109:error: _1CodeFolder\_World.dm:233:error: 'Say Spark.dmi': cannot find file
+_Reworks\Chat_Rework\communication_rework.dm:272:error: 'Emoting.dmi': cannot find file
+Races\demon\Influence.dm:4:error: 'LavaRock2.dmi': cannot find file
+Races\demon\Influence.dm:4:error: =: expected a constant expression
+_Reworks\_Standalones\RPFlags.dm:5:error: 'skilltree.dmi': cannot find file
+_Reworks\ai\_AISpot.dm:484:error: 'KnightGuard.dmi': cannot find file
+_Reworks\ai\_AISpot.dm:491:error: 'Red_Slime.dmi': cannot find file
+_Reworks\ai\_AISpot.dm:499:error: 'Komfty Kobold.dmi': cannot find file
+_Reworks\ai\_AISpot.dm:507:error: 'Blue_Zora.dmi': cannot find file
+_Reworks\ai\_AISpot.dm:518:error: 'GajalakaWild.dmi': cannot find file
+_Reworks\ai\_AISpot.dm:526:error: 'GajalakaWild.dmi': '_Reworks\ai\_AISpot.dm:606:error: _Reworks\ai\_AISpot.dm:631:error: _Reworks\ai\_AISpot.dm:631:error: _Reworks\ai\_AISpot.dm:642:error: _Reworks\ai\_AISpot.dm:676:error: _Reworks\ai\_AISpot.dm:689:error: _Reworks\ai\_AISpot.dm:689:error: _Reworks\ai\_AISpot.dm:702:error: _Reworks\ai\_AISpot.dm:767:error: _Reworks\ai\_AISpot.dm:803:error: : _Reworks\ai\_AISpot.dm:875:error: ai\_gal ai.dm:199:error: 'Green Dragon.dmi': cannot find file
+ai\_gal ai.dm:200:error: 'Blue Dragon.dmi': cannot find file
+ai\_gal ai.dm:201:error: 'Crystal1.dmi': cannot find file
+ai\_gal ai.dm:202:error: 'Crystal2.dmi': cannot find file
+ai\_gal ai.dm:203:error: 'Fairy1.dmi': cannot find file
+ai\_gal ai.dm:204:error: 'Fairy2.dmi': cannot find file
+ai\_gal ai.dm:205:error: 'Fairy3.dmi': cannot find file
+ai\_gal ai.dm:206:error: 'Snake.dmi': cannot find file
+ai\_gal ai.dm:207:error: 'Red Dragon.dmi'ai\_gal ai.dm:208:error: ai\_gal ai.dm:214:error: ai\_gal ai.dm:217:error: ai\_gal ai.dm:219:error: Races\races.dm:202:error: 'frisky-male_black_brown.dmi': cannot find file
+Races\races.dm:202:error: 'frisky-male_dark_brown.dmi': cannot find file
+Races\races.dm:202:error: 'frisky-male_pale_brown.dmi': cannot find file
+Races\races.dm:202:error: 'frisky-male_tan_brown.dmi': cannot find file
+Races\races.dm:202:error: 'frisky-male_white_brown.dmi': cannot find file
+Races\races.dm:204:error: 'frisky-femmale_black_brown.dmi': cannot find file
+Races\races.dm:204:error: 'frisky-femmale_dark_brown.dmi': cannot find file
+Races\races.dm:204:error: 'frisky-femmale_pale_brown.dmi': cannot find file
+Races\races.dm:204:error: 'frisky-femmale_tan_brown.dmi': cannot find file
+Races\races.dm:204:error: 'frisky-femmale_white_brown.dmi': cannot find file
+Races\Android\race.dm:5:error: 'Android.png': cannot find file
+Races\Angels\race.dm:5:error: 'Angels.png': cannot find file
+Races\beastkin\race.dm:7:error: 'Monstrous.png': cannot find file
+Races\Celestials\race.dm:5:error: 'Celestial.png': cannot find file
+Races\changeling\race.dm:5:error: 'Chilled1.dmi': cannot find file
+Races\changeling\race.dm:8:error: 'Changeling.png': cannot find file
+Races\demi_fiend\race.dm:5:error: 'Makaioshins.png': cannot find file
+Races\demon\race.dm:5:error: 'Demon.png': cannot find file
+Races\dragon\race.dm:5:error: 'Dragon.png': cannot find file
+Races\eldritch\race.dm:10:error: 'Eldritch.png': cannot find file
+Races\eldritch\race.dm:35:error: user.giveSecret: undefined proc
+Races\Fae\race.dm:5:error: 'Fae.png': cannot find file
+Races\gajalaka\race.dm:4:error: 'Gaja EX.dmi': cannot find file
+Races\gajalaka\race.dm:6:error: Races\half_saiyan\race.dm:6:error: Races\high_faoroan\race.dm:8:error: Races\high_faoroan\race.dm:8:error: Races\high_faoroan\race.dm:9:error: Races\high_faoroan\race.dm:9:error: Races\human\race.dm:5:error: Races\majin\race.dm:5:error: Races\Namekian\race.dm:4:error: Races\saiyan\race.dm:5:error: Races\Android\transformations.dm:4:error: 'AurasBig.dmi': cannot find fileRaces\Celestials\transformations.dm:61:error: Races\Celestials\transformations.dm:242:error: ': Races\Celestials\transformations.dm:280:error: Races\changeling\transformations.dm:28:error: ': Races\half_saiyan\transformations.dm:30:error: 'Races\human\transformations.dm:20:error: Races\human\transformations.dm:71:error: Races\human\transformations.dm:113:error: Races\majin\transformations.dm:7:error: Races\Makaioshins\transformations.dm:88:error: Races\Namekian\transformations.dm:4:error: Races\Namekian\transformations.dm:66:error: Races\nobody\transformations.dm:9:error: Races\nobody\transformations.dm:127:error: Races\saiyan\transformations.dm:136:error: Races\saiyan\transformations.dm:133:error: 'Races\saiyan\transformations.dm:355:error: Races\saiyan\transformations.dm:356:error: 'saiyantail-wrapped_ssj4.dmi'Races\saiyan\transformations.dm:562:error: Races\saiyan\transformations.dm:697:error: invalid expressionRaces\saiyan\transformations.dm:907:error: Races\saiyan\transformations_hellspawn.dm:129:error: Races\saiyan\transformations_hellspawn.dm:192:error: _Reworks\Unsorted\AdminSandstorm.dm:4:error: 'sandstorm.dmi': invalid expression
+Races\half_saiyan\emitters.dm:2:error: 'testElec.dmi': cannot find file
+Races\half_saiyan\emitters.dm:19:error: 'turq_haze.dmi': cannot find file
+Sagas\Rinnegan\msDebuffs.dm:23:error: 'CHECKMATE2.dmi': cannot find file
+Skills\projectiles\GatesOfBabylon.dm:16:error: 'particle.dmi': Effects\_Effects.dm:615:error: 'KenShockwave.dmi': invalid expression
+Skills\projectiles\GatesOfBabylon.dm:453:error: DL: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Lock
+Skills\projectiles\GatesOfBabylon.dm:454:error: DL: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Lock
+Skills\projectiles\GatesOfBabylon.dm:455:error: DL: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Lock
+Skills\projectiles\GatesOfBabylon.dm:456:error: DL.SlotlessOn: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Lock
+Skills\projectiles\GatesOfBabylon.dm:457:error: DL: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Lock
+Skills\projectiles\GatesOfBabylon.dm:458:error: DL.TimerLimit: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Lock
+Skills\projectiles\GatesOfBabylon.dm:459:error: DL: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Lock
+Skills\projectiles\GatesOfBabylon.dm:452:error: DL: unknown variable type
+Skills\projectiles\GatesOfBabylon.dm:494:error: dex: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Skills\projectiles\GatesOfBabylon.dm:494:error: dex.SlotlessOn: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Skills\projectiles\GatesOfBabylon.dm:495:error: dex.Trigger: undefined type: /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion
+Skills\projectiles\GatesOfBabylon.dm:493:error: dex: unknown variable type
+_1CodeFolder\ItemsTech.dm:183:error: 'Soap.png': invalid expression
+_1CodeFolder\ItemsTech.dm:227:error: 'Doors.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:236:error: 'Doors.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:631:error: _1CodeFolder\ItemsTech.dm:748:error: _1CodeFolder\ItemsTech.dm:1321:error: 'Tech.dmi'invalid expression_1CodeFolder\ItemsTech.dm:1906:error: 'security.dmi_1CodeFolder\ItemsTech.dm:2000:error: _1CodeFolder\ItemsTech.dm:2032:error: _1CodeFolder\ItemsTech.dm:2441:error: '_1CodeFolder\Items.dm:478:error: 'Foods.dmi': invalid expression
+_1CodeFolder\Items.dm:833:error: 'ArmorLight-White.dmi': invalid expression
+_1CodeFolder\Items.dm:835:error: 'ArmorBalanced-White.dmi': invalid expression
+_1CodeFolder\Items.dm:990:error: _1CodeFolder\Items.dm:1122:error: 'Races\Angels\AngelRacials.dm:154:error: '_1CodeFolder\ItemsTech.dm:3090:error: _1CodeFolder\ItemsTech.dm:3414:error: _1CodeFolder\ItemsTech.dm:3932:error: usr.giveSecret_1CodeFolder\ItemsWizardry.dm:1057:error: 'enchantmenticons.dmi': _1CodeFolder\ItemsWizardry.dm:2260:error: 'Lab.dmi': invalid expression
+_1CodeFolder\ItemsWizardry.dm:2535:error: Secrets\ArsGoetia.dm:30:error: usr.giveSecret: undefined proc
+Secrets\ArsGoetia.dm:56:error: usr.giveSecret: undefined proc
+OldMapTilesBecauseIAmGayAndDesperate.dm:247:error: 'Tech.dmi: Effects\_Effects.dm:537:error: _Reworks\Combat\Skills\debuffs.dm:118:error: 'Bleed.dmi': Races\Angels\MentorUI\SlotlessUI.dm:37:error: 'AuraMysticBig.dmi'Races\Angels\MentorUI\SlotlessUI.dm:85:error: Races\Angels\MentorUI\SlotlessUI.dm:107:error: Races\yokai\moves.dm:36:error: 'mist.dmi': invalid expression
+Skills\buffs\autonomous\queuebuff\T0Finishers.dm:11:error: 'SweatDrop.dmi': invalid expression
+Skills\buffs\autonomous\queuebuff\T0Finishers.dm:21:error: 'SweatDrop.dmi'Skills\buffs\autonomous\queuebuff\T0Finishers.dm:108:error: Skills\buffs\autonomous\queuebuff\T1Finishers.dm:31:error: Skills\buffs\autonomous\queuebuff\T1Finishers.dm:62:error: Skills\buffs\autonomous\queuebuff\T1Finishers.dm:105:error: SweatDrop.dmiSkills\buffs\autonomous\queuebuff\T3Finisher.dm:52:error: 'SweatDrop.dmiSkills\_BuffX.dm:10809:error: 'Stun.dmiSkills\_BuffX.dm:10935:error: : : Skills\buffs\autonomous\queuebuff\UIHybridFinishers-queuebuff.dm:61:error: Sagas\Rinnegan\msDebuffs.dm:112:error: 'SweatDrop.dmiSkills\_BuffX.dm:11354:error: 'DarkKiai.dmi': invalid expression
+Skills\_BuffX.dm:11409:error: 'AntiAura.dmi'Skills\_BuffX.dm:11490:error: Skills\_BuffX.dm:11513:error: Skills\_BuffX.dm:11567:error: 
+Skills\_BuffX.dm:5265:error: 'Magic Time circle.dmi': invalid expression
+Skills\_BuffX.dm:5868:error: 'Android Shield.dmi': invalid expression
+Skills\_BuffX.dm:6066:error: 'Bubble Shield.dmi': invalid expression
+Skills\_BuffX.dm:6183:error: 'SparkleGreen.dmi': invalid expression
+Skills\_BuffX.dm:6244:error: '_Reworks\Tech\LightsaberBuffs.dm:79:error: 'LightsaberBlue.dmi_Reworks\Tech\LightsaberBuffs.dm:99:error: Skills\_BuffX.dm:6307:error: Skills\_BuffX.dm:6403:error: 'Skills\_BuffX.dm:6485:error: Races\demi_fiend\demifiendskills.dm:763:error: 'SparkleYellow.dmi': invalid expression
+Races\demi_fiend\demifiendskills.dm:835:error: 'SparkleYellow.dmi': invalid expression
+Skills\_BuffX.dm:6940:error: 'Azure Crest.dmi': invalid expression
+Skills\_BuffX.dm:6963:error: 'Azure Crest.dmi': invalid expression
+Skills\_BuffX.dm:7137:error: 'KenShockwaveGold.dmi': invalid expression
+Secrets\Spiral\SpiralWarrior.dm:45:error: 'Spiral_Hitspark.dmi': invalid expression
+Secrets\Spiral\SpiralWarrior.dm:72:error: 'SparkleRed.dmi': invalid expression
+Secrets\Spiral\SpiralWarrior.dm:73:error: 'Spiral_Hitspark.dmi': invalid expression
+Secrets\Spiral\SpiralWarrior.dm:74:error: 'Skills\_BuffX.dm:9868:error: Skills\_BuffX.dm:4394:error: 'KenShockwaveDivine.dmi'Skills\_BuffX.dm:4485:error: Skills\_BuffX.dm:4533:error: 'Skills\_BuffX.dm:4899:error: 'Ki-Blade.dmi': invalid expressionSkills\_BuffX.dm:4932:error: Skills\_BuffX.dm:7261:error: 'KenShockwaveBloodlust.dmi': invalid expression
+Skills\_BuffX.dm:7817:error: 'Aether Blade.dmi': invalid expression
+Skills\_BuffX.dm:7994:error: 'DarkKiai.dmi': invalid expressionSkills\_BuffX.dm:8083:error: Skills\_BuffX.dm:8394:error: 'KenShockwaveBloodlust.dmi': invalid expressionSkills\_BuffX.dm:9149:error: 'Android Shield.dmi': invalid expressionSkills\_BuffX.dm:9240:error: Skills\_BuffX.dm:9269:error: Skills\_BuffX.dm:9680:error: 'Hit Effect Ripple.dmi'Skills\_BuffX.dm:9746:error: Sagas\Kamui\Junketsu.dm:245:error: 'SparkleBlue.dmi': invalid expression
+Sagas\Kamui\Senketsu.dm:143:error: 'SparkleRed.dmi': Sagas\Kamui\Senketsu.dm:171:error: Skills\_BuffX.dm:1530:error: 'KenShockwaveGold.dmi'Skills\_BuffX.dm:1531:error: Skills\_BuffX.dm:1578:error: Skills\_BuffX.dm:1653:error: 'Skills\_BuffX.dm:2072:error: 'zekkai.dmi': Skills\_BuffX.dm:2197:error: 'Skills\_BuffX.dm:2250:error: Skills\_BuffX.dm:2425:error: : Skills\_BuffX.dm:2511:error: Skills\_BuffX.dm:2587:error: Skills\_BuffX.dm:2865:error: 'DarknessFlame.dmi'Skills\_BuffX.dm:3026:error: 'Skills\_BuffX.dm:3048:error: 'BLANK.dmi': invalid expression
+Skills\_BuffX.dm:3761:error: 'SparkleRed.dmi': Skills\_BuffX.dm:3806:error: 'Skills\_BuffX.dm:3857:error: Skills\_BuffX.dm:3910:error: Races\Angels\AngelRacials.dm:194:error: 'AuraMysticBig.dmi'Races\Angels\AngelRacials.dm:250:error: 'Skills\_NuMartialArts.dm:451:error: 'BLANK.dmi': invalid expression
+Skills\_NuMartialArts.dm:572:error: 'DarknessGlow.dmi': invalid expression
+Secrets\Ultra Instinct\NonAngels.dm:31:error: 'AuraMysticBig.dmi': invalid expression
+Secrets\Ultra Instinct\NonAngels.dm:87:error: 'GentleDivine.dmi': invalid expression
+Skills\styles\hybrid\t1UIhybridstyles.dm:129:error: 'AuraMysticBig.dmi': invalid expression
+Skills\styles\hybrid\t1UIhybridstyles.dm:185:error: 'AuraMysticBig.dmi': Skills\styles\hybrid\t1UIhybridstyles.dm:251:error: Skills\styles\hybrid\UIhybridstyles.dm:103:error: 'Skills\styles\hybrid\UIhybridstyles.dm:160:error: Skills\styles\mystic\t1mysticstyles.dm:38:error: ''Sagas\Kamui\Junketsu.dm:8:error: 'SparkleBlue.dmi': invalid expression
+Sagas\Kamui\Senketsu.dm:16:error: 'SparkleRed.dmi': Skills\_BuffX.dm:640:error: Skills\_BuffX.dm:740:error: ': Skills\_BuffX.dm:807:error: Skills\_BuffX.dm:969:error: 'BLANK.dmi'Sagas\PotHRebirth\RebirthSkills.dm:1049:error: 'BlackShard.dmi': invalid expressionSagas\PotHRebirth\RebirthSkills.dm:1130:error: Skills\_BuffX.dm:193:error: 'BLANK.dmi'_1CodeFolder\Skills.dm:372:error: 'Skillz.dmi_1CodeFolder\Skills.dm:385:error: Races\eldritch\Reflected.dm:760:error: Target.giveSecret: undefined proc
+_Reworks\Magic\SpellSlots\dark\DarkSpellSlots.dm:56:error: 'Hit Effect Dark.dmi': invalid expression
+_Reworks\Magic\SpellSlots\light\LightSpellSlots.dm:47:error: 'AvalonLight.dmi': invalid expression
+Races\demon\Magic\Dark\Darkmagic.dm:43:error: 'shadowflameball.dmi': invalid expression
+Races\demon\Magic\Dark\Darkmagic.dm:44:error: 'shadowfire.dmi': invalid expression
+Skills\_ProjectileX.dm:3660:error: 'Fireball.dmi': invalid expression
+Skills\_ProjectileX.dm:3685:error: 'Fireball.dmi': invalid expression
+Skills\sorted\T5\magic.dm:51:error: 'Boulder Normal.dmi': invalid expression
+_Reworks\Magic\SpellSlots\fire\FireSpellSlots.dm:77:error: 'Fireball.dmi': invalid expression
+Skills\_ProjectileX.dm:4229:error: Skills\_ProjectileX.dm:4290:error: Skills\_ProjectileX.dm:4361:error: Skills\_ProjectileX.dm:4471:error: Skills\_ProjectileX.dm:4551:error: ai\arcane beasts.dm:437:error: 'Skills\_ProjectileX.dm:3542:error: 'Skills\_ProjectileX.dm:3935:error: Skills\_ProjectileX.dm:3967:error: Skills\_ProjectileX.dm:4057:error: Sagas\PotHRebirth\RebirthSkills.dm:856:error: Sagas\Weapon Soul\Caledfwlch\Caledfwlch.dm:130:error: Skills\_ProjectileX.dm:238:error: Skills\_ProjectileX.dm:544:error: Skills\_ProjectileX.dm:837:error: Skills\_ProjectileX.dm:927:error: invalid expressionSkills\_ProjectileX.dm:1112:error: Skills\_ProjectileX.dm:1234:error: Skills\_ProjectileX.dm:1520:error: Skills\_ProjectileX.dm:1690:error: Skills\_ProjectileX.dm:1749:error: Skills\_ProjectileX.dm:1831:error: Skills\_ProjectileX.dm:1984:error: Skills\_ProjectileX.dm:2165:error: Skills\_ProjectileX.dm:2258:error: : Skills\_ProjectileX.dm:2786:error: Skills\_ProjectileX.dm:2944:error: Skills\_ProjectileX.dm:3038:error: Skills\_ProjectileX.dm:3178:error: Skills\_ProjectileX.dm:3425:error: Skills\projectiles\secretknife.dm:63:error: Skills\projectiles\secretknife.dm:254:error: Skills\styles\mystic\mysticskills.dm:278:error: : _Reworks\Magic\SpellSlots\space\SpaceSpellSlots.dm:44:error: Skills\_AutoHitX.dm:2797:error: 'SnowBurst2.dmiSkills\_AutoHitX.dm:3131:error: ''Skills\_AutoHitX.dm:3323:error: Races\demi_fiend\demifiendskills.dm:478:error: 'LightningBreath.dmiRaces\demi_fiend\demifiendskills.dm:627:error: Races\demi_fiend\demifiendskills.dm:724:error: Races\demi_fiend\demifiendskills.dm:1152:error: Races\demi_fiend\demifiendskills.dm:1218:error: 
+Races\demi_fiend\demifiendskills.dm:1407:error: Impacts VFX1.dmiRaces\Elf\racials.dm:65:error: Races\Makaioshins\MakaioshinRacials.dm:68:error: 'Sagas\Finn\FinnAttacks.dm:84:error: Sagas\Hiten Mitsurugi\HitenSkills.dm:202:error: Sagas\NewKeyblades\KeybladeSkills.dm:106:error: ''Sagas\PotHRebirth\RebirthSkills.dm:405:error: Sagas\Weapon Soul\Dainsleif\Dainsleif.dm:141:error: Secrets\Nox\rekka.dm:71:error: 'ouroborostile.dmi'
+Skills\_AutoHitX.dm:1010:error: Skills\_AutoHitX.dm:1123:error: Skills\_AutoHitX.dm:1226:error: : Skills\_AutoHitX.dm:1416:error: Skills\_AutoHitX.dm:1654:error: Skills\_AutoHitX.dm:2119:error: Skills\_AutoHitX.dm:2224:error: Skills\_AutoHitX.dm:2370:error: Skills\_AutoHitX.dm:2628:error: Skills\_AutoHitX.dm:3532:error: Skills\_AutoHitX.dm:3569:error: Skills\_AutoHitX.dm:3651:error: Skills\_AutoHitX.dm:4085:error: Skills\_AutoHitX.dm:4219:error: Skills\_AutoHitX.dm:4309:error: 'Skills\_AutoHitX.dm:4496:error: 
+': Skills\queues\gear\SoulEater.dm:70:error: 'Skills\queues\skill tree\T1SkillTreeAutoHits.dm:146:error: Skills\queues\skill tree\T1SkillTreeAutoHits.dm:200:error: Skills\queues\skill tree\T1SkillTreeAutoHits.dm:296:error: Skills\queues\skill tree\T2SkillTreeAutoHits.dm:113:error: Skills\queues\skill tree\T2SkillTreeAutoHits.dm:350:error: 
+Skills\styles\mystic\mysticskills.dm:60:error: ai\arcane beasts.dm:720:error: Races\nobody\DesperationSkills.dm:183:error: '
+Skills\queues\finishers\T1Finishers.dm:116:error: 'Skills\queues\finishers\T2Finishers.dm:182:error: Slash_Multi.dmiSkills\queues\gear\SoulEater.dm:240:error: Sagas\Hiten Mitsurugi\HitenSkills.dm:89:error: BLANK.dmiSecrets\Cursed Secret\CursedTechniques.dm:64:error: Secrets\hats\hatskills.dm:54:error: Skills\_QueueX.dm:1040:error: 'fevExplosion.dmi': invalid expression
+Skills\_QueueX.dm:1077:error: 'Skills\_QueueX.dm:1187:error: Skills\_QueueX.dm:1295:error: 'Skills\queues\sagas\Keyblade\Keyblade.dm:64:error: 'Skills\queues\secrets\SageMode.dm:42:error: 'Rasengan_DBR.dmi'Skills\queues\signatures\T1SigQueues.dm:187:error: Skills\queues\signatures\T2SigQueues.dm:266:error: _1CodeFolder\Map.dm:2859:error: 'Doors.dmi': invalid expression
+_1CodeFolder\Map.dm:3337:error: 'Objects.dmi': invalid expression
+_1CodeFolder\Map.dm:4100:error: 'Lab.dmi': invalid expression
+_1CodeFolder\Map.dm:4244:error: 'TrainInterior.dmi': invalid expression
+Sagas\UBW\UnlimitedBladeWorks.dm:22:error: 'Roofs.dmi': invalid expression
+Skills\projectiles\GatesOfBabylon.dm:673:error: 'Hellnova.dmi': invalid expression
+_1CodeFolder\_TransNew.dm:609:error: 'Dark.dmi': invalid expression
+_1CodeFolder\BattleSystem.dm:2232:error: P.giveSecret: undefined proc
+_1CodeFolder\GainProcsOld.dm:12:error: ce: undefined type: /SecretInformation/CursedEnergy
+_1CodeFolder\GainProcsOld.dm:12:error: ce.currentTier: undefined type: /SecretInformation/CursedEnergy
+_1CodeFolder\GainProcsOld.dm:11:warning (unused_var): ce: variable defined but not used
+_1CodeFolder\Gains.dm:221:error: bf.BlackFlashChance: undefined type: /SecretInformation/BlackFlash
+_1CodeFolder\Gains.dm:221:error: bf.BlackFlashBaseChance: undefined type: /SecretInformation/BlackFlash
+_1CodeFolder\Gains.dm:222:error: bf.BlackFlashChance: undefined type: /SecretInformation/BlackFlash
+_1CodeFolder\Gains.dm:222:error: bf.BlackFlashBaseChance: undefined type: /SecretInformation/BlackFlash
+_1CodeFolder\Gains.dm:220:warning (unused_var): bf: variable defined but not used
+_Reworks\Combat\Damage\Melee\Melee.dm:934:error: path: duplicate definition
+Secrets\BlackFlash\skills.dm:75:warning (unused_var): bf: variable defined but not used
+Secrets\Cursed Secret\CursedEnergy.dm:96:warning (unused_var): ce: variable defined but not used
+Secrets\Cursed Secret\CursedEnergy.dm:125:warning (unused_var): ce2: variable defined but not used
+Secrets\Cursed Secret\CursedEnergy.dm:138:error: gf.usable: undefined proc
+Secrets\Cursed Secret\CursedEnergy.dm:139:error: gf.useSkill: undefined proc
+Secrets\Cursed Secret\CursedEnergy.dm:143:error: c.usable: undefined proc
+Secrets\Cursed Secret\CursedEnergy.dm:144:error: c.useSkill: undefined proc
+Secrets\Cursed Secret\CursedEnergy.dm:131:warning (unused_var): ce: variable defined but not used
+Secrets\Cursed Secret\CursedEnergy.dm:156:error: sd.usable: undefined proc
+Secrets\Cursed Secret\CursedEnergy.dm:157:error: sd.useSkill: undefined proc
+Secrets\Cursed Secret\CursedEnergy.dm:161:error: d.usable: undefined proc
+Secrets\Cursed Secret\CursedEnergy.dm:162:error: d.useSkill: undefined proc
+Secrets\Cursed Secret\CursedEnergy.dm:149:warning (unused_var): ce: variable defined but not used
+Secrets\Cursed Secret\CursedEnergy.dm:167:warning (unused_var): ce: variable defined but not used
+Secrets\Cursed Secret\CursedEnergy.dm:202:error: src.buffs: undefined var
+Secrets\Cursed Secret\CursedEnergy.dm:206:error: src.buffs: undefined var
+Secrets\Cursed Secret\CursedEnergy.dm:183:warning (unused_var): ce: variable defined but not used
+Secrets\Cursed Secret\CursedEnergy.dm:202:warning (unused_var): injury: variable defined but not used
+Skills\_QueueX.dm:1559:error: path: duplicate definition
+Skills\_QueueX.dm:1728:error: path: duplicate definition
+Skills\_QueueX.dm:1735:error: path: duplicate definition
+Skills\_QueueX.dm:1767:error: path: duplicate definition
+_Reworks\Ags\AugmentedGear.dm:99:error: path: duplicate definition
+_1CodeFolder\Admin.dm:344:error: path: duplicate definition
+Sagas\_ManagementSaga.dm:172:error: path: duplicate definition
+Sagas\UBW\UnlimitedBladeWorks.dm:62:error: d: unknown variable type
+Secrets\_ManagementSecret.dm:767:error: path: duplicate definition
+Secrets\_ManagementSecret.dm:772:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:775:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:778:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:782:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:786:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:790:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:804:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:807:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:810:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:813:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:816:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:819:error: P.giveSecret: undefined proc
+Secrets\_ManagementSecret.dm:822:error: P.giveSecret: undefined proc
+ai\_gal ai.dm:623:error: path: duplicate definition
+ai\_gal ai.dm:631:error: path: duplicate definition
+ai\_gal ai.dm:638:error: path: duplicate definition
+Secrets\_ManagementSecret.dm:751:error: path: invalid variable
+Secrets\_ManagementSecret.dm:751:error: =: expected a constant expression
+Secrets\_ManagementSecret.dm:752:error: secret: invalid variable
+Secrets\_ManagementSecret.dm:752:error: =: expected a constant expression
+OldMapTilesBecauseIAmGayAndDesperate.dm:59:error: 'Underwater.dmi': invalid expression
+OldMapTilesBecauseIAmGayAndDesperate.dm:65:error: 'Dark.dmi': invalid expression
+OldMapTilesBecauseIAmGayAndDesperate.dm:108:error: 'Underwater.dmi': invalid expression
+OldMapTilesBecauseIAmGayAndDesperate.dm:114:error: 'Dark.dmi': invalid expression
+OldMapTilesBecauseIAmGayAndDesperate.dm:161:error: 'Underwater.dmi': invalid expression
+OldMapTilesBecauseIAmGayAndDesperate.dm:166:error: 'Dark.dmi': invalid expression
+_1CodeFolder\Map.dm:3853:error: 'Special.dmi': invalid expression
+_1CodeFolder\Map.dm:3869:error: 'StarPixel.dmi': invalid expression
+_1CodeFolder\Map.dm:3917:error: 'Ichor Turf.dmi': invalid expression
+_1CodeFolder\Map.dm:3921:error: 'Ichor Turf.dmi': invalid expression
+_1CodeFolder\Map.dm:3938:error: 'Ichor Turf.dmi': invalid expression
+_1CodeFolder\Map.dm:3949:error: 'Train Large.dmi': invalid expression
+_1CodeFolder\Map.dm:3955:error: 'Train Large.dmi': invalid expression
+_1CodeFolder\Map.dm:3961:error: 'Train Large.dmi': invalid expression
+_1CodeFolder\Map.dm:3967:error: 'TrainInterior.dmi': invalid expression
+_1CodeFolder\Map.dm:3973:error: 'TrainInterior.dmi': invalid expression
+_1CodeFolder\Map.dm:3978:error: 'TrainInterior.dmi': invalid expression
+_1CodeFolder\Map.dm:3983:error: 'TrainInterior.dmi': invalid expression
+_1CodeFolder\Map.dm:3989:error: 'TrainInterior.dmi': invalid expression
+_1CodeFolder\Map.dm:3995:error: 'TrainInterior.dmi': invalid expression
+_1CodeFolder\Map.dm:4001:error: 'TrainInterior.dmi': invalid expression
+_1CodeFolder\Map.dm:4012:error: 'trackanim.dmi': invalid expression
+_1CodeFolder\Map.dm:4020:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:4062:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:4026:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:4056:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:4032:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:4038:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:4044:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:4050:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:4068:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:4075:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:4082:error: 'Jenova stuff.dmi': invalid expression
+_1CodeFolder\Map.dm:1202:error: 'Walls.dmi': invalid expression
+_1CodeFolder\Map.dm:1227:error: 'Walls.dmi': invalid expression
+_1CodeFolder\Map.dm:1324:error: 'Walls.dmi': invalid expression_1CodeFolder\Map.dm:1475:error: _1CodeFolder\Map.dm:1560:error: _1CodeFolder\Map.dm:1625:error: _1CodeFolder\Map.dm:1725:error: _1CodeFolder\Map.dm:1791:error: _1CodeFolder\ItemsTech.dm:890:error: 'Lab.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:956:error: 'Lab.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:1022:error: 'Lab.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:1178:error: 'Lab.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:1207:error: 'Lab.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:1571:error: 'Tech.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:1656:error: 'device.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:2206:error: 'Tech.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:2238:error: 'Tech.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:2516:error: 'Vaultdoor.dmi': invalid expression
+_1CodeFolder\ItemsTech.dm:2762:error: 'device.dmi': invalid expression
+_1CodeFolder\ItemsWizardry.dm:2074:error: 'enchantmenticons.dmi': invalid expression
+Races\demi_fiend\demifiendskills.dm:226:error: 'SparkleYellow.dmi': invalid expression
+Races\demi_fiend\demifiendskills.dm:792:error: 'SparkleYellow.dmi': invalid expression
+Races\demi_fiend\demifiendskills.dm:1521:error: 'SparkleYellow.dmi': invalid expression
+Secrets\Spiral\SpiralWarrior.dm:100:error: 'SparkleGreen.dmi': invalid expression
+Secrets\Spiral\SpiralWarrior.dm:159:error: 'SparkleRed.dmi': invalid expression
+Skills\_BuffX.dm:7668:error: 'KenShockwaveBloodlust.dmi': invalid expression
+Skills\_BuffX.dm:7937:error: 'fevExplosion - Hellfire.dmi': invalid expression
+Skills\_BuffX.dm:7941:error: 'Slash - Hellfire.dmi': invalid expression
+Skills\_BuffX.dm:7966:error: 'DarkKiai.dmi': invalid expression
+Skills\_BuffX.dm:9791:error: ''Skills\_BuffX.dm:9925:error: Secrets\HeavyStrike\SecretHeavyStrike.dm:277:error: bf.BlackFlashChance: undefined type: /SecretInformation/BlackFlash
+Secrets\HeavyStrike\SecretHeavyStrike.dm:277:error: bf.BlackFlashBaseChance: undefined type: /SecretInformation/BlackFlash
+Secrets\HeavyStrike\SecretHeavyStrike.dm:279:error: bf.BlackFlashChance: undefined type: /SecretInformation/BlackFlash
+Secrets\HeavyStrike\SecretHeavyStrike.dm:279:error: bf.BlackFlashBaseChance'_1CodeFolder\hud_stack.dm:24:error: 'BLANK.dmi': invalid expressionRaces\ascensions.dm:267:error: path: duplicate definition
+Races\ascensions.dm:299:error: path: duplicate definition
+DragonballRebirth.dmb - 4682 errors, 14 warnings (5/3/26 9:47 pm)
