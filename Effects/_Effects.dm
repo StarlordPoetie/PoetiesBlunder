@@ -329,6 +329,28 @@ obj/Effects
 					KenShockwave(M=src,Size=1)
 				spawn(3.5)
 					EffectFinish()
+	fevLightningStrikeVFX5
+		icon='Lightning VFX4.dmi'
+		pixel_x=-64
+		proc
+			Strike()
+				src.icon_state="Strike"
+				src.blend_mode=2
+				spawn(2)
+					KenShockwave(src,Size=0.5)
+				spawn(3)
+					KenShockwave(src,Size=1)
+				spawn(3.5)
+					EffectFinish()
+	fevPriestErupt
+		icon='Priest VFX2.dmi'
+		pixel_x=-16
+		pixel_y=-21
+		proc
+			Strike()
+				src.blend_mode=2
+				spawn(3.5)
+					EffectFinish()
 
 
 obj/Effects

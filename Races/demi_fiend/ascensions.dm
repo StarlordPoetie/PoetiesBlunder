@@ -9,14 +9,17 @@ ascension/sub_ascension/demi_fiend/true_demon
 	onAscension(mob/owner)
 		..()
 		owner.onTrueDemonAscended()
+		owner.refreshTrueDemonPowerMult()
 	revertAscension(mob/owner)
 		owner.revertTrueDemonImprints()
 		..()
+		owner.refreshTrueDemonPowerMult()
 
 ascension
 	demi_fiend
 		postAscension(mob/owner)
 			owner.refreshMagatama()
+			owner.refreshTrueDemonPowerMult()
 			if(owner.passive_handler?.Get("Musubi"))
 				owner.StrAscension  += strength * 0.5
 				owner.EndAscension  += endurance * 0.5
@@ -43,9 +46,9 @@ ascension
 				if(owner.SagaLevel < 2)
 					owner.SagaLevel = 2
 				..()
-			choices = list("Reason of Musubi" = /ascension/sub_ascension/demi_fiend/musubi, "Reason of Shijima" = /ascension/sub_ascension/demi_fiend/shijima, "Reason of Yosuga" = /ascension/sub_ascension/demi_fiend/yosuga, "True Demon Path" = /ascension/sub_ascension/demi_fiend/true_demon)
+			choices = list("Reason of Musubi" = /ascension/sub_ascension/demi_fiend/musubi, "Reason of Shijima" = /ascension/sub_ascension/demi_fiend/shijima, "Reason of Yosuga" = /ascension/sub_ascension/demi_fiend/yosuga)
 			choiceTitle = "Choose Your Reason"
-			choiceMessage = "Your conviction takes shape. Which Reason will guide your path?\n\nMusubi: Freedom from constraint—swap Magatama at will and craft without escalating cost. You gain only passives from Magatama, never their skills.\nShijima: Unity through diversity—equip multiple Magatama, gaining an extra slot each ascension (scaling halved).\nYosuga: Strength unchained—amplify Magatama passive scaling (1.25x at ascension 1, +0.25x per ascension).\nTrue Demon: Reject all Reasons. Standard Magatama use, but each Magatama you fully master imprints 25% of its passives on you permanently. Unlocks pacts with the True Fiend demons no other can command."
+			choiceMessage = "Your conviction takes shape. Which Reason will guide your path?\n\nMusubi: Freedom from constraint—swap Magatama at will and craft without escalating cost. You gain only passives from Magatama, never their skills.\nShijima: Unity through diversity—equip multiple Magatama, gaining an extra slot each ascension (scaling halved).\nYosuga: Strength unchained—amplify Magatama passive scaling (1.25x at ascension 1, +0.25x per ascension)."
 			on_ascension_message = "Your demonic power awakens further. What Reason drives you?"
 			passives = list("HellPower" = 0.25, "KiControlMastery" = 2, "PureDamage" = 1, "PureReduction" = 1, "BladeFisting" = 1, "StaticWalk" = 1, "SpaceWalk" = 1, "ManaGeneration" = 5)
 			strength = 0.5
@@ -73,7 +76,7 @@ ascension
 				if(owner.SagaLevel < 6)
 					owner.SagaLevel = 6
 				..()
-			passives = list("HellPower" = 0.25, "KiControlMastery" = 1, "PureDamage" = 1, "PureReduction" = 1)
+			passives = list("HellPower" = 0.25, "KiControlMastery" = 1, "PureDamage" = 1, "PureReduction" = 1, "MovingCharge" = 1)
 			strength = 1.5
 			endurance = 1.5
 			speed = 1.5
@@ -98,6 +101,14 @@ ascension
 			force = 2.5
 			offense = 2.5
 			defense = 2.5
+			onAscension(mob/owner)
+				..()
+				if(owner.HasTrueDemonPath())
+					owner.passive_handler?.Increase("HellPower", 1)
+			revertAscension(mob/owner)
+				if(owner.HasTrueDemonPath())
+					owner.passive_handler?.Decrease("HellPower", 1)
+				..()
 		six
 			unlock_potential = ASCENSION_SIX_POTENTIAL
 			passives = list("KiControlMastery" = 1, "PureDamage" = 3, "PureReduction" = 3)

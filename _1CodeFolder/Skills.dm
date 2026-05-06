@@ -124,6 +124,7 @@ obj/Skills
 	var/Crippling //Cripples movement
 	var/Doom=0
 	var/Combustion=0 //Flat Combustion threshold bonus the attacker gains while this skill resolves damage. Implementation subject to change
+	var/IceAge=0 //Flat IceAge threshold bonus the attacker gains while this skill resolves damage.
 	//Spell passive vars (populated by SpellSlotModification on enchanted spells)
 	var/NerveOverload=0 //Air Paralyzer: adds Shock per hit
 	var/CriticalParalyze=0 //Air Synapse: % chance to stun on hit
@@ -138,6 +139,7 @@ obj/Skills
 	var/Attracting //Makes you follow someone, probably.
 	var/Terrifying //Makes them chicken out instead!
 	var/Pacifying  //Divides power by AngerMax for this length of time
+	var/Silencing=0 //Applies Silenced passive for this many seconds on hit
 	var/Enraging  //Triggers anger for this amount of time
 	var/CursedWounds
 	var/SoulFire

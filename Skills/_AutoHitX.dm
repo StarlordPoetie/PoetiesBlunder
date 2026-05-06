@@ -107,12 +107,18 @@ obj
 				Bang//defines if it causes an explosion on hit
 				Bolt//shoot some lightning at motherfuckers
 				BoltOffset //make lightning go scatter
+				Erupt//spawns VFX below target erupting upward
+				EruptOffset=0
 				Scratch//scratch effects
 				Punt//punch effects
 
 				Divide//Great divide effect.
 				TurfErupt//makes a boom
 				TurfEruptOffset=0//affects the offset of booms
+				TurfIce
+				TurfIceOffset=0
+				TurfFog
+				TurfFogOffset=0
 				TurfDirt//makes a boom
 				TurfDirtOffset=0//affects the offset of dust
 				TurfStrike
@@ -5983,6 +5989,12 @@ obj
 			TurfReplace
 			TurfErupt
 			TurfEruptOffset
+			TurfIce
+			TurfIceOffset
+			TurfFog
+			TurfFogOffset
+			Erupt
+			EruptOffset
 			TurfDirt
 			TurfDirtOffset
 			TurfStrike
@@ -6048,6 +6060,7 @@ obj
 			FrenzyDebuff
 			CriticalChance
 			Combustion
+			IceAge
 			Doom
 
 			grabNerf = 0
@@ -6218,11 +6231,17 @@ obj
 			src.Bang=Z.Bang
 			src.Bolt=Z.Bolt
 			src.BoltOffset=Z.BoltOffset
+			src.Erupt=Z.Erupt
+			src.EruptOffset=Z.EruptOffset
 			src.Scratch=Z.Scratch
 			src.Punt=Z.Punt
 			src.Divide=Z.Divide
 			src.TurfErupt=Z.TurfErupt
 			src.TurfEruptOffset=Z.TurfEruptOffset
+			src.TurfIce=Z.TurfIce
+			src.TurfIceOffset=Z.TurfIceOffset
+			src.TurfFog=Z.TurfFog
+			src.TurfFogOffset=Z.TurfFogOffset
 			src.TurfDirt=Z.TurfDirt
 			src.TurfDirtOffset=Z.TurfDirtOffset
 			src.TurfStrike=Z.TurfStrike
@@ -6302,6 +6321,8 @@ obj
 				src.CriticalChance = Z.CriticalChance
 			if(Z.Combustion)
 				src.Combustion = Z.Combustion
+			if(Z.IceAge)
+				src.IceAge = Z.IceAge
 			if(Z.Toxic)
 				src.Toxic+=Z.Toxic
 			if(Z.Crippling)
@@ -6747,6 +6768,8 @@ obj
 					Scratch(m)
 				if(src.Bolt)
 					LightningBolt(m, src.Bolt, src.BoltOffset)
+				if(src.Erupt)
+					EruptEffect(m, src.Erupt, src.EruptOffset)
 				if(src.Punt)
 					Hit_Effect(m, Size=src.Punt)
 				if(Snaring)
@@ -6881,6 +6904,15 @@ obj
 								return
 				if(src.DirectWounds)
 					src.Owner.DealWounds(m, src.DirectWounds);
+				if(SpellElement == "Water" && m.passive_handler.Get("ChillAbsorb"))
+					m.HealHealth(FinalDmg * 0.5)
+					return
+				if(SpellElement == "Lightning" && m.passive_handler.Get("ShockAbsorb"))
+					m.HealHealth(FinalDmg * 0.5)
+					return
+				if(SpellElement == "Wind" && m.passive_handler.Get("WindAbsorb"))
+					m.HealHealth(FinalDmg * 0.5)
+					return
 				var/damageDealt
 				if(skipPureDamage)
 					damageDealt = 0
@@ -6899,12 +6931,16 @@ obj
 						src.Owner.passive_handler.Increase("CriticalDamage", _skillCritDmg)
 					if(src.Combustion)
 						src.Owner.passive_handler.Increase("Combustion", src.Combustion)
+					if(src.IceAge)
+						src.Owner.passive_handler.Increase("IceAge", src.IceAge)
 					damageDealt = src.Owner.DoDamage(m, FinalDmg, src.UnarmedTech, src.SwordTech, Destructive=src.Destructive, innateLifeSteal = LifeSteal, Autohit = TRUE)
 					if(src.CriticalChance)
 						src.Owner.passive_handler.Decrease("CriticalChance", src.CriticalChance)
 						src.Owner.passive_handler.Decrease("CriticalDamage", _skillCritDmg)
 					if(src.Combustion)
 						src.Owner.passive_handler.Decrease("Combustion", src.Combustion)
+					if(src.IceAge)
+						src.Owner.passive_handler.Decrease("IceAge", src.IceAge)
 				DEBUGMSG("FINAL TOTAL DAMAGE DEALT! [damageDealt]")
 				if(!damageDealt)
 					damageDealt = 0
@@ -7071,6 +7107,10 @@ obj
 									for(var/turf/t in Turf_Circle_Edge(src.TargetLoc, Rounds))
 										if(src.TurfErupt)
 											Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+										if(src.TurfIce)
+											Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+										if(src.TurfFog)
+											Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 										if(src.TurfDirt)
 											Dust(t)
 										if(src.TurfStrike)
@@ -7085,6 +7125,16 @@ obj
 											if(t in view(Rounds, src.TargetLoc))
 												continue
 											Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+									if(src.TurfIce)
+										for(var/turf/t in view(Rounds, src.TargetLoc))
+											if(t in view(Rounds, src.TargetLoc))
+												continue
+											Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+									if(src.TurfFog)
+										for(var/turf/t in view(Rounds, src.TargetLoc))
+											if(t in view(Rounds, src.TargetLoc))
+												continue
+											Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 									if(src.TurfDirt)
 										for(var/turf/t in view(Rounds, src.TargetLoc))
 											if(t in view(Rounds, src.TargetLoc))
@@ -7136,6 +7186,14 @@ obj
 									for(var/turf/t in Turf_Circle_Edge(src.TargetLoc, src.Distance))
 										sleep(-1)
 										Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+								if(src.TurfIce)
+									for(var/turf/t in Turf_Circle_Edge(src.TargetLoc, src.Distance))
+										sleep(-1)
+										Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+								if(src.TurfFog)
+									for(var/turf/t in Turf_Circle_Edge(src.TargetLoc, src.Distance))
+										sleep(-1)
+										Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 								if(src.TurfDirt)
 									for(var/turf/t in Turf_Circle_Edge(src.TargetLoc, src.Distance))
 										sleep(-1)
@@ -7179,6 +7237,12 @@ obj
 								if(src.TurfErupt)
 									for(var/turf/t in view(src.Distance, src.TargetLoc))
 										Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+								if(src.TurfIce)
+									for(var/turf/t in view(src.Distance, src.TargetLoc))
+										Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+								if(src.TurfFog)
+									for(var/turf/t in view(src.Distance, src.TargetLoc))
+										Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 								if(src.TurfDirt)
 									for(var/turf/t in view(src.Distance, src.TargetLoc))
 										Dust(t)
@@ -7242,6 +7306,10 @@ obj
 									for(var/turf/t in Turf_Circle_Edge(src.Owner, Rounds))
 										if(src.TurfErupt)
 											Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+										if(src.TurfIce)
+											Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+										if(src.TurfFog)
+											Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 										if(src.TurfDirt)
 											Dust(t)
 										if(src.TurfStrike)
@@ -7256,6 +7324,16 @@ obj
 											if(t in view(Rounds, src.Owner))
 												continue
 											Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+									if(src.TurfIce)
+										for(var/turf/t in view(Rounds, src.Owner))
+											if(t in view(Rounds, src.Owner))
+												continue
+											Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+									if(src.TurfFog)
+										for(var/turf/t in view(Rounds, src.Owner))
+											if(t in view(Rounds, src.Owner))
+												continue
+											Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 									if(src.TurfDirt)
 										for(var/turf/t in view(Rounds, src.Owner))
 											if(t in view(Rounds, src.Owner))
@@ -7307,6 +7385,14 @@ obj
 									for(var/turf/t in Turf_Circle_Edge(src.Owner, src.Distance))
 										sleep(-1)
 										Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+								if(src.TurfIce)
+									for(var/turf/t in Turf_Circle_Edge(src.Owner, src.Distance))
+										sleep(-1)
+										Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+								if(src.TurfFog)
+									for(var/turf/t in Turf_Circle_Edge(src.Owner, src.Distance))
+										sleep(-1)
+										Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 								if(src.TurfDirt)
 									for(var/turf/t in Turf_Circle_Edge(src.Owner, src.Distance))
 										sleep(-1)
@@ -7347,6 +7433,12 @@ obj
 								if(src.TurfErupt)
 									for(var/turf/t in view(src.Distance, src.Owner))
 										Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+								if(src.TurfIce)
+									for(var/turf/t in view(src.Distance, src.Owner))
+										Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+								if(src.TurfFog)
+									for(var/turf/t in view(src.Distance, src.Owner))
+										Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 								if(src.TurfDirt)
 									for(var/turf/t in view(src.Distance, src.Owner))
 										Dust(t)
@@ -7401,6 +7493,10 @@ obj
 					src.StepsTaken++
 					if(src.TurfErupt)
 						Bang(src.loc, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+					if(src.TurfIce)
+						Bang(src.loc, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+					if(src.TurfFog)
+						Bang(src.loc, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 					if(src.TurfDirt)
 						Dust(src.loc)
 					if(src.TurfStrike)
@@ -7509,6 +7605,10 @@ obj
 				src.TurfShiftY=AH.TurfShiftY
 				src.TurfErupt=AH.TurfErupt
 				src.TurfEruptOffset=AH.TurfEruptOffset
+				src.TurfIce=AH.TurfIce
+				src.TurfIceOffset=AH.TurfIceOffset
+				src.TurfFog=AH.TurfFog
+				src.TurfFogOffset=AH.TurfFogOffset
 				src.TurfDirt=AH.TurfDirt
 				src.TurfDirtOffset=AH.TurfDirtOffset
 				src.TurfStrike=AH.TurfStrike
@@ -7580,6 +7680,10 @@ obj
 				src.TurfShiftY=AH.TurfShiftY
 				src.TurfErupt=AH.TurfErupt
 				src.TurfEruptOffset=AH.TurfEruptOffset
+				src.TurfIce=AH.TurfIce
+				src.TurfIceOffset=AH.TurfIceOffset
+				src.TurfFog=AH.TurfFog
+				src.TurfFogOffset=AH.TurfFogOffset
 				src.TurfDirt=AH.TurfDirt
 				src.TurfDirtOffset=AH.TurfDirtOffset
 				src.TurfStrike=AH.TurfStrike

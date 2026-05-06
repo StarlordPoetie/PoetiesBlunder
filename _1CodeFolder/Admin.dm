@@ -1337,6 +1337,25 @@ mob/Admin2/verb
 		usr.PM(M)
 
 
+	Test_Mode(mob/M in players)
+		set category = "Admin"
+		set name = "Test Mode"
+		set desc = "Toggle off skill cooldowns on a player (applies TestMode passive)."
+		if(!M.passive_handler)
+			M.passive_handler = new
+		if(M.HasTestMode())
+			M.passive_handler.Set("TestMode", 0)
+			Log("Admin", "[ExtractInfo(usr)] disabled Test Mode on [ExtractInfo(M)].")
+			usr << "Test Mode is now OFF for [M]."
+			if(M.client)
+				M << "Admin Test Mode is now OFF. Skill cooldowns are normal."
+		else
+			M.passive_handler.Set("TestMode", 1)
+			Log("Admin", "[ExtractInfo(usr)] enabled Test Mode on [ExtractInfo(M)].")
+			usr << "Test Mode is now ON for [M]."
+			if(M.client)
+				M << "Admin Test Mode is now ON. Your skill cooldowns are effectively zero."
+
 	AdminChat(c as text)
 		set category = "Admin"
 		Log("Admin", "<b><font color=red>[time2text(world.timeofday,"(hh:mm:ss)")]<font color=cyan>Admin Chat:<font color=white>[usr.DisplayKey ? "[usr.DisplayKey]([usr.key])": "([usr.key])"]:</b><font color=green> [c]", NoPinkText=1)
@@ -2575,6 +2594,61 @@ mob/Admin4/verb
 		P.setRace(selected.type, FALSE)
 		P << "<font color=yellow>An admin has changed your race to [Choice]."
 		Log("Admin", "[ExtractInfo(usr)] changed [ExtractInfo(P)]'s race to [Choice].")
+
+	Make_True_Demon(mob/Players/target in players)
+		set category = "Admin"
+		set name = "Make True Demon"
+
+		if(!target || !target.ckey)
+			src << "<font color=red>Invalid target.</font>"
+			return
+
+		if(!target.isRace(/race/demi_fiend))
+			src << "<font color=red>[target] is not a Demi-fiend.</font>"
+			return
+
+		if(!target.race || !target.race.ascensions || target.race.ascensions.len < 1)
+			src << "<font color=red>[target] has not yet taken their first ascension.</font>"
+			return
+
+		var/ascension/asc_one = target.race.ascensions[1]
+		if(!asc_one || !asc_one.applied)
+			src << "<font color=red>[target]'s first ascension has not been applied yet.</font>"
+			return
+
+		if(asc_one.choiceSelected == /ascension/sub_ascension/demi_fiend/true_demon)
+			src << "<font color=orange>[target] is already on the True Demon path.</font>"
+			return
+
+		var/confirm = alert(src, "Place [target] on the True Demon path? Their current Reason passive will be removed and all equipped Magatama will be unequipped.", "Make True Demon", "Yes", "No")
+		if(confirm != "Yes") return
+
+		// Unequip all Magatama before the swap, mostly for Shijima
+		for(var/obj/Items/Magatama/M in target)
+			if(M.suffix == "*Equipped*")
+				M.unequipMagatama(target)
+		// Clear any Shijima-set swap cooldowns
+		target.magatama_cooldown_until = 0
+		target.magatama_allowed_set = list()
+
+		// Revert the existing Reason sub-ascension, if any
+		if(asc_one.choiceSelected)
+			var/ascension/old_asc = new asc_one.choiceSelected
+			old_asc.applied = TRUE
+			old_asc.revertAscension(target)
+
+		// Apply True Demon sub-ascension
+		asc_one.choiceSelected = /ascension/sub_ascension/demi_fiend/true_demon
+		var/ascension/sub_ascension/demi_fiend/true_demon/new_asc = new
+		new_asc.onAscension(target)
+
+		// Recalculate Magatama passives now that the Reason has changed
+		target.refreshMagatama()
+
+		target << "<font color='#cc0000'><b>The chains of Reason have been cast aside. You walk the True Demon path.</b></font>"
+		Log("Admin", "[ExtractInfo(src)] placed [ExtractInfo(target)] on the True Demon path.")
+		src << "<font color=yellow>[target] is now on the True Demon path.</font>"
+
 mob/Admin3/verb
 
 	SetGlobalDamage()

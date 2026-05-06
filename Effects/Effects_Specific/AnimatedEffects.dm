@@ -591,11 +591,13 @@ proc
 		spawn(2)
 			animate(D, alpha = 0, transform=D.transform*2, time = rand(15, 25), pixel_x = rand(-16*Size, 16*Size), pixel_y = rand(-16*Size, 16*Size))
 
-	Bang(turf/A, var/Size=1, var/Layer=EFFECTS_LAYER, var/Offset=1, var/Vanish=4, var/PX=0, var/PY=0, var/icon_override)
+	Bang(turf/A, var/Size=1, var/Layer=EFFECTS_LAYER, var/Offset=1, var/Vanish=4, var/PX=0, var/PY=0, var/icon_override, var/color_override, var/alpha_override=255)
 		set waitfor=0
 		var/obj/Effects/Explosion/E=new
 		E.loc=A
 		if(icon_override) E.icon = icon_override
+		if(color_override) E.color = color_override
+		if(alpha_override != 255) E.alpha = alpha_override
 		E.layer=Layer
 		E.pixel_x+=PX
 		E.pixel_y+=PY

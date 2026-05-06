@@ -5629,6 +5629,7 @@ obj
 					src.Shocking=Z.Shocking
 					src.Paralyzing=Z.Paralyzing
 					src.Poisoning=Z.Poisoning
+					src.Silencing=Z.Silencing
 					src.Toxic=Z.Toxic
 					src.HolyMod=Z.HolyMod
 					src.AbyssMod=Z.AbyssMod
@@ -6307,7 +6308,19 @@ obj
 									src.Owner.passive_handler.Increase("CriticalDamage", _skillCritDmgB)
 								if(src.Combustion)
 									src.Owner.passive_handler.Increase("Combustion", src.Combustion)
-								src.Owner.DoDamage(a, (EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR), SpiritAttack=1, Destructive=src.Destructive)
+								// Elemental absorb: if target absorbs this element, heal instead
+								var/_beamAbsorb = 0
+								if(src.SpellElement == "Water" && m.passive_handler.Get("ChillAbsorb"))
+									_beamAbsorb = 1
+									m.HealHealth((EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR) * (0.1 * m.passive_handler.Get("ChillAbsorb")))
+								else if(src.Shocking && m.passive_handler.Get("ShockAbsorb"))
+									_beamAbsorb = 1
+									m.HealHealth((EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR) * (0.1 * m.passive_handler.Get("ShockAbsorb")))
+								else if(src.Shearing && m.passive_handler.Get("WindAbsorb"))
+									_beamAbsorb = 1
+									m.HealHealth((EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR) * (0.1 * m.passive_handler.Get("WindAbsorb")))
+								if(!_beamAbsorb)
+									src.Owner.DoDamage(a, (EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR), SpiritAttack=1, Destructive=src.Destructive)
 								if(src.CriticalChance)
 									src.Owner.passive_handler.Decrease("CriticalChance", src.CriticalChance)
 									src.Owner.passive_handler.Decrease("CriticalDamage", _skillCritDmgB)
@@ -6343,7 +6356,19 @@ obj
 										src.Owner.passive_handler.Increase("CriticalDamage", _skillCritDmgS)
 									if(src.Combustion)
 										src.Owner.passive_handler.Increase("Combustion", src.Combustion)
-									src.Owner.DoDamage(a, EffectiveDamage, SpiritAttack=1, Destructive=src.Destructive)
+									// Elemental absorb: if target absorbs this element, heal instead
+									var/_stdAbsorb = 0
+									if(src.SpellElement == "Water" && m.passive_handler.Get("ChillAbsorb"))
+										_stdAbsorb = 1
+										m.HealHealth(EffectiveDamage * (0.1 * m.passive_handler.Get("ChillAbsorb")))
+									else if(src.Shocking && m.passive_handler.Get("ShockAbsorb"))
+										_stdAbsorb = 1
+										m.HealHealth(EffectiveDamage * (0.1 * m.passive_handler.Get("ShockAbsorb")))
+									else if(src.Shearing && m.passive_handler.Get("WindAbsorb"))
+										_stdAbsorb = 1
+										m.HealHealth(EffectiveDamage * (0.1 * m.passive_handler.Get("WindAbsorb")))
+									if(!_stdAbsorb)
+										src.Owner.DoDamage(a, EffectiveDamage, SpiritAttack=1, Destructive=src.Destructive)
 									if(src.CriticalChance)
 										src.Owner.passive_handler.Decrease("CriticalChance", src.CriticalChance)
 										src.Owner.passive_handler.Decrease("CriticalDamage", _skillCritDmgS)
@@ -6410,6 +6435,14 @@ obj
 								LaunchEffect(src.Owner, a, Launcher )
 						if(src.Stasis&&!a:StasisFrozen)
 							a:SetStasis(src.Stasis * world.tick_lag)
+
+						if(src.Silencing)
+							a:passive_handler.Increase("Silenced", 1)
+							var/dur = src.Silencing
+							var/mob/target_sil = a
+							spawn(dur)
+								if(target_sil && target_sil.passive_handler)
+									target_sil.passive_handler.Decrease("Silenced", 1)
 
 						if(src.Striking)
 							src.Owner.HitEffect(a)

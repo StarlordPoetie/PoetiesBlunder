@@ -478,6 +478,8 @@ mob
 						OMsg(src, "<font color='[rgb(104, 153, 251)]'>[src]'s dispenser deploys a healing mist!!</font color>")
 					src.Sprayed+=100
 		AddShock(var/Value, var/mob/Attacker=null)
+			if(src.HasShockImmunity())
+				return
 			if(src.Stasis || src.AdminOverwatchActive)
 				return
 			if(Attacker && Attacker != src && Attacker.hasMagePassive(/mage_passive/air/ShockMastery))

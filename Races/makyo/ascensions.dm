@@ -21,7 +21,7 @@ ascension
 			anger = 0.15
 		three
 			unlock_potential = ASCENSION_THREE_POTENTIAL
-			passives = list("Juggernaut" = 1, "DemonicDurability" = 1, "HeavyHitter" = 0.5, "Pressure" = 1, "SweepingStrikes" = 1)
+			passives = list("Juggernaut" = 1, "DemonicDurability" = 1, "HeavyHitter" = 0.5, "Pressure" = 1, "SweepingStrike" = 1)
 			strength = 1.5
 			endurance = 1.5
 			force = 0.75

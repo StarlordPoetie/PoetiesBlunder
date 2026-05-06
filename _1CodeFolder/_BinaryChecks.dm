@@ -1284,6 +1284,10 @@ mob
 				if(isDominating(Target) && passive_handler.Get("HellRisen"))
 					return 1
 			return 0
+		HasTestMode()
+			if(passive_handler && passive_handler.Get("TestMode"))
+				return 1
+			return 0
 		GetTechniqueMastery()
 			var/Return=0
 			Return+=passive_handler.Get("TechniqueMastery")
@@ -1775,6 +1779,10 @@ mob
 			return 0
 		HasShearImmunity()
 			if(passive_handler.Get("ShearImmunity"))
+				return 1
+			return 0
+		HasShockImmunity()
+			if(passive_handler.Get("ShockImmunity"))
 				return 1
 			return 0
 		HasTaxThreshold()
