@@ -1,7 +1,7 @@
 /obj/Skills/Buffs/SlotlessBuffs
 	RoyalGuard
 		SignatureTechnique=2
-		Cooldown = 60
+		Cooldown = 45
 		SuccessfulParry = 1
 		PowerGlows=list(1,0.8,0.8, 0,1,0, 0.8,0.8,1, 0,0,0)
 		KenWave=1
@@ -10,7 +10,7 @@
 		OffMessage="drops their guard."
 		KenWaveIcon='KenShockwaveBloodlust.dmi'
 		TimerLimit = 1
-		passives = list("RoyalGuarding" = 1, "NoDodge" = 1, "PureReduction" = -5)
+		passives = list("RoyalGuarding" = 1, "NoDodge" = 1)
 		verb/Royal_Guard()
 			set category = "Skills"
 			SuccessfulParry = 1
@@ -41,7 +41,7 @@
 		adjust(mob/p)
 			var/obj/Skills/Buffs/SlotlessBuffs/RoyalGuard/RG = locate(/obj/Skills/Buffs/SlotlessBuffs/RoyalGuard) in p.contents
 			if(RG)
-				usr << "rg is [RG], meter is [RG.RoyalMeter]"
+				usr << "Using [RG.RoyalMeter] for Royal Release."
 				if(RG.SuccessfulParry == 2)
 					WindupMessage="reverse the momentum of the opponent's strike, and-!!"
 					ActiveMessage="lands a Perfect Release!!!!!!"

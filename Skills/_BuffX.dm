@@ -14266,8 +14266,8 @@ mob
 					B.Cooldown = 5
 					B.SuccessfulParry = 0
 				else
-					src << "Parry failure, Cooldown set to 60."
-					B.Cooldown = 60
+					src << "Parry failure, Cooldown set to 45."
+					B.Cooldown = 45
 					B.SuccessfulParry = 0
 
 
