@@ -13,6 +13,7 @@
 
 /obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket
 	name = "Hollow Wicker Basket"
+	var/tmp/restores_movement = FALSE
 
 /obj/Skills/Buffs/SlotlessBuffs/Domain_Lock
 	name = "Domain Lock"

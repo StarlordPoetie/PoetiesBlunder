@@ -9280,8 +9280,8 @@ NEW VARIABLES
 				TimerLimit = 6
 				Cooldown = 150
 				CooldownStatic = 1
-				var/tmp/restores_movement = FALSE
 				BuffName = "Hollow Wicker Basket"
+				passives = list("PureReduction" = 9999)
 				IconLock = 'HolyDome_Wicker_Shimmer.dmi'
 				LockX = -158
 				LockY = -96
