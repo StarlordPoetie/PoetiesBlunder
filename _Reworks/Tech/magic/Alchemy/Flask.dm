@@ -48,9 +48,9 @@
     AlwaysOn=1
     Cooldown=1
     adjust(mob/P)
-      /* var/obj/Items/Flask/BuffHolder = P.equippedFlask
+        var/obj/Items/Flask/BuffHolder = P.equippedFlask
         // I am so fucking sorry for what is about to happen
-         if(BuffHolder.Heal == 1) // if you chose a  herb, your value for said herb should be 1 and ONLY 1
+        if(BuffHolder.Heal == 1) // if you chose a  herb, your value for said herb should be 1 and ONLY 1
             InstantAffect=1
             StableHeal=1
             src.HealthHeal = glob.POTIONHEAL //check glob.dm for POTIONHEAL value, line 445. See above for BuffHolder.Heal
@@ -59,7 +59,7 @@
         if(BuffHolder.Mana == 1) // same rule, ONLY THE VALUE OF 1 SHOULD BE HERE
             InstantAffect=1
             src.ManaHeal = glob.POTIONHEAL 
-            src.EnergyHeal -= glob.POTIONHEAL*2-BuffHolder.Tier */
+            src.EnergyHeal -= glob.POTIONHEAL*2-BuffHolder.Tier 
 
     verb/Imbibe_Flask(mob/P) // We cosnume a charge from the flask!
         set category = "Skills"
