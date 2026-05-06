@@ -9222,17 +9222,30 @@ NEW VARIABLES
 				sleep(6)
 				for(var/atom/M in effected)
 					spawn()animate(M, color = null, time = 3)
-			verb/Domain_Expansion()
-				set category = "Skills"
-				set name = "Domain Expansion"
-				src.Trigger(usr)
-				if(usr.BuffOn(src))
-					animation(usr, range)
-					usr.DomainExpansion(src)
+			proc/releaseDomain(mob/user, atom/center)
+				if(!user)
+					return
+				if(!center)
+					center = user
+				src.Trigger(user)
+				if(user.BuffOn(src))
+					animation(center, range)
+					user.DomainExpansion(src, center)
 				else
-					usr.stopDomainExapansion()
+					user.stopDomainExapansion()
 					if(src.Cooldown < 200)
 						src.Cooldown = 200
+			verb/Domain_Expansion_Wide()
+				set category = "Skills"
+				set name = "Domain Expansion Wide"
+				releaseDomain(usr, usr)
+			verb/Domain_Expansion_Target()
+				set category = "Skills"
+				set name = "Domain Expansion Target"
+				if(!usr.Target || usr.Target == usr)
+					usr << "You need a target for Domain Expansion Target."
+					return
+				releaseDomain(usr, usr.Target)
 			Domain_Lock
 				Slotless = 1
 				BuffName = "Domain Lock"

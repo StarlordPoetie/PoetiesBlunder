@@ -32,11 +32,8 @@
 			var/domainName = input(p, "Name your Domain Expansion.", "Cursed Energy - Domain Name") as text|null
 			if(!domainName || !length(domainName))
 				domainName = "Unnamed Domain"
-			var/icon/customTile = input(p, "Upload the custom floor icon for the Domain (32x32 .dmi, single state).", "Domain Expansion - Turf Icon") as icon|null
+			var/icon/customTile = 'WhiteTurfShift.dmi'
 			d.demonName = copytext("[domainName]", 1, 65)
-			if(!customTile)
-				p << "Cancelled. No custom turf icon provided."
-				return
 			var/shroudChoice = input(p, "Should the Domain use a shroud overlay on top of the floor? (Selecting No leaves only the custom floor.)", "Domain Expansion - Shroud") in list("Yes","No")
 			var/useShroud = (shroudChoice == "Yes")
 			var/icon/customRoofIcon = null
