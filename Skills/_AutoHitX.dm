@@ -194,6 +194,7 @@ obj
 				Rush//Drives the user forward before deploying autohit.
 				RushDelay=1
 				ControlledRush//as above but you actually know where you're going
+				HomingCharge//Allows controlled rush autohits to carry a homing charge attribute.
 				RushAfterImages//Spawns coolerFlashImage afterimages each step during rush
 				RushNoFlight//Skips setting icon_state to Flight during rush
 				MortalBlow//Makes you deal a mortal wound in midcombat.
@@ -264,6 +265,8 @@ obj
 					description += "Rushes forward [Rush] tiles"
 				if(ControlledRush)
 					description +=" in a controlled manner.\n"
+				if(HomingCharge)
+					description += "Has [HomingCharge] homing charge(s).\n"
 				if(Rush&&!ControlledRush)
 					description += ".\n"
 				if(Executor)
