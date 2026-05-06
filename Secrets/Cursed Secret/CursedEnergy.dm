@@ -16,6 +16,7 @@
 		proc/updateSlashCursedTechniques(mob/p)
 			if(!p || p.cursedEnergyTrait != "Slash")
 				return
+			p.passive_handler.Set("BladeFisting", 1)
 			var/scale = 1 + (0.5 * max(0, currentTier - 1))
 			var/obj/Skills/Queue/Cursed_Technique_Dismantle/d = locate(/obj/Skills/Queue/Cursed_Technique_Dismantle) in p
 			if(d)
