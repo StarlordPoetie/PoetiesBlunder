@@ -1845,7 +1845,7 @@ NEW VARIABLES
 				if(usr.secretDatum.currentTier < 5) who += usr.getShadowEyeTargets();
 				else who += usr.getAdvancedShadowEyeTargets();
 
-				var/mob/Players/selector=input("Who do you want to observe?","Observe")in who||null
+				var/mob/Players/selector=input("Who do you want to observe?","Observe")in who
 				if(selector=="Cancel")
 					Observify(usr,usr)
 					usr.Observing=0

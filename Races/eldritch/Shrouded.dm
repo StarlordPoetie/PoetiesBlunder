@@ -114,16 +114,14 @@
     var/shadowRange = (50 * secretDatum.currentTier);
     for(var/mob/Players/M in view(shadowRange, src))
         who |= M;
-    for(var/mob/W in view(shadowRange, src))
-        if(W.AdminInviso)
-            who.Remove(W)
-        if(W.invisibility)
-            who.Remove(W)
+    for(var/mob/W in who)
+        if(W.AdminInviso) who.Remove(W)
+        if(W.invisibility) who.Remove(W)
     return who;
 /mob/proc/getAdvancedShadowEyeTargets()//if they're on the z plane, you can see them
     var/list/who = list()
-    if(!passive_handler.Get("AdminVision")) passive_handler["AdminVision"] = 1;
-    for(var/mob/Players/m in world)
+    if(!passive_handler.Get("AdminVision")) passive_handler.Increase("AdminVision", 1);
+    for(var/mob/Players/m in players)
         if(m.z == src.z) who |= m;
     return who;
 
