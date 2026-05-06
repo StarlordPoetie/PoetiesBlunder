@@ -135,8 +135,8 @@ NEW VARIABLES
 	var/DashCount
 	var/DashCountLimit
 	var/CastingTime=0//how long does the buff take to perform
-	var/ManaGlow
-	var/ManaGlowSize
+	var/ManaGlow as text
+	var/ManaGlowSize as num
 	var/ArmamentGlow
 	var/ArmamentGlowSize
 	var/AwakeningRequired
@@ -648,12 +648,20 @@ NEW VARIABLES
 					vars["[selectedStats[2]]Mult"] = 1.1
 					vars["[selectedStats[3]]Mult"] = 1.05
 
+			proc/applyCursedEnergyDefaults()
+				AuraLock = 'Aura_CursedEnergy.dmi'
+				AuraX = -5
+				AuraY = -2
+				ActiveMessage = "channels Cursed Energy, reinforcing their body"
+				OffMessage = "releases the flow of Cursed Energy"
+				IconApart = 1
+				ManaGlow = "#f3f5e1"
+				ManaGlowSize = 1.5
+
 			Trigger(var/mob/User, Override=0)
 				src.init(User)
 				if(User && User.hasSecret("Cursed Energy"))
-					AuraLock = 1
-					ManaGlow = "#ffffeb"
-					ManaGlowSize = 1.5
+					applyCursedEnergyDefaults()
 				..()
 
 			verb/Customize_Powered_State()
@@ -9222,17 +9230,30 @@ NEW VARIABLES
 				sleep(6)
 				for(var/atom/M in effected)
 					spawn()animate(M, color = null, time = 3)
-			verb/Domain_Expansion()
-				set category = "Skills"
-				set name = "Domain Expansion"
-				src.Trigger(usr)
-				if(usr.BuffOn(src))
-					animation(usr, range)
-					usr.DomainExpansion(src)
+			proc/releaseDomain(mob/user, atom/center)
+				if(!user)
+					return
+				if(!center)
+					center = user
+				src.Trigger(user)
+				if(user.BuffOn(src))
+					animation(center, range)
+					user.DomainExpansion(src, center)
 				else
-					usr.stopDomainExapansion()
+					user.stopDomainExapansion()
 					if(src.Cooldown < 200)
 						src.Cooldown = 200
+			verb/Domain_Expansion_Wide()
+				set category = "Skills"
+				set name = "Domain Expansion Wide"
+				releaseDomain(usr, usr)
+			verb/Domain_Expansion_Target()
+				set category = "Skills"
+				set name = "Domain Expansion Target"
+				if(!usr.Target || usr.Target == usr)
+					usr << "You need a target for Domain Expansion Target."
+					return
+				releaseDomain(usr, usr.Target)
 			Domain_Lock
 				Slotless = 1
 				BuffName = "Domain Lock"
@@ -9256,14 +9277,19 @@ NEW VARIABLES
 
 			Hollow_Wicker_Basket
 				Slotless = 1
-				TimerLimit = 7
-				Cooldown = 45
+				TimerLimit = 6
+				Cooldown = 150
+				CooldownStatic = 1
+				var/tmp/restores_movement = FALSE
 				BuffName = "Hollow Wicker Basket"
 				IconLock = 'HolyDome_Wicker_Shimmer.dmi'
 				LockX = -158
 				LockY = -96
 				ActiveMessage = "forms a Hollow Wicker Basket."
 				OffMessage = "disperses their Hollow Wicker Basket."
+
+				Cooldown(var/modify = 1, var/Time, mob/p, var/announce_cd = 1)
+					..(modify, 1500, p, announce_cd)
 
 				verb/Hollow_Wicker_Basket()
 					set category = "Skills"
@@ -9272,8 +9298,9 @@ NEW VARIABLES
 
 			Simple_Domain
 				Slotless = 1
-				TimerLimit = 7
-				Cooldown = 45
+				TimerLimit = 4
+				Cooldown = 150
+				CooldownStatic = 1
 				BuffName = "Simple Domain"
 				IconLock = 'Bubbly_Cursed_Energy_Aura.dmi'
 				LockX = -16
@@ -9287,6 +9314,9 @@ NEW VARIABLES
 				passives = list("Siphon" = 5, "FluidForm" = 1, "PureReduction" = 1.5, "SpaceWalk" = 1, "StaticWalk" = 1, "Void" = 1)
 				ActiveMessage = "expands a Simple Domain around themselves."
 				OffMessage = "lets their Simple Domain collapse."
+
+				Cooldown(var/modify = 1, var/Time, mob/p, var/announce_cd = 1)
+					..(modify, 1500, p, announce_cd)
 
 				verb/Simple_Domain()
 					set category = "Skills"
@@ -13122,6 +13152,11 @@ mob
 				src:move_speed = MovementSpeed()
 
 		AddSlotlessBuff(var/obj/Skills/Buffs/B)
+			if(istype(B, /obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket) && isplayer(src))
+				var/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket/HWB = B
+				var/mob/Players/P = src
+				HWB.restores_movement = !P.move_disabled
+				P.move_disabled = 1
 			if(B.BuffName=="Regeneration")
 				if(src.HasHellPower())
 					B.RegenerateLimbs=1
@@ -13158,6 +13193,12 @@ mob
 				src:move_speed = MovementSpeed()
 
 		RemoveSlotlessBuff(var/obj/Skills/Buffs/B)
+			if(istype(B, /obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket) && isplayer(src))
+				var/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket/HWB = B
+				var/mob/Players/P = src
+				if(HWB.restores_movement)
+					P.move_disabled = 0
+				HWB.restores_movement = FALSE
 			if(B.HitScanIcon)
 				HitScanIcon = null
 			if(B.HitScanHitSpark)

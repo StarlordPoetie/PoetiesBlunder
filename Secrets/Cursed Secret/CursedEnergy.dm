@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /SecretInformation/CursedEnergy
 	name = "Cursed Energy"
 	maxTier = 5
@@ -146,6 +147,142 @@
 				CursedEnergyBlackFlashBaseChance = 5
 				p.passive_handler.Set("RenameMana", "Cursed Energy")
 				if(prob(10))
+=======
+	CursedEnergy
+		name = "Cursed Energy"
+		maxTier = 5
+		givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_Potential")
+		var/awakeningConfigured = 0
+		var/domainChoicePrompted = 0
+		var/CursedEnergyBlackFlashChance = 0
+		var/CursedEnergyBlackFlashBaseChance = 5
+		var/CursedEnergyBlackFlashFirstTimeUse = 1
+		proc/removeBlackFlashSureStrike(mob/p)
+			if(!p)
+				return
+			p.passive_handler.Set("Sure-Strike Black Flash", 0)
+			for(var/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike/ss in p.Buffs)
+				p.DeleteSkill(ss)
+		proc/updateSlashCursedTechniques(mob/p)
+			if(!p || p.cursedEnergyTrait != "Slash")
+				return
+			p.passive_handler.Set("BladeFisting", 1)
+			var/scale = 1 + (0.5 * max(0, currentTier - 1))
+			var/obj/Skills/Queue/Cursed_Technique_Dismantle/d = locate(/obj/Skills/Queue/Cursed_Technique_Dismantle) in p
+			if(d)
+				d.DamageMult = 3 * scale
+			var/obj/Skills/AutoHit/Cursed_Technique_Cleave/c = locate(/obj/Skills/AutoHit/Cursed_Technique_Cleave) in p
+			if(c)
+				c.DamageMult = 4.5 * scale
+		proc/grantDomainExpansion(mob/p)
+			var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in p
+			if(d)
+				return
+			d = new()
+			d.range = 20
+			var/domainName = input(p, "Name your Domain Expansion.", "Cursed Energy - Domain Name") as text|null
+			if(!domainName || !length(domainName))
+				domainName = "Unnamed Domain"
+			var/icon/customTile = 'WhiteTurfShift.dmi'
+			d.demonName = copytext("[domainName]", 1, 65)
+			var/shroudChoice = input(p, "Should the Domain use a shroud overlay on top of the floor? (Selecting No leaves only the custom floor.)", "Domain Expansion - Shroud") in list("Yes","No")
+			var/useShroud = (shroudChoice == "Yes")
+			var/icon/customRoofIcon = null
+			if(useShroud)
+				customRoofIcon = input(p, "Upload the custom shroud icon for the Domain (32x32 .dmi, single state). Cancel to fall back to the default Roofs.dmi shroud.", "Domain Expansion - Shroud Icon") as icon|null
+			d.customTurfIcon = customTile
+			d.customRoofIcon = customRoofIcon
+			d.useShroud = useShroud
+			d.ActiveMessage = "says: Domain Expansion.. [d.demonName]!"
+			d.OffMessage = "conceals the domain of [d.demonName]..."
+			p.AddSkill(d)
+			p << "You have gained Domain Expansion!"
+			// Prompt for anti-domain skill choice
+			if(!domainChoicePrompted)
+				domainChoicePrompted = 1
+				var/choice = input(p, "Choose an anti-domain technique:", "Domain Defense") in list(
+					"Simple Domain - A compact anti-domain barrier that protects the user from sure-hit effects for a short time.",
+					"Hollow Wicker Basket - An anti-domain technique that forms a woven barrier to resist enemy Domain sure-hit effects.")
+				if(choice)
+					if(findtext(choice, "Simple Domain"))
+						p.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain)
+						p.cursedEnergyDomainChoice = "Simple Domain"
+					else if(findtext(choice, "Hollow Wicker Basket"))
+						p.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket)
+						p.cursedEnergyDomainChoice = "Hollow Wicker Basket"
+		proc/chooseSpecialization(mob/p)
+			if(!p)
+				return
+			if(p.cursedEnergySpecialization)
+				return
+			var/list/options = list("Cursed Energy Reinforcement", "Cursed Energy Enrichment", "Cursed Energy Enhancement")
+			var/choice = input(p, "Choose your Cursed Energy specialization.", "Cursed Energy - Specialization") in options
+			if(!choice)
+				choice = "Cursed Energy Reinforcement"
+			p.cursedEnergySpecialization = choice
+			switch(choice)
+				if("Cursed Energy Reinforcement")
+					p.passive_handler.Set("Cursed Energy Reinforcement", 1)
+					p.passive_handler.Set("UnarmedDamage", 3)
+					p.passive_handler.Set("CriticalDamage", 2)
+					p.passive_handler.Set("CriticalChance", 2)
+					p.passive_handler.Set("CriticalBlock", 2)
+					p.passive_handler.Set("PureReduction", 2)
+					p.passive_handler.Set("Flow", 4)
+					p.passive_handler.Set("Adrenaline", 3)
+					p.passive_handler.Set("Fury", 2)
+					p << "You focus on Cursed Energy Reinforcement, hardening body and impact."
+				if("Cursed Energy Enrichment")
+					p.passive_handler.Set("Cursed Energy Enrichment", 1)
+					p.passive_handler.Set("Adrenaline", 3)
+					p.passive_handler.Set("MeleeResist", 2)
+					p.passive_handler.Set("ManaSteal", 20)
+					p.passive_handler.Set("ManaGeneration", 3)
+					p.passive_handler.Set("PowerfulCasting", 2)
+					p.passive_handler.Set("StalwartCasting", 2)
+					p.passive_handler.Set("FluidForm", 3)
+					p.passive_handler.Set("Fury", 2)
+					p << "You focus on Cursed Energy Enrichment, improving flow and technique conversion."
+				if("Cursed Energy Enhancement")
+					p.passive_handler.Set("Cursed Energy Enhancement", 1)
+					p.passive_handler.Set("Fury", 2)
+					p.passive_handler.Set("Parry", 2)
+					p.passive_handler.Set("Reversal", 2)
+					p.passive_handler.Set("Instinct", 4)
+					p.passive_handler.Set("SwordDamage", 2)
+					p.passive_handler.Set("Adrenaline", 3)
+					p.passive_handler.Set("SwordAscension", 1)
+					p << "You focus on Cursed Energy Enhancement, sharpening weapon flow and reactions."
+		proc/applySecret(mob/p)
+			removeBlackFlashSureStrike(p)
+			p.applyCursedEnergyKiControlDefaults()
+			switch(currentTier)
+				if(1)
+					p << "You awaken to the flow of Cursed Energy."
+					giveSkills(p)
+					CursedEnergyBlackFlashBaseChance = 5
+					p.passive_handler.Set("RenameMana", "Cursed Energy")
+					if(prob(10))
+						grantDomainExpansion(p)
+					nextTierUp = 2
+				if(2)
+					p << "Your Cursed Energy control improves."
+					CursedEnergyBlackFlashBaseChance = 25
+					p.passive_handler.Set("Sparks of Black", 1)
+					chooseSpecialization(p)
+					if(prob(20))
+						grantDomainExpansion(p)
+					nextTierUp = 3
+				if(3)
+					p << "Your Cursed Energy grows denser and more precise."
+					CursedEnergyBlackFlashBaseChance = 35
+					if(prob(35))
+						grantDomainExpansion(p)
+					nextTierUp = 4
+				if(4)
+					p << "Your Cursed Energy reaches a breakthrough: Domain Expansion is now yours by default."
+					CursedEnergyBlackFlashBaseChance = 35
+>>>>>>> 0151aa3a92cb4733a6cdcfdfc4a893cff69a304d
 					grantDomainExpansion(p)
 				nextTierUp = 2
 
@@ -180,6 +317,10 @@
 		CursedEnergyBlackFlashChance = clamp(CursedEnergyBlackFlashChance, CursedEnergyBlackFlashBaseChance, 35)
 		updateSlashCursedTechniques(p)
 
+
+mob/proc/applyCursedEnergyKiControlDefaults()
+	for(var/obj/Skills/Buffs/ActiveBuffs/Ki_Control/ki in src)
+		ki.applyCursedEnergyDefaults()
 
 mob
 	var
@@ -233,7 +374,7 @@ mob/proc/setupCursedEnergyAwakening()
 
 		if("Slash")
 			findOrAddSkill(/obj/Skills/Queue/Cursed_Technique_Dismantle)
-			findOrAddSkill(/obj/Skills/Queue/Cursed_Technique_Cleave)
+			findOrAddSkill(/obj/Skills/AutoHit/Cursed_Technique_Cleave)
 			ce.updateSlashCursedTechniques(src)
 			src << "Your cursed energy gains slicing properties."
 
@@ -245,9 +386,9 @@ mob/proc/attemptCursedHeavyStrike()
 		return 0
 
 	if(cursedEnergyTrait == "Slash")
-		var/obj/Skills/Queue/Cursed_Technique_Cleave/c = locate(/obj/Skills/Queue/Cursed_Technique_Cleave) in src
-		if(c && !c.Using)
-			SetQueue(c)
+		var/obj/Skills/AutoHit/Cursed_Technique_Cleave/c = locate(/obj/Skills/AutoHit/Cursed_Technique_Cleave) in src
+		if(c)
+			Activate(c)
 			return 1
 
 	if(cursedEnergyTrait == "Serrated")

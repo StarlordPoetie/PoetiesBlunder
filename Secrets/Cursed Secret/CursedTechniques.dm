@@ -58,21 +58,29 @@ obj
 					proxy.vars["HitSparkX"] = src.HitSparkX
 					proxy.vars["HitSparkY"] = src.HitSparkY
 					usr.UseProjectile(proxy)
+<<<<<<< HEAD
 
+=======
+		AutoHit
+>>>>>>> 0151aa3a92cb4733a6cdcfdfc4a893cff69a304d
 			Cursed_Technique_Cleave
 				SkillCost=0
 				Copyable=0
 				name="Cleave"
 				ActiveMessage="announces Cleave."
+				Area="Circle"
+				NoLock=1
+				NoAttackLock=1
+				FlickAttack=1
+				StrOffense=1
 				DamageMult=4.5
-				AccuracyMult=1.15
-				KBMult=0.00001
 				Stunner=3
-				InstantStrikes=5
-				InstantStrikesDelay=0
-				Warp=8
-				PushOut=1
-				PushOutIcon='BLANK.dmi'
+				Rounds=5
+				DelayTime=0
+				Rush=8
+				ControlledRush=1
+				HomingCharge=1
+				Distance=1
 				Duration=5
 				Cooldown=45
 				NeedsSword=0
@@ -85,6 +93,7 @@ obj
 
 				verb/Cursed_Technique_Cleave()
 					set category="Skills"
+<<<<<<< HEAD
 					set name="Cleave"
 					var/obj/Skills/Grapple/Sword/Eviscerate/proxy = usr.findOrAddSkill(/obj/Skills/Grapple/Sword/Eviscerate)
 					proxy.DamageMult = src.DamageMult
@@ -96,6 +105,10 @@ obj
 					proxy.Activate(usr)
 
 		AutoHit
+=======
+					set name = "Cleave"
+					usr.Activate(src)
+>>>>>>> 0151aa3a92cb4733a6cdcfdfc4a893cff69a304d
 			Shutter_Doors
 				NeedsSword=0
 				name="Shutter Doors"

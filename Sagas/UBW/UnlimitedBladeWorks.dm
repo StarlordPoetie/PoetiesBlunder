@@ -73,7 +73,7 @@ obj/DomainExpansionRoof
 
 mob
 	proc
-		DomainExpansion(obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/buff)
+		DomainExpansion(obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/buff, atom/center)
 			if(!buff)
 				return
 			if(HasDomainLock())
@@ -83,14 +83,16 @@ mob
 				AdminMessage("[src] tried to use Domain Expansion but the buff has no custom turf icon set. Recreate the skill via Give Domain Expansion.")
 				src << "Your Domain Expansion is not set up. Admins alerted."
 				return
+			if(!center)
+				center = src
 			if(src.domainExpansionActive)
 				return
 			var/useRange = buff.range
 			if(useRange < 1) useRange = 1
 			if(useRange > 50) useRange = 50
-			var/centerX = src.x
-			var/centerY = src.y
-			var/centerZ = src.z
+			var/centerX = center.x
+			var/centerY = center.y
+			var/centerZ = center.z
 			var/list/floors = list()
 			var/list/barriers = list()
 			var/icon/floorIcon = buff.customTurfIcon
@@ -101,7 +103,7 @@ mob
 			// the previous square.
 			var/rangeSq = useRange * useRange
 			var/innerSq = (useRange - 1) * (useRange - 1)
-			for(var/turf/t in range(useRange, src))
+			for(var/turf/t in range(useRange, center))
 				if(t.z != centerZ)
 					continue
 				if(t.domain_expansion_owner && t.domain_expansion_owner != src)
