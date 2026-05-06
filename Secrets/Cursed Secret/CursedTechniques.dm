@@ -58,11 +58,7 @@ obj
 					proxy.vars["HitSparkX"] = src.HitSparkX
 					proxy.vars["HitSparkY"] = src.HitSparkY
 					usr.UseProjectile(proxy)
-<<<<<<< HEAD
-
-=======
 		AutoHit
->>>>>>> 0151aa3a92cb4733a6cdcfdfc4a893cff69a304d
 			Cursed_Technique_Cleave
 				SkillCost=0
 				Copyable=0
@@ -93,22 +89,8 @@ obj
 
 				verb/Cursed_Technique_Cleave()
 					set category="Skills"
-<<<<<<< HEAD
-					set name="Cleave"
-					var/obj/Skills/Grapple/Sword/Eviscerate/proxy = usr.findOrAddSkill(/obj/Skills/Grapple/Sword/Eviscerate)
-					proxy.DamageMult = src.DamageMult
-					proxy.Cooldown = src.Cooldown
-					proxy.MultiHit = src.InstantStrikes
-					proxy.vars["KBMult"] = src.KBMult
-					proxy.NeedsSword = src.NeedsSword
-					proxy.EnergyCost = src.EnergyCost
-					proxy.Activate(usr)
-
-		AutoHit
-=======
 					set name = "Cleave"
 					usr.Activate(src)
->>>>>>> 0151aa3a92cb4733a6cdcfdfc4a893cff69a304d
 			Shutter_Doors
 				NeedsSword=0
 				name="Shutter Doors"
