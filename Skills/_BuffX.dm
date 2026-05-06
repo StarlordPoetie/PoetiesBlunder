@@ -135,8 +135,8 @@ NEW VARIABLES
 	var/DashCount
 	var/DashCountLimit
 	var/CastingTime=0//how long does the buff take to perform
-	var/ManaGlow
-	var/ManaGlowSize
+	var/ManaGlow as text
+	var/ManaGlowSize as num
 	var/ArmamentGlow
 	var/ArmamentGlowSize
 	var/AwakeningRequired
@@ -648,12 +648,20 @@ NEW VARIABLES
 					vars["[selectedStats[2]]Mult"] = 1.1
 					vars["[selectedStats[3]]Mult"] = 1.05
 
+			proc/applyCursedEnergyDefaults()
+				AuraLock = 'Aura_CursedEnergy.dmi'
+				AuraX = -5
+				AuraY = -2
+				ActiveMessage = "channels Cursed Energy, reinforcing their body"
+				OffMessage = "releases the flow of Cursed Energy"
+				IconApart = 1
+				ManaGlow = "#f3f5e1"
+				ManaGlowSize = 1.5
+
 			Trigger(var/mob/User, Override=0)
 				src.init(User)
 				if(User && User.hasSecret("Cursed Energy"))
-					AuraLock = 1
-					ManaGlow = "#ffffeb"
-					ManaGlowSize = 1.5
+					applyCursedEnergyDefaults()
 				..()
 
 			verb/Customize_Powered_State()

@@ -105,6 +105,7 @@
 					p << "You focus on Cursed Energy Enhancement, sharpening weapon flow and reactions."
 		proc/applySecret(mob/p)
 			removeBlackFlashSureStrike(p)
+			p.applyCursedEnergyKiControlDefaults()
 			switch(currentTier)
 				if(1)
 					p << "You awaken to the flow of Cursed Energy."
@@ -141,6 +142,10 @@
 			CursedEnergyBlackFlashChance = clamp(CursedEnergyBlackFlashChance, CursedEnergyBlackFlashBaseChance, 35)
 			updateSlashCursedTechniques(p)
 
+
+mob/proc/applyCursedEnergyKiControlDefaults()
+	for(var/obj/Skills/Buffs/ActiveBuffs/Ki_Control/ki in src)
+		ki.applyCursedEnergyDefaults()
 
 mob
 	var
