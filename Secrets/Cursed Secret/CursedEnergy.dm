@@ -20,7 +20,7 @@
 			var/obj/Skills/Queue/Cursed_Technique_Dismantle/d = locate(/obj/Skills/Queue/Cursed_Technique_Dismantle) in p
 			if(d)
 				d.DamageMult = 3 * scale
-			var/obj/Skills/Queue/Cursed_Technique_Cleave/c = locate(/obj/Skills/Queue/Cursed_Technique_Cleave) in p
+			var/obj/Skills/AutoHit/Cursed_Technique_Cleave/c = locate(/obj/Skills/AutoHit/Cursed_Technique_Cleave) in p
 			if(c)
 				c.DamageMult = 4.5 * scale
 		proc/grantDomainExpansion(mob/p)
@@ -193,7 +193,7 @@ mob/proc/setupCursedEnergyAwakening()
 
 		if("Slash")
 			findOrAddSkill(/obj/Skills/Queue/Cursed_Technique_Dismantle)
-			findOrAddSkill(/obj/Skills/Queue/Cursed_Technique_Cleave)
+			findOrAddSkill(/obj/Skills/AutoHit/Cursed_Technique_Cleave)
 			ce.updateSlashCursedTechniques(src)
 			src << "Your cursed energy gains slicing properties."
 
@@ -205,9 +205,9 @@ mob/proc/attemptCursedHeavyStrike()
 		return 0
 
 	if(cursedEnergyTrait == "Slash")
-		var/obj/Skills/Queue/Cursed_Technique_Cleave/c = locate(/obj/Skills/Queue/Cursed_Technique_Cleave) in src
-		if(c && !c.Using)
-			SetQueue(c)
+		var/obj/Skills/AutoHit/Cursed_Technique_Cleave/c = locate(/obj/Skills/AutoHit/Cursed_Technique_Cleave) in src
+		if(c)
+			Activate(c)
 			return 1
 
 	if(cursedEnergyTrait == "Serrated")
