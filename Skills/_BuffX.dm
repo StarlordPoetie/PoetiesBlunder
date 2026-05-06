@@ -9269,14 +9269,19 @@ NEW VARIABLES
 
 			Hollow_Wicker_Basket
 				Slotless = 1
-				TimerLimit = 7
-				Cooldown = 45
+				TimerLimit = 6
+				Cooldown = 150
+				CooldownStatic = 1
+				var/tmp/restores_movement = FALSE
 				BuffName = "Hollow Wicker Basket"
 				IconLock = 'HolyDome_Wicker_Shimmer.dmi'
 				LockX = -158
 				LockY = -96
 				ActiveMessage = "forms a Hollow Wicker Basket."
 				OffMessage = "disperses their Hollow Wicker Basket."
+
+				Cooldown(var/modify = 1, var/Time, mob/p, var/announce_cd = 1)
+					..(modify, 1500, p, announce_cd)
 
 				verb/Hollow_Wicker_Basket()
 					set category = "Skills"
@@ -9285,8 +9290,9 @@ NEW VARIABLES
 
 			Simple_Domain
 				Slotless = 1
-				TimerLimit = 7
-				Cooldown = 45
+				TimerLimit = 4
+				Cooldown = 150
+				CooldownStatic = 1
 				BuffName = "Simple Domain"
 				IconLock = 'Bubbly_Cursed_Energy_Aura.dmi'
 				LockX = -16
@@ -9300,6 +9306,9 @@ NEW VARIABLES
 				passives = list("Siphon" = 5, "FluidForm" = 1, "PureReduction" = 1.5, "SpaceWalk" = 1, "StaticWalk" = 1, "Void" = 1)
 				ActiveMessage = "expands a Simple Domain around themselves."
 				OffMessage = "lets their Simple Domain collapse."
+
+				Cooldown(var/modify = 1, var/Time, mob/p, var/announce_cd = 1)
+					..(modify, 1500, p, announce_cd)
 
 				verb/Simple_Domain()
 					set category = "Skills"
@@ -13135,6 +13144,11 @@ mob
 				src:move_speed = MovementSpeed()
 
 		AddSlotlessBuff(var/obj/Skills/Buffs/B)
+			if(istype(B, /obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket) && isplayer(src))
+				var/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket/HWB = B
+				var/mob/Players/P = src
+				HWB.restores_movement = !P.move_disabled
+				P.move_disabled = 1
 			if(B.BuffName=="Regeneration")
 				if(src.HasHellPower())
 					B.RegenerateLimbs=1
@@ -13171,6 +13185,12 @@ mob
 				src:move_speed = MovementSpeed()
 
 		RemoveSlotlessBuff(var/obj/Skills/Buffs/B)
+			if(istype(B, /obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket) && isplayer(src))
+				var/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket/HWB = B
+				var/mob/Players/P = src
+				if(HWB.restores_movement)
+					P.move_disabled = 0
+				HWB.restores_movement = FALSE
 			if(B.HitScanIcon)
 				HitScanIcon = null
 			if(B.HitScanHitSpark)
