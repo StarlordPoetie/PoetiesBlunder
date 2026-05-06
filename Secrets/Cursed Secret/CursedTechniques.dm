@@ -22,6 +22,7 @@ obj
 				EnergyCost=12
 				Quaking=2
 				Cooldown=30
+
 				verb/Cursed_Technique_Gamblers_Fist()
 					set category="Skills"
 					set name="Gamblers Fist"
@@ -43,19 +44,21 @@ obj
 				HitSparkX=-32
 				HitSparkY=-32
 				HitSparkSize=1.25
+
 				verb/Cursed_Technique_Dismantle()
 					set category="Skills"
-					set name = "Dismantle"
+					set name="Dismantle"
 					var/obj/Skills/Projectile/Divine_Departure/proxy = usr.findOrAddSkill(/obj/Skills/Projectile/Divine_Departure)
 					proxy.EnergyCost = src.EnergyCost
 					proxy.Cooldown = src.Cooldown
 					proxy.DamageMult = src.DamageMult
 					proxy.AccMult = src.AccuracyMult
 					proxy.MultiHit = src.InstantStrikes
-					proxy.HitSparkIcon = src.HitSparkIcon
-					proxy.HitSparkX = src.HitSparkX
-					proxy.HitSparkY = src.HitSparkY
+					proxy.vars["HitSparkIcon"] = src.HitSparkIcon
+					proxy.vars["HitSparkX"] = src.HitSparkX
+					proxy.vars["HitSparkY"] = src.HitSparkY
 					usr.UseProjectile(proxy)
+
 			Cursed_Technique_Cleave
 				SkillCost=0
 				Copyable=0
@@ -79,17 +82,19 @@ obj
 				HitSparkY=-32
 				HitSparkSize=0.75
 				HitSparkTurns=1
+
 				verb/Cursed_Technique_Cleave()
 					set category="Skills"
-					set name = "Cleave"
+					set name="Cleave"
 					var/obj/Skills/Grapple/Sword/Eviscerate/proxy = usr.findOrAddSkill(/obj/Skills/Grapple/Sword/Eviscerate)
 					proxy.DamageMult = src.DamageMult
 					proxy.Cooldown = src.Cooldown
 					proxy.MultiHit = src.InstantStrikes
-					proxy.KBMult = src.KBMult
+					proxy.vars["KBMult"] = src.KBMult
 					proxy.NeedsSword = src.NeedsSword
 					proxy.EnergyCost = src.EnergyCost
 					proxy.Activate(usr)
+
 		AutoHit
 			Shutter_Doors
 				NeedsSword=0
@@ -119,6 +124,7 @@ obj
 				HitSparkY=0
 				Cooldown=30
 				Instinct=2
+
 				verb/Shutter_Doors()
 					set category="Skills"
 					usr.Activate(src)
