@@ -196,7 +196,7 @@
 		if(target && target.KO && istype(target, /mob/Player/AI) && !istype(target, /mob/Player/AI/Demon) && !target.client)
 			var/mob/Player/AI/ai_target = target
 			if(ai_target.ai_owner) return
-			target.Death(null, null)
+			target.Death(ai_owner, null)
 			if(ai_owner && Potential < ai_owner.Potential)
 				Potential += 1
 				var/datum/party_demon/kpd = DemonGetPartyDemon()
