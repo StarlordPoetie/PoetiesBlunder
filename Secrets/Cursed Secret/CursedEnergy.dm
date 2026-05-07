@@ -38,11 +38,39 @@
 			else if(findtext(choice, "Hollow Wicker Basket"))
 				p.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket)
 				p.cursedEnergyDomainChoice = "Hollow Wicker Basket"
+	proc/applyCursedDomainExpansionBuff(obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d)
+		if(!d)
+			return
+		d.BuffName = "Domain Expansion Unleashed!"
+		d.Mastery = -1
+		d.UnrestrictedBuff = 1
+		d.StrMult = 1.50
+		d.ForMult = 1.50
+		d.EndMult = 1.50
+		d.SpdMult = 1.50
+		d.DefMult = 1.50
+		d.MakesArmor = 0
+		d.TurfShift = 'WhiteTurfShift.dmi'
+		d.TurfShiftInstant = 1
+		d.OffMult = 1.50
+		d.passives = list("TechniqueMastery" = 5, "BuffMastery" = 2, "MovementMastery" = 5)
+		d.DarkChange = 1
+	proc/ensureDomainExpansionVerbs(mob/p, obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d)
+		if(!p || !d)
+			return
+		if(!(d in p.Skills))
+			p.Skills.Add(d)
+		if(!(d in p.Buffs))
+			p.Buffs.Add(d)
+		if(!(d in p.contents))
+			p.contents.Add(d)
 	proc/grantDomainExpansion(mob/p)
 		if(!p)
 			return
 		var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in p
 		if(d)
+			applyCursedDomainExpansionBuff(d)
+			ensureDomainExpansionVerbs(p, d)
 			grantDomainDefense(p)
 			return
 		var/demonName = input(p, "What is the name of your Domain? (e.g. 'Malevolent Shrine' -> activation says 'X says: Domain Expansion.. Malevolent Shrine')", "Domain Expansion - Name") as text|null
@@ -51,18 +79,13 @@
 		var/icon/customTurfIcon = input(p, "Upload the custom floor icon for the Domain (32x32 .dmi, single state).", "Domain Expansion - Turf Icon") as icon|null
 		if(!customTurfIcon)
 			customTurfIcon = 'WhiteTurfShift.dmi'
-		var/rawRange = input(p, "Range of the Domain Expansion (1 to 50).", "Domain Expansion - Range", 20) as num|null
-		var/finalRange = 20
-		if(!isnull(rawRange))
-			finalRange = round(rawRange)
-		if(finalRange < 1) finalRange = 1
-		if(finalRange > 50) finalRange = 50
+		var/finalRange = 15
 		var/shroudChoice = input(p, "Should the Domain use a shroud overlay on top of the floor? (Selecting No leaves only the custom floor.)", "Domain Expansion - Shroud") in list("Yes","No")
 		var/useShroud = (shroudChoice == "Yes")
 		var/icon/customRoofIcon = null
 		if(useShroud)
 			customRoofIcon = input(p, "Upload the custom shroud icon for the Domain (32x32 .dmi, single state). Cancel to fall back to the default Roofs.dmi shroud.", "Domain Expansion - Shroud Icon") as icon|null
-		d = new()
+		d = new/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/Cursed_Energy()
 		d.demonName = copytext("[demonName]", 1, 65)
 		d.customTurfIcon = customTurfIcon
 		d.customRoofIcon = customRoofIcon
@@ -70,7 +93,9 @@
 		d.range = finalRange
 		d.ActiveMessage = "says: Domain Expansion.. [d.demonName]!"
 		d.OffMessage = "conceals the domain of [d.demonName]..."
+		applyCursedDomainExpansionBuff(d)
 		p.AddSkill(d)
+		ensureDomainExpansionVerbs(p, d)
 		p << "You have gained Domain Expansion ([d.demonName], range [finalRange], shroud [useShroud ? "on" : "off"])."
 		grantDomainDefense(p)
 	proc/chooseSpecialization(mob/p)
