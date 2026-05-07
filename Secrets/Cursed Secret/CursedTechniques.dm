@@ -45,7 +45,7 @@ obj
 				SkillCost=0
 				Copyable=0
 				name="Dismantle"
-				ActiveMessage=flicks their finger, unleashing "Dismantle!".
+				ActiveMessage="flicks their finger, unleashing their innate Cursed Technique Dismantle!."
 				Distance=30
 				DamageMult=3
 				AccMult=1.2
