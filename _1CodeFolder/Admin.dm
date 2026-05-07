@@ -798,6 +798,24 @@ mob/proc/AdminDoKO(mob/A)
 		A.Unconscious(null, "ADMIN")
 		Log("Admin", "<font color=red>[ExtractInfo(src)] admin-KOed [ExtractInfo(A)].")
 
+// Should fix targeting your own shit if deleting/editing someone else's items/skills in Admin View Contents
+
+mob/proc/AdminResolveTargetedContent(atom/A)
+	if(!A) return null
+	if(!src.AdminContentsView) return A
+	if(!src.Target || src.Target == src) return A
+	if(!isobj(A)) return A
+	if(A in src.Target.contents) return A
+	if(!(A in src.contents)) return A
+
+	var/obj/firstTypeMatch = null
+	for(var/obj/O in src.Target.contents)
+		if(O.type != A.type) continue
+		if(!firstTypeMatch) firstTypeMatch = O
+		if(O.name == A.name)
+			return O
+	return firstTypeMatch ? firstTypeMatch : A
+
 // Overwatch helpers — used by /mob/Admin4/verb/Overwatch dropdown.
 // Tier 4 only. Designed for an observer/balance role: silently watch
 // players, follow them, snapshot their state, all without breaking RP.
@@ -1377,6 +1395,7 @@ mob/Admin2/verb
 
 	Delete(atom/A in world)
 		set category="Admin"
+		A = src.AdminResolveTargetedContent(A)
 
 		if(istype(A,/area/))
 			usr<<"You can't delete Areas."
@@ -1725,6 +1744,7 @@ mob/Admin2/verb
 
 	Edit(atom/A in world)
 		set category = "Admin"
+		A = src.AdminResolveTargetedContent(A)
 		var/list/browserOptions = list()
 		browserOptions.Add("+find");
 		winset(usr, null, list2params(browserOptions));
