@@ -116,7 +116,7 @@
 				p.passive_handler.Set("Adrenaline", 3)
 				p.passive_handler.Set("SwordAscension", 1)
 				p << "You focus on Cursed Energy Enhancement, sharpening weapon flow and reactions."
-	proc/applySecret(mob/p)
+	applySecret(mob/p)
 		if(!p)
 			return
 		removeBlackFlashSureStrike(p)
