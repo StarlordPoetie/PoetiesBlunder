@@ -1,5 +1,10 @@
 ascension/sub_ascension/demi_fiend/musubi
 	passives = list("Musubi" = 1)
+	onAscension(mob/owner)
+		..()
+		if(!(locate(/obj/Skills/AutoHit/DemiFiend/Lunge) in owner))
+			owner.AddSkill(new /obj/Skills/AutoHit/DemiFiend/Lunge)
+			owner << "The way of Musubi is yours. Lunge has become part of your inner world."
 ascension/sub_ascension/demi_fiend/shijima
 	passives = list("Shijima" = 1)
 ascension/sub_ascension/demi_fiend/yosuga

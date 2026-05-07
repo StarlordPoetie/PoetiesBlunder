@@ -376,6 +376,34 @@ mob/proc/CraftMagatama()
 	magatama_crafted++
 	src << "You have crafted [M.name]."
 
+	if(passive_handler?.Get("Musubi"))
+		var/list/skill_options = list()
+		var/list/skill_paths = list()
+		for(var/S in M.magatama_skills)
+			if(locate(S) in src)
+				continue
+			var/obj/Skills/temp = new S
+			skill_options += temp.name
+			skill_paths += S
+			del temp
+		for(var/level_str in M.ascension_skills)
+			for(var/S in M.ascension_skills[level_str])
+				if(locate(S) in src)
+					continue
+				if(S in skill_paths)
+					continue
+				var/obj/Skills/temp = new S
+				skill_options += temp.name
+				skill_paths += S
+				del temp
+		if(skill_options.len)
+			var/skill_choice = input(src, "Your inner world expands. Choose one skill from [M.name] to internalize permanently.", "Internalize Skill") in skill_options
+			if(skill_choice)
+				var/cidx = skill_options.Find(skill_choice)
+				if(cidx >= 1 && cidx <= skill_paths.len)
+					src.AddSkill(new skill_paths[cidx])
+					src << "You have internalized [skill_choice] into your inner world."
+
 obj/Items/Magatama/Marogareh
 	name = "Marogareh"
 	desc = "The first Magatama, born when the Conception reshaped the world. A writhing, parasitic organism that awakens the demonic potential within its host."
