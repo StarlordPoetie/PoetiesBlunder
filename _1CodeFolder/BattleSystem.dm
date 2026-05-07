@@ -625,7 +625,6 @@ mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extr
 		world<<"<font color=red><b>When gathering souls become one, a new despair will bring about the Absolute End.</b></font>"
 		sleep(30)
 		world<<"<font color=red><b>[src] becomes the path its darkness advances upon.</b></font>"
-
 		sleep(30)
 		world<<"<font color=red><b>Shinka no Yami.</b></font>"
 		HealAllCutTax();
@@ -642,11 +641,11 @@ mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extr
 	if(hasMazokuRevival())
 		RPModeSwitch()
 		sleep(30)
-		world<<""
+		world<<"<font color=red><b>As a descendant of a Great Demon Lord who has become powerful enough...</b></font>"
 		sleep(30)
-		world<<""
+		world<<"<font color=red><b>[src] has become a vessel for that Demon's soul.</b></font>"
 		sleep(30)
-		world<<""
+		world<<"<font color=red><b>Atavism of the Mazoku.</b></font>"
 		HealAllCutTax()
 		src.FullRestore()
 		sleep(30)
@@ -657,6 +656,7 @@ mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extr
 			if(src.AscensionsAcquired >= 6)
 				src.race.transformations += new /transformation/human/sacred_energy_aura()
 		Conscious()
+		world<<"<font color=red><b>[src] has awakened.</b></font>"
 		return
 
 	if(NoRemains!=2)

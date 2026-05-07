@@ -13,7 +13,7 @@ obj/Skills/Buffs/SlotlessBuffs/Spiral/Clobber
 	EndYourself=1
 	Range=5
 	Cooldown=120
-	ActiveMessage="screams LET ME SEE YOU GRIT THOSE TEETH!"
+	ActiveMessage="screams: <b>LET ME SEE YOU GRIT THOSE TEETH!</b>"
 	verb/Clobber()
 		set category="Skills"
 		if(!usr.Target || usr.Target==usr)
@@ -102,7 +102,7 @@ obj/Skills/Buffs/SlotlessBuffs/Spiral/InspiredEvo
 	KenWaveX=105
 	KenWaveY=105
 	Range=20
-	ActiveMessage="screams WHEN THERE'S A WALL IN OUR WAY, WE DRILL RIGHT THROUGH IT!"
+	ActiveMessage="screams: <b>WHEN THERE'S A WALL IN OUR WAY, WE DRILL RIGHT THROUGH IT!</b>"
 	verb/Inspired_Evolution()
 		set category="Skills"
 		set name="Inspired Evolution"
@@ -129,7 +129,7 @@ obj/Skills/Buffs/SlotlessBuffs/Spiral/InspiredEvo
 				User <<"[m] is a supernatural entity. They are incapable of change."
 				m <<"[User] tried to inspire you to evolve, but your nature prevents you from lowering yourself to their level."
 				return
-			ActiveMessage="screams WHEN THERE'S A WALL IN OUR WAY, TEAM [User] DRILLS RIGHT THROUGH IT!"
+			ActiveMessage="screams: <b>WHEN THERE'S A WALL IN OUR WAY, TEAM [User] DRILLS RIGHT THROUGH IT!</b>"
 			var/obj/Skills/Buffs/SlotlessBuffs/Spiral/InspiredEvoApply/applyBuff = new
 			var/secretLevel = User.secretDatum.currentTier
 			var/SpiralPower=1
@@ -149,6 +149,7 @@ obj/Skills/Buffs/SlotlessBuffs/Spiral/InspiredEvo
 			applyBuff.EndMult=1.25
 			applyBuff.TimerLimit = 20 * (m.AscensionsAcquired+2)
 			applyBuff.passives = list("SpiralPowerUnlocked" = SpiralPower)
+			applyBuff.passives = list("SpiralSpark" = 1)
 			applyBuff.Trigger(m, 1)
 		User.OMessage(1, null, "[User] inspires the evolution of [User.party.members.len == 1 ? "themselves" : "their party"]!")
 		src.Cooldown(1, null, User)

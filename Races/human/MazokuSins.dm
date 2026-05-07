@@ -319,6 +319,7 @@ mob/proc/mazokuActivateHighestHT()
 
 /mob/proc/MazokuEffects()
 
+
 /transformation/human/revert(mob/user)
 	..()
 	if(!user || user.transActive >= 1) return
