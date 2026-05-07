@@ -48,4 +48,5 @@ race
 					skills = list(/obj/Skills/AutoHit/Dragon_Roar, /obj/Skills/AutoHit/Frenzy_Breath, /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Dragon_Rage/Frenzy_Mantle)
 					passives["Fury"] = 1
 					passives["Momentum"] = 1
+					passives["Maki"] = 1
 			..()
