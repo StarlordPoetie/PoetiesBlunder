@@ -45,12 +45,13 @@ obj
 				SkillCost=0
 				Copyable=0
 				name="Dismantle"
-				ActiveMessage="flicks their finger, unleashing Dismantle."
+				ActiveMessage=flicks their finger, unleashing "Dismantle!".
 				Distance=30
 				DamageMult=3
 				AccMult=1.2
-				MultiHit=2
-				Radius=1
+				MortalBlow=0.25
+				MultiHit=3
+				Radius=2
 				ZoneAttack=1
 				ZoneAttackX=0
 				ZoneAttackY=0
@@ -61,7 +62,7 @@ obj
 				Piercing=1
 				EnergyCost=4
 				Cooldown=30
-				IconLock='Air Render.dmi'
+				IconLock='Large Dismantle.dmi'
 				IconSize=2
 				Variation=0
 
@@ -90,7 +91,6 @@ obj
 				Knockback=0
 				WindUp=0
 				ActiveMessage="instantly surges forward with charged electric cursed energy!"
-				HitMessage="is struck by a violent impact of crackling electric cursed energy!"
 				Icon='Chidori.dmi'
 				HitSparkIcon='Hit Effect Vampire.dmi'
 				HitSparkX=-32
@@ -120,7 +120,6 @@ obj
 					ChargeTech=0
 					ChargeTime=0
 					ActiveMessage="instantly surges forward with charged electric cursed energy!"
-					HitMessage="is struck by a violent impact of crackling electric cursed energy!"
 					Icon='Chidori.dmi'
 					HitSparkIcon='Hit Effect Vampire.dmi'
 					HitSparkX=-32
@@ -179,7 +178,7 @@ obj
 				DamageMult=1
 				HolyMod=2.5
 				AbyssMod=2.5
-				Distance=1
+				Distance=7
 				DistanceAround=1
 				EnergyCost=10
 				Rounds=20
