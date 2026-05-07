@@ -98,6 +98,21 @@
 		ensureDomainExpansionVerbs(p, d)
 		p << "You have gained Domain Expansion ([d.demonName], range [finalRange], shroud [useShroud ? "on" : "off"])."
 		grantDomainDefense(p)
+	proc/getTraitPassives(trait)
+		switch(trait)
+			if("Electricity")
+				return list("Shocking" = 2, "ThunderHerald" = 1, "CriticalChance" = 10)
+			if("Slash")
+				return list("Shearing" = 2, "Crippling" = 1, "CriticalChance" = 15)
+			if("Serrated")
+				return list("Shearing" = 2, "Shattering" = 2, "CriticalChance" = 10)
+
+		return list()
+	proc/getActiveTraitPassives(mob/p)
+		if(!p || !p.hasSecret("Cursed Energy"))
+			return list()
+
+		return getTraitPassives(p.cursedEnergyTrait)
 	proc/getSpecializationPassives(specialization)
 		switch(specialization)
 			if("Cursed Energy Reinforcement")
@@ -158,6 +173,7 @@
 		p.refreshCursedEnergyKiControlSpecialization()
 		p.passive_handler.Set("RenameMana", "Cursed Energy")
 		p.setupCursedEnergyAwakening()
+		p.refreshCursedEnergyTraitPassives()
 		switch(currentTier)
 			if(1)
 				p << "You awaken to the flow of Cursed Energy."
@@ -221,6 +237,7 @@ mob
 		cursedEnergySpecialization
 		cursedEnergySpecializationPassiveMigrated
 		cursedEnergyDomainChoice
+		list/cursedEnergyTraitPassivesApplied
 
 
 mob/proc/getCursedEnergySecret()
@@ -246,10 +263,31 @@ mob/proc/setCursedEnergyBlackFlashFirstUse()
 		ce.CursedEnergyBlackFlashFirstTimeUse = 0
 
 
+mob/proc/removeCursedEnergyTraitPassives()
+	if(cursedEnergyTraitPassivesApplied && cursedEnergyTraitPassivesApplied.len)
+		passive_handler.decreaseList(cursedEnergyTraitPassivesApplied)
+	cursedEnergyTraitPassivesApplied = null
+
+
+mob/proc/refreshCursedEnergyTraitPassives()
+	removeCursedEnergyTraitPassives()
+	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
+	if(!ce)
+		return
+	var/list/traitPassives = ce.getActiveTraitPassives(src)
+	if(!traitPassives.len)
+		return
+	passive_handler.increaseList(traitPassives)
+	cursedEnergyTraitPassivesApplied = traitPassives.Copy()
+
+
 mob/proc/setupCursedEnergyAwakening()
 	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
 
-	if(!ce || ce.awakeningConfigured)
+	if(!ce)
+		return
+	if(ce.awakeningConfigured)
+		refreshCursedEnergyTraitPassives()
 		return
 
 	var/chosenColor = input(src, "Choose aura color.", "Cursed Energy") as color|null
@@ -278,6 +316,7 @@ mob/proc/setupCursedEnergyAwakening()
 			src << "Your cursed energy gains slicing properties."
 
 	ce.awakeningConfigured = 1
+	refreshCursedEnergyTraitPassives()
 
 
 mob/proc/attemptCursedHeavyStrike()
