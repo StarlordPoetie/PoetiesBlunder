@@ -43,7 +43,7 @@
 
 /obj/Skills/Buffs/SlotlessBuffs/Magic/HellFire/Hellstorm
     ElementalClass="Fire"
-    scalingValues = list("Damage" = list(0.2,0.2,0.3,0.3,0.35,0.35), "Distance" = list(4,6,6,6,8,10), \
+    scalingValues = list("Damage" = list(0.2,0.25,0.3,0.35,0.4,0.45), "Distance" = list(4,6,6,6,8,10), \
     "DarknessFlame" = list(6,12,15,20,25,25), "Slow" = list(0,0,0,0,0,0), "Burning" = list(10,15,20,25,25,30), "Duration" = list(100,150,150,175,200,300), \
     "Adapt" = list(1,1,1,1,1,1), "CorruptionGain" = list(1,1,1,1,1,1) )
     makSpace = new/spaceMaker/HellFire
@@ -81,10 +81,12 @@
     proc/applyEffects(mob/target, mob/owner, static_damage)
         if(!owner||!target) return
         var/asc = owner.AscensionsAcquired ? owner.AscensionsAcquired + 1 : 1
+        var/DefReduction=sqrt(target.GetDef())
         for(var/x in scalingValues)
             switch(x)
                 if("Damage")
                     static_damage *= scalingValues[x][asc]
+                    static_damage /= DefReduction
                     static_damage = owner.DoDamage(target, static_damage, 0, 0 , 0 , 0 , 0 , 0 , 0)
                     owner.gainCorruption((static_damage * 2) * glob.CORRUPTION_GAIN)
                 if("DarknessFlame")
@@ -92,7 +94,7 @@
                 if("Burning")
                     target.AddBurn(scalingValues[x][asc])
                 if("Slow")
-                    target.AddCrippling(scalingValues[x][asc])
+                    target.AddCrippling(scalingValues[x][asc]/DefReduction)
         if(!target:move_disabled)
             if(prob(glob.HELLSTORM_SNARERATE*asc))
                 target:move_disabled = TRUE
