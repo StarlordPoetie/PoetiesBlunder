@@ -71,6 +71,74 @@ obj
 					usr.UseProjectile(src)
 
 		AutoHit
+			Cursed_Voltage_Strike
+				SkillCost=0
+				Copyable=0
+				name="Cursed Voltage Strike"
+				Area="Strike"
+				AdaptRate=1
+				Rush=20
+				ControlledRush=1
+				HomingCharge=1
+				SpecialAttack=1
+				CanBeDodged=0
+				CanBeBlocked=1
+				ComboMaster=1
+				DamageMult=11
+				Stunner=3
+				MortalBlow=1
+				Knockback=0
+				WindUp=0
+				ActiveMessage="instantly surges forward with charged electric cursed energy!"
+				HitMessage="is struck by a violent impact of crackling electric cursed energy!"
+				Icon='Chidori.dmi'
+				HitSparkIcon='Hit Effect Vampire.dmi'
+				HitSparkX=-32
+				HitSparkY=-32
+				HitSparkSize=1
+				Cooldown=45
+				EnergyCost=8
+				Instinct=1
+				proc/reset2default()
+					name="Cursed Voltage Strike"
+					Area="Strike"
+					AdaptRate=1
+					Rush=20
+					ControlledRush=1
+					HomingCharge=1
+					SpecialAttack=1
+					CanBeDodged=0
+					CanBeBlocked=1
+					ComboMaster=1
+					DamageMult=11
+					Stunner=3
+					MortalBlow=1
+					Knockback=0
+					WindUp=0
+					WindupIcon=null
+					WindupMessage=null
+					ChargeTech=0
+					ChargeTime=0
+					ActiveMessage="instantly surges forward with charged electric cursed energy!"
+					HitMessage="is struck by a violent impact of crackling electric cursed energy!"
+					Icon='Chidori.dmi'
+					HitSparkIcon='Hit Effect Vampire.dmi'
+					HitSparkX=-32
+					HitSparkY=-32
+					HitSparkSize=1
+					Cooldown=45
+					EnergyCost=8
+					Instinct=1
+					Rounds=0
+					TurfShift=null
+					TurfShiftDuration=0
+					TurfShiftDurationSpawn=0
+					TurfShiftDurationDespawn=0
+				adjust(mob/p)
+					reset2default()
+					if(!p || p.cursedEnergyTrait != "Electricity")
+						return
+
 			Cursed_Technique_Cleave
 				SkillCost=0
 				Copyable=0
