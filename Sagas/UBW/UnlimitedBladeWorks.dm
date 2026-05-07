@@ -31,6 +31,8 @@ obj/DomainExpansionRoof
 	// hittable by punches / AOE, which both broke immersion and let players
 	// destructively interact with what is supposed to be a passive backdrop.
 	Attackable = 0
+	Destructable = 0
+	Health = 1#INF
 
 /mob/Admin3/verb/GiveDomainExpansion()
 	set category = "Admin"

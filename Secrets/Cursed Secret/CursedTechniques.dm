@@ -28,36 +28,48 @@ obj
 					set name="Gamblers Fist"
 					usr.SetQueue(src)
 
+			// Compatibility shim for saved pre-projectile Dismantle skills.
+			// New Cursed Energy users receive /obj/Skills/Projectile/Cursed_Technique_Dismantle.
+			Cursed_Technique_Dismantle
+				SkillCost=0
+				Copyable=0
+				name="Dismantle"
+				verb/Cursed_Technique_Dismantle()
+					set category="Skills"
+					set name="Dismantle"
+					var/obj/Skills/Projectile/Cursed_Technique_Dismantle/d = usr.findOrAddSkill(/obj/Skills/Projectile/Cursed_Technique_Dismantle)
+					usr.UseProjectile(d)
+
+		Projectile
 			Cursed_Technique_Dismantle
 				SkillCost=0
 				Copyable=0
 				name="Dismantle"
 				ActiveMessage="flicks their finger, unleashing Dismantle."
+				Distance=30
 				DamageMult=3
-				AccuracyMult=1.2
-				InstantStrikes=2
-				InstantStrikesDelay=1
-				NeedsSword=0
+				AccMult=1.2
+				MultiHit=2
+				Radius=1
+				ZoneAttack=1
+				ZoneAttackX=0
+				ZoneAttackY=0
+				FireFromSelf=1
+				FireFromEnemy=0
+				Knockback=1
+				Slashing=1
+				Piercing=1
 				EnergyCost=4
 				Cooldown=30
-				HitSparkIcon='Large Dismantle.dmi'
-				HitSparkX=-32
-				HitSparkY=-32
-				HitSparkSize=1.25
+				IconLock='Air Render.dmi'
+				IconSize=2
+				Variation=0
 
 				verb/Cursed_Technique_Dismantle()
 					set category="Skills"
 					set name="Dismantle"
-					var/obj/Skills/Projectile/Divine_Departure/proxy = usr.findOrAddSkill(/obj/Skills/Projectile/Divine_Departure)
-					proxy.EnergyCost = src.EnergyCost
-					proxy.Cooldown = src.Cooldown
-					proxy.DamageMult = src.DamageMult
-					proxy.AccMult = src.AccuracyMult
-					proxy.MultiHit = src.InstantStrikes
-					proxy.vars["HitSparkIcon"] = src.HitSparkIcon
-					proxy.vars["HitSparkX"] = src.HitSparkX
-					proxy.vars["HitSparkY"] = src.HitSparkY
-					usr.UseProjectile(proxy)
+					usr.UseProjectile(src)
+
 		AutoHit
 			Cursed_Technique_Cleave
 				SkillCost=0

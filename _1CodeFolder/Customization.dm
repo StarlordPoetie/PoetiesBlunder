@@ -89,6 +89,9 @@ mob/proc/Auraz(var/Z)
 	tensiona.color=list(0.5,0.3,0.7, 0.78,0.59,0.99, 0.3,0.11,0.51, 0,0,0)
 	var/image/flameaura=image('FlameAura.dmi',pixel_x=-16,pixel_y=-8)
 	flameaura.blend_mode=BLEND_ADD
+	var/image/cursedaura=image('Aura_CursedEnergy.dmi', pixel_x=-5, pixel_y=-2)
+	if(src.cursedEnergyAuraColor)
+		cursedaura.color = src.cursedEnergyAuraColor
 	if(Z=="Add")
 
 		src.Auraz("Remove")
@@ -134,6 +137,9 @@ mob/proc/Auraz(var/Z)
 						src.underlays+=phoenix
 					if("Unicorn")
 						src.underlays+=unicorn
+		else if(src.hasSecret("Cursed Energy"))
+			src.underlays+=cursedaura
+
 		else if(src.Saga=="Spiral")
 			src.underlays+=spiral
 
@@ -234,6 +240,7 @@ mob/proc/Auraz(var/Z)
 		src.underlays-=gold1
 		src.underlays-=gold2
 		src.underlays-=spiral
+		src.underlays-=cursedaura
 
 mob/proc/Chargez(var/Z, var/image/C=new(ChargeIcon), var/Under=0)
 	if(Z=="Add")
