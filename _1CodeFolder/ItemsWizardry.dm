@@ -91,6 +91,7 @@ obj/Seal
 	var/XBind
 	var/YBind
 	var/ZPlaneBind//holds z plane
+	var/DistAllowed
 	Savable=1
 	Destructable=0
 	Attackable=0
