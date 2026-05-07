@@ -123,6 +123,8 @@ mob/tierUpSaga(Path)
 						src << "The Green Dragon Crescent Blade unveils the secrets to an unstoppable rush..."
 						passive_handler.Increase("Flow", 2)
 						passive_handler.Increase("Instinct", 2)
+						AddSkill(new/obj/Skills/AutoHit/Crushing_Dragon_Strike)
+						AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Gong_Bu)
 						// SagaThreshold("Spd",2)
 
 
