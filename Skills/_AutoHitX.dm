@@ -6882,9 +6882,9 @@ obj
 						if(!src.SpecialAttack||m.passive_handler.Get("TotalReversal"))
 							var/reversalAcc = Accuracy_Formula(src.Owner, m, AccMult=Precision, BaseChance=glob.WorldDefaultAcc, IgnoreNoDodge=1)
 							if(reversalAcc == HIT || reversalAcc == WHIFF)
-								if(m.hasMagmicShield())
+								/*if(m.hasMagmicShield())
 									Stun(Owner, 3, FALSE);
-									m.MagmicShieldOff();
+									m.MagmicShieldOff();*/
 								if(src.Damage>0.1)
 									KenShockwave(m, icon='KenShockwave.dmi', Size=dmgRoll, Time=3)
 									m.Knockback(src.Knockback+(reversalChance*2.5) , src.Owner, Direction=get_dir(m, src.Owner))

@@ -15,9 +15,10 @@
     if(magShield.Using && SlotlessBuffs["[magShield.name]"]) magShield.Trigger(src, 1);
 
 /obj/Skills/Buffs/SlotlessBuffs/Magmic_Shield
-    passives = list("Magmic" = 1)//this stuns the opponent for 3 seconds when they are struck
-    Cooldown = 60
-    TimerLimit = 30
+    passives = list("PureReduction"=2, "Scorching"=2, "Deflection"=2, "Reversal"=0.2)
+    //passives = list("Magmic" = 1)//this used to stun the opponent for 3 seconds when they are struck
+    Cooldown = 50
+    TimerLimit = 10
     BuffName = "Magmic Shield"
     name = "Magmic Shield"
     ActiveMessage = "conjures a magmic shield!"

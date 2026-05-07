@@ -1388,12 +1388,8 @@ mob
 		HasAutoReversal()
 			if(passive_handler.Get("Reversal"))
 				return 1
-			if(hasMagmicShield())
-				return 1
 			return 0
 		GetAutoReversal()
-			if(hasMagmicShield())
-				return 100
 			return passive_handler.Get("Reversal")
 		HasAttracting()
 			if(passive_handler.Get("Attracting"))

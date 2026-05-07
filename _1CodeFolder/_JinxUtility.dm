@@ -131,6 +131,7 @@ mob
 			if(defender && defender.passive_handler["RoyalGuarding"])
 				var/obj/Skills/Buffs/SlotlessBuffs/RoyalGuard/RG = locate(/obj/Skills/Buffs/SlotlessBuffs/RoyalGuard) in defender.contents
 				if(RG)
+					defender << "<font color= 'green'>ATTACK PARRIED!</font>"
 					RG.SuccessfulParry = 2
 					var/meterGain = max(val * glob.ROYAL_GUARD_CHARGE_MULT, 1)
 					RG.RoyalMeter = min(RG.RoyalMeter + meterGain, 100)

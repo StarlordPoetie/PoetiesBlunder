@@ -766,6 +766,7 @@
 #include "Sagas\Mecha\Spiral\Spiral.dm"
 #include "Sagas\NewKeyblades\Keyblades.dm"
 #include "Sagas\NewKeyblades\KeybladeSkills.dm"
+#include "Sagas\PotHRebirth\PrismaticProphecizedSkills.dm"
 #include "Sagas\PotHRebirth\RebirthFinalSkills.dm"
 #include "Sagas\PotHRebirth\RebirthSkills.dm"
 #include "Sagas\PotHRebirth\RebirthTier.dm"

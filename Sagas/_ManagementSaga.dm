@@ -911,10 +911,11 @@ mob
 										src.AddSkill(new/obj/Skills/Utility/UltimateHeal)
 										src<<"You can also attempt to heal people, but the keyword is attempt."
 									if(src.RebirthHeroType=="Rainbow")
-										src<<"You are now the Prismatic Hero of Dreams, who fights with Hearts beating as One. (WIP)"
-										src.AddSkill(new/obj/Skills/Utility/NeverTooEarly)
-										src.AddSkill(new/obj/Skills/Projectile/Beams/TasteTheRainbow)
-										src.AddSkill(new/obj/Skills/Queue/HoldingOutForAHero)
+										src<<"You are now the Prismatic Hero of Dreams, emboldened by Hearts beating as One. (WIP)"
+										src<<"Swap between Chaos Saber and Chaos Buster to fight at close range or at range!"
+										src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/ChaosSaber)
+										src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/ChaosBuster)
+										//src.AddSkill(new/obj/Skills/Buffs/Rebirth/Hyperdeath_Mode)
 						if(3)
 							src.SagaLevel=3
 							if(src.RebirthHeroType=="Cyan")

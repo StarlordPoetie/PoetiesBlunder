@@ -1939,10 +1939,11 @@ obj
 			Spirit_Gun
 				SignatureTechnique=1
 				Distance=50
-				DamageMult=4.5
+				DamageMult=5
 				AccMult=25
+				MultiShot=5
 				Explode=3
-				Knockback=1
+				ComboMaster=1
 				Radius=1
 				Dodgeable=0
 				Deflectable=0
@@ -1956,23 +1957,23 @@ obj
 				LockY=-12
 				Variation=0
 				Cooldown=150
+				adjust(mob/p)
+					EnergyCost=MultiShots**1.75
+					FatigueCost=MultiShots**1.5
+					DamageMult=5+(MultiShots**1.75)
 				verb/Spirit_Gun()
 					set category="Skills"
-					src.EnergyCost=usr.Energy
-					FatigueCost=EnergyCost/20
-					src.MultiHit=round(src.EnergyCost/10)
-					src.DamageMult=round(4.5 + EnergyCost/10) / MultiHit
+					adjust(usr)
 					usr.UseProjectile(src)
 
 			Spirit_Gun_Mega
 				PreRequisite=list("/obj/Skills/Projectile/Spirit_Gun")
 				SignatureTechnique=2
-				FatigueCost=80
 				Distance=50
-				DamageMult=6
+				DamageMult=10
 				AccMult=25
 				Explode=5
-				Knockback=1
+				ComboMaster=1
 				Radius=2
 				Dodgeable=0
 				Deflectable=0
@@ -1987,10 +1988,12 @@ obj
 				LockY=-12
 				Variation=0
 				Cooldown=180
+				adjust(mob/p)
+					WoundCost=p.TotalFatigue*0.75
+					DamageMult=10+(WoundCost*0.75)
 				verb/Spirit_Gun_Mega()
 					set category="Skills"
-					src.MultiHit=round(FatigueCost/4)
-					src.DamageMult=0.01+(FatigueCost/90)
+					adjust(usr)
 					usr.UseProjectile(src)
 			Sekiha_Tenkyoken
 				SignatureTechnique=2
@@ -5996,10 +5999,10 @@ obj
 									Rate = abs(Rate)/10*/
 								if(src.Deflectable&&!a:KO)
 									if(istype(a, /mob)) m = a;
-									if(m && m.hasMagmicShield())
+									/*if(m && m.hasMagmicShield())
 										Deflect = 1;
 										Stun(m, 3);
-										m.MagmicShieldOff();
+										m.MagmicShieldOff();*/
 									if(a:HasDeflection())
 										if(!Deflection_Formula(src.Owner, a, (accmult /** Rate*/ * ( min(0.1,1 - (src.MultiHit * 0.025) ) ) /(1+a:GetDeflection())), BaseChance=(glob.WorldDefaultAcc), Backfire=src.Backfire))
 											Deflect=1
@@ -6329,7 +6332,7 @@ obj
 								if(src.InstantDamageChance && m && !m.KO)
 									if(prob(src.InstantDamageChance))
 										var/divine_dmg = m.Health * 0.1
-										var/DefReduction=sqrt(GetDef())
+										var/DefReduction=sqrt(m.GetDef())
 										divine_dmg/=DefReduction
 										m.LoseHealth(divine_dmg)
 										spawn()
