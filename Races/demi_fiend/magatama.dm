@@ -479,8 +479,8 @@ obj/Items/Magatama/Narukami
 	name = "Narukami"
 	desc = "A Magatama crackling with divine lightning. It carries the wrath of the thunder god, striking with the fury of the storm."
 	base_passives = list("AirSpellDamage" = 0.15, "ShockResist" = 1, "Shocking" = 5, "AirSpellCooldown" = 0.1, "AirSpellManaCost" = 0.1)
-	passive_scaling = list("AirSpellDamage" = 0.0085, "ShockResist" = 0.04, "Shocking" = 0.15, "Denko Sekka" = 0.05, "AirSpellCooldown" = 0.007, "AirSpellManaCost" = 0.007, "CriticalChance" = 0.25, "CriticalDamage" = 0.0045)
-	ascension_passives = list("2" = list("ThunderHerald" = 1, "Denko Sekka" = 1), "3" = list("CriticalChance" = 5, "CriticalDamage" = 0.05))
+	passive_scaling = list("AirSpellDamage" = 0.0085, "ShockResist" = 0.04, "Shocking" = 0.15, "DenkoSekka" = 0.05, "AirSpellCooldown" = 0.007, "AirSpellManaCost" = 0.007, "CriticalChance" = 0.25, "CriticalDamage" = 0.0045)
+	ascension_passives = list("2" = list("ThunderHerald" = 1, "DenkoSekka" = 1), "3" = list("CriticalChance" = 5, "CriticalDamage" = 0.05))
 	ascension_skills = list("2" = list(/obj/Skills/AutoHit/DemiFiend/Shock))
 	craft_cost = 5000
 
@@ -605,8 +605,8 @@ obj/Items/Magatama/Satan
 obj/Items/Magatama/Adama
 	name = "Adama"
 	desc = "A Magatama shaped from the red clay of the first-formed. Its bearer draws down the storm — thunder surges through their veins, searing any who dare raise a hand against them."
-	base_passives = list("AirSpellDamage" = 0.2, "ManaCapMult" = 0.35, "Denko Sekka" = 2, "AirSpellCooldown" = 0.2, "AirSpellManaCost" = 0.2, "ShockResist" = 1, "Shocking" = 5)
-	passive_scaling = list("AirSpellDamage" = 0.008, "ManaCapMult" = 0.0065, "ShockAbsorb" = 0.02, "Denko Sekka" = 0.05, "AirSpellCooldown" = 0.006, "AirSpellManaCost" = 0.006, "ShockResist" = 0.04, "Shocking" = 0.15, "Fury" = 0.06, "Warping" = 0.03)
+	base_passives = list("AirSpellDamage" = 0.2, "ManaCapMult" = 0.35, "DenkoSekka" = 2, "AirSpellCooldown" = 0.2, "AirSpellManaCost" = 0.2, "ShockResist" = 1, "Shocking" = 5)
+	passive_scaling = list("AirSpellDamage" = 0.008, "ManaCapMult" = 0.0065, "ShockAbsorb" = 0.02, "DenkoSekka" = 0.05, "AirSpellCooldown" = 0.006, "AirSpellManaCost" = 0.006, "ShockResist" = 0.04, "Shocking" = 0.15, "Fury" = 0.06, "Warping" = 0.03)
 	ascension_passives = list("6" = list("ThunderHerald" = 1, "ShockAbsorb" = 1, "Fury" = 2, "Warping" = 1))
 	magatama_skills = list(/obj/Skills/AutoHit/DemiFiend/Bolt_Storm)
 	ascension_skills = list()
