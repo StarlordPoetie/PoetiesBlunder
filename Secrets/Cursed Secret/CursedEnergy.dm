@@ -268,6 +268,7 @@ mob/proc/setupCursedEnergyAwakening()
 			src << "Your cursed energy becomes serrated."
 
 		if("Electricity")
+			findOrAddSkill(/obj/Skills/AutoHit/Cursed_Voltage_Strike)
 			src << "Your cursed energy crackles with electricity."
 
 		if("Slash")
@@ -282,6 +283,12 @@ mob/proc/setupCursedEnergyAwakening()
 mob/proc/attemptCursedHeavyStrike()
 	if(!getCursedEnergySecret())
 		return 0
+
+	if(cursedEnergyTrait == "Electricity")
+		var/obj/Skills/AutoHit/Cursed_Voltage_Strike/cvs = findOrAddSkill(/obj/Skills/AutoHit/Cursed_Voltage_Strike)
+		if(cvs)
+			throwSkill(cvs)
+			return 1
 
 	if(cursedEnergyTrait == "Slash")
 		var/obj/Skills/AutoHit/Cursed_Technique_Cleave/c = findOrAddSkill(/obj/Skills/AutoHit/Cursed_Technique_Cleave)
