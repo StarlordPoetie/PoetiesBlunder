@@ -637,18 +637,20 @@ NEW VARIABLES
 			OffMessage="loosens the control on their ki..."
 			var/selectedPassive = "None"
 			var/selectedStats = list()
+			var/list/cursedEnergySpecializationPassivesApplied
 
 			proc/init(mob/p)
 				if(altered) return
 				if(selectedPassive == "None")
 					p.PoweredFormSetup()
+				cursedEnergySpecializationPassivesApplied = null
 				passives = list("[selectedPassive]" = 1, "KiControl" = 1, "EnergyLeak" = 1)
 				if(selectedStats && length(selectedStats) >= 3)
 					vars["[selectedStats[1]]Mult"] = 1.15
 					vars["[selectedStats[2]]Mult"] = 1.1
 					vars["[selectedStats[3]]Mult"] = 1.05
 
-			proc/applyCursedEnergyDefaults()
+			proc/applyCursedEnergyDefaults(mob/p)
 				AuraLock = 'Aura_CursedEnergy.dmi'
 				AuraX = -5
 				AuraY = -2
@@ -659,11 +661,14 @@ NEW VARIABLES
 				IconApart = 1
 				ManaGlow = "#f3f5e1"
 				ManaGlowSize = 1.5
+				var/SecretInformation/CursedEnergy/ce = p ? p.getCursedEnergySecret() : null
+				if(ce)
+					ce.addSpecializationPassivesToKiControl(p, src)
 
 			Trigger(var/mob/User, Override=0)
 				src.init(User)
 				if(User && User.hasSecret("Cursed Energy"))
-					applyCursedEnergyDefaults()
+					applyCursedEnergyDefaults(User)
 				..()
 
 			verb/Customize_Powered_State()
