@@ -156,6 +156,8 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 /mob/proc/meditationChecks()
 	if(icon_state == "Meditate")
 		MeditateTime++
+		if(isRace(/race/demi_fiend))
+			refreshMagatama()
 
 		if(Corruption>MinCorruption&&isRace(DEMON))
 			Corruption -= 5 - (AscensionsAcquired/2)

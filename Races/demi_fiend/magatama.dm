@@ -1,7 +1,7 @@
 #define MAGATAMA_SWAP_COOLDOWN 36000 // 1 hour in deciseconds
 #define MAGATAMA_COST_ESCALATION 0.25 // +25% base cost per magatama crafted
-#define MAGATAMA_IMPRINT_FRACTION 0.25 // True Demon, base value fraction applied on imprint
-#define MAGATAMA_IMPRINT_SCALE   0.50 // True Demon, fraction of normal scaling rate applied on imprint
+#define MAGATAMA_IMPRINT_FRACTION 1 // True Demon, base value fraction applied on imprint
+#define MAGATAMA_IMPRINT_SCALE   1 // True Demon, fraction of normal scaling rate applied on imprint
 
 mob/var
 	magatama_last_swap = 0
