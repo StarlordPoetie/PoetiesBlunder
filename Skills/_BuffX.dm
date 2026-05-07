@@ -649,9 +649,10 @@ NEW VARIABLES
 					vars["[selectedStats[3]]Mult"] = 1.05
 
 			proc/applyCursedEnergyDefaults()
-				AuraLock = 'Aura_CursedEnergy.dmi'
-				AuraX = -5
-				AuraY = -2
+				AuraLock = 0
+				AuraX = 0
+				AuraY = 0
+				OverlayTransLock = 1
 				ActiveMessage = "channels Cursed Energy, reinforcing their body"
 				OffMessage = "releases the flow of Cursed Energy"
 				IconApart = 1
