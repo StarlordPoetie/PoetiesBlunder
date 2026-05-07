@@ -649,10 +649,11 @@ NEW VARIABLES
 					vars["[selectedStats[3]]Mult"] = 1.05
 
 			proc/applyCursedEnergyDefaults()
-				AuraLock = 0
-				AuraX = 0
-				AuraY = 0
-				OverlayTransLock = 1
+				AuraLock = 'Aura_CursedEnergy.dmi'
+				AuraX = -5
+				AuraY = -2
+				AuraUnder = 1
+				OverlayTransLock = 0
 				ActiveMessage = "channels Cursed Energy, reinforcing their body"
 				OffMessage = "releases the flow of Cursed Energy"
 				IconApart = 1
@@ -9210,7 +9211,7 @@ NEW VARIABLES
 				src.Trigger(usr)
 			Domain_Expansion
 			var/tmp/effected = list()
-			var/range = 10
+			var/range = 15
 			var/identifier = null
 			var/demonName = null
 			var/icon/customTurfIcon = null
@@ -9278,19 +9279,19 @@ NEW VARIABLES
 
 			Hollow_Wicker_Basket
 				Slotless = 1
-				TimerLimit = 6
-				Cooldown = 150
+				TimerLimit = 4
+				Cooldown = 100
 				CooldownStatic = 1
 				BuffName = "Hollow Wicker Basket"
 				passives = list("PureReduction" = 9999)
 				IconLock = 'HolyDome_Wicker_Shimmer.dmi'
 				LockX = -158
 				LockY = -96
-				ActiveMessage = "forms a Hollow Wicker Basket."
-				OffMessage = "disperses their Hollow Wicker Basket."
+				ActiveMessage = "forms Hollow Wicker Basket, a woven barrier distorting the space around them"
+				OffMessage = "releases the barrier around them"
 
 				Cooldown(var/modify = 1, var/Time, mob/p, var/announce_cd = 1)
-					..(modify, 1500, p, announce_cd)
+					..(modify, 1000, p, announce_cd)
 
 				verb/Hollow_Wicker_Basket()
 					set category = "Skills"
