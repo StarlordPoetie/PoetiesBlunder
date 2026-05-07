@@ -98,6 +98,39 @@
 		ensureDomainExpansionVerbs(p, d)
 		p << "You have gained Domain Expansion ([d.demonName], range [finalRange], shroud [useShroud ? "on" : "off"])."
 		grantDomainDefense(p)
+	proc/getSpecializationPassives(specialization)
+		switch(specialization)
+			if("Cursed Energy Reinforcement")
+				return list("Cursed Energy Reinforcement" = 1, "UnarmedDamage" = 3, "CriticalDamage" = 2, "CriticalChance" = 2, "CriticalBlock" = 2, "PureReduction" = 2, "Flow" = 4, "Adrenaline" = 3, "Fury" = 2)
+			if("Cursed Energy Enrichment")
+				return list("Cursed Energy Enrichment" = 1, "Adrenaline" = 3, "MeleeResist" = 2, "ManaSteal" = 20, "ManaGeneration" = 3, "PowerfulCasting" = 2, "StalwartCasting" = 2, "FluidForm" = 3, "Fury" = 2)
+			if("Cursed Energy Enhancement")
+				return list("Cursed Energy Enhancement" = 1, "Fury" = 2, "Parry" = 2, "Reversal" = 2, "Instinct" = 4, "SwordDamage" = 2, "Adrenaline" = 3, "SwordAscension" = 1)
+
+		return list()
+
+	proc/addSpecializationPassivesToKiControl(mob/p, obj/Skills/Buffs/ActiveBuffs/Ki_Control/ki)
+		if(!p || !ki)
+			return
+		if(ki.cursedEnergySpecializationPassivesApplied)
+			for(var/oldPassive in ki.cursedEnergySpecializationPassivesApplied)
+				ki.passives[oldPassive] -= ki.cursedEnergySpecializationPassivesApplied[oldPassive]
+			ki.cursedEnergySpecializationPassivesApplied = null
+		if(currentTier < 2 || !p.cursedEnergySpecialization)
+			return
+		var/list/specializationPassives = getSpecializationPassives(p.cursedEnergySpecialization)
+		for(var/passive in specializationPassives)
+			ki.passives[passive] += specializationPassives[passive]
+		ki.cursedEnergySpecializationPassivesApplied = specializationPassives.Copy()
+
+	proc/removePermanentSpecializationPassives(mob/p)
+		if(!p || !p.passive_handler || !p.cursedEnergySpecialization || p.cursedEnergySpecializationPassiveMigrated)
+			return
+		var/list/specializationPassives = getSpecializationPassives(p.cursedEnergySpecialization)
+		if(specializationPassives.len)
+			p.passive_handler.decreaseList(specializationPassives)
+		p.cursedEnergySpecializationPassiveMigrated = 1
+
 	proc/chooseSpecialization(mob/p)
 		if(!p)
 			return
@@ -108,44 +141,21 @@
 		if(!choice)
 			choice = "Cursed Energy Reinforcement"
 		p.cursedEnergySpecialization = choice
+		p.cursedEnergySpecializationPassiveMigrated = 1
 		switch(choice)
 			if("Cursed Energy Reinforcement")
-				p.passive_handler.Set("Cursed Energy Reinforcement", 1)
-				p.passive_handler.Set("UnarmedDamage", 3)
-				p.passive_handler.Set("CriticalDamage", 2)
-				p.passive_handler.Set("CriticalChance", 2)
-				p.passive_handler.Set("CriticalBlock", 2)
-				p.passive_handler.Set("PureReduction", 2)
-				p.passive_handler.Set("Flow", 4)
-				p.passive_handler.Set("Adrenaline", 3)
-				p.passive_handler.Set("Fury", 2)
-				p << "You focus on Cursed Energy Reinforcement, hardening body and impact."
+				p << "You focus on Cursed Energy Reinforcement, hardening body and impact. Its benefits flow through Ki Control."
 			if("Cursed Energy Enrichment")
-				p.passive_handler.Set("Cursed Energy Enrichment", 1)
-				p.passive_handler.Set("Adrenaline", 3)
-				p.passive_handler.Set("MeleeResist", 2)
-				p.passive_handler.Set("ManaSteal", 20)
-				p.passive_handler.Set("ManaGeneration", 3)
-				p.passive_handler.Set("PowerfulCasting", 2)
-				p.passive_handler.Set("StalwartCasting", 2)
-				p.passive_handler.Set("FluidForm", 3)
-				p.passive_handler.Set("Fury", 2)
-				p << "You focus on Cursed Energy Enrichment, improving flow and technique conversion."
+				p << "You focus on Cursed Energy Enrichment, improving flow and technique conversion. Its benefits flow through Ki Control."
 			if("Cursed Energy Enhancement")
-				p.passive_handler.Set("Cursed Energy Enhancement", 1)
-				p.passive_handler.Set("Fury", 2)
-				p.passive_handler.Set("Parry", 2)
-				p.passive_handler.Set("Reversal", 2)
-				p.passive_handler.Set("Instinct", 4)
-				p.passive_handler.Set("SwordDamage", 2)
-				p.passive_handler.Set("Adrenaline", 3)
-				p.passive_handler.Set("SwordAscension", 1)
-				p << "You focus on Cursed Energy Enhancement, sharpening weapon flow and reactions."
+				p << "You focus on Cursed Energy Enhancement, sharpening weapon flow and reactions. Its benefits flow through Ki Control."
+		p.refreshCursedEnergyKiControlSpecialization()
 	applySecret(mob/p)
 		if(!p)
 			return
 		removeBlackFlashSureStrike(p)
-		p.applyCursedEnergyKiControlDefaults()
+		removePermanentSpecializationPassives(p)
+		p.refreshCursedEnergyKiControlSpecialization()
 		p.passive_handler.Set("RenameMana", "Cursed Energy")
 		p.setupCursedEnergyAwakening()
 		switch(currentTier)
@@ -188,7 +198,20 @@
 
 mob/proc/applyCursedEnergyKiControlDefaults()
 	for(var/obj/Skills/Buffs/ActiveBuffs/Ki_Control/ki in src)
-		ki.applyCursedEnergyDefaults()
+		ki.init(src)
+		ki.applyCursedEnergyDefaults(src)
+
+
+mob/proc/refreshCursedEnergyKiControlSpecialization()
+	for(var/obj/Skills/Buffs/ActiveBuffs/Ki_Control/ki in src)
+		var/wasActive = (src.ActiveBuff == ki)
+		if(wasActive && ki.current_passives && ki.current_passives.len)
+			passive_handler.decreaseList(ki.current_passives)
+		ki.init(src)
+		ki.applyCursedEnergyDefaults(src)
+		if(wasActive)
+			ki.current_passives = ki.passives
+			passive_handler.increaseList(ki.current_passives)
 
 
 mob
@@ -196,6 +219,7 @@ mob
 		cursedEnergyAuraColor
 		cursedEnergyTrait
 		cursedEnergySpecialization
+		cursedEnergySpecializationPassiveMigrated
 		cursedEnergyDomainChoice
 
 
