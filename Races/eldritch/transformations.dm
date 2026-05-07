@@ -18,6 +18,18 @@ transformation
 			transform_animation(mob/user)
 				LightningStrike2(user)
 				DarknessFlash(user, SetTime=5)
+				if(user.hasSecret("Eldritch (Shrouded)"))
+					user.MobColor = list(0.15,0,0, 0.05,0.25,0.15, 0.05,0.05,0.35, 0,0,0)
+					animate(user, color = user.MobColor, time = 10, flags=ANIMATION_PARALLEL)
+					var/image/eyes = image('AntiEyes.dmi');
+					eyes.appearance_flags+=70
+					user.overlays += eyes;
+			revert_animation(mob/user)
+				if(user.hasSecret("Eldritch (Shrouded)"))
+					user.MobColor=null;
+					animate(user, color = null, time = 10, flags=ANIMATION_PARALLEL)
+					user.overlays -= image('AntiEyes.dmi');
+
 		full_manifestation
 			passives = list("Unreality" = 0.9, "Full Manifestation" = 1, "PureDamage"=3, "PureReduction"=3,"DebuffResistance"=0.1, "BuffMastery"=3)
 			transformation_message = "usrName reveals itself to the detriment of all!"
@@ -28,8 +40,22 @@ transformation
 				strengthadd = 0.125*user.AscensionsAcquired
 				forceadd = 0.125*user.AscensionsAcquired
 			transform_animation(mob/user)
+				if(user.hasSecret("Eldritch (Shrouded)"))
+					user.MobColor=null;
+					animate(user, color = null, time = 10, flags=ANIMATION_PARALLEL)
+					var/image/eyes = image('AntiEyes.dmi');
+					eyes.appearance_flags+=70
+					user.overlays -= eyes;
 				LightningStrike2(user)
 				DarknessFlash(user, SetTime=5)
+			revert_animation(mob/user)
+				if(user.hasSecret("Eldritch (Shrouded)"))
+					user.MobColor=null;
+					animate(user, color = null, time = 10, flags=ANIMATION_PARALLEL)
+					var/image/eyes = image('AntiEyes.dmi');
+					eyes.appearance_flags+=70
+					user.overlays -= eyes;
+				
 
 /mob/proc/HandleManifestation(Stat)
 	var/CA=AscensionsAcquired

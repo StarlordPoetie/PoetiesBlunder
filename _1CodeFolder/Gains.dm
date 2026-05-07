@@ -717,7 +717,7 @@ mob
 				if(movementSealed)
 					for(var/obj/Seal/S in src)
 						if(S.ZPlaneBind)
-							if(src.z!=S.ZPlaneBind || abs(src.x - S.XBind) > 10 || abs(src.y - S.YBind) > 10)
+							if(src.z!=S.ZPlaneBind || abs(src.x - S.XBind) > S.DistAllowed || abs(src.y - S.YBind) > S.DistAllowed)
 								OMsg(src, "[src] has triggered their location binding!")
 								src.loc=locate(S.XBind, S.YBind, S.ZPlaneBind)
 

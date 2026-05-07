@@ -47,7 +47,7 @@ Or was it Infi, with the brand of the ring, endlessly energetic?"};
 							offense = 0.25
 							defense = -0.25
 							endurance = -0.25
-							anger = 0.25
+							anger = 1
 						if("Feather Cowl")
 							passives["BlockChance"] = 25
 							passives["CriticalBlock"] = 0.15
@@ -132,7 +132,7 @@ Or is it made of Mil? Not the admin. It's the defensive option. No offense, Mil.
 							offense = 0.25
 							defense = -0.25
 							endurance = -0.25
-							anger = 0.25
+							anger = 1
 						if("Feather Cowl")
 							owner.passive_handler.Increase("BlockChance", 10)
 							owner.passive_handler.Increase("CriticalBlock", 0.1)
@@ -210,7 +210,7 @@ Or is it made of Mil? Not the admin. It's the defensive option. No offense, Mil.
 							offense = 0.25
 							defense = -0.25
 							endurance = -0.25
-							anger = 0.5
+							anger = 1
 						if("Feather Cowl")
 							owner.passive_handler.Increase("BlockChance", 10)
 							owner.passive_handler.Increase("CriticalBlock", 0.1)

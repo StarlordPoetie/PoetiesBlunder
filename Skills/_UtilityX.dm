@@ -1798,16 +1798,22 @@ obj/Skills/Utility
 			Choice.overlays+='SparksCoolRed.dmi'
 			sleep(100)
 			if(Choice.KO)
+				var/radius=input(usr, "How many tiles is [Choice] allowed to move from this spot? (min 0, max 500)", "Distance") as num
+				if(radius < 0)
+					radius = 0
+				if(radius > 500)
+					radius = 500
 				var/obj/Seal/S=new/obj/Seal
 				if(usr.SealPersonal)
 					S.icon=usr.SealPersonal
 				S.Creator=usr.ckey
-				S.Level=(usr.Intelligence*usr.Imagination*usr.SealingMagicUnlocked)
+				S.Level=(usr.Intelligence*usr.Imagination)
 				if(usr.Saga=="Keyblade")
 					S.Level*=1.5
 				S.ZPlaneBind=Choice.z
 				S.XBind=Choice.x
 				S.YBind=Choice.y
+				S.DistAllowed=radius
 				Choice.contents+=S
 				Choice.movementSealed = TRUE
 				S.name="Movement Seal ([Choice.name])"
