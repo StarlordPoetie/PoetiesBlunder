@@ -764,6 +764,9 @@ mob
 		src << "Invalid secret path: [secretPath]"
 		return
 
+	if(cursedEnergyTraitPassivesApplied)
+		removeCursedEnergyTraitPassives()
+
 	var/SecretInformation/secret = new secretTypePath
 	secretDatum = secret
 	secret.init(src)
