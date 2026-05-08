@@ -71,6 +71,32 @@ obj
 					set name="Dismantle"
 					usr.UseProjectile(src)
 
+			Cursed_Domain_Dismantle
+				SkillCost=0
+				Copyable=0
+				name="Domain Expansion: Dismantle"
+				ActiveMessage="unleashes an unavoidable Dismantle through their Domain!"
+				Distance=30
+				DamageMult=6
+				AccMult=2
+				MultiHit=5
+				Radius=4
+				ZoneAttack=1
+				FireFromSelf=1
+				Slashing=1
+				Piercing=1
+				EnergyCost=10
+				Cooldown=60
+				IconLock='Large Dismantle.dmi'
+				IconSize=2
+
+				verb/Cursed_Domain_Dismantle()
+					set category="Skills"
+					set name="Domain Expansion: Dismantle"
+					if(!usr.canUseCursedEnergyDomainSureHit("Slash"))
+						return
+					usr.UseProjectile(src)
+
 		Buffs
 			SlotlessBuffs
 				Cursed_Domain_Gamblers_Luck
@@ -98,7 +124,10 @@ obj
 							return FALSE
 						var/activated = ..()
 						if(activated)
+							var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in User
 							User.collapseCursedEnergyDomainSureHit()
+							if(d && !d.Using && !d.cooldown_remaining)
+								d.Cooldown(p = User)
 						return activated
 
 					verb/Cursed_Domain_Gamblers_Luck()
@@ -173,6 +202,39 @@ obj
 					if(!p || p.cursedEnergyTrait != "Electricity")
 						return
 
+			Cursed_Domain_Electric_Discharge
+				SkillCost=0
+				Copyable=0
+				name="Domain Expansion: Electric Discharge"
+				Area="Circle"
+				AdaptRate=1
+				SpecialAttack=1
+				CanBeDodged=0
+				CanBeBlocked=0
+				ComboMaster=1
+				DamageMult=9
+				Stunner=6
+				MortalBlow=1
+				Rounds=8
+				Distance=12
+				NoLock=1
+				NoAttackLock=1
+				ActiveMessage="discharges lightning through their Domain's sure-hit field!"
+				Icon='Chidori.dmi'
+				HitSparkIcon='Hit Effect Vampire.dmi'
+				HitSparkX=-32
+				HitSparkY=-32
+				HitSparkSize=1
+				Cooldown=60
+				EnergyCost=10
+
+				verb/Cursed_Domain_Electric_Discharge()
+					set category="Skills"
+					set name="Domain Expansion: Electric Discharge"
+					if(!usr.canUseCursedEnergyDomainSureHit("Electricity"))
+						return
+					usr.Activate(src)
+
 			Cursed_Technique_Cleave
 				SkillCost=0
 				Copyable=0
@@ -206,6 +268,8 @@ obj
 					set name = "Cleave"
 					usr.Activate(src)
 			Shutter_Doors
+				SkillCost=0
+				Copyable=0
 				NeedsSword=0
 				name="Shutter Doors"
 				Area="Around Target"

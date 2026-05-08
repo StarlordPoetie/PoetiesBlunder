@@ -1,7 +1,7 @@
 /SecretInformation/CursedEnergy
 	name = "Cursed Energy"
 	maxTier = 5
-	givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_Potential")
+	givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/BlackFlash_Potential")
 	var/awakeningConfigured = 0
 	var/domainChoicePrompted = 0
 	var/CursedEnergyBlackFlashChance = 0
@@ -99,8 +99,13 @@
 		p << "You have gained Domain Expansion ([d.demonName], range [finalRange], shroud [useShroud ? "on" : "off"])."
 		grantDomainDefense(p)
 	proc/getDomainSureHitSkill(trait)
-		if(trait == "Serrated")
-			return /obj/Skills/Buffs/SlotlessBuffs/Cursed_Domain_Gamblers_Luck
+		switch(trait)
+			if("Serrated")
+				return /obj/Skills/Buffs/SlotlessBuffs/Cursed_Domain_Gamblers_Luck
+			if("Slash")
+				return /obj/Skills/Projectile/Cursed_Domain_Dismantle
+			if("Electricity")
+				return /obj/Skills/AutoHit/Cursed_Domain_Electric_Discharge
 
 		return null
 	proc/grantDomainSureHit(mob/p)
@@ -249,7 +254,69 @@ mob
 		cursedEnergySpecialization
 		cursedEnergySpecializationPassiveMigrated
 		cursedEnergyDomainChoice
+		cursedEnergyTraitSlot
+		cursedEnergyPoseHealReady
+		cursedEnergyPoseHealCooldown
 		list/cursedEnergyTraitPassivesApplied
+
+
+proc/logCursedEnergyTraitSlots(var/message)
+	var/list/occupied = list()
+	for(var/trait in cursed_energy_taken_traits)
+		occupied += "[trait]=[cursed_energy_taken_traits[trait]]"
+	var/slotText = occupied.len ? jointext(occupied, ", ") : "none"
+	AdminMessage("Cursed Energy trait slots: [message]. Occupied: [slotText]", 1)
+
+
+mob/proc/cursedEnergySlotOwnerId()
+	if(src.ckey)
+		return src.ckey
+	if(src.key)
+		return ckey(src.key)
+	return "[src]"
+
+
+mob/proc/reserveCursedEnergyTrait(var/trait)
+	if(!trait)
+		return 0
+	var/owner = cursedEnergySlotOwnerId()
+	var/currentOwner = cursed_energy_taken_traits[trait]
+	if(currentOwner && currentOwner != owner)
+		return 0
+	cursed_energy_taken_traits[trait] = owner
+	cursedEnergyTraitSlot = trait
+	logCursedEnergyTraitSlots("[src] reserved [trait]")
+	return 1
+
+
+mob/proc/freeCursedEnergyTrait(var/force = 0)
+	var/owner = cursedEnergySlotOwnerId()
+	var/trait = cursedEnergyTraitSlot
+	if(!trait)
+		trait = cursedEnergyTrait
+	if(!trait)
+		return
+	if(cursed_energy_taken_traits[trait] == owner || force)
+		cursed_energy_taken_traits -= trait
+		logCursedEnergyTraitSlots("[src] freed [trait]")
+	cursedEnergyTraitSlot = null
+
+
+mob/proc/getAvailableCursedEnergyTraits()
+	var/list/traits = list("Serrated", "Electricity", "Slash")
+	var/list/available = list()
+	var/owner = cursedEnergySlotOwnerId()
+	for(var/trait in traits)
+		if(!cursed_energy_taken_traits[trait] || cursed_energy_taken_traits[trait] == owner)
+			available += trait
+	return available
+
+
+mob/proc/ensureCursedEnergyStillValid()
+	if(Secret == "Cursed Energy" && istype(secretDatum, /SecretInformation/CursedEnergy))
+		return
+	if(cursedEnergyTrait || cursedEnergyTraitSlot || cursedEnergyTraitPassivesApplied)
+		cleanupCursedEnergy()
 
 
 mob/proc/getCursedEnergySecret()
@@ -321,6 +388,11 @@ mob/proc/setupCursedEnergyAwakening()
 	if(!ce)
 		return
 	if(ce.awakeningConfigured)
+		if(cursedEnergyTrait && !cursedEnergyTraitSlot)
+			if(!reserveCursedEnergyTrait(cursedEnergyTrait))
+				src << "Your Cursed Energy trait slot is already occupied; Cursed Energy has been cleaned up."
+				cleanupCursedEnergy()
+				return
 		ce.grantDomainSureHit(src)
 		refreshCursedEnergyTraitPassives()
 		return
@@ -329,10 +401,19 @@ mob/proc/setupCursedEnergyAwakening()
 	if(chosenColor)
 		cursedEnergyAuraColor = chosenColor
 
-	var/list/traits = list("Serrated", "Electricity", "Slash")
+	var/list/traits = getAvailableCursedEnergyTraits()
+	if(!traits.len)
+		src << "No unique Cursed Energy trait slots are currently available."
+		logCursedEnergyTraitSlots("[src] could not reserve a trait")
+		return
 	var/selected = pick(traits)
+	if(!reserveCursedEnergyTrait(selected))
+		src << "That Cursed Energy trait slot is already occupied."
+		logCursedEnergyTraitSlots("[src] failed to reserve [selected]")
+		return
 
 	cursedEnergyTrait = selected
+	cursedEnergyPoseHealReady = 1
 
 	switch(selected)
 		if("Serrated")
@@ -360,20 +441,21 @@ mob/proc/attemptCursedHeavyStrike()
 
 	if(cursedEnergyTrait == "Electricity")
 		var/obj/Skills/AutoHit/Cursed_Voltage_Strike/cvs = findOrAddSkill(/obj/Skills/AutoHit/Cursed_Voltage_Strike)
-		if(cvs)
+		if(cvs && !cvs.Using && !cvs.cooldown_remaining)
+			cvs.adjust(src)
 			throwSkill(cvs)
 			return 1
 
 	if(cursedEnergyTrait == "Slash")
 		var/obj/Skills/AutoHit/Cursed_Technique_Cleave/c = findOrAddSkill(/obj/Skills/AutoHit/Cursed_Technique_Cleave)
-		if(c)
+		if(c && !c.Using && !c.cooldown_remaining)
 			c.adjust(src)
 			throwSkill(c)
 			return 1
 
 	if(cursedEnergyTrait == "Serrated")
-		var/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist/gf = locate(/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist) in src
-		if(gf && !gf.Using)
+		var/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist/gf = findOrAddSkill(/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist)
+		if(gf && !gf.Using && !gf.cooldown_remaining)
 			SetQueue(gf)
 			return 1
 
@@ -417,14 +499,12 @@ mob/proc/attemptCursedReverseDash()
 
 	if(cursedEnergyDomainChoice == "Simple Domain")
 		var/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain/sd = locate(/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain) in src
-		if(sd)
-			sd.Trigger(src)
+		if(sd && sd.Trigger(src))
 			return 1
 
 	if(cursedEnergyDomainChoice == "Hollow Wicker Basket")
 		var/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket/hwb = locate(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket) in src
-		if(hwb)
-			hwb.Trigger(src)
+		if(hwb && hwb.Trigger(src))
 			return 1
 
 	return 0
@@ -433,7 +513,7 @@ mob/proc/attemptCursedReverseDash()
 mob/proc/activateReversedCursedTechnique()
 	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
 
-	if(!ce)
+	if(!ce || !cursedEnergyPoseHealReady || world.time < cursedEnergyPoseHealCooldown)
 		return
 
 	var/healPercent = 0
@@ -452,20 +532,79 @@ mob/proc/activateReversedCursedTechnique()
 		else
 			healPercent = 0.08
 
-	var/effectiveMaxHealth = 100 - TotalInjury
-	if(HealthCut)
-		effectiveMaxHealth -= effectiveMaxHealth * HealthCut
-	var/missingHealth = max(0, effectiveMaxHealth - Health)
-	var/healAmount = round(missingHealth * healPercent, 0.1)
+	if(TotalInjury > 0)
+		HealWounds(TotalInjury, 1)
 
+	Maimed = 0
+	HealthCut = 0
+	MaxHealth()
+
+	var/healAmount = round(100 * healPercent, 0.1)
 	if(healAmount > 0)
 		HealHealth(healAmount)
 
-	if(TotalInjury > 0)
-		HealWounds(TotalInjury * healPercent, 1)
-
-	Maimed = max(0, Maimed - 1)
-	HealthCut = max(0, HealthCut - healPercent)
-	MaxHealth()
+	cursedEnergyPoseHealReady = 0
+	cursedEnergyPoseHealCooldown = world.time + 300
 
 	world << "[src.name] utilizes Reversed Curse Technique and restores their body instantly!"
+
+
+mob/proc/removeCursedEnergySkill(var/path)
+	var/obj/Skills/s = locate(path) in src
+	while(s)
+		DeleteSkill(s)
+		s = locate(path) in src
+
+
+mob/proc/cleanupCursedEnergy()
+	removeCursedEnergyTraitPassives()
+	if(passive_handler)
+		passive_handler.Set("RenameMana", 0)
+		passive_handler.Set("Sparks of Black", 0)
+		if(cursedEnergyTrait == "Slash")
+			passive_handler.Set("BladeFisting", 0)
+		passive_handler.Set("Sure-Strike Black Flash", 0)
+	var/list/specializationPassives = list()
+	if(istype(secretDatum, /SecretInformation/CursedEnergy) && cursedEnergySpecialization)
+		var/SecretInformation/CursedEnergy/ce = secretDatum
+		specializationPassives = ce.getSpecializationPassives(cursedEnergySpecialization)
+		if(specializationPassives.len)
+			passive_handler.decreaseList(specializationPassives)
+	for(var/obj/Skills/Buffs/ActiveBuffs/Ki_Control/ki in src)
+		if(ki.cursedEnergySpecializationPassivesApplied)
+			for(var/oldPassive in ki.cursedEnergySpecializationPassivesApplied)
+				ki.passives[oldPassive] -= ki.cursedEnergySpecializationPassivesApplied[oldPassive]
+			ki.cursedEnergySpecializationPassivesApplied = null
+	if(domainExpansionActive)
+		stopDomainExapansion()
+	var/list/cursedSkills = list(
+		/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/BlackFlash_Potential,
+		/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike,
+		/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion,
+		/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/Cursed_Energy,
+		/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain,
+		/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket,
+		/obj/Skills/Buffs/SlotlessBuffs/Cursed_Domain_Gamblers_Luck,
+		/obj/Skills/Projectile/Cursed_Domain_Dismantle,
+		/obj/Skills/AutoHit/Cursed_Domain_Electric_Discharge,
+		/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist,
+		/obj/Skills/Queue/Cursed_Technique_Dismantle,
+		/obj/Skills/Projectile/Cursed_Technique_Dismantle,
+		/obj/Skills/AutoHit/Cursed_Technique_Cleave,
+		/obj/Skills/AutoHit/Cursed_Voltage_Strike,
+		/obj/Skills/AutoHit/Shutter_Doors)
+	for(var/path in cursedSkills)
+		removeCursedEnergySkill(path)
+	freeCursedEnergyTrait()
+	cursedEnergyAuraColor = null
+	cursedEnergyTrait = null
+	cursedEnergySpecialization = null
+	cursedEnergySpecializationPassiveMigrated = null
+	cursedEnergyDomainChoice = null
+	cursedEnergyPoseHealReady = 0
+	cursedEnergyPoseHealCooldown = 0
+	if(Secret == "Cursed Energy")
+		Secret = null
+	if(istype(secretDatum, /SecretInformation/CursedEnergy))
+		secretDatum = new/SecretInformation
+	AdminMessage("[src] cleaned up Cursed Energy state.", 1)
