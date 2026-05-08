@@ -122,6 +122,8 @@ obj
 				ContinuousOn//Have you started the attack?
 				MultiShot=0//Can be fired multiple times before going on CD.
 				MultiShots=0//How many times have been fired.
+				MultiFatigue=0//drains more fatigue
+				MultiFatigueExponent=0 //scaling exponential value
 
 				MultiHit//Single projectile hits multiple times.
 				MaxMultiHit//just used to keep track of if a technique has hit yet
@@ -1942,15 +1944,16 @@ obj
 				DamageMult=5
 				AccMult=25
 				MultiShot=5
+				MultiFatigueExponent=2
 				Explode=3
 				ComboMaster=1
 				Radius=1
 				Dodgeable=0
 				Deflectable=0
 				AllOutAttack=1
-				Charge=0.25
-				StrRate=1.2
-				ForRate=1.2
+				Charge=0.5
+				StrRate=1
+				ForRate=1
 				EndRate=1
 				IconLock='SpiritGun2.dmi'
 				LockX=-12
@@ -1959,7 +1962,6 @@ obj
 				Cooldown=150
 				adjust(mob/p)
 					EnergyCost=MultiShots**1.75
-					FatigueCost=MultiShots**1.5
 					DamageMult=5+(MultiShots**1.75)
 				verb/Spirit_Gun()
 					set category="Skills"
@@ -1978,7 +1980,7 @@ obj
 				Dodgeable=0
 				Deflectable=0
 				AllOutAttack=1
-				Charge=0.25
+				Charge=0.75
 				StrRate=1
 				ForRate=1
 				EndRate=1
@@ -1990,7 +1992,10 @@ obj
 				Cooldown=180
 				adjust(mob/p)
 					WoundCost=p.TotalFatigue*0.75
-					DamageMult=10+(WoundCost*0.75)
+					HealthCost=WoundCost*0.75
+					if(HealthCost>=50)
+						ActiveMessage="<b>puts everything they have into this one final blast, casting aside concern for their lives!</b>"
+					DamageMult=10+(WoundCost*0.5)
 				verb/Spirit_Gun_Mega()
 					set category="Skills"
 					adjust(usr)
@@ -5044,6 +5049,8 @@ mob
 			if(Z.Area=="Blast"&&(!Z.Continuous))
 				if(Z.MultiShot)
 					Z.MultiShots++
+					if(Z.MultiFatigueExponent)
+						src.GainFatigue(Z.MultiShots**Z.MultiFatigueExponent)
 					if(Z.MultiShots>=Z.MultiShot)
 						Z.MultiShots=0
 						if(src.TomeSpell(Z))

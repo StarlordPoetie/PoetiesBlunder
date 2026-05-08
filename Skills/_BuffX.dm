@@ -1647,6 +1647,7 @@ NEW VARIABLES
 			OffMessage="loses steam..."
 			passives = list("UnderDog" = 5, "Perseverance" = 2, "CallousedHands" = 0.15)
 			verb/Saiyan_Roar()
+				set category="Skills"
 				src.Trigger(usr)
 		RoyalLineage
 			SignatureTechnique=3
@@ -1659,6 +1660,7 @@ NEW VARIABLES
 			ActiveMessage="unleashes the pride of their warrior race, commanding strength absolute!"
 			OffMessage="contains their superiority."
 			verb/Royal_Lineage()
+				set category="Skills"
 				src.Trigger(usr)
 		SaiyanFervor
 			SignatureTechnique=3
@@ -1673,6 +1675,7 @@ NEW VARIABLES
 			OffMessage="contains their excitement."
 			passives = list("MovementMastery" = 2, "TechniqueMastery" = 2)
 			verb/Saiyan_Fervor()
+				set category="Skills"
 				src.Trigger(usr)
 		The_Unbreakable_Fist
 			SignatureTechnique=3
@@ -1691,6 +1694,7 @@ NEW VARIABLES
 			OffMessage="contains their excitement."
 			passives = list("MovementMastery" = 2, "TechniqueMastery" = 2, "PhysPleroma" = 1, "Steady" = 1, "UnderDog" = 5, "Perseverance" = 2, "CallousedHands" = 0.15)
 			verb/The_Unbreakable_Fist()
+				set category="Skills"
 				src.Trigger(usr)
 		SaiyanCarnage
 			SignatureTechnique=3
@@ -1706,6 +1710,7 @@ NEW VARIABLES
 			ActiveMessage="erupts with the violent Saiyan Power they keep within!"
 			OffMessage="contains their superiority."
 			verb/Saiyan_Carnage()
+				set category="Skills"
 				src.Trigger(usr)
 		SuperSaiyanPerfected
 			SignatureTechnique=3
@@ -7818,8 +7823,13 @@ NEW VARIABLES
 					usr << "Spirit Bow class set as [Choice]!"
 				else
 					usr << "You can't set this while using Spirit Bow."
+			adjust(mob/p)
+				passives = list("SpecialStrike" = 1, "StaffAscension" = max(2, p.AscensionsAcquired), "Godspeed"=max(2, p.AscensionsAcquired), "Skimming"=max(1, round(p.AscensionsAcquired/2)),"SpiritStrike"=1)
+				//WHY DOES IT MAKE YOU BETTER AT KITING?
+				//I AM INFURIATED. ~xoxo
 			verb/Spirit_Bow()
 				set category="Skills"
+				if(!usr.BuffOn(src)) adjust();
 				src.Trigger(usr)
 
 		Spirit_Sword//t2
