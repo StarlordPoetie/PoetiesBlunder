@@ -71,6 +71,43 @@ obj
 					set name="Dismantle"
 					usr.UseProjectile(src)
 
+		Buffs
+			SlotlessBuffs
+				Cursed_Domain_Gamblers_Luck
+					SkillCost=0
+					Copyable=0
+					name="Domain Expansion: Gambler's Luck"
+					BuffName="Domain Expansion: Gambler's Luck"
+					Slotless=1
+					EnergyCost=15
+					Cooldown=180
+					SpecialAttack=1
+					NoLock=1
+					NoAttackLock=1
+					VaizardHealth=50
+					BioArmor=30
+					StrMult=2
+					EndMult=2
+					DefMult=2
+					passives = list("UnarmedDamage" = 8, "CriticalChance" = 2, "BlockChance" = 2, "CriticalDamage" = 0.25, "CriticalBlock" = 0.25, "ArmorAscension" = 0.5)
+					ActiveMessage="hits the jackpot within their Domain, converting the collapsing barrier into a surge of cursed momentum!"
+
+					Trigger(mob/User, Override=0)
+						if(!User || !User.canUseCursedEnergyDomainSureHit("Serrated"))
+							return FALSE
+						if(User.BuffOn(src))
+							User << "Domain Expansion: Gambler's Luck is already active."
+							return FALSE
+						var/activated = ..()
+						if(activated)
+							User.collapseCursedEnergyDomainSureHit()
+						return activated
+
+					verb/Cursed_Domain_Gamblers_Luck()
+						set category="Skills"
+						set name="Domain Expansion: Gambler's Luck"
+						Trigger(usr)
+
 		AutoHit
 			Cursed_Voltage_Strike
 				SkillCost=0

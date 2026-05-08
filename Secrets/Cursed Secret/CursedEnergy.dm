@@ -98,6 +98,17 @@
 		ensureDomainExpansionVerbs(p, d)
 		p << "You have gained Domain Expansion ([d.demonName], range [finalRange], shroud [useShroud ? "on" : "off"])."
 		grantDomainDefense(p)
+	proc/getDomainSureHitSkill(trait)
+		if(trait == "Serrated")
+			return /obj/Skills/Buffs/SlotlessBuffs/Cursed_Domain_Gamblers_Luck
+
+		return null
+	proc/grantDomainSureHit(mob/p)
+		if(!p || !p.hasSecret("Cursed Energy"))
+			return
+		var/skillPath = getDomainSureHitSkill(p.cursedEnergyTrait)
+		if(skillPath)
+			p.findOrAddSkill(skillPath)
 	proc/getTraitPassives(trait)
 		switch(trait)
 			if("Electricity")
@@ -173,6 +184,7 @@
 		p.refreshCursedEnergyKiControlSpecialization()
 		p.passive_handler.Set("RenameMana", "Cursed Energy")
 		p.setupCursedEnergyAwakening()
+		grantDomainSureHit(p)
 		p.refreshCursedEnergyTraitPassives()
 		switch(currentTier)
 			if(1)
@@ -247,6 +259,27 @@ mob/proc/getCursedEnergySecret()
 	return null
 
 
+mob/proc/canUseCursedEnergyDomainSureHit(requiredTrait)
+	if(!getCursedEnergySecret() || cursedEnergyTrait != requiredTrait)
+		src << "You cannot use this sure-hit technique."
+		return 0
+
+	var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in src
+	if(!d || !domainExpansionActive || !BuffOn(d))
+		src << "This sure-hit technique can only be used while your Domain Expansion is active."
+		return 0
+
+	return 1
+
+
+mob/proc/collapseCursedEnergyDomainSureHit()
+	var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in src
+	if(d && BuffOn(d))
+		d.releaseDomain(src, src)
+	else
+		stopDomainExapansion()
+
+
 mob/proc/isCursedEnergyBlackFlashFirstUse()
 	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
 
@@ -274,6 +307,7 @@ mob/proc/refreshCursedEnergyTraitPassives()
 	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
 	if(!ce)
 		return
+	ce.grantDomainSureHit(src)
 	var/list/traitPassives = ce.getActiveTraitPassives(src)
 	if(!traitPassives.len)
 		return
@@ -287,6 +321,7 @@ mob/proc/setupCursedEnergyAwakening()
 	if(!ce)
 		return
 	if(ce.awakeningConfigured)
+		ce.grantDomainSureHit(src)
 		refreshCursedEnergyTraitPassives()
 		return
 
