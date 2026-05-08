@@ -2306,13 +2306,13 @@ mob
 	proc
 		GetDoubleStrike()
 			var/anotherOne = passive_handler.Get("DoubleStrike");
-			return anotherOne ? (100 / glob.DOUBLE_STRIKE_MAX * anotherOne) : 0;
+			return anotherOne ? ((anotherOne / (anotherOne + glob.DOUBLE_STRIKE_MAX)) * 100) : 0;
 		GetTripleStrike()
 			var/anotherOne = passive_handler.Get("TripleStrike");
-			return anotherOne ? (100 / glob.TRIPLE_STRIKE_MAX * anotherOne) : 0;
+			return anotherOne ? ((anotherOne / (anotherOne + glob.TRIPLE_STRIKE_MAX)) * 100) : 0;
 		GetAsuraStrike()
 			var/anotherOne = passive_handler.Get("AsuraStrike");
-			return anotherOne ? (100 / glob.ASURA_STRIKE_MAX * anotherOne) : 0;
+			return anotherOne ? ((anotherOne / (anotherOne + glob.ASURA_STRIKE_MAX)) * 100) : 0;
 
 		HasDebuffReversal()
 			if(passive_handler.Get("DebuffReversal"))
