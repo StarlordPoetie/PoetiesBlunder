@@ -80,10 +80,8 @@ obj
 					BuffName="Domain Expansion: Gambler's Luck"
 					Slotless=1
 					EnergyCost=15
+					TimerLimit = 150
 					Cooldown=180
-					SpecialAttack=1
-					NoLock=1
-					NoAttackLock=1
 					VaizardHealth=50
 					BioArmor=30
 					StrMult=2
