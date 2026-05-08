@@ -161,6 +161,10 @@
 		else if(entry["td_locked"])    td_pairs      += list(entry)
 		else if(entry["in_party"])     inparty_pairs += list(entry)
 		else                           invalid_pairs += list(entry)
+	SortFusionPairsByLevel(valid_pairs)
+	SortFusionPairsByLevel(high_pairs)
+	SortFusionPairsByLevel(td_pairs)
+	SortFusionPairsByLevel(inparty_pairs)
 	pairs = valid_pairs + high_pairs + td_pairs + inparty_pairs + invalid_pairs
 
 	demon_fusion_page = max(1, min(demon_fusion_page, ceil(pairs.len / 5)))
@@ -689,3 +693,26 @@
 		return
 
 	..()
+
+// Sort a list of fusion pair entries by result demon level, ascending.
+// Element fusions (encoded result) sort last within the group.
+/proc/SortFusionPairsByLevel(list/pairs)
+	if(!pairs || pairs.len < 2) return
+	var/n = pairs.len
+	for(var/i = 1, i <= n - 1, i++)
+		for(var/j = 1, j <= n - i, j++)
+			var/list/a = pairs[j]
+			var/list/b = pairs[j + 1]
+			var/lvl_a = FusionPairResultLevel(a)
+			var/lvl_b = FusionPairResultLevel(b)
+			if(lvl_a > lvl_b)
+				pairs[j]     = b
+				pairs[j + 1] = a
+
+/proc/FusionPairResultLevel(list/pair)
+	var/res = pair ? pair["result"] : null
+	if(!res) return 9999
+	// Element fusions sort last
+	if(copytext(res, 1, 10) == "_ELEMENT_") return 9999
+	var/datum/demon_data/dr = DEMON_DB[res]
+	return dr ? dr.demon_lvl : 9999
