@@ -25,6 +25,7 @@ obj
 
 				verb/Cursed_Technique_Gamblers_Fist()
 					set category="Skills"
+					set hidden=1
 					set name="Gamblers Fist"
 					usr.SetQueue(src)
 
@@ -36,6 +37,7 @@ obj
 				name="Dismantle"
 				verb/Cursed_Technique_Dismantle()
 					set category="Skills"
+					set hidden=1
 					set name="Dismantle"
 					var/obj/Skills/Projectile/Cursed_Technique_Dismantle/d = usr.findOrAddSkill(/obj/Skills/Projectile/Cursed_Technique_Dismantle)
 					usr.UseProjectile(d)
@@ -68,6 +70,7 @@ obj
 
 				verb/Cursed_Technique_Dismantle()
 					set category="Skills"
+					set hidden=1
 					set name="Dismantle"
 					usr.UseProjectile(src)
 
@@ -117,10 +120,14 @@ obj
 					ActiveMessage="hits the jackpot within their Domain, converting the collapsing barrier into a surge of cursed momentum!"
 
 					Trigger(mob/User, Override=0)
-						if(!User || !User.canUseCursedEnergyDomainSureHit("Serrated"))
+						if(!User)
 							return FALSE
 						if(User.BuffOn(src))
+							if(Override)
+								return ..()
 							User << "Domain Expansion: Gambler's Luck is already active."
+							return FALSE
+						if(!User.canUseCursedEnergyDomainSureHit("Serrated"))
 							return FALSE
 						var/activated = ..()
 						if(activated)
@@ -265,6 +272,7 @@ obj
 
 				verb/Cursed_Technique_Cleave()
 					set category="Skills"
+					set hidden=1
 					set name = "Cleave"
 					usr.Activate(src)
 			Shutter_Doors
@@ -300,4 +308,5 @@ obj
 
 				verb/Shutter_Doors()
 					set category="Skills"
+					set hidden=1
 					usr.Activate(src)
