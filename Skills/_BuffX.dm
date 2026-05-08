@@ -12452,13 +12452,14 @@ mob
 								src << "You don't have enough energy to activate [B]."
 							return
 					if(B.ManaCost && !src.HasDrainlessMana())
+						var/manaDrain = src.getCursedEnergyDrain(B.ManaCost, B)
 						if(!src.TomeSpell(B))
-							if(src.ManaAmount<B.ManaCost)
+							if(src.ManaAmount<manaDrain)
 								if(!B.Autonomous)
 									src << "You don't have enough mana to activate [B]."
 								return FALSE
 						else
-							if(src.ManaAmount<B.ManaCost*(1-(0.45*src.TomeSpell(B))))
+							if(src.ManaAmount<manaDrain*(1-(0.45*src.TomeSpell(B))))
 								if(!B.Autonomous)
 									src << "You don't have enough mana to activate [B]."
 								return FALSE
@@ -14136,12 +14137,13 @@ mob
 				var/drain = passive_handler["Drained"] ? B.EnergyCost * (1 + passive_handler["Drained"]/10) : B.EnergyCost
 				src.LoseEnergy(drain)
 			if(B.ManaCost)
+				var/manaDrain = src.getCursedEnergyDrain(B.ManaCost, B)
 				if(!src.TomeSpell(B))
-					src.LoseMana(B.ManaCost)
+					src.LoseMana(manaDrain)
 				else
-					src.LoseMana(B.ManaCost*(1-(0.45*src.TomeSpell(B))))
+					src.LoseMana(manaDrain*(1-(0.45*src.TomeSpell(B))))
 				if(B.CorruptionGain)
-					gainCorruption((B.ManaCost / 1.5) * glob.CORRUPTION_GAIN)
+					gainCorruption((manaDrain / 1.5) * glob.CORRUPTION_GAIN)
 			if(B.ResourceCost)
 				var/resourceName = B.ResourceCost[1]
 				var/cost = B.ResourceCost[2]

@@ -43,6 +43,7 @@
 			return
 		d.BuffName = "Domain Expansion Unleashed!"
 		d.Mastery = -1
+		d.CursedTechnique = 1
 		d.UnrestrictedBuff = 1
 		d.StrMult = 1.50
 		d.ForMult = 1.50
@@ -283,11 +284,44 @@ mob
 
 
 proc/logCursedEnergyTraitSlots(var/message)
+	if(!cursed_energy_taken_traits)
+		cursed_energy_taken_traits = list()
 	var/list/occupied = list()
 	for(var/trait in cursed_energy_taken_traits)
 		occupied += "[trait]=[cursed_energy_taken_traits[trait]]"
 	var/slotText = occupied.len ? jointext(occupied, ", ") : "none"
 	AdminMessage("Cursed Energy trait slots: [message]. Occupied: [slotText]", 1)
+
+
+mob/Admin3/verb/Manage_Cursed_Energy_Slots()
+	set category = "Admin"
+	if(!cursed_energy_taken_traits || !cursed_energy_taken_traits.len)
+		usr << "No Cursed Energy trait slots are currently occupied."
+		return
+	var/list/choices = list()
+	for(var/trait in cursed_energy_taken_traits)
+		var/owner = cursed_energy_taken_traits[trait]
+		var/ownerText = owner ? owner : "stale/empty"
+		choices["[trait] - [ownerText]"] = trait
+	if(!choices.len)
+		usr << "No Cursed Energy trait slots are currently occupied."
+		return
+	var/choice = input(usr, "Select a Cursed Energy trait slot to free.", "Cursed Energy Slot Manager") as null|anything in choices
+	if(!choice)
+		return
+	var/trait = choices[choice]
+	var/owner = cursed_energy_taken_traits[trait]
+	var/slotOwnerText = owner ? owner : "stale/empty"
+	var/confirm = alert(usr, "Free [trait]'s Cursed Energy slot currently held by [slotOwnerText]? This does not remove Cursed Energy from any character.", "Confirm Slot Removal", "Yes", "No")
+	if(confirm != "Yes")
+		return
+	if(!cursed_energy_taken_traits || !(trait in cursed_energy_taken_traits))
+		usr << "That Cursed Energy slot is already free."
+		return
+	cursed_energy_taken_traits -= trait
+	usr << "Freed the [trait] Cursed Energy slot."
+	Log("Admin", "[ExtractInfo(usr)] freed the [trait] Cursed Energy slot formerly held by [slotOwnerText].")
+	logCursedEnergyTraitSlots("[usr] manually freed [trait]")
 
 
 mob/proc/cursedEnergySlotOwnerId()
@@ -299,6 +333,8 @@ mob/proc/cursedEnergySlotOwnerId()
 
 
 mob/proc/reserveCursedEnergyTrait(var/trait)
+	if(!cursed_energy_taken_traits)
+		cursed_energy_taken_traits = list()
 	if(!trait)
 		return 0
 	var/owner = cursedEnergySlotOwnerId()
@@ -312,6 +348,8 @@ mob/proc/reserveCursedEnergyTrait(var/trait)
 
 
 mob/proc/freeCursedEnergyTrait(var/force = 0)
+	if(!cursed_energy_taken_traits)
+		cursed_energy_taken_traits = list()
 	var/owner = cursedEnergySlotOwnerId()
 	var/trait = cursedEnergyTraitSlot
 	if(!trait)
@@ -325,6 +363,8 @@ mob/proc/freeCursedEnergyTrait(var/force = 0)
 
 
 mob/proc/getAvailableCursedEnergyTraits()
+	if(!cursed_energy_taken_traits)
+		cursed_energy_taken_traits = list()
 	var/list/traits = list("Serrated", "Electricity", "Slash")
 	var/list/available = list()
 	var/owner = cursedEnergySlotOwnerId()
@@ -347,6 +387,25 @@ mob/proc/getCursedEnergySecret()
 
 	return null
 
+
+
+
+mob/proc/getCursedEnergyDrain(var/drain, obj/Skills/S)
+	if(!isnum(drain) || drain <= 0)
+		return drain
+	if(!S || !S.CursedTechnique)
+		return drain
+	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
+	if(!ce)
+		return drain
+	var/tier = max(1, ce.currentTier)
+	var/reduction = min(0.4, max(0, tier - 1) * 0.1)
+	if(reduction <= 0)
+		return drain
+	var/adjustedDrain = drain * (1 - reduction)
+	if(adjustedDrain <= 0)
+		return drain
+	return adjustedDrain
 
 mob/proc/canUseCursedEnergyDomainSureHit(requiredTrait)
 	if(!getCursedEnergySecret() || cursedEnergyTrait != requiredTrait)
