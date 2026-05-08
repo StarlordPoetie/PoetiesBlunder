@@ -17,7 +17,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 13
+	var/UPDATE_VERSION = 14
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -243,6 +243,30 @@ update
 					p.NewAnger(p.AngerMax + 0.05)
 					// Asc 2 new passive: Adrenaline 2
 					p.passive_handler.Increase("Adrenaline", 2)
+	version14
+		version = 14;
+		updateMob(mob/p)
+			. = ..()
+			if(p.isRace(HUMAN))
+				if(!p.passive_handler.Get("DormantDemon") && !p.passive_handler.Get("DeathDefied"))//normal human
+					p << "You are recognized as a NOT Mazoku human."
+					p << "So give me those transformations back, boo.";
+					var/safety = 20
+					while(p.transActive > 0 && safety-- > 0)
+						var/oldTA = p.transActive
+						p.Revert()
+						if(p.transActive == oldTA)
+							p.transActive = 0
+							break
+					for(var/transformation/T in p.race.transformations.Copy())
+						p.race.transformations -= T
+						del T
+					p << "Also, here, have your normal transformations back. Kthxbye."
+					p.race.transformations += new /transformation/human/high_tension()
+					p.race.transformations += new /transformation/human/high_tension_MAX()
+					p.race.transformations += new /transformation/human/super_high_tension()
+					p.race.transformations += new /transformation/human/super_high_tension_MAX()
+					p.race.transformations += new /transformation/human/unlimited_high_tension()
 
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )

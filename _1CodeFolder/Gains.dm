@@ -536,8 +536,7 @@ mob
 				scrollTicker--
 				if(scrollTicker<=0)
 					scrollTicker=0
-			if(src.isRace(HUMAN) && src.transActive>=1&&src.icon_state=="Meditate"||src.isRace(CELESTIAL) && src.transActive>=1&&src.icon_state=="Meditate")
-				src.Revert()
+			if(shouldRevertHT()) Revert()
 			if(src.passive_handler.Get("Utterly Powerless") && !src.passive_handler.Get("Our Future"))
 				src.Revert()
 			if(passive_handler.Get("LunarWrath")&&PowerControl>100&&!passive_handler.Get("Unrelenting Wrath"))
