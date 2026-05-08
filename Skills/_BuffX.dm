@@ -1647,6 +1647,7 @@ NEW VARIABLES
 			OffMessage="loses steam..."
 			passives = list("UnderDog" = 5, "Perseverance" = 2, "CallousedHands" = 0.15)
 			verb/Saiyan_Roar()
+				set category="Skills"
 				src.Trigger(usr)
 		RoyalLineage
 			SignatureTechnique=3
@@ -1659,6 +1660,7 @@ NEW VARIABLES
 			ActiveMessage="unleashes the pride of their warrior race, commanding strength absolute!"
 			OffMessage="contains their superiority."
 			verb/Royal_Lineage()
+				set category="Skills"
 				src.Trigger(usr)
 		SaiyanFervor
 			SignatureTechnique=3
@@ -1673,6 +1675,7 @@ NEW VARIABLES
 			OffMessage="contains their excitement."
 			passives = list("MovementMastery" = 2, "TechniqueMastery" = 2)
 			verb/Saiyan_Fervor()
+				set category="Skills"
 				src.Trigger(usr)
 		The_Unbreakable_Fist
 			SignatureTechnique=3
@@ -1691,6 +1694,7 @@ NEW VARIABLES
 			OffMessage="contains their excitement."
 			passives = list("MovementMastery" = 2, "TechniqueMastery" = 2, "PhysPleroma" = 1, "Steady" = 1, "UnderDog" = 5, "Perseverance" = 2, "CallousedHands" = 0.15)
 			verb/The_Unbreakable_Fist()
+				set category="Skills"
 				src.Trigger(usr)
 		SaiyanCarnage
 			SignatureTechnique=3
@@ -1706,6 +1710,7 @@ NEW VARIABLES
 			ActiveMessage="erupts with the violent Saiyan Power they keep within!"
 			OffMessage="contains their superiority."
 			verb/Saiyan_Carnage()
+				set category="Skills"
 				src.Trigger(usr)
 		SuperSaiyanPerfected
 			SignatureTechnique=3
@@ -7842,7 +7847,6 @@ NEW VARIABLES
 			ActiveMessage="draws spirit energy into their hand to form a blade!"
 			OffMessage="dispels their Spirit Sword!"
 			adjust(mob/p)
-				passives = list("SpiritSword" = 1 , "SwordAscension" = 3, "SwordAscensionSecond" = 3, "SwordAscensionThird" = 3)
 			verb/Transfigure_Spirit_Sword()
 				set category="Utility"
 				var/Choice
