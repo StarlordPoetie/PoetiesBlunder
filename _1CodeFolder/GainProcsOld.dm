@@ -7,6 +7,7 @@ mob/proc/Meditation()
 	if(med.delay)
 		sleep(5)
 		return
+	ensureCursedEnergyStillValid()
 	if(hasSecret("Cursed Energy"))
 		var/SecretInformation/CursedEnergy/ce = secretDatum
 		if(ce && ce.currentTier >= 1)
