@@ -109,6 +109,22 @@
     TetherPactOwner;
     list/TetherPacts=list();
 
+/mob/proc/getShadowEyeTargets()//if they're within view x asc, you can see them
+    var/list/who = list();
+    var/shadowRange = (50 * secretDatum.currentTier);
+    for(var/mob/Players/M in view(shadowRange, src))
+        who |= M;
+    for(var/mob/W in who)
+        if(W.AdminInviso) who.Remove(W)
+        if(W.invisibility) who.Remove(W)
+    return who;
+/mob/proc/getAdvancedShadowEyeTargets()//if they're on the z plane, you can see them
+    var/list/who = list()
+    if(!passive_handler.Get("AdminVision")) passive_handler.Increase("AdminVision", 1);
+    for(var/mob/Players/m in players)
+        if(m.z == src.z) who |= m;
+    return who;
+
 /proc/GetTetherCost()
     return (glob.progress.EconomyMana*5);
 /proc/GetTetherWarpCost()

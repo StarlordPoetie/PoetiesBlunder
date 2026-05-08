@@ -32,7 +32,7 @@
 	Psycho_Boxing // mystic+unarmed (anti cyborg)
 		SignatureTechnique=2
 		passives = list("HybridStyle" = "MysticStyle", "Rusting" = 2, "SoulTug" = 1, "SpiritHand" = 1.5, "SpiritFlow" = 1.5, "CyberStigma" = 4, \
-			"Toxic" = 4, "Instinct" = 1, "Flow" = 1, "Harden" = 1)
+			"Toxic" = 4, "Instinct" = 1, "Flow" = 1, "Harden" = 1,  "Poisoning" = 5)
 		StyleStr=1.3
 		StyleFor=1.3
 		StyleActive="Psycho Boxing"

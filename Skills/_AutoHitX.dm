@@ -75,6 +75,7 @@ obj
 				ChargeTime//How much time it takes to move.
 				ChargeFlight//superman tackle
 				WindUp//Charge for this number of seconds.
+				IgnoreWindUpReduction=0// keeps WindUp fixed and ignores reduction effects
 				Slow//Makes it so that there is a pause in the movement of autohitters (The technique does not instantly hit all of its related tiles)
 				ApplySlow = 0
 				Icon//Displays icon when used.
@@ -106,12 +107,18 @@ obj
 				Bang//defines if it causes an explosion on hit
 				Bolt//shoot some lightning at motherfuckers
 				BoltOffset //make lightning go scatter
+				Erupt//spawns VFX below target erupting upward
+				EruptOffset=0
 				Scratch//scratch effects
 				Punt//punch effects
 
 				Divide//Great divide effect.
 				TurfErupt//makes a boom
 				TurfEruptOffset=0//affects the offset of booms
+				TurfIce
+				TurfIceOffset=0
+				TurfFog
+				TurfFogOffset=0
 				TurfDirt//makes a boom
 				TurfDirtOffset=0//affects the offset of dust
 				TurfStrike
@@ -359,8 +366,8 @@ obj
 				NoAttackLock=1
 				StrOffense=1
 				DamageMult = T2_DMG_MULT / 2 / 10;
-				AbyssMod=3
-				HolyMod=3
+				AbyssMod=5
+				HolyMod=5
 				Distance=5
 				DistanceAround=4
 				Rounds=10
@@ -1021,14 +1028,13 @@ obj
 
 			Symbiote_Tendril_Wave
 				Distance=10
-				Knockback=1
-				Slow=1
+				Knockback=5
+				Slow=5
 				Area="Wave"
 				ActiveMessage="bursts out with tendrils of symbiotic matter!"
-				StrOffense = 0.5
-				ForOffense = 0.5
+				StrOffense = 1
 				Cooldown = 60
-				DamageMult= 4
+				DamageMult= 5
 				GuardBreak=1
 				TurfStrike=3
 				HitSparkIcon='Slash - Vampire.dmi'
@@ -2711,7 +2717,7 @@ obj
 				CanBeDodged=1
 				Distance=20
 				DistanceAround=15
-				DamageMult=0.5
+				DamageMult=2
 				WindUp=2
 				DelayTime=70
 				Rounds=40
@@ -3285,7 +3291,7 @@ obj
 					SignatureName="Holy Magic"
 					Area="Target"
 					Distance=7
-					HolyMod=20
+					HolyMod=5
 					Purity=1
 					DamageMult=18
 					WindUp=1
@@ -3555,7 +3561,7 @@ obj
 				Area="Around Target"
 				AdaptRate=1.5
 				DamageMult=0.5
-				HolyMod=2.5
+				HolyMod=5
 				Distance=5
 				DistanceAround=3
 				EnergyCost=10
@@ -3586,7 +3592,7 @@ obj
 				Area="Around Target"
 				AdaptRate=1.5
 				DamageMult=0.5
-				AbyssMod=2.5
+				AbyssMod=5
 				Distance=5
 				DistanceAround=3
 				EnergyCost=10
@@ -4075,7 +4081,7 @@ obj
 				Area="Circle"
 				GuardBreak=1
 				DamageMult=11
-				HolyMod=20
+				HolyMod=5
 				Distance=6
 				Knockback=10
 				DelayTime=5
@@ -4475,14 +4481,14 @@ obj
 				StyleNeeded="Ansatsuken"
 				proc/alter(mob/player)
 					ManaCost = 0
-					var/damage = clamp(0.6 + 0.3 * (player.SagaLevel/2), 0.3, 3)
+					var/damage = 1 + (0.5 * player.SagaLevel)
 					var/path = player.AnsatsukenPath == "Tatsumaki" ? 1 : 0
 					var/rounds = 3
 					var/cooldown = 40
 					var/launch = 0
 					if(path)
 						cooldown = 30
-						damage = clamp(0.6 + 0.5 * (player.SagaLevel/2), 0.3, 5)
+						damage = 2 + (1.5 * player.SagaLevel)
 						rounds = 3
 					DamageMult = damage
 					Cooldown = cooldown
@@ -4518,12 +4524,12 @@ obj
 					if(p.AnsatsukenPath == "Tatsumaki")
 						Launcher = 3
 						Rounds = 8
-						DamageMult = 1 + (0.2 *p.SagaLevel)
+						DamageMult = 3 + (1.5 * p.SagaLevel)
 						Cooldown = 150 - (15 * p.SagaLevel)
 					else
 						Launcher = 0
 						Rounds = 6
-						DamageMult = 0.7 + (0.15 *p.SagaLevel)
+						DamageMult = 2 + (1 * p.SagaLevel)
 						Cooldown = 150 - (15 * p.SagaLevel)
 
 
@@ -4625,7 +4631,7 @@ obj
 				SpecialAttack=1
 				StrOffense=1
 				DamageMult=7.5
-				HolyMod=10
+				HolyMod=5
 				Distance=5
 				Rush=5
 				RushDelay=2
@@ -4739,7 +4745,7 @@ obj
 				TurfShift='IceGround.dmi'
 				TurfShiftDuration=500
 				DamageMult=10
-				HolyMod=10
+				HolyMod=5
 				Purity=1
 				StrOffense=1
 				ActiveMessage="encases their target in a tomb of soul-infused crystal!  They are forced into perfect stasis!"
@@ -4761,7 +4767,7 @@ obj
 				ABuffNeeded="Soul Resonance"
 				Distance=15
 				Gravity=5
-				WindUp=3
+				WindUp=1
 				WindupMessage="prepares to cut through the very space around them in defiance of everything..."
 				DamageMult = 4
 				StrOffense=1
@@ -4782,6 +4788,9 @@ obj
 				Cooldown= 60
 				EnergyCost=15
 				Instinct=1
+				adjust(mob/p)
+					DamageMult= 7 + p.SagaLevel
+					WindUp = 1
 				verb/WarGodDescent()
 					set name = "War God's Descent"
 					set category="Skills"
@@ -5053,9 +5062,10 @@ obj
 
 mob
 	proc
-		Activate(var/obj/Skills/AutoHit/Z, ignoreCuck = FALSE)
+		Activate(var/obj/Skills/AutoHit/Z, ignoreCuck = FALSE, ignoreAttackLock = FALSE)
 			set waitfor = FALSE
 			. = TRUE
+			if(HeldSkillBlocksAction(Z)) return FALSE
 			if(glob.CUCK_MACROSTRINGS && !ignoreCuck)
 				if(last_autohit + glob.MACROCHECKTIME > world.time)
 					return FALSE
@@ -5068,6 +5078,10 @@ mob
 				Z.while_warping = FALSE
 			if(Z.Using)//Skill is on cooldown.
 				return FALSE
+			if(istype(Z, /obj/Skills/AutoHit/I_Want_To_Be_Like_You))
+				if(!src.demonDevilTriggerSinMastery())
+					src << "You cannot access this power yet."
+					return FALSE
 			if(!Z.heavenlyRestrictionIgnore && Secret=="Heavenly Restriction" && secretDatum?:hasRestriction("Autohits"))
 				return FALSE
 			if(!Z.heavenlyRestrictionIgnore && Secret=="Heavenly Restriction" && secretDatum?:hasRestriction("All Skills"))
@@ -5076,7 +5090,7 @@ mob
 				return FALSE
 			if(!Z.heavenlyRestrictionIgnore && Z.UnarmedOnly && Secret=="Heavenly Restriction" && secretDatum?:hasRestriction("Unarmed Skills"))
 				return FALSE
-			if(!src.CanAttack(1.5)&&!Z.NoAttackLock)
+			if(!ignoreAttackLock && !src.CanAttack(1.5)&&!Z.NoAttackLock)
 				return FALSE
 			if(Flying)
 				var/obj/Items/check = EquippedFlyingDevice()
@@ -5480,7 +5494,7 @@ mob
 									i.loc = null
 									del i
 								src.Frozen=0
-				if(src.HasQuickCast())
+				if(src.HasQuickCast() && !Z.IgnoreWindUpReduction)
 					if(Z.PreQuake)
 						spawn()
 							src.Quake(Second(Z.WindUp/src.GetQuickCast()))
@@ -5753,7 +5767,7 @@ mob
 				src.Frozen=0
 			if(Z.EndsGetsuga)
 				var/obj/Skills/Buffs/SpecialBuffs/A = src.findOrAddSkill(/obj/Skills/Buffs/SpecialBuffs/Sword/Getsuga_Tenshou_Clad)
-				Z.DamageMult += ((60 - A.Timer) / 15)
+				Z.DamageMult = 1+((60 - A.Timer) / 10)
 				A.Trigger(src, 1)
 				src << "The power of Getsuga fades from your weapon."
 			if(Z.UsesinForce)
@@ -5985,6 +5999,12 @@ obj
 			TurfReplace
 			TurfErupt
 			TurfEruptOffset
+			TurfIce
+			TurfIceOffset
+			TurfFog
+			TurfFogOffset
+			Erupt
+			EruptOffset
 			TurfDirt
 			TurfDirtOffset
 			TurfStrike
@@ -6050,6 +6070,8 @@ obj
 			FrenzyDebuff
 			CriticalChance
 			Combustion
+			IceAge
+			Doom
 
 			grabNerf = 0
 			BuffAffected = 0
@@ -6215,14 +6237,21 @@ obj
 			src.Stunner=Z.Stunner
 			src.Destructive=Z.Destructive
 			src.Shearing = Z.Shearing
+			src.Doom = Z.Doom
 			src.Bang=Z.Bang
 			src.Bolt=Z.Bolt
 			src.BoltOffset=Z.BoltOffset
+			src.Erupt=Z.Erupt
+			src.EruptOffset=Z.EruptOffset
 			src.Scratch=Z.Scratch
 			src.Punt=Z.Punt
 			src.Divide=Z.Divide
 			src.TurfErupt=Z.TurfErupt
 			src.TurfEruptOffset=Z.TurfEruptOffset
+			src.TurfIce=Z.TurfIce
+			src.TurfIceOffset=Z.TurfIceOffset
+			src.TurfFog=Z.TurfFog
+			src.TurfFogOffset=Z.TurfFogOffset
 			src.TurfDirt=Z.TurfDirt
 			src.TurfDirtOffset=Z.TurfDirtOffset
 			src.TurfStrike=Z.TurfStrike
@@ -6302,6 +6331,8 @@ obj
 				src.CriticalChance = Z.CriticalChance
 			if(Z.Combustion)
 				src.Combustion = Z.Combustion
+			if(Z.IceAge)
+				src.IceAge = Z.IceAge
 			if(Z.Toxic)
 				src.Toxic+=Z.Toxic
 			if(Z.Crippling)
@@ -6332,7 +6363,7 @@ obj
 					Z.TurfStrike=1
 					Z.TurfShift=owner.EldritchTrail
 					Z.TurfShiftDuration=3
-					if(prob(50))
+					if(prob(50) && owner.passive_handler.Get("Full Manifestation"))
 						DarknessFlash(owner)
 					Z.ActiveMessage="<font color='red'><font size=+1><b>You cannot grasp the true form of [owner]'s attack...</font color></font size></b>"
 
@@ -6609,30 +6640,6 @@ obj
 
 				if(WearingArmor)//Reduced delay and accuracy
 					Precision*=src.Owner.GetArmorAccuracy(WearingArmor)
-				var/reversalChance = m.GetAutoReversal()
-				if(prob(reversalChance * 100) && currentRounds == 1)
-					if(m.HasAutoReversal())
-						if(!src.SpecialAttack||m.passive_handler.Get("TotalReversal"))
-							if(Accuracy_Formula(src.Owner, m, AccMult=Precision, BaseChance=glob.WorldDefaultAcc, IgnoreNoDodge=1) == (HIT || WHIFF))
-								if(m.hasMagmicShield())
-									Stun(Owner, 3, FALSE);
-									m.MagmicShieldOff();
-								if(src.Damage>0.1)
-									KenShockwave(m, icon='KenShockwave.dmi', Size=dmgRoll, Time=3)
-									m.Knockback(src.Knockback+(reversalChance*2.5) , src.Owner, Direction=get_dir(m, src.Owner))
-								m.DoDamage(src.Owner, (FinalDmg/5), UnarmedAttack=src.UnarmedTech, SwordAttack=src.SwordTech, SpiritAttack=src.SpecialAttack, Autohit = TRUE)
-								if(src.Bang)
-									Bang(src.Owner.loc, src.Bang)
-								if(src.Scratch)
-									Scratch(src.Owner)
-								if(src.Bolt)
-									LightningBolt(src.Owner, src.Bolt, src.BoltOffset)
-								if(src.Punt)
-									Hit_Effect(src.Owner, Size=src.Punt)
-								src.Owner.HitEffect(src.Owner, src.UnarmedTech, src.SwordTech)
-								OMsg(m, "[m] redirected the force of the attack back at [src.Owner]!")
-								m << "You redirected the force of the attack back at [src.Owner]!"
-								return
 
 				if(src.CanBeBlocked||m.passive_handler.Get("YataNoKagami")||m.passive_handler.Get("The Crownless King"))
 					if(Accuracy_Formula(src.Owner, m, AccMult=Precision, BaseChance=glob.WorldDefaultAcc, IgnoreNoDodge=0) == WHIFF)
@@ -6705,6 +6712,8 @@ obj
 					m.AddCrippling(Crippling, Owner)
 				if(Shearing)
 					m.AddShearing(Shearing, Owner)
+				if(Doom)
+					m.AddDoom(Doom, Owner)
 				if(FrenzyDebuff)
 					m.AddFrenzy(FrenzyDebuff, Owner)
 
@@ -6769,6 +6778,8 @@ obj
 					Scratch(m)
 				if(src.Bolt)
 					LightningBolt(m, src.Bolt, src.BoltOffset)
+				if(src.Erupt)
+					EruptEffect(m, src.Erupt, src.EruptOffset)
 				if(src.Punt)
 					Hit_Effect(m, Size=src.Punt)
 				if(Snaring)
@@ -6851,14 +6862,84 @@ obj
 					spawn()
 						LaunchEnd(m)
 				DEBUGMSG("FINAL TOTAL DAMAGE DEALT before do damage! [FinalDmg]")
+				var/skipPureDamage = 0
+				if(Owner && FromSkill)
+					if(Owner.HasPurity()||FromSkill.Purity)
+						var/found=0
+						if(Owner.HasBeyondPurity()||FromSkill.BeyondPurity)
+							if(Owner.HasHolyMod()||FromSkill.HolyMod)
+								if(m.IsGood())
+									found=1
+							if(found)
+								skipPureDamage = 1
+						else
+							if(Owner.HasHolyMod()||FromSkill.HolyMod)
+								if(m.IsEvil())
+									found=1
+							if(!found)
+								skipPureDamage = 1
+				var/list/specDmgTypes = list()
+				if(!skipPureDamage && Owner && FromSkill)
+					if(FromSkill.HolyMod) specDmgTypes["Holy"] = FromSkill.HolyMod
+					if(FromSkill.AbyssMod) specDmgTypes["Abyss"] = FromSkill.AbyssMod
+					if(FromSkill.SlayerMod) specDmgTypes["Slayer"] = FromSkill.SlayerMod
+					if(specDmgTypes.len) FinalDmg *= 1 + Owner.attackModifiers(m, specDmgTypes)
 				if(src.AngelMagicCompatible && m.passive_handler.Get("Judged"))
 					FinalDmg *= 1.25
+				var/reversalChance = m.GetAutoReversal()
+				// Diminishing returns
+				var/reversalProcChance = 0
+				if(reversalChance > 0)
+					reversalProcChance = (reversalChance / (reversalChance + 2)) * 100
+				if(prob(min(reversalProcChance, 100)))
+					if(m.HasAutoReversal())
+						if(!src.SpecialAttack||m.passive_handler.Get("TotalReversal"))
+							var/reversalAcc = Accuracy_Formula(src.Owner, m, AccMult=Precision, BaseChance=glob.WorldDefaultAcc, IgnoreNoDodge=1)
+							if(reversalAcc == HIT || reversalAcc == WHIFF)
+								/*if(m.hasMagmicShield())
+									Stun(Owner, 3, FALSE);
+									m.MagmicShieldOff();*/
+								if(src.Damage>0.1)
+									KenShockwave(m, icon='KenShockwave.dmi', Size=dmgRoll, Time=3)
+									m.Knockback(src.Knockback+(reversalChance*2.5) , src.Owner, Direction=get_dir(m, src.Owner))
+								var/reversalDmg = FinalDmg * glob.AUTOHIT_REVERSAL_DAMAGE_FRAC / max(1, src.parentRounds)
+								m.DoDamage(src.Owner, reversalDmg, UnarmedAttack=src.UnarmedTech, SwordAttack=src.SwordTech, SpiritAttack=src.SpecialAttack, Autohit = TRUE)
+								if(src.Bang)
+									Bang(src.Owner.loc, src.Bang)
+								if(src.Scratch)
+									Scratch(src.Owner)
+								if(src.Bolt)
+									LightningBolt(src.Owner, src.Bolt, src.BoltOffset)
+								if(src.Punt)
+									Hit_Effect(src.Owner, Size=src.Punt)
+								src.Owner.HitEffect(src.Owner, src.UnarmedTech, src.SwordTech)
+								if(reversalAcc == WHIFF)
+									OMsg(m, "[m] redirected most of the force of the attack back at [src.Owner]!")
+									m << "You redirected most of the force of the attack back at [src.Owner]!"
+								if(reversalAcc == HIT)
+									OMsg(m, "[m] redirected the force of the attack back at [src.Owner]!")
+									m << "You redirected the force of the attack back at [src.Owner]!"
+									return
 				if(src.DirectWounds)
 					src.Owner.DealWounds(m, src.DirectWounds);
+				if(SpellElement == "Water" && m.passive_handler.Get("ChillAbsorb"))
+					m.HealHealth(FinalDmg * 0.5)
+					return
+				if(SpellElement == "Lightning" && m.passive_handler.Get("ShockAbsorb"))
+					m.HealHealth(FinalDmg * 0.5)
+					return
+				if(SpellElement == "Wind" && m.passive_handler.Get("WindAbsorb"))
+					m.HealHealth(FinalDmg * 0.5)
+					return
 				var/damageDealt
-				if(src.FixedDamage)
-					m.LoseHealth(src.FixedDamage)
-					damageDealt = src.FixedDamage
+				if(skipPureDamage)
+					damageDealt = 0
+				else if(src.FixedDamage)
+					var/fixedAmt = src.FixedDamage
+					if(specDmgTypes.len)
+						fixedAmt *= 1 + Owner.attackModifiers(m, specDmgTypes)
+					m.LoseHealth(fixedAmt)
+					damageDealt = fixedAmt
 					if(m.Health <= 0 && !m.KO)
 						m.Unconscious(src.Owner)
 				else
@@ -6868,12 +6949,16 @@ obj
 						src.Owner.passive_handler.Increase("CriticalDamage", _skillCritDmg)
 					if(src.Combustion)
 						src.Owner.passive_handler.Increase("Combustion", src.Combustion)
+					if(src.IceAge)
+						src.Owner.passive_handler.Increase("IceAge", src.IceAge)
 					damageDealt = src.Owner.DoDamage(m, FinalDmg, src.UnarmedTech, src.SwordTech, Destructive=src.Destructive, innateLifeSteal = LifeSteal, Autohit = TRUE)
 					if(src.CriticalChance)
 						src.Owner.passive_handler.Decrease("CriticalChance", src.CriticalChance)
 						src.Owner.passive_handler.Decrease("CriticalDamage", _skillCritDmg)
 					if(src.Combustion)
 						src.Owner.passive_handler.Decrease("Combustion", src.Combustion)
+					if(src.IceAge)
+						src.Owner.passive_handler.Decrease("IceAge", src.IceAge)
 				DEBUGMSG("FINAL TOTAL DAMAGE DEALT! [damageDealt]")
 				if(!damageDealt)
 					damageDealt = 0
@@ -6886,7 +6971,7 @@ obj
 					m.LoseMana(ManaDrain)
 					src.Owner.HealMana(ManaDrain)
 
-				if(CorruptionGain)
+				if(CorruptionGain && !skipPureDamage)
 					Owner.gainCorruption((FinalDmg * 2) * glob.CORRUPTION_GAIN)
 				if(src.ApplyJudged)
 					m.applyJudged(120)
@@ -6924,7 +7009,7 @@ obj
 							src.Owner.Knockback(src.Knockback, m, Direction=src.Owner.dir, Forced=1, override_speed=delay)
 					else
 						if(src.UnarmedTech)
-							KenShockwave(m, Size=min((src.Knockback+src.Owner.Intimidation/50)*max(2*(!src.Owner.HasNullTarget() ? src.Owner.GetGodKi() : 0),1)*GoCrand(0.04,0.4),0.2),PixelX=pick(-12,-8,8,12),PixelY=pick(-12,-8,8,12))
+							KenShockwave(m, Size=min(src.Knockback*max(2*(!src.Owner.HasNullTarget() ? src.Owner.GetGodKi() : 0),1)*GoCrand(0.04,0.4),0.2),PixelX=pick(-12,-8,8,12),PixelY=pick(-12,-8,8,12))
 						if(m!=src.Owner.Grab)
 							src.Owner.Knockback(src.Knockback+extraKnock, m, get_dir(src.Owner, m), extraKnock)
 
@@ -7040,6 +7125,10 @@ obj
 									for(var/turf/t in Turf_Circle_Edge(src.TargetLoc, Rounds))
 										if(src.TurfErupt)
 											Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+										if(src.TurfIce)
+											Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+										if(src.TurfFog)
+											Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 										if(src.TurfDirt)
 											Dust(t)
 										if(src.TurfStrike)
@@ -7054,6 +7143,16 @@ obj
 											if(t in view(Rounds, src.TargetLoc))
 												continue
 											Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+									if(src.TurfIce)
+										for(var/turf/t in view(Rounds, src.TargetLoc))
+											if(t in view(Rounds, src.TargetLoc))
+												continue
+											Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+									if(src.TurfFog)
+										for(var/turf/t in view(Rounds, src.TargetLoc))
+											if(t in view(Rounds, src.TargetLoc))
+												continue
+											Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 									if(src.TurfDirt)
 										for(var/turf/t in view(Rounds, src.TargetLoc))
 											if(t in view(Rounds, src.TargetLoc))
@@ -7105,6 +7204,14 @@ obj
 									for(var/turf/t in Turf_Circle_Edge(src.TargetLoc, src.Distance))
 										sleep(-1)
 										Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+								if(src.TurfIce)
+									for(var/turf/t in Turf_Circle_Edge(src.TargetLoc, src.Distance))
+										sleep(-1)
+										Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+								if(src.TurfFog)
+									for(var/turf/t in Turf_Circle_Edge(src.TargetLoc, src.Distance))
+										sleep(-1)
+										Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 								if(src.TurfDirt)
 									for(var/turf/t in Turf_Circle_Edge(src.TargetLoc, src.Distance))
 										sleep(-1)
@@ -7148,6 +7255,12 @@ obj
 								if(src.TurfErupt)
 									for(var/turf/t in view(src.Distance, src.TargetLoc))
 										Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+								if(src.TurfIce)
+									for(var/turf/t in view(src.Distance, src.TargetLoc))
+										Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+								if(src.TurfFog)
+									for(var/turf/t in view(src.Distance, src.TargetLoc))
+										Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 								if(src.TurfDirt)
 									for(var/turf/t in view(src.Distance, src.TargetLoc))
 										Dust(t)
@@ -7211,6 +7324,10 @@ obj
 									for(var/turf/t in Turf_Circle_Edge(src.Owner, Rounds))
 										if(src.TurfErupt)
 											Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+										if(src.TurfIce)
+											Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+										if(src.TurfFog)
+											Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 										if(src.TurfDirt)
 											Dust(t)
 										if(src.TurfStrike)
@@ -7225,6 +7342,16 @@ obj
 											if(t in view(Rounds, src.Owner))
 												continue
 											Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+									if(src.TurfIce)
+										for(var/turf/t in view(Rounds, src.Owner))
+											if(t in view(Rounds, src.Owner))
+												continue
+											Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+									if(src.TurfFog)
+										for(var/turf/t in view(Rounds, src.Owner))
+											if(t in view(Rounds, src.Owner))
+												continue
+											Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 									if(src.TurfDirt)
 										for(var/turf/t in view(Rounds, src.Owner))
 											if(t in view(Rounds, src.Owner))
@@ -7276,6 +7403,14 @@ obj
 									for(var/turf/t in Turf_Circle_Edge(src.Owner, src.Distance))
 										sleep(-1)
 										Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+								if(src.TurfIce)
+									for(var/turf/t in Turf_Circle_Edge(src.Owner, src.Distance))
+										sleep(-1)
+										Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+								if(src.TurfFog)
+									for(var/turf/t in Turf_Circle_Edge(src.Owner, src.Distance))
+										sleep(-1)
+										Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 								if(src.TurfDirt)
 									for(var/turf/t in Turf_Circle_Edge(src.Owner, src.Distance))
 										sleep(-1)
@@ -7316,6 +7451,12 @@ obj
 								if(src.TurfErupt)
 									for(var/turf/t in view(src.Distance, src.Owner))
 										Bang(t, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+								if(src.TurfIce)
+									for(var/turf/t in view(src.Distance, src.Owner))
+										Bang(t, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+								if(src.TurfFog)
+									for(var/turf/t in view(src.Distance, src.Owner))
+										Bang(t, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 								if(src.TurfDirt)
 									for(var/turf/t in view(src.Distance, src.Owner))
 										Dust(t)
@@ -7370,6 +7511,10 @@ obj
 					src.StepsTaken++
 					if(src.TurfErupt)
 						Bang(src.loc, Size=src.TurfErupt, Offset=src.TurfEruptOffset, Vanish=4)
+					if(src.TurfIce)
+						Bang(src.loc, Size=src.TurfIce, Offset=src.TurfIceOffset, Vanish=4, icon_override='SnowBurst2.dmi')
+					if(src.TurfFog)
+						Bang(src.loc, Size=src.TurfFog, Offset=src.TurfFogOffset, Vanish=5, icon_override='FogBreath.dmi')
 					if(src.TurfDirt)
 						Dust(src.loc)
 					if(src.TurfStrike)
@@ -7478,6 +7623,10 @@ obj
 				src.TurfShiftY=AH.TurfShiftY
 				src.TurfErupt=AH.TurfErupt
 				src.TurfEruptOffset=AH.TurfEruptOffset
+				src.TurfIce=AH.TurfIce
+				src.TurfIceOffset=AH.TurfIceOffset
+				src.TurfFog=AH.TurfFog
+				src.TurfFogOffset=AH.TurfFogOffset
 				src.TurfDirt=AH.TurfDirt
 				src.TurfDirtOffset=AH.TurfDirtOffset
 				src.TurfStrike=AH.TurfStrike
@@ -7549,6 +7698,10 @@ obj
 				src.TurfShiftY=AH.TurfShiftY
 				src.TurfErupt=AH.TurfErupt
 				src.TurfEruptOffset=AH.TurfEruptOffset
+				src.TurfIce=AH.TurfIce
+				src.TurfIceOffset=AH.TurfIceOffset
+				src.TurfFog=AH.TurfFog
+				src.TurfFogOffset=AH.TurfFogOffset
 				src.TurfDirt=AH.TurfDirt
 				src.TurfDirtOffset=AH.TurfDirtOffset
 				src.TurfStrike=AH.TurfStrike

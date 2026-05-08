@@ -49,6 +49,11 @@
 				var/obj/Skills/s = findOrAddSkill(/obj/Skills/AutoHit/HellfireRain)
 				s.adjust(src)
 				Activate(s)
+			if(src.Class=="Reaper")
+				if(prob(critChance/10))
+					var/obj/Skills/s = findOrAddSkill(/obj/Skills/AutoHit/Blossom_Shower)
+					s.adjust(src)
+					Activate(s)
 		if(passive_handler["Determination(Red)"] && ManaAmount>=75||passive_handler["Determination(White)"] && ManaAmount>=75)
 			if(SagaLevel<4||RebirthHeroType=="Red")
 				critDMG+= ManaAmount/100

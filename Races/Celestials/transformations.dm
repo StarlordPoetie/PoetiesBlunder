@@ -231,12 +231,12 @@ transformation
 				..()
 		Celestial_Devil_Trigger
 			passives = list("HellRisen" = 0.25, "DemonicDurability" = 2, "PureDamage" = 1, "PureReduction" = 1, "Brutalize" = 2, "Smokin'!" = 1)
-			speedadd = 1
-			enduranceadd = 1
-			offenseadd = 1
-			defenseadd = 1
-			strengthadd = 1
-			forceadd = 1
+			speedadd = 0.5
+			enduranceadd = 0.5
+			offenseadd = 0.5
+			defenseadd = 0.5
+			strengthadd = 0.5
+			forceadd = 0.5
 			autoAnger = 1
 			unlock_potential = 55
 			form_aura_icon = 'Amazing Super Demon Aura.dmi'
@@ -269,12 +269,12 @@ transformation
 					ShockSize/=2
 		Celestial_Sin_Devil_Trigger
 			passives = list("Smokin' Sick Style!!!" = 1, "HellPower" = 1, "AbyssMod" = 6, "Scorching" = 6, "Poisoning" = 6, "DemonicInfusion" = 1, "CriticalChance" = 36, "CriticalDamage" = 0.6)
-			speedadd = 3
-			enduranceadd = 3
-			offenseadd = 3
-			defenseadd = 3
-			strengthadd = 3
-			forceadd = 3
+			speedadd = 2.5
+			enduranceadd = 2.5
+			offenseadd = 2.5
+			defenseadd = 2.5
+			strengthadd = 2.5
+			forceadd = 2.5
 			autoAnger = 1
 			unlock_potential = 90
 			form_aura_icon = 'Amazing Super Demon Aura.dmi'

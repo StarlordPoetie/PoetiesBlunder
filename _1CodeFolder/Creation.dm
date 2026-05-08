@@ -57,6 +57,7 @@ mob/Players
 	Login()
 		winset(usr, null, "browser-options=find")
 		client.perspective=MOB_PERSPECTIVE
+		ForceClearHeldChargeState()
 		players += usr
 		ensureCursedEnergyStillValid()
 		if(Secret == "Cursed Energy" && istype(secretDatum, /SecretInformation/CursedEnergy))
@@ -115,6 +116,8 @@ mob/Players
 		if(src.isRace(/race/demi_fiend))
 			if(!(/mob/proc/CraftMagatama in src.verbs))
 				src.verbs += /mob/proc/CraftMagatama
+
+		EvictFiendsIfUnauthorized()
 
 		addMissingSkills()
 		if(glob.TESTER_MODE)
@@ -375,6 +378,7 @@ mob/Players
 			src.client.view=ScreenSize
 
 		client.fps=src.ChosenFPS
+		client.updateRGMeter()
 		if(usr.SenseRobbed>=5)
 			animate(usr.client, color = list(-1,0,0, 0,-1,0, 0,0,-1, 1,1,1))
 
@@ -481,6 +485,7 @@ mob/Players
 		MajinAbsorbOnLogin()
 		return
 	Logout()
+		ForceClearHeldChargeState()
 		MajinAbsorbOnLogout()
 		DevilSummonerLogout()
 		OverwatchNotifyLogin(src, "logged out")

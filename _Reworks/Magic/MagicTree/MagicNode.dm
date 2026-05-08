@@ -289,8 +289,12 @@ globalTracker/var
 
 /mob/proc/canObtainAdvancedElements(element)
     var/list/popoEarlyUnlocks = list("Time", "Space");//hbtc elements
+    var/list/angelEarlyUnlocks = list("Light");
+    var/list/demonEarlyUnlocks = list("Dark");
     if(hasEarlyMagicAdvancement()) return 1;
-    if(isRace(POPO) && popoEarlyUnlocks.Find(element)) return 1
+    if(isRace(POPO) && popoEarlyUnlocks.Find(element)) return 1;
+    if((isRace(ANGEL) || isRace(MAKAIOSHIN)) && angelEarlyUnlocks.Find(element)) return 1;
+    if((isRace(DEMON) || isRace(MAKAIOSHIN)) && demonEarlyUnlocks.Find(element)) return 1;
     if(Potential >= glob.AdvancedElementPotential) return 1;
     return 0;
 

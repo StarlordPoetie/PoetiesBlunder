@@ -3,7 +3,7 @@ ascension
 		passives = list()
 		one
 			unlock_potential = ASCENSION_ONE_POTENTIAL
-			passives = list("HellPower" = 0.25, "AbyssMod" = 0.25, "SpiritPower" = 0.25, , "HellRisen" = 0.5, "AngerAdaptiveForce" = 0.1, "TechniqueMastery" = 2, "Juggernaut" = 1)
+			passives = list("HellPower" = 0.25, "AbyssMod" = 0.25, "SpiritPower" = 0.25, "HellRisen" = 0.5, "AngerAdaptiveForce" = 0.1, "TechniqueMastery" = 2, "Juggernaut" = 1)
 			anger = 0.15
 			intimidation = 50
 			strength = 0.25

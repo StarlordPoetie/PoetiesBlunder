@@ -354,18 +354,21 @@ obj
 					var/list/ShieldPassives = list("CallousedHands" = 0.15, "Juggernaut" = 1)
 					var/list/StaffPassives = list("ManaGeneration" = 1, "QuickCast" = 1)
 					adjust(mob/p)
+						var/ImaginaryBonus=0
+						if(p.Class=="Imaginary")
+							ImaginaryBonus=0.15*p.AscensionsAcquired
 						if(p.KeybladeType=="Sword")
-							StrMult=1.25
-							OffMult=1.25
-							SpdMult=1.5
+							StrMult=1.25 + ImaginaryBonus
+							OffMult=1.25 + ImaginaryBonus
+							SpdMult=1.5 + ImaginaryBonus
 							passives=SwordPassives
 						if(p.KeybladeType=="Shield")
-							EndMult=1.5
-							DefMult=1.5
+							EndMult=1.5 + ImaginaryBonus
+							DefMult=1.5 + ImaginaryBonus
 							passives=ShieldPassives
 						if(p.KeybladeType=="Staff")
-							ForMult=1.5
-							OffMult=1.5
+							ForMult=1.5 + ImaginaryBonus
+							OffMult=1.5 + ImaginaryBonus
 							passives=StaffPassives
 					verb/Keyblade_Armor()
 						set category="Skills"

@@ -25,6 +25,16 @@ race
 				for(var/transformation/human/HT in user.race.transformations)
 					user.race.transformations -=HT
 					del HT
+			
+			var/list/mazokuTransformations = list(/transformation/human/high_tension/mazoku, /transformation/human/high_tension_MAX/mazoku,
+			/transformation/human/super_high_tension/mazoku, /transformation/human/super_high_tension_MAX/mazoku, /transformation/human/unlimited_high_tension/mazoku, 
+			/transformation/human/sacred_energy_aura);
+
+			for(var/transformation/human/mazokuHT in user.race.transformations)
+				if(mazokuHT.type in mazokuTransformations)
+					user.race.transformations -= mazokuHT;
+					del mazokuHT;
+			
 			if(user.Class=="Underdog")
 				user.AngerMax = 2
 				user.RPPMult = 1.35

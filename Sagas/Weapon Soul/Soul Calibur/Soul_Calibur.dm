@@ -65,3 +65,33 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Soul_Calibur
 	verb/Heavenly_Regalia()
 		set category="Skills"
 		src.Trigger(usr)
+/obj/Skills/Buffs/NuStyle/SwordStyle //slightly weaker than t2. maybe make it scaling???
+	Soul_Conviction
+		StyleActive="Soul Conviction"
+		passives = list("LifeSteal" = 5,"Flow" = 2)
+		StyleEnd=1.25
+		StyleDef=1.25
+		Finisher="/obj/Skills/Queue/Finisher/Geist_Destroyer"
+		adjust(mob/p)
+			StyleEnd = 1.05 + (0.05 * p.SagaLevel)
+			StyleDef = 1.05 + (0.05 * p.SagaLevel)
+			passives["LifeSteal"] = 5 + (5*p.SagaLevel)
+			passives["Flow"] = 2 + (p.SagaLevel/2)
+		verb/Soul_Conviction()
+			set hidden=1
+			adjust(usr)
+			Trigger(usr)
+/obj/Skills/Queue/Finisher
+	Geist_Destroyer
+		DamageMult=5
+		InstantStrikes=2
+		HitSparkIcon='Slash - Zan.dmi'
+		HitSparkX=-32
+		HitSparkY=-32
+		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Eleusian_Initiation"
+		HitMessage = "purifies the very world with the might of Soul Calibur!"
+/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher
+	Eleusian_Initiation
+		StrMult=1.5
+		EndMult=1.2
+		passives = list("Extend" = 1, "LifeSteal" = 10, "SoftStyle" = 2)

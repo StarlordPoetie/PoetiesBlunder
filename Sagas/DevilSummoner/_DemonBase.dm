@@ -3,6 +3,9 @@ var/global/list/DEMON_DB = list()
 var/global/list/DEMON_FUSION_CHART = list()
 var/global/list/DEMON_SPECIAL_FUSIONS = list()
 
+// Demons accessible only via the True Demon path
+var/global/list/DEMON_TRUE_DEMON_LOCKED = list("Beelzebub", "Lucifer")
+
 
 // Potential divisor for stat scaling
 #define DEMON_POTENTIAL_DIVISOR 100

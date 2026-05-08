@@ -18,7 +18,7 @@ obj
 					ManaCost = 0
 					Launcher=1
 					var/sagaLevel = player.SagaLevel
-					var/damage = clamp(1.5 + 1*(sagaLevel), 2, 12)
+					var/damage = 3.5 + 1.5*(sagaLevel)
 					var/path = player.AnsatsukenPath == "Shoryuken" ? 1 : 0
 					var/cooldown = 40
 					var/hitMessage = "strikes their opponent into the air with a fearsome uppercut!!"
@@ -26,7 +26,7 @@ obj
 					Shattering = 3 * sagaLevel
 					if(path)
 						cooldown -= 10
-						damage =  clamp(1.5 + 2*(sagaLevel), 2, 13)
+						damage = 5.5 + 2.5*(sagaLevel)
 					if(player.AnsatsukenAscension=="Satsui")
 						Shattering *= 1.25
 						GoshoryukenEffect=1
@@ -52,10 +52,10 @@ obj
 				proc/activate(mob/p)
 					var/sagaLevel = p.SagaLevel
 					if(p.AnsatsukenPath == "Shoryuken")
-						DamageMult = clamp(6 + (1.5*sagaLevel), 6, 15)
+						DamageMult = 6 + (4*sagaLevel)
 						Cooldown = 150 - (sagaLevel * 15)
 					else
-						DamageMult = clamp(4 + (1*sagaLevel), 4, 15)
+						DamageMult = 5 + (2*sagaLevel)
 						Cooldown = 150 - (sagaLevel * 10)
 					if(p.AnsatsukenAscension=="Satsui")
 						Shattering *= 2
@@ -81,7 +81,7 @@ obj
 				HitStep=/obj/Skills/Queue/Shinryureppa_chain
 				verb/Shinryureppa()
 					set category="Skills"
-					if(usr.ManaAmount == 0) // just in case ? 
+					if(usr.ManaAmount == 0) // just in case ?
 					// i assume all out attack does that and iirc ansat has that too
 						return
 					usr.SetQueue(src)

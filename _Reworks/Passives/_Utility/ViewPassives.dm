@@ -101,4 +101,25 @@ var/list/PassiveInfo = list("Extend"="increases the range of armed autohits base
 "Piloting"="Replaces your effective stats with the stats of your mech.",
 "EndlessNine"=" Defensive version of Deicide, negate a percentage of the damage buff having higher God ki grants someone",
 "SpiralPowerUnlocked"="Through the power of Spiral Energy, unlocks a number of early ascensions equal to the value. And then, at 7...",
-"SpiralSpark"="You have experienced the power of Spiral Energy. And, while you can't awaken it again of your own accord without being a Spiral Warrior...");
+"SpiralSpark"="You have experienced the power of Spiral Energy. And, while you can't awaken it again of your own accord without being a Spiral Warrior...",
+"Innovation"="Humans and Celestials can access enhanced versions of certain Signature Skills.",
+"HolyMod"="Makes you Good. You do more damage to Evil, Evil Races, and those with Hellpower with a few exceptions.",
+"AbyssMod"="Makes you Evil. You do more damage to everything without AbyssMod.",
+"DormantDemon"="You are a descendant of a Mazoku Demon. You will awaken into one if you die after Ascension 3.",
+"DeathDefied"="You have awakened as a Mazoku Demon.",
+"Shonen"="When you are brought to a low enough health, you can trigger a Shonen Moment for 30 seconds.",
+"MovementMastery"="Increases the power up effect of anything that gives you Power Up.",
+"KiControlMastery"="Decreases the charge time and drain of Power Up.",
+"HellRisen"="Gives you a chance to Dominate your opponent when they have lower health than you, which gives you enhanced dashes and warping for several seconds.",
+"FavoredPrey"="Increased damage toward anyone who fits within your Favored Prey.",
+"You Thought"="gives Unstoppable and Debuff Reversal for 30 seconds.",
+"Hopes and Dreams"="Multiplies ShonenPower scaling by 1.5 to 2 depending on ascension and gives MovementMastery 5 x Ascension for 30 seconds.",
+"CalmAnger"="You always get your anger boons no matter what.",
+"BackShot"="Do more damage when you attack someone from behind.",
+"Bladefisting"="You can use Armed skills without a weapon, and you can use Unarmed skills while equipping a weapon.",
+"MartialMagic"="You can cast Magic without a Magic Style or Focus,",
+"SpaceWalk"="Immune to environmental tile effects (ie space draining oxygen, lava burning you) except for static tiles.",
+"StaticWalk"="Prevents you from losing oxygen and health on static tiles.",
+"Fa Jin"="Enhances queue damage."
+
+);

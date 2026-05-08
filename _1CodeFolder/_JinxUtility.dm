@@ -128,7 +128,15 @@ mob
 				if(!found)//If you don't find what you're supposed to hunt
 					DEBUGMSG("[src] is attacking a pure target and so value is set to 0")
 					val = 0;
-
+			if(defender && defender.passive_handler["RoyalGuarding"])
+				var/obj/Skills/Buffs/SlotlessBuffs/RoyalGuard/RG = locate(/obj/Skills/Buffs/SlotlessBuffs/RoyalGuard) in defender.contents
+				if(RG)
+					defender << "<font color= 'green'>ATTACK PARRIED!</font>"
+					RG.SuccessfulParry = 2
+					var/meterGain = max(val * glob.ROYAL_GUARD_CHARGE_MULT, 1)
+					RG.RoyalMeter = min(RG.RoyalMeter + meterGain, 100)
+					val = 0
+					defender.client.updateRGMeter()
 			if(val==0)
 				DEBUGMSG("val is 0 so we're ending dodamage now")
 				return 0;
@@ -199,7 +207,7 @@ mob
 					var/desp = clamp(passive_handler.Get("Persistence"), 0.1, glob.MAX_PERSISTENCE_CALCULATED)
 					if(defender.passive_handler["Determination(Orange)"]||defender.passive_handler["Determination(White)"])
 						desp+=ManaAmount/20
-					if(prob(desp)*glob.PERSISTENCE_CHANCE)
+					if(prob(desp*glob.PERSISTENCE_CHANCE))
 						desp = clamp(desp, 1, glob.PRESISTENCE_DIVISOR_MAX)
 						if(glob.PERSISTENCE_NEGATES_DAMAGE)
 							defender.WoundSelf(val/sqrt(1+desp))//Take all damage as wounds
@@ -292,7 +300,8 @@ mob
 			if(UnarmedAttack || SwordAttack || SpiritAttack)
 				var/Motivation=1+passive_handler.Get("Motivation")
 				if(src.StyleBuff && canGainTension())
-					src.gainTension(val);
+					if(!SecondStrike)
+						src.gainTension(val);
 				if(defender && defender.StyleBuff && defender.canGainTension())
 					defender.gainTension((val*Motivation)*glob.DEFENDER_TENSION_REDUCER);
 
@@ -333,6 +342,8 @@ mob
 						if("Slash")
 							defender.AddCrippling(2 * traitPotency, src)
 							defender.AddShearing(2 * traitPotency, src)
+			if(src.passive_handler.Get("Ashen One"))
+				src.AddBurn(passive_handler.Get("Kindling"), src)
 
 				//If you are burned and have debuff reversal, smack fire into the other fighter
 			var/debuffRev = src.GetDebuffReversal();
@@ -371,7 +382,7 @@ mob
 			if(FightingSeriously(src, defender) && src.isRace(/race/demi_fiend))
 				for(var/obj/Items/Magatama/M in src)
 					if(M.suffix == "*Equipped*" && M.mastery < 100)
-						M.gainMastery(val * 0.002)
+						M.gainMastery(val * 0.02)
 
 			if(passive_handler.Get("CorruptAffected"))
 				if(demon)
@@ -594,6 +605,8 @@ mob
 					val/=defender.secretDatum.currentTier
 				if(!CursedBlood)
 					var/amtHeal = val*(src.GetLifeSteal() + innateLifeSteal)*Effectiveness/100;
+					if(src.passive_handler.Get("Undying Rage"))
+						src.LifeStolen=0
 					amtHeal*=1*((100-src.LifeStolen)/100)
 					src.HealHealth(amtHeal)
 					if(defender.passive_handler.Get("The Inkstone") && src.LifeStolen>=50)
@@ -1210,6 +1223,13 @@ mob
 			if(EnergyCut>=1) src.Death(null, "exhausting their life force!", SuperDead=1, NoRemains=1);
 		AddManaCut(Val)
 			ManaCut = clamp(ManaCut+Val, 0, 1);//This one doesn't kill
+		AddOmniTax(Val)
+			AddStrTax(Val)
+			AddForTax(Val)
+			AddEndTax(Val)
+			AddOffTax(Val)
+			AddDefTax(Val)
+			AddSpdTax(Val)
 		AddStrTax(Val)
 			if(src.HasTaxThreshold())
 				if(src.StrTax>=src.GetTaxThreshold())
@@ -1304,7 +1324,7 @@ mob
 		// forgive the sin below, im not replacing basestat() in all the codebase
 		getEnhanced(statName)
 			var/enhance = vars["Enhanced[statName]"] * 0.3
-			if(isRace(ANDROID)||CyberneticMainframe)
+			if(isRace(ANDROID)||CyberneticMainframe&&src.Class=="Resourceful")
 				enhance = vars["Enhanced[statName]"] * 0.6
 			if(Target && ismob(Target))
 				// Rusting: when target carries the Rusting passive (mystic/hybrid styles)
@@ -1341,13 +1361,26 @@ mob
 
 		BaseRecov()
 			return (src.RecovMod+src.RecovAscension)*RecovChaos
+		HandleEldritchTax()
+			var/TaxVal=glob.racials.FULL_MANIFESTATION_TAX/glob.racials.FULL_MANIFESTATION_TAX_DIVISOR
+			if(passive_handler.Get("Full Manifestation")&&AscensionsAcquired<5)
+				TaxVal *= (6-AscensionsAcquired)*0.3
 
+			if(passive_handler.Get("Full Manifestation")&&AscensionsAcquired>=5)
+				TaxVal=0
+			AddOmniTax(TaxVal)
 		isInDemonDevilTrigger()
 			if(!isRace(DEMON)) return FALSE
 			if(!transActive || !race || !race.transformations || transActive > race.transformations.len) return FALSE
 			var/transformation/current = race.transformations[transActive]
 			if(!istype(current, /transformation/demon/devil_trigger)) return FALSE
 			return TRUE
+
+		// now require 50+ mastery
+		demonDevilTriggerSinMastery()
+			if(!isInDemonDevilTrigger()) return FALSE
+			var/transformation/current = race.transformations[transActive]
+			return current.mastery >= 50
 
 		// Used by the Devil Arm icon-swap path. Demon-only sins / disguise stay
 		// gated by isInDemonDevilTrigger; this one also covers makaioshin forms.
@@ -1376,6 +1409,9 @@ mob
 
 		getDevilTriggerSinBonusMult()
 			if(!isInDemonDevilTrigger())
+				resetDevilTriggerSinBonuses()
+				return 0
+			if(!demonDevilTriggerSinMastery())
 				resetDevilTriggerSinBonuses()
 				return 0
 
@@ -1454,7 +1490,7 @@ mob
 		// adist/Masochist effects
 		applySinBonusFromDealtDamage(var/amount)
 			if(amount <= 0) return
-			if(!isInDemonDevilTrigger()) return
+			if(!demonDevilTriggerSinMastery()) return
 
 			var/rate = 0.01
 
@@ -1471,7 +1507,7 @@ mob
 
 		applySinBonusFromTakenDamage(var/amount)
 			if(amount <= 0) return
-			if(!isInDemonDevilTrigger()) return
+			if(!demonDevilTriggerSinMastery()) return
 
 			var/rate = 0.01
 
@@ -1496,7 +1532,7 @@ mob
 				sf.Trigger(src, TRUE)
 
 		updateSlothSinBonus()
-			if(!isInDemonDevilTrigger()) return
+			if(!demonDevilTriggerSinMastery()) return
 			if(!passive_handler || !passive_handler.Get("SlothFactor")) return
 			if(PureRPMode)
 				LastSlothTick = world.time
@@ -1590,7 +1626,7 @@ mob
 		GetStr(var/Mult=1)
 			var/Str=src.StrMod
 			var/EldritchMod=0
-			if(src.EldritchPacted)
+/*			if(src.EldritchPacted)
 				switch(src.ReflectedPactType)
 					if("Devotion")
 						EldritchMod=0.5
@@ -1601,7 +1637,7 @@ mob
 					if("Ambition")
 						EldritchMod=0
 					if("Survival")
-						EldritchMod=0.25
+						EldritchMod=0.25*/
 			Str+=EldritchMod
 			var/EffectiveAsc=src.StrAscension
 			if(passive_handler.Get("Half Manifestation"))
@@ -1609,6 +1645,8 @@ mob
 			if(passive_handler.Get("SpiralPowerUnlocked"))
 				var/SP=passive_handler.Get("SpiralPowerUnlocked")
 				EffectiveAsc+=src.HandleSpiralUnlock("Str", SP)
+			if(isRace(POPO))
+				EffectiveAsc*=GetPowerUpRatio()
 
 			Str+=EffectiveAsc
 			//stat ascensions gained through racial or saga improvements
@@ -1729,8 +1767,10 @@ mob
 			if(passive_handler["Rebel Heart"])
 				var/h = (((missingHealth())/glob.REBELHEARTMOD) * passive_handler["Rebel Heart"])/10
 				Mod+=h
+			if(passive_handler.Get("TensionPowered"))
+				Mod+=(passive_handler.Get("TensionPowered")/4)
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
-				Mod+=(passive_handler.Get("TensionPowered")/2)
+				Mod+=(passive_handler.Get("TensionPowered")/4)
 			if(passive_handler.Get("TensionPowered")&&transActive>=4)
 				Mod+=(passive_handler.Get("TensionPowered")/2)
 				if(isRace(HUMAN))
@@ -1786,7 +1826,7 @@ mob
 		GetFor(var/Mult=1)
 			var/For=src.ForMod
 			var/EldritchMod=0
-			if(src.EldritchPacted)
+/*			if(src.EldritchPacted)
 				switch(src.ReflectedPactType)
 					if("Devotion")
 						EldritchMod=0.5
@@ -1797,7 +1837,7 @@ mob
 					if("Ambition")
 						EldritchMod=0.25
 					if("Survival")
-						EldritchMod=0
+						EldritchMod=0*/
 			For+=EldritchMod
 			var/EffectiveAsc=src.ForAscension
 			if(passive_handler.Get("Half Manifestation"))
@@ -1805,7 +1845,8 @@ mob
 			if(passive_handler.Get("SpiralPowerUnlocked"))
 				var/SP=passive_handler.Get("SpiralPowerUnlocked")
 				EffectiveAsc+=src.HandleSpiralUnlock("For", SP)
-
+			if(isRace(POPO))
+				EffectiveAsc*=GetPowerUpRatio()
 			For+=EffectiveAsc
 			var/enhanced = getEnhanced("Force")
 			For+=src.EnhancedForce ? enhanced : 0
@@ -1923,8 +1964,10 @@ mob
 				if(BaseFor() == BaseStr())
 					// lol
 					Mod += clamp(adaptive/2,0.05, 0.5)
+			if(passive_handler.Get("TensionPowered"))
+				Mod+=(passive_handler.Get("TensionPowered")/4)
 			if(passive_handler.Get("TensionPowered")&&transActive>=2)
-				Mod+=(passive_handler.Get("TensionPowered")/2)
+				Mod+=(passive_handler.Get("TensionPowered")/4)
 			if(passive_handler.Get("TensionPowered")&&transActive>=4)
 				Mod+=(passive_handler.Get("TensionPowered")/2)
 				if(isRace(HUMAN))
@@ -1978,7 +2021,7 @@ mob
 		GetEnd(var/Mult=1)
 			var/End=src.EndMod
 			var/EldritchMod=0
-			if(src.EldritchPacted)
+/*			if(src.EldritchPacted)
 				switch(src.ReflectedPactType)
 					if("Devotion")
 						EldritchMod=0.5
@@ -1989,7 +2032,7 @@ mob
 					if("Ambition")
 						EldritchMod=0
 					if("Survival")
-						EldritchMod=1
+						EldritchMod=1*/
 			End+=EldritchMod
 			var/EffectiveAsc=src.EndAscension
 			if(passive_handler.Get("Half Manifestation"))
@@ -1997,7 +2040,8 @@ mob
 			if(passive_handler.Get("SpiralPowerUnlocked"))
 				var/SP=passive_handler.Get("SpiralPowerUnlocked")
 				EffectiveAsc+=src.HandleSpiralUnlock("End", SP)
-
+			if(isRace(POPO))
+				EffectiveAsc*=GetPowerUpRatio()
 			End+=EffectiveAsc
 			var/enhanced = getEnhanced("Endurance")
 			End+=EnhancedEndurance ? enhanced : 0
@@ -2145,7 +2189,7 @@ mob
 		GetSpd(Mult=1)
 			var/Spd=src.SpdMod
 			var/EldritchMod=0
-			if(src.EldritchPacted)
+/*			if(src.EldritchPacted)
 				switch(src.ReflectedPactType)
 					if("Devotion")
 						EldritchMod=0.5
@@ -2156,7 +2200,7 @@ mob
 					if("Ambition")
 						EldritchMod=1
 					if("Survival")
-						EldritchMod=0
+						EldritchMod=0*/
 			Spd+=EldritchMod
 			var/EffectiveAsc=src.SpdAscension
 			if(passive_handler.Get("Half Manifestation"))
@@ -2164,7 +2208,8 @@ mob
 			if(passive_handler.Get("SpiralPowerUnlocked"))
 				var/SP=passive_handler.Get("SpiralPowerUnlocked")
 				EffectiveAsc+=src.HandleSpiralUnlock("Spd", SP)
-
+			if(isRace(POPO))
+				EffectiveAsc*=GetPowerUpRatio()
 			Spd+=EffectiveAsc
 			var/enhanced = getEnhanced("Speed")
 			Spd+=EnhancedSpeed ? enhanced : 0
@@ -2292,7 +2337,7 @@ mob
 		GetOff(var/Mult=1)
 			var/Off=src.OffMod
 			var/EldritchMod=0
-			if(src.EldritchPacted)
+/*			if(src.EldritchPacted)
 				switch(src.ReflectedPactType)
 					if("Devotion")
 						EldritchMod=0.5
@@ -2303,7 +2348,7 @@ mob
 					if("Ambition")
 						EldritchMod=0
 					if("Survival")
-						EldritchMod=0
+						EldritchMod=0*/
 			Off+=EldritchMod
 			var/EffectiveAsc=src.OffAscension
 			if(passive_handler.Get("Half Manifestation"))
@@ -2311,7 +2356,8 @@ mob
 			if(passive_handler.Get("SpiralPowerUnlocked"))
 				var/SP=passive_handler.Get("SpiralPowerUnlocked")
 				EffectiveAsc+=src.HandleSpiralUnlock("Off", SP)
-
+			if(isRace(POPO))
+				EffectiveAsc*=GetPowerUpRatio()
 			Off+=EffectiveAsc
 			var/enhanced = getEnhanced("Aggression")
 			Off+=EnhancedAggression ? enhanced : 0
@@ -2410,7 +2456,7 @@ mob
 		GetDef(var/Mult=1)
 			var/Def=src.DefMod
 			var/EldritchMod=0
-			if(src.EldritchPacted)
+/*			if(src.EldritchPacted)
 				switch(src.ReflectedPactType)
 					if("Devotion")
 						EldritchMod=0.5
@@ -2421,7 +2467,7 @@ mob
 					if("Ambition")
 						EldritchMod=0.5
 					if("Survival")
-						EldritchMod=0.5
+						EldritchMod=0.5*/
 			Def+=EldritchMod
 			var/EffectiveAsc=src.DefAscension
 			if(passive_handler.Get("Half Manifestation"))
@@ -2429,7 +2475,8 @@ mob
 			if(passive_handler.Get("SpiralPowerUnlocked"))
 				var/SP=passive_handler.Get("SpiralPowerUnlocked")
 				EffectiveAsc+=src.HandleSpiralUnlock("Def", SP)
-
+			if(isRace(POPO))
+				EffectiveAsc*=GetPowerUpRatio()
 			Def+=EffectiveAsc
 			var/enhanced = getEnhanced("Reflexes")
 			Def+=EnhancedReflexes ? enhanced : 0
@@ -2793,8 +2840,8 @@ mob
 
 		IsGood()
 			if(hasEldritchPower()) return 0;
-			var/list/EvilRaces=list(DEMON, DRAGON)
-			var/list/EvilSecrets=list("Vampire", "Werewolf", "Zombie")
+			var/list/EvilRaces=list(CHANGELING, DEMON, ELDRITCH, MAKYO, MAJIN)
+			var/list/EvilSecrets=list("Vampire", "Werewolf", "Zombie", "Eldritch")
 			//these are all bad.
 			var/good = 0
 			var/evil = 0
@@ -2845,8 +2892,8 @@ mob
 			return 0
 		IsEvil()
 			if(hasEldritchPower()) return 0;
-			var/list/EvilRaces=list(DEMON, DRAGON)
-			var/list/EvilSecrets=list("Vampire", "Werewolf", "Zombie")
+			var/list/EvilRaces=list(CHANGELING, DEMON, ELDRITCH, MAKYO, MAJIN)
+			var/list/EvilSecrets=list("Vampire", "Werewolf", "Zombie", "Eldritch")
 			var/good = 0
 			var/evil = 0
 			if(src.passive_handler.Get("Emptiness"))
@@ -2897,7 +2944,8 @@ mob
 
 		HolyDamage(var/mob/P, var/Forced=0)//Stick this in the DoDamage proc.
 			//To get to this proc, you have to already have holy damage
-			var/HolyDamageValue=src.GetHolyMod()
+			// holy strength when the attacker has no HolyMod passive.
+			var/HolyDamageValue = Forced ? Forced : src.GetHolyMod()
 			if(P.CheckSlotless("Devil Arm") && !P.isRace(DEMON) && !P.isRace(MAKAIOSHIN))
 				if(!Forced)
 					return HolyDamageValue
@@ -2923,21 +2971,18 @@ mob
 				return 1
 		AbyssDamage(mob/P, Forced=0)//Stick this in the DoDamage proc.
 			//yadda yadda gotta have abyss
+			// abyss strength when the attacker has no AbyssMod passive.
+			var/AbyssDamageValue = Forced ? Forced : src.GetAbyssMod()
 			if(P.UsingMuken())
-				if(!Forced)
-					return (-1)*src.GetAbyssMod()
-				else
-					return (-1)*Forced
+				return (-1)*AbyssDamageValue
 			if(HasMaouKi())
 				return 2*src.GetAbyssMod()
 			else if(P.IsGood())
-				if(!Forced)
-					return GetAbyssMod()
-				else
-					return Forced
+				return AbyssDamageValue
 			else if(GetSpiritPower()>=0.25)
 				var/spiritPower = (GetSpiritPower() / 2)
-				return clamp(src.GetAbyssMod()*spiritPower, 0.001, 10)
+				return clamp(AbyssDamageValue*spiritPower, 0.001, 10)
+			return 0.001
 
 		SpiritShift()
 			var/SFStr=src.BaseFor()+(glob.SPIRIT_FORM_BASE_RATE*src.AscensionsAcquired*(src.BaseStr()-src.BaseFor()))
@@ -3352,8 +3397,8 @@ mob
 			q2.gotoY=q.y
 			q2.gotoZ=q.z
 			q2.AssociatedWarper=q
-			global.Turfs+=q
-			global.Turfs+=q2
+			global.worldObjectList+=q
+			global.worldObjectList+=q2
 			Log("Admin","[ExtractInfo(usr)] made a warper at [usr.x],[usr.y],[usr.z] to warp to [_x],[_y],[_z]!")
 		DashTo(mob/Trg, MaxDistance=24, Delay=0.75, Clashable=0)
 			var/DelayRelease=0
@@ -3431,12 +3476,16 @@ mob
 		CountSigs(var/Tier=0)
 			var/Count=0
 			var/list/combo_check=list()
+			var/is_demon_celestial = (src.isRace(CELESTIAL) && src.CelestialAscension == "Demon")
 			if(!Tier)
 				Log("Admin", "[ExtractInfo(src)] tried to count signatures without specifying a tier.")
 				return
 			for(var/obj/Skills/s in src.Skills)
 				if(istype(s, /obj/Skills/Buffs/NuStyle))
 					continue
+				if(Tier == 2 && is_demon_celestial)
+					if(istype(s, /obj/Skills/Buffs/SlotlessBuffs/RoyalGuard))
+						continue
 				if(s.SignatureTechnique==Tier)
 					if("[s.type]" in combo_check)
 						continue

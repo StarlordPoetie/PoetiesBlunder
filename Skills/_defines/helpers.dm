@@ -29,7 +29,10 @@
         path = text2path(path)
     var/obj/Skills/s = findOrAddSkill(path)
     s.adjust(src)
-    throwSkill(s)
+    if(istype(s, /obj/Skills/AutoHit))
+        Activate(s, TRUE, TRUE)
+    else
+        throwSkill(s)
 
 /mob/proc/cycleStackingBuffs(var/obj/Skills/S)
     if(istype(AttackQueue, /obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Samsara) || istype(AttackQueue, /obj/Skills/Queue/Finisher/Cycle_of_Samsara))

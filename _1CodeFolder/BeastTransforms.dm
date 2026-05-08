@@ -25,7 +25,7 @@
 	TransformY = -32
 	AuraLock = 'BLANK.dmi'
 	passives = list("Vulnerable Behind" = 1, "GiantForm" = 1, "NoDodge" = 1, "SweepingStrike" = 1, \
-	"Meaty Paws" = 1, "PureDamage" = 2, "PureReduction" = 2)
+	"Meaty Paws" = 1, "PureDamage" = 2, "PureReduction" = 2, "GiantSwings" = 1)
 	StrMult = 1.3
 	ForMult = 1.2
 	SpdMult = 0.3
@@ -63,7 +63,7 @@
 		if(!p.oozaru_type)
 			p.oozaru_type = input(p, "What type of Oozaru are you?") in list("Wrathful", "Enlightened", "Instinctual")
 		passives = list("Vulnerable Behind" = 1, "GiantForm" = 1, "NoDodge" = 1, "SweepingStrike" = 1, \
-			"Meaty Paws" = 1)
+			"Meaty Paws" = 1, "PureDamage" = 2, "PureReduction" = 2, "GiantSwings" = 1)
 		switch(p.oozaru_type)
 			if("Wrathful")
 				passives["Manic"] = 4 - p.AscensionsAcquired
@@ -92,9 +92,9 @@
 				IconTransform = 'DTRed.dmi'
 				TransformX = 0
 				TransformY = 0
-				StrMult = 1.25
-				ForMult = 1.25
-				OffMult = 1.4
+				StrMult = 1.35
+				ForMult = 1.35
+				OffMult = 1.5
 				if(p.transUnlocked==1)
 					TimerLimit = 4800
 					IconTransform = 'SDTBlue.dmi'
@@ -105,8 +105,10 @@
 					if(SS1pot<5)
 						SS1pot=5
 					passives["Transformation Power"] = SS1pot //MATH COMES LATER
-					passives["BuffMastery"] = 5 + (p.AscensionsAcquired / 10)
-					VaizardHealth =25// 1 + (p.AscensionsAcquired/1.5)
+					passives["BuffMastery"] = 5 + p.AscensionsAcquired
+					passives["PureReduction"] = 2 + p.AscensionsAcquired
+					passives["PureDamage"] = 1 + p.AscensionsAcquired
+					VaizardHealth =25
 		if(p.Potential > OOZARU_POTENTIAL_TRANS&&p.oozaru_type!="Demonic")
 			passives["Transformation Power"] = p.AscensionsAcquired
 		if(length(p.race.transformations) >= 4 && p.race.transformations[4].type == /transformation/saiyan/super_saiyan_4 && p.Potential>=55||length(p.race.transformations) >= 2 && p.race.transformations[2].type == /transformation/saiyan/hellspawn_super_saiyan_2 && p.Potential>=55)

@@ -145,13 +145,13 @@ mob/proc/Auraz(var/Z)
 
 		else if(passive_handler.Get("BurningShot"))
 			if(transActive&&src.isRace(CELESTIAL))
-				//race.transformations[transActive].apply_visuals(src,1,0,0)
+				race.transformations[transActive].apply_visuals(src,1,0,0)
 				src.overlays+=flameaura
 			else
 				src.overlays+=flameaura
 
-		//else if(transActive)
-		//	race.transformations[transActive].apply_visuals(src,1,0,0)
+		else if(transActive)
+			race.transformations[transActive].apply_visuals(src,1,0,0)
 		else
 			for(var/obj/Skills/Power_Control/M in src.contents)
 				if(src.AuraLockedUnder==1)
@@ -977,6 +977,10 @@ mob/proc
 				Row++
 				src << output(m, "GridX:1,[Row]")
 				src << output(m.Level, "GridX:2,[Row]")
+			for(var/obj/Stars/s in Lootee)
+				Row++
+				src << output(s, "GridX:1,[Row]")
+				src << output(s.Level, "GridX:2,[Row]")
 			for(var/obj/Items/O in Lootee)
 				if(O.Stealable)
 					Row++

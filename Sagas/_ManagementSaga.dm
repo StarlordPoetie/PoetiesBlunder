@@ -911,13 +911,11 @@ mob
 										src.AddSkill(new/obj/Skills/Utility/UltimateHeal)
 										src<<"You can also attempt to heal people, but the keyword is attempt."
 									if(src.RebirthHeroType=="Rainbow")
-										src.RebirthHeroPath="Unsung"
-										src<<"Sorry, there is no way in hell that fate could ever account for you. Nice try, though."
-										src.AddSkill(new/obj/Skills/AutoHit/NeverSeeItComing)
-										src<< "nyoro~n :3c"
-										src.AddSkill(new/obj/Skills/Utility/NeverTooEarly)
-										src.AddSkill(new/obj/Skills/Projectile/Beams/TasteTheRainbow)
-										src.AddSkill(new/obj/Skills/Queue/HoldingOutForAHero)
+										src<<"You are now the Prismatic Hero of Dreams, emboldened by Hearts beating as One. (WIP)"
+										src<<"Swap between Chaos Saber and Chaos Buster to fight at close range or at range!"
+										src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/ChaosSaber)
+										src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/ChaosBuster)
+										//src.AddSkill(new/obj/Skills/Buffs/Rebirth/Hyperdeath_Mode)
 						if(3)
 							src.SagaLevel=3
 							if(src.RebirthHeroType=="Cyan")
@@ -1595,16 +1593,21 @@ mob
 							if(src.KeybladeType=="Shield")
 								src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Valor_Form)
 								src.ChooseKeychain()
+								src.ChooseMartialSkill(3)
+								src.ChooseMartialSkill(2)
 								src << "You learn to imbue every action with valor!"
 								src << "Use the Attach Keychain verb to set your sync keyblade for Valor Form."
 							else if(src.KeybladeType=="Staff")
 								src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Wisdom_Form)
 								src << "You learn to imbue every action with wisdom!"
 							else if(src.KeybladeType=="Sword")
+								src.ChooseMartialSkill(4)
+								src.ChooseMartialSkill(3)
 								src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Limit_Form)
+								src << "You have honed your base skillset to its limit, unlocking Limit Form!"
 						else
 							src.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Dark_Mode)
-							src << "Your reliance on darkness will empower you when pressed to your limits!"
+							src << "You can now tap into your inner darkness at will!"
 						switch(src.KeybladePath)
 							if("Magic")
 								AddSkill(new/obj/Skills/AutoHit/Magic/Holy)

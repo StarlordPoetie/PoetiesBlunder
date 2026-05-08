@@ -25,7 +25,7 @@
             if(prob(clamp(GetStunningStrike() * 10, 10, 70)))
                 Stun(defender, 3)
 /mob/proc/applyAdditonalDebuffs(mob/defender, value)
-    var/list/debuffs = list("Shearing", "Confusing","Crippling", "Attracting", "Terrifying", "Pacifying", "Enraging")
+    var/list/debuffs = list("Shearing", "Confusing","Crippling", "Attracting", "Terrifying", "Pacifying", "Enraging","Doom")
     for(var/debuff in debuffs)
         if(passive_handler.Get("[debuff]"))
             call(defender, "Add[debuff]")(passive_handler.Get("[debuff]") * clamp(value, 0.1, 1))

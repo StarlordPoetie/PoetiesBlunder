@@ -69,6 +69,7 @@ var/list/Tier2 = list(
 	"Zantetsuken" = "/obj/Skills/AutoHit/Zantetsuken",
 	"Thousand Man Slayer" = "/obj/Skills/AutoHit/Thousand_Man_Slayer",
 	"Omnislash" = "/obj/Skills/Queue/Omnislash",
+	"Royal Guard & Release" = list("/obj/Skills/Buffs/SlotlessBuffs/RoyalGuard", "/obj/Skills/AutoHit/RoyalRelease"),
 	"Advanced Defense Magic" = "/obj/Skills/Buffs/SlotlessBuffs/Magic/Protega",
 	"Advanced Shell Magic" = "/obj/Skills/Buffs/SlotlessBuffs/Magic/Resilient_Sphere",
 	"Advanced White Magic" = list("/obj/Skills/Buffs/SlotlessBuffs/Magic/Curaga", "/obj/Skills/Buffs/SlotlessBuffs/Magic/Esunaga"),

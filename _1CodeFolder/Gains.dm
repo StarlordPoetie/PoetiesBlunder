@@ -156,6 +156,8 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 /mob/proc/meditationChecks()
 	if(icon_state == "Meditate")
 		MeditateTime++
+		if(isRace(/race/demi_fiend))
+			refreshMagatama()
 
 		if(Corruption>MinCorruption&&isRace(DEMON))
 			Corruption -= 5 - (AscensionsAcquired/2)
@@ -223,6 +225,11 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 				src << "Your Black Flash chance has been reset."
 		if(src.passive_handler.Get("Triple Helix"))
 			src.passive_handler.Set("Triple Helix", 0)
+		var/obj/Skills/Buffs/SlotlessBuffs/RoyalGuard/RG = locate(/obj/Skills/Buffs/SlotlessBuffs/RoyalGuard) in src.contents
+		if(RG && RG.RoyalMeter > 0)
+			RG.RoyalMeter = 0
+			src << "Your Royal Meter went back to 0."
+			src.client.updateRGMeter()
 
 		if(calmcounter<=0)
 			calmcounter=5
@@ -529,12 +536,13 @@ mob
 				scrollTicker--
 				if(scrollTicker<=0)
 					scrollTicker=0
-			if(src.isRace(HUMAN) && src.transActive>=1&&src.icon_state=="Meditate"||src.isRace(CELESTIAL) && src.transActive>=1&&src.icon_state=="Meditate")
-				src.Revert()
+			if(shouldRevertHT()) Revert()
 			if(src.passive_handler.Get("Utterly Powerless") && !src.passive_handler.Get("Our Future"))
 				src.Revert()
 			if(passive_handler.Get("LunarWrath")&&PowerControl>100&&!passive_handler.Get("Unrelenting Wrath"))
 				var/ManaRando=rand(6,15)
+				if(src.Health<50)
+					ManaRando*=2
 				src.ManaAmount+=0.5*(ManaRando/10)
 			if(passive_handler.Get("LunarAnger")&&!passive_handler.Get("Unrelenting Wrath"))
 				if(ManaAmount>50)
@@ -547,7 +555,7 @@ mob
 			if(passive_handler.Get("Unrelenting Wrath"))
 				src.Anger=src.AngerMax
 				src.AngerMax=5
-			if(passive_handler["TensionPowered"] && !src.isMazokuHuman())
+			if(passive_handler["TensionPowered"] && !src.isMazokuPathHuman())
 				if(src.canHTM())
 					src.race.transformations[2].transform(src, TRUE)
 			if(src.transActive==1&&src.isRace(NAMEKIAN))
@@ -569,6 +577,8 @@ mob
 				if(Health<=14)
 					if(passive_handler.Get("TrueZenkaiPower")<3)
 						passive_handler.Increase("TrueZenkaiPower", 0.05)
+			if(passive_handler.Get("Full Manifestation"))
+				src.HandleEldritchTax()
 			if(passive_handler.Get("TrueZenkaiPower")&&src.icon_state=="Meditate")
 				passive_handler.Set("TrueZenkaiPower", 0)
 			if(passive_handler["LegendarySaiyan"]&&src.transActive==src.transUnlocked||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["MovementMastery"]||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["GodKi"]||src.passive_handler["LegendarySaiyan"]&&src.passive_handler["SSJ4"])
@@ -583,18 +593,18 @@ mob
 						src.DoDamage(src, (rand(1,5)/30))
 			if(passive_handler["Grit"])
 				AdjustGrit("sub", glob.racials.GRITSUBTRACT)
-			if((isRace(HUMAN)||isRace(CELESTIAL)&&CelestialAscension=="Angel") && !isMazokuHuman())
+			if((isRace(HUMAN)||isRace(CELESTIAL)&&CelestialAscension=="Angel") && !isMazokuPathHuman())
 				if(Health<=30)
 					if(transActive==4&&transUnlocked>=5&&DoubleHelix>=4)
 						src.race.transformations[5].transform(src, TRUE)
 			if(isMazokuHuman() && src.icon_state != "Meditate")
+				var/ht_trigger_threshold = isMazokuAscension6() ? 40 : 25
 				// ≤75% HP from base form → activate Devil Trigger (slot 6)
 				if(transActive == 0 && Health <= 75 * (1 - HealthCut))
 					if(race && race.transformations && race.transformations.len >= 6)
 						transActive = 5
 						race.transformations[6].transform(src, TRUE)
-				// DT to HT threshold: 40% for Ascension 6, 25% otherwise
-				var/ht_trigger_threshold = isMazokuAscension6() ? 40 : 25
+				// DT to HT drop below threshold
 				if(isInMazokuDT() && Health <= ht_trigger_threshold * (1 - HealthCut))
 					race.transformations[transActive].revert(src)
 					mazokuActivateHighestHT()
@@ -604,6 +614,19 @@ mob
 						mazokuRevertAllHT()
 						transActive = 6
 						race.transformations[7].transform(src, TRUE)
+				// HP rising SEA to HT (Ascension 6 only)
+				if(isMazokuAscension6() && isInMazokuSEA() && Health > 25 * (1 - HealthCut))
+					race.transformations[transActive].revert(src)
+					mazokuActivateHighestHT()
+				// HP rising HT to DT (revert all HT, re-enter Devil Trigger)
+				if(transActive >= 1 && transActive <= 5 && Health > ht_trigger_threshold * (1 - HealthCut))
+					mazokuRevertAllHT()
+					if(race && race.transformations && race.transformations.len >= 6)
+						transActive = 5
+						race.transformations[6].transform(src, TRUE)
+				// HP rising DT to base form
+				if(isInMazokuDT() && Health > 75 * (1 - HealthCut))
+					race.transformations[transActive].revert(src)
 			if((isRace(SAIYAN) || isRace(HALFSAIYAN))&&transActive>0)
 				if(HellspawnBerserk)
 					HellspawnTimer-=1
@@ -695,7 +718,7 @@ mob
 				if(movementSealed)
 					for(var/obj/Seal/S in src)
 						if(S.ZPlaneBind)
-							if(src.z!=S.ZPlaneBind || abs(src.x - S.XBind) > 10 || abs(src.y - S.YBind) > 10)
+							if(src.z!=S.ZPlaneBind || abs(src.x - S.XBind) > S.DistAllowed || abs(src.y - S.YBind) > S.DistAllowed)
 								OMsg(src, "[src] has triggered their location binding!")
 								src.loc=locate(S.XBind, S.YBind, S.ZPlaneBind)
 
@@ -841,12 +864,12 @@ mob
 					src << "Your buster technique is fully charged!"
 
 
-			if(src.Beaming)
+			if(src.Beaming || src.HasMovingCharge())
 				for(var/obj/Skills/Projectile/Beams/Z in Skills)
 					if(Z.Charging&&Z.ChargeRate)
 						var/beamChargeCap = Z.ChargeRate * BEAM_CHARGE_CAP_MULT
 						if(src.BeamCharging>=0.5&&src.BeamCharging<=beamChargeCap)
-							src.BeamCharging+=src.GetRecov(0.2)
+							src.BeamCharging+=src.GetRecov(0.2)*src.GetBeamChargeSpeedMult()
 							if(src.BeamCharging>beamChargeCap)
 								src.BeamCharging=beamChargeCap
 
@@ -1759,7 +1782,7 @@ mob
 									src.Death(null,"oxygen deprivation!")
 			else if(loc:Deluged||istype(loc,/turf/Waters)||istype(loc,/turf/Special/Ichor_Water)||istype(loc,/turf/Special/Midgar_Ichor))
 				var/IgnoresWater=0
-				if(passive_handler.Get("Fishman")||passive_handler.Get("SpaceWalk")||src.race in list(MAJIN,DRAGON))
+				if(passive_handler.Get("Fishman")||passive_handler.Get("SpaceWalk")||src.race in list(MAJIN,DRAGON,ELDRITCH))
 					BreathingMaskOn=1
 				for(var/obj/Items/Tech/SpaceMask/SM in src)
 					if(SM.suffix)

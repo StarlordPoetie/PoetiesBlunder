@@ -10,6 +10,8 @@
 		FollowUp="/obj/Skills/Projectile/Zone_Attacks/Super_Hyper_Goner_Attack"
 		DamageMult = 4
 		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Boss_Monster_Form"
+
+
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher
 	The_East_is_Burning_Red
 		IconLock='SweatDrop.dmi'

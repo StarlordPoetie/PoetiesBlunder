@@ -255,100 +255,178 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 		var/reduction = min(0.5, spd / 60)
 		return round(base_cd * (1 - reduction))
 
+	proc/DemonGetMagicSkillDamageMult(skill_name)
+		switch(skill_name)
+			if("Agi", "Bufu", "Zio", "Zan")
+				return 10
+			if("Agidyne", "Bufudyne", "Ziodyne", "Zandyne")
+				return 20
+			if("Maragi", "Mabufu", "Mazio", "Mazan")
+				return 6
+			if("Maragidyne", "Mabufudyne", "Maziodyne", "Mazandyne")
+				return 15
+			if("Inferno")
+				return 30
+			if("Fire Dance", "Ice Dance", "Elec Dance", "Force Dance")
+				return 6
+			if("Megido")
+				return 25
+			if("Megidolaon")
+				return 35
+			if("Holy Dance")
+				return 8
+			if("Judgement")
+				return 30
+		return 1
+
+	proc/DemonGetPhysicalSkillDamageMult(skill_name)
+		switch(skill_name)
+			if("Power Hit")
+				return 8
+			if("Mighty Hit")
+				return 15
+			if("Brutal Hit")
+				return 22
+			if("Anger Hit")
+				return 10
+			if("Piercing Hit")
+				return 18
+			if("Fatal Strike")
+				return 13
+			if("Assassinate")
+				return 13
+			if("Desperation")
+				return 17
+			if("Berserk")
+				return 17
+			if("Multi-Strike")
+				return 5
+			if("Deathbound")
+				return 6
+			if("Mow Down")
+				return 6
+			if("Hassohappa")
+				return 6
+			if("Holy Strike")
+				return 18
+			if("Snipe")
+				return 17
+			if("Multi-Hit")
+				return 6
+			if("Petra Eyes")
+				return 10
+		return 1
+
+	proc/DemonGetUniqueSkillDamageMult(skill_name)
+		switch(skill_name)
+			if("Die For Me!")
+				return 10
+			if("Root of Evil")
+				return 50
+			if("Megido Ark")
+				return 12
+			if("Tandava")
+				return 45
+			if("Fire of Sinai")
+				return 8
+		return 1
+
 	proc/DemonTrySkill(mob/target, skill_name)
 		current_skill = skill_name
+		var/dmg_mult = DemonGetMagicSkillDamageMult(skill_name)
+		var/phys_dmg_mult = DemonGetPhysicalSkillDamageMult(skill_name)
 		switch(skill_name)
 			if("Agi")
-				return DemonSingleDamage(target, ForMod * 0.3, "Fire", 3)
+				return DemonSingleDamage(target, ForMod, "Fire", 3, dmg_mult)
 			if("Agidyne")
-				return DemonSingleDamage(target, ForMod * 0.6, "Fire", 6)
+				return DemonSingleDamage(target, ForMod, "Fire", 6, dmg_mult)
 			if("Inferno")
-				return DemonSingleDamage(target, ForMod * 0.9, "Fire", 8)
+				return DemonSingleDamage(target, ForMod, "Fire", 8, dmg_mult)
 			if("Maragi")
-				return DemonAoeDamage(target, 5, ForMod * 0.15, "Fire", 2)
+				return DemonAoeDamage(target, 5, ForMod, "Fire", 2, dmg_mult)
 			if("Maragidyne")
-				return DemonAoeDamage(target, 5, ForMod * 0.35, "Fire", 5)
+				return DemonAoeDamage(target, 5, ForMod, "Fire", 5, dmg_mult)
 			if("Fire Dance")
-				return DemonDanceSkill(target, ForMod * 0.12, "Fire", 2, 3, 6)
+				return DemonDanceSkill(target, ForMod, "Fire", 2, 3, 6, dmg_mult)
 			if("Bufu")
-				return DemonSingleDamage(target, ForMod * 0.3, "Ice", 3)
+				return DemonSingleDamage(target, ForMod, "Ice", 3, dmg_mult)
 			if("Bufudyne")
-				return DemonSingleDamage(target, ForMod * 0.6, "Ice", 6)
+				return DemonSingleDamage(target, ForMod, "Ice", 6, dmg_mult)
 			if("Mabufu")
-				return DemonAoeDamage(target, 5, ForMod * 0.15, "Ice", 2)
+				return DemonAoeDamage(target, 5, ForMod, "Ice", 2, dmg_mult)
 			if("Mabufudyne")
-				return DemonAoeDamage(target, 5, ForMod * 0.35, "Ice", 5)
+				return DemonAoeDamage(target, 5, ForMod, "Ice", 5, dmg_mult)
 			if("Ice Dance")
-				return DemonDanceSkill(target, ForMod * 0.12, "Ice", 2, 3, 6)
+				return DemonDanceSkill(target, ForMod, "Ice", 2, 3, 6, dmg_mult)
 			if("Zio")
-				return DemonSingleDamage(target, ForMod * 0.3, "Elec", 3)
+				return DemonSingleDamage(target, ForMod, "Elec", 3, dmg_mult)
 			if("Ziodyne")
-				return DemonSingleDamage(target, ForMod * 0.6, "Elec", 6)
+				return DemonSingleDamage(target, ForMod, "Elec", 6, dmg_mult)
 			if("Mazio")
-				return DemonAoeDamage(target, 5, ForMod * 0.15, "Elec", 2)
+				return DemonAoeDamage(target, 5, ForMod, "Elec", 2, dmg_mult)
 			if("Maziodyne")
-				return DemonAoeDamage(target, 5, ForMod * 0.35, "Elec", 5)
+				return DemonAoeDamage(target, 5, ForMod, "Elec", 5, dmg_mult)
 			if("Elec Dance")
-				return DemonDanceSkill(target, ForMod * 0.12, "Elec", 2, 3, 6)
+				return DemonDanceSkill(target, ForMod, "Elec", 2, 3, 6, dmg_mult)
 			if("Zan")
-				return DemonSingleDamage(target, ForMod * 0.3, "Force", 3)
+				return DemonSingleDamage(target, ForMod, "Force", 3, dmg_mult)
 			if("Zandyne")
-				return DemonSingleDamage(target, ForMod * 0.6, "Force", 6)
+				return DemonSingleDamage(target, ForMod, "Force", 6, dmg_mult)
 			if("Mazan")
-				return DemonAoeDamage(target, 5, ForMod * 0.15, "Force", 2)
+				return DemonAoeDamage(target, 5, ForMod, "Force", 2, dmg_mult)
 			if("Mazandyne")
-				return DemonAoeDamage(target, 5, ForMod * 0.35, "Force", 5)
+				return DemonAoeDamage(target, 5, ForMod, "Force", 5, dmg_mult)
 			if("Force Dance")
-				return DemonDanceSkill(target, ForMod * 0.12, "Force", 2, 3, 6)
+				return DemonDanceSkill(target, ForMod, "Force", 2, 3, 6, dmg_mult)
 			if("Holy Strike")
-				return DemonSingleDamage(target, ForMod * 0.55, "Almighty", 2)
+				return DemonPhysDamage(target, StrMod, phys_dmg_mult)
 			if("Megido")
-				return DemonAoeDamage(target, 5, ForMod * 0.25, "Almighty", 1)
+				return DemonAoeDamage(target, 5, ForMod, "Almighty", 1, dmg_mult)
 			if("Megidolaon")
-				return DemonAoeDamage(target, 5, ForMod * 0.45, "Almighty", 2)
+				return DemonAoeDamage(target, 5, ForMod, "Almighty", 2, dmg_mult)
 			if("Judgement")
-				return DemonAoeDamage(target, 6, ForMod * 0.6, "Almighty", 3)
+				return DemonAoeDamage(target, 6, ForMod, "Almighty", 3, dmg_mult)
 			if("Holy Dance")
-				return DemonDanceSkill(target, ForMod * 0.1, "Almighty", 1, 3, 6)
+				return DemonDanceSkill(target, ForMod, "Almighty", 1, 3, 6, dmg_mult)
 			if("Power Hit")
-				return DemonPhysDamage(target, StrMod * 0.25)
+				return DemonPhysDamage(target, StrMod, phys_dmg_mult)
 			if("Mighty Hit")
-				return DemonPhysDamage(target, StrMod * 0.45)
+				return DemonPhysDamage(target, StrMod, phys_dmg_mult)
 			if("Brutal Hit")
-				return DemonPhysDamage(target, StrMod * 0.65)
+				return DemonPhysDamage(target, StrMod, phys_dmg_mult)
 			if("Anger Hit")
 				if(DemonValidTarget(target))
 					var/hp_ratio = max(0.1, demon_hp / 100)
-					return DemonPhysDamage(target, StrMod * 0.3 * (2 - hp_ratio))
+					return DemonPhysDamage(target, StrMod * (2 - hp_ratio), phys_dmg_mult)
 				return FALSE
 			if("Piercing Hit")
-				return DemonPhysDamage(target, StrMod * 0.55)
+				return DemonPhysDamage(target, StrMod, phys_dmg_mult)
 			if("Fatal Strike")
 				if(DemonValidTarget(target))
-					var/dmg = StrMod * 0.4
+					var/dmg = StrMod
 					if(prob(25))
 						dmg *= 2
 						if(ai_owner) ai_owner << "<font color='#ff4444'>[name] lands a critical blow!</font>"
-					return DemonPhysDamage(target, dmg)
+					return DemonPhysDamage(target, dmg, phys_dmg_mult)
 				return FALSE
 			if("Assassinate")
 				if(DemonValidTarget(target))
-					var/dmg = StrMod * 0.4
+					var/dmg = StrMod
 					if(prob(15))
 						dmg *= 10
 						if(ai_owner) ai_owner << "<font color='#ff0000'>[name] strikes a lethal blow!</font>"
-					return DemonPhysDamage(target, dmg)
+					return DemonPhysDamage(target, dmg, phys_dmg_mult)
 				return FALSE
 			if("Desperation")
-				return DemonDesperation(target)
+				return DemonDesperation(target, phys_dmg_mult)
 			if("Multi-Strike")
-				return DemonPhysMultiHit(target, StrMod * 0.1, 2, 5)
+				return DemonPhysMultiHit(target, StrMod, 2, 5, phys_dmg_mult)
 			if("Deathbound")
-				return DemonPhysAoe(target, 5, StrMod * 0.2)
+				return DemonPhysAoe(target, 5, StrMod, phys_dmg_mult)
 			if("Mow Down")
-				return DemonPhysAoe(target, 5, StrMod * 0.15)
+				return DemonPhysAoe(target, 5, StrMod, phys_dmg_mult)
 			if("Hassohappa")
-				return DemonPhysAoeMultiHit(target, 5, StrMod * 0.15, 1, 3)
+				return DemonPhysAoeMultiHit(target, 5, StrMod, 1, 3, phys_dmg_mult)
 			if("Drain")
 				return DemonDrain(target, ForMod * 0.3, FALSE)
 			if("Life Drain")
@@ -406,9 +484,9 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 			if("Weak Kill")
 				return DemonWeakKill(target)
 			if("Snipe")
-				return DemonPhysDamage(target, StrMod * 0.5)
+				return DemonPhysDamage(target, StrMod, phys_dmg_mult)
 			if("Multi-Hit")
-				return DemonPhysMultiHit(target, StrMod * 0.12, 2, 4)
+				return DemonPhysMultiHit(target, StrMod, 2, 4, phys_dmg_mult)
 			// Unique demon skills (cannot be inherited via fusion)
 			if("Die For Me!")
 				return DemonDieForMe(target)
@@ -427,7 +505,9 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 	proc/DemonDieForMe(mob/target)
 		if(!DemonValidTarget(target)) return FALSE
 		var/hits = rand(2, 6)
-		var/normal_dmg = DemonComputeKernelDamage(target, ForMod * 0.45) * glob.DevilSummonerDemonSkillMod
+		var/dmg_mult = DemonGetUniqueSkillDamageMult("Die For Me!")
+		var/normal_dmg = DemonComputeKernelDamage(target, ForMod) * glob.DevilSummonerDemonSkillMod
+		normal_dmg *= dmg_mult
 		spawn()
 			for(var/i = 1, i <= hits, i++)
 				if(!src || !target || !ai_owner) return
@@ -448,7 +528,8 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 	// Lucifer / Root of Evil
 	proc/DemonRootOfEvil(mob/target)
 		if(!DemonValidTarget(target)) return FALSE
-		var/final_dmg = DemonComputeKernelDamage(target, ForMod * 0.85) * glob.DevilSummonerDemonSkillMod
+		var/final_dmg = DemonComputeKernelDamage(target, ForMod) * glob.DevilSummonerDemonSkillMod
+		final_dmg *= DemonGetUniqueSkillDamageMult("Root of Evil")
 		DemonDealDamage(target, TrueDamage(final_dmg))
 		DemonHitVisual(target)
 		var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/RootOfEvil/d = target.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/RootOfEvil)
@@ -463,13 +544,11 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 	// Satan / Megido Ark
 	proc/DemonMegidoArk(mob/target)
 		if(!DemonValidTarget(target)) return FALSE
+		var/dmg_mult = DemonGetUniqueSkillDamageMult("Megido Ark")
 		var/list/targets = DemonGetAoeTargets(target, 6)
 		for(var/mob/t in targets)
-			var/stages = 0
-			if(isnum(t.transActive) && t.transActive > 0)
-				stages = t.transActive
-			var/coeff = 0.10 + (stages * 0.40)
-			var/final_dmg = DemonComputeKernelDamage(t, ForMod * coeff) * glob.DevilSummonerDemonSkillMod
+			var/final_dmg = DemonComputeKernelDamage(t, ForMod) * glob.DevilSummonerDemonSkillMod
+			final_dmg *= dmg_mult
 			DemonDealDamage(t, TrueDamage(final_dmg))
 			DemonHitVisual(t)
 			DemonFlash(t, "Almighty")
@@ -480,7 +559,8 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 	// Shiva / Tandava
 	proc/DemonTandava(mob/target)
 		if(!DemonValidTarget(target)) return FALSE
-		var/final_dmg = DemonComputeKernelDamage(target, ForMod * 0.7) * glob.DevilSummonerDemonSkillMod
+		var/final_dmg = DemonComputeKernelDamage(target, ForMod) * glob.DevilSummonerDemonSkillMod
+		final_dmg *= DemonGetUniqueSkillDamageMult("Tandava")
 		DemonDealDamage(target, TrueDamage(final_dmg))
 		DemonHitVisual(target)
 		var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/Tandava/d = target.findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/Tandava)
@@ -496,7 +576,8 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 	proc/DemonFireOfSinai(mob/target)
 		if(!DemonValidTarget(target)) return FALSE
 		var/hits = rand(3, 7)
-		var/per_hit = DemonComputeKernelDamage(target, ForMod * 0.25) * glob.DevilSummonerDemonSkillMod
+		var/per_hit = DemonComputeKernelDamage(target, ForMod) * glob.DevilSummonerDemonSkillMod
+		per_hit *= DemonGetUniqueSkillDamageMult("Fire of Sinai")
 		spawn()
 			for(var/i = 1, i <= hits, i++)
 				if(!src || !target || !ai_owner) return
@@ -560,9 +641,10 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 			targets += m
 		return targets
 
-	proc/DemonSingleDamage(mob/target, dmg, element, debuff_val)
+	proc/DemonSingleDamage(mob/target, dmg, element, debuff_val, dmg_mult = 1)
 		if(!DemonValidTarget(target)) return FALSE
 		var/final_dmg = DemonComputeKernelDamage(target, dmg) * glob.DevilSummonerDemonSkillMod
+		final_dmg *= dmg_mult
 		DemonDealDamage(target, TrueDamage(final_dmg))
 		DemonHitVisual(target)
 		DemonApplyDebuff(target, element, debuff_val)
@@ -570,11 +652,12 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 		DemonSpawnVFX(target)
 		return TRUE
 
-	proc/DemonAoeDamage(mob/target, radius, dmg, element, debuff_val)
+	proc/DemonAoeDamage(mob/target, radius, dmg, element, debuff_val, dmg_mult = 1)
 		if(!DemonValidTarget(target)) return FALSE
 		var/list/targets = DemonGetAoeTargets(target, radius)
 		for(var/mob/t in targets)
 			var/final_dmg = DemonComputeKernelDamage(t, dmg) * glob.DevilSummonerDemonSkillMod
+			final_dmg *= dmg_mult
 			DemonDealDamage(t, TrueDamage(final_dmg))
 			DemonHitVisual(t)
 			DemonApplyDebuff(t, element, debuff_val)
@@ -582,10 +665,11 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 			DemonSpawnVFX(t)
 		return TRUE
 
-	proc/DemonDanceSkill(mob/target, dmg_per, element, debuff_per, min_hits, max_hits)
+	proc/DemonDanceSkill(mob/target, dmg_per, element, debuff_per, min_hits, max_hits, dmg_mult = 1)
 		if(!DemonValidTarget(target)) return FALSE
 		var/hits = rand(min_hits, max_hits)
 		var/final_dmg = DemonComputeKernelDamage(target, dmg_per) * glob.DevilSummonerDemonSkillMod
+		final_dmg *= dmg_mult
 		spawn()
 			for(var/i = 1, i <= hits, i++)
 				if(!src || !target || !ai_owner) return
@@ -598,19 +682,21 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 				if(i < hits) sleep(8)
 		return TRUE
 
-	proc/DemonPhysDamage(mob/target, dmg)
+	proc/DemonPhysDamage(mob/target, dmg, dmg_mult = 1)
 		if(!DemonValidTarget(target)) return FALSE
 		var/final_dmg = DemonComputeKernelDamage(target, dmg) * glob.DevilSummonerDemonSkillMod
+		final_dmg *= dmg_mult
 		DemonDealDamage(target, TrueDamage(final_dmg))
 		DemonHitVisual(target)
 		Bump(target)
 		DemonSpawnVFX(target)
 		return TRUE
 
-	proc/DemonPhysMultiHit(mob/target, dmg_per, min_hits, max_hits)
+	proc/DemonPhysMultiHit(mob/target, dmg_per, min_hits, max_hits, dmg_mult = 1)
 		if(!DemonValidTarget(target)) return FALSE
 		var/hits = rand(min_hits, max_hits)
 		var/final_dmg = DemonComputeKernelDamage(target, dmg_per) * glob.DevilSummonerDemonSkillMod
+		final_dmg *= dmg_mult
 		spawn()
 			for(var/i = 1, i <= hits, i++)
 				if(!src || !target || !ai_owner) return
@@ -622,17 +708,18 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 				if(i < hits) sleep(6)
 		return TRUE
 
-	proc/DemonPhysAoe(mob/target, radius, dmg)
+	proc/DemonPhysAoe(mob/target, radius, dmg, dmg_mult = 1)
 		if(!DemonValidTarget(target)) return FALSE
 		var/list/targets = DemonGetAoeTargets(target, radius)
 		for(var/mob/t in targets)
 			var/final_dmg = DemonComputeKernelDamage(t, dmg) * glob.DevilSummonerDemonSkillMod
+			final_dmg *= dmg_mult
 			DemonDealDamage(t, TrueDamage(final_dmg))
 			DemonHitVisual(t)
 			DemonSpawnVFX(t)
 		return TRUE
 
-	proc/DemonPhysAoeMultiHit(mob/target, radius, dmg_per, min_hits, max_hits)
+	proc/DemonPhysAoeMultiHit(mob/target, radius, dmg_per, min_hits, max_hits, dmg_mult = 1)
 		if(!DemonValidTarget(target)) return FALSE
 		var/list/targets = DemonGetAoeTargets(target, radius)
 		var/hits = rand(min_hits, max_hits)
@@ -642,19 +729,21 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 				for(var/mob/t in targets)
 					if(!t || t.z != src.z) continue
 					var/final_dmg = DemonComputeKernelDamage(t, dmg_per) * glob.DevilSummonerDemonSkillMod
+					final_dmg *= dmg_mult
 					DemonDealDamage(t, TrueDamage(final_dmg))
 					DemonHitVisual(t)
 					DemonSpawnVFX(t)
 				if(i < hits) sleep(8)
 		return TRUE
 
-	proc/DemonDesperation(mob/target)
+	proc/DemonDesperation(mob/target, dmg_mult = 1)
 		if(!DemonValidTarget(target)) return FALSE
 		if(!ai_owner) return FALSE
 		var/max_est = max(100, ai_owner.Potential * 5)
 		var/missing_ratio = clamp(1 - (ai_owner.Health / max_est), 0, 1)
-		var/atk_val = StrMod * 0.5 * (1 + missing_ratio * 3)
+		var/atk_val = StrMod * (1 + missing_ratio * 3)
 		var/dmg = DemonComputeKernelDamage(target, atk_val) * glob.DevilSummonerDemonSkillMod
+		dmg *= dmg_mult
 		DemonDealDamage(target, TrueDamage(dmg))
 		DemonHitVisual(target)
 		Bump(target)
@@ -818,7 +907,8 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 				StrMod /= 1.5
 				EndMod /= 0.7
 				DefMod /= 0.7
-		var/dmg = DemonComputeKernelDamage(target, StrMod * 0.5) * glob.DevilSummonerDemonSkillMod
+		var/dmg = DemonComputeKernelDamage(target, StrMod) * glob.DevilSummonerDemonSkillMod
+		dmg *= DemonGetPhysicalSkillDamageMult("Berserk")
 		if(dmg <= 0) return TRUE
 		target.DoDamage(src, TrueDamage(dmg))
 		Bump(target)
@@ -933,7 +1023,8 @@ var/global/list/DEMON_UNIQUE_SKILLS = list(
 
 	proc/DemonStone(mob/target)
 		if(!DemonValidTarget(target)) return FALSE
-		var/dmg = DemonComputeKernelDamage(target, StrMod * 0.3) * glob.DevilSummonerDemonSkillMod
+		var/dmg = DemonComputeKernelDamage(target, StrMod) * glob.DevilSummonerDemonSkillMod
+		dmg *= DemonGetPhysicalSkillDamageMult("Petra Eyes")
 		if(dmg > 0) target.DoDamage(src, TrueDamage(dmg))
 		target.AddSlow(20, src)
 		DemonSpawnVFX(target)

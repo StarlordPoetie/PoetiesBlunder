@@ -122,6 +122,8 @@ obj
 				ContinuousOn//Have you started the attack?
 				MultiShot=0//Can be fired multiple times before going on CD.
 				MultiShots=0//How many times have been fired.
+				MultiFatigue=0//drains more fatigue
+				MultiFatigueExponent=0 //scaling exponential value
 
 				MultiHit//Single projectile hits multiple times.
 				MaxMultiHit//just used to keep track of if a technique has hit yet
@@ -1939,45 +1941,46 @@ obj
 			Spirit_Gun
 				SignatureTechnique=1
 				Distance=50
-				DamageMult=4.5
+				DamageMult=5
 				AccMult=25
+				MultiShot=5
+				MultiFatigueExponent=2
 				Explode=3
-				Knockback=1
+				ComboMaster=1
 				Radius=1
 				Dodgeable=0
 				Deflectable=0
 				AllOutAttack=1
-				Charge=0.25
-				StrRate=1.2
-				ForRate=1.2
+				Charge=0.5
+				StrRate=1
+				ForRate=1
 				EndRate=1
 				IconLock='SpiritGun2.dmi'
 				LockX=-12
 				LockY=-12
 				Variation=0
 				Cooldown=150
+				adjust(mob/p)
+					EnergyCost=MultiShots**1.75
+					DamageMult=5+(MultiShots**1.75)
 				verb/Spirit_Gun()
 					set category="Skills"
-					src.EnergyCost=usr.Energy
-					FatigueCost=EnergyCost/20
-					src.MultiHit=round(src.EnergyCost/10)
-					src.DamageMult=round(4.5 + EnergyCost/10) / MultiHit
+					adjust(usr)
 					usr.UseProjectile(src)
 
 			Spirit_Gun_Mega
 				PreRequisite=list("/obj/Skills/Projectile/Spirit_Gun")
 				SignatureTechnique=2
-				FatigueCost=80
 				Distance=50
-				DamageMult=6
+				DamageMult=10
 				AccMult=25
 				Explode=5
-				Knockback=1
+				ComboMaster=1
 				Radius=2
 				Dodgeable=0
 				Deflectable=0
 				AllOutAttack=1
-				Charge=0.25
+				Charge=0.75
 				StrRate=1
 				ForRate=1
 				EndRate=1
@@ -1987,10 +1990,15 @@ obj
 				LockY=-12
 				Variation=0
 				Cooldown=180
+				adjust(mob/p)
+					WoundCost=p.TotalFatigue*0.75
+					HealthCost=WoundCost*0.75
+					if(HealthCost>=50)
+						ActiveMessage="<b>puts everything they have into this one final blast, casting aside concern for their lives!</b>"
+					DamageMult=10+(WoundCost*0.5)
 				verb/Spirit_Gun_Mega()
 					set category="Skills"
-					src.MultiHit=round(FatigueCost/4)
-					src.DamageMult=0.01+(FatigueCost/90)
+					adjust(usr)
 					usr.UseProjectile(src)
 			Sekiha_Tenkyoken
 				SignatureTechnique=2
@@ -3361,13 +3369,11 @@ obj
 						Knockback = 4
 						DamageMult = 2 + (1 * p.SagaLevel)
 						MultiHit = 5
-						DamageMult/=MultiHit
 						Radius = 1
 						IconSize = 1.25
 						if(p.AnsatsukenPath == "Hadoken")
 							Charge = 1
 							DamageMult = 3 + (1.5 * p.SagaLevel)
-							DamageMult/=MultiHit
 							Radius = 2
 							IconSize = 2
 							Distance = 25
@@ -4478,8 +4484,8 @@ obj
 
 					Super_Kamehameha
 						PreRequisite=list("/obj/Skills/Projectile/Beams/Kamehameha")
-						StrRate = 1
-						ForRate = 0
+						StrRate = 0
+						ForRate = 1
 						SignatureTechnique=2
 						DamageMult=8
 						ChargeRate=3
@@ -4733,20 +4739,30 @@ obj
 
 
 ////Racials
-				Static_Stream
-					Dodgeable=0
-					BeamTime=5
-					DamageMult=5
-					Distance=20
-					Paralyzing=2
-					Cooldown=90
-					StrRate=0.5
-					EndRate=1
-					ForRate=0.5
-					IconLock='LightningWave.dmi'
-					verb/Static_Stream()
-						set category="Skills"
-						usr.UseProjectile(src)
+			Static_Stream
+				Dodgeable=0
+				DamageMult=5
+				BeamTime=5
+				Distance=20
+				Paralyzing=2
+				Cooldown=90
+				StrRate=0.5
+				EndRate=1
+				ForRate=0.5
+				Delay=1
+				Blasts=1
+				Stream=1
+				IconLock='LightningWave.dmi'
+				verb/Static_Stream()
+					set category="Skills"
+					if(!altered)
+						DamageMult = 5 + (usr.AscensionsAcquired * 3)
+						Radius = clamp(usr.AscensionsAcquired, 1, 5)
+						Paralyzing = 2 + clamp(usr.AscensionsAcquired*2, 0.5, 2.5)
+						Cooldown = 60 - ( 5 * usr.AscensionsAcquired)
+						BeamTime = 5 + (usr.AscensionsAcquired * 5)
+					usr.UseProjectile(src)
+
 				Ice_Dragon
 					Dodgeable=0
 					BeamTime=5
@@ -4807,6 +4823,7 @@ mob
 	proc
 		UseProjectile(var/obj/Skills/Projectile/Z)
 			. = TRUE
+			if(HeldSkillBlocksAction(Z)) return FALSE
 			if(src.passive_handler.Get("Silenced"))
 				src << "You can't use [Z] you are silenced!"
 				return FALSE
@@ -5033,6 +5050,8 @@ mob
 			if(Z.Area=="Blast"&&(!Z.Continuous))
 				if(Z.MultiShot)
 					Z.MultiShots++
+					if(Z.MultiFatigueExponent)
+						src.GainFatigue(Z.MultiShots**Z.MultiFatigueExponent)
 					if(Z.MultiShots>=Z.MultiShot)
 						Z.MultiShots=0
 						if(src.TomeSpell(Z))
@@ -5116,9 +5135,9 @@ mob
 					if(!Z.ChargeIcon)
 						src.Chargez("Add")
 						if(src.HasQuickCast())
-							sleep(10*Z.Charge/src.GetQuickCast()*(1+(src.GetKiControlMastery()*0.1)))
+							sleep(10*Z.Charge/(src.GetQuickCast()*(1+(src.GetKiControlMastery()*0.1))))
 						else
-							sleep(10*Z.Charge*(1+(src.GetKiControlMastery()*0.1)))
+							sleep(10*Z.Charge/(1+(src.GetKiControlMastery()*0.1)))
 						src.Chargez("Remove")
 					else
 						if(Z.ChargeIcon!=1)
@@ -5127,9 +5146,9 @@ mob
 							else
 								src.Chargez("Add", image(icon=Z.ChargeIcon, pixel_x=Z.ChargeIconX, pixel_y=Z.ChargeIconY), 0)
 							if(src.HasQuickCast())
-								sleep(10*Z.Charge/src.GetQuickCast()*(1+(src.GetKiControlMastery()*0.1)))
+								sleep(10*Z.Charge/(src.GetQuickCast()*(1+(src.GetKiControlMastery()*0.1))))
 							else
-								sleep(10*Z.Charge*(1+(src.GetKiControlMastery()*0.1)))
+								sleep(10*Z.Charge/(1+(src.GetKiControlMastery()*0.1)))
 							src.Chargez("Remove", image(icon=Z.ChargeIcon, pixel_x=Z.ChargeIconX, pixel_y=Z.ChargeIconY))
 						else
 							if(!src.AuraLocked&&!src.HasKiControl())
@@ -5137,9 +5156,9 @@ mob
 							else
 								KenShockwave(src,icon='KenShockwaveFocus.dmi',Size=0.3, Blend=2, Time=2)
 							if(src.HasQuickCast())
-								sleep(10*Z.Charge/src.GetQuickCast()*(1+(src.GetKiControlMastery()*0.1)))
+								sleep(10*Z.Charge/(src.GetQuickCast()*(1+(src.GetKiControlMastery()*0.1))))
 							else
-								sleep(10*Z.Charge*(1+(src.GetKiControlMastery()*0.1)))
+								sleep(10*Z.Charge/(1+(src.GetKiControlMastery()*0.1)))
 
 							if(!src.AuraLocked&&!src.HasKiControl())
 								src.Auraz("Remove")
@@ -5625,6 +5644,7 @@ obj
 					src.Shocking=Z.Shocking
 					src.Paralyzing=Z.Paralyzing
 					src.Poisoning=Z.Poisoning
+					src.Silencing=Z.Silencing
 					src.Toxic=Z.Toxic
 					src.HolyMod=Z.HolyMod
 					src.AbyssMod=Z.AbyssMod
@@ -5665,7 +5685,7 @@ obj
 						if(prob(ShiftOdds))
 							Z.Trail=Owner.EldritchTrail
 							Z.TrailDuration=5
-							if(prob(50))
+							if(prob(50) && Owner.passive_handler.Get("Full Manifestation"))
 								DarknessFlash(Owner)
 							Z.ActiveMessage="<font color='red'><font size=+1><b>You cannot grasp the true form of [Owner]'s attack...</font color></font size></b>"
 					if(Z.Homing)
@@ -5712,9 +5732,9 @@ obj
 						src.Owner.Beaming=0.5
 						var/T
 						if(src.Owner.HasQuickCast())
-							T=10*Z.Charge/src.Owner.GetQuickCast()*(1/(src.Owner.GetRecov()**(1/2)))
+							T=10*Z.Charge/(src.Owner.GetQuickCast()*(1+(src.Owner.GetKiControlMastery()*0.1)))*(1/(src.Owner.GetRecov()**(1/2)))
 						else
-							T=10*Z.Charge*(1/(src.Owner.GetRecov()**(1/2)))
+							T=10*Z.Charge/(1+(src.Owner.GetKiControlMastery()*0.1))*(1/(src.Owner.GetRecov()**(1/2)))
 						if(src.CustomCharge)
 							OMsg(src.Owner, "[src.CustomCharge]")
 						else
@@ -5991,10 +6011,10 @@ obj
 									Rate = abs(Rate)/10*/
 								if(src.Deflectable&&!a:KO)
 									if(istype(a, /mob)) m = a;
-									if(m && m.hasMagmicShield())
+									/*if(m && m.hasMagmicShield())
 										Deflect = 1;
 										Stun(m, 3);
-										m.MagmicShieldOff();
+										m.MagmicShieldOff();*/
 									if(a:HasDeflection())
 										if(!Deflection_Formula(src.Owner, a, (accmult /** Rate*/ * ( min(0.1,1 - (src.MultiHit * 0.025) ) ) /(1+a:GetDeflection())), BaseChance=(glob.WorldDefaultAcc), Backfire=src.Backfire))
 											Deflect=1
@@ -6136,7 +6156,7 @@ obj
 
 						var/EffectiveDamage=Damage
 						if(a:Launched||a:Stunned)
-							if(!src.ComboMaster)
+							if(!(src.ComboMaster || Owner.HasComboMaster()))
 								EffectiveDamage *= glob.CCDamageModifier
 
 						if(GoldScatter||Owner.CheckSlotless("Hoarders Riches"))
@@ -6256,7 +6276,7 @@ obj
 						if(HolyMod) specDmgTypes["Holy"] = HolyMod;
 						if(AbyssMod) specDmgTypes["Abyss"] = AbyssMod;
 						if(SlayerMod) specDmgTypes["Slayer"] = SlayerMod;
-						if(specDmgTypes.len) EffectiveDamage *= Owner.attackModifiers(m, specDmgTypes);
+						if(specDmgTypes.len) EffectiveDamage *= 1 + Owner.attackModifiers(m, specDmgTypes);
 						//Technically these are going to get doubletapped for projectiles
 						//because attackModifiers is called here as well as in dodamage
 						//which will be run further below
@@ -6303,7 +6323,19 @@ obj
 									src.Owner.passive_handler.Increase("CriticalDamage", _skillCritDmgB)
 								if(src.Combustion)
 									src.Owner.passive_handler.Increase("Combustion", src.Combustion)
-								src.Owner.DoDamage(a, (EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR), SpiritAttack=1, Destructive=src.Destructive)
+								// Elemental absorb: if target absorbs this element, heal instead
+								var/_beamAbsorb = 0
+								if(src.SpellElement == "Water" && m.passive_handler.Get("ChillAbsorb"))
+									_beamAbsorb = 1
+									m.HealHealth((EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR) * (0.1 * m.passive_handler.Get("ChillAbsorb")))
+								else if(src.Shocking && m.passive_handler.Get("ShockAbsorb"))
+									_beamAbsorb = 1
+									m.HealHealth((EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR) * (0.1 * m.passive_handler.Get("ShockAbsorb")))
+								else if(src.Shearing && m.passive_handler.Get("WindAbsorb"))
+									_beamAbsorb = 1
+									m.HealHealth((EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR) * (0.1 * m.passive_handler.Get("WindAbsorb")))
+								if(!_beamAbsorb)
+									src.Owner.DoDamage(a, (EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR), SpiritAttack=1, Destructive=src.Destructive)
 								if(src.CriticalChance)
 									src.Owner.passive_handler.Decrease("CriticalChance", src.CriticalChance)
 									src.Owner.passive_handler.Decrease("CriticalDamage", _skillCritDmgB)
@@ -6312,6 +6344,8 @@ obj
 								if(src.InstantDamageChance && m && !m.KO)
 									if(prob(src.InstantDamageChance))
 										var/divine_dmg = m.Health * 0.1
+										var/DefReduction=sqrt(m.GetDef())
+										divine_dmg/=DefReduction
 										m.LoseHealth(divine_dmg)
 										spawn()
 											LightningBolt(m)
@@ -6339,7 +6373,19 @@ obj
 										src.Owner.passive_handler.Increase("CriticalDamage", _skillCritDmgS)
 									if(src.Combustion)
 										src.Owner.passive_handler.Increase("Combustion", src.Combustion)
-									src.Owner.DoDamage(a, EffectiveDamage, SpiritAttack=1, Destructive=src.Destructive)
+									// Elemental absorb: if target absorbs this element, heal instead
+									var/_stdAbsorb = 0
+									if(src.SpellElement == "Water" && m.passive_handler.Get("ChillAbsorb"))
+										_stdAbsorb = 1
+										m.HealHealth(EffectiveDamage * (0.1 * m.passive_handler.Get("ChillAbsorb")))
+									else if(src.Shocking && m.passive_handler.Get("ShockAbsorb"))
+										_stdAbsorb = 1
+										m.HealHealth(EffectiveDamage * (0.1 * m.passive_handler.Get("ShockAbsorb")))
+									else if(src.Shearing && m.passive_handler.Get("WindAbsorb"))
+										_stdAbsorb = 1
+										m.HealHealth(EffectiveDamage * (0.1 * m.passive_handler.Get("WindAbsorb")))
+									if(!_stdAbsorb)
+										src.Owner.DoDamage(a, EffectiveDamage, SpiritAttack=1, Destructive=src.Destructive)
 									if(src.CriticalChance)
 										src.Owner.passive_handler.Decrease("CriticalChance", src.CriticalChance)
 										src.Owner.passive_handler.Decrease("CriticalDamage", _skillCritDmgS)
@@ -6407,10 +6453,18 @@ obj
 						if(src.Stasis&&!a:StasisFrozen)
 							a:SetStasis(src.Stasis * world.tick_lag)
 
+						if(src.Silencing)
+							a:passive_handler.Increase("Silenced", 1)
+							var/dur = src.Silencing
+							var/mob/target_sil = a
+							spawn(dur)
+								if(target_sil && target_sil.passive_handler)
+									target_sil.passive_handler.Decrease("Silenced", 1)
+
 						if(src.Striking)
 							src.Owner.HitEffect(a)
 							if(src.DamageMult>=0.4)
-								KenShockwave(a, Size=max((src.DamageMult+src.Knockback+src.Owner.Intimidation/50)*max(2*(!src.Owner.HasNullTarget() ? src.Owner.GetGodKi() : 0),1)*GoCrand(0.04,0.4),0.2),PixelX=src.VariationX,PixelY=src.VariationY)
+								KenShockwave(a, Size=max((src.DamageMult+src.Knockback)*max(2*(!src.Owner.HasNullTarget() ? src.Owner.GetGodKi() : 0),1)*GoCrand(0.04,0.4),0.2),PixelX=src.VariationX,PixelY=src.VariationY)
 						if(src.Slashing)
 							Slash(a, src.Owner.EquippedSword())
 

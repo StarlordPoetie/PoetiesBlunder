@@ -118,7 +118,7 @@
         SpdMult=0.75
         StrMult=0.75
         EndMult=0.75
-        TimerLimit = 20
+        TimerLimit = 10
         IconLock='SweatDrop.dmi'
     Alpha_Strike
         passives = list("AfterImages" = 4, "Godspeed" = 4, "Speed Force" = 2, "Iaijutsu" = 1, "Rain" = 5,\
@@ -130,7 +130,7 @@
     Indomitable_Will
         IconLock='SweatDrop.dmi'
         IconApart=1
-        passives = list("Duelist" = 2, "Half-Sword" = 1, "Zornhau" = 1, "NoDodge" = 1, "LifeGeneration" = 1, \
+        passives = list("Duelist" = 2, "Half-Sword" = 1, "Zornhau" = 1, "LifeGeneration" = 1, \
                         "KBRes" = 4, "Harden" = 3, "Unnerve" = 2, "Pressure" = 1, "TensionLock" = 1)
         StrMult=1.35
         EndMult=1.35
@@ -188,7 +188,7 @@
         SpdMult=1.5
         EndMult=0.5
         AngerMult=1.25
-        passives = list("NoDodge" = 1, "Flicker" = 2, "Pursuer" = 2, "PureDamage" = 0.5, "Instinct" = 2, \
+        passives = list("Flicker" = 2, "Pursuer" = 2, "PureDamage" = 0.5, "Instinct" = 2, \
          "Speed Force" = 1 , "Sajire Rush" = 1, "Poisoning" = 5, "Enrage" = 1)
     Ruptured
         IconLock='Bleed.dmi'

@@ -201,7 +201,7 @@
 	proc/spawnWave(mob/User)
 		if(!User || !User.loc) return
 		if(User.PureRPMode) return
-		if(!User.isInDemonDevilTrigger()) return
+		if(!User.demonDevilTriggerSinMastery()) return
 		var/obj/Effects/SlothShockwave/S = new(User.loc)
 		S.owner = User
 		S.DamageMult = DamageMult

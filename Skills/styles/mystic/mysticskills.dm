@@ -119,7 +119,33 @@
 	HitSparkY=0
 	Shattering = 10
 
-
+/obj/Skills/AutoHit/Blossom_Shower
+	ElementalClass="Death"
+	Distance=12
+	NoAttackLock=1
+	Area="Target"
+	NoLock = 1
+	AdaptRate=1
+	DamageMult=5
+	Doom=5
+	Size=2
+	Bolt=2
+	HitSparkIcon='Slash - Vampire.dmi'
+	HitSparkX=-32
+	HitSparkY=-32
+	HitSparkTurns=1
+	HitSparkSize=1
+	HitSparkDispersion=1
+	TurfStrike=1
+	TurfShift='StarPixel.dmi'
+	TurfShiftDuration=3
+	SpecialAttack=1
+	CanBeDodged=0
+	CanBeBlocked=0
+	Cooldown = 30
+	adjust(mob/p)
+		Doom = 5 + p.AscensionsAcquired
+		DamageMult = 5 + p.AscensionsAcquired
 /obj/Skills/Projectile/Bubblebeam
 	IconLock = 'WaterPrison.dmi'
 	Distance=15

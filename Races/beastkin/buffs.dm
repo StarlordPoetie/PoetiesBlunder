@@ -46,15 +46,18 @@
 	IconLock = 'Innovator Wings.dmi'
 	HitScanIcon = 'feathers.dmi'
 	HitScanHitSpark = 'Slash_-_Ragna.dmi'
-	EnergyCost = 6
+	EnergyCost = 3
 	EnergyDrain = 0.05
 	TimerLimit = 30
 	Cooldown = 120
 	adjust(mob/p)
 		var/asc = p.AscensionsAcquired
-		passives = list("Hit Scan" = 1 + (asc/2), "Momentum" = 0.5 + asc/2, "Fury" = 1 + asc/2, "Relentlessness" = 1, "Tossing" = clamp(asc/2, 0, 2.5))
-		TimerLimit = 25 + (glob.racials.FEATHERDUR * asc)
+		passives = list("Hit Scan" = 1 + (asc/2), "Momentum" = 2 + asc/2, "Fury" = 1 + asc/2, "Relentlessness" = 1, "Tossing" = clamp(asc/2, 0, 2.5),"AttackSpeed" = 1+asc,"BlurringStrikes" = 3+asc, "Flow" = asc, "Instinct" = asc)
+		TimerLimit = 30 + (glob.racials.FEATHERDUR * asc)
 		Cooldown = 120 - ((glob.racials.FEATHERDUR*2) * asc)
+		EnergyDrain = 0.05 - (asc/100)
+		if(EnergyDrain<0)
+			EnergyDrain=0
 	verb/Clean_Cuts()
 		set category = "Skills"
 		Trigger(usr)

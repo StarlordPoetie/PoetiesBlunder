@@ -199,3 +199,33 @@ obj/Skills/Projectile/Weapon_Soul
 			set category = "Skills"
 			adjust(usr)
 			usr.UseProjectile(src)
+/obj/Skills/Buffs/NuStyle/SwordStyle //slightly weaker than t2. maybe make it scaling???
+	Knight_Of_Camelot
+		StyleActive="Knight of Camelot"
+		passives = list("HolyMod" = 0.5, "SpiritSword" = 0.25, "Harden" = 0.5)
+		StyleEnd=1.25
+		StyleStr=1.25
+		Finisher="/obj/Skills/Queue/Finisher/Rook_Splitter"
+		adjust(mob/p)
+			StyleStr = 1.05 + (0.05 * p.SagaLevel)
+			StyleEnd = 1.05 + (0.05 * p.SagaLevel)
+			passives["HolyMod"] = 1 + (0.5* p.SagaLevel)
+			passives["SpiritSword"] = 0.25*p.SagaLevel
+			passives["Harden"] = 0.25*p.SagaLevel
+		verb/Knight_Of_Camelot()
+			set hidden=1
+			adjust(usr)
+			Trigger(usr)
+/obj/Skills/Queue/Finisher
+	Right_To_Rule
+		DamageMult=8
+		HitSparkIcon='Slash - Zan.dmi'
+		HitSparkX=-32
+		HitSparkY=-32
+		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Kingmaker"
+		HitMessage = "shows their foe why they are King!"
+/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher
+	King_Of_Camelot
+		StrMult=1.3
+		ForMult=1.3
+		passives = list("SpiritFlow" = 1, "Duelist" = 1, "DemonicDurability" = 1)

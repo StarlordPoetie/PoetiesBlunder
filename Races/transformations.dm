@@ -166,12 +166,19 @@ transformation
 		apply_visuals(mob/user, aura = 1, hair = 1, extra = 1)
 			adjust_transformation_visuals(user)
 			if(extra)
+				user.overlays -= form_icon_1
+				user.overlays -= form_icon_2
+				user.overlays -= form_glow
+				user.underlays -= form_underlay_1
+				user.underlays -= form_underlay_2
 				user.overlays += form_icon_1
 				user.overlays += form_icon_2
 				user.overlays += form_glow
 				user.underlays += form_underlay_1;
 				user.underlays += form_underlay_2;
 			if(aura)
+				user.overlays -= form_aura
+				user.underlays -= form_aura_underlay
 				user.overlays += form_aura
 				user.underlays += form_aura_underlay
 			if(hair)
@@ -202,7 +209,8 @@ transformation
 				if(user.transUnlocked < user.transActive+1)
 					if(!(user.bypassTransAutomation >= user.transActive+1) && glob.lockTransAutomation && (type in glob.transLocked)) return
 					if(unlock_potential >= user.Potential) return
-
+			if(glob.racials.AUTO_SSJ_MASTERY)
+				gainMastery()
 			mastery_boons(user)
 			class_boons(user)
 
@@ -289,11 +297,6 @@ transformation
 				user.AddEndTax(user.UnstoppableForceCounter/10)
 				user.AddSpdTax(user.UnstoppableForceCounter/10)
 				user.UnstoppableForceCounter=0
-			if(user.passive_handler.Get("Full Manifestation"))
-				if(user.AscensionsAcquired<5)
-					user.AddStrTax((5-user.AscensionsAcquired)/5)
-					user.AddEndTax((5-user.AscensionsAcquired)/5)
-					user.AddSpdTax((5-user.AscensionsAcquired)/5)
 			user.transActive--
 			if(!isnull(revertToTrans))
 				user.transActive = revertToTrans
@@ -375,8 +378,7 @@ transformation
 
 			if(drain>0)
 				user.LoseEnergy(drain)
-				if(glob.racials.AUTO_SSJ_MASTERY)
-					gainMastery()
+
 				if(user.Energy < cut_off &&!user.HasNoRevert()&&!user.Dead&&!user.HasMystic())
 					user.Revert()
 					user.LoseEnergy(30)
@@ -385,7 +387,7 @@ transformation
 		gainMastery(mob/user)
 			if(mastery >= 100) return
 			if(user.isRace(SAIYAN)||user.isRace(HALFSAIYAN))
-				if(user.transActive==1)
+				if(user.transActive==1&&user.oozaru_type!="Demonic")
 					if(user.Potential>=22&&mastery<25)
 						mastery=25
 					if(user.Potential>=27&&mastery<50)
@@ -394,7 +396,7 @@ transformation
 						mastery=75
 					if(user.Potential>=35&&mastery<75)
 						mastery=100
-				if(user.transActive==2)
+				if(user.transActive==2||user.transActive==1&&user.oozaru_type=="Demonic")
 					if(user.Potential>=37&&mastery<25)
 						mastery=25
 					if(user.Potential>=39&&mastery<50)
@@ -403,6 +405,5 @@ transformation
 						mastery=75
 					if(user.Potential>=43&&mastery<100)
 						mastery=100
-			mastery += randValue(glob.racials.SSJ_MIN_MASTERY_GAIN,glob.racials.SSJ_MAX_MASTERY_GAIN)
 			if(mastery > 100)
 				mastery=100

@@ -2,36 +2,61 @@ transformation
 	eldritch
 		partial_manifestation
 			passives = list("Unreality" = 0.1, "Half Manifestation" = 1, "PureDamage"=2, "PureReduction"=2,"DebuffResistance"=0.1, "BuffMastery"=3)
-			enduranceadd = 0.5
-			offenseadd = 0.5
-			defenseadd = 0.5
-			strengthadd = 0.5
-			forceadd = 0.5
 			form_icon_1_icon = 'tentacles_overlay.dmi'
 			form_icon_1_x = -32
 			form_icon_1_y = -32
+			form_underlay_1_icon = 'tenacles_underlay.dmi'
+			form_underlay_1_x = -32;
+			form_underlay_1_y = -32;
 			transformation_message = "Reality begins to fray around usrName. Comprehension eludes you."
+			mastery_boons(mob/user)
+				enduranceadd = 0.05*user.AscensionsAcquired
+				offenseadd = 0.05*user.AscensionsAcquired
+				defenseadd = 0.05*user.AscensionsAcquired
+				strengthadd = 0.05*user.AscensionsAcquired
+				forceadd = 0.05*user.AscensionsAcquired
 			transform_animation(mob/user)
 				LightningStrike2(user)
 				DarknessFlash(user, SetTime=5)
+				if(user.hasSecret("Eldritch (Shrouded)"))
+					user.MobColor = list(0.15,0,0, 0.05,0.25,0.15, 0.05,0.05,0.35, 0,0,0)
+					animate(user, color = user.MobColor, time = 10, flags=ANIMATION_PARALLEL)
+					var/image/eyes = image('AntiEyes.dmi');
+					eyes.appearance_flags+=70
+					user.overlays += eyes;
+			revert_animation(mob/user)
+				if(user.hasSecret("Eldritch (Shrouded)"))
+					user.MobColor=null;
+					animate(user, color = null, time = 10, flags=ANIMATION_PARALLEL)
+					user.overlays -= image('AntiEyes.dmi');
+
 		full_manifestation
 			passives = list("Unreality" = 0.9, "Full Manifestation" = 1, "PureDamage"=3, "PureReduction"=3,"DebuffResistance"=0.1, "BuffMastery"=3)
-			enduranceadd = 1.5
-			offenseadd = 1.5
-			defenseadd = 1.5
-			strengthadd = 1.5
-			forceadd = 1.5
 			transformation_message = "usrName reveals itself to the detriment of all!"
+			mastery_boons(mob/user)
+				enduranceadd = 0.125*user.AscensionsAcquired
+				offenseadd = 0.125*user.AscensionsAcquired
+				defenseadd = 0.125*user.AscensionsAcquired
+				strengthadd = 0.125*user.AscensionsAcquired
+				forceadd = 0.125*user.AscensionsAcquired
 			transform_animation(mob/user)
+				if(user.hasSecret("Eldritch (Shrouded)"))
+					user.MobColor=null;
+					animate(user, color = null, time = 10, flags=ANIMATION_PARALLEL)
+					var/image/eyes = image('AntiEyes.dmi');
+					eyes.appearance_flags+=70
+					user.overlays -= eyes;
 				LightningStrike2(user)
 				DarknessFlash(user, SetTime=5)
-			/*	var/list/targets = list(user)
-				for(var/mob/M in view(user))
-					if(M.client && M != src)
-						targets += M
+			revert_animation(mob/user)
+				if(user.hasSecret("Eldritch (Shrouded)"))
+					user.MobColor=null;
+					animate(user, color = null, time = 10, flags=ANIMATION_PARALLEL)
+					var/image/eyes = image('AntiEyes.dmi');
+					eyes.appearance_flags+=70
+					user.overlays -= eyes;
+				
 
-				for(var/mob/M in targets)
-					ScreenShatter(M)*/
 /mob/proc/HandleManifestation(Stat)
 	var/CA=AscensionsAcquired
 	var/TA=3

@@ -17,7 +17,7 @@ globalTracker/var/BurnStackDivisor = BURN_STACK_DIVISOR
 globalTracker/var/BurnNerf = BURN_NERF
 globalTracker/var/DEBUFF_STACK_RESISTANCE = 100
 globalTracker/var/HELLFIRE_VALUE_MOD = 2
-globalTracker/var/MAX_DEBUFF_CLAMP = 0.1
+globalTracker/var/MAX_DEBUFF_CLAMP = 0.05
 globalTracker/var/LOWER_DEBUFF_CLAMP = 0.001
 
 /mob/proc/getDebuffDamage(typeOfDebuff)
@@ -67,6 +67,8 @@ globalTracker/var/LOWER_DEBUFF_CLAMP = 0.001
 			if(glob.TRACKING_POISON)
 				currentPoi+=dmg
 	if(!src.GetDebuffReversal())
+		if(typeOfDebuff == "Frenzy" && Health <= 0)
+			dmg = 0
 		Health-=dmg
 		if(typeOfDebuff == "Frenzy" && !IsDarkDragonPlayer() && dmg > 0)
 			WoundSelf(dmg * 0.5)
@@ -77,6 +79,8 @@ globalTracker/var/LOWER_DEBUFF_CLAMP = 0.001
 			Unconscious(null, "succumbing to Poison!")
 		if(typeOfDebuff == "Burn")
 			Unconscious(null, "burning up!")
+		if(typeOfDebuff == "Frenzy")
+			Unconscious(null, "succumbing to Frenzy!")
 	if(typeOfDebuff == "Frenzy")
 		if(src.IsDarkDragonPlayer())
 			reduceDebuffStacks(typeOfDebuff)
@@ -95,7 +99,7 @@ globalTracker/var/LOWER_DEBUFF_CLAMP = 0.001
 			if(Cooled)
 				base = 1.5
 			if(Burn>0)
-				Burn -= base + ((GetEnd(0.15)+GetStr(0.15)) * (1+ (GetDebuffResistance() / 4))  )
+				Burn -= base * (1+ (GetDebuffResistance() / 4))
 			if(Burn<0)
 				Burn = 0
 		if("Poison")
@@ -103,7 +107,7 @@ globalTracker/var/LOWER_DEBUFF_CLAMP = 0.001
 			if(Antivenomed)
 				base = 1.25
 			if(Poison>0)
-				Poison -= base + (GetEnd(0.15) * (1 + (GetDebuffResistance() / 4)+boon))
+				Poison -= base * ((1 + (GetDebuffResistance() / 4)+boon))
 				if(BlindingVenom && client)
 					if(!client.client_plane_master) // 3 checks lol ! maybe move this to new noob!
 						client.client_plane_master = new()
@@ -126,6 +130,8 @@ globalTracker/var/LOWER_DEBUFF_CLAMP = 0.001
 
 /mob/var/tmp/last_implode
 mob/proc/implodeDebuff(n, type)
+	var/DefReduction=sqrt(GetDef())
+	n/=DefReduction
 	if(last_implode + glob.IMPLODE_CD < world.time)
 		switch(type)
 			if("Burn")

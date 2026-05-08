@@ -2096,9 +2096,6 @@ obj/Items/proc/ObjectUse(var/mob/Players/User=usr)
 					if(GearCount>=1)
 						User << "You can't have any weapons equipped while inside a Mobile Suit!"
 						return
-					if(User.InfinityModule)
-						User << "The radiation of your core unit disrupts the electronics of the Suit!"
-						return
 				if(src.Password)
 					var/Unlocked=0
 					for(var/obj/Items/Tech/Door_Pass/L in User)

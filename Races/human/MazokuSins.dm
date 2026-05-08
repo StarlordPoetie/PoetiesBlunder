@@ -44,16 +44,178 @@ mob
 
 /transformation/demon/devil_trigger/mazoku
 	revertToTrans = 0
+	form_aura_icon = 'Amazing Super Demon Aura.dmi'
+	form_aura_x = -32
+	autoAnger = 1
+	strength = 1.3
+	force = 1.3
+	speed = 1.4
+	offense = 1.4
+	defense = 1.4
+	endurance = 1.4
+	passives = list(\
+		"TechniqueMastery" = 6,\
+		"BuffMastery" = 6,\
+		"PureReduction" = 6,\
+		"PureDamage" = 6,\
+		"GodKi" = 1.5,\
+		"HellRisen" = 1,\
+		"DemonicDurability" = 6,\
+		"Brutalize" = 6,\
+		"MovementMastery" = 6,\
+		"Steady" = 6,\
+		"ManaStats" = 6\
+	)
+	transformation_message = "usrName becomes a Devil!"
+	transform_animation(mob/user)
+		var/ShockSize = 5
+		for(var/wav = 5, wav > 0, wav--)
+			KenShockwave(user, icon='KenShockwaveBloodlust.dmi', Size=ShockSize, Blend=2, Time=8)
+			ShockSize /= 2
 
 /transformation/human/high_tension/mazoku
+	revertToTrans = 0
+	pot_trans = 2
+	passives = list(\
+		"Conductor" = 10,\
+		"HighTension" = 1,\
+		"PureReduction" = 2,\
+		"PureDamage" = 2,\
+		"TensionPowered" = 0.25,\
+		"TechniqueMastery" = 1,\
+		"BuffMastery" = 2,\
+		"Underdog" = 0.3,\
+		"Tenacity" = 2\
+	)
+	transformation_message = "usrName reignites their humanity!"
+	adjust_transformation_visuals(mob/user)
+		if(!form_hair_icon&&user.Hair_Base)
+			var/icon/x=new(user.Hair_Base)
+			form_hair_icon = x
+			form_icon_2_icon = x
+		..()
+	transform_animation(mob/user)
+		var/ShockSize=5
+		for(var/wav=5, wav>0, wav--)
+			KenShockwave(user, icon='KenShockwavePurple.dmi', Size=ShockSize, Blend=2, Time=8)
+			ShockSize/=2
 
 /transformation/human/high_tension_MAX/mazoku
+	revertToTrans = 0
+	pot_trans = 3
+	form_aura_icon = 'AurasBig.dmi'
+	form_aura_icon_state = "HT2"
+	form_aura_x = -32
+	passives = list(\
+		"Conductor" = 10,\
+		"HighTension" = -0.125,\
+		"TensionPowered" = 0.375,\
+		"TechniqueMastery" = 1,\
+		"StyleMastery" = 2,\
+		"Underdog" = 0.3,\
+		"Tenacity" = 2\
+	)
+	transformation_message = "usrName hits their original ceiling!"
+	adjust_transformation_visuals(mob/user)
+		if(!form_hair_icon&&user.Hair_Base)
+			var/icon/x=new(user.Hair_Base)
+			if(x)
+				x.Blend(rgb(150,-10,150),ICON_ADD)
+			form_hair_icon = x
+			form_icon_2_icon = x
+		..()
+	transform_animation(mob/user)
+		var/ShockSize=5
+		for(var/wav=5, wav>0, wav--)
+			KenShockwave(user, icon='KenShockwavePurple.dmi', Size=ShockSize, Blend=2, Time=8)
+			ShockSize/=2
 
 /transformation/human/super_high_tension/mazoku
+	revertToTrans = 0
+	pot_trans = 3
+	form_aura_icon = 'SpiralAura.dmi'
+	form_aura_x = -32
+	passives = list(\
+		"Conductor" = 10,\
+		"HighTension" = -0.125,\
+		"PureReduction" = 3,\
+		"PureDamage" = 3,\
+		"TensionPowered" = 0.25,\
+		"TechniqueMastery" = 3,\
+		"StyleMastery" = 2,\
+		"BuffMastery" = 2,\
+		"Underdog" = 0.4,\
+		"Tenacity" = 3,\
+		"SuperHighTension" = 1\
+	)
+	transformation_message = "usrName pushes forward into the future!"
+	adjust_transformation_visuals(mob/user)
+		if(!form_hair_icon&&user.Hair_Base)
+			var/icon/x=new(user.Hair_Base)
+			if(x)
+				x.Blend(rgb(-10,150,50),ICON_ADD)
+			form_hair_icon = x
+			form_icon_2_icon = x
+		..()
+	transform_animation(mob/user)
+		var/ShockSize=5
+		for(var/wav=5, wav>0, wav--)
+			KenShockwave(user, icon='KenShockwaveLegend.dmi', Size=ShockSize, Blend=2, Time=8)
+			ShockSize/=2
 
 /transformation/human/super_high_tension_MAX/mazoku
+	revertToTrans = 0
+	pot_trans = 5
+	passives = list(\
+		"Conductor" = 10,\
+		"DoubleHelix" = 1,\
+		"TensionPowered" = 0.375,\
+		"TechniqueMastery" = 5,\
+		"StyleMastery" = 2,\
+		"BuffMastery" = 2,\
+		"Underdog" = 1,\
+		"Tenacity" = 10,\
+		"SuperHighTension" = 1\
+	)
+	transformation_message = "usrName maximizes the very limits of their potential, evolving beyond the person they were a minute before!"
+	adjust_transformation_visuals(mob/user)
+		if(!form_hair_icon&&user.Hair_Base)
+			var/icon/x=new(user.Hair_Base)
+			if(x)
+				x.Blend(rgb(-10,150,50),ICON_ADD)
+			form_hair_icon = x
+			form_icon_2_icon = x
+		..()
+	transform_animation(mob/user)
+		var/ShockSize = 5
+		LightningStrike2(user, Offset=0)
+		spawn(10)
+		for(var/wav=5, wav>0, wav--)
+			KenShockwave(user, icon='KenShockwaveLegend.dmi', Size=ShockSize, Blend=2, Time=8)
+			ShockSize/=2
 
 /transformation/human/unlimited_high_tension/mazoku
+	revertToTrans = 0
+	pot_trans = 15
+	passives = list(\
+		"Conductor" = 10,\
+		"UnlimitedHighTension" = 1,\
+		"CreateTheHeavens" = 1\
+	)
+	transformation_message = "usrName shatters through heaven and earth, becoming equal to the Gods!!"
+	adjust_transformation_visuals(mob/user)
+		if(!form_hair_icon&&user.Hair_Base)
+			var/icon/x=new(user.Hair_Base)
+			form_hair_icon = x
+			form_icon_2_icon = x
+		..()
+	transform_animation(mob/user)
+		var/ShockSize = 5
+		LightningStrike2(user, Offset=0)
+		spawn(10)
+		for(var/wav=5, wav>0, wav--)
+			KenShockwave(user, icon='KenShockwaveDivine.dmi', Size=ShockSize, Blend=2, Time=8)
+			ShockSize/=2
 
 /transformation/human/sacred_energy_aura
 	revertToTrans = 0
@@ -115,6 +277,12 @@ mob/proc/isMazokuHuman()
 	if(!passive_handler.Get("DeathDefied")) return FALSE
 	return TRUE
 
+mob/proc/isMazokuPathHuman()
+	if(!isRace(HUMAN)) return FALSE
+	if(!passive_handler) return FALSE
+	if(!passive_handler.Get("DormantDemon")) return FALSE
+	return TRUE
+
 mob/proc/isInMazokuDT()
 	if(!isMazokuHuman()) return FALSE
 	if(!race || !race.transformations || transActive < 1) return FALSE
@@ -150,6 +318,7 @@ mob/proc/mazokuActivateHighestHT()
 		race.transformations[i].transform(src, TRUE)
 
 /mob/proc/MazokuEffects()
+
 
 /transformation/human/revert(mob/user)
 	..()

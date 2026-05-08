@@ -48,7 +48,7 @@ knowledge
 mob
 	var
 		//Technology
-		ForgingUnlocked
+		ForgingUnlocked=1
 		RepairAndConversionUnlocked
 		MedicineUnlocked
 		ImprovedMedicalTechnologyUnlocked
@@ -71,7 +71,7 @@ mob
 		SpaceMagicUnlocked
 		TimeMagicUnlocked
 		GeneralMagicKnowledgeUnlocked
-		TotalMagicLevel = 0
+		TotalMagicLevel = 20
 
 
 var/list/knowledge_tree_clickers = list() //List of clients who are using KnowledgeTreeObj inputs.

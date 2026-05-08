@@ -378,7 +378,7 @@ proc
 						A.dir=get_dir(A,Target)
 						AfterImageA(A)
 						AfterImageA(Target)
-						KenShockwave(Target,icon='KenShockwave.dmi',Size=max(A.GetIntimidation()+Target.GetIntimidation()*GoCrand(0.04,0.4),0.2),PixelX=((Target.x-A.x)*(-16)+pick(-12,-8,8,12)),PixelY=((Target.y-A.y)*(-16)+pick(-12,-8,8,12)), Time=6)
+						KenShockwave(Target,icon='KenShockwave.dmi',Size=max(GoCrand(0.04,0.4),0.2),PixelX=((Target.x-A.x)*(-16)+pick(-12,-8,8,12)),PixelY=((Target.y-A.y)*(-16)+pick(-12,-8,8,12)), Time=6)
 						sleep(5)
 				if(glob.AISCLASHLOCKSMOVEMENT)
 					if(Target && istype(Target, /mob/Players))

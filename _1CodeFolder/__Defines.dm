@@ -71,6 +71,7 @@ proc/log_func(x, a, b)
 #define CELESTIAL /race/celestial
 #define NOBODY /race/nobody
 #define FAE /race/fae
+#define DEMIFIEND /race/demi_fiend
 
 #define DEBUG_DAMAGE 0
 #define DEBUG_ITEM_DAMAGE 0

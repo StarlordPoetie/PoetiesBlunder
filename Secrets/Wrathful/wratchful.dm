@@ -1,5 +1,5 @@
 /*
-staggering auto buffs that get better and better up until the best being at 10%, 
+staggering auto buffs that get better and better up until the best being at 10%,
 scaling with potential as well
 */
 
@@ -8,7 +8,7 @@ scaling with potential as well
 	AllOutAttack = 0
 	Cooldown = -1
 	HealthDrain = 0.01
-	CantTrans = TRUE
+	CantTrans = FALSE
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Wrathful/adjust(mob/p)
 
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Wrathful/Stage_One
@@ -50,7 +50,7 @@ scaling with potential as well
 		HealthDrain = 0.007 - (p.Potential * 0.00005)
 		PowerMult = 1 + (p.Potential/200)
 	Trigger(mob/User, Override=FALSE)
-		adjust(User) 
+		adjust(User)
 		..()
 		// gain oozaru, but in base
 
@@ -90,7 +90,7 @@ scaling with potential as well
 		if(p.Potential>=100)
 			passives["Wrathful"] = 1
 	Trigger(mob/User, Override=FALSE)
-		adjust(User) 
+		adjust(User)
 		..()
 
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Wrathful/Stage_Three
@@ -117,7 +117,7 @@ scaling with potential as well
 		if(p.Potential>=75)
 			passives["Wrathful"] = 1
 	Trigger(mob/User, Override=FALSE)
-		adjust(User) 
+		adjust(User)
 		..()
 
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/Wrathful/Stage_Four
@@ -139,11 +139,11 @@ scaling with potential as well
 		HealthDrain = 0.015 - (p.Potential * 0.00008)
 		EnergyHeal = 0.01 * p.Potential
 		AngerMult = 1 + (p.Potential/50)
-		VaizardHealth = (10 * (p.Potential/100)) 
+		VaizardHealth = (10 * (p.Potential/100))
 		if(p.Potential>=50)
 			passives["Wrathful"] = 1
 	Trigger(mob/User, Override=FALSE)
-		adjust(User) 
+		adjust(User)
 		..()
 
 

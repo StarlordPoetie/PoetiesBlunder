@@ -635,7 +635,10 @@
 						if(!dodged)
 					// 				HIT					//
 
+							var/damageSnapshot = damage
 							STRIKE
+							if(AttackQueue?.InstantStrikesPerformed)
+								damage = damageSnapshot
 							if(UsingSpellWeaver())
 								if(prob(50))
 									var/obj/Skills/Projectile/DancingBlast/db = locate(/obj/Skills/Projectile/DancingBlast, src)
@@ -710,7 +713,9 @@
 								if(AttackQueue.Shearing)
 									enemy.AddShearing(AttackQueue.Shearing,src)
 								if(AttackQueue.Crippling)
-									enemy.AddShearing(AttackQueue.Crippling, src)
+									enemy.AddCrippling(AttackQueue.Crippling, src)
+								if(AttackQueue.Doom)
+									enemy.AddDoom(AttackQueue.Doom, src)
 
 								if(AttackQueue.Dunker)
 									if(enemy.Launched)
@@ -780,9 +785,10 @@
 							log2text("Damage", "After Global Multiplier", "damageDebugs.txt", "[ckey]/[name]")
 							log2text("Damage", damage, "damageDebugs.txt", "[ckey]/[name]")
 							#endif
-							if(enemy.hasMagmicShield())
+							//Reflexively stunning an opponent is bad. fight me over it ~ xoxo
+							/*if(enemy.hasMagmicShield())
 								Stun(src, 3, FALSE)
-								enemy.MagmicShieldOff();
+								enemy.MagmicShieldOff();*/
 							damage *= enemy.getMeleeResistValue();//this is 1 if there is no melee resistance passive on the enemy
 							var/dmgValue = DoDamage(enemy, damage, unarmedAtk, swordAtk, SecondStrike, ThirdStrike, AsuraStrike)
 							. = dmgValue
@@ -869,7 +875,7 @@
 							if(GetAttracting())
 								enemy.AddAttracting(GetAttracting(), src)
 								// 		OTHER DMG START 		//
-							var/otherDmg = (damage+(GetIntimidation()/100)*(1+(2*(HasNullTarget() ? GetGodKi() : 0))))
+							var/otherDmg = damage
 
 							if(UsingKendo()&&HasSword()&&CountStyles(2))
 								if(s.Class == "Wooden")
@@ -919,7 +925,7 @@
 							enemy.dir=get_dir(enemy,src)
 							flick("Attack", enemy)
 							if(!lightAtk)
-								KenShockwave(enemy,icon='KenShockwave.dmi',Size=(src.GetIntimidation()+enemy.GetIntimidation())*0.4,PixelX=((enemy.x-src.x)*(-16)+pick(-12,-8,8,12)),PixelY=((enemy.y-src.y)*(-16)+pick(-12,-8,8,12)), Time=6)
+								KenShockwave(enemy,icon='KenShockwave.dmi',Size=0.4,PixelX=((enemy.x-src.x)*(-16)+pick(-12,-8,8,12)),PixelY=((enemy.y-src.y)*(-16)+pick(-12,-8,8,12)), Time=6)
 							if(AttackQueue&&AttackQueue.DrawIn)
 								enemy.AddAttracting((AttackQueue.DrawIn*QueuedDamage(enemy)), src)
 						else
@@ -930,6 +936,19 @@
 								QueuedMissMessage()
 				if(passive_handler["Tossing"] && passive_handler["Secret Knives"])
 					var/sk = passive_handler["Secret Knives"]
+					if(prob(passive_handler["Tossing"] * glob.SECRET_KNIFE_CHANCE))
+						var/path = "/obj/Skills/Projectile/[sk]"
+						var/obj/Skills/Projectile/p = FindSkill(path)
+						if(!ispath(text2path(path)))
+							path = /obj/Skills/Projectile/Secret_Knives
+							world.log << "[sk] PATH FOR SECRET KNIVES DOESN'T EXIST!"
+						if(!p)
+							p = new path
+							AddSkill(p)
+						p.adjust(src)
+						src.UseProjectile(p)
+				if(passive_handler["Tossing"] && passive_handler["Extra Secret Knives"])
+					var/sk = passive_handler["Extra Secret Knives"]
 					if(prob(passive_handler["Tossing"] * glob.SECRET_KNIFE_CHANCE))
 						var/path = "/obj/Skills/Projectile/[sk]"
 						var/obj/Skills/Projectile/p = FindSkill(path)

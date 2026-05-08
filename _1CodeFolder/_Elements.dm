@@ -26,10 +26,25 @@ proc
 	ElementalCheck(var/mob/Attacker, var/mob/Defender, var/ForcedDebuff=0, var/DebuffIntensity=glob.DEBUFF_INTENSITY, list/bonusElements,damageOnly = FALSE, list/onlyTheseElements)
 		var/list/attackElements = list()
 		var/list/defenseElements = list()
+		var/list/forcedDebuffs = list("Scorching", "Freezing", "Shattering", "Paralyzing", "Toxic")
+		var/burningBonus = max(0, Attacker.passive_handler.Get("Burning"))
+		var/scorchingBonus = max(0, Attacker.passive_handler.Get("Scorching"))
+		var/chillingBonus = max(0, Attacker.passive_handler.Get("Chilling"))
+		var/freezingBonus = max(0, Attacker.passive_handler.Get("Freezing"))
+		var/crushingBonus = max(0, Attacker.passive_handler.Get("Crushing"))
+		var/shatteringBonus = max(0, Attacker.passive_handler.Get("Shattering"))
+		var/shockingBonus = max(0, Attacker.passive_handler.Get("Shocking"))
+		var/paralyzingBonus = max(0, Attacker.passive_handler.Get("Paralyzing"))
+		var/poisoningBonus = max(0, Attacker.passive_handler.Get("Poisoning"))
+		var/toxicBonus = max(0, Attacker.passive_handler.Get("Toxic"))
+		attackElements = Attacker.getElementalOffense()
+		for(var/debuff in debuffVars)
+			if(Attacker.passive_handler.Get("[debuff]"))
+				attackElements |= debuff2Element[debuff]
+				if(debuff in forcedDebuffs)
+					ForcedDebuff = 1
 		if(bonusElements&&bonusElements.len>0)
 			attackElements |= bonusElements
-
-		attackElements = Attacker.getElementalOffense()
 		defenseElements = Defender.getElementalDefense();
 
 		var/obj/Items/Enchantment/Staff/staf=Attacker.EquippedStaff()
@@ -53,7 +68,7 @@ proc
 
 		if(onlyTheseElements)
 			attackElements = onlyTheseElements
-		
+
 		if(armr && armr.Element)
 			defenseElements |= armr.Element
 
@@ -88,12 +103,13 @@ proc
 					DamageMod+=2
 					if("HellFire" in defenseElements)
 						DamageMod-=1
-					if("FelFire" in defenseElements)
+					if("Felfire" in defenseElements)
 						DamageMod-=1
 				if("Ultima")
 					DamageMod+=2
 				if("Death")
-					DamageMod+=3
+					if(Attacker.passive_handler.Get("Aspect of Death"))
+						DamageMod+=3
 				if("Love")
 					DamageMod+=3
 				if("Mirror")
@@ -176,7 +192,7 @@ proc
 						Defender.AddShock(2*DebuffIntensity*glob.SHOCK_INTENSITY, Attacker)
 					if("Death")
 						if(prob(glob.CHAOS_CHANCE))
-							if(Attacker.passive_handler.Get("Death Incarnate"))
+							if(Attacker.passive_handler.Get("Aspect of Death"))
 								Defender.AddDoom(1, Attacker, 1)
 							else
 								Defender.AddDoom(1, Attacker, 0)
@@ -185,16 +201,16 @@ proc
 						Defender.AddShock(4*DebuffIntensity*glob.SHOCK_INTENSITY, Attacker)
 					if("Poison")
 						if(!Defender.HasVenomImmune() && !("Poison" in defenseElements))
-							Defender.AddPoison(2*DebuffIntensity*glob.POISON_INTENSITY, Attacker)
+							Defender.AddPoison((2*DebuffIntensity*glob.POISON_INTENSITY) + poisoningBonus + toxicBonus, Attacker)
 					if("Fire")
 						if(!Defender.DemonicPower())
-							Defender.AddBurn(4*DebuffIntensity*glob.BURN_INTENSITY, Attacker)
+							Defender.AddBurn((4*DebuffIntensity*glob.BURN_INTENSITY) + burningBonus + scorchingBonus, Attacker)
 					if("Water")
-						Defender.AddSlow(4*DebuffIntensity*glob.SLOW_INTENSITY, Attacker)
+						Defender.AddSlow((4*DebuffIntensity*glob.SLOW_INTENSITY) + chillingBonus + freezingBonus, Attacker)
 					if("Earth")
-						Defender.AddShatter(4*DebuffIntensity*glob.SHATTER_INTENSITY, Attacker)
+						Defender.AddShatter((4*DebuffIntensity*glob.SHATTER_INTENSITY) + crushingBonus + shatteringBonus, Attacker)
 					if("Wind")
-						Defender.AddShock(4*DebuffIntensity*glob.SHOCK_INTENSITY, Attacker)
+						Defender.AddShock((4*DebuffIntensity*glob.SHOCK_INTENSITY) + shockingBonus + paralyzingBonus, Attacker)
 		for(var/element in defenseElements)
 			switch(element)
 				if("Ultima")
@@ -462,6 +478,8 @@ mob
 						OMsg(src, "<font color='[rgb(104, 153, 251)]'>[src]'s dispenser deploys a healing mist!!</font color>")
 					src.Sprayed+=100
 		AddShock(var/Value, var/mob/Attacker=null)
+			if(src.HasShockImmunity())
+				return
 			if(src.Stasis || src.AdminOverwatchActive)
 				return
 			if(Attacker && Attacker != src && Attacker.hasMagePassive(/mage_passive/air/ShockMastery))
@@ -634,7 +652,7 @@ mob
 				OMsg(src, "<b><font color='purple'>The bell tolls for [src],</font color></b>")
 				src.DownToEarth=100
 				if(DI)
-					src.Health*=0.75
+					src.Health*=0.60
 				if(src.HasGodKi()||src.HasMaouKi())
 					src<<"<b><font color='red'>Death comes for all, even those with the power of Gods. Your divinity has been temporarily forfeit.</font color></b>"
 

@@ -2,45 +2,55 @@ ascension
 	makyo
 		one
 			unlock_potential = ASCENSION_ONE_POTENTIAL
-			passives = list("Juggernaut" = 0.5, "DemonicDurability" = 1, "HeavyHitter" = 0.5, "Trample" = 1)
+			passives = list("Juggernaut" = 0.5, "DemonicDurability" = 1, "HeavyHitter" = 0.5, "Trample" = 1, "Adrenaline" = 1)
 			skills = list(/obj/Skills/Buffs/SlotlessBuffs/Makyo/Expand)
-			strength = 0.5
+			strength = 1
+			endurance = 1
+			offense = 0.25
 			force = 0.25
 			intimidation = 25
+			anger = 0.15
 		two
 			unlock_potential = ASCENSION_TWO_POTENTIAL
-			passives = list("Pressure" = 1, "DemonicDurability" = 1, "HeavyHitter" = 0.5)
-			endurance = 0.25
+			passives = list("Pressure" = 1, "DemonicDurability" = 1, "HeavyHitter" = 0.5, "Adrenaline" = 2)
+			endurance = 1.25
+			strength = 1.25
+			force = 0.5
 			offense = 0.5
 			intimidation = 50
+			anger = 0.15
 		three
 			unlock_potential = ASCENSION_THREE_POTENTIAL
-			passives = list("Juggernaut" = 1, "DemonicDurability" = 0.5, "HeavyHitter" = 0.5)
-			strength = 0.5
-			endurance = 0.25
-			force = 0.5
+			passives = list("Juggernaut" = 1, "DemonicDurability" = 1, "HeavyHitter" = 0.5, "Pressure" = 1, "SweepingStrike" = 1)
+			strength = 1.5
+			endurance = 1.5
+			force = 0.75
+			offense = 0.75
 			intimidation = 50
+			anger = 0.1
 		four
 			unlock_potential = ASCENSION_FOUR_POTENTIAL
-			passives = list("Juggernaut" = 0.5, "DemonicDurability" = 0.5, "HeavyHitter" = 1)
-			strength = 0.5
-			endurance = 0.25
-			force = 0.5
+			passives = list("Juggernaut" = 1, "DemonicDurability" = 1, "HeavyHitter" = 1, "Pressure" = 1, "Adrenaline" = 2)
+			strength = 1.5
+			endurance = 1.5
+			force = 1
+			offense = 1
 			intimidation = 25
+			anger = 0.1
 		five
 			unlock_potential = ASCENSION_FIVE_POTENTIAL
-			passives = list("Juggernaut" = 0.5, "DemonicDurability" = 0.5, "HeavyHitter" = 2)
-			strength = 1
-			endurance = 0.25
+			passives = list("Juggernaut" = 1, "DemonicDurability" = 1, "HeavyHitter" = 2, "Pressure" = 1)
+			strength = 2
+			endurance = 2
 			force = 1
 			intimidation = 25
 
 		six
 			unlock_potential = ASCENSION_SIX_POTENTIAL
-			passives = list("Juggernaut" = 0.5, "DemonicDurability" = 0.5, "HeavyHitter" = 2)
-			strength = 1
-			endurance = 0.25
-			force = 1
+			passives = list("Juggernaut" = 1, "DemonicDurability" = 1, "HeavyHitter" = 2, "Pressure" = 2, "GiantSwings" = 1)
+			strength = 2
+			endurance = 2
+			offense = 2
 			intimidation = 25
 
 /*ascension

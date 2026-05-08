@@ -43,6 +43,8 @@ obj/Skills/proc/Cooldown(var/modify=1, var/Time, mob/p, var/announce_cd=1)
 			Time = src.ChargeRefresh * 10 * modify
 		if(isnull(Time) || Time == 0)
 			Time = src.ChargeRefresh * 10
+		if(m && m.HasTestMode())
+			Time = 1
 		if(m)
 			if(m.PureRPMode)
 				return
@@ -111,6 +113,10 @@ obj/Skills/proc/Cooldown(var/modify=1, var/Time, mob/p, var/announce_cd=1)
 			forcemessage=1
 		if(isnull(Time) || Time == 0)
 			Time = Cooldown
+		if(m && m.HasTestMode())
+			Time = 1
+			if(lockedoutSkills.len)
+				forcemessage = 1
 		cooldown_remaining = Time
 		if(m)
 			if(m.PureRPMode)

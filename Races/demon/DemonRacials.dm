@@ -9,14 +9,14 @@
 	verb/Gluttonous_Feast()
 		set category = "Skills"
 		if(!usr || usr.Dead) return
-		if(!usr.isInDemonDevilTrigger())
-			usr << "You can only use Gluttonous Feast while in Devil Trigger."
+		if(!usr.demonDevilTriggerSinMastery())
+			usr << "You cannot access this power yet."
 			return
 		Trigger(usr)
 
 	Trigger(mob/User, Override = FALSE)
 		if(!User || User.Dead) return
-		if(!User.isInDemonDevilTrigger()) return
+		if(!User.demonDevilTriggerSinMastery()) return
 		if(feast_projectiles)
 			feast_projectiles.Cut()
 		else
@@ -94,7 +94,7 @@
 
 			if(consumed && istype(center, /mob/Players))
 				var/mob/Players/P = center
-				if(P.isInDemonDevilTrigger() && P.passive_handler && P.passive_handler.Get("GluttonyFactor"))
+				if(P.demonDevilTriggerSinMastery() && P.passive_handler && P.passive_handler.Get("GluttonyFactor"))
 					if(!P.DevilTriggerSinDamageBonus)
 						P.DevilTriggerSinDamageBonus = 0
 					P.DevilTriggerSinDamageBonus += (0.25 * consumed) * P.passive_handler.Get("GluttonyFactor")
@@ -107,6 +107,9 @@
 		set category = "Skills"
 		set name = "I Want to Be Like You"
 		if(!usr || usr.Dead) return
+		if(!usr.demonDevilTriggerSinMastery())
+			usr << "You cannot access this power yet."
+			return
 		usr.Activate(src)
 
 /obj/Skills/Buffs/SlotlessBuffs/Racial/Demon/Object_of_Desire
@@ -118,6 +121,9 @@
 		set category = "Skills"
 		set name = "Object of Desire"
 		if(!usr || usr.Dead) return
+		if(!usr.demonDevilTriggerSinMastery())
+			usr << "You cannot access this power yet."
+			return
 		if(cooldown_remaining > 0)
 			usr << "Object of Desire is still on cooldown!"
 			return
@@ -131,6 +137,7 @@
 
 	Trigger(mob/User, Override = FALSE)
 		if(!User || !User.Target) return
+		if(!User.demonDevilTriggerSinMastery()) return
 		var/mob/target = User.Target
 		if(!target.applyCharmed(User, 10))
 			User << "[target] is already Charmed."

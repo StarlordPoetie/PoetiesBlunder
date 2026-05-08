@@ -43,6 +43,8 @@
 			demon_racial_femme_active = TRUE
 		if("Fiend")
 			passive_handler.Increase("LifeSteal", 20)
+		if("True Fiend") // Placeholder, idk what to do for this yet
+			passive_handler.Increase("LifeSteal", 20)
 		if("Genma")
 			passive_handler.Increase("ManaCapMult", 0.25)
 			passive_handler.Increase("ManaStats", 4)
@@ -117,6 +119,8 @@
 		if("Femme")
 			demon_racial_femme_active = FALSE
 		if("Fiend")
+			passive_handler.Decrease("LifeSteal", 20)
+		if("True Fiend") // Placeholder, see above
 			passive_handler.Decrease("LifeSteal", 20)
 		if("Genma")
 			passive_handler.Decrease("ManaCapMult", 0.25)

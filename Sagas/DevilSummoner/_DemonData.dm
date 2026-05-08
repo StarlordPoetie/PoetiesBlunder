@@ -1971,10 +1971,10 @@
 	_dd98.demon_portrait2 = 'Icons/DevilSummoner/DemonPortraits32/Billiken32.dmi'
 	db["Billiken"] = _dd100
 
-	// Trumpeter (Fiend, Lv 63)
+	// Trumpeter (True Fiend, Lv 63)
 	var/datum/demon_data/_dd101 = new /datum/demon_data()
 	_dd101.demon_name = "Trumpeter"
-	_dd101.demon_race = "Fiend"
+	_dd101.demon_race = "True Fiend"
 	_dd101.demon_lvl = 63
 	_dd101.demon_str = 16
 	_dd101.demon_for = 27

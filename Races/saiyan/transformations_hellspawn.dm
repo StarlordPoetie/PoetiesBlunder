@@ -9,7 +9,7 @@ transformation
 			form_glow_x = -32
 			form_glow_y = -32
 			unlock_potential = 45
-			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2,  "PureDamage" = 1, "SaiyanPower"=1, "SaiyanPower1"=0.5)
+			passives = list("Instinct" = 1, "Flow" = 1, "Flicker" = 1, "Pursuer" = 2,  "PureDamage" = 1, "PureReduction" = -4, "SaiyanPower"=1, "SaiyanPower1"=0.5)
 			speedadd = 0.3 //these are additive. base is 1, so 0.3=1.3x
 			enduranceadd = 0.3
 			offenseadd = 0.3
@@ -17,14 +17,44 @@ transformation
 			strengthadd = 0.3
 			forceadd = 0.3
 			mastery_boons(mob/user)
-				if(mastery >= 50)
+				if(user.Potential>=37&&mastery<25)
+					mastery=25
+				if(user.Potential>=39&&mastery<50)
+					mastery=50
+				if(user.Potential>=41&&mastery<75)
+					mastery=75
+				if(user.Potential>=43&&mastery<100)
+					mastery=100
+				var/MasteryBoost=round(mastery/25, 1)
+				passives = list("Instinct" = 1+(MasteryBoost/4), "Flow" = 1+(MasteryBoost/4), "Flicker" = 1+(MasteryBoost/4), "Pursuer" = 2,  "PureDamage" = 3+(MasteryBoost/2), "PureReduction" = -2+MasteryBoost, "SaiyanPower"=1, "SaiyanPower1"=0.8)
+				if(user.Potential>=27)
 					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade2, user)&&user.isRace(SAIYAN))
 						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade2)
+						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanTypeX)
 						user << "You can draw out greater power from your mastery over super Saiyan - Grade 2 unlocked!"
-				if(mastery >= 75)
+				if(user.Potential>=30)
 					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade3, user)&&user.isRace(SAIYAN))
 						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade3)
+						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanTypeY)
 						user << "You can strain past the limits of your Super Saiyan form! Grade 3 Unlocked!"
+				if(mastery >= 100)
+					passives = list("Instinct" = 1+(MasteryBoost/2), "Flow" = 1+(MasteryBoost/2), "Flicker" = 1+(MasteryBoost/2), "Pursuer" = 2,  "PureDamage" = 3+(MasteryBoost/2), "PureReduction" = -4+MasteryBoost, "SaiyanPower"=1, "SaiyanPower1"=0.8)
+				if(user.Potential>=35)
+					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/zeal)
+						if(!locate(/obj/Skills/Buffs/SpecialBuffs/SaiyanFervor, user))
+							user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SaiyanFervor)
+							user << "You have unlocked a new Signature buff! (Saiyan Fervor)"
+					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/pride)
+						if(!locate(/obj/Skills/Buffs/SpecialBuffs/RoyalLineage, user))
+							user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/RoyalLineage)
+							user << "You have unlocked a new Signature buff! (Royal Lineage)"
+					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/honor)
+						if(!locate(/obj/Skills/Buffs/SpecialBuffs/SaiyanRoar, user))
+							user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SaiyanRoar)
+							user << "You have unlocked a new Signature buff! (Saiyan Roar)"
+					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SaiyanCarnage, user))
+						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SaiyanCarnage)
+						user << "You have unlocked a new Signature buff! (Saiyan Carnage)"
 			class_boons(mob/user) //pride stats as a baseline no matter what
 				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/zeal)
 					class_passives = list("EnergyGeneration" = 3, "Instinct" = 2, "Flow" = 2)

@@ -1,5 +1,5 @@
 // jesus christ lets get a grip
-#define GODS list("Arba", "Endor","Solomon", "Zhi Xiuling","Indigo","???")
+#define GODS list("Zhi Xiuling","Indigo","???","Valdiel")
 #define WSNAMES list("Masamune", "Durendal", "Kusanagi", "Caledfwlch", "Muramasa", "Soul Calibur", "Soul Edge", "Dainsleif", "Ryui Jingu Bang")
 #define BRONZECLOTHS list("Pegasus","Dragon","Cygnus","Andromeda","Phoenix","Unicorn")
 #define GOLDCLOTHS list("Aries",/* "Taurus" */,"Gemini","Cancer","Leo","Virgo","Libra","Scorpio", "Sagittarius","Capricorn","Aquarius","Pisces")
@@ -75,6 +75,8 @@ racials
 		CRYOKENESISMAX = 15
 		CRYOKENESISDAMAGE = 2
 		TOD_DMG_PER_TICK = 0.05
+		FULL_MANIFESTATION_TAX=0.5
+		FULL_MANIFESTATION_TAX_DIVISOR=100
 
 progressTracker
 
@@ -178,7 +180,7 @@ globalTracker
 		DEVILARMDEMONONLY = FALSE
 		ROOTS_DURATION = 2
 		AISCLASHLOCKSMOVEMENT = TRUE
-		OUROMACROLOCK = 2
+		OUROMACROLOCK = 0
 		AVALON_COOLDOWN = 300
 
 //INTIM
@@ -332,6 +334,7 @@ globalTracker
 		DECIDERDMG = 0.2
 		SPEEDSTRIKEDIVISOR = 5
 		SWEEPSTRIKEDIVISOR = 5
+		SWEEPINGSTRIKE_GIANTSWINGS_CONVERT_TOGGLE = 1
 		LIGHT_ATTACK_SPEED_DMG_ENABLED = 1
 		LIGHT_ATTACK_SPEED_DMG_EXPONENT = 0.4
 		LIGHT_ATTACK_SPEED_DMG_LOWER = 0.5
@@ -356,11 +359,11 @@ globalTracker
 		HOTNCOLD_DEBUFF_DIVISOR = 25
 		HOTNCOLD_STAT_DIVISOR = 150
 		ITEM_DEBUFF_APPLY_NERF = 2.5
-		BURN_INTENSITY = 0.25
+		BURN_INTENSITY = 1
 		SLOW_INTENSITY = 1
 		SHATTER_INTENSITY = 1
 		SHOCK_INTENSITY = 1
-		POISON_INTENSITY = 0.25
+		POISON_INTENSITY = 1
 		VENOMBLINDMULT = 10
 		CHAOS_CHANCE = 25
 		BASE_DEBUFF_REDUCTION_DIVISOR = 100
@@ -477,6 +480,7 @@ globalTracker
 		PURE_MODIFIER = 0.5
 		PURE_MOD_POST_CALC = TRUE
 		TENSION_MULTIPLIER = 1
+		UNDERDOG_HUMAN_TENSION_MULT = 1.2
 		DEFENDER_TENSION_REDUCER = 0.65
 		MIN_TENSION = 10
 		CORRUPTION_GAIN = 1.25
@@ -486,7 +490,8 @@ globalTracker
 		GLUTTONY_MODIFIER = 0.14
 		UNARMED_DAMAGE_DIVISOR = 10
 		SKIMMING_DAMAGE_MULT=0.15
-
+		ROYAL_GUARD_CHARGE_MULT=1.0
+		ROYAL_GUARD_DMG_MULT=1.0
 
 		HARDER_THEY_FALL_BIO_DIVISOR = 100 // if u use this when changie first start it will do big damage
 		HARDER_THEY_FALL_VAI_DIVISOR = 25 // more often no1 has this much vai, in hindsight deus ex machima will give kob more tha nthis, but they will suffer 2x damage ig
@@ -518,6 +523,8 @@ globalTracker
 
 		AUTOHIT_WHIFF_DAMAGE = 2
 		AUTOHIT_MISS_DAMAGE = 5
+		// Fraction of fully scaled AutoHit FinalDmg dealt to the attacker on auto-reversal
+		AUTOHIT_REVERSAL_DAMAGE_FRAC = 0.28
 
 
 		AUTOHIT_WAVE_OFFSHOOT_DAMAGE_DIVISOR = 1

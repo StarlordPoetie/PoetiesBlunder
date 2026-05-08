@@ -79,7 +79,7 @@
     if(styleRatingHolder)
         if(mob.StyleRating > 0)
             if(!(styleRatingHolder in screen))
-                styleRatingHolder.screen_loc = "RIGHT-0.25,BOTTOM+1.28"
+                styleRatingHolder.screen_loc = "RIGHT-0.25,BOTTOM+1.80"
                 screen += styleRatingHolder
             styleRatingHolder.icon = 'Icons/StyleAssets.dmi'
             styleRatingHolder.icon_state = mob.getStyleRank()

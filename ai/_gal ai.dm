@@ -1376,12 +1376,12 @@ mob/Player/AI
 			if(src.KOTimer<=0&&!src.MortallyWounded)
 				src.Conscious()
 
-		if(src.Beaming==1)
+		if(src.Beaming==1 || src.HasMovingCharge())
 			for(var/obj/Skills/Projectile/Beams/Z in src)
 				if(Z.Charging&&Z.ChargeRate)
 					var/beamChargeCap = Z.ChargeRate * BEAM_CHARGE_CAP_MULT
 					if(src.BeamCharging>=0.5&&src.BeamCharging<=beamChargeCap)
-						src.BeamCharging+=src.GetRecov(0.2)
+						src.BeamCharging+=src.GetRecov(0.2)*src.GetBeamChargeSpeedMult()
 						if(src.BeamCharging>beamChargeCap)
 							src.BeamCharging=beamChargeCap
 

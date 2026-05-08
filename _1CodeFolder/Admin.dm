@@ -1,5 +1,5 @@
 var/list
-	CodedAdmins=list("NWKY"=3, "Sunshine Jesse"=4, "Nightmare Zarkus"=4, "NeoGalaxyEyesPhotonDragon"=4, "Lanni.k"=4, "Antenora Luxuria"=4, "Admindred"=4, "Hadoke"=3, "Poetiethegreat"=4)
+	CodedAdmins=list("NWKY"=3, "Masterdarwin88"=4, "Sunshine Jesse"=4, "Nightmare Zarkus"=4, "NeoGalaxyEyesPhotonDragon"=4, "Lanni.k"=4, "Antenora Luxuria"=4, "Admindred"=4, "Hadoke"=3, "Ghost66"=4)
 	Admins=list()
 	Mappers=list()
 	Punishments=list()
@@ -798,6 +798,24 @@ mob/proc/AdminDoKO(mob/A)
 		A.Unconscious(null, "ADMIN")
 		Log("Admin", "<font color=red>[ExtractInfo(src)] admin-KOed [ExtractInfo(A)].")
 
+// Should fix targeting your own shit if deleting/editing someone else's items/skills in Admin View Contents
+
+mob/proc/AdminResolveTargetedContent(atom/A)
+	if(!A) return null
+	if(!src.AdminContentsView) return A
+	if(!src.Target || src.Target == src) return A
+	if(!isobj(A)) return A
+	if(A in src.Target.contents) return A
+	if(!(A in src.contents)) return A
+
+	var/obj/firstTypeMatch = null
+	for(var/obj/O in src.Target.contents)
+		if(O.type != A.type) continue
+		if(!firstTypeMatch) firstTypeMatch = O
+		if(O.name == A.name)
+			return O
+	return firstTypeMatch ? firstTypeMatch : A
+
 // Overwatch helpers — used by /mob/Admin4/verb/Overwatch dropdown.
 // Tier 4 only. Designed for an observer/balance role: silently watch
 // players, follow them, snapshot their state, all without breaking RP.
@@ -1337,6 +1355,25 @@ mob/Admin2/verb
 		usr.PM(M)
 
 
+	Test_Mode(mob/M in players)
+		set category = "Admin"
+		set name = "Test Mode"
+		set desc = "Toggle off skill cooldowns on a player (applies TestMode passive)."
+		if(!M.passive_handler)
+			M.passive_handler = new
+		if(M.HasTestMode())
+			M.passive_handler.Set("TestMode", 0)
+			Log("Admin", "[ExtractInfo(usr)] disabled Test Mode on [ExtractInfo(M)].")
+			usr << "Test Mode is now OFF for [M]."
+			if(M.client)
+				M << "Admin Test Mode is now OFF. Skill cooldowns are normal."
+		else
+			M.passive_handler.Set("TestMode", 1)
+			Log("Admin", "[ExtractInfo(usr)] enabled Test Mode on [ExtractInfo(M)].")
+			usr << "Test Mode is now ON for [M]."
+			if(M.client)
+				M << "Admin Test Mode is now ON. Your skill cooldowns are effectively zero."
+
 	AdminChat(c as text)
 		set category = "Admin"
 		Log("Admin", "<b><font color=red>[time2text(world.timeofday,"(hh:mm:ss)")]<font color=cyan>Admin Chat:<font color=white>[usr.DisplayKey ? "[usr.DisplayKey]([usr.key])": "([usr.key])"]:</b><font color=green> [c]", NoPinkText=1)
@@ -1358,6 +1395,7 @@ mob/Admin2/verb
 
 	Delete(atom/A in world)
 		set category="Admin"
+		A = src.AdminResolveTargetedContent(A)
 
 		if(istype(A,/area/))
 			usr<<"You can't delete Areas."
@@ -1706,6 +1744,7 @@ mob/Admin2/verb
 
 	Edit(atom/A in world)
 		set category = "Admin"
+		A = src.AdminResolveTargetedContent(A)
 		var/list/browserOptions = list()
 		browserOptions.Add("+find");
 		winset(usr, null, list2params(browserOptions));
@@ -2575,6 +2614,105 @@ mob/Admin4/verb
 		P.setRace(selected.type, FALSE)
 		P << "<font color=yellow>An admin has changed your race to [Choice]."
 		Log("Admin", "[ExtractInfo(usr)] changed [ExtractInfo(P)]'s race to [Choice].")
+
+	Make_True_Demon(mob/Players/target in players)
+		set category = "Admin"
+		set name = "Make True Demon"
+
+		if(!target || !target.ckey)
+			src << "<font color=red>Invalid target.</font>"
+			return
+
+		if(!target.isRace(/race/demi_fiend))
+			src << "<font color=red>[target] is not a Demi-fiend.</font>"
+			return
+
+		if(!target.race || !target.race.ascensions || target.race.ascensions.len < 1)
+			src << "<font color=red>[target] has not yet taken their first ascension.</font>"
+			return
+
+		var/ascension/asc_one = target.race.ascensions[1]
+		if(!asc_one || !asc_one.applied)
+			src << "<font color=red>[target]'s first ascension has not been applied yet.</font>"
+			return
+
+		if(asc_one.choiceSelected == /ascension/sub_ascension/demi_fiend/true_demon)
+			src << "<font color=orange>[target] is already on the True Demon path.</font>"
+			return
+
+		var/confirm = alert(src, "Place [target] on the True Demon path? Their current Reason passive will be removed and all equipped Magatama will be unequipped.", "Make True Demon", "Yes", "No")
+		if(confirm != "Yes") return
+
+		// Unequip all Magatama before the swap, mostly for Shijima
+		for(var/obj/Items/Magatama/M in target)
+			if(M.suffix == "*Equipped*")
+				M.unequipMagatama(target)
+		// Clear any Shijima-set swap cooldowns
+		target.magatama_cooldown_until = 0
+		target.magatama_allowed_set = list()
+
+		// Revert the existing Reason sub-ascension, if any
+		if(asc_one.choiceSelected)
+			var/ascension/old_asc = new asc_one.choiceSelected
+			old_asc.applied = TRUE
+			old_asc.revertAscension(target)
+
+		// Apply True Demon sub-ascension
+		asc_one.choiceSelected = /ascension/sub_ascension/demi_fiend/true_demon
+		var/ascension/sub_ascension/demi_fiend/true_demon/new_asc = new
+		new_asc.onAscension(target)
+
+		// Recalculate Magatama passives now that the Reason has changed
+		target.refreshMagatama()
+
+		target << "<font color='#cc0000'><b>The chains of Reason have been cast aside. You walk the True Demon path.</b></font>"
+		Log("Admin", "[ExtractInfo(src)] placed [ExtractInfo(target)] on the True Demon path.")
+		src << "<font color=yellow>[target] is now on the True Demon path.</font>"
+
+	Give_Demon(mob/Players/target in players)
+		set category = "Admin"
+		set name = "Give Demon"
+
+		if(!target || !target.ckey)
+			src << "<font color=red>Invalid target.</font>"
+			return
+
+		if(target.Saga != "Devil Summoner")
+			src << "<font color=red>[target] does not have the Devil Summoner Saga.</font>"
+			return
+
+		if(!DEMON_DB || !DEMON_DB.len)
+			src << "<font color=red>Demon database is empty.</font>"
+			return
+
+		var/list/demon_choices = list()
+		for(var/dname in DEMON_DB)
+			var/datum/demon_data/dd = DEMON_DB[dname]
+			if(!dd) continue
+			demon_choices["[dname] (Lv[dd.demon_lvl] [dd.demon_race])"] = dname
+
+		if(!demon_choices.len)
+			src << "<font color=red>No valid demons found in the database.</font>"
+			return
+
+		var/choice = input(src, "Select a demon to give [target]. If their party is full, it will be recorded in their Compendium instead.", "Give Demon") as null|anything in demon_choices
+		if(!choice) return
+
+		var/demon_name = demon_choices[choice]
+		if(!demon_name) return
+
+		if(target.DemonInParty(demon_name))
+			src << "<font color=red>[target] already has [demon_name] in their party.</font>"
+			return
+
+		if(target.demon_party && target.demon_party.len >= target.demon_party_cap)
+			if(target.demon_compendium && (demon_name in target.demon_compendium))
+				src << "<font color=red>[target]'s party is full and [demon_name] is already in their compendium.</font>"
+				return
+
+		target.AddDemonToRoster(demon_name)
+		Log("Admin", "[ExtractInfo(src)] gave [ExtractInfo(target)] demon [demon_name].")
+
 mob/Admin3/verb
 
 	SetGlobalDamage()

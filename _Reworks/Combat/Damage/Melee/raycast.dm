@@ -17,6 +17,9 @@
                 NextAttack+=10
     else if((HasSweepingStrike() || passive_handler.Get("GiantSwings")) && !q)
         var/range = passive_handler.Get("GiantSwings") ? passive_handler.Get("GiantSwings") : 1
+        if (glob.SWEEPINGSTRIKE_GIANTSWINGS_CONVERT_TOGGLE == 1)
+            if(passive_handler.Get("SweepingStrike") > 1 && passive_handler.Get("SweepingStrike") > passive_handler.Get("GiantSwings"))
+                range = passive_handler.Get("SweepingStrike")
         for(var/mob/M in oview(range, src))
             if(M != src && M.density)
                 if(istype(M, /mob/irlNPC))

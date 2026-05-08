@@ -279,45 +279,59 @@
             s.UnderlayStack = newUnderStack
 
     proc/applyDTIcons(mob/user)
-        var/changed = FALSE
+        var/willChange = FALSE
+        if(SwordIconDT)
+            var/obj/Items/Sword/sw = user.EquippedSword()
+            if(sw && sw.Conjured) willChange = TRUE
+        if(StaffIconDT)
+            var/obj/Items/Enchantment/Staff/st = user.EquippedStaff()
+            if(st && st.Conjured) willChange = TRUE
+        if(ArmorIconDT)
+            var/obj/Items/Armor/ar = user.EquippedArmor()
+            if(ar && ar.Conjured) willChange = TRUE
+        if(willChange)
+            user.AppearanceOff()
         if(SwordIconDT)
             var/obj/Items/Sword/s = user.EquippedSword()
             if(s && s.Conjured)
                 swapItemIcon(user, s, SwordIconDT, SwordXDT, SwordYDT, SwordUseUnderDT, SwordIconUnderDT, SwordXUnderDT, SwordYUnderDT, SwordUnderlayStackDT)
-                changed = TRUE
         if(StaffIconDT)
             var/obj/Items/Enchantment/Staff/s = user.EquippedStaff()
             if(s && s.Conjured)
                 swapItemIcon(user, s, StaffIconDT, StaffXDT, StaffYDT, StaffUseUnderDT, StaffIconUnderDT, StaffXUnderDT, StaffYUnderDT, StaffUnderlayStackDT)
-                changed = TRUE
         if(ArmorIconDT)
             var/obj/Items/Armor/s = user.EquippedArmor()
             if(s && s.Conjured)
                 swapItemIcon(user, s, ArmorIconDT, ArmorXDT, ArmorYDT, ArmorUseUnderDT, ArmorIconUnderDT, ArmorXUnderDT, ArmorYUnderDT, ArmorUnderlayStackDT)
-                changed = TRUE
-        if(changed)
-            user.AppearanceOff()
+        if(willChange)
             user.AppearanceOn()
 
     proc/revertDTIcons(mob/user)
-        var/changed = FALSE
+        var/willChange = FALSE
+        if(SwordIconDT)
+            var/obj/Items/Sword/sw = user.EquippedSword()
+            if(sw && sw.Conjured) willChange = TRUE
+        if(StaffIconDT)
+            var/obj/Items/Enchantment/Staff/st = user.EquippedStaff()
+            if(st && st.Conjured) willChange = TRUE
+        if(ArmorIconDT)
+            var/obj/Items/Armor/ar = user.EquippedArmor()
+            if(ar && ar.Conjured) willChange = TRUE
+        if(willChange)
+            user.AppearanceOff()
         if(SwordIconDT)
             var/obj/Items/Sword/s = user.EquippedSword()
             if(s && s.Conjured)
                 swapItemIcon(user, s, SwordIcon, SwordX, SwordY, TRUE, SwordIconUnder, SwordXUnder, SwordYUnder, SwordUnderlayStack)
-                changed = TRUE
         if(StaffIconDT)
             var/obj/Items/Enchantment/Staff/s = user.EquippedStaff()
             if(s && s.Conjured)
                 swapItemIcon(user, s, StaffIcon, StaffX, StaffY, TRUE, StaffIconUnder, StaffXUnder, StaffYUnder, StaffUnderlayStack)
-                changed = TRUE
         if(ArmorIconDT)
             var/obj/Items/Armor/s = user.EquippedArmor()
             if(s && s.Conjured)
                 swapItemIcon(user, s, ArmorIcon, ArmorX, ArmorY, TRUE, ArmorIconUnder, ArmorXUnder, ArmorYUnder, ArmorUnderlayStack)
-                changed = TRUE
-        if(changed)
-            user.AppearanceOff()
+        if(willChange)
             user.AppearanceOn()
 
     proc/checkEvolve(mob/p)

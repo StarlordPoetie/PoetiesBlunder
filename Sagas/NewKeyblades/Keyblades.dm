@@ -176,6 +176,8 @@ proc/
 				return "Light"
 			if("Two Become One")
 				return "Light"
+			if("Blind Justice")
+				return "Light"
 //medium
 			if("Oblivion")
 				return "Medium"
@@ -212,25 +214,27 @@ proc/
 		switch(KC)
 //small
 			if("Kingdom Key")
-				return 1
+				return 1.25
 			if("Kingdom Key D")
-				return 1
+				return 1.25
 			if("Flame Liberator")
-				return 1
+				return 1.25
 			if("Wayward Wind")
-				return 1
+				return 1.25
 			if("Rainfell")
-				return 1
+				return 1.25
 			if("Oathkeeper")
-				return 1
+				return 1.25
 			if("Way To Dawn")
-				return 1
+				return 1.25
 			if("Bond of Flame")
-				return 1
+				return 1.25
 			if("Sweetstack")
-				return 1
+				return 1.25
 			if("Two Become One")
-				return 1
+				return 1.25
+			if("Blind Justice")
+				return 1.25
 //medium
 			if("Oblivion")
 				return 1.5
@@ -286,6 +290,8 @@ proc/
 				return 2
 			if("Two Become One")
 				return 2
+			if("Blind Justice")
+				return 2
 //medium
 			if("Oblivion")
 				return 1.5
@@ -340,6 +346,8 @@ proc/
 			if("Sweetstack")
 				return 2.5
 			if("Two Become One")
+				return 2.5
+			if("Blind Justice")
 				return 2.5
 //medium
 			if("Oblivion")
@@ -399,6 +407,8 @@ proc/
 					return "Light"
 				else
 					return "Dark"
+			if("Blind Justice")
+				return "Truth"
 //medium
 			if("Oblivion")
 				return "Dark"
@@ -454,6 +464,8 @@ proc/
 				return 'Sweetstack.dmi'
 			if("Two Become One")
 				return 'Two Become One.dmi'
+			if("Blind Justice")
+				return 'Blind Justice.dmi'
 //medium
 			if("Oblivion")
 				return 'Oblivion.dmi'
@@ -509,6 +521,8 @@ proc/
 				return 'Sweetstack - Sync.dmi'
 			if("Two Become One")
 				return 'Two Become One - Sync.dmi'
+			if("Blind Justice")
+				return 'Blind Justice - Sync.dmi'
 //medium
 			if("Oblivion")
 				return 'OblivionSync.dmi'
@@ -557,7 +571,7 @@ proc/
 				KeybladePassives=list("PULock" = 1, "Combustion" = 60, "Scorching" = 2+Boost)
 				return KeybladePassives
 			if("Wayward Wind")
-				KeybladePassives=list("PULock" = 1,"Skimming" = 1+(Boost/2), "Godspeed" = 1,"BlurringStrikes" = 3)
+				KeybladePassives=list("PULock" = 1,"Skimming" = 1+(Boost/2), "Godspeed" = 1,"BlurringStrikes" = 3, "AttackSpeed" = 2+(Boost/2))
 				return KeybladePassives
 			if("Rainfell")
 				KeybladePassives=list("PULock" = 1, "CriticalChance" = 30+(Boost*5), "ThunderHerald" = 1, "CriticalDamage"= 0.15)
@@ -576,6 +590,9 @@ proc/
 				return KeybladePassives
 			if("Two Become One")
 				KeybladePassives=list("PULock" = 1, "Two Become One" = 1, "BlurringStrikes" = 4, "ManaGeneration" = 2+(Boost/2))
+				return KeybladePassives
+			if("Blind Justice")
+				KeybladePassives=list("PULock" = 1, "PureDamage" = 3+(Boost/2), "PureReduction" = -3+(Boost/2))
 				return KeybladePassives
 //medium
 			if("Oblivion")
@@ -600,7 +617,7 @@ proc/
 				KeybladePassives=list("PULock" = 1, "HybridStrike" = 1, "Flow" = 3, "Instinct" = 3)
 				return KeybladePassives
 			if("Ultima Weapon")
-				KeybladePassives=list("PULock" = 1)
+				KeybladePassives=list("PULock" = 1, "PureDamage" = 4, "PureReduction" = 4)
 				return KeybladePassives
 //heavy
 			if("Earthshaker")
@@ -622,7 +639,7 @@ proc/
 				KeybladePassives=list("PULock" = 1)
 				return KeybladePassives
 			if("X-Blade")
-				KeybladePassives=list("PULock" = 1)
+				KeybladePassives=list("PULock" = 1, "GodKi" = 0.15)
 				return KeybladePassives
 /*
 		switch(KC)

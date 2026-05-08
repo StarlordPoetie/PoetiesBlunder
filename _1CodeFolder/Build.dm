@@ -6,6 +6,53 @@ var/list/worldObjectList = list() // Looped through during the saving of objects
 			if(!x || !x.loc)
 				worldObjectList.Remove(x)
 
+/mob/Admin4/verb/DeduplicateTurfList()
+	set name = "Dedup Turfs List"
+	set category = "Admin"
+	set background = 1
+	usr << "<small>Server: Deduplicating Turfs lists. This may take a moment..."
+
+	var/turfs_before = length(global.Turfs)
+	var/customturfs_before = length(global.CustomTurfs)
+	var/turfs_nonturf = 0
+	var/customturfs_nonturf = 0
+	var/i = 0
+
+	var/list/seen = list()
+	for(var/A in global.Turfs)
+		i++
+		if(i % 5000 == 0) sleep(-1)
+		if(!istype(A, /turf))
+			turfs_nonturf++
+			continue
+		var/turf/T = A
+		var/key = "[T.x],[T.y],[T.z]"
+		if(!seen[key]) seen[key] = T
+	global.Turfs.Cut()
+	for(var/k in seen) global.Turfs += seen[k]
+
+	sleep(-1)
+
+	seen = list()
+	i = 0
+	for(var/A in global.CustomTurfs)
+		i++
+		if(i % 5000 == 0) sleep(-1)
+		if(!istype(A, /turf/CustomTurf))
+			customturfs_nonturf++
+			continue
+		var/turf/CustomTurf/T = A
+		var/key = "[T.x],[T.y],[T.z]"
+		if(!seen[key]) seen[key] = T
+	global.CustomTurfs.Cut()
+	for(var/k in seen) global.CustomTurfs += seen[k]
+
+	var/turfs_after = length(global.Turfs)
+	var/customturfs_after = length(global.CustomTurfs)
+	usr << "<small>Server: Turfs:        [turfs_before] -> [turfs_after] (removed [turfs_before - turfs_after]; [turfs_nonturf] were non-turf entries)"
+	usr << "<small>Server: CustomTurfs:  [customturfs_before] -> [customturfs_after] (removed [customturfs_before - customturfs_after]; [customturfs_nonturf] were non-turf entries)"
+	usr << "<small>Server: Run a world save now."
+
 proc/find_savableObjects()
 	for(var/obj/_object in world) // Find all objects in the world
 		if(!_object.z||_object.z==0) continue
@@ -37,7 +84,6 @@ proc/Save_Custom_Turfs()
 	var/list/FlyOver=list()
 	var/list/isOutside=list()
 	var/list/isUnderwater=list()
-	var/list/LogPEndurance=list()
 	var/list/Destructable=list()
 	for(var/turf/CustomTurf/A in CustomTurfs)
 		if(A)
@@ -77,7 +123,6 @@ proc/Save_Custom_Turfs()
 				F["FlyOver"]<<FlyOver
 				F["isOutside"]<<isOutside
 				F["isUnderwater"]<<isUnderwater
-				F["LogPEndurance"]<<LogPEndurance
 				F["Destructable"]<<Destructable
 				E ++
 				F=new("Saves/Map/CustomTurfs[E]")
@@ -96,7 +141,6 @@ proc/Save_Custom_Turfs()
 				FlyOver=list()
 				isOutside=list()
 				isUnderwater=list()
-				LogPEndurance=list()
 				Destructable=list()
 
 	if(Amount % 20000 != 0)
@@ -115,7 +159,6 @@ proc/Save_Custom_Turfs()
 		F["FlyOver"]<<FlyOver
 		F["isOutside"]<<isOutside
 		F["isUnderwater"]<<isUnderwater
-		F["LogPEndurance"]<<LogPEndurance
 		F["Destructable"]<<Destructable
 
 	world<<"<small>Server: Custom Turfs Saved([Amount])."
@@ -152,25 +195,22 @@ proc/Load_Custom_Turfs()
 		for(var/A in Types)
 			Amount+=1
 			DebugAmount += 1
-			var/turf/CustomTurf/T=new A(locate(text2num(list2params(Xs.Copy(Amount,Amount+1))),text2num(list2params(Ys.Copy(Amount,Amount+1))),text2num(list2params(Zs.Copy(Amount,Amount+1)))))
+			var/turf/CustomTurf/T=new A(locate(Xs[Amount],Ys[Amount],Zs[Amount]))
 			T.icon = Icons[Amount]
 			//T.icon = resourceManager.GetResourceByName(Icons[Amount])
 			T.icon_state= Icons_States[Amount]
-			T.density=text2num(list2params(Densitys.Copy(Amount,Amount+1)))
-			T.opacity=text2num(list2params(Opacitys.Copy(Amount,Amount+1)))
-			T.Roof=text2num(list2params(isRoof.Copy(Amount,Amount+1)))
-			T.Health=text2num(list2params(Healths.Copy(Amount,Amount+1)))
-			T.Level=text2num(list2params(Levels.Copy(Amount,Amount+1)))
-			T.Builder=list2params(Builders.Copy(Amount,Amount+1))
-			T.FlyOverAble=text2num(list2params(FlyOver.Copy(Amount,Amount+1)))
-			T.isOutside=text2num(list2params(isOutside.Copy(Amount,Amount+1)))
-			T.isUnderwater=text2num(list2params(isUnderwater.Copy(Amount,Amount+1)))
-			T.Destructable=text2num(list2params(Destructable.Copy(Amount,Amount+1)))
+			T.density=Densitys[Amount]
+			T.opacity=Opacitys[Amount]
+			T.Roof=isRoof[Amount]
+			T.Health=text2num(Healths[Amount])
+			T.Level=text2num(Levels[Amount])
+			T.Builder=Builders[Amount]
+			T.FlyOverAble=FlyOver[Amount]
+			T.isOutside=isOutside[Amount]
+			T.isUnderwater=isUnderwater[Amount]
+			T.Destructable=Destructable[Amount]
 			CustomTurfs+=T // Turfs is the global list for all objects placed by players.
 
-			for(var/obj/Turfs/Edges/B in T) if(!B.Builder) del(B)
-			for(var/obj/Turfs/Surf/B in T) if(!B.Builder) del(B)
-			for(var/obj/Turfs/Trees/B in T) if(!B.Builder) del(B)
 			for(var/obj/Turfs/B in T) if(!B.Builder) del(B)
 
 			if(Amount == 20000)
@@ -200,7 +240,6 @@ proc/Save_Turfs()
 	var/list/FlyOver=list()
 	var/list/isOutside=list()
 	var/list/isUnderwater=list()
-	var/list/LogPEndurance=list()
 	var/list/Destructable=list()
 
 //	debuglog << "[__FILE__]:[__LINE__] We got this far for mapfile[E]"
@@ -230,7 +269,6 @@ proc/Save_Turfs()
 				F["FlyOver"]<<FlyOver
 				F["isOutside"]<<isOutside
 				F["isUnderwater"]<<isUnderwater
-				F["LogPEndurance"]<<LogPEndurance
 				F["Destructable"]<<Destructable
 				E ++
 				F=new("Saves/Map/File[E]")
@@ -244,7 +282,6 @@ proc/Save_Turfs()
 				FlyOver=list()
 				isOutside=list()
 				isUnderwater=list()
-				LogPEndurance=list()
 				Destructable=list()
 
 //	debuglog << "[__FILE__]:[__LINE__] We got this far for mapfile[E]"
@@ -260,7 +297,6 @@ proc/Save_Turfs()
 		F["FlyOver"]<<FlyOver
 		F["isOutside"]<<isOutside
 		F["isUnderwater"]<<isUnderwater
-		F["LogPEndurance"]<<LogPEndurance
 		F["Destructable"]<<Destructable
 
 //	debuglog << "[__FILE__]:[__LINE__] Map saved mapfile[E] :: Total amount of crap: [Amount]"
@@ -294,21 +330,18 @@ proc/Load_Turfs()
 		for(var/A in Types)
 			Amount+=1
 			DebugAmount += 1
-			var/turf/T=new A(locate(text2num(list2params(Xs.Copy(Amount,Amount+1))),text2num(list2params(Ys.Copy(Amount,Amount+1))),text2num(list2params(Zs.Copy(Amount,Amount+1)))))
-			T.Health=text2num(list2params(Healths.Copy(Amount,Amount+1)))
-			T.Level=text2num(list2params(Levels.Copy(Amount,Amount+1)))
-			T.Builder=list2params(Builders.Copy(Amount,Amount+1))
-			T.FlyOverAble=text2num(list2params(FlyOver.Copy(Amount,Amount+1)))
-			T.isOutside=text2num(list2params(isOutside.Copy(Amount,Amount+1)))
-			T.isUnderwater=text2num(list2params(isUnderwater.Copy(Amount,Amount+1)))
-			T.Destructable=text2num(list2params(Destructable.Copy(Amount,Amount+1)))
+			var/turf/T=new A(locate(Xs[Amount],Ys[Amount],Zs[Amount]))
+			T.Health=text2num(Healths[Amount])
+			T.Level=text2num(Levels[Amount])
+			T.Builder=Builders[Amount]
+			T.FlyOverAble=FlyOver[Amount]
+			T.isOutside=isOutside[Amount]
+			T.isUnderwater=isUnderwater[Amount]
+			T.Destructable=Destructable[Amount]
 			if(istype(T,/turf/Special/EventStars))
 				T.icon_state="[rand(1,2500)]"
 			Turfs+=T // Turfs is the global list for all objects placed by players.
 
-			for(var/obj/Turfs/Edges/B in T) if(!B.Builder) del(B)
-			for(var/obj/Turfs/Surf/B in T) if(!B.Builder) del(B)
-			for(var/obj/Turfs/Trees/B in T) if(!B.Builder) del(B)
 			for(var/obj/Turfs/B in T) if(!B.Builder) del(B)
 
 			if(Amount == 20000)

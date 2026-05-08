@@ -42,6 +42,8 @@ race
 					p.passive_handler.Set("MartialMagic", 1)
 					p.passive_handler.Set("BladeFisting", 1)
 					p.passive_handler.Set("ManaGeneration", 5)
+					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/RoyalGuard)
+					p.AddSkill(new/obj/Skills/AutoHit/RoyalRelease)
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/DemonMagic/DarkMagic)
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/DemonMagic/HellFire)
 					p.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/DemonMagic/Corruption)

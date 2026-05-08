@@ -60,12 +60,12 @@
 
 /mob/Players/verb
 	View_Maim_History()
-		set category = "Skills"
+		set category = "Roleplay"
 		set name = "Maim History"
 		usr << browse(usr.maimHistoryHtml(), "window=MaimHistory;size=620x520")
 
 	Annotate_Maim()
-		set category = "Skills"
+		set category = "Roleplay"
 		set name = "Annotate Maim"
 		if(!MaimHistory || !MaimHistory.len)
 			usr << "You have no maim events on record."

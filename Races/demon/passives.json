@@ -27,6 +27,9 @@
 		"AsuraStrike": [1, 1],
 		"Musoken": [1, 1]
     },
+    "SWORD_PASSIVES_V": {
+		"GiantSwings": [1, 1]
+    },
     "UNARMED_PASSIVES_I": {
         "BlurringStrikes": [1, 5],
         "Adrenaline": [1, 5],

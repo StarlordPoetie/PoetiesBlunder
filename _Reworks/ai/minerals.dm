@@ -109,6 +109,9 @@ globalTracker/var/NORMAL_EXCHANGE_RATE = 0.5
 
 proc/exchangeMineral(obj/Items/mineral/mineral, mob/p, obj/Exchange/npc/npc)
 	p.gajaConversionRateUpdate()
+	var/PopoRate=1
+	if(p.isRace(POPO))
+		PopoRate*=p.GetPowerUpRatio()
 	p << "Your rate of conversion is [p.playerExchangeRate]"
 	var/howMany = input(p, "How many would you like to exchange?") as num
 	if(howMany > mineral.value) howMany = mineral.value
@@ -121,10 +124,10 @@ proc/exchangeMineral(obj/Items/mineral/mineral, mob/p, obj/Exchange/npc/npc)
 		else
 			npc.bank -= howMany * glob.NPC_EXCHANGE_RATE
 			p << "You exchange [howMany] Mana Bits for [howMany * glob.NPC_EXCHANGE_RATE] Dollars."
-			p.GiveMoney(howMany * glob.NPC_EXCHANGE_RATE)
+			p.GiveMoney(howMany * glob.NPC_EXCHANGE_RATE*PopoRate)
 	else
 		var/exchangeRate = p.playerExchangeRate
-		p.GiveMoney(howMany * exchangeRate)
+		p.GiveMoney(howMany * exchangeRate*PopoRate)
 		p << "You exchange [howMany] Mana Bits for [howMany * exchangeRate] Dollars."
 	mineral.Reduce(howMany)
 

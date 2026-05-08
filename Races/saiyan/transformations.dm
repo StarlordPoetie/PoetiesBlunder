@@ -36,14 +36,35 @@ transformation
 				form_icon_2.color=list(1,0,0, 0,0.82,0, 0,0,0, -0.26,-0.26,-0.26)
 
 			mastery_boons(mob/user)
+				if(user.Potential>=22&&mastery<25)
+					mastery=25
+				if(user.Potential>=27&&mastery<50)
+					mastery=50
+				if(user.Potential>=30&&mastery<75)
+					mastery=75
+				if(user.Potential>=35&&mastery<75)
+					mastery=100
 				if(mastery >= 50)
-					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade2, user)&&user.isRace(SAIYAN))
+					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade2, user))
 						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade2)
 						user << "You can draw out greater power from your mastery over super Saiyan - Grade 2 unlocked!"
 				if(mastery >= 75)
-					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade3, user)&&user.isRace(SAIYAN))
+					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade3, user))
 						user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade3)
 						user << "You can strain past the limits of your Super Saiyan form! Grade 3 Unlocked!"
+				if(mastery >= 100)
+					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/zeal)
+						if(!locate(/obj/Skills/Buffs/SpecialBuffs/SaiyanFervor, user))
+							user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SaiyanFervor)
+							user << "You have fully mastered Super Saiyan, rendering the Grades obsolete and unlocking a new Signature buff! (Saiyan Fervor)"
+					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/pride)
+						if(!locate(/obj/Skills/Buffs/SpecialBuffs/RoyalLineage, user))
+							user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/RoyalLineage)
+							user << "You have fully mastered Super Saiyan, rendering the Grades obsolete and unlocking a new Signature buff! (Royal Lineage)"
+					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/honor)
+						if(!locate(/obj/Skills/Buffs/SpecialBuffs/SaiyanRoar, user))
+							user.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/SaiyanRoar)
+							user << "You have fully mastered Super Saiyan, rendering the Grades obsolete and unlocking a new Signature buff! (Saiyan Roar)"
 			class_boons(mob/user)
 				if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/saiyan/zeal)
 					class_passives = list("EnergyGeneration" = 3, "Instinct" = 2, "Flow" = 2)
@@ -146,6 +167,14 @@ transformation
 			strengthadd = 0.2
 			forceadd = 0.2
 			mastery_boons(mob/user)
+				if(user.Potential>=37&&mastery<25)
+					mastery=25
+				if(user.Potential>=39&&mastery<50)
+					mastery=50
+				if(user.Potential>=41&&mastery<75)
+					mastery=75
+				if(user.Potential>=43&&mastery<100)
+					mastery=100
 				if(mastery >= 100 && user.Class == "Justice")
 					if(user.race.ascensions[1].choiceSelected == /ascension/sub_ascension/half_saiyan/adaptive)
 						if(mastery >= 100)
@@ -387,17 +416,13 @@ transformation
 				if(first_time)
 					user.CutsceneMode() // store the pre-form appearance and then the post-form appearance before calling the animation. also remove the hair set on overlay afterwards since it's not supposed to be an overlay
 					var/appearance1 = user.appearance
-					world << "app1 is [appearance1]"
 					user.overlays += form_icon_1
 					user.overlays += form_icon_2
 					user.overlays += form_glow
 					user.overlays += form_aura
 					user.underlays += form_aura_underlay
-					world << "[form_hair_icon]"
 					user.overlays += form_hair
-					world << "[user.Hair]"
 					var/appearance2 = user.appearance
-					world << "app2 is [appearance2]"
 					user.HellSSJ4Animation1(appearance1, appearance2, user)
 					user.overlays -= form_hair
 		//Golden Oozaru is intended to be unlocked about 10 potential before SSj4!
@@ -460,7 +485,7 @@ transformation
 				user.Tail(1)
 
 			transform_animation(mob/user)
-				if(first_time) // store the pre-form appearance and then the post-form appearance before calling the animation. also remove the hair set on overlay afterwards since it's not supposed to be an overlay
+				/*if(first_time) // store the pre-form appearance and then the post-form appearance before calling the animation. also remove the hair set on overlay afterwards since it's not supposed to be an overlay
 					var/appearance1 = user.appearance
 					world << "app1 is [appearance1]"
 					user.overlays += form_icon_1
@@ -474,8 +499,8 @@ transformation
 					var/appearance2 = user.appearance
 					world << "app2 is [appearance2]"
 					user.HellSSJ4Animation1(appearance1, appearance2)
-					user.overlays -= form_hair
-				/*user.Quake(40)
+					user.overlays -= form_hair*/
+				user.Quake(40)
 				user.Frozen=1
 				KenShockwave2(user, icon='KenShockwaveGold.dmi', Size=10)
 				for(var/turf/t in Turf_Circle(user, 18))
@@ -496,7 +521,7 @@ transformation
 					KenShockwave(user, icon='KenShockwaveGold.dmi', Size=ShockSize, Blend=2, Time=10)
 					ShockSize/=2
 				spawn(10)
-					animate(user, color = user.MobColor, time=20)*/
+					animate(user, color = user.MobColor, time=20)
 		super_full_power_saiyan_4_limit_breaker
 			tier = 5
 			//Intended to be unlocked at around 80 potential, autounlocked at 100

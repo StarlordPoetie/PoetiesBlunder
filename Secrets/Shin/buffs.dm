@@ -66,8 +66,10 @@ mob/proc/GetMangStats() //This proc is ued in _JinxUtility.dm specifically for a
     return MANG_BASE_VALUE + (ShinSecret.Mang * MANG_MULT_VALUE)
 
 mob/proc/GetMangLevel() //This proc gets how many Mang you have active is used in _BinaryChecks.dm, BlurringStrikes.dm, and Brutalize.dm
-    if(Secret == "Shin")
+    if(hasSecret("Shin"))
         var/SecretInformation/Shin/ShinSecret = secretDatum
+        if(!CheckSlotless("Mang Resonance"))
+            ShinSecret.Mang = 0 // If not in mang stop asking for this you fucking moron
         return ShinSecret.Mang
     return 0
 
@@ -194,6 +196,8 @@ mob/proc/endMangBuff() // Turns Mang off (Oops)
         if(BuffOn(mr)) mr.Trigger(src, Override=1);
 
 /mob/proc/canMangPU()
+    if(!ActiveBuff) return 0;
+    if(secretDatum.currentTier < 2) return 0;
     return ((GetMangMastery() >= GetMangLevel()) && ((usingShinBuff() && !MangOnCD()) || usingMangBuff()));
 
 //tbh i think we could probably make a proc that handles both CD expiration and turning mang rings off but... i'm just gonna leave well enough alone

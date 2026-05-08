@@ -20,7 +20,7 @@
 			StyleStr = 1.4
 			StyleFor = 1.35
 			StyleOff = 1.3
-			passives = list("HeavyHitter" = 1, "Scorching" = 1, "Momentum" = 2, "Brutalize" = 2)
+			passives = list("HeavyHitter" = 1, "Scorching" = 1, "Momentum" = 2, "Brutalize" = 1)
 		else
 			StyleStr = 1.2
 			StyleFor = 1.15
@@ -128,7 +128,7 @@
 			StyleEnd = 1.4
 			StyleSpd = 1.35
 			StyleDef = 1.3
-			passives = list("Steady" = 1, "HolyMod" = 1, "BuffMastery" = 2, "Grit" = 1)
+			passives = list("Steady" = 1, "HolyMod" = 3, "BuffMastery" = 2, "Grit" = 1)
 		else
 			StyleEnd = 1.2
 			StyleSpd = 1.15
@@ -151,20 +151,20 @@
 			StyleStr = 1.75
 			StyleOff = 1.6
 			// Brutalize replaces Sadist here: Sadist's damage bonus only fires inside
-			// applySinBonusFromDealtDamage which is gated by isInDemonDevilTrigger(),
+			// applySinBonusFromDealtDamage which is gated by demonDevilTriggerSinMastery() (DT + 50+ mastery),
 			// so non-Mazoku Dark mages saw nothing. Brutalize is a universal damage
 			// passive that fits Dark's offensive identity.
-			passives = list("KillerInstinct" = 1, "CriticalChance" = 20, "CriticalDamage" = 0.2, "LifeSteal" = 1, "Pressure" = 2, "Momentum" = 2, "Brutalize" = 2)
+			passives = list("KillerInstinct" = 0.1, "CriticalChance" = 20, "CriticalDamage" = 0.2, "LifeSteal" = 20, "Pressure" = 2, "Momentum" = 2, "Brutalize" = 2)
 		else if(tier >= 2)
 			StyleFor = 1.4
 			StyleStr = 1.35
 			StyleOff = 1.3
-			passives = list("KillerInstinct" = 1, "CriticalChance" = 20, "CriticalDamage" = 0.2, "LifeSteal" = 1, "Pressure" = 2)
+			passives = list("KillerInstinct" = 0.1, "CriticalChance" = 20, "CriticalDamage" = 0.2, "LifeSteal" = 10, "Pressure" = 2)
 		else
 			StyleFor = 1.2
 			StyleStr = 1.15
 			StyleOff = 1.1
-			passives = list("KillerInstinct" = 1, "CriticalChance" = 20, "CriticalDamage" = 0.2)
+			passives = list("KillerInstinct" = 0.1, "CriticalChance" = 20, "CriticalDamage" = 0.2)
 	verb/Dark_Gestalt()
 		set hidden = 1
 		src.Trigger(usr)
@@ -186,7 +186,7 @@
 			StyleSpd = 1.4
 			StyleFor = 1.35
 			StyleDef = 1.3
-			passives = list("TechniqueMastery" = 1, "CounterMaster" = 1, "FluidForm" = 1, "Deflection" = 1)
+			passives = list("TechniqueMastery" = 3, "CounterMaster" = 1, "FluidForm" = 1, "Deflection" = 1)
 		else
 			StyleSpd = 1.2
 			StyleFor = 1.15
@@ -208,12 +208,12 @@
 			StyleFor = 1.9
 			StyleSpd = 1.75
 			StyleOff = 1.6
-			passives = list("Warping" = 1, "SuperDash" = 1, "Flicker" = 1, "MovementMastery" = 1, "Pressure" = 5, "Unnerve" = 5)
+			passives = list("Warping" = 1, "SuperDash" = 1, "Flicker" = 1, "MovementMastery" = 2, "Pressure" = 5, "Unnerve" = 5)
 		else if(tier >= 2)
 			StyleFor = 1.4
 			StyleSpd = 1.35
 			StyleOff = 1.3
-			passives = list("Warping" = 1, "SuperDash" = 1, "Flicker" = 1, "MovementMastery" = 1)
+			passives = list("Warping" = 1, "SuperDash" = 1, "Flicker" = 1, "MovementMastery" = 2)
 		else
 			StyleFor = 1.2
 			StyleSpd = 1.15

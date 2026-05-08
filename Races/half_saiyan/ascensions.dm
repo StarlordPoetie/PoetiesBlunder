@@ -51,11 +51,13 @@ ascension
 			onAscension(mob/owner)
 				if(!applied)
 					simulateChoiceMutation(owner)
+				if(owner.transUnlocked<1)
+					owner.transUnlocked=1
 				..()
 		three
 			unlock_potential = ASCENSION_THREE_POTENTIAL // ?
 			intimidation = 10
-			passives = list("Brutalize" = 0.25, "Tenacity" = 0.5, "TechniqueMastery" = -1)
+			passives = list("Brutalize" = 0.25, "Tenacity" = 0.5, "TechniqueMastery" = 1)
 			simulateChoiceMutation(mob/owner)
 				switch(owner.Class)
 					if("Compassion")

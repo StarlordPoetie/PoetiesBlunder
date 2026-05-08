@@ -159,4 +159,11 @@ proc
 				LightningStrike2(M, Offset=Offset)
 			if(3)
 				LightningStrikeRed(M, Offset=Offset)
+			if(4)
+				LightningStrikeVFX5(M, Offset=Offset)
+	EruptEffect(atom/movable/M, var/type=1, var/Offset=0)
+		set waitfor=0
+		switch(type)
+			if(1)
+				PriestErupt(M, Offset=Offset)
 

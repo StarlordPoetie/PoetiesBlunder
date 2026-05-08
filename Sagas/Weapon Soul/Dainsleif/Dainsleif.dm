@@ -164,3 +164,39 @@ obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Blood_Lusted
 	ManaGlowSize=3
 	LockX=0
 	LockY=0
+/obj/Skills/Buffs/NuStyle/SwordStyle
+	Might_of_Dainn
+		StyleActive="Might of Dáinn"
+		passives = list("Duelist" = 1, "Steady" = 1)
+		StyleOff=1
+		StyleStr=1.30
+		Finisher="/obj/Skills/Queue/Finisher/Wrath_of_Hogni"
+		adjust(mob/p)
+			StyleStr = 1.10 + (0.05 * p.SagaLevel)
+			StyleOff = 1 + (0.05 * p.SagaLevel)
+			passives["Duelist"] = 1 + (0.5* p.SagaLevel)
+			passives["Steady"] = 1+p.SagaLevel
+		verb/Might_of_Dainn()
+			set hidden=1
+			adjust(usr)
+			Trigger(usr)
+/obj/Skills/Queue/Finisher
+	Wrath_of_Hogni
+		DamageMult=15
+		HitSparkIcon='Slash - Vampire.dmi'
+		HitSparkX=-32
+		HitSparkY=-32
+		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Hymn_of_Hjaoningavig"
+		BuffAffected="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher/Lament_of_Hildr"
+		HitMessage = "channels the bloody past of Hjaðningavíg through a savage strike!"
+/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Finisher
+	Hymn_of_Hjaoningavig
+		StrMult=1.6
+		passives = list("KillerInstinct" = 0.1, "SlayerMod" = 1, "FavoredPrey" = "All", "Duelist" = 2)
+	Lament_of_Hildr
+		IconLock='SweatDrop.dmi'
+		IconApart=1
+		EndMult=0.8
+		DefMult=0.8
+		ActiveMessage="feels themselves shake as they feel Queen Hildr's lament..."
+		OffMessage="shakes off the vestiges of grief!"

@@ -13,6 +13,7 @@ ascension
 					if(owner.Class == "Imaginary")
 						if(owner.SagaLevel < 2)
 							owner.SagaLevel = 2
+							owner.ChooseMartialSkill(1)
 				..()
 			simulateChoiceMutation(mob/owner)
 				var/type = owner.NobodyOriginType
@@ -64,6 +65,11 @@ ascension
 					if(owner.Class == "Imaginary")
 						if(owner.SagaLevel < 3)
 							owner.SagaLevel = 3
+							owner.ChooseKeychain()
+							owner.ChooseMartialSkill(2)
+				if(owner.NobodyOriginType!="Simple")
+					if(owner.transUnlocked<1)
+						owner.transUnlocked=1
 				..()
 			simulateChoiceMutation(mob/owner)
 				var/type = owner.NobodyOriginType

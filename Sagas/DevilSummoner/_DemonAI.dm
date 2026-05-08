@@ -196,7 +196,7 @@
 		if(target && target.KO && istype(target, /mob/Player/AI) && !istype(target, /mob/Player/AI/Demon) && !target.client)
 			var/mob/Player/AI/ai_target = target
 			if(ai_target.ai_owner) return
-			target.Death(null, null)
+			target.Death(ai_owner, null)
 			if(ai_owner && Potential < ai_owner.Potential)
 				Potential += 1
 				var/datum/party_demon/kpd = DemonGetPartyDemon()
@@ -227,7 +227,7 @@
 		if(ai_owner && istype(attacker, /mob))
 			if(attacker == ai_owner) return
 			if(ai_owner.party && ai_owner.party.members && (attacker in ai_owner.party.members)) return
-		var/raw_dmg = round(raw_val * glob.DevilSummonerDemonDamageTakenMod)
+		var/raw_dmg = raw_val * glob.DevilSummonerDemonDamageTakenMod
 		if(raw_dmg <= 0) return
 		var/resist = DemonGetResistMult("Phys")
 		if(resist == 0)
@@ -235,24 +235,24 @@
 			return
 		// Repel: take 25% damage, reflect 25% back to attacker
 		if(DemonHasRepel("Phys"))
-			var/repel_back = max(1, round(raw_dmg * 0.25))
-			raw_dmg = max(1, round(raw_dmg * 0.25))
+			var/repel_back = raw_dmg * 0.25
+			raw_dmg = raw_dmg * 0.25
 			if(istype(attacker, /mob))
 				DemonDealDamage(attacker, TrueDamage(repel_back))
 			if(ai_owner) ai_owner << "<font color='#aaccff'>[name] repels part of the attack!</font>"
 		// Drain: heal 25% of incoming damage, take 25%
 		else if(DemonHasDrain("Phys"))
-			var/heal_amt = max(1, round(raw_dmg * 0.25))
-			raw_dmg = max(1, round(raw_dmg * 0.25))
+			var/heal_amt = raw_dmg * 0.25
+			raw_dmg = raw_dmg * 0.25
 			demon_hp = min(100, demon_hp + heal_amt)
 			if(ai_owner) ai_owner << "<font color='#88ffaa'>[name] drains [heal_amt] HP from the attack!</font>"
 		// Apply standard resist multiplier
-		raw_dmg = max(1, round(raw_dmg * resist))
+		raw_dmg = raw_dmg * resist
 		// LifeGeneration for demons
 		if(passive_handler)
 			var/lg = passive_handler.Get("LifeGeneration")
 			if(lg > 0)
-				var/lg_heal = max(1, round(lg / glob.LIFE_GEN_DIVISOR * raw_dmg))
+				var/lg_heal = lg / glob.LIFE_GEN_DIVISOR * raw_dmg
 				demon_hp = min(100, demon_hp + lg_heal)
 		demon_hp = max(0, demon_hp - raw_dmg)
 		if(!ai_owner) return

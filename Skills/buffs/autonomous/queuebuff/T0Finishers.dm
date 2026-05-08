@@ -84,7 +84,7 @@
     Champion_Pride
         IconLock='SweatDrop.dmi'
         IconApart=1
-        passives = list("NoDodge" = 1, "Duelist" = 1)
+        passives = list("Duelist" = 1)
         OffMult = 1.2
         StrMult = 1.3
         ActiveMessage="is filled with a champion's pride!"
@@ -93,7 +93,7 @@
     Marked
         IconLock='Stun.dmi'
         IconApart=1
-        passives = list("NoDodge" = 1, "Duelist" = 1)
+        passives = list("Duelist" = 1)
         EndMult = 0.8
         SpdMult = 0.9
         StrMult = 0.9

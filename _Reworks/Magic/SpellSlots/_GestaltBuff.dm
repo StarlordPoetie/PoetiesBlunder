@@ -4,11 +4,19 @@
 // adjust() dynamically sets stats and passives based on current tier
 
 /mob/proc/getGestaltTier()
-	if(Saga || CyberCancel) return 1;
+	var/GestaltTier=1
 	var/p = get_potential();
-	if(p < 25) return 1;
-	else if(p < glob.AdvancedElementPotential) return 2;
-	else return 3;
+	if(p < 25)
+		GestaltTier = 1
+	else if(p < glob.AdvancedElementPotential && p>25)
+		GestaltTier = 2
+	else
+		GestaltTier = 3
+	if(Saga&&!isRace(DEMIFIEND)&&!isRace(NOBODY) || CyberCancel || Secret&&!isRace(ELDRITCH))
+		if(!isRace(HUMAN))
+			GestaltTier -=1
+	if(GestaltTier<1) GestaltTier=1
+	return GestaltTier
 
 /obj/Skills/Buffs/SpecialBuffs/Fire_Gestalt_Buff
 	MagicNeeded = 1
@@ -33,7 +41,7 @@
 			ForMult = 1.25
 			StrMult = 1.15
 			OffMult = 1
-			passives = list("Scorching" = 1, "Momentum" = 1, "FireHerald" = 1, "Brutalize" = 1)
+			passives = list("Scorching" = 1, "Momentum" = 1, "FireHerald" = 1, "Brutalize" = 1, "CriticalChance" = 10, "CriticalDamage" = 0.1)
 		else
 			ForMult = 1.1
 			StrMult = 1
@@ -173,17 +181,17 @@
 			StrMult = 1.4
 			ForMult = 1.35
 			OffMult = 1.3
-			passives = list("KillerInstinct" = 1, "Pressure" = 1, "CriticalChance" = 20, "CriticalDamage" = 0.2, "LifeSteal" = 20, "DemonicInfusion" = 1)
+			passives = list("KillerInstinct" = 0.1, "Pressure" = 1, "CriticalChance" = 20, "CriticalDamage" = 0.2, "LifeSteal" = 20, "DemonicInfusion" = 1)
 		else if(tier >= 2)
 			StrMult = 1.25
 			ForMult = 1.15
 			OffMult = 1
-			passives = list("KillerInstinct" = 1, "Pressure" = 1, "CriticalChance" = 20, "CriticalDamage" = 0.2, "LifeSteal" = 10)
+			passives = list("KillerInstinct" = 0.1, "Pressure" = 1, "CriticalChance" = 10, "CriticalDamage" = 0.05, "LifeSteal" = 10, "DemonicInfusion" = 1)
 		else
 			StrMult = 1.1
 			ForMult = 1
 			OffMult = 1
-			passives = list("KillerInstinct" = 1, "Pressure" = 1)
+			passives = list("KillerInstinct" = 0.1, "Pressure" = 1)
 	verb/Dark_Gestalt_Buff()
 		set hidden = 1
 		src.Trigger(usr)

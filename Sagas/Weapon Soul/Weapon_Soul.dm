@@ -70,21 +70,26 @@ mob/tierUpSaga(Path)
 						src << "Yata No Kagami lends it's mirrored frame to you, promising to reflect any attacks."
 						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Yata_no_Kagami/Mirror_Protection)
 						src.AddSkill(new/obj/Skills/Yata_no_Kagami/Mirror_Prison)
+						src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Imperial_Heritage)
 
 					if("Durendal")
 						src << "A horn made of some unidentified substance manifests in your hand, an Oilphant."
 						passive_handler.Increase("TeamFighter")
 						src.AddSkill(new/obj/Skills/AutoHit/Blow_The_Horn)
 						src.AddSkill(new/obj/Skills/Companion/PlayerCompanion/Squad/Oilphant)
+						src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Saintlike_Behavior)
+
 
 					if("Dainsleif")
 						src << "Dainsleif's sheath grows with the power of the damage you inflict on others. . ."
 						passive_handler.Increase("CursedSheath")
 						AddSkill(new/obj/Skills/AutoHit/Destined_Death)
+						src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Might_of_Dainn)
 
 					if("Caledfwlch")
 						src << "A sheath manifests in your soul, capable of healing any injuries; Avalon."
 						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Avalon)
+						src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Knight_Of_Camelot)
 
 					if("Muramasa")
 						src << "The blade of assured Death whispers the arts of Death to you..."
@@ -102,10 +107,12 @@ mob/tierUpSaga(Path)
 						src << "Soul Edge's chaotic power crawls up your frame...!"
 						passive_handler.Increase("Reversal", 0.5)
 						AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Symbiotic_Edge)
+						src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Stained_Memories)
 
 					if("Soul Calibur")
 						src << "Soul Calibur's Order becomes far easier to sink into..."
 						AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Defrost)
+						src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Soul_Conviction)
 
 					if("Ryui Jingu Bang")
 						src << "Yeoui unveils the secrets to proper footwork..."
@@ -115,8 +122,10 @@ mob/tierUpSaga(Path)
 
 					if("Green Dragon Crescent Blade")
 						src << "The Green Dragon Crescent Blade unveils the secrets to an unstoppable rush..."
-						passive_handler.Increase("Flow")
-						passive_handler.Increase("Extend")
+						passive_handler.Increase("Flow", 2)
+						passive_handler.Increase("Instinct", 2)
+						AddSkill(new/obj/Skills/AutoHit/Crushing_Dragon_Strike)
+						AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Gong_Bu)
 						// SagaThreshold("Spd",2)
 
 
@@ -161,6 +170,8 @@ mob/tierUpSaga(Path)
 					if("Soul Edge")
 						src << "An eye opens up on Soul Edge's hilt, peering out..."
 						AddSkill(new/obj/Skills/AutoHit/Gaze_of_Despair)
+						src << "Soul Edge trembles with an eager, dark hunger. Dark Reconquista beckons."
+						AddSkill(new/obj/Skills/AutoHit/Dark_Reconquista)
 
 					if("Soul Calibur")
 						src << "The manipulation of Soul Calibur's crystals becomes second nature..."
@@ -171,8 +182,8 @@ mob/tierUpSaga(Path)
 
 					if("Green Dragon Crescent Blade")
 						src << "The Green Dragon Crescent Blade shows how to counter any attack..."
-						passive_handler.Increase("Reversal", 0.25)
 						passive_handler.Increase("Adaptation")
+						passive_handler.Increase("Extend", 1)
 						// SagaThreshold("Spd",0.5)
 						// SagaThreshold("Str",0.5)
 						// SagaThreshold("End",0.5)
@@ -278,8 +289,11 @@ mob/tierUpSaga(Path)
 							SE.passives["HellPower"] = 1
 							SE.passives["Burning"] = 2
 							SE.passives["BurningShot"] = 1
+							SE.passives["BurnHit"] = 15
 							SE.passives["AngerAdaptiveForce"] = 0.15
 							SE.passives["GodKi"] = 0.25
+						src << "Soul Edge's conquering chaos takes form as a wave of ruin, Dark Reconquista: Triumph."
+						AddSkill(new/obj/Skills/AutoHit/Dark_Reconquista_Triumph)
 
 					if("Soul Calibur")
 						for(var/obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Soul_Calibur/SC in src.Buffs)
@@ -295,8 +309,11 @@ mob/tierUpSaga(Path)
 
 					if("Green Dragon Crescent Blade")
 						for(var/obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Guan_Yu/GuanYu in src.Buffs)
-							GuanYu.passives["Zornhau"] = 2
 							GuanYu.passives["Iaijutsu"] = 2
+							GuanYu.passives["Zornhau"] = 2
+							GuanYu.passives["TechniqueMastery"] = 2
+							GuanYu.passives["SwordAscension"] = 1
+							GuanYu.passives["LifeGeneration"] = 1
 							GuanYu.passives["GodKi"] = 0.25
 			if(6)
 				if(!locate(/obj/Skills/Buffs/SpecialBuffs/OverSoul, src))
@@ -307,6 +324,10 @@ mob/tierUpSaga(Path)
 					if("Kusanagi")
 						src << "The Fundament of Faith: Belief answers your Call."
 						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Belief)
+
+					if("Durendal")
+						src << "The Fundament of Hope: Conviction answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Conviction)
 
 					if("Dainsleif")
 						src << "The Fundament of Ruin: Hatred answers your Call."
@@ -354,6 +375,18 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 		ActiveMessage= "invokes the Origin of Faith, embracing Primordial Belief!"
 		OffMessage= "casts aside the Origin of Faith..."
 		verb/Fundament_Belief()
+			set category="Skills"
+			src.Trigger(usr)
+
+	Conviction
+		name = "Fundament: Conviction"
+		StrMult=2
+		EndMult=1.5
+		OffMult=1.25
+		passives= list("HolyMod" = 5, "Purity" = 1, "BeyondPurity"= 1 , "DoubleStrike"= 1 , "Brutalize" = 2)
+		ActiveMessage= "invokes the Origin of Hope, embracing the Conviction of a Saint!"
+		OffMessage= "casts aside the Origin of Hope..."
+		verb/Fundament_Conviction()
 			set category="Skills"
 			src.Trigger(usr)
 

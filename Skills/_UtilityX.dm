@@ -1798,16 +1798,22 @@ obj/Skills/Utility
 			Choice.overlays+='SparksCoolRed.dmi'
 			sleep(100)
 			if(Choice.KO)
+				var/radius=input(usr, "How many tiles is [Choice] allowed to move from this spot? (min 0, max 500)", "Distance") as num
+				if(radius < 0)
+					radius = 0
+				if(radius > 500)
+					radius = 500
 				var/obj/Seal/S=new/obj/Seal
 				if(usr.SealPersonal)
 					S.icon=usr.SealPersonal
 				S.Creator=usr.ckey
-				S.Level=(usr.Intelligence*usr.Imagination*usr.SealingMagicUnlocked)
+				S.Level=(usr.Intelligence*usr.Imagination)
 				if(usr.Saga=="Keyblade")
 					S.Level*=1.5
 				S.ZPlaneBind=Choice.z
 				S.XBind=Choice.x
 				S.YBind=Choice.y
+				S.DistAllowed=radius
 				Choice.contents+=S
 				Choice.movementSealed = TRUE
 				S.name="Movement Seal ([Choice.name])"
@@ -3254,7 +3260,7 @@ obj/Skills/Utility
 					ModChoices.Add("Biological Cybernetics")
 			if(M.BioAndroid||M.SuperAndroid)
 				ModChoices.Remove("Biological Cybernetics")
-			if(M.CyberneticMainframe||M.isRace(ANDROID)&&M.Potential<30)
+			if(M.CyberneticMainframe||M.isRace(ANDROID)&&M.Potential<25)
 				ModChoices.Remove("Cybernetic Mainframe")
 
 			ModChoice=input(usr, "What modification would you like to install?", "Cybernetic Augmentation") in ModChoices
@@ -3368,7 +3374,7 @@ obj/Skills/Utility
 					ModDesc="Overdrive allows the augmented to overclock every cybernetically enhanced aspect in exchange for battery life."
 				if("Cybernetic Mainframe")
 					Cost=glob.progress.EconomyCost*300
-					ModDesc="A cybernetic mainframe allows someone to become a complete cyborg, forsaking most of their natural abilities in exchange for opening up more avenues of cybernetic customization."
+					ModDesc="A cybernetic mainframe allows someone to become a complete cyborg, forsaking most of their natural abilities (such as signature skills) in exchange for opening up more avenues of cybernetic customization. For regular Androids, it unlocks a powerful new transformation based on your cybernetic enhancements."
 				if("Biological Cybernetics")
 					Cost=glob.progress.EconomyCost*1000
 					ModDesc="Converts an Android or someone with an enhanced cybernetic mainframe into a Biological Android."
@@ -3621,7 +3627,8 @@ obj/Skills/Utility
 						OMsg(usr, "[usr] tried to install a [ModChoice] into [M]...but they already have a Cybernetic Mainframe.")
 						src.Using=0
 						return
-					M.CyberneticMainframe=1
+					if(!M.isRace(ANDROID))
+						M.CyberneticMainframe=1
 					if(M.isRace(ANDROID))
 						M.SuperAndroid=1
 						M.transUnlocked=1

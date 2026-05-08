@@ -30,9 +30,10 @@ transformation
 				if(mastery >= 0)
 					pot_trans=3
 					passives = list("Conductor"= 10, "HighTension"=-0.125,"TensionPowered"=0.375, "StyleMastery" = 2, "BuffMastery" = 2,"TechniqueMastery"=1,"UnderDog"=0.3,"Tenacity"=2)
-				if(!locate(/obj/Skills/Buffs/SlotlessBuffs/Racial/Human/Activate_High_Tension, user))
-					var/obj/Skills/Buffs/SlotlessBuffs/Racial/Human/Activate_High_Tension/s=new/obj/Skills/Buffs/SlotlessBuffs/Racial/Human/Activate_High_Tension
-					user.AddSkill(s)
+				if(!user.isMazokuPathHuman())
+					if(!locate(/obj/Skills/Buffs/SlotlessBuffs/Racial/Human/Activate_High_Tension, user))
+						var/obj/Skills/Buffs/SlotlessBuffs/Racial/Human/Activate_High_Tension/s=new/obj/Skills/Buffs/SlotlessBuffs/Racial/Human/Activate_High_Tension
+						user.AddSkill(s)
 
 			adjust_transformation_visuals(mob/user)
 				if(!form_hair_icon&&user.Hair_Base)

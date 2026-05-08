@@ -1,6 +1,6 @@
 mob/verb/Character_Sheet()
 	set category = "Other"
-	src<<browse(src.GetAssess(),"window=Assess;size=275x650")
+	src<<browse(src.GetAssess(),"window=Assess;size=275x700")
 
 // Unhinged Majins count their Power at MAJIN_UNHINGED_POWER_MULT (2x) in both offense and defense
 mob/proc/GetEffectivePower()
@@ -120,7 +120,8 @@ mob/proc/GetAssess()
 	<tr><td>Potential:</td><td>[PotentialDisplay]/150</td></tr>
 	<tr><td>Transformation Potential:</td><td>[src.potential_trans]/100</td></tr>
 	<tr><td>Average Stats: [StatAverage]</td></tr>
-	<tr><td>Magic Level: [getTotalMagicLevel()]</td></tr>
+	<tr><td>Magic Level: [src.getTotalMagicLevel()]</td></tr>
+	<tr><td>Stat Enhancement Chips Installed(Max): [src.EnhanceChips]([src.EnhanceChipsMax])</td></tr>
 			</table></html>"}
 /*	<tr><td>True Tier:</td><td>[POWER_TIERS[potential_power_tier]]</td></tr>
 	<tr><td>Display Tier:</td><td>[POWER_TIERS[power_display]]</td></tr>*/
@@ -329,6 +330,9 @@ mob/Players/Stat()
 			for(var/obj/Money/M in usr)
 				M.name="[Commas(round(M.Level))] [glob.progress.MoneyName]"
 				stat(M)
+			for(var/obj/Stars/S in usr)
+				S.name="[Commas(round(S.Level))] Stars"
+				stat(S)
 			for(var/obj/Items/A in usr)
 				if(!(A.PermEquip&&A.suffix&&!A.Stealable))
 					if(istype(A, /obj/Items/Armor) || istype(A, /obj/Items/Sword))
@@ -441,10 +445,12 @@ mob/Players/Stat()
 	if(Target.BioArmor > 10 && Target.BioArmor < 99) return "??"
 	if(Target.BioArmor < 10) return "?"
 
+/mob/var/SpawnDisplay;
+
 /mob/proc/outputVitals()
 	var/vaiHealth = hasClearSight()&&Target.VaizardHealth ? " ([Target.VaizardHealth])" : ""
 	var/healthDisplay = "[Target.Health][vaiHealth]%"
-	var/SpawnDisplay="[Target.SpawnArea]"
+	SpawnDisplay="[Target.SpawnArea]"
 	if(src.Target.passive_handler.Get("Obfuscated Origin"))
 		SpawnDisplay = "<font color='red'><b>Unknowable</b></font color>"
 	if(Target.BioArmor) healthDisplay = getBioArmorDisplay()
@@ -507,7 +513,7 @@ mob/proc/GetPowerUpRatio()
 	if(Secret == "Heavenly Restriction" && secretDatum?:hasImprovement("Power Control"))
 		PowerUp += secretDatum?:getBoon(src, "Power Control")/12
 	if(src.CheckSpecial("Overdrive"))
-		PowerUp+=1
+		PowerUp+=2
 /*	if(src.CyberCancel)
 		if(!isRace(ANDROID))
 			PowerUp-=PowerUp*src.CyberCancel*/
@@ -943,7 +949,7 @@ mob/proc/
 						if(src.DefianceCounter)
 							a+=src.DefianceCounter*0.05
 						// WrathFactor
-						if(src.passive_handler.Get("WrathFactor") && src.isInDemonDevilTrigger())
+						if(src.passive_handler.Get("WrathFactor") && src.demonDevilTriggerSinMastery())
 							var/missing = max(0, 100 - Health)
 							var/steps = round(missing / 10)
 							if(steps > 0)
@@ -996,7 +1002,7 @@ mob/proc/
 			if(passive_handler.Get("SSJRose"))
 				Ratio*=1.60 //this will be Different but i'm leaving it like this now
 
-			if(src.Target && ismob(src.Target) && passive_handler.Get("Limited Rank-Up") && passive_handler.Get("EnvyFactor") && src.HasMirrorStats() && src.Target != src && !src.Target.HasMirrorStats() && istype(src.Target, /mob/Players) && !src.Target.passive_handler.Get("To Govern Strength"))
+			if(src.Target && ismob(src.Target) && passive_handler.Get("Limited Rank-Up") && passive_handler.Get("EnvyFactor") && src.demonDevilTriggerSinMastery() && src.HasMirrorStats() && src.Target != src && !src.Target.HasMirrorStats() && istype(src.Target, /mob/Players) && !src.Target.passive_handler.Get("To Govern Strength"))
 				Ratio = src.Target.Power / src.Target.GetPowerUpRatio()
 
 		if(passive_handler["Rebel Heart"])
@@ -1023,10 +1029,12 @@ mob/proc/
 		if(Power < 1)
 			Power = 1
 		if(passive_handler["Hidden Potential"] && Target)
-			if(!Target.passive_handler.Get("Hidden Potential")&&!Target.passive_handler.Get("To Govern Strength"))
+			if(!Target.passive_handler.Get("Hidden Potential")&&!Target.passive_handler.Get("To Govern Strength")&&!Target.passive_handler.Get("AbsoluteDespair"))
 				if(Target.Power > Power)
 					Power = Target.Power
 					Power*=GetPowerUpRatio()
+		if(passive_handler.Get("AbsoluteDespair"))
+			Power=(Target.Power*1.1)
 		var/nerf = GetPowerUpRatio()+EPM > 2.3 ? 1 : 0
 		power_display=get_power_tier(0, Power, nerf)
 
@@ -1170,7 +1178,7 @@ mob/proc/
 				src.Auraz("Remove")
 				src<<"You are too tired to power up."
 				src.PoweringUp=0
-				if(isRace(HUMAN)||isRace(CELESTIAL))
+				if((isRace(HUMAN)||isRace(CELESTIAL)) && !isMazokuPathHuman())
 					if(Health<=30&&src.transActive==4&&src.transUnlocked>=5)
 						src.race.transformations[5].transform(src, TRUE)
 				if(isRace(SAIYAN)||isRace(HALFSAIYAN))
@@ -1457,6 +1465,11 @@ mob/proc/Get_Sense_Reading(mob/A)
 		. +=" (Fading)"
 
 mob/proc/Get_Scouter_Reading(mob/B)
+	if(B.Imitating)
+		for(var/obj/Skills/Utility/Imitate/i in B.Skills)
+			if(i.imitating_info)
+				return i.imitating_info.powerToCopy
+
 	var/Ratio=B.EnergyUniqueness
 
 	var/EPM=B.Power_Multiplier//effective power multiplier

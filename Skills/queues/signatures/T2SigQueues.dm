@@ -67,10 +67,10 @@ obj
 
 			Void_Tiger_Fist
 				SignatureTechnique=2
-				DamageMult=3.6
+				DamageMult=5
 				AccuracyMult = 1.175
 				Warp=2
-				Shearing=5
+				Shearing=10
 				Instinct=4
 				Duration=5
 				KBAdd=2

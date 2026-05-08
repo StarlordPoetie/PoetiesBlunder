@@ -179,6 +179,11 @@ var/global/list/DEMON_PASSIVE_DB = list()
 	// Ensure passive_handler exists on the demon mob
 	if(!passive_handler) passive_handler = new()
 
+	// Wipe any prior grants from this demon before re-applying.
+	// Stops owner-side passives (ManaCapMult etc) from stacking if Apply runs twice.
+	if(passive_owner_grants && passive_owner_grants.len)
+		RemoveDemonPassives()
+
 	if(!applied_passives)    applied_passives    = list()
 	if(!passive_owner_grants) passive_owner_grants = list()
 
