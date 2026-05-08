@@ -191,6 +191,7 @@
 		p.refreshCursedEnergyKiControlSpecialization()
 		p.passive_handler.Set("RenameMana", "Cursed Energy")
 		p.setupCursedEnergyAwakening()
+		p.applyCursedEnergyPowerControlIcon()
 		grantDomainSureHit(p)
 		p.refreshCursedEnergyTraitPassives()
 		switch(currentTier)
@@ -229,6 +230,25 @@
 		CursedEnergyBlackFlashChance = clamp(CursedEnergyBlackFlashChance, CursedEnergyBlackFlashBaseChance, 35)
 
 		updateSlashCursedTechniques(p)
+
+
+mob/proc/applyCursedEnergyPowerControlIcon()
+	if(!hasSecret("Cursed Energy"))
+		return
+	for(var/obj/Skills/Power_Control/pc in src)
+		pc.sicon = 'Aura_CursedEnergyLeak.dmi'
+		pc.sicon_state = null
+		pc.pixel_x = 0
+		pc.pixel_y = 0
+
+
+mob/proc/resetCursedEnergyPowerControlIcon()
+	for(var/obj/Skills/Power_Control/pc in src)
+		if(pc.sicon == 'Aura_CursedEnergyLeak.dmi')
+			pc.sicon = initial(pc.sicon)
+			pc.sicon_state = initial(pc.sicon_state)
+			pc.pixel_x = initial(pc.pixel_x)
+			pc.pixel_y = initial(pc.pixel_y)
 
 
 mob/proc/applyCursedEnergyKiControlDefaults()
@@ -421,6 +441,7 @@ mob/proc/setupCursedEnergyAwakening()
 	if(!ce)
 		return
 	if(ce.awakeningConfigured)
+		applyCursedEnergyPowerControlIcon()
 		if(cursedEnergyTrait && !cursedEnergyTraitSlot)
 			if(!reserveCursedEnergyTrait(cursedEnergyTrait))
 				src << "Your Cursed Energy trait slot is already occupied; Cursed Energy has been cleaned up."
@@ -465,6 +486,7 @@ mob/proc/setupCursedEnergyAwakening()
 			src << "Your cursed energy gains slicing properties."
 
 	ce.awakeningConfigured = 1
+	applyCursedEnergyPowerControlIcon()
 	refreshCursedEnergyTraitPassives()
 
 
@@ -598,6 +620,7 @@ mob/proc/removeCursedEnergySkill(var/path)
 
 mob/proc/cleanupCursedEnergy()
 	removeCursedEnergyTraitPassives()
+	resetCursedEnergyPowerControlIcon()
 	if(passive_handler)
 		passive_handler.Set("RenameMana", 0)
 		passive_handler.Set("Sparks of Black", 0)
