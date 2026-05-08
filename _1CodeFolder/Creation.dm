@@ -58,6 +58,9 @@ mob/Players
 		winset(usr, null, "browser-options=find")
 		client.perspective=MOB_PERSPECTIVE
 		players += usr
+		ensureCursedEnergyStillValid()
+		if(Secret == "Cursed Energy" && istype(secretDatum, /SecretInformation/CursedEnergy))
+			setupCursedEnergyAwakening()
 		OverwatchNotifyLogin(usr, "logged in")
 		// StyleRating decay runs in spawn(); the loop dies on disconnect and
 		// leaves the persistent StyleRating var stuck above zero on the next

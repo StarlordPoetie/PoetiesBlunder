@@ -13,6 +13,9 @@
 
 /mob/proc/
 	hasSecret(secretName)
+		if(cursedEnergyTrait || cursedEnergyTraitSlot || cursedEnergyTraitPassivesApplied)
+			if(Secret != "Cursed Energy" || !istype(secretDatum, /SecretInformation/CursedEnergy))
+				cleanupCursedEnergy()
 		if(!secretName) return 0;
 		if(!Secret) return 0;
 		if(!(secretName in VALID_SECRET_LIST))
@@ -764,8 +767,8 @@ mob
 		src << "Invalid secret path: [secretPath]"
 		return
 
-	if(cursedEnergyTraitPassivesApplied)
-		removeCursedEnergyTraitPassives()
+	if(cursedEnergyTrait || cursedEnergyTraitSlot || istype(secretDatum, /SecretInformation/CursedEnergy))
+		cleanupCursedEnergy()
 
 	var/SecretInformation/secret = new secretTypePath
 	secretDatum = secret

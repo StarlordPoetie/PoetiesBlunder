@@ -825,6 +825,8 @@ mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extr
 		src.DefEroded=0
 		src.RecovTax=0
 		src.RecovCut=0
+		if(src.Secret=="Cursed Energy" || istype(src.secretDatum, /SecretInformation/CursedEnergy) || src.cursedEnergyTrait)
+			src.cleanupCursedEnergy()
 		if(src.Secret=="Zombie")
 			src.Secret=null
 			src.NoDeath=0
