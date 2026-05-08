@@ -3504,6 +3504,8 @@ mob
 				if(src.req_pot(1))
 					src << "You develop the ability to fluctuate your power due to your experience fighting!"
 					src.AddSkill(new/obj/Skills/Power_Control)
+					if(src.hasSecret("Cursed Energy"))
+						src.applyCursedEnergyPowerControlIcon()
 					if(!locate(/obj/Skills/Buffs/ActiveBuffs/Ki_Control, src))
 						src.PoweredFormSetup()
 			if(!locate(/obj/Skills/Utility/Sense, src))
