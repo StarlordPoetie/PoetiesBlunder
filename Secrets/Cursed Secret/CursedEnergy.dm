@@ -499,12 +499,12 @@ mob/proc/attemptCursedReverseDash()
 
 	if(cursedEnergyDomainChoice == "Simple Domain")
 		var/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain/sd = locate(/obj/Skills/Buffs/SlotlessBuffs/Simple_Domain) in src
-		if(sd && sd.Trigger(src))
+		if(sd && !sd.Using && !sd.cooldown_remaining && sd.Trigger(src))
 			return 1
 
 	if(cursedEnergyDomainChoice == "Hollow Wicker Basket")
 		var/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket/hwb = locate(/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket) in src
-		if(hwb && hwb.Trigger(src))
+		if(hwb && !hwb.Using && !hwb.cooldown_remaining && hwb.Trigger(src))
 			return 1
 
 	return 0
