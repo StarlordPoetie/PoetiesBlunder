@@ -77,6 +77,7 @@ mob/tierUpSaga(Path)
 						passive_handler.Increase("TeamFighter")
 						src.AddSkill(new/obj/Skills/AutoHit/Blow_The_Horn)
 						src.AddSkill(new/obj/Skills/Companion/PlayerCompanion/Squad/Oilphant)
+						src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Saintlike_Behavior)
 
 
 					if("Dainsleif")
@@ -324,6 +325,10 @@ mob/tierUpSaga(Path)
 						src << "The Fundament of Faith: Belief answers your Call."
 						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Belief)
 
+					if("Durendal")
+						src << "The Fundament of Hope: Conviction answers your Call."
+						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Conviction)
+
 					if("Dainsleif")
 						src << "The Fundament of Ruin: Hatred answers your Call."
 						src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Fundament/Hatred)
@@ -370,6 +375,18 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia
 		ActiveMessage= "invokes the Origin of Faith, embracing Primordial Belief!"
 		OffMessage= "casts aside the Origin of Faith..."
 		verb/Fundament_Belief()
+			set category="Skills"
+			src.Trigger(usr)
+
+	Conviction
+		name = "Fundament: Conviction"
+		StrMult=2
+		EndMult=1.5
+		OffMult=1.25
+		passives= list("HolyMod" = 5, "Purity" = 1, "BeyondPurity"= 1 , "DoubleStrike"= 1 , "Brutalize" = 2)
+		ActiveMessage= "invokes the Origin of Hope, embracing the Conviction of a Saint!"
+		OffMessage= "casts aside the Origin of Hope..."
+		verb/Fundament_Conviction()
 			set category="Skills"
 			src.Trigger(usr)
 
