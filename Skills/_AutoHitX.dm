@@ -198,6 +198,8 @@ obj
 				RushAfterImages//Spawns coolerFlashImage afterimages each step during rush
 				RushNoFlight//Skips setting icon_state to Flight during rush
 				MortalBlow//Makes you deal a mortal wound in midcombat.
+				MortalWound//Alias for MortalBlow used by some techniques.
+				PushOutWaves
 				WarpAway//Toss them into a hole
 
 				RipplePower=1//Holds a value for ripple empowerment
@@ -6258,7 +6260,7 @@ obj
 			if(src.Wander)
 				src.WanderSize=Z.Size
 			src.Stasis=Z.Stasis
-			src.MortalBlow=Z.MortalBlow
+			src.MortalBlow=Z.MortalWound ? Z.MortalWound : Z.MortalBlow
 			src.WarpAway=Z.WarpAway
 			if(Z.GodPowered)
 				src.Owner.transcend(Z.GodPowered)

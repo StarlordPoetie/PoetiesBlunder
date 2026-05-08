@@ -74,43 +74,20 @@ obj
 					set name="Dismantle"
 					usr.UseProjectile(src)
 
+			// Compatibility shim for saved pre-AutoHit Dismantle domain skills.
 			Cursed_Domain_Dismantle
 				SkillCost=0
 				Copyable=0
 				name="Domain Expansion: Dismantle"
-				ActiveMessage="unleashes a barrage of unavoidable Dismantles through their Domain!"
-				Area="Circle"
-				DamageMult=4.5
-				AccMult=2
-				MultiHit=40
-				Knockback=4
-				EndRate=0.6
-				FadeOut=5
-				Deflectable=0
-				Dodgeable=0
-				Piercing=1
-				MortalBlow=0.5
-				HyperHoming=1
-				Homing=1
-				Radius=14
-				Distance=14
-				ZoneAttack=1
-				FireFromSelf=1
-				Slashing=1
-				StrRate=1.5
-				ForRate=1.25
-				Explode=3
-				ExplodeIcon='Black_Flash_Hitspark_1.dmi'
-				EnergyCost=10
-				Cooldown=160
-				IconLock='BlackGetsuga.dmi'
-
 				verb/Cursed_Domain_Dismantle()
 					set category="Skills"
 					set name="Domain Expansion: Dismantle"
-					if(!usr.canUseCursedEnergyDomainSureHit("Slash"))
+					var/obj/Skills/AutoHit/Cursed_Domain_Dismantle/d = usr.findOrAddSkill(/obj/Skills/AutoHit/Cursed_Domain_Dismantle)
+					if(!d || !usr.canUseCursedEnergyDomainSureHit("Slash"))
 						return
-					usr.Activate(src)
+					if(usr.Activate(d))
+						usr.finishCursedEnergyDomainSureHit(d)
+
 
 		Buffs
 			SlotlessBuffs
@@ -154,7 +131,42 @@ obj
 						set name="Domain Expansion: Gambler's Luck"
 						Trigger(usr)
 
+
 		AutoHit
+			Cursed_Domain_Dismantle
+				SkillCost=0
+				Copyable=0
+				NeedsSword=0
+				name="Domain Expansion: Dismantle"
+				ActiveMessage="unleashes a barrage of unavoidable Dismantles through their Domain!"
+				Area="Circle"
+				StrOffense=1.5
+				Cooldown=180
+				DamageMult=0.8
+				Rounds=80
+				MortalWound=0.3
+				PushOutWaves=8
+				ComboMaster=1
+				Size=14
+				EnergyCost=30
+				Icon='BLANK.dmi'
+				IconX=-32
+				IconY=-32
+				HitSparkIcon='Slash_-_Ragna.dmi'
+				HitSparkX=-16
+				HitSparkY=-16
+				HitSparkTurns=1
+				HitSparkSize=1
+				HitSparkDispersion=1
+				TurfStrike=1
+
+				verb/Cursed_Domain_Dismantle()
+					set category="Skills"
+					set name="Domain Expansion: Dismantle"
+					if(!usr.canUseCursedEnergyDomainSureHit("Slash"))
+						return
+					if(usr.Activate(src))
+						usr.finishCursedEnergyDomainSureHit(src)
 			Cursed_Voltage_Strike
 				SkillCost=0
 				Copyable=0
@@ -251,7 +263,8 @@ obj
 					set name="Domain Expansion: Electric Discharge"
 					if(!usr.canUseCursedEnergyDomainSureHit("Electricity"))
 						return
-					usr.Activate(src)
+					if(usr.Activate(src))
+						usr.finishCursedEnergyDomainSureHit(src)
 
 			Cursed_Technique_Cleave
 				SkillCost=0
