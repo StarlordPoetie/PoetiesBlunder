@@ -7823,8 +7823,13 @@ NEW VARIABLES
 					usr << "Spirit Bow class set as [Choice]!"
 				else
 					usr << "You can't set this while using Spirit Bow."
+			adjust(mob/p)
+				passives = list("SpecialStrike" = 1, "StaffAscension" = max(2, p.AscensionsAcquired), "Godspeed"=max(2, p.AscensionsAcquired), "Skimming"=max(1, round(p.AscensionsAcquired/2)),"SpiritStrike"=1)
+				//WHY DOES IT MAKE YOU BETTER AT KITING?
+				//I AM INFURIATED. ~xoxo
 			verb/Spirit_Bow()
 				set category="Skills"
+				if(!usr.BuffOn(src)) adjust();
 				src.Trigger(usr)
 
 		Spirit_Sword//t2
@@ -7836,17 +7841,15 @@ NEW VARIABLES
 			SwordX=-32
 			SwordY=-32
 			passives = list("SpiritSword" = 1, "SwordAscension" = 3, "SwordAscensionSecond" = 3, "SwordAscensionThird" = 3)
-			SwordAscension=3
 			SwordNameSecond="Spirit Sword"
 			SwordIconSecond='Aether Blade Alternate.dmi'
-			SwordAscensionSecond=3
 			SwordXSecond=-32
 			SwordYSecond=-32
 			SwordNameThird="Spirit Sword"
-			SwordAscensionThird=3
 			ActiveMessage="draws spirit energy into their hand to form a blade!"
 			OffMessage="dispels their Spirit Sword!"
 			adjust(mob/p)
+				passives = list("SpiritSword" = clamp(1 + (0.2 * p.AscensionsAcquired), 1, 2), "SwordAscension" = max(3, p.AscensionsAcquired), "SwordAscensionSecond" = max(3, p.AscensionsAcquired), "SwordAscensionThird" = max(3, p.AscensionsAcquired), "Extend" = round(p.AscensionsAcquired/3))
 			verb/Transfigure_Spirit_Sword()
 				set category="Utility"
 				var/Choice
@@ -7906,14 +7909,7 @@ NEW VARIABLES
 			FlashDraw=1
 			SwordName="Dimension Sword"
 			SwordIcon='Aether Blade.dmi'
-			passives = list("SpiritSword" = 2, "PridefulRage" = 1, "ArmorPeeling"= 1,  "BulletKill" = 1, "Extend" = 1, "SwordAscension" = 6, "SwordAscensionSecond" = 6, "SwordAscensionThird" = 6)
-			SpiritSword=2
-			PridefulRage=1
-			BulletKill=1
-			Extend=1
-			SwordAscension=6
-			SwordAscensionSecond=6
-			SwordAscensionThird=6
+			passives = list("SpiritSword" = 2, "PridefulRage" = 1, "ArmorPeeling"= 1,  "BulletKill" = 1, "Extend" = 2, "SwordAscension" = 6, "SwordAscensionSecond" = 6, "SwordAscensionThird" = 6)
 			ActiveMessage="draws spirit energy into their hand to form a spacetime-rending blade!"
 			OffMessage="dispels their Dimension Sword!"
 			verb/Transfigure_Dimension_Sword()
