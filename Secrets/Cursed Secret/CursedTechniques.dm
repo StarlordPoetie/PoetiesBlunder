@@ -317,7 +317,6 @@ obj
 				TurfErupt=0
 				TurfEruptOffset=0
 				DelayTime=1
-				Stunner=6
 				ComboMaster=2
 				Icon='Cursed_Train_Closing_Doors.dmi'
 				Size=0.5
