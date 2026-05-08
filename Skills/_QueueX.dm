@@ -1447,6 +1447,7 @@ mob
 						drain *= (1 - elem_mana_red)
 				if(drain <= 0)
 					drain = 0.5
+				drain = src.getCursedEnergyDrain(drain, Q)
 				if(!src.TomeSpell(Q))
 					if(src.ManaAmount<drain)
 						src << "You don't have enough mana to activate [Q]."
@@ -1827,6 +1828,7 @@ mob
 						drain *= (1 - elem_mana_red)
 				if(drain <= 0)
 					drain = 0.5
+				drain = src.getCursedEnergyDrain(drain, src.AttackQueue)
 				if(src.TomeSpell(src.AttackQueue))
 					src.LoseMana(drain*(1-(0.45*src.TomeSpell(src.AttackQueue))))
 				else

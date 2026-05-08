@@ -4928,6 +4928,7 @@ mob
 							var/drain = src.passive_handler.Get("MasterfulCasting") ? Z.ManaCost - (Z.ManaCost * (passive_handler.Get("MasterfulCasting") * 0.3)) : Z.ManaCost
 							if(drain <= 0)
 								drain = 0.5
+							drain = src.getCursedEnergyDrain(drain, Z)
 							if(!src.TomeSpell(Z))
 								if(src.ManaAmount<drain)
 									src << "You don't have enough mana to activate [Z]."
@@ -5271,6 +5272,7 @@ mob
 						var/drain = src.passive_handler.Get("MasterfulCasting") ? Z.ManaCost - (Z.ManaCost * (passive_handler.Get("MasterfulCasting") * 0.3)) : Z.ManaCost
 						if(drain <= 0)
 							drain = 0.5
+						drain = src.getCursedEnergyDrain(drain, Z)
 						if(src.TomeSpell(Z))
 							src.LoseMana(drain*(1-(0.45*src.TomeSpell(Z)))/Drain)
 						else
@@ -5332,6 +5334,7 @@ mob
 									var/drain = src.passive_handler.Get("MasterfulCasting") ? Z.ManaCost - (Z.ManaCost * (passive_handler.Get("MasterfulCasting") * 0.3)) : Z.ManaCost
 									if(drain <= 0)
 										drain = 0.5
+									drain = src.getCursedEnergyDrain(drain, Z)
 									if(src.TomeSpell(Z))
 										src.LoseMana(drain*(1-(0.45*src.TomeSpell(Z)))/10/Drain)
 									else
@@ -5397,6 +5400,7 @@ mob
 						var/drain = src.passive_handler.Get("MasterfulCasting") ? Z.ManaCost - (Z.ManaCost * (passive_handler.Get("MasterfulCasting") * 0.3)) : Z.ManaCost
 						if(drain <= 0)
 							drain = 0.5
+						drain = src.getCursedEnergyDrain(drain, Z)
 						if(src.TomeSpell(Z))
 							src.LoseMana(drain*(1-(0.45*src.TomeSpell(Z)))/Drain)
 						else
@@ -5440,6 +5444,7 @@ mob
 							var/drain = src.passive_handler.Get("MasterfulCasting") ? Z.ManaCost - (Z.ManaCost * (passive_handler.Get("MasterfulCasting") * 0.3)) : Z.ManaCost
 							if(drain <= 0)
 								drain = 0.5
+							drain = src.getCursedEnergyDrain(drain, Z)
 							if(src.TomeSpell(Z))
 								src.LoseMana(drain*(1-(0.45*src.TomeSpell(Z)))/Drain)
 							else

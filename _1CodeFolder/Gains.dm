@@ -1143,7 +1143,7 @@ mob
 						break
 
 				if(src.ActiveBuff.ManaDrain)
-					src.LoseMana(src.ActiveBuff.ManaDrain,1)
+					src.LoseMana(src.getCursedEnergyDrain(src.ActiveBuff.ManaDrain, src.ActiveBuff),1)
 				if(src.ActiveBuff.ManaThreshold&&!src.ActiveBuff.AllOutAttack)
 					if(src.ManaAmount<src.ActiveBuff.ManaThreshold)
 						src.ActiveBuff.Trigger(src,Override=1)
@@ -1304,7 +1304,7 @@ mob
 						break
 
 				if(src.SpecialBuff.ManaDrain)
-					src.LoseMana(src.SpecialBuff.ManaDrain,1)
+					src.LoseMana(src.getCursedEnergyDrain(src.SpecialBuff.ManaDrain, src.SpecialBuff),1)
 				if(src.SpecialBuff.ManaThreshold&&!src.SpecialBuff.AllOutAttack)
 					if(src.ManaAmount<src.SpecialBuff.ManaThreshold)
 						src.SpecialBuff.Trigger(src,Override=1)

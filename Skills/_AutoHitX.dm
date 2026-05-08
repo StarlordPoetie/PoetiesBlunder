@@ -5274,6 +5274,7 @@ mob
 						drain *= (1 - elem_mana_red)
 				if(drain <= 0)
 					drain = 0.5
+				drain = src.getCursedEnergyDrain(drain, Z)
 				if(!src.TomeSpell(Z))
 					if(src.ManaAmount<drain)
 						src << "You don't have enough mana to activate [Z]."
@@ -5791,6 +5792,7 @@ mob
 						drain *= (1 - elem_mana_red)
 				if(drain <= 0)
 					drain = 0.5
+				drain = src.getCursedEnergyDrain(drain, Z)
 				if(!src.TomeSpell(Z))
 					src.LoseMana(drain*CostMultiplier)
 				else

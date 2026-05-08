@@ -4,6 +4,7 @@ obj
 			Cursed_Technique_Gamblers_Fist
 				SkillCost=0
 				Copyable=0
+				CursedTechnique=1
 				name="Gamblers Fist"
 				DamageMult=9
 				AccuracyMult=1.7
@@ -34,6 +35,7 @@ obj
 			Cursed_Technique_Dismantle
 				SkillCost=0
 				Copyable=0
+				CursedTechnique=1
 				name="Dismantle"
 				verb/Cursed_Technique_Dismantle()
 					set category="Skills"
@@ -46,6 +48,7 @@ obj
 			Cursed_Technique_Dismantle
 				SkillCost=0
 				Copyable=0
+				CursedTechnique=1
 				name="Dismantle"
 				ActiveMessage="flicks their finger, unleashing their innate Cursed Technique Dismantle!."
 				Distance=30
@@ -78,6 +81,7 @@ obj
 			Cursed_Domain_Dismantle
 				SkillCost=0
 				Copyable=0
+				CursedTechnique=1
 				name="Domain Expansion: Dismantle"
 				verb/Cursed_Domain_Dismantle()
 					set category="Skills"
@@ -94,6 +98,7 @@ obj
 				Cursed_Domain_Gamblers_Luck
 					SkillCost=0
 					Copyable=0
+					CursedTechnique=1
 					name="Domain Expansion: Gambler's Luck"
 					BuffName="Domain Expansion: Gambler's Luck"
 					Slotless=1
@@ -142,6 +147,7 @@ obj
 			Cursed_Domain_Dismantle
 				SkillCost=0
 				Copyable=0
+				CursedTechnique=1
 				NeedsSword=0
 				name="Domain Expansion: Dismantle"
 				ActiveMessage="unleashes a barrage of unavoidable Dismantles through their Domain!"
@@ -176,6 +182,7 @@ obj
 			Cursed_Voltage_Strike
 				SkillCost=0
 				Copyable=0
+				CursedTechnique=1
 				name="Cursed Voltage Strike"
 				Area="Strike"
 				AdaptRate=1
@@ -242,6 +249,7 @@ obj
 			Cursed_Domain_Electric_Discharge
 				SkillCost=0
 				Copyable=0
+				CursedTechnique=1
 				name="Domain Expansion: Electric Discharge"
 				Area="Circle"
 				AdaptRate=1
@@ -275,6 +283,7 @@ obj
 			Cursed_Technique_Cleave
 				SkillCost=0
 				Copyable=0
+				CursedTechnique=1
 				name="Cleave"
 				ActiveMessage="announces Cleave."
 				Area="Circle"
@@ -309,6 +318,7 @@ obj
 			Shutter_Doors
 				SkillCost=0
 				Copyable=0
+				CursedTechnique=1
 				NeedsSword=0
 				name="Shutter Doors"
 				Area="Around Target"
