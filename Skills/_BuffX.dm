@@ -7818,8 +7818,13 @@ NEW VARIABLES
 					usr << "Spirit Bow class set as [Choice]!"
 				else
 					usr << "You can't set this while using Spirit Bow."
+			adjust(mob/p)
+				passives = list("SpecialStrike" = 1, "StaffAscension" = max(2, p.AscensionsAcquired), "Godspeed"=max(2, p.AscensionsAcquired), "Skimming"=max(1, round(p.AscensionsAcquired/2)),"SpiritStrike"=1)
+				//WHY DOES IT MAKE YOU BETTER AT KITING?
+				//I AM INFURIATED. ~xoxo
 			verb/Spirit_Bow()
 				set category="Skills"
+				if(!usr.BuffOn(src)) adjust();
 				src.Trigger(usr)
 
 		Spirit_Sword//t2
