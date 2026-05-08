@@ -32,16 +32,16 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Guan_Yu
 
 /obj/Skills/Buffs/NuStyle/SwordStyle/Gong_Bu
 	StyleActive="Gong Bu"
-	passives = list("Reversal" = 1, "Brutalize" = 1, "Parry" = 1)
+	passives = list("Reversal" = 0.1, "Brutalize" = 0.5, "Parry" = 0.25)
 	StyleEnd=1.1
 	StyleStr=1.1
 	Finisher="/obj/Skills/Queue/Finisher/Descending_Dragon"
 	adjust(mob/p)
 		StyleStr = 1.05 + (0.05 * p.SagaLevel)
 		StyleEnd = 1.05 + (0.05 * p.SagaLevel)
-		passives["Reversal"] = 1 + (0.5 * p.SagaLevel)
-		passives["Brutalize"] = 1 + (0.5 * p.SagaLevel)
-		passives["Parry"] = 1 + (0.5 * p.SagaLevel)
+		passives["Reversal"] = 0.1 + (0.2 * p.SagaLevel)
+		passives["Brutalize"] = 0.5 + (0.5 * p.SagaLevel)
+		passives["Parry"] = 0.25 + (0.25 * p.SagaLevel)
 	verb/Gong_Bu()
 		set hidden=1
 		adjust(usr)
