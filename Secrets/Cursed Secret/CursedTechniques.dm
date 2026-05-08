@@ -78,27 +78,39 @@ obj
 				SkillCost=0
 				Copyable=0
 				name="Domain Expansion: Dismantle"
-				ActiveMessage="unleashes an unavoidable Dismantle through their Domain!"
-				Distance=30
-				DamageMult=6
+				ActiveMessage="unleashes a barrage of unavoidable Dismantles through their Domain!"
+				Area="Circle"
+				DamageMult=4.5
 				AccMult=2
-				MultiHit=5
-				Radius=4
+				MultiHit=40
+				Knockback=4
+				EndRate=0.6
+				FadeOut=5
+				Deflectable=0
+				Dodgeable=0
+				Piercing=1
+				MortalBlow=0.5
+				HyperHoming=1
+				Homing=1
+				Radius=14
+				Distance=14
 				ZoneAttack=1
 				FireFromSelf=1
 				Slashing=1
-				Piercing=1
+				StrRate=1.5
+				ForRate=1.25
+				Explode=3
+				ExplodeIcon='Black_Flash_Hitspark_1.dmi'
 				EnergyCost=10
-				Cooldown=60
-				IconLock='Large Dismantle.dmi'
-				IconSize=2
+				Cooldown=160
+				IconLock='BlackGetsuga.dmi'
 
 				verb/Cursed_Domain_Dismantle()
 					set category="Skills"
 					set name="Domain Expansion: Dismantle"
 					if(!usr.canUseCursedEnergyDomainSureHit("Slash"))
 						return
-					usr.UseProjectile(src)
+					usr.Activate(src)
 
 		Buffs
 			SlotlessBuffs
