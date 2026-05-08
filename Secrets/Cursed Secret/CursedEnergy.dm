@@ -103,7 +103,7 @@
 			if("Serrated")
 				return /obj/Skills/Buffs/SlotlessBuffs/Cursed_Domain_Gamblers_Luck
 			if("Slash")
-				return /obj/Skills/Projectile/Cursed_Domain_Dismantle
+				return /obj/Skills/AutoHit/Cursed_Domain_Dismantle
 			if("Electricity")
 				return /obj/Skills/AutoHit/Cursed_Domain_Electric_Discharge
 
@@ -347,6 +347,21 @@ mob/proc/collapseCursedEnergyDomainSureHit()
 		stopDomainExapansion()
 
 
+mob/proc/finishCursedEnergyDomainSureHit(obj/Skills/sureHit)
+	if(!sureHit)
+		return
+	var/delay = 1
+	if(istype(sureHit, /obj/Skills/AutoHit))
+		var/obj/Skills/AutoHit/a = sureHit
+		delay = max(1, a.Rounds * max(1, a.DelayTime))
+	spawn(delay)
+		if(src && src.domainExpansionActive)
+			var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in src
+			src.collapseCursedEnergyDomainSureHit()
+			if(d && !d.Using && !d.cooldown_remaining)
+				d.Cooldown(p = src)
+
+
 mob/proc/isCursedEnergyBlackFlashFirstUse()
 	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
 
@@ -363,9 +378,25 @@ mob/proc/setCursedEnergyBlackFlashFirstUse()
 		ce.CursedEnergyBlackFlashFirstTimeUse = 0
 
 
+mob/proc/safeRemoveCursedEnergyPassives(list/passivesToRemove)
+	if(!passive_handler || !passivesToRemove || !passivesToRemove.len)
+		return
+	for(var/passive in passivesToRemove)
+		var/value = passivesToRemove[passive]
+		if(!isnum(value))
+			continue
+		var/current = passive_handler.Get(passive)
+		if(!isnum(current) || current <= 0)
+			continue
+		if(current <= value)
+			passive_handler.Set(passive, 0)
+		else
+			passive_handler.Decrease(passive, value)
+
+
 mob/proc/removeCursedEnergyTraitPassives()
 	if(cursedEnergyTraitPassivesApplied && cursedEnergyTraitPassivesApplied.len)
-		passive_handler.decreaseList(cursedEnergyTraitPassivesApplied)
+		safeRemoveCursedEnergyPassives(cursedEnergyTraitPassivesApplied)
 	cursedEnergyTraitPassivesApplied = null
 
 
@@ -535,7 +566,10 @@ mob/proc/activateReversedCursedTechnique()
 	if(TotalInjury > 0)
 		HealWounds(TotalInjury, 1)
 
-	Maimed = 0
+	if(Maimed)
+		Maimed = 0
+	if(MortallyWounded)
+		MortallyWounded = 0
 	HealthCut = 0
 	MaxHealth()
 
@@ -545,6 +579,10 @@ mob/proc/activateReversedCursedTechnique()
 
 	cursedEnergyPoseHealReady = 0
 	cursedEnergyPoseHealCooldown = world.time + 300
+	spawn(300)
+		if(src && src.hasSecret("Cursed Energy") && world.time >= cursedEnergyPoseHealCooldown)
+			cursedEnergyPoseHealReady = 1
+			src << "Reversed Curse Technique is available again."
 
 	world << "[src.name] utilizes Reversed Curse Technique and restores their body instantly!"
 
@@ -568,12 +606,20 @@ mob/proc/cleanupCursedEnergy()
 	if(istype(secretDatum, /SecretInformation/CursedEnergy) && cursedEnergySpecialization)
 		var/SecretInformation/CursedEnergy/ce = secretDatum
 		specializationPassives = ce.getSpecializationPassives(cursedEnergySpecialization)
-		if(specializationPassives.len)
-			passive_handler.decreaseList(specializationPassives)
+		if(specializationPassives.len && !cursedEnergySpecializationPassiveMigrated)
+			safeRemoveCursedEnergyPassives(specializationPassives)
 	for(var/obj/Skills/Buffs/ActiveBuffs/Ki_Control/ki in src)
 		if(ki.cursedEnergySpecializationPassivesApplied)
+			if(src.ActiveBuff == ki)
+				safeRemoveCursedEnergyPassives(ki.cursedEnergySpecializationPassivesApplied)
 			for(var/oldPassive in ki.cursedEnergySpecializationPassivesApplied)
-				ki.passives[oldPassive] -= ki.cursedEnergySpecializationPassivesApplied[oldPassive]
+				var/value = ki.cursedEnergySpecializationPassivesApplied[oldPassive]
+				if(!isnum(value))
+					continue
+				if(!isnum(ki.passives[oldPassive]) || ki.passives[oldPassive] <= value)
+					ki.passives[oldPassive] = 0
+				else
+					ki.passives[oldPassive] -= value
 			ki.cursedEnergySpecializationPassivesApplied = null
 	if(domainExpansionActive)
 		stopDomainExapansion()
@@ -586,6 +632,7 @@ mob/proc/cleanupCursedEnergy()
 		/obj/Skills/Buffs/SlotlessBuffs/Hollow_Wicker_Basket,
 		/obj/Skills/Buffs/SlotlessBuffs/Cursed_Domain_Gamblers_Luck,
 		/obj/Skills/Projectile/Cursed_Domain_Dismantle,
+		/obj/Skills/AutoHit/Cursed_Domain_Dismantle,
 		/obj/Skills/AutoHit/Cursed_Domain_Electric_Discharge,
 		/obj/Skills/Queue/Cursed_Technique_Gamblers_Fist,
 		/obj/Skills/Queue/Cursed_Technique_Dismantle,
