@@ -5673,7 +5673,7 @@ obj
 						if(prob(ShiftOdds))
 							Z.Trail=Owner.EldritchTrail
 							Z.TrailDuration=5
-							if(prob(50))
+							if(prob(50) && Owner.passive_handler.Get("Full Manifestation"))
 								DarknessFlash(Owner)
 							Z.ActiveMessage="<font color='red'><font size=+1><b>You cannot grasp the true form of [Owner]'s attack...</font color></font size></b>"
 					if(Z.Homing)

@@ -6353,7 +6353,7 @@ obj
 					Z.TurfStrike=1
 					Z.TurfShift=owner.EldritchTrail
 					Z.TurfShiftDuration=3
-					if(prob(50))
+					if(prob(50) && owner.passive_handler.Get("Full Manifestation"))
 						DarknessFlash(owner)
 					Z.ActiveMessage="<font color='red'><font size=+1><b>You cannot grasp the true form of [owner]'s attack...</font color></font size></b>"
 
