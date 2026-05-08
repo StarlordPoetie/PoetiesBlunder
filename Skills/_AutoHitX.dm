@@ -6906,9 +6906,13 @@ obj
 								if(src.Punt)
 									Hit_Effect(src.Owner, Size=src.Punt)
 								src.Owner.HitEffect(src.Owner, src.UnarmedTech, src.SwordTech)
-								OMsg(m, "[m] redirected the force of the attack back at [src.Owner]!")
-								m << "You redirected the force of the attack back at [src.Owner]!"
-								return
+								if(reversalAcc == WHIFF)
+									OMsg(m, "[m] redirected most of the force of the attack back at [src.Owner]!")
+									m << "You redirected most of the force of the attack back at [src.Owner]!"
+								if(reversalAcc == HIT)
+									OMsg(m, "[m] redirected the force of the attack back at [src.Owner]!")
+									m << "You redirected the force of the attack back at [src.Owner]!"
+									return
 				if(src.DirectWounds)
 					src.Owner.DealWounds(m, src.DirectWounds);
 				if(SpellElement == "Water" && m.passive_handler.Get("ChillAbsorb"))
