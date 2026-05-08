@@ -9,7 +9,7 @@ obj/Skills/Buffs/SlotlessBuffs/Durendal_Relics/Saints_Tooth
 	ManaGlowSize = 1
 	TimerLimit = 30
 	Cooldown = 90
-	passives = list("PureDamage" = 4, "HolyMod" = 3)
+	passives = list("PureReduction" = 4, "HolyMod" = 3)
 	ActiveMessage = "'s legendary weapon edges itself with the Teeth of a Saint!"
 	OffMessage = "'s legendary weapon no longer edges itself with teeth..."
 	adjust(mob/p)
@@ -36,7 +36,7 @@ obj/Skills/Buffs/SlotlessBuffs/Durendal_Relics/Saints_Blood
 	TimerLimit = 30
 	Cooldown = 90
 	CantHaveTheseBuffs = list("Saints Tooth", "Saints Hair", "Saints Raiment")
-	passives = list("LifeSteal" = 10, "LifeGeneration" = 5)
+	passives = list("EvilResist" = 3, "LifeGeneration" = 2)
 	ActiveMessage = "'s legendary weapon drips with the Blood of a Saint."
 	OffMessage = "'s legendary weapon no longer drips with holy blood..."
 	adjust(mob/p)
@@ -63,7 +63,7 @@ obj/Skills/Buffs/SlotlessBuffs/Durendal_Relics/Saints_Hair
 	ManaGlowSize = 1
 	TimerLimit = 30
 	Cooldown = 90
-	passives = list("EnergySteal" = 2, "SoftStyle" = 3, "HolyMod" = 2)
+	passives = list("EnergyGeneration" = 3, "SoftStyle" = 3, "HolyMod" = 2)
 	ActiveMessage = "'s legendary weapon hardens with the Hair of a Saint."
 	OffMessage = "'s legendary weapon no longer steels itself with holy fibers..."
 	adjust(mob/p)
@@ -88,7 +88,7 @@ obj/Skills/Buffs/SlotlessBuffs/Durendal_Relics/Saints_Raiment
 	ManaGlow = "#48df66"
 	ManaGlowSize = 1
 	CantHaveTheseBuffs = list("Saints Tooth", "Saints Blood", "Saints Hair")
-	passives = list("PureReduction" = 4, "PureDamage" = -2, "DebuffResistance" = 0.5)
+	passives = list("PureReduction" = 5, "PureDamage" = -5, "DebuffResistance" = 2)
 	ActiveMessage = "'s legendary weapon coils up their arm with the Raiment of a Saint."
 	OffMessage = "'s legendary weapon releases their wielder's arm..."
 	adjust(mob/p)
