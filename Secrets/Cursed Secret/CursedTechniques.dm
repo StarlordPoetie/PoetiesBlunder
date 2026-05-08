@@ -19,7 +19,7 @@ obj
 				Stunner=3
 				Instinct=2
 				UnarmedOnly=1
-				EnergyCost=12
+				ManaCost=12
 				Quaking=2
 				Cooldown=30
 
@@ -62,7 +62,7 @@ obj
 				Knockback=1
 				Slashing=1
 				Piercing=1
-				EnergyCost=4
+				ManaCost=4
 				Cooldown=30
 				IconLock='Large Dismantle.dmi'
 				IconSize=2
@@ -97,7 +97,7 @@ obj
 					name="Domain Expansion: Gambler's Luck"
 					BuffName="Domain Expansion: Gambler's Luck"
 					Slotless=1
-					EnergyCost=15
+					ManaCost=15
 					TimerLimit = 150
 					Cooldown=180
 					VaizardHealth=50
@@ -107,6 +107,12 @@ obj
 					DefMult=2
 					passives = list("UnarmedDamage" = 8, "CriticalChance" = 2, "BlockChance" = 2, "CriticalDamage" = 0.25, "CriticalBlock" = 0.25, "ArmorAscension" = 0.5)
 					ActiveMessage="hits the jackpot within their Domain, converting the collapsing barrier into a surge of cursed momentum!"
+
+					GainLoop(mob/User)
+						..()
+						if(User && User.BuffOn(src))
+							User.ManaAmount = 1000000000
+							User.MaxMana()
 
 					Trigger(mob/User, Override=0)
 						if(!User)
@@ -148,7 +154,7 @@ obj
 				PushOutWaves=8
 				ComboMaster=1
 				Size=14
-				EnergyCost=30
+				ManaCost=30
 				Icon='BLANK.dmi'
 				IconX=-32
 				IconY=-32
@@ -192,7 +198,7 @@ obj
 				HitSparkY=-32
 				HitSparkSize=1
 				Cooldown=45
-				EnergyCost=8
+				ManaCost=8
 				Instinct=1
 				proc/reset2default()
 					name="Cursed Voltage Strike"
@@ -221,7 +227,7 @@ obj
 					HitSparkY=-32
 					HitSparkSize=1
 					Cooldown=45
-					EnergyCost=8
+					ManaCost=8
 					Instinct=1
 					Rounds=0
 					TurfShift=null
@@ -256,7 +262,7 @@ obj
 				HitSparkY=-32
 				HitSparkSize=1
 				Cooldown=60
-				EnergyCost=10
+				ManaCost=10
 
 				verb/Cursed_Domain_Electric_Discharge()
 					set category="Skills"
@@ -288,7 +294,7 @@ obj
 				Duration=5
 				Cooldown=45
 				NeedsSword=0
-				EnergyCost=5
+				ManaCost=5
 				HitSparkIcon='Slash - Zero.dmi'
 				HitSparkX=-32
 				HitSparkY=-32
@@ -312,7 +318,7 @@ obj
 				AbyssMod=2.5
 				Distance=7
 				DistanceAround=1
-				EnergyCost=10
+				ManaCost=10
 				Rounds=20
 				TurfErupt=0
 				TurfEruptOffset=0

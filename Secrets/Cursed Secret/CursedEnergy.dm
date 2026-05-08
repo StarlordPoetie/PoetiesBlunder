@@ -53,6 +53,8 @@
 		d.TurfShift = 'WhiteTurfShift.dmi'
 		d.TurfShiftInstant = 1
 		d.OffMult = 1.50
+		d.ManaDrain = 2
+		d.ManaThreshold = 1
 		d.passives = list("TechniqueMastery" = 5, "BuffMastery" = 2, "MovementMastery" = 5)
 		d.DarkChange = 1
 	proc/ensureDomainExpansionVerbs(mob/p, obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d)
@@ -507,16 +509,13 @@ mob/proc/attemptCursedToss()
 
 	if(cursedEnergyTrait == "Serrated")
 		var/obj/Skills/AutoHit/Shutter_Doors/sd = locate(/obj/Skills/AutoHit/Shutter_Doors) in src
-		if(sd)
-			Activate(sd)
-			return 1
+		if(sd && !sd.Using && !sd.cooldown_remaining)
+			return sd.Trigger(src)
 
 	if(cursedEnergyTrait == "Slash")
 		var/obj/Skills/Projectile/Cursed_Technique_Dismantle/d = findOrAddSkill(/obj/Skills/Projectile/Cursed_Technique_Dismantle)
-		if(d)
-			d.adjust(src)
-			UseProjectile(d)
-			return 1
+		if(d && !d.Using && !d.cooldown_remaining)
+			return d.Trigger(src)
 
 	return 0
 
@@ -576,6 +575,9 @@ mob/proc/activateReversedCursedTechnique()
 	var/healAmount = round(100 * healPercent, 0.1)
 	if(healAmount > 0)
 		HealHealth(healAmount)
+
+	ManaAmount += 50
+	MaxMana()
 
 	cursedEnergyPoseHealReady = 0
 	cursedEnergyPoseHealCooldown = world.time + 300

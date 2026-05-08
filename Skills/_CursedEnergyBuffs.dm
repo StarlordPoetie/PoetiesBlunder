@@ -41,6 +41,10 @@
 		if(!user)
 			return
 
+		if(user.getCursedEnergySecret() && !user.BuffOn(src) && user.ManaAmount < 30)
+			user << "You need at least 30 Cursed Energy to open your Domain."
+			return
+
 		if(!center)
 			center = user
 
@@ -53,6 +57,18 @@
 			user.stopDomainExapansion()
 			if(src.Cooldown < 200)
 				src.Cooldown = 200
+
+
+	GainLoop(mob/source)
+		var/was_active = source && source.BuffOn(src)
+		..()
+		if(was_active && source && !source.BuffOn(src) && source.domainExpansionActive)
+			source.stopDomainExapansion()
+			if(!src.cooldown_remaining)
+				var/oldCooldown = src.Cooldown
+				src.Cooldown = 200
+				src.Cooldown(p = source)
+				src.Cooldown = oldCooldown
 
 	verb/Domain_Expansion_Wide()
 		set category = "Skills"
@@ -120,6 +136,8 @@
 
 
 /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/Cursed_Energy
+	ManaDrain = 2
+	ManaThreshold = 1
 	BuffName = "Domain Expansion Unleashed!"
 	Mastery = -1
 	UnrestrictedBuff = 1
