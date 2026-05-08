@@ -26,6 +26,9 @@ race
 
 		onFinalization(mob/user)
 			..()
+			for(var/transformation/demon/devil_trigger/mazoku/T in user.race.transformations)
+				user.race.transformations -= T
+				del T
 			user.EnhancedSmell = 1
 			user.EnhancedHearing = 1
 			user.TrueName=input(user, "As a demon, you have a True Name. It should be kept secret. What is your True Name?", "Get True Name") as text

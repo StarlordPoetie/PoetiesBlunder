@@ -657,6 +657,14 @@ mob/proc/Death(mob/P,var/text,var/SuperDead=0, var/NoRemains=0, var/Zombie, extr
 		MazokuEffects()
 		src.passive_handler.Increase("DeathDefied", 1)
 		if(src.race && src.race.transformations)
+			// Mazoku humans don't unlock transformations until this point
+			// Slots 1–5 are HT chain, slot 6 is DT, slot 7 (asc 6+) is SEA, order matters
+			// for mazokuActivateHighestHT() and the Gains.dm Mazoku state machine.
+			src.race.transformations += new /transformation/human/high_tension/mazoku()
+			src.race.transformations += new /transformation/human/high_tension_MAX/mazoku()
+			src.race.transformations += new /transformation/human/super_high_tension/mazoku()
+			src.race.transformations += new /transformation/human/super_high_tension_MAX/mazoku()
+			src.race.transformations += new /transformation/human/unlimited_high_tension/mazoku()
 			src.race.transformations += new /transformation/demon/devil_trigger/mazoku()
 			if(src.AscensionsAcquired >= 6)
 				src.race.transformations += new /transformation/human/sacred_energy_aura()

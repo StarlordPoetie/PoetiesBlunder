@@ -17,7 +17,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 14
+	var/UPDATE_VERSION = 15
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -271,6 +271,63 @@ update
 					p.race.transformations += new /transformation/human/super_high_tension()
 					p.race.transformations += new /transformation/human/super_high_tension_MAX()
 					p.race.transformations += new /transformation/human/unlimited_high_tension()
+	version15
+		version = 15;
+		updateMob(mob/p)
+			. = ..()
+			if(p.isRace(HUMAN))
+				if(p.Class == "Heroic" || p.Class == "Resourceful")
+					var/safety = 20
+					while(p.transActive > 0 && safety-- > 0)
+						var/oldTA = p.transActive
+						p.Revert()
+						if(p.transActive == oldTA)
+							p.transActive = 0
+							break
+					for(var/transformation/T in p.race.transformations.Copy())
+						p.race.transformations -= T
+						del T
+					p << "Heroic and Resourceful humans don't transform. Your transformation list has been cleared."
+				else if(p.passive_handler.Get("DormantDemon") && !p.passive_handler.Get("DeathDefied"))
+					var/safety = 20
+					while(p.transActive > 0 && safety-- > 0)
+						var/oldTA = p.transActive
+						p.Revert()
+						if(p.transActive == oldTA)
+							p.transActive = 0
+							break
+					for(var/transformation/T in p.race.transformations.Copy())
+						p.race.transformations -= T
+						del T
+					p << "As a Mazoku human who has not yet died at ascension 3, you have no transformations until you trigger your cheat death."
+				else if(p.passive_handler.Get("DormantDemon") && p.passive_handler.Get("DeathDefied"))
+					var/safety = 20
+					while(p.transActive > 0 && safety-- > 0)
+						var/oldTA = p.transActive
+						p.Revert()
+						if(p.transActive == oldTA)
+							p.transActive = 0
+							break
+					for(var/transformation/T in p.race.transformations.Copy())
+						p.race.transformations -= T
+						del T
+					p.race.transformations += new /transformation/human/high_tension/mazoku()
+					p.race.transformations += new /transformation/human/high_tension_MAX/mazoku()
+					p.race.transformations += new /transformation/human/super_high_tension/mazoku()
+					p.race.transformations += new /transformation/human/super_high_tension_MAX/mazoku()
+					p.race.transformations += new /transformation/human/unlimited_high_tension/mazoku()
+					p.race.transformations += new /transformation/demon/devil_trigger/mazoku()
+					if(p.AscensionsAcquired >= 6)
+						p.race.transformations += new /transformation/human/sacred_energy_aura()
+					p << "Your Mazoku transformations have been refreshed."
+			else if(p.isRace(DEMON))
+				var/removed_mazoku_dt = 0
+				for(var/transformation/demon/devil_trigger/mazoku/T in p.race.transformations)
+					p.race.transformations -= T
+					del T
+					removed_mazoku_dt = 1
+				if(removed_mazoku_dt)
+					p << "A stray Mazoku Devil Trigger has been removed from your transformations. You're a regular Demon. Dummy."
 
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
