@@ -51,7 +51,7 @@ obj
 				Distance=30
 				DamageMult=3
 				AccMult=1.2
-				MortalBlow=0.25
+				MortalBlow=0.5
 				MultiHit=3
 				Radius=2
 				ZoneAttack=1
@@ -233,7 +233,6 @@ obj
 				ComboMaster=1
 				DamageMult=9
 				Stunner=6
-				MortalBlow=1
 				Rounds=8
 				Distance=12
 				NoLock=1
@@ -267,6 +266,7 @@ obj
 				DamageMult=4.5
 				Stunner=3
 				Rounds=5
+				MortalBlow=0.5
 				DelayTime=0
 				Rush=8
 				ControlledRush=1
