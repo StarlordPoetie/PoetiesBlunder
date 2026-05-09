@@ -138,6 +138,7 @@
 /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/Cursed_Energy
 	ManaDrain = 2
 	ManaThreshold = 1
+	TimerLimit = 200
 	BuffName = "Domain Expansion Unleashed!"
 	Mastery = -1
 	UnrestrictedBuff = 1
@@ -152,3 +153,7 @@
 	TurfShiftInstant = 1
 	passives = list("TechniqueMastery" = 5, "BuffMastery" = 2, "MovementMastery" = 5)
 	DarkChange = 1
+/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/Cursed_Energy/GainLoop(mob/source)
+	..()
+	if(source && source.BuffOn(src) && source.cursedEnergyTrait == "Spatial Manipulation")
+		source.tickInfiniteVoidDomain(src)
