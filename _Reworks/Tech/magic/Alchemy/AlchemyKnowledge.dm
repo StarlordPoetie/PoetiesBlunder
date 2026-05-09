@@ -13,7 +13,7 @@
     name = "Flask Accumen"
     description = "Flask Accumen is the intermediate knowledge behind Flaskmaking. The Thaumaturge's flask can filter contanimants better, bettering the effects of the concoction and reducing the downsides."
     requires = list("Basic Alchemy")
-/knowledgePaths/magic/alchemy/Flask_Accumen //T2 Flask Upgrade
+/knowledgePaths/magic/alchemy/Flask_Mastery //T2 Flask Upgrade
     name = "Flask Mastery"
     description = "Flask Mastery is the zenith of knowledge behind Flaskmaking. The Thaumaturge's flask can filter MOST contaminants, their concoctions are the strongest you can find."
     requires = list("Flask Accumen")
@@ -23,10 +23,12 @@
     name = "Refreshment Herbs"
     description = "Refreshmen Herbs are procured for their ability to revitalize the ENERGY of subjects. It will subtract MANA from the subject."
     requires = list("Basic Alchemy")
-/knowledgePaths/magic/alchemy/Healing_Herbs 
+/*  (Currently not capable of balancing)
+/knowledgePaths/magic/alchemy/Healing_Herbs  
     name = "Healing Herbs"
     description = "Healing herbs are procured for their ability to rejuvenate the HEALTH of subjects. It will will subtract ENERGY and MANA from the subject."
     requires = list("Basic Alchemy")
+    */
 /knowledgePaths/magic/alchemy/Magic_Herbs 
     name = "Magic Herbs"
     description = "Magic herbs are procured for their ability to restore the MANA of subjects. It will subtract ENERGY from the subject."

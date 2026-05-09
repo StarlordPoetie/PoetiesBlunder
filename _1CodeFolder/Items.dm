@@ -1488,8 +1488,9 @@ obj/Items/proc/Equip(mob/A)
 	if(src.EquipIcon)
 		var/image/im=image(icon=src.EquipIcon, pixel_x=src.pixel_x, pixel_y=src.pixel_y, layer=placement)
 		A.overlays+=im
-	else
+	else if(!istype(src, /obj/Items/Flask)) // Hijacks ur code lol lmao
 		var/image/im=image(icon=src.icon, pixel_x=src.pixel_x, pixel_y=src.pixel_y, layer=placement)
+			
 		if(istype(src, /obj/Items/Sword) || istype(src, /obj/Items/Enchantment/Staff))
 			if(A.ArmamentGlow)
 				im.filters += A.ArmamentGlow

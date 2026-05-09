@@ -23,21 +23,22 @@
     var/Hard=0 // Tank Buffs
     var/Quicksilver=0 // Speed Buffs
     // Misc stuff
+    EquipIcon = 0
     var/Tier = 0 // This will be used to upgrade your flask
-    var/DrinkMessage
-    var/OffMessage
     var/Slots= 2 // How many Herbs/Buffs a charge holds. It's actually defined in GetMaxFlaskCharges(), this just initilizes it.
     var/Charges = 2 // How many uses you have in your flask before you need to meditate again. It's actually defined in GetMaxFlaskCharges(), this just initilizes it.
     // Charge refilling is handled in Gains.dm, line 237
     // Below is The Buff We Pass This Shit To and spends charges
     Techniques = list("/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Flask_Charge")
 
-    verb/Imbibe_Flask(mob/P) // We cosnume a charge from the flask!
+    verb/Imbibe_Flask() // We cosnume a charge from the flask!
         set category = "Skills"
-        if(P.equippedFlask.Charges == 0) return
-        P.reduceCharge() // mob proc that reduces charges
+        if(usr.equippedFlask.Charges == 0) return
+        usr.reduceCharge() // mob proc that reduces charges
         if(!usr.CheckSlotless("Flask Charge")) // If no buff, 
+            liveDebugMsg("Line 39 If check passed")
             for(var/typesFromTechniques in src.Techniques) // We want to go fishing 
+                liveDebugMsg("Line 41 for check passed")
                 var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Flask_Charge/usedFlask = usr.findOrAddSkill(typesFromTechniques); // then we assign our fish to a var
                 usedFlask.adjust(usr); // We can now pass adjust and trigger procs as if we were in the buff (kind of)
                 usedFlask.Trigger(usr);
@@ -64,23 +65,25 @@
     adjust(mob/P)
         liveDebugMsg("Flask Charge Adjust Triggered")
         Cooldown = P.GetFlaskCD() 
+        InstantAffect = 1
         // I am so fucking sorry for what is about to happen
-        if(P.equippedFlask == 1) // if you chose a  herb, your value for said herb should be 1 and ONLY 1
-            InstantAffect=1
+        /* SOMEONE BROKE THESE PROCS SO THEY ONLY WORK PER TIC WHICH MAKES IT IMPOSSIBLE TO HAVE A BALANCED HEALTH POTION I FUCKING HATE THESE ANIMALS
+        if(P.equippedFlask.Heal == 1) // if you chose a  herb, your value for said herb should be 1 and ONLY 1
             StableHeal=1
             //Check glob.dm for POTIONHEAL 
             src.HealthHeal = glob.POTIONHEAL/2*(P.equippedFlask.Tier+1)  // 2.5, 5, 7.5 if POTIONHEAL = 5
-            src.ManaHeal -= glob.POTIONHEAL*(5-P.equippedFlask.Tier) // T0 = -25, T1 = -20, T3 = -15 if POTIONHEAL=  5
-            src.EnergyHeal -= glob.POTIONHEAL*(2-P.equippedFlask.Tier)// T0 = -10, T1 = -5, T3 = 0 if POTIONHEAL=  5
+            src.ManaHeal = (-1)*glob.POTIONHEAL*(5-P.equippedFlask.Tier) // T0 = -25, T1 = -20, T3 = -15 if POTIONHEAL=  5
+            src.EnergyHeal = (-1)*glob.POTIONHEAL*(2-P.equippedFlask.Tier)// T0 = -10, T1 = -5, T3 = 0 if POTIONHEAL=  5
             liveDebugMsg("Healed [HealthHeal] hp, Deducted [ManaHeal] mana, Deducted [EnergyHeal] energy.")
-        if(P.equippedFlask.Mana == 1) // same rule, ONLY THE VALUE OF 1 SHOULD BE HERE
-            InstantAffect=1 
-            src.ManaHeal = glob.POTIONHEAL*5*(P.equippedFlask.Tier+1) // 25 50 75 mana regen based on tier provided potion heal is the same 
-            src.EnergyHeal -= glob.POTIONHEAL*2-(P.equippedFlask.Tier) // T0 = -10, T1 = -5, T3 = 0 if POTIONHEAL=  5
+        */
+        if(P.equippedFlask.Mana == 1) //  ONLY THE VALUE OF 1 SHOULD BE HERE 
+            StableHeal=1
+            src.ManaHeal = ((glob.POTIONHEAL*(P.equippedFlask.Tier+2))/2) // 5, 10, 15 mana regen a tick based on tier provided potion heal is the same 
+
         if(P.equippedFlask.Energy == 1) // Same as above
-            InstantAffect=1
-            src.EnergyHeal = glob.POTIONHEAL*(2+P.equippedFlask.Tier) // 15, 20, 25 energy 
-            src.ManaHeal -= glob.POTIONHEAL*5-(P.equippedFlask.Tier) // 25 Mana loss if POTIONHEAL is 5  (DOWNSIDE)
+            StableHeal=1
+            src.EnergyHeal = ((glob.POTIONHEAL*(P.equippedFlask.Tier+2))/2) // 5, 10, 15 energy regen a tick
+
         if(P.equippedFlask.Hallucinogen == 1) // This gives you immediate anger and anger buffs at expense of defense
             AutoAnger=1 // Makes you angry instantly
             // Please note: the comments will tell you what the math does   
@@ -106,7 +109,7 @@
             SpdMult = 0.85 + (P.equippedFlask.Tier+1/20) // T0 = 0.9, T1 = 0.95, T3 = 1 (DOWNSIDE)
             passives["Harden"] = (P.equippedFlask.Tier+1)/2 // T0 = 0.5, T1 = 1, T2 = 1.5
             passives["Unnerve"] = (P.equippedFlask.Tier+1) // T0 = 0.5, T1 = 1, T2 = 1.5
-            passives["Godspeed"] -= 4 - (P.equippedFlask.Tier+1) // T0 = -3, T1 = -2, T2 = -1 (DOWNSIDE)
+            passives["Godspeed"] = -4 + (P.equippedFlask.Tier+1) // T0 = -3, T1 = -2, T2 = -1 (DOWNSIDE)
         if(P.equippedFlask.Quicksilver == 1) // Speed, you must be feeling pretty stupid restricting magic now huh Jess?
             SpdMult = 1 + (P.equippedFlask.Tier+1/10) //T0 = 1.1, T1 = 1.2, T3 = 1.3 speed mult
             StrMult = 0.85 + (P.equippedFlask.Tier+1/20)  // T0 = 0.9, T1 = 0.95, T3 = 1 (DOWNSIDE)

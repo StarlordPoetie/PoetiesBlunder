@@ -1536,40 +1536,55 @@ obj/Skills/Utility
 				P.TakeMineral(glob.POTIONCOST) // 5k if you don't edit this you dipshit
 		// War crime Proc
 		proc/TheEvilAssIfWall(mob/P, herbchoice, obj/Items/Flask/ChosenFlask)  //You have no idea how much I loathed making this
-			if(herbchoice == "Healing Herbs")
+			if(herbchoice == "Healing Herb")
 				ChosenFlask.Heal = 1
-			if(herbchoice == "Magic Herbs")
+			if(herbchoice == "Magic Herb")
 				ChosenFlask.Mana = 1
-			if(herbchoice == "Refreshment Herbs")
+			if(herbchoice == "Refreshment Herb")
 				ChosenFlask.Energy = 1
 			if(herbchoice == "Hallucinogens")
 				ChosenFlask.Hallucinogen = 1
-			if(herbchoice == "Stimulant Herbs")
+			if(herbchoice == "Stimulant Herb")
 				ChosenFlask.Searing = 1
-			if(herbchoice == "Numbing Herbs")
+			if(herbchoice == "Numbing Herb")
 				ChosenFlask.Hard = 1
-			if(herbchoice == "Relaxant Hebrs")
+			if(herbchoice == "Relaxant Herb")
 				ChosenFlask.Flowy = 1
-			if(herbchoice == "Quicksilver Herbs")
+			if(herbchoice == "Quicksilver Herb")
 				ChosenFlask.Quicksilver = 1
 		// Resets Flask Slots
 		proc/ResetFlask(mob/P)
 			var/Warning = input(usr, "WARNING: By proceeding you will reset this flasks' total slots. You will not be refunded the mana bits you spent to make the current concoction. Proceed?", "WARNING!") in list("Yes", "No")
 			if(Warning == "No") return // No need for an ifstatement if you pick yes, I'd be fucking amazed if you found a way to give a third input.
 			var/obj/Items/Flask/Option = FlaskChoice(P)
-			Option.Slots = P.GetMaxFlaskSlots()
-			P << "Flask Successfully Reset, it has [Option.Slots] once more."
+			Option.Slots = P.GetMaxFlaskSlots() // Set slots to max
+			// Inellegant solution to reset every variable to 0. 
+			Option.Heal = 0
+			Option.Mana = 0
+			Option.Energy = 0
+			Option.Hallucinogen = 0
+			Option.Searing = 0
+			Option.Hard = 0
+			Option.Flowy = 0
+			Option.Quicksilver = 0
+			P << "Flask Successfully Reset, it has [Option.Slots] slots once more."
 
 		// Upgrades flask
 		proc/FlaskUpgrade(mob/P)
 			var/obj/Items/Flask/Option = FlaskChoice(P)
-			var/SpecificCost = (glob.POTIONCOST*4)*(1+Option.Tier)
+			var/SpecificCost = (glob.POTIONCOST*4)*(2+Option.Tier)
+			if(P.AlchemyUnlocked < Option.Tier+2)
+				P << "You must improve your knowledge of flasks to upgrade this further."
+				return
+			if(Option.Tier >= 2)
+				P << "You cannot upgrade this flask any further"
+				return
 			if(P.GetMineral() < SpecificCost)
 				P << "You need [SpecificCost] mana bits to upgrade this flask."
 				return
 			P.TakeMineral(SpecificCost)
 			++Option.Tier
-			P << "You have upgraded your flask. It is now [Option.Tier]."
+			P << "You have upgraded your flask. It is now a Tier [Option.Tier] Flask."
 			//
 			
 
