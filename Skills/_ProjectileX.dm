@@ -152,6 +152,7 @@ obj
 				InstantDamageChance//percent chance per damage tick to deal flat 10% health damage
 				Devour//eat other shit
 				Stasis//icicle
+				PullIn//Pull hit targets toward the projectile owner.
 				Feint//zoom!
 				MortalBlow
 				WarpUser//distinct from feint because this only warps if the projectile connects @___@
@@ -6438,6 +6439,8 @@ obj
 						SkipDamage
 						if(Snaring)
 							m.applySnare(Snaring, 'root.dmi')
+						if(src.PullIn && src.Owner)
+							a:PullToward(src.Owner, src.PullIn, 1)
 						if(src.Stunner)
 							if(src.IgnoreStun)
 								a:StunImmune=0

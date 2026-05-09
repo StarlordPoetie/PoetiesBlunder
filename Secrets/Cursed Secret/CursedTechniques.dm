@@ -350,3 +350,293 @@ obj
 					set category="Skills"
 					set hidden=1
 					usr.Activate(src)
+
+obj
+	Skills
+		Buffs
+			SlotlessBuffs
+				Limitless
+					SkillCost=0
+					Copyable=0
+					CursedTechnique=1
+					name="Limitless"
+					BuffName="Limitless"
+					Slotless=1
+					ManaDrain=1.5
+					ManaThreshold=1
+					IconLock='GojoShockwave.dmi'
+					LockX=-32
+					LockY=-32
+					IconLockBlend=1
+					TopOverlayLock='cosmiceyes.dmi'
+					passives = list("PureReduction" = 6, "Deflection" = 4, "BulletKill" = 6, "Void" = 1, "Flow" = 2)
+					ActiveMessage="lets infinity divide the space around them."
+					OffMessage="allows the Limitless barrier to fall away."
+
+					Trigger(mob/User, Override=0)
+						var/activated = ..()
+						if(User)
+							User.updateCursedEnergySixEyesOverlay()
+						return activated
+
+					GainLoop(mob/User)
+						ManaDrain = 1.5
+						if(User && User.cursedEnergySixEyes)
+							ManaDrain = 1
+						..()
+						if(User)
+							User.updateCursedEnergySixEyesOverlay()
+
+					verb/Limitless()
+						set category="Skills"
+						set name="Limitless"
+						Trigger(usr)
+
+				Disaster_Flames
+					SkillCost=0
+					Copyable=0
+					CursedTechnique=1
+					name="Disaster Flames"
+					BuffName="Disaster Flames"
+					Slotless=1
+					ManaDrain=1
+					ManaThreshold=1
+					IconLock='Flames Aura.dmi'
+					LockX=-32
+					LockY=-32
+					TopOverlayLock='AuraDarkFire3.dmi'
+					TopOverlayX=-32
+					TopOverlayY=-32
+					passives = list("PureDamage" = 2, "Scorching" = 5, "Burning" = 3, "FireHerald" = 1)
+					ActiveMessage="erupts in Disaster Flames."
+					OffMessage="lets the Disaster Flames gutter out."
+
+					GainLoop(mob/User)
+						..()
+						if(!User || !User.BuffOn(src))
+							return
+						var/SecretInformation/CursedEnergy/ce = User.getCursedEnergySecret()
+						var/tier = ce ? max(1, ce.currentTier) : 1
+						for(var/mob/m in oview(2, User))
+							if(!m || m == User)
+								continue
+							if(User.party && (m in User.party.members))
+								continue
+							if(!m.client && !isAI(m))
+								continue
+							m.AddBurn(1 + tier, User)
+							User.DoDamage(m, TrueDamage(0.4 + (tier * 0.15)))
+
+					verb/Disaster_Flames()
+						set category="Skills"
+						set name="Disaster Flames"
+						Trigger(usr)
+
+		AutoHit
+			Cursed_Technique_Red
+				SkillCost=0
+				Copyable=0
+				CursedTechnique=1
+				NeedsSword=0
+				name="Cursed Technique Reversal: Red"
+				ActiveMessage="condenses reversed cursed energy into Repulsion: Red!"
+				Area="Strike"
+				AdaptRate=1
+				SpecialAttack=1
+				CanBeDodged=1
+				CanBeBlocked=1
+				ComboMaster=1
+				DamageMult=11
+				Stunner=2
+				Knockback=20
+				Distance=2
+				Cooldown=60
+				ManaCost=14
+				Icon='GojoShockwave.dmi'
+				HitSparkIcon='Icons/GojoHitspark.dmi'
+				HitSparkX=-32
+				HitSparkY=-32
+				HitSparkSize=1
+				LockOut=list("/obj/Skills/AutoHit/Cursed_Technique_Blue")
+				proc/adjust(mob/p)
+					if(p)
+						p.updateCursedEnergySpatialTechniques()
+				verb/Cursed_Technique_Red()
+					set category="Skills"
+					set hidden=1
+					usr.Activate(src)
+
+			Cursed_Technique_Blue
+				SkillCost=0
+				Copyable=0
+				CursedTechnique=1
+				NeedsSword=0
+				name="Cursed Technique Lapse: Blue"
+				ActiveMessage="collapses the space ahead with Attraction: Blue!"
+				Area="Circle"
+				AdaptRate=1
+				SpecialAttack=1
+				CanBeDodged=1
+				CanBeBlocked=1
+				ComboMaster=1
+				DamageMult=7
+				Stunner=5
+				PullIn=20
+				Distance=25
+				Size=2
+				Rounds=3
+				Cooldown=60
+				ManaCost=12
+				Icon='TrippyPurpleBlue.dmi'
+				HitSparkIcon='GojoHitspark.dmi'
+				HitSparkX=-32
+				HitSparkY=-32
+				HitSparkSize=1
+				LockOut=list("/obj/Skills/AutoHit/Cursed_Technique_Red")
+				proc/adjust(mob/p)
+					if(p)
+						p.updateCursedEnergySpatialTechniques()
+				verb/Cursed_Technique_Blue()
+					set category="Skills"
+					set hidden=1
+					usr.Activate(src)
+
+			Cursed_Technique_Volcanic_Strike
+				SkillCost=0
+				Copyable=0
+				CursedTechnique=1
+				NeedsSword=0
+				name="Volcanic Strike"
+				ActiveMessage="drives volcanic cursed flames into the ground!"
+				Area="Circle"
+				AdaptRate=1
+				SpecialAttack=1
+				CanBeDodged=1
+				CanBeBlocked=1
+				DamageMult=6
+				Stunner=3
+				Distance=2
+				Size=3
+				Rounds=3
+				Scorching=28
+				Burning=4
+				Knockback=4
+				Quaking=2
+				TurfShift='LavaTile.dmi'
+				TurfShiftDuration=80
+				TurfShiftDurationSpawn=8
+				TurfShiftDurationDespawn=8
+				Cooldown=35
+				ManaCost=12
+				Icon='Fire VFX10.dmi'
+				HitSparkIcon='fevExplosion - Hellfire.dmi'
+				HitSparkX=-32
+				HitSparkY=-32
+				HitSparkSize=1
+				proc/adjust(mob/p)
+					if(p)
+						p.updateCursedEnergyImmolationTechniques()
+				verb/Volcanic_Strike()
+					set category="Skills"
+					set hidden=1
+					usr.Activate(src)
+
+			Cursed_Domain_Infinite_Void
+				SkillCost=0
+				Copyable=0
+				CursedTechnique=1
+				name="Domain Expansion: Infinite Void"
+				ActiveMessage="floods the Domain with the endless information of Infinite Void!"
+				Area="Circle"
+				AdaptRate=1
+				SpecialAttack=1
+				CanBeDodged=0
+				CanBeBlocked=0
+				DamageMult=0.1
+				Stunner=8
+				Rounds=10
+				Distance=15
+				NoLock=1
+				NoAttackLock=1
+				Cooldown=30
+				ManaCost=10
+				Icon='BLANK.dmi'
+				HitSparkIcon='TrippyPurpleBlue.dmi'
+				HitSparkX=-32
+				HitSparkY=-32
+				verb/Cursed_Domain_Infinite_Void()
+					set category="Skills"
+					set name="Domain Expansion: Infinite Void"
+					if(!usr.canUseCursedEnergyDomainSureHit("Spatial Manipulation"))
+						return
+					if(usr.Activate(src))
+						usr.finishCursedEnergyDomainSureHit(src)
+
+		Projectile
+			Cursed_Technique_Hollow_Purple
+				SkillCost=0
+				Copyable=0
+				CursedTechnique=1
+				name="Hollow Purple"
+				ActiveMessage="fuses Red and Blue into Hollow Purple!"
+				Distance=40
+				DamageMult=6
+				AccMult=1.5
+				MultiHit=8
+				Radius=3
+				ZoneAttack=1
+				FireFromSelf=1
+				Knockback=0
+				PullIn=8
+				Homing=1
+				HyperHoming=1
+				HomingCharge=4
+				LosesHoming=40
+				Deflectable=-1
+				ManaCost=28
+				Cooldown=130
+				IconLock='Purple Spiral.dmi'
+				IconSize=2
+				Trail='mirrorofmisfortune_trail_purple.dmi'
+				Variation=0
+				proc/adjust(mob/p)
+					if(p)
+						p.updateCursedEnergySpatialTechniques()
+				verb/Hollow_Purple()
+					set category="Skills"
+					set hidden=1
+					usr.UseProjectile(src)
+
+			Cursed_Technique_Maximum_Meteor
+				SkillCost=0
+				Copyable=0
+				CursedTechnique=1
+				name="Maximum Meteor"
+				ActiveMessage="summons a falling Maximum Meteor!"
+				Distance=35
+				DamageMult=8
+				AccMult=1.1
+				Radius=6
+				ZoneAttack=1
+				FireFromEnemy=1
+				FireFromSelf=0
+				Hover=20
+				Knockback=10
+				Stunner=5
+				Scorching=52
+				Burning=8
+				TurfShift='LavaTile.dmi'
+				Deflectable=-1
+				ManaCost=26
+				Cooldown=100
+				IconLock='DoomMeteor.dmi'
+				IconSize=2
+				Trail='TrailFire.dmi'
+				Variation=0
+				proc/adjust(mob/p)
+					if(p)
+						p.updateCursedEnergyImmolationTechniques()
+				verb/Maximum_Meteor()
+					set category="Skills"
+					set hidden=1
+					usr.UseProjectile(src)

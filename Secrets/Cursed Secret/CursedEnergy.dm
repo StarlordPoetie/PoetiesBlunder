@@ -56,6 +56,7 @@
 		d.OffMult = 1.50
 		d.ManaDrain = 2
 		d.ManaThreshold = 1
+		d.TimerLimit = 200
 		d.passives = list("TechniqueMastery" = 5, "BuffMastery" = 2, "MovementMastery" = 5)
 		d.DarkChange = 1
 	proc/ensureDomainExpansionVerbs(mob/p, obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d)
@@ -109,6 +110,8 @@
 				return /obj/Skills/AutoHit/Cursed_Domain_Dismantle
 			if("Electricity")
 				return /obj/Skills/AutoHit/Cursed_Domain_Electric_Discharge
+			if("Spatial Manipulation")
+				return /obj/Skills/AutoHit/Cursed_Domain_Infinite_Void
 
 		return null
 	proc/grantDomainSureHit(mob/p)
@@ -125,6 +128,10 @@
 				return list("Shearing" = 2, "Crippling" = 1, "CriticalChance" = 15)
 			if("Serrated")
 				return list("Shearing" = 2, "Shattering" = 2, "CriticalChance" = 10)
+			if("Spatial Manipulation")
+				return list("Flow" = 2, "Instinct" = 2, "Deflection" = 1)
+			if("Immolation")
+				return list("Scorching" = 4, "Burning" = 2, "PureDamage" = 0.5)
 
 		return list()
 	proc/getActiveTraitPassives(mob/p)
@@ -231,6 +238,10 @@
 		CursedEnergyBlackFlashChance = clamp(CursedEnergyBlackFlashChance, CursedEnergyBlackFlashBaseChance, 35)
 
 		updateSlashCursedTechniques(p)
+		if(p.cursedEnergyTrait == "Spatial Manipulation")
+			p.updateCursedEnergySpatialTechniques()
+		if(p.cursedEnergyTrait == "Immolation")
+			p.updateCursedEnergyImmolationTechniques()
 
 
 mob/proc/applyCursedEnergyPowerControlIcon()
@@ -280,6 +291,9 @@ mob
 		cursedEnergyTraitSlot
 		cursedEnergyPoseHealReady
 		cursedEnergyPoseHealCooldown
+		cursedEnergySixEyes
+		image/cursedEnergySixEyesOverlay
+		list/cursedEnergyInfiniteVoidEscapes
 		list/cursedEnergyTraitPassivesApplied
 
 
@@ -365,7 +379,7 @@ mob/proc/freeCursedEnergyTrait(var/force = 0)
 mob/proc/getAvailableCursedEnergyTraits()
 	if(!cursed_energy_taken_traits)
 		cursed_energy_taken_traits = list()
-	var/list/traits = list("Serrated", "Electricity", "Slash")
+	var/list/traits = list("Serrated", "Electricity", "Slash", "Spatial Manipulation", "Immolation")
 	var/list/available = list()
 	var/owner = cursedEnergySlotOwnerId()
 	for(var/trait in traits)
@@ -400,6 +414,8 @@ mob/proc/getCursedEnergyDrain(var/drain, obj/Skills/S)
 		return drain
 	var/tier = max(1, ce.currentTier)
 	var/reduction = min(0.4, max(0, tier - 1) * 0.1)
+	if(src.cursedEnergySixEyes)
+		reduction = min(0.75, reduction + 0.35)
 	if(reduction <= 0)
 		return drain
 	var/adjustedDrain = drain * (1 - reduction)
@@ -501,6 +517,7 @@ mob/proc/setupCursedEnergyAwakening()
 		return
 	if(ce.awakeningConfigured)
 		applyCursedEnergyPowerControlIcon()
+		updateCursedEnergySixEyesOverlay()
 		if(cursedEnergyTrait && !cursedEnergyTraitSlot)
 			if(!reserveCursedEnergyTrait(cursedEnergyTrait))
 				src << "Your Cursed Energy trait slot is already occupied; Cursed Energy has been cleaned up."
@@ -544,8 +561,27 @@ mob/proc/setupCursedEnergyAwakening()
 			ce.updateSlashCursedTechniques(src)
 			src << "Your cursed energy gains slicing properties."
 
+		if("Spatial Manipulation")
+			findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Limitless)
+			findOrAddSkill(/obj/Skills/AutoHit/Cursed_Technique_Red)
+			findOrAddSkill(/obj/Skills/AutoHit/Cursed_Technique_Blue)
+			findOrAddSkill(/obj/Skills/Projectile/Cursed_Technique_Hollow_Purple)
+			updateCursedEnergySpatialTechniques()
+			if(prob(10))
+				cursedEnergySixEyes = 1
+				src << "The Six Eyes awaken behind your Limitless cursed technique."
+			src << "Your cursed energy begins folding space through Limitless."
+
+		if("Immolation")
+			findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Disaster_Flames)
+			findOrAddSkill(/obj/Skills/AutoHit/Cursed_Technique_Volcanic_Strike)
+			findOrAddSkill(/obj/Skills/Projectile/Cursed_Technique_Maximum_Meteor)
+			updateCursedEnergyImmolationTechniques()
+			src << "Your cursed energy erupts into Disaster Flames."
+
 	ce.awakeningConfigured = 1
 	applyCursedEnergyPowerControlIcon()
+	updateCursedEnergySixEyesOverlay()
 	refreshCursedEnergyTraitPassives()
 
 
@@ -573,6 +609,33 @@ mob/proc/attemptCursedHeavyStrike()
 			SetQueue(gf)
 			return 1
 
+	if(cursedEnergyTrait == "Spatial Manipulation")
+		if(Target && Target != src && get_dist(src, Target) <= 25 && Target.z == z)
+			var/obj/Skills/AutoHit/spatial
+			if(get_dist(src, Target) <= 2)
+				spatial = findOrAddSkill(/obj/Skills/AutoHit/Cursed_Technique_Red)
+			else
+				spatial = findOrAddSkill(/obj/Skills/AutoHit/Cursed_Technique_Blue)
+			if(spatial && !spatial.Using && !spatial.cooldown_remaining)
+				call(spatial, "adjust")(src)
+				throwSkill(spatial)
+				var/obj/Skills/AutoHit/otherSpatial = null
+				if(istype(spatial, /obj/Skills/AutoHit/Cursed_Technique_Red))
+					otherSpatial = locate(/obj/Skills/AutoHit/Cursed_Technique_Blue) in src
+				else
+					otherSpatial = locate(/obj/Skills/AutoHit/Cursed_Technique_Red) in src
+				if(otherSpatial && !otherSpatial.cooldown_remaining)
+					otherSpatial.Cooldown(modify = 1, Time = 600, p = src, announce_cd = 0)
+				triggerSixEyesCooldownReduction(spatial)
+				return 1
+
+	if(cursedEnergyTrait == "Immolation")
+		var/obj/Skills/AutoHit/Cursed_Technique_Volcanic_Strike/vs = findOrAddSkill(/obj/Skills/AutoHit/Cursed_Technique_Volcanic_Strike)
+		if(vs && !vs.Using && !vs.cooldown_remaining)
+			vs.adjust(src)
+			throwSkill(vs)
+			return 1
+
 	if(!canBlackFlashStrike())
 		return 1
 
@@ -597,6 +660,23 @@ mob/proc/attemptCursedToss()
 		var/obj/Skills/Projectile/Cursed_Technique_Dismantle/d = findOrAddSkill(/obj/Skills/Projectile/Cursed_Technique_Dismantle)
 		if(d && !d.Using && !d.cooldown_remaining)
 			return d.Trigger(src)
+
+	if(cursedEnergyTrait == "Spatial Manipulation")
+		var/obj/Skills/Projectile/Cursed_Technique_Hollow_Purple/hp = findOrAddSkill(/obj/Skills/Projectile/Cursed_Technique_Hollow_Purple)
+		if(hp && !hp.Using && !hp.cooldown_remaining)
+			hp.adjust(src)
+			var/usedPurple = hp.Trigger(src)
+			if(usedPurple)
+				triggerSixEyesCooldownReduction(hp)
+			return usedPurple
+		return 0
+
+	if(cursedEnergyTrait == "Immolation")
+		var/obj/Skills/Projectile/Cursed_Technique_Maximum_Meteor/mm = findOrAddSkill(/obj/Skills/Projectile/Cursed_Technique_Maximum_Meteor)
+		if(mm && !mm.Using && !mm.cooldown_remaining)
+			mm.adjust(src)
+			return mm.Trigger(src)
+		return 0
 
 	return 0
 
@@ -653,6 +733,8 @@ mob/proc/activateReversedCursedTechnique()
 	HealthCut = 0
 	MaxHealth()
 
+	if(cursedEnergySixEyes)
+		healPercent *= 2
 	var/healAmount = round(100 * healPercent, 0.1)
 	if(healAmount > 0)
 		HealHealth(healAmount)
@@ -669,6 +751,111 @@ mob/proc/activateReversedCursedTechnique()
 
 	world << "[src.name] utilizes Reversed Curse Technique and restores their body instantly!"
 
+
+
+mob/proc/updateCursedEnergySpatialTechniques()
+	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
+	if(!ce)
+		return
+	var/tier = max(1, ce.currentTier)
+	var/scale = 1 + (0.25 * (tier - 1))
+	var/obj/Skills/AutoHit/Cursed_Technique_Red/red = locate(/obj/Skills/AutoHit/Cursed_Technique_Red) in src
+	if(red)
+		red.DamageMult = 11 * scale
+		red.ManaCost = 12 + (tier * 2)
+	var/obj/Skills/AutoHit/Cursed_Technique_Blue/blue = locate(/obj/Skills/AutoHit/Cursed_Technique_Blue) in src
+	if(blue)
+		blue.DamageMult = 7 * scale
+		blue.ManaCost = 10 + (tier * 2)
+	var/obj/Skills/Projectile/Cursed_Technique_Hollow_Purple/purple = locate(/obj/Skills/Projectile/Cursed_Technique_Hollow_Purple) in src
+	if(purple)
+		purple.DamageMult = 6 * scale
+		purple.ManaCost = 25 + (tier * 3)
+
+
+mob/proc/updateCursedEnergyImmolationTechniques()
+	var/SecretInformation/CursedEnergy/ce = getCursedEnergySecret()
+	if(!ce)
+		return
+	var/tier = max(1, ce.currentTier)
+	var/scale = 1 + (0.2 * (tier - 1))
+	var/obj/Skills/AutoHit/Cursed_Technique_Volcanic_Strike/strike = locate(/obj/Skills/AutoHit/Cursed_Technique_Volcanic_Strike) in src
+	if(strike)
+		strike.DamageMult = 6 * scale
+		strike.ManaCost = 10 + (tier * 2)
+		strike.Scorching = 20 + (tier * 8)
+	var/obj/Skills/Projectile/Cursed_Technique_Maximum_Meteor/meteor = locate(/obj/Skills/Projectile/Cursed_Technique_Maximum_Meteor) in src
+	if(meteor)
+		meteor.DamageMult = 8 * scale
+		meteor.ManaCost = 22 + (tier * 4)
+		meteor.Scorching = 40 + (tier * 12)
+
+
+mob/proc/removeCursedEnergySixEyesOverlay()
+	if(cursedEnergySixEyesOverlay)
+		overlays -= cursedEnergySixEyesOverlay
+	cursedEnergySixEyesOverlay = null
+
+
+mob/proc/updateCursedEnergySixEyesOverlay()
+	removeCursedEnergySixEyesOverlay()
+	if(!cursedEnergySixEyes || cursedEnergyTrait != "Spatial Manipulation")
+		return
+	var/obj/Skills/Buffs/SlotlessBuffs/Limitless/lim = locate(/obj/Skills/Buffs/SlotlessBuffs/Limitless) in src
+	if(lim && BuffOn(lim))
+		cursedEnergySixEyesOverlay = image(icon = 'cosmiceyes.dmi', pixel_x = 0, pixel_y = 0, layer = FLOAT_LAYER-1)
+	else
+		cursedEnergySixEyesOverlay = image(icon = 'Eyes.dmi', icon_state = "Blindfold", pixel_x = 0, pixel_y = 0, layer = FLOAT_LAYER-1)
+	overlays += cursedEnergySixEyesOverlay
+
+
+mob/proc/triggerSixEyesCooldownReduction(obj/Skills/exclude, var/includeDomain = 0)
+	if(!cursedEnergySixEyes || cursedEnergyTrait != "Spatial Manipulation")
+		return
+	for(var/obj/Skills/s in Skills)
+		if(!s || s == exclude)
+			continue
+		if(!includeDomain && istype(s, /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion))
+			continue
+		if(s.cooldown_remaining > 0)
+			var/newTime = max(0, s.cooldown_remaining - 300)
+			if(newTime <= 0)
+				s.cooldown_remaining = 0
+				s.Using = 0
+				s.cooldown_start = 0
+			else
+				s.Cooldown(modify = 1, Time = newTime, p = src, announce_cd = 0)
+
+
+mob/proc/tickInfiniteVoidDomain(obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/domain)
+	if(!domain || cursedEnergyTrait != "Spatial Manipulation" || !domainExpansionActive || !BuffOn(domain))
+		return
+	if(!cursedEnergyInfiniteVoidEscapes)
+		cursedEnergyInfiniteVoidEscapes = list()
+	var/list/current = list()
+	for(var/mob/m in oview(domain.range, src))
+		if(!m || m == src)
+			continue
+		if(party && (m in party.members))
+			continue
+		if(!m.client && !isAI(m))
+			continue
+		current += m
+		var/progress = cursedEnergyInfiniteVoidEscapes[m]
+		if(!isnum(progress))
+			progress = 0
+		progress += rand(8, 18)
+		cursedEnergyInfiniteVoidEscapes[m] = progress
+		if(progress >= 100)
+			continue
+		Stun(m, 1.5, TRUE)
+		m.Frozen = max(m.Frozen, 1)
+		spawn(12)
+			if(m && m.Frozen == 1)
+				m.Frozen = 0
+	for(var/mob/old in cursedEnergyInfiniteVoidEscapes)
+		if(!(old in current))
+			cursedEnergyInfiniteVoidEscapes -= old
 
 mob/proc/removeCursedEnergySkill(var/path)
 	var/obj/Skills/s = locate(path) in src
@@ -723,7 +910,15 @@ mob/proc/cleanupCursedEnergy()
 		/obj/Skills/Projectile/Cursed_Technique_Dismantle,
 		/obj/Skills/AutoHit/Cursed_Technique_Cleave,
 		/obj/Skills/AutoHit/Cursed_Voltage_Strike,
-		/obj/Skills/AutoHit/Shutter_Doors)
+		/obj/Skills/AutoHit/Shutter_Doors,
+		/obj/Skills/Buffs/SlotlessBuffs/Limitless,
+		/obj/Skills/Buffs/SlotlessBuffs/Disaster_Flames,
+		/obj/Skills/AutoHit/Cursed_Technique_Red,
+		/obj/Skills/AutoHit/Cursed_Technique_Blue,
+		/obj/Skills/AutoHit/Cursed_Technique_Volcanic_Strike,
+		/obj/Skills/AutoHit/Cursed_Domain_Infinite_Void,
+		/obj/Skills/Projectile/Cursed_Technique_Hollow_Purple,
+		/obj/Skills/Projectile/Cursed_Technique_Maximum_Meteor)
 	for(var/path in cursedSkills)
 		removeCursedEnergySkill(path)
 	freeCursedEnergyTrait()
@@ -734,6 +929,9 @@ mob/proc/cleanupCursedEnergy()
 	cursedEnergyDomainChoice = null
 	cursedEnergyPoseHealReady = 0
 	cursedEnergyPoseHealCooldown = 0
+	removeCursedEnergySixEyesOverlay()
+	cursedEnergySixEyes = 0
+	cursedEnergyInfiniteVoidEscapes = null
 	if(Secret == "Cursed Energy")
 		Secret = null
 	if(istype(secretDatum, /SecretInformation/CursedEnergy))
