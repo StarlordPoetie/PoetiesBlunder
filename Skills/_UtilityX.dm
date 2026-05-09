@@ -1507,7 +1507,6 @@ obj/Skills/Utility
 		// Edits which herbs are set to 1 in the flask object
 		proc/EditFlaskContent(mob/P) // The first layer of crimes
 			var/obj/Items/Flask/Option = FlaskChoice(P)
-			liveDebugMsg("Option is now [Option]")
 			if(Option == "Cancel") return 
 			HerbOptions(P, Option)
 
@@ -1523,7 +1522,6 @@ obj/Skills/Utility
 			ChosenFlask.Slots = P.GetMaxFlaskSlots() // This might be setting it to null
 			liveDebugMsg("[ChosenFlask.Slots]Flask Slots")
 			while(ChosenFlask.Slots > 0) // If you have slots, select them. Cancel 
-				liveDebugMsg("Loop Started")
 				var/list/Choices = list("Cancel") + P.PotionTypes
 				var/herbchoice = input(P, "Choose an herb.", "Alter Existing Flask") in Choices
 				if(herbchoice == "Cancel") return

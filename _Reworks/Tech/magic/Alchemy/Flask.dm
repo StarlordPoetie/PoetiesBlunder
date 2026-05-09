@@ -36,9 +36,7 @@
         if(usr.equippedFlask.Charges == 0) return
         usr.reduceCharge() // mob proc that reduces charges
         if(!usr.CheckSlotless("Flask Charge")) // If no buff, 
-            liveDebugMsg("Line 39 If check passed")
             for(var/typesFromTechniques in src.Techniques) // We want to go fishing 
-                liveDebugMsg("Line 41 for check passed")
                 var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Flask_Charge/usedFlask = usr.findOrAddSkill(typesFromTechniques); // then we assign our fish to a var
                 usedFlask.adjust(usr); // We can now pass adjust and trigger procs as if we were in the buff (kind of)
                 usedFlask.Trigger(usr);
@@ -63,7 +61,6 @@
     TimerLimit = 60
     passives = list() // THese r handled in the adjust proc too
     adjust(mob/P)
-        liveDebugMsg("Flask Charge Adjust Triggered")
         Cooldown = P.GetFlaskCD() 
         InstantAffect = 1
         // I am so fucking sorry for what is about to happen
@@ -74,7 +71,6 @@
             src.HealthHeal = glob.POTIONHEAL/2*(P.equippedFlask.Tier+1)  // 2.5, 5, 7.5 if POTIONHEAL = 5
             src.ManaHeal = (-1)*glob.POTIONHEAL*(5-P.equippedFlask.Tier) // T0 = -25, T1 = -20, T3 = -15 if POTIONHEAL=  5
             src.EnergyHeal = (-1)*glob.POTIONHEAL*(2-P.equippedFlask.Tier)// T0 = -10, T1 = -5, T3 = 0 if POTIONHEAL=  5
-            liveDebugMsg("Healed [HealthHeal] hp, Deducted [ManaHeal] mana, Deducted [EnergyHeal] energy.")
         */
         if(P.equippedFlask.Mana == 1) //  ONLY THE VALUE OF 1 SHOULD BE HERE 
             StableHeal=1
