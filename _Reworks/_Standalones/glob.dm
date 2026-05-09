@@ -391,7 +391,7 @@ globalTracker
 		MORTAL_BLOW_CHANCE = 8
 		MULTIHIT_NERF = FALSE
 		GetUpVar = 1 // how fast u get up ?
-		MAGIC_BASE_COST = 50
+		MAGIC_BASE_COST = 100
 		TECH_BASE_COST = 30
 		MAGIC_INTELL_MATTERS = TRUE
 		WorldPUDrain = 1
