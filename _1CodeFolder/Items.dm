@@ -1395,6 +1395,17 @@ obj/Items/proc/UnEquip(mob/A)
 	if(src.UnderlayIcon)
 		var/image/im = src.ItemUnderlayMobImage()
 		if(im) A.underlays -= im
+	if(istype(src, /obj/Items/Flask)) // Checks for if you have a slottless buff active (i should probably narrow this in scope!!! FUCK YOU!)
+		if(Augmented)
+			for(var/obj/Skills/Buffs/x in Techniques)
+				if(x.Using || A.CheckSlotless(x.BuffName))
+					A << "You can't remove [src] while you have [x.BuffName] active!"
+					return
+		if(A.equippedFlask) // Checks if you have a flask equipped, which is necessary to... unequip flasks. I'm tired fuck off
+			liveDebugMsg("Flask Unequipped, check if equippedFlask is set to null")
+			A.equippedFlask = null
+		suffix = null
+
 
 
 obj/Items/proc/Equip(mob/A)
@@ -1477,8 +1488,9 @@ obj/Items/proc/Equip(mob/A)
 	if(src.EquipIcon)
 		var/image/im=image(icon=src.EquipIcon, pixel_x=src.pixel_x, pixel_y=src.pixel_y, layer=placement)
 		A.overlays+=im
-	else
+	else if(!istype(src, /obj/Items/Flask)) // Hijacks ur code lol lmao
 		var/image/im=image(icon=src.icon, pixel_x=src.pixel_x, pixel_y=src.pixel_y, layer=placement)
+			
 		if(istype(src, /obj/Items/Sword) || istype(src, /obj/Items/Enchantment/Staff))
 			if(A.ArmamentGlow)
 				im.filters += A.ArmamentGlow
@@ -1497,6 +1509,11 @@ obj/Items/proc/Equip(mob/A)
 	if(src.UnderlayIcon)
 		var/image/im = src.ItemUnderlayMobImage()
 		if(im) A.underlays += im
+
+	if(istype(src, /obj/Items/Flask)) //We check if what's being passed is a Flask, IDRC about icons as it won't be drawn over mobs
+		if(!A.equippedFlask) // We only want one flask equipped, i fucking hate the way items as a whole are coded here.
+			A.equippedFlask = src
+			suffix = "*Equipped*" // How the game determines if it's actually equipped lmao
 	return 1
 
 
@@ -2302,6 +2319,14 @@ obj/Items/proc/ObjectUse(var/mob/Players/User=usr)
 			OMsg(usr, "[usr] steals [src] from [OldLoc]!")
 			usr.contents+=src
 			usr.Grid("Loot", Lootee=OldLoc)
+			
+	if(istype(src, /obj/Items/Flask)) // we pass the equipped flask proc stored in User (a mob), 
+		if(User.equippedFlask && User.equippedFlask != src) // we check if they have a flask equipped and if it's not the source of this
+			User << "You already have a Flask Equipped" // Dimwit
+			return
+		User.equippedFlask = null
+		src.AlignEquip(User)
+			
 
 
 

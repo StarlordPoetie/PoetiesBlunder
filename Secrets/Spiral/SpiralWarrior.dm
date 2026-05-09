@@ -216,7 +216,7 @@ obj/Skills/AutoHit/Spiral
 		CA=3
 	Total=PullAscensionStats(CA, TA, Stat)
 	if(SL>=7)
-		Total*=1.25
+		Total*=3
 	if(isRace(SAIYAN)||isRace(HALFSAIYAN))
 		switch(transUnlocked)
 			if(0)

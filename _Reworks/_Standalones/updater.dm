@@ -252,7 +252,7 @@ update
 					p.transActive = 1;
 					p.Revert();
 					//an attempt is made
-				if(!p.passive_handler.Get("DormantDemon") && !p.passive_handler.Get("DeathDefied"))//normal human
+				if(!p.passive_handler.Get("DormantDemon") && !p.passive_handler.Get("DeathDefied") && p.Class == "Underdog")//normal human, woof woof
 					p << "You are recognized as a NOT Mazoku human."
 					p << "So give me those transformations back, boo.";
 					var/safety = 20

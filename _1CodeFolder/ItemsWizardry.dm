@@ -183,6 +183,7 @@ obj/Items/Enchantment
 			del src
 
 	Cauldron
+		Unobtainable = 1 // And with this I declare: DEATH TO ENCHANTING, LONG LIVE THAUMATURGY
 		Cost=80
 		Grabbable=0
 		Destructable=1

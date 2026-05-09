@@ -51,6 +51,7 @@ world
 			GeneratePlayActionDatabase()
 			updatePassiveInfo()
 			generateSwapMaps()
+			glob.resetSignaturePotentials();
 	Del()
 		..()
 

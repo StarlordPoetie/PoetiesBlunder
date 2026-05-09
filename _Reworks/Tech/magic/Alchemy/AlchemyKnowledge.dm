@@ -1,57 +1,65 @@
-// First we need to know what 'Alchemy' as a system needs
-// This shit also just needs to be cheaper fuck you mean a 1 int race has to pay fucking 30 on some of this shit
+// Co-opting my own code for the flask system, epic I know
+// Also magic level was disabled when I made this so if you want to integrate it and turn that on, don't ask me to do it
+// DELETED TRANSFORMATION AND PHILTER POTS FROM THE TECH TREE. THEY ARE NOT USED IN FLASKS ANYWAY.
 
 /knowledgePaths/magic/alchemy   
 
-// I have to integrate this somehow to make sure it increases magic level (does magic level even matter? idfk)
-/knowledgePaths/magic/alchemy/Basic_Alchemy //I hate it too but for the sake of preserving things
+//FLASKS
+/knowledgePaths/magic/alchemy/Basic_Alchemy //T0 Flask + Unlocks Herbs
     name = "Basic Alchemy"
-    breakthrough = TRUE
-    description = "The Essence of all Alchemy, allows you to make a cauldron, unlocks 5 herbs you can learn."
+    description = "Basic Alchemy is the essential knowledge behind the alchemical arts. The Thaumaturge is now capable of creating expensive flasks capable of storing powerful concotions."
     requires = list()
+/knowledgePaths/magic/alchemy/Flask_Accumen //T1 Flask Upgrade
+    name = "Flask Accumen"
+    description = "Flask Accumen is the intermediate knowledge behind Flaskmaking. The Thaumaturge's flask can filter contanimants better, bettering the effects of the concoction and reducing the downsides."
+    requires = list("Basic Alchemy")
+/knowledgePaths/magic/alchemy/Flask_Mastery //T2 Flask Upgrade
+    name = "Flask Mastery"
+    description = "Flask Mastery is the zenith of knowledge behind Flaskmaking. The Thaumaturge's flask can filter MOST contaminants, their concoctions are the strongest you can find."
+    requires = list("Flask Accumen")
 
-/knowledgePaths/magic/alchemy/Refreshment_Herbs // Buff or Remove this
+//HERBS
+/knowledgePaths/magic/alchemy/Refreshment_Herbs 
     name = "Refreshment Herbs"
-    description = "Refreshment Herbs restore energy when used in a potion."
+    description = "Refreshmen Herbs are procured for their ability to revitalize the ENERGY of subjects. It will subtract MANA from the subject."
     requires = list("Basic Alchemy")
-/knowledgePaths/magic/alchemy/Healing_Herbs // Buff or remove this
+/*  (Currently not capable of balancing)
+/knowledgePaths/magic/alchemy/Healing_Herbs  
     name = "Healing Herbs"
-    description = "Healing herbs restore health when used in a potion."
+    description = "Healing herbs are procured for their ability to rejuvenate the HEALTH of subjects. It will will subtract ENERGY and MANA from the subject."
     requires = list("Basic Alchemy")
-/knowledgePaths/magic/alchemy/Magic_Herbs // Buff or remove this
+    */
+/knowledgePaths/magic/alchemy/Magic_Herbs 
     name = "Magic Herbs"
-    description = "Magic herbs restore mana when used in a potion."
+    description = "Magic herbs are procured for their ability to restore the MANA of subjects. It will subtract ENERGY from the subject."
     requires = list("Basic Alchemy")
+/*CURRENTLY DISABLED, Flasks.DM still has a var to accomodate toxin but they are also commented ut
 /knowledgePaths/magic/alchemy/Toxic_Herbs //I like this mechanic but needs a balance lookover first.
     name = "Toxic Herbs"
     description = "Toxic herbs deal damage to yourself when used in a potion, but reduce the potion cooldown by half."
-    requires = list("Basic Alchemy")
-/knowledgePaths/magic/alchemy/Philter_Herbs // Remove or rename this due to the IMPLICATION
-    name = "Philter Herbs"
-    description = "This makes it so you deal less damage against the person who made the potion? (I think?)... Weirdo."
-    requires = list("Basic Alchemy")
-/knowledgePaths/magic/alchemy/Improved_Alchemy
-    name = "Improved Alchemy"
-    breakthrough = TRUE
-    description = "Advanced botanical and chemical knowledge allow you to learn 4 new herbs, as well as distillation."
-    requires = list("Basic Alchemy")
+    requires = list("Basic Alchemy")*/
 /knowledgePaths/magic/alchemy/Stimulant_Herbs
     name = "Stimulant Herbs"
-    description = "Stimulant herbs give the PureDamage passive when used in potions."
-    requires = list("Improved Alchemy")
+    description = "Magic herbs are procured for their ability to incite violence within the subject, allowing them to channel raw offensive power. This comes at the downside of leaving one more vulnerable to retaliation."
+    requires = list("Basic Alchemy")
 /knowledgePaths/magic/alchemy/Relaxant_Herbs
     name = "Relaxant Herbs"
-    description = "Relaxant herbs give the Flow passive when used in potions."
-    requires = list("Improved Alchemy")
+    description = "Relaxant herbs are procured for their ability to incite relaxation within the subject, allowing them to evade strikes better. This comes at the downside of decreasing offensive cabilities."
+    requires = list("Basic Alchemy")
 /knowledgePaths/magic/alchemy/Numbing_Herbs
     name = "Numbing Herbs"
-    description = "Numbing herbs give the Hardening passive when used in potions."
-    requires = list("Improved Alchemy")
+    description = "Numbing herbs are procured for their ability to dull the pain of a subject, allowing them to resist damage. This comes at the cost of slowing down movements and reaction time. "
+    requires = list("Basic Alchemy")
+/knowledgePaths/magic/alchemy/Quicksilver_Herbs // Thank you for the suggestion Jumpy
+    name = "Quicksilver Herbs"
+    description = "Quicksilver Herbs are procured for their ability to enhance the speed of a subject. This comes at the expense of their offensive power."
+    requires = list("Basic Alchemy")
+/knowledgePaths/magic/alchemy/Hallucinogens
+    name = "Hallucinogens"
+    description = "Hallucingens are procured as a means to instill the delusion of anger in a subject. This comes at the expense of heavily compromising defense in the name of ANGER fueled might."
+    requires = list("Basic Alchemy")
+/* OLD OPTION STUFF
 /knowledgePaths/magic/alchemy/Distillation_Process
     name = "Distillation Process"
     description = "No fucking clue rn lol, will update when I figure it out."
-    requires = list("Improved Alchemy")
-/knowledgePaths/magic/alchemy/Mutagenic_Herbs
-    name = "Mutagenic Herbs"
-    description = "Mutagenic Herbs allow you to 'polymorph' into something and I have no idea why that's a good thing. It changes your icon!"
-    requires = list("Improved Alchemy")
+    requires = list("Basic Alchemy")*/ 

@@ -4,6 +4,7 @@ transformation
 			passives = list("Conductor" = 10, "HighTension"=1,"TensionPowered"=0.25,"TechniqueMastery"=1, "BuffMastery" = 2, "PureReduction"=2, "PureDamage"=2)
 			pot_trans = 2
 			transformation_message = "usrName raises their tension!"
+			detrans_message = "usrName lowers their tension to normal..."
 			mastery_boons(mob/user)
 				if(mastery >= 0)
 					passives = list("Conductor" = 10, "HighTension"=1,"TensionPowered"=0.25,"TechniqueMastery"=1, "BuffMastery" = 2, "PureReduction"=2, "PureDamage"=2,"UnderDog"=0.3,"Tenacity"=2)
@@ -26,6 +27,7 @@ transformation
 			form_aura_icon_state = "HT2"
 			form_aura_x = -32
 			transformation_message = "usrName maximizes their tension!"
+			detrans_message = "usrName descends from their peak of tension..."
 			mastery_boons(mob/user)
 				if(mastery >= 0)
 					pot_trans=3

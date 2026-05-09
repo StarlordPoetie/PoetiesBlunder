@@ -9,6 +9,7 @@ transformation
 			form_underlay_1_x = -32;
 			form_underlay_1_y = -32;
 			transformation_message = "Reality begins to fray around usrName. Comprehension eludes you."
+			detrans_message = "usrName becomes fully real once more..."
 			mastery_boons(mob/user)
 				enduranceadd = 0.05*user.AscensionsAcquired
 				offenseadd = 0.05*user.AscensionsAcquired
@@ -33,6 +34,7 @@ transformation
 		full_manifestation
 			passives = list("Unreality" = 0.9, "Full Manifestation" = 1, "PureDamage"=3, "PureReduction"=3,"DebuffResistance"=0.1, "BuffMastery"=3)
 			transformation_message = "usrName reveals itself to the detriment of all!"
+			detrans_message = "usrName bottles up the unreality... halfway a person..."
 			mastery_boons(mob/user)
 				enduranceadd = 0.125*user.AscensionsAcquired
 				offenseadd = 0.125*user.AscensionsAcquired

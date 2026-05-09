@@ -94,10 +94,10 @@ var/list/MiscTree = list()
 
 
 
-/mob/verb/learnMagic()
+/mob/verb/learnMagic() // Change this to Thaumaturgy next wipe 
 	set category = "Utility"
-	set name = "Magic Learning"
-	var/choice = input(src, "What branch of magic do you wish to learn?", "Magic Learning") in list("Alchemy", "Enchanting", "Misc", "Nevermind")
+	set name = "Thaumaturgy"
+	var/choice = input(src, "What branch of magic do you wish to learn?", "Thaumaturgy") in list("Alchemy", "Enchanting", "Misc", "Nevermind")
 	if(choice == "Nevermind") return
 	
 	learnKnowledge("Magic", knowledgeTracker.learnedMagic, choice)

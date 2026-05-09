@@ -32,7 +32,7 @@ mob
 								break
 					else
 						thePath = text2path(thePath)
-				
+
 				if(!found)
 					if(locate(thePath, src))
 						found = thePath
@@ -41,7 +41,7 @@ mob
 
 				if(!SignatureStyles.Find("[nextPath.name]") && found)
 					SignatureStyles[nextPath.name] = nextPath.type
-					src << "You can now unlock [nextPath.name] by investing a Tier [nextPath.SignatureTechnique] Signature into it!"
+					src << "You can now unlock [nextPath.name] once you hit the potential requirement!"
 				del nextPath
 			return
 

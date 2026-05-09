@@ -4263,7 +4263,7 @@ obj
 ///King of Braves
 			Hell_And_Heaven
 				Area="Circle"
-				DamageMult=2
+				DamageMult=3
 				Rounds=10
 				ChargeTech=1
 				StrOffense=1
@@ -4291,7 +4291,7 @@ obj
 				verb/Hell_And_Heaven()
 					set category="Skills"
 					if(usr.SagaLevel>5)
-						src.DamageMult=3
+						src.DamageMult=4
 						src.ControlledRush=1
 						WindupMessage="combines the forces of Destruction and Creation with absolute control!"
 					usr.Activate(src)

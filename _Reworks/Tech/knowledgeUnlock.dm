@@ -135,34 +135,32 @@ var/knowledgePaths/tech/list/TechnologyTree = list()
 		// ALCHEMY //
 		if("Basic Alchemy")
 			AlchemyUnlocked=1
-			PotionTypes.Add("Wild Herb")
+			src.contents += new /obj/Skills/Utility/Concoct_Flask
+			src << "You now have the Concoct Flask verb, this will allow you to make, alter and upgrade flasks which can be used to grant you boons at the expense of some debuffs."
+			// PotionTypes.Add("Wild Herb") Lmao these don't have a use anymore
 		if("Healing Herbs")
 			PotionTypes.Add("Healing Herb")
 		if("Magic Herbs")
 			PotionTypes.Add("Magic Herb")
-		if("Toxic Herbs")
+		if("Toxic Herbs") // DEFUNCT, FUNCTIONALITY STILL SUPORTED IN FLASK.DM THOUGH SO LMAO?
 			PotionTypes.Add("Toxic Herb")
-		if("Hallucinogen Herbs")
-			PotionTypes.Add("Hallucinogen Herb")
-		if("Philter Herbs")
-			PotionTypes.Add("Philter Herb")
+		if("Hallucinogens")
+			PotionTypes.Add("Hallucinogens")
 		if("Stimulant Herbs")
 			PotionTypes.Add("Stimulant Herb")
 		if("Relaxant Herbs")
 			PotionTypes.Add("Relaxant Herb")
 		if("Numbing Herbs")
 			PotionTypes.Add("Numbing Herb")
-		if("Mutagenic Herbs")
-			PotionTypes.Add("Mutagenic Herb")
 		if("Refreshment Herbs")
 			PotionTypes.Add("Refreshment Herb")
-
-		if("ImprovedAlchemy")
-			ImprovedAlchemyUnlocked=1
-			PotionTypes.Add("Wild Herb")
-			if(!locate(/obj/Skills/Utility/Transmute, src))
-				src << "You now know enough about alchemy and magic circuits to transmute a victim into a true Philosopher Stone!  This will cost their life..."
-				src.AddSkill(new/obj/Skills/Utility/Transmute)
+		if("Quicksilver Herbs")
+			PotionTypes.Add("Refreshment Herb")
+		if("Flask Accumen")
+			AlchemyUnlocked = 2
+		if("Flask Mastery")
+			AlchemyUnlocked = 3
+			
 		// END ALCHEMY //
 		// TOOL SHIT //
 		if("ToolEnchantment")

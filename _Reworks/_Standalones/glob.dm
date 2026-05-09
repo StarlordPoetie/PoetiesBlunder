@@ -133,11 +133,13 @@ progressTracker
 		SAGA_T2_POT = 15
 		SAGA_T3_POT = 25
 
-		T1_STYLES = list(10, 20)
-		T2_STYLES = list(25, 35)
+		//unfortunately these must be set through a very dumb proc in _world.dm
+		T1_STYLES = list(10, 20, 25, 35)
+		T2_STYLES = list(25, 35, 45, 55)
 		T3_STYLES = list(50)
 		T1_SIGS = list(10, 20, 30)
 		T2_SIGS = list(25, 45)
+		T3_SIGS = list(50)
 
 /****************************************************
   *  *  *  *  *  * * GLOBAL TRACKER  *  *  *  *  *  *
@@ -157,6 +159,14 @@ globalTracker
 				admins << "Xoxo Error: parameter [v] was requested by outputVariableInfo (glob.dm). This is not a globally tracked variable.";
 				return;
 			return "<u>([vars[v]])</u>"
+		resetSignaturePotentials()//this is the very dumb proc.
+			glob.progress.T1_STYLES = list(10, 20, 25, 35)
+			glob.progress.T2_STYLES = list(25, 35, 45, 55)
+			glob.progress.T3_STYLES = list(50)
+			glob.progress.T1_SIGS = list(10, 20, 30)
+			glob.progress.T2_SIGS = list(25, 45)
+			glob.progress.T3_SIGS = list(50)
+			liveDebugMsg("we had to do it to em")
 	var
 
 		progressTracker/progress = new()
@@ -314,7 +324,7 @@ globalTracker
 		STYLE_MASTERY_DIVISOR = 10
 		BASE_STACK_REDUCTION = 0.25
 		REGEN_ASC_ONE_HEAL = 3
-		HEALTH_POTION_NERF = 4
+		HEALTH_POTION_NERF = 4 // HAHA YOU FOOLS, THIS WON'T DO ANYTHING TO MY FLASKS!
 		BUFF_MASTER_HIGHTHRESHOLD = 1.2
 		BUFF_MASTERY_LOWTHRESHOLD = 0.95
 		BUFF_MASTERY_LOWMULT = 0.1
@@ -373,11 +383,15 @@ globalTracker
 		IMPLODE_CD = 150
 
 		STASIS_LENGTH_MODIFIER = 0.25
+
+		KAIOKEN_BASE_TAX = 0.5
+		KAIOKEN_TAX_DIVISOR = 1000
+		KAIOKEN_EXPONENT = 2
 //EXTRAS?? //
 		MORTAL_BLOW_CHANCE = 8
 		MULTIHIT_NERF = FALSE
 		GetUpVar = 1 // how fast u get up ?
-		MAGIC_BASE_COST = 50
+		MAGIC_BASE_COST = 100
 		TECH_BASE_COST = 30
 		MAGIC_INTELL_MATTERS = TRUE
 		WorldPUDrain = 1
@@ -446,6 +460,7 @@ globalTracker
 		SERRATEDCHANCE = 2.5
 		SERRATED_DAMAGE = 0.25
 		POTIONHEAL=2
+		POTIONCOST=5000
 		SUPERCHARGERATE = 0.1
 		ATOMIZERRATE = 0.1
 		GLADIATOR_DISARM_MAX = 30

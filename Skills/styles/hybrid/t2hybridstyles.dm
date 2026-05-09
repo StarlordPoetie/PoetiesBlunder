@@ -21,6 +21,7 @@
 		StyleStr=1.25
 		StyleFor=1.25
 		StyleEnd=1.1
+		StyleComboUnlock = list("/obj/Skills/Buffs/NuStyle/MysticStyle/Magma_Walker" = "/obj/Skills/Buffs/NuStyle/UnarmedStyle/Twin_Dragon_Fire")
 		StyleActive="Ifrit Jambe"
 		passives = list("HybridStyle" = "MysticStyle","Fury" = 2, "Momentum" = 2,  "Harden" = 2, "SpiritHand" = 1.5, "Instinct" = 2, \
 						"Flow" = 2, "SpiritFlow" = 1.5, "Combustion" = 40, "Scorching" = 5, "Shattering" = 5)
@@ -55,6 +56,7 @@
 		StyleOff = 1.15
 		StyleSpd = 1.15
 		StyleDef = 1.15
+		StyleComboUnlock = list("/obj/Skills/Buffs/NuStyle/SwordStyle/Fist_of_Khonshu"="/obj/Skills/Buffs/NuStyle/UnarmedStyle/School_of_the_Undefeated_of_the_East")
 		Finisher="/obj/Skills/Queue/Finisher/Icy_Glare"
 		StyleActive = "Pheonix Eye Fist"
 		verb/Phoenix_Eye_Fist()
@@ -91,7 +93,11 @@
 	StyleOff = 1.15
 	StyleActive="Art of Order"
 	Finisher="/obj/Skills/Queue/Finisher/Alpha_Strike"
+	StyleComboUnlock=list("/obj/Skills/Buffs/NuStyle/MysticStyle/Stormbringer"="/obj/Skills/Buffs/NuStyle/SwordStyle/God_of_Hyperdeath",\
+	"/obj/Skills/Buffs/NuStyle/UnarmedStyle/Magma_Walker"="/obj/Skills/Buffs/NuStyle/UnarmedStyle/Tsui_no_Hiken_Kaguzuchi")
 	adjust(mob/p)
+		StyleComboUnlock=list("/obj/Skills/Buffs/NuStyle/MysticStyle/Stormbringer"="/obj/Skills/Buffs/NuStyle/SwordStyle/God_of_Hyperdeath",\
+		"/obj/Skills/Buffs/NuStyle/UnarmedStyle/Magma_Walker"="/obj/Skills/Buffs/NuStyle/UnarmedStyle/Tsui_no_Hiken_Kaguzuchi")
 		passives = list("HybridStyle" = "MysticStyle", "Wuju" = 1, "CriticalChance" = 10, "CriticalDamage"= 0.05, "SpiritSword" = 0.25, "ThunderHerald" = 1, \
 					"Instinct" = 1, "Flicker" = 1, "Fury" = 2.5, "Iaijutsu" = 2, "BlurringStrikes" = 2, "Rain" = 3)
 
@@ -108,6 +114,8 @@
 	StyleOff = 1.15
 	StyleEnd = 0.85
 	StyleDef = 0.85
+	StyleComboUnlock=list("/obj/Skills/Buffs/NuStyle/MysticStyle/Stormbringer"="/obj/Skills/Buffs/NuStyle/SwordStyle/God_of_Hyperdeath",\
+	"/obj/Skills/Buffs/NuStyle/UnarmedStyle/Magma_Walker"="/obj/Skills/Buffs/NuStyle/UnarmedStyle/Tsui_no_Hiken_Kaguzuchi")
 	ElementalOffense = "HellFire"
 	ElementalDefense = "Fire"
 	ElementalClass = "Fire"
@@ -116,6 +124,8 @@
 	Finisher="/obj/Skills/Queue/Finisher/Deal_with_the_Devil"
 	var/obj/Skills/demonSkill = FALSE
 	adjust(mob/p)
+		StyleComboUnlock=list("/obj/Skills/Buffs/NuStyle/MysticStyle/Stormbringer"="/obj/Skills/Buffs/NuStyle/SwordStyle/God_of_Hyperdeath",\
+		"/obj/Skills/Buffs/NuStyle/UnarmedStyle/Magma_Walker"="/obj/Skills/Buffs/NuStyle/UnarmedStyle/Tsui_no_Hiken_Kaguzuchi")
 		passives = list("HybridStyle" = "MysticStyle",  "CriticalChance" = 10, "CriticalDamage"= 0.05, "SpiritSword" = 0.25, "DemonicInfusion" = 1, "Combustion" = 40, "Scorching" = 5,\
 					"Heavy Strike" = "Inferno", "Instinct" = 1, "Persistence" = 0.5, "BurnHit" = 0.5)
 	Trigger(mob/User, Override)

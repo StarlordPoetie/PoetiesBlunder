@@ -4,6 +4,8 @@
 		Copyable=0
 		StyleEnd=1.3
 		StyleStr=1.3
+		StyleComboUnlock = list("/obj/Skills/Buffs/NuStyle/UnarmedStyle/Red_Cyclone_Style" = "/obj/Skills/Buffs/NuStyle/UnarmedStyle/All_Star_Wrestling",\
+		"/obj/Skills/Buffs/NuStyle/UnarmedStyle/Tai_Chi_Style" = "/obj/Skills/Buffs/NuStyle/UnarmedStyle/Jeet_Kune_Do")
 		passives = list("Muscle Power" = 4, "Grippy" = 5, "Scoop" = 2, "DeathField" = 3)
 		StyleActive="Ubermensch"
 		Finisher="/obj/Skills/Queue/Finisher/Command_Grab"
@@ -18,6 +20,8 @@
 		passives = list("DoubleStrike" = 3, "Fa Jin" = 2, "Momentum" = 2, "HardStyle"=1, "Instinct"=2)
 		StyleActive="Futae no Kiwami"
 		Finisher="/obj/Skills/Queue/Finisher/Mastery_of_Two_Layers"
+		StyleComboUnlock = list("/obj/Skills/Buffs/NuStyle/UnarmedStyle/Wing_Chun_Style" = "/obj/Skills/Buffs/NuStyle/UnarmedStyle/Flying_Thunder_God",\
+		"/obj/Skills/Buffs/NuStyle/UnarmedStyle/Tai_Chi_Style" = "/obj/Skills/Buffs/NuStyle/UnarmedStyle/Jeet_Kune_Do")
 		verb/Futae_No_Kiwami()
 			set hidden=1
 			src.Trigger(usr)
@@ -30,6 +34,8 @@
 		SignatureTechnique=2
 		Copyable=0
 		StyleActive="Mantis Style"
+		StyleComboUnlock = list("/obj/Skills/Buffs/NuStyle/UnarmedStyle/Wing_Chun_Style" = "/obj/Skills/Buffs/NuStyle/UnarmedStyle/Flying_Thunder_God",\
+		"/obj/Skills/Buffs/NuStyle/UnarmedStyle/Tai_Chi_Style" = "/obj/Skills/Buffs/NuStyle/UnarmedStyle/Jeet_Kune_Do")
 		Finisher="/obj/Skills/Queue/Finisher/Zetsuei"
 		proc/swap_stance()
 			if(StyleActive == "Mantis Style")
@@ -67,6 +73,7 @@
 		SignatureTechnique=2
 		Copyable=0
 		StyleActive="Long Fist Style"
+		StyleComboUnlock = list("/obj/Skills/Buffs/NuStyle/UnarmedStyle/Tai_Chi_Style" = "/obj/Skills/Buffs/NuStyle/UnarmedStyle/Jeet_Kune_Do")
 		Finisher="/obj/Skills/Queue/Finisher/Jarret_Jarret"
 		verb/Long_Fist_Style()
 			set hidden=1

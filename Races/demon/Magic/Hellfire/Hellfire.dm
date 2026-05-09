@@ -172,3 +172,64 @@
         set category = "Skills"
         src.Trigger(usr, 0 )
 
+// THIS IS FOR THE XIULINGITES AND IS NOT MEANT FOR DEMON USE, I JUST PUT IT HERE BECAUSE OF INHERITANCE SHENANIGANS
+/obj/Skills/Buffs/SlotlessBuffs/Magic/HellFire/Inkstorm
+    ElementalClass="Water"
+    scalingValues = list("Damage" = list(0.2,0.25,0.3,0.35,0.4,0.45), "Distance" = list(4,6,6,6,8,10), \
+    "AbsoluteZero = " = list(6,12,15,20,25,25), "Slow" = list(2,2,3,4,5,5), "Freezing" = list(10,15,20,25,25,30), "Duration" = list(100,150,150,175,200,300), \
+    "Adapt" = list(1,1,1,1,1,1), "CorruptionGain" = list(0,0,0,0,0,0) )
+    makSpace = new/spaceMaker/HellFire
+    var/icon_to_use = 'Icons/New/inkwater2.dmi'
+    var/states_to_use = list("","1") // Fun fact, this is USELESS
+    var/layer_to_use = MOB_LAYER-0.1
+    Cooldown=90
+    ManaCost = 8
+    TimerLimit = 10
+    EndYourself=1
+    MagicNeeded = 0
+    ActiveMessage = "pours Ink into the world around them."
+    adjust(mob/p)
+        scalingValues = /obj/Skills/Buffs/SlotlessBuffs/Magic/HellFire/Inkstorm::scalingValues
+        var/asc = p.AscensionsAcquired ? p.AscensionsAcquired + 1 : 1
+        makSpace.toDeath = scalingValues["Duration"][asc]
+        makSpace.range = scalingValues["Distance"][asc]
+        makSpace.configuration = "Fill"
+        makSpace.getDmg(p, src)
+    verb/Inkstorm()
+        set category = "Skills"
+        adjust(usr)
+        if(cooldown_remaining > 0)
+            usr << "on cooldown"
+        else
+            src.Trigger(usr, 0 )
+    Trigger(mob/User, Override = 0)
+        . = 1
+        adjust(User)
+        var/aaa = ..()
+        if(aaa && !User.BuffOn(src))
+            makSpace.makeSpace(User, src)
+            . = aaa
+            Cooldown(1, 0, User)
+    proc/applyEffects(mob/target, mob/owner, static_damage)
+        if(!owner||!target) return
+        var/asc = owner.AscensionsAcquired ? owner.AscensionsAcquired + 1 : 1
+        var/DefReduction=sqrt(target.GetDef())
+        for(var/x in scalingValues)
+            switch(x)
+                if("Damage")
+                    static_damage *= scalingValues[x][asc]
+                    static_damage /= DefReduction
+                    static_damage = owner.DoDamage(target, static_damage, 0, 0 , 0 , 0 , 0 , 0 , 0)
+                    //owner.gainCorruption((static_damage * 2) * glob.CORRUPTION_GAIN)
+                if("Freezing")
+                    target.AddSlow(scalingValues[x][asc]) // THIS IS SO FUCKING STUPID WHY IS FREEZING ADDED BY ADDSLOW AND SLOW ADDED BY ADDCRIPPLIGN DIE IN A HOLE
+                if("AbsoluteZero")
+                    target.AddShock(0.5 * scalingValues["Freezing"][asc] * 1 + (scalingValues[x][asc] * 0.33), Attacker=owner)
+                    target.AddShatter(0.5 * scalingValues["Freezing"][asc] * 1 + (scalingValues[x][asc] * 0.33), Attacker=owner)
+                if("Slow")
+                    target.AddCrippling(scalingValues[x][asc]/DefReduction) // THIS IS SO FUCKING STUPID WHO DECIDED THIS SHIT???I HATE YOU ALL
+        if(!target:move_disabled) 
+            if(prob(glob.HELLSTORM_SNARERATE*asc))
+                target:move_disabled = TRUE
+                spawn(glob.HELLSTORM_SNAREDURATION*asc)
+                    target:move_disabled = FALSE

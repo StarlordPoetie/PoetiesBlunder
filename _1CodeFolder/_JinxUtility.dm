@@ -332,7 +332,8 @@ mob
 				src.AddBurn(src.GetBurnHit()*0.15*leakVal, src)
 			if(src.passive_handler.Get("Ashen One"))
 				src.AddBurn(passive_handler.Get("Kindling"), src)
-
+			if(src.Kaioken)
+				src.HandleKaiokenTax()
 			//If you are burned and have debuff reversal, smack fire into the other fighter
 			var/debuffRev = src.GetDebuffReversal();
 			if(src.Burn && debuffRev)
@@ -1357,6 +1358,17 @@ mob
 			if(passive_handler.Get("Full Manifestation")&&AscensionsAcquired>=5)
 				TaxVal=0
 			AddOmniTax(TaxVal)
+		HandleKaiokenTax()
+			var/TaxVal=glob.KAIOKEN_BASE_TAX/glob.KAIOKEN_TAX_DIVISOR
+			var/TotalTax
+			var/kkmast=0
+			for(var/obj/Skills/Buffs/SpecialBuffs/Kaioken/kk in src.Buffs)
+				kkmast=kk.Mastery
+			var/KKDiff=max(src.Kaioken-kkmast)
+			TotalTax=(TaxVal*(KKDiff**glob.KAIOKEN_EXPONENT))
+			if(src.Kaioken<=kkmast)
+				TotalTax=0
+			AddOmniTax(TotalTax)
 		isInDemonDevilTrigger()
 			if(!isRace(DEMON)) return FALSE
 			if(!transActive || !race || !race.transformations || transActive > race.transformations.len) return FALSE
@@ -3574,14 +3586,22 @@ mob
 				DevelopSignature(src, 1, "Style")
 			if(styles_available(1) && src.Potential>=glob.progress.T1_STYLES[2] && src.req_styles(1, 1))
 				DevelopSignature(src, 1, "Style")
+			if(styles_available(1) && src.Potential>=glob.progress.T1_STYLES[3] && src.req_styles(2, 1))
+				DevelopSignature(src, 1, "Style")
+			if(styles_available(1) && src.Potential>=glob.progress.T1_STYLES[4] && src.req_styles(3, 1))
+				DevelopSignature(src, 1, "Style")
 			if(styles_available(2) && src.Potential>=glob.progress.T2_STYLES[1] && src.req_styles(0, 2))
 				DevelopSignature(src, 2, "Style")
 			if(styles_available(2) && src.Potential>=glob.progress.T2_STYLES[2] && src.req_styles(1, 2))
 				DevelopSignature(src, 2, "Style")
+			if(styles_available(2) && src.Potential>=glob.progress.T2_STYLES[3] && src.req_styles(2, 2))
+				DevelopSignature(src, 2, "Style")
+			if(styles_available(2) && src.Potential>=glob.progress.T2_STYLES[4] && src.req_styles(3, 2))
+				DevelopSignature(src, 2, "Style")
 			if(src.CyberneticMainframe)
 				return
-			// if(styles_available(3) && src.Potential>=glob.progress.T3_STYLES[1] && src.req_styles(0, 3))
-			// 	DevelopSignature(src, 3, "Style")
+			if(styles_available(3) && src.Potential>=glob.progress.T3_STYLES[1] && src.req_styles(0, 3))
+				DevelopSignature(src, 3, "Style")
 			if(src.req_pot(glob.progress.T1_SIGS[1]) && src.req_sigs(0, 1))
 				DevelopSignature(src, 1, "Signature")
 			if(src.req_pot(glob.progress.T1_SIGS[2]) && src.req_sigs(1, 1))
@@ -3594,7 +3614,6 @@ mob
 
 			if(src.req_pot(glob.progress.T2_SIGS[2]) && src.req_sigs(1, 2))
 				DevelopSignature(src, 2, "Signature")
-
 		YeetSignatures()
 			for(var/obj/Skills/s in src.Skills)
 				if(s.SignatureTechnique)

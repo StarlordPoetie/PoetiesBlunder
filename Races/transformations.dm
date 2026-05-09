@@ -13,7 +13,7 @@ mob/var/bypassTransAutomation = 0
 mob/var/transUnlocked = 0
 
 mob/proc/Transform(type)
-	if(type)
+	/*if(type)
 		//old stuff; high chance its wonky. its mainly hotwired in here as a legacy from the old transform/revert
 		switch(type)
 			if("Tension")
@@ -26,11 +26,11 @@ mob/proc/Transform(type)
 
 			if("Weapon")
 				src.WeaponSoul()
-		return
+		return*/
 	race.transformations[transActive+1].transform(src)
 
 mob/proc/Revert(type)
-	if(type)
+	/*if(type)
 		//old stuff; high chance its wonky. its mainly hotwired in here as a legacy from the old transform/revert
 		switch(type)
 			if("Tension")
@@ -39,7 +39,7 @@ mob/proc/Revert(type)
 				src.RevertJaganshi()
 			if("Weapon")
 				src.RevertWS()
-		return
+		return*/
 
 	race.transformations[transActive].revert(src)
 
@@ -297,7 +297,6 @@ transformation
 				user.AddEndTax(user.UnstoppableForceCounter/10)
 				user.AddSpdTax(user.UnstoppableForceCounter/10)
 				user.UnstoppableForceCounter=0
-			user.transActive--
 			if(!isnull(revertToTrans))
 				user.transActive = revertToTrans
 			user.passive_handler.decreaseList(passives)
@@ -350,7 +349,7 @@ transformation
 			if(stored_profile)
 				user.Profile = stored_profile
 				stored_profile = null
-
+			user.transActive--
 			is_active = FALSE
 
 			revert_animation(user)
@@ -365,7 +364,7 @@ transformation
 			user.AppearanceOff()
 			user.AppearanceOn()
 			if(detrans_message)
-				var/text=replacetext(detrans_message, "usrName", "[usr]")
+				var/text=replacetext(detrans_message, "usrName", "[user]")
 				user << text
 
 		applyDrain(mob/user)

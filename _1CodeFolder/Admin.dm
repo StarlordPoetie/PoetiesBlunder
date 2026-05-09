@@ -398,8 +398,12 @@ mob/Admin3/verb/LoadSwapMap()
 	var/list/slots = list(
 		"1st T1 Style" = list("T1_STYLES", 1),
 		"2nd T1 Style" = list("T1_STYLES", 2),
+		"3rd T1 Style" = list("T1_STYLES", 3),
+		"4th T1 Style" = list("T1_STYLES", 4),
 		"1st T2 Style" = list("T2_STYLES", 1),
 		"2nd T2 Style" = list("T2_STYLES", 2),
+		"3rd T2 Style" = list("T2_STYLES", 3),
+		"4th T2 Style" = list("T2_STYLES", 4),
 		"1st T3 Style" = list("T3_STYLES", 1),
 		"1st T1 Sig"   = list("T1_SIGS", 1),
 		"2nd T1 Sig"   = list("T1_SIGS", 2),
