@@ -2951,11 +2951,19 @@ NEW VARIABLES
 				ForMult=1.3
 				ActiveMessage="coats their blade with the power of Getsuga!"
 				OffMessage="relinquishes Getsuga from their weapon."
+				var/granted_getsuga = FALSE
+				proc/CheckMasteryGrants(mob/p)
+					if(Mastery >= 2 && !granted_getsuga)
+						if(!locate(/obj/Skills/Projectile/Getsuga_Tenshou, p))
+							p.AddSkill(new/obj/Skills/Projectile/Getsuga_Tenshou)
+							p << "<font color='#4488ff'><b>Your mastery of Getsuga Tenshou Clad allows you to fire the raw wave — you have learned Getsuga Tenshou!</b></font>"
+						granted_getsuga = TRUE
 				verb/Getsuga_Clad()
 					set name="Getsuga Clad"
 					set category="Skills"
 					if(!altered)
 						passives = list("Heavy Strike" = "GetsugaClad", "CriticalChance" = 25, "CriticalDamage" = 0.25, "Brutalize" = 2, "SwordAscension" = 1, "SpiritSword" = 0.5, "HybridStrike" = 1)
+					CheckMasteryGrants(usr)
 					src.Trigger(usr)
 			Final_Getsuga_Tenshou
 				SignatureTechnique=4

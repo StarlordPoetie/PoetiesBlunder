@@ -5334,6 +5334,10 @@ mob
 					src.Oxygen-=BreathCost/6
 				else
 					src.Oxygen-=BreathCost/8
+			if(Z.EndsGetsuga)
+				var/obj/Skills/Buffs/SpecialBuffs/A = src.findOrAddSkill(/obj/Skills/Buffs/SpecialBuffs/Sword/Getsuga_Tenshou_Clad)
+				var/baseDamageMult = initial(Z.DamageMult)
+				Z.DamageMult = baseDamageMult + ((60 - A.Timer) / 3)
 				if(src.Oxygen<=0)
 					src.Oxygen=0
 			if(Z.OffTax)
@@ -5767,9 +5771,9 @@ mob
 				src.Frozen=0
 			if(Z.EndsGetsuga)
 				var/obj/Skills/Buffs/SpecialBuffs/A = src.findOrAddSkill(/obj/Skills/Buffs/SpecialBuffs/Sword/Getsuga_Tenshou_Clad)
-				Z.DamageMult = 1+((60 - A.Timer) / 10)
 				A.Trigger(src, 1)
 				src << "The power of Getsuga fades from your weapon."
+				Z.DamageMult = initial(Z.DamageMult)
 			if(Z.UsesinForce)
 				Z.DamageMult += (src.inForceAmp() / 100)
 				src.passive_handler.Set("AlphainForce", 0)
