@@ -2925,12 +2925,18 @@ NEW VARIABLES
 				ActiveMessage="coats their blade with the power of Getsuga!"
 				OffMessage="relinquishes Getsuga from their weapon."
 				var/granted_getsuga = FALSE
+				var/granted_jujisho = FALSE
 				proc/CheckMasteryGrants(mob/p)
 					if(Mastery >= 2 && !granted_getsuga)
 						if(!locate(/obj/Skills/Projectile/Getsuga_Tenshou, p))
 							p.AddSkill(new/obj/Skills/Projectile/Getsuga_Tenshou)
 							p << "<font color='#4488ff'><b>Your mastery of Getsuga Tenshou Clad allows you to fire the raw wave — you have learned Getsuga Tenshou!</b></font>"
 						granted_getsuga = TRUE
+					if(Mastery >= 3 && !granted_jujisho)
+						if(!locate(/obj/Skills/Projectile/Getsuga_Jujisho, p))
+							p.AddSkill(new/obj/Skills/Projectile/Getsuga_Jujisho)
+							p << "<font color='#ffcc00'><b>The cross-shaped Getsuga manifests from your mastery, you have learned Getsuga Jujisho!</b></font>"
+						granted_jujisho = TRUE
 				verb/Getsuga_Clad()
 					set name="Getsuga Clad"
 					set category="Skills"

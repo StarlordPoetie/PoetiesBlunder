@@ -151,6 +151,7 @@ obj
 				ExcludeFacingDir//fire in all directions EXCEPT the user's facing direction
 				InstantDamageChance//percent chance per damage tick to deal flat 10% health damage
 				Devour//eat other shit
+				Overpowering//destroys enemy projectiles on contact, ends beams
 				Stasis//icicle
 				Feint//zoom!
 				MortalBlow
@@ -5646,6 +5647,7 @@ obj
 					src.SlayerMod=Z.SlayerMod
 					src.AngelMagicCompatible=Z.AngelMagicCompatible
 					src.Devour=Z.Devour
+					src.Overpowering=Z.Overpowering
 					src.SoulFire=Z.SoulFire
 					src.Stasis=Z.Stasis
 					src.StormFall=Z.StormFall
@@ -5830,6 +5832,13 @@ obj
 									spawn()
 										if(prob(1*src.DamageMult))
 											KenShockwave(src,Size=GoCrand(src.DamageMult, 2*src.DamageMult))
+							if(src.Overpowering)
+								if(a:Area=="Beam")
+									a:Distance=0
+									a:endLife()
+								else
+									a:ProjectileFinish()
+								return
 							if(src.Devour&&!a:Devour)
 								src.Damage+=a:Damage
 								a:Damage=0
