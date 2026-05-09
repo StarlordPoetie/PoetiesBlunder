@@ -2717,8 +2717,6 @@ NEW VARIABLES
 			Hollow_Shell_Kata//true tortoise
 				SignatureTechnique=3
 				passives = list("MovementMastery" = 5,"TechniqueMastery" = 5, "FluidForm"=3, "Void" = 1, "VoidField" = 4, "DeathField" = 4)
-				Void=1
-				FluidForm=1
 				StrMult=1.4
 				EndMult=1.4
 				DefMult=1.2
