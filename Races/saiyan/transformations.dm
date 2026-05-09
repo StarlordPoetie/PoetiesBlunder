@@ -42,7 +42,7 @@ transformation
 					mastery=50
 				if(user.Potential>=30&&mastery<75)
 					mastery=75
-				if(user.Potential>=35&&mastery<75)
+				if(user.Potential>=35&&mastery<100)
 					mastery=100
 				if(mastery >= 50)
 					if(!locate(/obj/Skills/Buffs/SpecialBuffs/SuperSaiyanGrade2, user))

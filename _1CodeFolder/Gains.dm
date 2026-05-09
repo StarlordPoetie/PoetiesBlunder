@@ -536,7 +536,9 @@ mob
 				scrollTicker--
 				if(scrollTicker<=0)
 					scrollTicker=0
-			if(shouldRevertHT()) Revert()
+			if(shouldRevertHT())
+				Tension=0;
+				Revert()
 			if(src.passive_handler.Get("Utterly Powerless") && !src.passive_handler.Get("Our Future"))
 				src.Revert()
 			if(passive_handler.Get("LunarWrath")&&PowerControl>100&&!passive_handler.Get("Unrelenting Wrath"))
