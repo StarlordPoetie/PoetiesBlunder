@@ -2319,9 +2319,14 @@ mob
 				return 1
 			if(passive_handler.Get("You Thought"))
 				return 1
+			var/list/elementalDefense = getElementalDefense();
+			if(elementalDefense.Find("Ultima")) return 1;
 			return 0
 		GetDebuffReversal()
-			return passive_handler.Get("DebuffReversal")
+			. = 0;
+			. += passive_handler.Get("DebuffReversal");
+			var/list/elementalDefense = getElementalDefense();
+			. += elementalDefense.Find("Ultima") ? 1 : 0;
 		HasDisorienting()
 			if(passive_handler.Get("Disorienting"))
 				return 1
