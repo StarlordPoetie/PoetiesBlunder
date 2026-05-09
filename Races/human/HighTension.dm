@@ -55,7 +55,8 @@
             return;
     canHT()
         if(isMazokuPathHuman()) return 0;
-        if(src.transActive >= 1) return 0;
+        if(transActive >= 1) return 0;
+        if(KO) return 0;
         if(transUnlocked >= 1 || HumanHTException()) return 1;
         return 0;
     HumanHTException()
@@ -63,20 +64,23 @@
         return 0;
     canHTM()
         if(isMazokuPathHuman()) return 0;
-        if(src.icon_state=="Meditate") return 0;
+        if(icon_state=="Meditate") return 0;
         if(!isRace(HUMAN) && !isRace(CELESTIAL)) return 0;
-        if(src.transUnlocked < 2) return 0;
-        if(src.transActive >= 2) return 0;
-        if(src.Tension >= src.getMaxTensionValue()/2) return 1;
+        if(transUnlocked < 2) return 0;
+        if(transActive >= 2) return 0;
+        if(KO) return 0;
+        if(Tension >= getMaxTensionValue()/2) return 1;
         return 0;
     canSHT()
         if(isMazokuPathHuman()) return 0;
-        if(src.transActive != 2) return 0;
+        if(transActive != 2) return 0;
+        if(KO) return 0;
         if(transUnlocked >= 3) return 1;
         return 0;
     canSHTM()
         if(isMazokuPathHuman()) return 0;
         if(!isRace(HUMAN) && !isRace(CELESTIAL)) return 0;
+        if(KO) return 0;
         if(passive_handler.Get("FullTensionLock") && isRace(CELESTIAL))
             src << "You cannot use this until the Full Tension Lock from Activate High Tension subsites."
             return 0
@@ -85,5 +89,9 @@
     shouldRevertHT()
         if(transActive() <= 0) return 0;
         if(!isRace(HUMAN) && !isRace(CELESTIAL)) return 0;
-        if(icon_state != "Meditate") return 0;
+        if(!(icon_state in list("Meditate", "KO"))) return 0;
+        return 1;
+    isHumanInTransform()
+        if(!isRace(HUMAN) || !isRace(CELESTIAL)) return 0;
+        if(transActive <= 0) return 0;
         return 1;

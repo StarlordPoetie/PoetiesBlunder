@@ -254,7 +254,8 @@ mob/proc/HighTension(var/x)
 		if(!src.HasKiControl()&&!src.PoweringUp)
 			src.Auraz("Remove")
 
-mob/proc/RevertHT()
+//this is probably no longer used
+/*mob/proc/RevertHT()
 	var/tension_reversion
 	for(var/obj/Skills/Buffs/SpecialBuffs/High_Tension/T in src)
 		tension_reversion = T.current_tension
@@ -291,8 +292,8 @@ mob/proc/RevertHT()
 	for(var/obj/Skills/Buffs/SpecialBuffs/High_Tension/T in src)
 		T.current_tension = 0
 	src.Hairz("Add")
-	src.Auraz("Remove")
-
+	src.Auraz("Remove")*/
+	
 mob/proc/ChooseSuperAlien()
 	var/Choice
 	var/Confirm

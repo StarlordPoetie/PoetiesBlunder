@@ -129,7 +129,7 @@ mob/proc/PowerDown()
             Auraz("Remove")
             src << "You return to normal power."
             return
-        if(transActive&&!HasNoRevert()&&!isMazokuHuman())
+        if(transActive&&!HasNoRevert()&&isHumanInTransform())
             for(var/obj/Skills/Buffs/B in src)
                 if(BuffOn(B)&&B.Transform&&!B.AlwaysOn)
                     B.Trigger(src)
