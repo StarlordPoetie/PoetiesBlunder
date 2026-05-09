@@ -1524,7 +1524,9 @@ obj/Skills/Utility
 			while(ChosenFlask.Slots > 0) // If you have slots, select them. Cancel 
 				var/list/Choices = list("Cancel") + P.PotionTypes
 				var/herbchoice = input(P, "Choose an herb.", "Alter Existing Flask") in Choices
-				if(herbchoice == "Cancel") return
+				if(herbchoice == "Cancel")
+					P.TakeMineral(glob.POTIONCOST)
+					return
 				if(ChosenFlask.Slots <= 0)
 					P << "You have no more flask slots!"
 					return
