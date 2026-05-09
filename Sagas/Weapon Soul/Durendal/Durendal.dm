@@ -46,7 +46,7 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Durendal
 			StyleStr = 1.05 + (0.05 * p.SagaLevel)
 			StyleEnd = 1.05 + (0.05 * p.SagaLevel)
 			passives["HolyMod"] = 1 + (p.SagaLevel)
-			passives["Instinct"] = 2 + (p.SagaLevel/2)
+			passives["Instinct"] = 1 + (p.SagaLevel)
 			passives["Steady"] = 0.5 + (p.SagaLevel*0.5)
 		verb/Saintlike_Behavior()
 			set hidden=1
@@ -66,4 +66,4 @@ obj/Skills/Buffs/SpecialBuffs/Heavenly_Regalia/Durendal
 	Divine_Messenger
 		StrMult=1.3
 		EndMult=1.3
-		passives = list("HolyMod" = 2, "Juggernaut" = 1, "Brutalize" = 1)
+		passives = list("HolyMod" = 2, "Juggernaut" = 1, "EvilResist" = 2)

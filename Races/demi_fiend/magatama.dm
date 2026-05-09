@@ -182,7 +182,8 @@ obj/Items/Magatama
 			if(scaled_passives)
 				user.passive_handler.decreaseList(scaled_passives)
 				scaled_passives = null
-			revokeSkills(user)
+			if(!user.passive_handler?.Get("Musubi"))
+				revokeSkills(user)
 			suffix = null
 			user << "[src]'s influence recedes from your body."
 
@@ -192,8 +193,8 @@ obj/Items/Magatama
 				user.passive_handler.decreaseList(scaled_passives)
 			scaled_passives = getScaledPassives(user)
 			user.passive_handler.increaseList(scaled_passives)
-			revokeSkills(user)
 			if(!user.passive_handler?.Get("Musubi"))
+				revokeSkills(user)
 				grantSkills(user)
 
 	ObjectUse(mob/Players/User = usr)
