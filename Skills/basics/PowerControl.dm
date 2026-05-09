@@ -73,7 +73,7 @@ mob/proc/PowerUp() // Handles Normal (read: Not Kaioken/Shin) power up related c
     if(canDoATransform())
         Transform();
         return;
-    if(!canPC(goingUp=1)) return 0; 
+    if(!canPC(goingUp=1)) return 0;
     if(HasPULock()) return
     if(!PoweringUp)
         PoweringUp=1
@@ -151,14 +151,14 @@ mob/proc/PowerDown()
 /mob/proc/canKaiokenPU()
     if(!passive_handler.Get("Kaioken")) return 0;
     if(Kaioken==6) return 0;
-    if(Kaioken+1 <= getKaiokenMastery()+2) return 1;
+    if(Kaioken+1 <= getKaiokenMastery()+5) return 1;
     return 0;
 
 // Handles Kaioken Power Up related code
 mob/proc/KaiokenPowerUp()
     if(passive_handler.Get("Kaioken"))
         var/Mastery=getKaiokenMastery();
-        if(Kaioken<2+Mastery)
+        if(Kaioken<5+Mastery)
             if(passive_handler.Get("Super Kaioken"))
                 switch(Kaioken)
                     if(0)

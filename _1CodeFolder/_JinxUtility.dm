@@ -332,7 +332,8 @@ mob
 				src.AddBurn(src.GetBurnHit()*0.15*leakVal, src)
 			if(src.passive_handler.Get("Ashen One"))
 				src.AddBurn(passive_handler.Get("Kindling"), src)
-
+			if(src.Kaioken)
+				src.HandleKaiokenTax()
 			//If you are burned and have debuff reversal, smack fire into the other fighter
 			var/debuffRev = src.GetDebuffReversal();
 			if(src.Burn && debuffRev)
@@ -1357,6 +1358,17 @@ mob
 			if(passive_handler.Get("Full Manifestation")&&AscensionsAcquired>=5)
 				TaxVal=0
 			AddOmniTax(TaxVal)
+		HandleKaiokenTax()
+			var/TaxVal=glob.KAIOKEN_BASE_TAX/glob.KAIOKEN_TAX_DIVISOR
+			var/TotalTax
+			var/kkmast=0
+			for(var/obj/Skills/Buffs/SpecialBuffs/Kaioken/kk in src.Buffs)
+				kkmast=kk.Mastery
+			var/KKDiff=max(src.Kaioken-kkmast)
+			TotalTax=(TaxVal*(KKDiff**glob.KAIOKEN_EXPONENT))
+			if(src.Kaioken<=kkmast)
+				TotalTax=0
+			AddOmniTax(TotalTax)
 		isInDemonDevilTrigger()
 			if(!isRace(DEMON)) return FALSE
 			if(!transActive || !race || !race.transformations || transActive > race.transformations.len) return FALSE
