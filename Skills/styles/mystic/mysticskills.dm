@@ -198,7 +198,7 @@
 /obj/Skills/AutoHit/Getsuga_Followthrough
 	Area="Wide Wave"
 	AdaptRate=1
-	DamageMult=0.75
+	DamageMult=5
 	Distance=10
 	ComboMaster=1
 	NoLock = 1
