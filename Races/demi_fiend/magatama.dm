@@ -402,7 +402,9 @@ mob/proc/CraftMagatama()
 			if(skill_choice)
 				var/cidx = skill_options.Find(skill_choice)
 				if(cidx >= 1 && cidx <= skill_paths.len)
-					src.AddSkill(new skill_paths[cidx])
+					var/chosen_path = skill_paths[cidx]
+					var/obj/Skills/new_skill = new chosen_path
+					src.AddSkill(new_skill)
 					src << "You have internalized [skill_choice] into your inner world."
 
 obj/Items/Magatama/Marogareh

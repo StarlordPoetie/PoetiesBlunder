@@ -176,7 +176,7 @@
 /obj/Skills/Buffs/SlotlessBuffs/Magic/HellFire/Inkstorm
     ElementalClass="Water"
     scalingValues = list("Damage" = list(0.2,0.25,0.3,0.35,0.4,0.45), "Distance" = list(4,6,6,6,8,10), \
-    "AbsoluteZero = " = list(6,12,15,20,25,25), "Slow" = list(2,2,3,4,5,5), "Freezing" = list(10,15,20,25,25,30), "Duration" = list(100,150,150,175,200,300), \
+    "AbsoluteZero" = list(6,12,15,20,25,25), "Slow" = list(2,2,3,4,5,5), "Freezing" = list(10,15,20,25,25,30), "Duration" = list(100,150,150,175,200,300), \
     "Adapt" = list(1,1,1,1,1,1), "CorruptionGain" = list(0,0,0,0,0,0) )
     makSpace = new/spaceMaker/HellFire
     var/icon_to_use = 'Icons/New/inkwater2.dmi'
