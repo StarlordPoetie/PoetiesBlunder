@@ -6613,7 +6613,7 @@ obj
 					FinalDmg *= clamp(sqrt(1+((Owner.GetSpd())*(src.SpeedStrike/glob.SPEEDSTRIKEDIVISOR))),1,3)
 				if(Owner.UsingFencing())
 					FinalDmg *= clamp(sqrt(1+((Owner.GetSpd())*(Owner.UsingFencing()/glob.SPEEDSTRIKEDIVISOR))),1,3)
-				if((m.Launched||m.Stunned))
+				if((m.Launched||m.Stunned||m.Suspended))
 					if(!(ComboMaster || Owner.HasComboMaster() || Dunker || Destroyer))
 						FinalDmg *= glob.CCDamageModifier
 						Owner.log2text("FinalDmg - Auto Hit", "After ComboMaster", "damageDebugs.txt", "[Owner.ckey]/[Owner.name]")
@@ -7794,3 +7794,179 @@ obj
 				src.loc=AH.loc
 
 				src.Life()
+
+/mob
+	var
+		tmp/Suspended = null
+		tmp/judgement_cut_chain_active = FALSE
+
+/obj/Skills/AutoHit/Judgement_Cut
+	name = "Judgement Cut"
+	Area = "Target"
+	Distance = 8
+	DamageMult = 10
+	StrOffense = 1
+	EndDefense = 1
+	Cooldown = 150
+	ComboMaster = 1
+	GuardBreak = 1
+	NoLock = 1
+	NoAttackLock = 1
+	IconTime = 4
+	ActiveMessage = "tears through space with a Judgement Cut!"
+
+	HeldSkill = TRUE
+	ChargePeriod = 3
+	SweetSpot = 1.5
+	SweetSpotBenefit = 1.5
+
+	var/tmp/chain_active = FALSE
+	var/tmp/chain_count = 0
+	var/tmp/mob/chain_user = null
+	var/tmp/mob/chain_target = null
+	var/tmp/initial_charge_period = 3
+	var/tmp/saved_cooldown = 150
+	var/tmp/reengage_deadline = 0
+	var/tmp/window_loop_running = FALSE
+	var/tmp/overlay_loop_running = FALSE
+
+	proc/RollSweetSpot()
+		// minimum 0.3, maximum ChargePeriod -0.3.
+		var/min_ss = 3
+		var/period_ticks = round(ChargePeriod * 10)
+		var/max_ss = max(min_ss, period_ticks - 3)
+		return rand(min_ss, max_ss) / 10
+
+	proc/StartChain(mob/user, mob/target)
+		chain_active = TRUE
+		chain_user = user
+		chain_target = target
+		chain_count = 0
+		DamageMult = 10
+		ChargePeriod = initial_charge_period
+		SweetSpot = RollSweetSpot()
+		target.Suspended = user
+		user.judgement_cut_chain_active = TRUE
+		saved_cooldown = Cooldown
+		Cooldown = 0
+		if(!overlay_loop_running)
+			overlay_loop_running = TRUE
+			spawn() SlashOverlayLoop()
+
+	proc/EndChain()
+		if(!chain_active) return
+		var/mob/user = chain_user
+		var/mob/target = chain_target
+		chain_active = FALSE
+		window_loop_running = FALSE
+		if(target)
+			target.Suspended = null
+		if(user)
+			user.judgement_cut_chain_active = FALSE
+		chain_user = null
+		chain_target = null
+		chain_count = 0
+		DamageMult = 10
+		ChargePeriod = initial_charge_period
+		SweetSpot = initial_charge_period / 2
+		Cooldown = saved_cooldown
+		if(user)
+			Using = 0
+			cooldown_remaining = 0
+			cooldown_start = 0
+			src.Cooldown(1, null, user)
+
+	proc/SlashOverlayLoop()
+		while(chain_active)
+			if(!chain_target || chain_target.KO || chain_target.Stasis > 0 || chain_target.Health <= 0)
+				if(chain_user && chain_user.held_skill == src)
+					chain_user.FizzleHeldSkill(src)
+				else
+					EndChain()
+				break
+			if(chain_user && chain_user.held_skill == src)
+				var/image/I = image('Slash - Future.dmi')
+				I.pixel_x = -32
+				I.pixel_y = -32
+				I.transform = matrix().Turn(rand(0, 359))
+				I.layer = MOB_LAYER + 0.5
+				chain_target.overlays += I
+				var/mob/t = chain_target
+				//I have to clean this up a bit later
+				spawn(6)
+					if(t) t.overlays -= I
+			sleep(1)
+		overlay_loop_running = FALSE
+
+	proc/ScheduleReengageWindow(mob/user)
+		if(window_loop_running) return
+		window_loop_running = TRUE
+		reengage_deadline = world.time + 10
+		while(world.time < reengage_deadline)
+			if(!chain_active)
+				window_loop_running = FALSE
+				return
+			if(user.Stunned || user.Launched || user.Stasis > 0 || user.KO)
+				window_loop_running = FALSE
+				EndChain()
+				return
+			if(!chain_target || chain_target.KO || chain_target.Stasis > 0 || chain_target.Health <= 0)
+				window_loop_running = FALSE
+				EndChain()
+				return
+			// hold has started again.
+			if(user.held_skill == src)
+				window_loop_running = FALSE
+				return
+			sleep(1)
+		// Window expired 
+		if(chain_active && (!user.held_skill || user.held_skill != src))
+			window_loop_running = FALSE
+			EndChain()
+
+	OnHeldRelease(mob/p, var/benefit, var/sweet_spot_hit = FALSE)
+		if(!chain_active) return
+		if(!sweet_spot_hit)
+			EndChain()
+			return
+		if(!chain_target || chain_target.KO || chain_target.Stasis > 0 || chain_target.Health <= 0)
+			EndChain()
+			return
+		chain_count++
+		DamageMult = 10 * (1.2 ** (chain_count - 1))
+		p.Target = chain_target
+		p.Activate(src, ignoreCuck=TRUE, ignoreAttackLock=TRUE)
+		// Prepare the next charge cycle
+		ChargePeriod = max(0.6, initial_charge_period - (chain_count * 0.3))
+		SweetSpot = RollSweetSpot()
+		p.held_skill_last_release = 0
+		spawn() ScheduleReengageWindow(p)
+
+	OnHeldFizzle(mob/p)
+		if(chain_active)
+			EndChain()
+
+	verb/Judgement_Cut()
+		set category = "Skills"
+		var/mob/p = usr
+		if(!chain_active && cooldown_remaining)
+			p << "<font color='red'>[name] is on cooldown.</font>"
+			return
+		if(!chain_active)
+			if(!p.Target || p.Target == p || !ismob(p.Target))
+				p << "<font color='red'>You need a target.</font>"
+				return
+			var/mob/T = p.Target
+			if(T.KO || T.Stasis > 0 || T.Health <= 0)
+				p << "<font color='red'>Invalid target.</font>"
+				return
+			if(get_dist(p, T) > Distance)
+				p << "<font color='red'>Target is out of range.</font>"
+				return
+			if(T.Suspended)
+				p << "<font color='red'>That target is already suspended.</font>"
+				return
+			StartChain(p, T)
+		else
+			if(world.time > reengage_deadline) return
+		p.BeginHeldSkill(src)

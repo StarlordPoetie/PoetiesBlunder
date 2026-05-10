@@ -170,8 +170,11 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 	if(Z)
 		if(!locate(Z) in src)
 			return  FALSE
-	if(src.KO||src.Stunned||src.AutoHitting||src.Frozen>=2)
+	if(src.KO||src.Stunned||src.AutoHitting||src.Frozen>=2||src.Suspended)
 		return  FALSE
+	if(src.judgement_cut_chain_active && !istype(Z, /obj/Skills/AutoHit/Judgement_Cut))
+		src << "<font color='red'>You can't do that during Judgement Cut.</font>"
+		return FALSE
 	if(src.Stasis)
 		return  FALSE
 	if(Z.Using && Wut!="Zanzoken")

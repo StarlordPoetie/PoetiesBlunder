@@ -21,6 +21,8 @@
 /obj/Skills/proc/OnHeldRelease(mob/p, var/benefit, var/sweet_spot_hit = FALSE)
 	// Override in individual skills to execute the charged attack.
 
+/obj/Skills/proc/OnHeldFizzle(mob/p)
+
 // This avoids stat changes to skills persisting across use (mostly for projectiles)
 
 var/global/list/held_skill_runtime_vars = list(
@@ -68,7 +70,7 @@ var/global/list/held_skill_runtime_vars = list(
 	var/tmp/held_charge_start             = 0
 	var/tmp/image/held_charge_overlay_ref = null
 	var/tmp/image/held_charge_bar_bg_ref  = null
-	var/tmp/image/held_charge_bar_sweet_ref = null
+	var/tmp/list/held_charge_bar_sweet_refs = null
 	var/tmp/list/held_charge_bar_fill_refs = null
 	var/tmp/held_skill_macro_key          = null
 	var/tmp/held_skill_last_release       = 0
@@ -148,7 +150,7 @@ var/global/list/held_skill_runtime_vars = list(
 			return
 
 	// reinstalls the +UP macro for this exact key right now.
-	winset(C, "heldskill_up_[key]", "parent=[C.held_skill_macro_set];name=[key]+UP;command=Release-Held-Skill")
+	winset(C, "heldskill_up_[key]", "type=macro;parent=[C.held_skill_macro_set];name=[key]+UP;command=Release-Held-Skill")
 
 	held_skill        = Z
 	held_charge_start = world.time
@@ -241,7 +243,7 @@ var/global/list/held_skill_runtime_vars = list(
 	// movement keys, hotbar slots, or any other binding.
 	for(var/cmd_key in new_cache)
 		var/bound_key = new_cache[cmd_key]
-		winset(src, "heldskill_up_[bound_key]", "parent=[set_name];name=[bound_key]+UP;command=Release-Held-Skill")
+		winset(src, "heldskill_up_[bound_key]", "type=macro;parent=[set_name];name=[bound_key]+UP;command=Release-Held-Skill")
 
 	// both vars become visible together, after all +UP macros are set.
 	held_skill_macro_set = set_name
@@ -289,19 +291,26 @@ var/global/list/held_skill_runtime_vars = list(
 		C.images += fill
 
 	if(Z && Z.SweetSpot > 0 && Z.ChargePeriod > 0)
-		var/sweet_ratio = clamp(Z.SweetSpot / Z.ChargePeriod, 0, 1)
-		var/sweet_x = start_x + fill_left_inset_x + round((segment_count - 1) * sweet_ratio)
-		var/image/sweet = image(icon_file, src, "SweetSpot")
-		sweet.layer = bg.layer + 0.2
-		sweet.pixel_x = sweet_x
-		sweet.pixel_y = start_y
-		sweet.alpha = 0
-		held_charge_bar_sweet_ref = sweet
-		C.images += sweet
+		var/start_ratio = clamp(Z.SweetSpot / Z.ChargePeriod, 0, 1)
+		var/end_ratio = clamp((Z.SweetSpot + 0.3) / Z.ChargePeriod, 0, 1)
+		var/first_offset = max(0, floor(segment_count * start_ratio) - 1)
+		var/last_offset = max(first_offset, floor(segment_count * end_ratio) - 4)
+		var/first_px = start_x + fill_left_inset_x + first_offset
+		var/last_px = start_x + fill_left_inset_x + last_offset
+		held_charge_bar_sweet_refs = list()
+		for(var/px = first_px, px <= last_px, px++)
+			var/image/sweet = image(icon_file, src, "SweetSpot")
+			sweet.layer = bg.layer + 0.2
+			sweet.pixel_x = px
+			sweet.pixel_y = start_y
+			sweet.alpha = 0
+			held_charge_bar_sweet_refs += sweet
+			C.images += sweet
 
 	animate(bg, alpha = 255, time = 2)
-	if(held_charge_bar_sweet_ref)
-		animate(held_charge_bar_sweet_ref, alpha = 255, time = 2)
+	if(held_charge_bar_sweet_refs)
+		for(var/image/sweet in held_charge_bar_sweet_refs)
+			animate(sweet, alpha = 255, time = 2)
 
 /mob/proc/UpdateHeldChargeBar(var/ratio)
 	if(!held_charge_bar_bg_ref || !held_charge_bar_fill_refs) return
@@ -321,20 +330,24 @@ var/global/list/held_skill_runtime_vars = list(
 	if(!C) return
 
 	var/image/bg = held_charge_bar_bg_ref
-	var/image/sweet = held_charge_bar_sweet_ref
+	var/list/sweets = held_charge_bar_sweet_refs
 	var/list/fills = held_charge_bar_fill_refs
 	held_charge_bar_bg_ref = null
-	held_charge_bar_sweet_ref = null
+	held_charge_bar_sweet_refs = null
 	held_charge_bar_fill_refs = null
 
 	if(bg) animate(bg, alpha = 0, time = 3)
-	if(sweet) animate(sweet, alpha = 0, time = 3)
+	if(sweets)
+		for(var/image/sweet in sweets)
+			if(sweet) animate(sweet, alpha = 0, time = 3)
 	if(fills)
 		for(var/image/fill in fills)
 			if(fill) animate(fill, alpha = 0, time = 3)
 	sleep(3)
 	if(bg) C.images -= bg
-	if(sweet) C.images -= sweet
+	if(sweets)
+		for(var/image/sweet in sweets)
+			if(sweet) C.images -= sweet
 	if(fills)
 		for(var/image/fill in fills)
 			if(fill) C.images -= fill
@@ -352,14 +365,15 @@ var/global/list/held_skill_runtime_vars = list(
 	if(C)
 		if(held_charge_bar_bg_ref)
 			C.images -= held_charge_bar_bg_ref
-		if(held_charge_bar_sweet_ref)
-			C.images -= held_charge_bar_sweet_ref
+		if(held_charge_bar_sweet_refs)
+			for(var/image/sweet in held_charge_bar_sweet_refs)
+				if(sweet) C.images -= sweet
 		if(held_charge_bar_fill_refs)
 			for(var/image/fill in held_charge_bar_fill_refs)
 				if(fill) C.images -= fill
 
 	held_charge_bar_bg_ref = null
-	held_charge_bar_sweet_ref = null
+	held_charge_bar_sweet_refs = null
 	held_charge_bar_fill_refs = null
 
 // ChargeLoop runs for the duration of the hold
@@ -432,6 +446,7 @@ var/global/list/held_skill_runtime_vars = list(
 	ClearHeldChargeState()
 	held_skill_last_release = world.time
 	Z.Cooldown(1, null, src)
+	Z.OnHeldFizzle(src)
 	src << "<font color='red'>Your technique fizzled!</font>"
 
 // Cleanup
@@ -451,6 +466,9 @@ var/global/list/held_skill_runtime_vars = list(
 /mob/proc/HeldSkillBlocksAction(obj/Skills/Z)
 	if(held_skill && held_skill != Z)
 		src << "<font color='red'>You can't do that while charging [held_skill.name].</font>"
+		return TRUE
+	if(judgement_cut_chain_active && !istype(Z, /obj/Skills/AutoHit/Judgement_Cut))
+		src << "<font color='red'>You can't do that during Judgement Cut.</font>"
 		return TRUE
 	return FALSE
 
