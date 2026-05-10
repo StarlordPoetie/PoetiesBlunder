@@ -1,0 +1,38 @@
+[1mdiff --git a/_1CodeFolder/_JinxUtility.dm b/_1CodeFolder/_JinxUtility.dm[m
+[1mindex 769e5876..4a68db5e 100644[m
+[1m--- a/_1CodeFolder/_JinxUtility.dm[m
+[1m+++ b/_1CodeFolder/_JinxUtility.dm[m
+[36m@@ -333,17 +333,22 @@[m [mif(src.HasBurnHit())[m
+ 	src.AddBurn(src.GetBurnHit()*0.15*leakVal, src)[m
+ [m
+ if(src.cursedEnergyTrait && src.hasSecret("Cursed Energy"))[m
+[31m-	var/traitPotency = src.CheckSlotless("120% Potential") ? 2 : 1[m
+[31m-	switch(src.cursedEnergyTrait)[m
+[31m-		if("Serrated")[m
+[31m-			defender.AddShearing(2 * traitPotency, src)[m
+[31m-			defender.AddShatter(2 * traitPotency, src)[m
+[31m-		if("Electricity")[m
+[31m-			defender.AddShock(2 * traitPotency, src)[m
+[31m-			defender.AddBurn(2 * traitPotency, src)[m
+[31m-		if("Slash")[m
+[31m-			defender.AddCrippling(2 * traitPotency, src)[m
+[31m-			defender.AddShearing(2 * traitPotency, src)[m
+[32m+[m	[32mvar/traitPotency = 1[m
+[32m+[m
+[32m+[m	[32mif(src.CheckSlotless("120% Potential"))[m
+[32m+[m		[32mtraitPotency = 2[m
+[32m+[m
+[32m+[m	[32mif(src.cursedEnergyTrait == "Serrated")[m
+[32m+[m		[32mdefender.AddShearing(2 * traitPotency, src)[m
+[32m+[m		[32mdefender.AddShatter(2 * traitPotency, src)[m
+[32m+[m
+[32m+[m	[32melse if(src.cursedEnergyTrait == "Electricity")[m
+[32m+[m		[32mdefender.AddShock(2 * traitPotency, src)[m
+[32m+[m		[32mdefender.AddBurn(2 * traitPotency, src)[m
+[32m+[m
+[32m+[m	[32melse if(src.cursedEnergyTrait == "Slash")[m
+[32m+[m		[32mdefender.AddCrippling(2 * traitPotency, src)[m
+[32m+[m		[32mdefender.AddShearing(2 * traitPotency, src)[m
+ [m
+ if(src.passive_handler.Get("Ashen One"))[m
+ 	src.AddBurn(src.passive_handler.Get("Kindling"), src)[m
