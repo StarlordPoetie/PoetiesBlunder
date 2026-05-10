@@ -17,7 +17,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 15
+	var/UPDATE_VERSION = 16
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -329,6 +329,76 @@ update
 				if(removed_mazoku_dt)
 					p << "A stray Mazoku Devil Trigger has been removed from your transformations. You're a regular Demon. Dummy."
 
+
+	version16
+		version = 16;
+		updateMob(mob/p)
+			. = ..()
+			if(p.isRace(DRAGON))
+				switch(p.Class)
+					if("Metal")
+						if(p.AscensionsAcquired >= 1)
+							p.StrAscension += 0.25
+							p.EndAscension += 1.25
+							p.OffAscension -= 0.5
+							p.ForAscension += 0.5
+							p.passive_handler.Decrease("DeathField", 1)
+							p.passive_handler.Increase("PureReduction", 1)
+						if(p.AscensionsAcquired >= 2)
+							p.StrAscension += 0.75
+							p.EndAscension += 0.75
+							p.DefAscension -= 0.25
+							p.ForAscension += 0.5
+							p.passive_handler.Decrease("DeathField", 1)
+							p.passive_handler.Increase("PureReduction", 1)
+					if("Fire")
+						if(p.AscensionsAcquired >= 1)
+							p.StrAscension += 0.5
+							p.ForAscension += 0.5
+							p.OffAscension += 0.25
+							p.passive_handler.Increase("SpiritHand", 1.5)
+						if(p.AscensionsAcquired >= 2)
+							p.StrAscension += 0.75
+							p.ForAscension += 0.75
+							p.OffAscension -= 0.25
+							p.passive_handler.Increase("SpiritHand", 1.5)
+					if("Water")
+						if(p.AscensionsAcquired >= 1)
+							p.StrAscension -= 0.25
+							p.ForAscension += 0.25
+							p.DefAscension += 0.5
+							p.SpdAscension += 1
+						if(p.AscensionsAcquired >= 2)
+							p.StrAscension -= 0.25
+							p.ForAscension += 0.25
+							p.DefAscension += 1
+							p.SpdAscension += 0.5
+					if("Wind")
+						if(p.AscensionsAcquired >= 1)
+							p.ForAscension += 0.25
+							p.SpdAscension += 1
+							p.OffAscension -= 0.25
+							p.DefAscension += 0.5
+						if(p.AscensionsAcquired >= 2)
+							p.ForAscension += 0.25
+							p.SpdAscension += 1.25
+							p.OffAscension += 0.25
+					if("Gold")
+						if(p.AscensionsAcquired >= 1)
+							p.EndAscension += 0.5
+							p.SpdAscension += 0.75
+						if(p.AscensionsAcquired >= 2)
+							p.EndAscension += 0.75
+							p.SpdAscension += 1
+					if("Dark")
+						if(p.AscensionsAcquired >= 1)
+							p.StrAscension += 0.65
+							p.SpdAscension += 0.15
+							p.OffAscension += 0.15
+						if(p.AscensionsAcquired >= 2)
+							p.StrAscension += 0.75
+							p.SpdAscension += 0.75
+							p.OffAscension += 0.25
 
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25
