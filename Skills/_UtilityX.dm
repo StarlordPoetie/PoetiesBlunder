@@ -1554,7 +1554,7 @@ obj/Skills/Utility
 				ChosenFlask.Quicksilver = 1
 		// Resets Flask Slots
 		proc/ResetFlask(mob/P)
-			var/Warning = input(usr, "WARNING: By proceeding you will reset this flasks' total slots. You will not be refunded the mana bits you spent to make the current concoction. Proceed?", "WARNING!") in list("Yes", "No")
+			var/Warning = input(P, "WARNING: By proceeding you will reset this flasks' total slots. You will not be refunded the mana bits you spent to make the current concoction. Proceed?", "WARNING!") in list("Yes", "No")
 			if(Warning == "No") return // No need for an ifstatement if you pick yes, I'd be fucking amazed if you found a way to give a third input.
 			var/obj/Items/Flask/Option = FlaskChoice(P)
 			Option.Slots = P.GetMaxFlaskSlots() // Set slots to max
