@@ -21,6 +21,35 @@
 /obj/Skills/proc/OnHeldRelease(mob/p, var/benefit, var/sweet_spot_hit = FALSE)
 	// Override in individual skills to execute the charged attack.
 
+// This avoids stat changes to skills persisting across use (mostly for projectiles)
+
+var/global/list/held_skill_runtime_vars = list(
+	"ChargeBenefit",
+	"Using", "cooldown_remaining", "cooldown_start", "cooldown_end_time",
+	"BeamUsing", "BuffUsing", "BeamTimeUsed", "Charges",
+	"CooldownScalingCounter", "ZanzoAmount",
+	"Mastery", "Sealed", "Temporary", "Copied", "RevNum", "altered",
+	"TempStream", "TempSize", "TempRadius",
+	"granted_getsuga", "granted_jujisho",
+	"granted_enkidu", "granted_enuma_elish",
+)
+
+/obj/Skills/proc/_HeldSkillSnapshotVars()
+	var/list/snap = list()
+	for(var/V in src.vars)
+		if(V in held_skill_runtime_vars) continue
+		var/val = src.vars[V]
+		if(istype(val, /list)) continue
+		if(istype(val, /datum)) continue
+		snap[V] = val
+	return snap
+
+/obj/Skills/proc/_HeldSkillRestoreVars(list/snap)
+	if(!snap) return
+	for(var/V in snap)
+		if(V in held_skill_runtime_vars) continue
+		src.vars[V] = snap[V]
+
 /client/var/tmp/SweetSpotHeldSkillDebug = FALSE
 /client/var/tmp/list/held_skill_key_cache = null
 /client/var/tmp/held_skill_cache_build_start = 0
@@ -385,7 +414,16 @@
 		for(var/mob/m in admins)
 			if(m && m.client && m.Admin && m.client.SweetSpotHeldSkillDebug)
 				m << "<font color='#66ff99'>(SweetSpot Debug) [src] hit [Z.name]'s sweet spot at [round(hold_ticks / 10, 0.1)]s.</font>"
+
+	// See the comment near OnHeldRelease above
+	var/list/_held_release_snap = null
+	if(istype(Z, /obj/Skills/Projectile))
+		_held_release_snap = Z._HeldSkillSnapshotVars()
+
 	Z.OnHeldRelease(src, benefit, sweet_spot_hit)
+
+	if(_held_release_snap)
+		Z._HeldSkillRestoreVars(_held_release_snap)
 
 // FizzleHeldSkill for skill being overheld, interrupted, or cancelled
 
