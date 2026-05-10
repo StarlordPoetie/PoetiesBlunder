@@ -7,9 +7,9 @@
 		TimerLimit=20
 		Cooldown=90
 		ManaCost=10
-		ManaDrain=0.01
+		ManaDrain=0.1
 		StableHeal=1
-		HealthHeal=2
+		HealthHeal=0.3
 		WoundHeal=1
 		passives=list("HolyMod" = 1, "LifeGeneration" = 2)
 		ActiveMessage="channels the light to mend their wounds!"
