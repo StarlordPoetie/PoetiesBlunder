@@ -14,6 +14,8 @@ obj/DomainExpansionBarrier
 	opacity = 1
 	mouse_opacity = 0
 	Savable = 0
+	Attackable = 0
+	Destructable = 0
 	Enter(atom/A)
 		return 0
 
