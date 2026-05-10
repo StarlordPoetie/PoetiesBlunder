@@ -975,6 +975,22 @@
 			if(!P.Attackable)
 				continue
 			flick("Attack",src)
+			if(istype(P, /obj/DomainExpansionBarrier))
+				var/obj/DomainExpansionBarrier/barrier = P
+				var/turf/bTurf = isturf(barrier.loc) ? barrier.loc : null
+				var/mob/domainOwner = bTurf ? bTurf.domain_expansion_owner : null
+				if(!domainOwner || !domainOwner.domainExpansionActive)
+					return
+				var/turf/aTurf = isturf(src.loc) ? src.loc : null
+				if(aTurf && aTurf.domain_expansion_owner == domainOwner)
+					src << "<b>The Domain boundary cannot be broken from the inside.</b>"
+					return
+				barrier.domain_hp -= TurfDamage
+				if(barrier.domain_hp <= 0)
+					domainOwner.domainExpansionBarriers -= barrier
+					del(barrier)
+					domainOwner.BreachDomain()
+				return
 			for(var/obj/Seal/S in P)
 				if(src.ckey!=S.Creator)
 					TurfDamage=0
