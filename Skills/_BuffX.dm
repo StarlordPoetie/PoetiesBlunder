@@ -12131,6 +12131,9 @@ mob
 									s.pixel_y=make_another.SwordYSecond
 							if(make_another.SwordNameSecond)
 								s.name=make_another.SwordNameSecond
+							if(make_another.type == /obj/Skills/Buffs/SlotlessBuffs/Devil_Arm2)
+								s.name = "[make_another.SwordName] (Second)";
+								s.icon='BLANK.dmi'
 							src.contents+=s
 							if(make_another.SwordAscension)
 								s.InnatelyAscended=make_another.SwordAscensionSecond ? make_another.SwordAscensionSecond : make_another.SwordAscension
@@ -12216,11 +12219,14 @@ mob
 										s.pixel_y=make_another.SwordYSecond
 								if(make_another.SwordNameSecond)
 									s.name=make_another.SwordNameSecond
+								if(make_another.type == /obj/Skills/Buffs/SlotlessBuffs/Devil_Arm2)
+									s.name = "[make_another.SwordName] (Third)";
+									s.icon='BLANK.dmi'
 								src.contents+=s
 								if(make_another.SwordAscension)
-									s.InnatelyAscended=make_another.SwordAscensionSecond ? make_another.SwordAscensionSecond : make_another.SwordAscension
+									s.InnatelyAscended=make_another.SwordAscensionThird ? make_another.SwordAscensionThird : make_another.SwordAscension
 								if(make_another.MagicSword)
-									s.MagicSword+=make_another.MagicSwordSecond ? make_another.MagicSwordSecond : make_another.MagicSword
+									s.MagicSword+=make_another.MagicSwordThird ? make_another.MagicSwordThird : make_another.MagicSword
 								if(make_another.SpiritSword)
 									s.SpiritSword+=make_another.SpiritSword
 								if(make_another.Extend)
@@ -12262,6 +12268,9 @@ mob
 									s.pixel_y=make_another.SwordYThird
 							if(make_another.SwordNameThird)
 								s.name=make_another.SwordNameThird
+							if(make_another.type == /obj/Skills/Buffs/SlotlessBuffs/Devil_Arm2)
+								s.name = "[make_another.SwordName] (Third)";
+								s.icon='BLANK.dmi'
 							src.contents+=s
 							if(make_another.SwordAscension)
 								s.InnatelyAscended=make_another.SwordAscensionThird ? make_another.SwordAscensionThird : make_another.SwordAscension

@@ -13,7 +13,7 @@
 
 //asc 2 choices
 /ascension/sub_ascension/beastkin/ira
-    passives = list("AttackSpeed" = 1, "Iaido" = 1);
+    passives = list("AttackSpeed" = 1, "Iaijutsu" = 1);
     speed = 1;
     offense = 0.5;
 
