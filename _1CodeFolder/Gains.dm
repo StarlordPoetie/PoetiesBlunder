@@ -240,9 +240,10 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 		if(CheckSpecial("Jinchuuriki") || CheckSpecial("Vaizard Mask"))
 			if(SpecialBuff.Mastery <= 1)
 				SpecialBuff.Trigger(src, Override=1)
-		if(MeditateTime >= 10 && equippedFlask.Charges != GetMaxFlaskCharges()) // Wait 10 seconds, have a flask equipped.
-			equippedFlask.Charges = GetMaxFlaskCharges() // Your charges are back to max!
-			src << "Equipped Flask Charges set to [equippedFlask.Charges]"
+		if(equippedFlask)
+			if(MeditateTime >= 10 && equippedFlask.Charges != GetMaxFlaskCharges()) // Wait 10 seconds, have a flask equipped.
+				equippedFlask.Charges = GetMaxFlaskCharges() // Your charges are back to max!
+				src << "Equipped Flask Charges set to [equippedFlask.Charges]"
 	else
 		MeditateTime=0
 	DemonMeditateCheck()

@@ -86,3 +86,36 @@
 		verb/Tsui_no_Hiken_Kaguzuchi()
 			set hidden=1
 			Trigger(usr)
+	Plasma_Blade
+		SignatureTechnique=3
+		passives = list("Iaido" = 4, "HybridStyle" = "MysticStyle", "Wuju" = 1, "CriticalChance" = 40, "CriticalDamage"= 0.05, "Shocking" = 4, "ThunderHerald" = 1, \
+			"Instinct" = 1, "Flicker" = 1, "Fury" = 2.5, "Iaijutsu" = 2, "BlurringStrikes" = 1.5, "Rain" = 3,\
+			"SpiritSword" = 1, "SpiritFlow"=4)
+		StyleSpd = 1.5
+		StyleFor = 1.35
+		StyleOff = 1.15
+		ElementalOffense = "Wind"
+		StyleActive="Plasma Blade"
+		Finisher="/obj/Skills/Queue/Finisher/Plasma_Formation"
+		verb/Plasma_Blade()
+			set hidden=1
+			Trigger(usr)
+	Bloodwhetter
+		SignatureTechnique=3
+		passives = list("HybridStyle" = "MysticStyle", "Serrated" = 1, "Familiar" = 2, \
+			"SpiritFlow" = 2, "BlindingVenom" = 2, "BloodEruption" = 2, "LingeringPoison" = 1,\
+			"SpiritSword" = 0.25, "Crippling" = 3, "Poisoning" = 5, "Pursuer" = 1, )
+		// crits deal an extra amount based on the enemy's max health
+		StyleStr = 1.35
+		StyleFor = 1.35
+		StyleOff = 1.3
+		StyleActive="Bloodwhetter"
+		Finisher="/obj/Skills/Queue/Finisher/Blood_Sacrifice"
+		BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Aura/Poison"
+		adjust(mob/p)
+			passives = list("HybridStyle" = "MysticStyle", "Serrated" = 1, "Familiar" = 2, \
+			"SpiritFlow" = 2, "BlindingVenom" = 2, "BloodEruption" = 2, "LingeringPoison" = 1,\
+			"SpiritSword" = 0.5, "Crippling" = 5, "Poisoning" = 5, "Pursuer" = 1, )
+		verb/Bloodwhetter()
+			set hidden=1
+			Trigger(usr)

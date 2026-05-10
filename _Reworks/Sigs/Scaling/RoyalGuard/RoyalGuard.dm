@@ -18,6 +18,7 @@
 			src.Trigger(usr)
 /obj/Skills/AutoHit
 	RoyalRelease
+		SignatureTechnique=2
 		Distance=12
 		WindUp=0.75
 		IgnoreWindUpReduction=1

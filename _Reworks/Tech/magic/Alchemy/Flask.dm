@@ -33,7 +33,12 @@
 
     verb/Imbibe_Flask() // We cosnume a charge from the flask!
         set category = "Skills"
-        if(usr.equippedFlask.Charges == 0) return
+        if(usr.hasSecret("Heavenly Restriction") && usr.secretDatum?:hasRestriction("Magic")) 
+            usr << "Your body cannot possibly accept this."
+            return
+        if(usr.equippedFlask.Charges == 0) 
+            usr << "You have no Flask Charges left!"
+            return
         usr.reduceCharge() // mob proc that reduces charges
         if(!usr.CheckSlotless("Flask Charge")) // If no buff, 
             for(var/typesFromTechniques in src.Techniques) // We want to go fishing 
