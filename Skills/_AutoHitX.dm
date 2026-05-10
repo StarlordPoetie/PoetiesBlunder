@@ -2789,7 +2789,6 @@ obj
 					ElementalClass="Water"
 					SkillCost=TIER_2_COST
 					Copyable=3
-					PreRequisite=list("/obj/Skills/AutoHit/Magic/Blizzard")
 					Area="Wide Wave"
 					Distance=6
 					Freezing=4
@@ -2846,7 +2845,6 @@ obj
 					ElementalClass="Water"
 					SkillCost=TIER_2_COST
 					Copyable=4
-					PreRequisite=list("/obj/Skills/AutoHit/Magic/Blizzara")
 					Area="Circle"
 					Distance=6
 					Freezing=6
@@ -2951,7 +2949,6 @@ obj
 					FlickAttack=1
 					SkillCost=TIER_2_COST
 					Copyable=3
-					PreRequisite=list("/obj/Skills/AutoHit/Magic/Thunder")
 					Area="Circle"
 					Distance=8
 					Paralyzing=8
@@ -2994,7 +2991,6 @@ obj
 					FlickAttack=1
 					SkillCost=TIER_2_COST
 					Copyable=4
-					PreRequisite=list("/obj/Skills/AutoHit/Magic/Thundara")
 					Area="Around Target"
 					Distance=10
 					DistanceAround=7
@@ -3081,7 +3077,6 @@ obj
 					ElementalClass="Earth"
 					SkillCost=TIER_4_COST
 					Copyable=5
-					PreRequisite=list("/obj/Skills/AutoHit/Magic/Magnet")
 					Area="Around Target"
 					Distance=15
 					DistanceAround=4
@@ -3115,7 +3110,6 @@ obj
 					ElementalClass="Earth"
 					SkillCost=TIER_4_COST
 					Copyable=6
-					PreRequisite=list("/obj/Skills/AutoHit/Magic/Gravity")
 					Area="Around Target"
 					Distance=15
 					DistanceAround=5
@@ -3153,7 +3147,6 @@ obj
 					ElementalClass="Fire"
 					SkillCost=TIER_4_COST
 					Copyable=6
-					PreRequisite=list("/obj/Skills/Projectile/Magic/Meteor")
 					Area="Around Target"
 					Distance=15
 					DistanceAround=7

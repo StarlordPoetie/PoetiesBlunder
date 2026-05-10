@@ -3755,7 +3755,6 @@ obj
 					ElementalClass="Fire"
 					SkillCost=TIER_4_COST
 					Copyable=5
-					PreRequisite=list("/obj/Skills/Projectile/Magic/Disintegrate")
 					Distance=50
 					DamageMult=12
 					Dodgeable=-1
