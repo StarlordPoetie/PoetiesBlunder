@@ -240,7 +240,7 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 		if(CheckSpecial("Jinchuuriki") || CheckSpecial("Vaizard Mask"))
 			if(SpecialBuff.Mastery <= 1)
 				SpecialBuff.Trigger(src, Override=1)
-		if(MeditateTime >= 10 && equippedFlask.Charges != GetMaxFlaskCharges()) // Wait 10 seconds, have a flask equipped. 
+		if(MeditateTime >= 10 && equippedFlask.Charges != GetMaxFlaskCharges()) // Wait 10 seconds, have a flask equipped.
 			equippedFlask.Charges = GetMaxFlaskCharges() // Your charges are back to max!
 			src << "Equipped Flask Charges set to [equippedFlask.Charges]"
 	else
@@ -256,6 +256,8 @@ var/game_loop/mainLoop = new(0, "newGainLoop")
 		if(passive_handler.Get("True Inheritor"))
 			drain/=3
 		if(drain < 0)
+			drain = 0
+		if(InfinityModule)
 			drain = 0
 		if(Energy < drain && !HasNoRevert() && !Dead && !HasMystic())
 
