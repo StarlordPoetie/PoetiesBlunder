@@ -24,17 +24,15 @@ obj/Skills/Projectile/Getsuga_Tenshou
 	ActiveMessage = "releases a wave of Getsuga!"
 
 	OnHeldRelease(mob/p, benefit, sweet_spot_hit)
+
 		var/icon_used
+		DamageMult *= benefit
 		if(sweet_spot_hit)
-			DamageMult *= benefit
 			icon_used = 'Big Getsuga.dmi'
 			LockX = -65
 			LockY = -65
 		else
-			DamageMult *= benefit
 			icon_used = 'Small Getsuga.dmi'
-			LockX = -16
-			LockY = -16
 		p.Blast(src, p, 1, icon_used)
 
 	verb/Getsuga_Tenshou()

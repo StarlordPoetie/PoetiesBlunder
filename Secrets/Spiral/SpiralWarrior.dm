@@ -206,6 +206,24 @@ obj/Skills/AutoHit/Spiral
 			set category="Skills"
 			adjust(usr)
 			usr.Activate(src)
+	Giga_Drill_Maximum
+		AdaptRate=1
+		DamageMult=18
+		Area="Circle"
+		Distance=8
+		TurfStrike=1
+		Slow=1
+		Divide=1
+		Knockback=30
+		ActiveMessage="yells: <b>GIGA DRILL MAXIMUM!!!</b>"
+		HitSparkIcon='drill.dmi'
+		HitSparkX=-8
+		HitSparkY=-8
+		HitSparkTurns=1
+		HitSparkSize=1
+		HitSparkDispersion=1
+		ComboMaster=1
+		Cooldown=180
 /mob/proc/HandleSpiralUnlock(var/Stat, SL)
 	var/CA=AscensionsAcquired
 	var/TA=CA+SL
