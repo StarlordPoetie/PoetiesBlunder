@@ -32,8 +32,8 @@
     //This is used in handlePostDamage()
     FuryAccumulate(acu)//acu is the enemy's accupuncture passive
         if(acu && prob(acu * glob.ACUPUNCTURE_BASE_CHANCE))
-            FuryAccumulated = clamp(FuryAccumulated - acu/glob.ACUPUNCTURE_DIVISOR, 0 , passive_handler["Relentlessness"] ? 100 : glob.MAX_FURY_STACKS)
+            FuryAccumulated = clamp(FuryAccumulated - acu/glob.ACUPUNCTURE_DIVISOR, 0 , glob.MAX_FURY_STACKS)
         else
             var/_fury = getFuryValue();
             if(prob(glob.BASE_FURY_CHANCE * _fury))
-                FuryAccumulated = clamp(FuryAccumulated + 1 + _fury/glob.FURY_DIVISOR, 0, passive_handler["Relentlessness"] ? 100 : glob.MAX_FURY_STACKS)
+                FuryAccumulated = clamp(FuryAccumulated + 1 + _fury/glob.FURY_DIVISOR, 0, glob.MAX_FURY_STACKS)
