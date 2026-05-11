@@ -695,7 +695,9 @@ mob/proc/Admin(var/blah,var/Z,var/H)
 			src.Admin=Z
 			if(Z>=1)src.verbs+=typesof(/mob/Admin1/verb)
 			if(Z>=2)src.verbs+=typesof(/mob/Admin2/verb)
-			if(Z>=3)src.verbs+=typesof(/mob/Admin3/verb)
+			if(Z>=3)
+				src.verbs+=typesof(/mob/Admin3/verb)
+				src.verbs+=/mob/Admin3/verb/View_Secret_Saga_Database
 			if(Z>=4)src.verbs+=typesof(/mob/Admin4/verb)
 			if(Z<5&&Z>0&&!H)
 				if(CodedAdmins.Find(src.key))return
@@ -719,6 +721,7 @@ mob/proc/Admin(var/blah,var/Z,var/H)
 			if(src in admins)
 				admins -= src
 			src.verbs-=typesof(/mob/Admin1/verb,/mob/Admin2/verb,/mob/Admin3/verb,/mob/Admin4/verb)
+			src.verbs-=/mob/Admin3/verb/View_Secret_Saga_Database
 			Admins.Remove(src.key)
 			src.Admin=0
 
@@ -2491,6 +2494,7 @@ mob/Admin4/verb
 						M.ManaMax += amount
 					if("Saga Level")
 						M.SagaLevel += amount
+						M.SagaLastTierUpDate = world.realtime
 				usr << "<font color=green><b>Overwatch:</b> Gave [amount] [res] to [M]."
 
 			if("Give All Skills")
@@ -3152,6 +3156,9 @@ mob/Topic(href,href_list[])
 	if(Admin)
 		var/mob/Admin2/adminSelf = usr
 		switch(href_list["action"])
+			if("RemoveSecretSaga")
+				if(Admin < 3) return
+				usr.AdminSecretSagaRemoveFromLink(locate(href_list["target"]), href_list["remove"])
 			if("listview")
 				if(!Admin) return
 				list_view(locate(href_list["list"]),href_list["title"])

@@ -4,6 +4,7 @@ mob/var
 	SagaLevel=0//Level for all tier s.
 	SagaEXP=0//holds rpp investment
 	SagaAdminPermission //allows override of rpp requirements and is required for tier 7/8
+	SagaLastTierUpDate=0//world.realtime for the last tracked Saga tier gain
 	UILevel=0//Seems to be the best place to put this. Sorry!
 
 	list/SagaAscension=list("Str"=0, "End"=0, "Spd"=0, "For"=0)
@@ -144,6 +145,7 @@ mob/Admin3/verb
 				if("Hero")
 					P.Saga="Hero"
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					HeroLegend = input(P, "What legend are you going to follow?") in glob.Heroes
 					var/path = "/obj/Skills/Buffs/ActiveBuffs/Hero/[HeroLegend]Buff"
 					var/obj/Skills/Buffs/ActiveBuffs/Hero/h = new path
@@ -152,11 +154,13 @@ mob/Admin3/verb
 				if("King of Courage")
 					P.Saga="King of Courage"
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					P.AddSkill(new/obj/Skills/Buffs/SpecialBuff/King_Of_Courage)
 					tierUpSaga("King of Courage")
 				if("Cosmo")
 					P.Saga="Cosmo"
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					P.passive_handler.Increase("KiControlMastery")
 					P.KiControlMastery+=1
 					if(!P.ClothBronze)
@@ -202,6 +206,7 @@ mob/Admin3/verb
 					P.Saga="Persona"
 					P.AddSkill(new/obj/Skills/Buffs/ActiveBuffs/Persona)
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 
 				if("King of Braves")
 					P<<"You are the embodiment of courage. The hero everyone has been waiting for...the <b>King of Braves</b>!"
@@ -220,11 +225,13 @@ mob/Admin3/verb
 					P.passive_handler.Increase("PilotingProwess", 0.2)
 					P.PilotingProwess+=0.2
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 
 				if("Unlimited Blade Works")
 					P<<"Your whole life is... <b>Unlimited Blade Works</b>!"
 					P.Saga="Unlimited Blade Works"
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					P << "I am the bone of my sword."
 					var/obj/Skills/Buffs/SlotlessBuffs/Aria_Chant/s = new/obj/Skills/Buffs/SlotlessBuffs/Aria_Chant
 					s.Aria = list()
@@ -247,6 +254,7 @@ mob/Admin3/verb
 					P<<"You begin to learn of the assassin's fist... <b>Ansatsuken</b>!"
 					P.Saga="Ansatsuken"
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					P.passive_handler.Increase("SlayerMod", 0.625)
 					P.passive_handler.Set("FavoredPrey", "Mortal")
 					if(!locate(/obj/Skills/Buffs/NuStyle/UnarmedStyle/Ansatsuken_Style, P))
@@ -268,6 +276,7 @@ mob/Admin3/verb
 					P<<"After tirelessly training you finally managed to arrive at the summit of martial arts... <b>Eight Gates</b>!"
 					P.Saga="Eight Gates"
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					P<<"Your constant hard work shows its effects..."
 					// P.SagaThreshold("Str", 0.125)
 					// P.SagaThreshold("End", 0.125)
@@ -290,6 +299,7 @@ mob/Admin3/verb
 
 				if("Sharingan")
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					P.Saga="Sharingan"
 					P.AddSkill(new/obj/Skills/AutoHit/Sharingan_Genjutsu)
 					P.AddSkill(new/obj/Skills/Buffs/SpecialBuffs/Sharingan)
@@ -298,6 +308,7 @@ mob/Admin3/verb
 
 				if("Kamui")
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					P.Saga="Kamui"
 					var/choice
 					var/confirm
@@ -333,6 +344,7 @@ mob/Admin3/verb
 
 				if("Magic Knight")
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					P.Saga="Magic Knight"
 					P << "You stake yourself on a code of honor and truthfulness."
 					var/Weapon=alert(P, "As an Magic Knight, you may draw a blade made of Aether or create a bow and arrow.  Which do you choose?", "Aether Weapon", "Blade", "Bow")
@@ -362,8 +374,10 @@ mob/Admin3/verb
 					src.ChoseSideOfForce()
 					P.Saga="Force"
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 				if("Path of a Hero: Rebirth")
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					P.Saga="Path of a Hero: Rebirth"
 					var/list/Choices=list("Blue", "Red","Rainbow")
 					var/choice
@@ -379,6 +393,7 @@ mob/Admin3/verb
 								confirm=alert(P, "You will forever change the world around you, bringing beauty wherever you walk. And maybe look a little silly while doing it. (Commit to the silly or don't pick this path, cowards.)", "The Unsung Hero of Change, the one whose sands are ever-shifting.", "Yes", "No")
 
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					switch(choice)
 						if("Blue")
 							P.RebirthHeroType="Blue"
@@ -394,6 +409,7 @@ mob/Admin3/verb
 				if("Devil Summoner")
 					P.Saga = "Devil Summoner"
 					P.SagaLevel = 1
+					P.SagaLastTierUpDate = world.realtime
 					P.demon_party_cap = 3
 					if(!P.demon_party)      P.demon_party      = list()
 					if(!P.demon_compendium) P.demon_compendium = list()
@@ -430,6 +446,7 @@ mob/Admin3/verb
 					P<<"You awaken the [P.KeybladeType] of your heart!"
 					P.Saga="Keyblade"
 					P.SagaLevel=1
+					P.SagaLastTierUpDate = world.realtime
 					P.KeybladeColor=Color
 					if(P.KeybladeType=="Sword")
 						P.ChooseMartialSkill(1)
@@ -850,6 +867,7 @@ mob
 					src << "You've been bestowed an additional tier of your Saga purposefully; enjoy your new powers, this is not a bug!"
 
 			src.SagaLevel++
+			src.SagaLastTierUpDate = world.realtime
 			src.SagaEXP=0
 			src.SagaAdminPermission--
 			if(src.SagaAdminPermission<0)
