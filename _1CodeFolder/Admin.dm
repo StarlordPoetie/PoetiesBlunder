@@ -130,6 +130,12 @@ mob/Admin3/verb/LoadSwapMap()
 	for(var/mob/Player/AI/ai in ticking_ai)
 		ai.EndLife(0)*/
 
+// Admin tab entry point for the combined Secret/Saga database browser.
+/mob/Admin3/verb/View_Secret_Saga_Database()
+	set name = "View Secret/Saga Database"
+	set category = "Admin"
+	usr.OpenSecretSagaDatabase()
+
 // Read-only browser view of all the potential thresholds for Style and Sig
 // development, with one table per tier listing every type at that tier and the
 // key balance vars on each (Style: Str/For/End/Spd/Off/Def + passives; Sig:
