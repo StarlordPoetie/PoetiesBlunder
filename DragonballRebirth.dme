@@ -369,6 +369,7 @@
 #include "_Reworks\Ags\AGDatabase.dm"
 #include "_Reworks\Ags\AugmentedGear.dm"
 #include "_Reworks\ai\_aiRedo.dm"
+#include "_Reworks\ai\cursed_spirits.dm"
 #include "_Reworks\ai\_AISpot.dm"
 #include "_Reworks\ai\aiGain.dm"
 #include "_Reworks\ai\minerals.dm"

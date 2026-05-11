@@ -5,6 +5,12 @@
 	var/mob/Player/AI/aiTarget
 	if(istype(defender, /mob/Player/AI))
 		aiTarget = defender
+		if(aiTarget.isCursedSpirit())
+			if(!src.canInteractWithCursedSpirit(aiTarget))
+				return FALSE
+			var/mob/Player/AI/CursedSpirit/spirit = aiTarget
+			spirit.addThreat(src, 1)
+			spirit.setCursedTarget(src)
 		if(aiTarget.ai_adapting_power && !aiTarget.ai_power_adapted)
 			aiTarget.ai_power_adapted = 1
 			aiTarget.SetTarget(src)

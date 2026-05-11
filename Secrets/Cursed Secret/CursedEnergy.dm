@@ -198,6 +198,7 @@
 		removePermanentSpecializationPassives(p)
 		p.refreshCursedEnergyKiControlSpecialization()
 		p.passive_handler.Set("RenameMana", "Cursed Energy")
+		p.refreshCursedSpiritSight()
 		p.setupCursedEnergyAwakening()
 		p.applyCursedEnergyPowerControlIcon()
 		grantDomainSureHit(p)

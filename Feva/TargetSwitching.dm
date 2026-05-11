@@ -9,6 +9,7 @@ mob
 					var/NewTgtDist=25
 					for(var/mob/m in oview(15,usr))
 						if(m.client || (istype(m, /mob/Player/AI) && !istype(m, /mob/Player/AI/Nympharum)))
+							if(m.isCursedSpirit() && !usr.canInteractWithCursedSpirit(m)) continue
 							if(m in usr.ai_followers) continue
 							if(usr.party)
 								if(usr.party.members)

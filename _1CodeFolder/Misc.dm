@@ -27,6 +27,9 @@ mob/Click()
 		if(src.passive_handler.Get("Nightmare")&&usr!=src)
 			usr<<"<font color=red>You must be seeing things..."
 			return
+		if(src.isCursedSpirit() && !usr.canInteractWithCursedSpirit(src))
+			usr<<"<font color=red>You feel something wrong nearby, but cannot perceive it clearly enough to target it.</font>"
+			return
 		usr.SetTarget(src)
 		for(var/sb in usr.SlotlessBuffs)
 			var/obj/Skills/Buffs/b = usr.SlotlessBuffs[sb]
@@ -105,6 +108,10 @@ mob/proc/TwoWayTelepath(var/mob/who, anon)
 					m<<output("<font color=#99FF99><b>(Telepath)</b></font>- <a href=?src=\ref[src];action=MasterControl;do=TPM>[src]</a href> To <a href=?src=\ref[who];action=MasterControl;do=TPM>[who]</a href> :[blah]", "icchat")
 
 mob/proc/SetTarget(atom/target)
+	if(ismob(target))
+		var/mob/M = target
+		if(M.isCursedSpirit() && !src.canInteractWithCursedSpirit(M))
+			return FALSE
 	if(ismob(Target))
 		var/mob/m = Target
 		m.BeingTargetted -= src
@@ -113,6 +120,7 @@ mob/proc/SetTarget(atom/target)
 		var/mob/m = target
 		if(!IsList(m.BeingTargetted)) m.BeingTargetted = list()
 		m.BeingTargetted |= src
+	return TRUE
 
 mob/proc/RemoveTarget()
 	if(Target)
