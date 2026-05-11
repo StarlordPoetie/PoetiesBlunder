@@ -68,10 +68,12 @@ SecretInformation
 		list/givenVariables = list()
 		potentialRecieved = -1
 		nextTierUp = 999
+		lastTierUpDate = 0 //world.realtime for the last tracked Secret tier gain
 		tierUnlocked = 3 // always allow them to auto to tier 3
 	proc/init(mob/p)
 		potentialRecieved = glob.progress.DaysOfWipe*glob.progress.PotentialDaily
 		nextTierUp = 3
+		lastTierUpDate = world.realtime
 		applySecret(p)
 /*
 	proc/checkTierUp(mob/p)
@@ -92,6 +94,7 @@ SecretInformation
 			for(var/x in 1 to num)
 				if(difference > 0)
 					currentTier++
+					lastTierUpDate = world.realtime
 					applySecret(p)
 					difference--
 					lastCheckedTier = currentTier
