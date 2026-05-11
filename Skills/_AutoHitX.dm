@@ -7878,16 +7878,11 @@ obj
 					EndChain()
 				break
 			if(chain_user && chain_user.held_skill == src)
-				var/image/I = image('Slash - Future.dmi')
-				I.pixel_x = -32
-				I.pixel_y = -32
-				I.transform = matrix().Turn(rand(0, 359))
-				I.layer = MOB_LAYER + 0.5
-				chain_target.overlays += I
-				var/mob/t = chain_target
-				//I have to clean this up a bit later
-				spawn(6)
-					if(t) t.overlays -= I
+				var/obj/Effects/HE = new(null, 'Slash - Future.dmi', -32, -32, 0, 1, 6)
+				HE.appearance_flags = KEEP_APART | RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+				HE.transform = matrix().Turn(rand(0, 359))
+				HE.Target = chain_target
+				chain_target.vis_contents += HE
 			sleep(1)
 		overlay_loop_running = FALSE
 
