@@ -333,7 +333,10 @@ if(src.HasBurnHit())
 	src.AddBurn(src.GetBurnHit()*0.15*leakVal, src)
 
 if(src.cursedEnergyTrait && src.hasSecret("Cursed Energy"))
-	var/traitPotency = src.CheckSlotless("120% Potential") ? 2 : 1
+	var/traitPotency = 1
+	if(src.CheckSlotless("120% Potential"))
+		traitPotency = 2
+
 	switch(src.cursedEnergyTrait)
 		if("Serrated")
 			defender.AddShearing(2 * traitPotency, src)
