@@ -127,3 +127,201 @@ proc/AdminPowerAuditDate(var/when)
 	html += "</div></body></html>"
 	usr << browse(html, "window=secret_saga_database;size=1120x760")
 	Log("Admin", "[ExtractInfo(usr)] viewed the standalone Secret/Saga database ([withPowerCount]/[totalPlayers] powered players).")
+
+/mob/proc/AdminDeleteSkillPath(var/path)
+	var/realPath = ispath(path) ? path : text2path("[path]")
+	if(!realPath)
+		return 0
+	var/removed = 0
+	for(var/obj/Skills/S in src)
+		if(istype(S, realPath))
+			DeleteSkill(S)
+			removed++
+	return removed
+
+/mob/proc/AdminRemoveSecretPower(mob/adminUser)
+	if(!Secret && (!secretDatum || secretDatum.type == /SecretInformation))
+		return 0
+	var/oldSecret = Secret ? Secret : (secretDatum ? secretDatum.name : "Unknown Secret")
+	var/removed = 0
+
+	if(Secret == "Cursed Energy" || istype(secretDatum, /SecretInformation/CursedEnergy) || cursedEnergyTrait || cursedEnergyTraitSlot || cursedEnergyTraitPassivesApplied)
+		cleanupCursedEnergy()
+		removed = 1
+	else
+		if(secretDatum)
+			for(var/skillPath in secretDatum.givenSkills)
+				removed += AdminDeleteSkillPath(skillPath)
+			for(var/variable in secretDatum.givenVariables)
+				if(passive_handler)
+					passive_handler.Set(variable, 0)
+				if(variable in vars)
+					vars[variable] = 0
+
+		var/list/extraSecretSkills = list(
+			"/obj/Skills/Buffs/SlotlessBuffs/Jagan_Expert",
+			"/obj/Skills/Projectile/Beams/Big/Jagan/Dragon_of_the_Darkness_Flame",
+			"/obj/Skills/Buffs/SlotlessBuffs/SwordOfDarknessFlame",
+			"/obj/Skills/Buffs/SlotlessBuffs/Darkness_Dragon_Master",
+			"/obj/Skills/AutoHit/Haki/Conquerors_Haki",
+			"/obj/Skills/Queue/Haki/Kings_Infusion",
+			"/obj/Skills/Queue/Haki/Galaxy_Impact",
+			"/obj/Skills/Projectile/Divine_Departure",
+			"/obj/Skills/Buffs/SlotlessBuffs/Regeneration",
+			"/obj/Skills/Utility/Tether",
+			"/obj/Skills/Utility/Refresh",
+			"/obj/Skills/Utility/Eldritch_Domain",
+			"/obj/Skills/Utility/Altered_Nature",
+			"/obj/Skills/Utility/Bared_Souls",
+			"/obj/Skills/Utility/Glimpse_Inside",
+			"/obj/Skills/Utility/Shared_Dreaming",
+			"/obj/Skills/Utility/With_You_In_Darkness",
+			"/obj/Skills/Utility/Observe",
+			"/obj/Skills/Utility/Reclamation",
+			"/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Sennin_Mode",
+			"/obj/Skills/Queue/Rasengan",
+			"/obj/Skills/Queue/Oodama_Rasengan",
+			"/obj/Skills/Projectile/Rasenshuriken",
+			"/obj/Skills/Buffs/SlotlessBuffs/Spiral/Clobber",
+			"/obj/Skills/AutoHit/Giga_Drill_Breaker",
+			"/obj/Skills/Buffs/SlotlessBuffs/Spiral/InspiredEvo",
+			"/obj/Skills/Buffs/SlotlessBuffs/Mang_Resonance",
+			"/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike",
+			"/obj/Skills/Queue/Secret_Heavy_Strike",
+			"/obj/Skills/Queue/Goetic_Special",
+			"/obj/Skills/Buffs/SlotlessBuffs/Hats/SufferInHellWithNoHoes",
+			"/obj/Skills/Buffs/SlotlessBuffs/Hats/Liberation",
+			"/obj/Skills/Buffs/SlotlessBuffs/Hats/HeraldOfTheConstellation"
+		)
+		for(var/skillPath in extraSecretSkills)
+			removed += AdminDeleteSkillPath(skillPath)
+
+		if(oldSecret == "Hamon" || oldSecret == "Senjutsu")
+			ModifyPrime = max(0, ModifyPrime - 1)
+		JaganPowerNerf = 0
+		HakiSpecialization = null
+		HakiCounterArmament = 0
+		HakiCounterObservation = 0
+		Ripple = 0
+		BloodPower = 0
+		Secret = null
+		secretDatum = null
+
+	if(adminUser)
+		Log("Admin", "[ExtractInfo(adminUser)] removed Secret [oldSecret] from [ExtractInfo(src)] ([removed] skills cleaned).")
+	return 1
+
+/mob/proc/AdminRemoveSagaPower(mob/adminUser)
+	if(!Saga)
+		return 0
+	var/oldSaga = Saga
+	var/removed = 0
+	var/list/SagaSkills = list(
+		"/obj/Skills/Buffs/SpecialBuff/King_Of_Courage",
+		"/obj/Skills/AutoHit/Pegasus_Meteor_Fist",
+		"/obj/Skills/Queue/Rising_Dragon_Fist",
+		"/obj/Skills/Projectile/Diamond_Dust",
+		"/obj/Skills/Projectile/Nebula_Stream",
+		"/obj/Skills/Queue/Phoenix_Demon_Illusion_Strike",
+		"/obj/Skills/AutoHit/Unicorn_Gallop",
+		"/obj/Skills/Buffs/ActiveBuffs/Persona",
+		"/obj/Skills/Buffs/SpecialBuffs/King_of_Braves",
+		"/obj/Skills/Buffs/SlotlessBuffs/Will_Knife",
+		"/obj/Skills/Buffs/SlotlessBuffs/Protect_Shade",
+		"/obj/Skills/Projectile/King_of_Braves/Broken_Magnum",
+		"/obj/Skills/Buffs/SlotlessBuffs/Copy_Blade",
+		"/obj/Skills/Buffs/SlotlessBuffs/Projection",
+		"/obj/Skills/Buffs/NuStyle/SwordStyle/Sword_Savant",
+		"/obj/Skills/Buffs/SlotlessBuffs/Magic/Reinforce_Self",
+		"/obj/Skills/Queue/JawStrike",
+		"/obj/Skills/Queue/FallingBlade",
+		"/obj/Skills/Buffs/NuStyle/UnarmedStyle/Ansatsuken_Style",
+		"/obj/Skills/Projectile/Ansatsuken/Hadoken",
+		"/obj/Skills/Queue/Shoryuken",
+		"/obj/Skills/AutoHit/Tatsumaki",
+		"/obj/Skills/Buffs/ActiveBuffs/Eight_Gates",
+		"/obj/Skills/Queue/Front_Lotus",
+		"/obj/Skills/AutoHit/Sharingan_Genjutsu",
+		"/obj/Skills/Buffs/SpecialBuffs/Sharingan",
+		"/obj/Skills/Buffs/NuStyle/UnarmedStyle/Move_Duplication",
+		"/obj/Skills/Buffs/SlotlessBuffs/Spirit_Sword",
+		"/obj/Skills/Buffs/SlotlessBuffs/Spirit_Bow",
+		"/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Hero_Soul",
+		"/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Hero_Heart",
+		"/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Prismatic_Hero",
+		"/obj/Skills/Buffs/ActiveBuffs/Keyblade"
+	)
+	for(var/skillPath in SagaSkills)
+		removed += AdminDeleteSkillPath(skillPath)
+	for(var/obj/Skills/S in src)
+		if(S.SagaSignature)
+			DeleteSkill(S)
+			removed++
+
+	if(oldSaga == "Cosmo")
+		KiControlMastery = max(0, KiControlMastery - 1)
+		if(passive_handler) passive_handler.Decrease("KiControlMastery", 1)
+	if(passive_handler && oldSaga == "Hiten Mitsurugi-Ryuu")
+		passive_handler["SlayerMod"] = 0
+		passive_handler["Flicker"] = 0
+		passive_handler["Pursuer"] = 0
+		passive_handler["Godspeed"] = 0
+		passive_handler["AttackSpeed"] = 0
+		passive_handler["Brutalize"] = 0
+		passive_handler["MovementMastery"] = 0
+		passive_handler["TechniqueMastery"] = 0
+		passive_handler["AsuraStrike"] = 0
+		passive_handler["FavoredPrey"] = null
+	if(passive_handler && oldSaga == "Ansatsuken")
+		passive_handler.Decrease("SlayerMod", 0.625)
+		passive_handler.Set("FavoredPrey", null)
+
+	Saga = null
+	SagaLevel = 0
+	SagaEXP = 0
+	SagaAdminPermission = 0
+	SagaLastTierUpDate = 0
+	SagaAscension = list("Str"=0, "End"=0, "Spd"=0, "For"=0)
+	ClothBronze = null
+	ClothGold = null
+	WeaponSoulType = null
+	BoundLegend = null
+	KeybladeType = null
+	KeybladeColor = null
+	KeybladePath = null
+	Keychains = list()
+	KeychainAttached = null
+	SyncAttached = null
+	RebirthHeroType = null
+	RebirthHeroPath = null
+	FinalHeroChoice = null
+	if(adminUser)
+		Log("Admin", "[ExtractInfo(adminUser)] removed Saga [oldSaga] from [ExtractInfo(src)] ([removed] skills cleaned).")
+	return 1
+
+/mob/Admin3/verb/Remove_Secret_Saga(mob/Players/P in players)
+	set name = "Remove Secret/Saga"
+	set category = "Admin"
+	if(!P)
+		return
+	var/list/options = list("Cancel")
+	if(P.Secret)
+		options += "Secret"
+	if(P.Saga)
+		options += "Saga"
+	if(P.Secret && P.Saga)
+		options += "Both"
+	if(options.len <= 1)
+		usr << "[P] has no Secret or Saga to remove."
+		return
+	var/choice = input(usr, "Remove which power from [P]? This will clear the var and remove known associated skills/passives.", "Remove Secret/Saga") in options
+	if(choice == "Cancel")
+		return
+	var/confirm = alert(usr, "Confirm removing [choice] from [P]?", "Remove Secret/Saga", "Yes", "No")
+	if(confirm != "Yes")
+		return
+	if(choice == "Secret" || choice == "Both")
+		P.AdminRemoveSecretPower(usr)
+	if(choice == "Saga" || choice == "Both")
+		P.AdminRemoveSagaPower(usr)
+	usr << "Removed [choice] from [P]."
