@@ -1,198 +1,78 @@
 var/archive/archive = new()
 
-
-
 archive
-    var/list/AGs = list()
-    var/list/SagaUsers = list()
-    var/list/SecretUsers = list()
+	var/list/AGs = list()
+	var/list/SagaUsers = list()
+	var/list/SecretUsers = list()
 
-    proc/addAG(AG)
-        AGs += AG
+	proc/addAG(AG)
+		AGs += AG
 
-    proc/addSagaUser(saga, mob/user)
-        SagaUsers += "[saga], [user.name]([user.ckey])"
+	proc/addSagaUser(saga, mob/user)
+		SagaUsers += "[saga], [user.name]([user.ckey])"
 
-    proc/addSecretUser(secret, mob/user)
-        SecretUsers += "[secret], [user.name]([user.ckey])"
+	proc/addSecretUser(secret, mob/user)
+		SecretUsers += "[secret], [user.name]([user.ckey])"
 
-    proc/loadAGs()
-        AGs = list()
-        for(var/obj/Items/AG in world)
-            if(AG.Augmented)
-                if(AGs.len)
-                    var/exists = 0
-                    for(var/AG2 in AGs)
-                        if(AG2 == AG)
-                            exists = 1
-                    if(!exists)
-                        AGs += AG
-                else
-                    AGs += AG
-
+	proc/loadAGs()
+		AGs = list()
+		for(var/obj/Items/AG in world)
+			if(AG.Augmented)
+				if(AGs.len)
+					var/exists = 0
+					for(var/AG2 in AGs)
+						if(AG2 == AG)
+							exists = 1
+					if(!exists)
+						AGs += AG
+				else
+					AGs += AG
 
 
 /mob/Admin4/verb/establishArchive()
-    set name = "Establish Archive"
-    set category = "Admin"
-    if(!archive || archive.type != archive)
-        archive = new()
-        archive.loadAGs()
-        archive.addSagaUser("SAGA", usr)
-        archive.addSecretUser("SECRET", usr)
-        usr<< "Archive established."
-    else
-        usr<< "Archive already established."
+	set name = "Establish Archive"
+	set category = "Admin"
+
+	if(!archive || archive.type != /archive)
+		archive = new()
+		archive.loadAGs()
+		archive.addSagaUser("SAGA", usr)
+		archive.addSecretUser("SECRET", usr)
+		usr << "Archive established."
+	else
+		usr << "Archive already established."
 
 
 /mob/Admin4/verb/editArchive()
-    set name = "Edit Archive"
-    set category = "Admin"
-    if(!archive || archive.type != archive)
-        usr<< "Archive not established."
-    else
-        var/atom/A = archive
-        var/Edit="<html><Edit><body bgcolor=#000000 text=#339999 link=#99FFFF>"
-        var/list/B=new
-        Edit+="[A]<br>[A.type]"
-        Edit+="<table width=10%>"
-        for(var/C in A.vars) B+=C
-        for(var/C in B)
-            Edit+="<td><a href=byond://?src=\ref[A];action=edit;var=[C]>"
-            Edit+=C
-            Edit+="<td>[Value(A.vars[C])]</td></tr>"
-        Edit += "</html>"
-        usr<<browse(Edit,"window=[A];size=450x600")
+	set name = "Edit Archive"
+	set category = "Admin"
 
-proc/AdminPowerAuditValue(var/value, var/fallback = "None")
-    if(isnull(value) || value == "")
-        return fallback
-    return html_encode("[value]")
+	if(!archive || archive.type != /archive)
+		usr << "Archive not established."
+	else
+		var/atom/A = archive
+		var/Edit = "<html><Edit><body bgcolor=#000000 text=#339999 link=#99FFFF>"
+		var/list/B = new
+		Edit += "[A]<br>[A.type]"
+		Edit += "<table width=10%>"
 
-proc/AdminPowerAuditTier(var/current, var/max)
-    if(isnull(current) || current == "")
-        return "None"
-    if(isnull(max) || max == "")
-        return html_encode("[current]")
-    return html_encode("[current]/[max]")
+		for(var/C in A.vars)
+			B += C
+
+		for(var/C in B)
+			Edit += "<td><a href=byond://?src=\ref[A];action=edit;var=[C]>"
+			Edit += C
+			Edit += "<td>[Value(A.vars[C])]</td></tr>"
+
+		Edit += "</html>"
+		usr << browse(Edit, "window=[A];size=450x600")
 
 
-/mob/proc/OpenSecretSagaDatabase()
-    if(!archive)
-        archive = new()
-
-    var/withPowerCount = 0
-    var/totalPlayers = 0
-    var/secretArchiveCount = (archive.SecretUsers ? archive.SecretUsers.len : 0)
-    var/sagaArchiveCount = (archive.SagaUsers ? archive.SagaUsers.len : 0)
-    var/generatedAt = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
-    var/html = "<html><head><title>Secret/Saga Database</title><style>body{background:#101417;color:#d8e9ed;font-family:Verdana,Arial,sans-serif;font-size:12px;margin:0;padding:14px;}h2{color:#f4fbff;margin:0 0 4px 0;}h3{color:#bcefff;margin:16px 0 6px 0;border-bottom:1px solid #34545d;padding-bottom:4px;}table{border-collapse:collapse;width:100%;margin:8px 0 14px 0;background:#141b1f;}th{background:#243842;color:#f5fbff;border:1px solid #3f626d;padding:6px;text-align:left;}td{border:1px solid #2b454d;padding:5px;vertical-align:top;}tr:nth-child(even){background:#182226;}tr.power{background:#1d2b25;}tr.empty{color:#93aab0;}.wrap{max-width:1200px;margin:0 auto;}.note{color:#a8c2c9;font-size:10px;margin-bottom:10px;}.summary{margin:10px 0 14px 0;}.card{display:inline-block;background:#182126;border:1px solid #34545d;border-left:4px solid #6ed0e0;padding:8px 12px;margin:0 8px 8px 0;min-width:130px;}.card b{display:block;color:#ffffff;font-size:16px;margin-bottom:2px;}.warn{color:#ffd27a;font-weight:bold;}.none{color:#7f969d;}.pill{background:#243842;border:1px solid #3f626d;border-radius:8px;color:#e8f8ff;display:inline-block;padding:2px 7px;margin:1px 2px 1px 0;}.archiveBox{background:#141b1f;border:1px solid #2b454d;margin:8px 0 14px 0;padding:8px;max-height:220px;overflow:auto;white-space:pre-wrap;}</style></head><body><div class='wrap'>"
-    html += "<h2>Secret/Saga Database</h2>"
-    html += "<div class='note'>Generated by [AdminPowerAuditValue(usr)] at [generatedAt]. This combines the old Secret and Saga database views with live player tier details.</div>"
-    html += "<div class='summary'>"
-
-    for(var/mob/P in players)
-        totalPlayers++
-        if(P.Secret || P.Saga)
-            withPowerCount++
-
-    html += "<span class='card'><b>[totalPlayers]</b>Online players checked</span>"
-    html += "<span class='card'><b>[withPowerCount]</b>With Secret or Saga</span>"
-    html += "<span class='card'><b>[secretArchiveCount]</b>Archived Secret entries</span>"
-    html += "<span class='card'><b>[sagaArchiveCount]</b>Archived Saga entries</span>"
-    html += "</div>"
-
-    html += "<h3>Live Secret/Saga Details</h3>"
-    html += "<table><tr><th>#</th><th>Name</th><th>Key / CKEY</th><th>Computer ID</th><th>Secret</th><th>Secret Tier</th><th>Secret Datum</th><th>Saga</th><th>Saga Tier</th><th>Cursed Energy Details</th></tr>"
-    var/row = 0
-    for(var/mob/P in players)
-        row++
-        var/hasPower = (P.Secret || P.Saga)
-        var/rowClass = hasPower ? "power" : "empty"
-        var/keyText = "[AdminPowerAuditValue(P.key)]<br><span class='note'>[AdminPowerAuditValue(P.ckey)]</span>"
-        var/secretName = P.Secret ? AdminPowerAuditValue(P.Secret) : "<span class='none'>None</span>"
-        var/secretTier = "<span class='none'>None</span>"
-        var/secretType = "<span class='none'>None</span>"
-        if(P.Secret)
-            if(P.secretDatum)
-                secretTier = AdminPowerAuditTier(P.secretDatum.currentTier, P.secretDatum.maxTier)
-                secretType = AdminPowerAuditValue(P.secretDatum.type)
-            else
-                secretTier = "<span class='warn'>Missing datum</span>"
-                secretType = "<span class='warn'>Missing datum</span>"
-        var/sagaName = P.Saga ? AdminPowerAuditValue(P.Saga) : "<span class='none'>None</span>"
-        var/sagaTier = P.Saga ? AdminPowerAuditValue(P.SagaLevel) : "<span class='none'>None</span>"
-        var/list/ceDetails = list()
-        if(P.cursedEnergyTrait)
-            ceDetails += "<span class='pill'>Trait: [AdminPowerAuditValue(P.cursedEnergyTrait)]</span>"
-        if(P.cursedEnergyTraitSlot)
-            ceDetails += "<span class='pill'>Slot: [AdminPowerAuditValue(P.cursedEnergyTraitSlot)]</span>"
-        if(P.cursedEnergySpecialization)
-            ceDetails += "<span class='pill'>Spec: [AdminPowerAuditValue(P.cursedEnergySpecialization)]</span>"
-        if(P.cursedEnergyDomainChoice)
-            ceDetails += "<span class='pill'>Domain: [AdminPowerAuditValue(P.cursedEnergyDomainChoice)]</span>"
-        if(P.cursedEnergySixEyes)
-            ceDetails += "<span class='pill'>Six Eyes</span>"
-        if(P.cursedEnergyTraitPassivesApplied && P.cursedEnergyTraitPassivesApplied.len)
-            ceDetails += "<span class='pill'>Passives: [P.cursedEnergyTraitPassivesApplied.len]</span>"
-        var/ceText = ceDetails.len ? jointext(ceDetails, "<br>") : "<span class='none'>None</span>"
-        html += "<tr class='[rowClass]'><td>[row]</td><td>[AdminPowerAuditValue(P.name)]</td><td>[keyText]</td><td>[AdminPowerAuditValue(P.client ? P.client.computer_id : null)]</td><td>[secretName]</td><td>[secretTier]</td><td>[secretType]</td><td>[sagaName]</td><td>[sagaTier]</td><td>[ceText]</td></tr>"
-    html += "</table>"
-
-    html += "<h3>Cursed Energy Trait Slots</h3>"
-    if(cursed_energy_taken_traits && cursed_energy_taken_traits.len)
-        html += "<table><tr><th>Trait Slot</th><th>Reserved CKEY</th><th>Matching Online Player</th><th>Current Player Trait</th><th>Current Player Tier</th></tr>"
-        for(var/trait in cursed_energy_taken_traits)
-            var/owner = cursed_energy_taken_traits[trait]
-            var/mob/match
-            for(var/mob/P in players)
-                if(P.cursedEnergySlotOwnerId() == owner)
-                    match = P
-                    break
-            var/matchName = match ? AdminPowerAuditValue("[match] ([match.key])") : "<span class='warn'>Offline or stale</span>"
-            var/matchTrait = match && match.cursedEnergyTrait ? AdminPowerAuditValue(match.cursedEnergyTrait) : "<span class='none'>None</span>"
-            var/matchTier = "<span class='none'>None</span>"
-            if(match && match.secretDatum && match.Secret == "Cursed Energy")
-                matchTier = AdminPowerAuditTier(match.secretDatum.currentTier, match.secretDatum.maxTier)
-            html += "<tr><td>[AdminPowerAuditValue(trait)]</td><td>[AdminPowerAuditValue(owner)]</td><td>[matchName]</td><td>[matchTrait]</td><td>[matchTier]</td></tr>"
-        html += "</table>"
-    else
-        html += "<p class='none'>No Cursed Energy trait slots are currently occupied.</p>"
-
-    html += "<h3>Archived Secret Entries</h3>"
-    if(archive.SecretUsers && archive.SecretUsers.len)
-        var/secretArchive = html_encode(jointext(archive.SecretUsers, "\n"))
-        html += "<div class='archiveBox'>[secretArchive]</div>"
-    else
-        html += "<p class='none'>No archived Secret entries.</p>"
-    html += "<h3>Archived Saga Entries</h3>"
-    if(archive.SagaUsers && archive.SagaUsers.len)
-        var/sagaArchive = html_encode(jointext(archive.SagaUsers, "\n"))
-        html += "<div class='archiveBox'>[sagaArchive]</div>"
-    else
-        html += "<p class='none'>No archived Saga entries.</p>"
-    html += "</div></body></html>"
-    usr << browse(html, "window=secret_saga_database;size=1120x760")
-    Log("Admin", "[ExtractInfo(usr)] viewed the combined Secret/Saga database ([withPowerCount]/[totalPlayers] powered players).")
-
-/mob/Admin3/verb/View_AG_Database()
-    set category = "Admin"
-    if(!archive)
-        archive = new()
-    archive.loadAGs()
-    winset(src, "gridAG.grid", "cells=0x0")
-    winset(src, "gridAG", "is-visible=true")
-    var/height = 1
-    var/width = 0
-    for(var/ag in archive.AGs)
-        if(width>3)
-            height++
-            width=0
-        src<<output(ag, "gridAG.grid:[++width],[height]")
 proc/AdminPowerAuditValue(var/value, var/fallback = "None")
 	if(isnull(value) || value == "")
 		return fallback
 	return html_encode("[value]")
+
 
 proc/AdminPowerAuditTier(var/current, var/max)
 	if(isnull(current) || current == "")
@@ -201,25 +81,46 @@ proc/AdminPowerAuditTier(var/current, var/max)
 		return html_encode("[current]")
 	return html_encode("[current]/[max]")
 
-mob/Admin3/verb/View_Secret_And_Saga_Audit()
-	set name = "View Secret/Saga Audit"
-	set category = "Admin"
+
+/mob/proc/OpenSecretSagaDatabase()
+	if(!archive)
+		archive = new()
 
 	var/withPowerCount = 0
 	var/totalPlayers = 0
-	var/html = "<html><head><title>Secret/Saga Audit</title><style>body{background:#050505;color:#d7f7ff;font-family:Verdana,Arial,sans-serif;font-size:12px;}h2,h3{color:#99ffff;margin-bottom:4px;}table{border-collapse:collapse;width:100%;margin:8px 0 18px 0;}th{background:#12343a;color:#ffffff;border:1px solid #2c6975;padding:4px;text-align:left;}td{border:1px solid #1a4850;padding:4px;vertical-align:top;}tr:nth-child(even){background:#0d181b;}tr.power{background:#172321;}tr.empty{color:#8fb0b8;} .warn{color:#ffcc66;} .none{color:#778b91;} .small{font-size:10px;color:#9fbfc7;}</style></head><body>"
-	html += "<h2>Secret/Saga Audit</h2>"
-	html += "<div class='small'>Generated by [html_encode("[usr]")] at [time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")]. Includes all currently connected player entries.</div>"
-	html += "<table><tr><th>#</th><th>Name</th><th>Key</th><th>CKEY</th><th>Computer ID</th><th>Secret</th><th>Secret Tier</th><th>Secret Type</th><th>Saga</th><th>Saga Tier</th><th>Cursed Energy Details</th></tr>"
+	var/secretArchiveCount = (archive.SecretUsers ? archive.SecretUsers.len : 0)
+	var/sagaArchiveCount = (archive.SagaUsers ? archive.SagaUsers.len : 0)
+	var/generatedAt = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
+	var/html = "<html><head><title>Secret/Saga Database</title><style>body{background:#101417;color:#d8e9ed;font-family:Verdana,Arial,sans-serif;font-size:12px;margin:0;padding:14px;}h2{color:#f4fbff;margin:0 0 4px 0;}h3{color:#bcefff;margin:16px 0 6px 0;border-bottom:1px solid #34545d;padding-bottom:4px;}table{border-collapse:collapse;width:100%;margin:8px 0 14px 0;background:#141b1f;}th{background:#243842;color:#f5fbff;border:1px solid #3f626d;padding:6px;text-align:left;}td{border:1px solid #2b454d;padding:5px;vertical-align:top;}tr:nth-child(even){background:#182226;}tr.power{background:#1d2b25;}tr.empty{color:#93aab0;}.wrap{max-width:1200px;margin:0 auto;}.note{color:#a8c2c9;font-size:10px;margin-bottom:10px;}.summary{margin:10px 0 14px 0;}.card{display:inline-block;background:#182126;border:1px solid #34545d;border-left:4px solid #6ed0e0;padding:8px 12px;margin:0 8px 8px 0;min-width:130px;}.card b{display:block;color:#ffffff;font-size:16px;margin-bottom:2px;}.warn{color:#ffd27a;font-weight:bold;}.none{color:#7f969d;}.pill{background:#243842;border:1px solid #3f626d;border-radius:8px;color:#e8f8ff;display:inline-block;padding:2px 7px;margin:1px 2px 1px 0;}.archiveBox{background:#141b1f;border:1px solid #2b454d;margin:8px 0 14px 0;padding:8px;max-height:220px;overflow:auto;white-space:pre-wrap;}</style></head><body><div class='wrap'>"
+
+	html += "<h2>Secret/Saga Database</h2>"
+	html += "<div class='note'>Generated by [AdminPowerAuditValue(usr)] at [generatedAt]. This combines the old Secret and Saga database views with live player tier details.</div>"
+	html += "<div class='summary'>"
+
 	for(var/mob/P in players)
 		totalPlayers++
-		var/hasPower = (P.Secret || P.Saga)
-		if(hasPower)
+		if(P.Secret || P.Saga)
 			withPowerCount++
+
+	html += "<span class='card'><b>[totalPlayers]</b>Online players checked</span>"
+	html += "<span class='card'><b>[withPowerCount]</b>With Secret or Saga</span>"
+	html += "<span class='card'><b>[secretArchiveCount]</b>Archived Secret entries</span>"
+	html += "<span class='card'><b>[sagaArchiveCount]</b>Archived Saga entries</span>"
+	html += "</div>"
+
+	html += "<h3>Live Secret/Saga Details</h3>"
+	html += "<table><tr><th>#</th><th>Name</th><th>Key / CKEY</th><th>Computer ID</th><th>Secret</th><th>Secret Tier</th><th>Secret Datum</th><th>Saga</th><th>Saga Tier</th><th>Cursed Energy Details</th></tr>"
+
+	var/row = 0
+	for(var/mob/P in players)
+		row++
+		var/hasPower = (P.Secret || P.Saga)
 		var/rowClass = hasPower ? "power" : "empty"
+		var/keyText = "[AdminPowerAuditValue(P.key)]<br><span class='note'>[AdminPowerAuditValue(P.ckey)]</span>"
 		var/secretName = P.Secret ? AdminPowerAuditValue(P.Secret) : "<span class='none'>None</span>"
 		var/secretTier = "<span class='none'>None</span>"
 		var/secretType = "<span class='none'>None</span>"
+
 		if(P.Secret)
 			if(P.secretDatum)
 				secretTier = AdminPowerAuditTier(P.secretDatum.currentTier, P.secretDatum.maxTier)
@@ -227,44 +128,96 @@ mob/Admin3/verb/View_Secret_And_Saga_Audit()
 			else
 				secretTier = "<span class='warn'>Missing datum</span>"
 				secretType = "<span class='warn'>Missing datum</span>"
+
 		var/sagaName = P.Saga ? AdminPowerAuditValue(P.Saga) : "<span class='none'>None</span>"
 		var/sagaTier = P.Saga ? AdminPowerAuditValue(P.SagaLevel) : "<span class='none'>None</span>"
 		var/list/ceDetails = list()
+
 		if(P.cursedEnergyTrait)
-			ceDetails += "Trait: [AdminPowerAuditValue(P.cursedEnergyTrait)]"
+			ceDetails += "<span class='pill'>Trait: [AdminPowerAuditValue(P.cursedEnergyTrait)]</span>"
 		if(P.cursedEnergyTraitSlot)
-			ceDetails += "Reserved Slot: [AdminPowerAuditValue(P.cursedEnergyTraitSlot)]"
+			ceDetails += "<span class='pill'>Slot: [AdminPowerAuditValue(P.cursedEnergyTraitSlot)]</span>"
 		if(P.cursedEnergySpecialization)
-			ceDetails += "Specialization: [AdminPowerAuditValue(P.cursedEnergySpecialization)]"
+			ceDetails += "<span class='pill'>Spec: [AdminPowerAuditValue(P.cursedEnergySpecialization)]</span>"
 		if(P.cursedEnergyDomainChoice)
-			ceDetails += "Domain Choice: [AdminPowerAuditValue(P.cursedEnergyDomainChoice)]"
+			ceDetails += "<span class='pill'>Domain: [AdminPowerAuditValue(P.cursedEnergyDomainChoice)]</span>"
 		if(P.cursedEnergySixEyes)
-			ceDetails += "Six Eyes: Yes"
+			ceDetails += "<span class='pill'>Six Eyes</span>"
 		if(P.cursedEnergyTraitPassivesApplied && P.cursedEnergyTraitPassivesApplied.len)
-			ceDetails += "Trait Passives Applied: [P.cursedEnergyTraitPassivesApplied.len]"
+			ceDetails += "<span class='pill'>Passives: [P.cursedEnergyTraitPassivesApplied.len]</span>"
+
 		var/ceText = ceDetails.len ? jointext(ceDetails, "<br>") : "<span class='none'>None</span>"
-		html += "<tr class='[rowClass]'><td>[totalPlayers]</td><td>[AdminPowerAuditValue(P.name)]</td><td>[AdminPowerAuditValue(P.key)]</td><td>[AdminPowerAuditValue(P.ckey)]</td><td>[AdminPowerAuditValue(P.client ? P.client.computer_id : null)]</td><td>[secretName]</td><td>[secretTier]</td><td>[secretType]</td><td>[sagaName]</td><td>[sagaTier]</td><td>[ceText]</td></tr>"
+
+		html += "<tr class='[rowClass]'><td>[row]</td><td>[AdminPowerAuditValue(P.name)]</td><td>[keyText]</td><td>[AdminPowerAuditValue(P.client ? P.client.computer_id : null)]</td><td>[secretName]</td><td>[secretTier]</td><td>[secretType]</td><td>[sagaName]</td><td>[sagaTier]</td><td>[ceText]</td></tr>"
+
 	html += "</table>"
+
 	html += "<h3>Cursed Energy Trait Slots</h3>"
 	if(cursed_energy_taken_traits && cursed_energy_taken_traits.len)
 		html += "<table><tr><th>Trait Slot</th><th>Reserved CKEY</th><th>Matching Online Player</th><th>Current Player Trait</th><th>Current Player Tier</th></tr>"
 		for(var/trait in cursed_energy_taken_traits)
 			var/owner = cursed_energy_taken_traits[trait]
 			var/mob/match
+
 			for(var/mob/P in players)
 				if(P.cursedEnergySlotOwnerId() == owner)
 					match = P
 					break
+
 			var/matchName = match ? AdminPowerAuditValue("[match] ([match.key])") : "<span class='warn'>Offline or stale</span>"
 			var/matchTrait = match && match.cursedEnergyTrait ? AdminPowerAuditValue(match.cursedEnergyTrait) : "<span class='none'>None</span>"
 			var/matchTier = "<span class='none'>None</span>"
+
 			if(match && match.secretDatum && match.Secret == "Cursed Energy")
 				matchTier = AdminPowerAuditTier(match.secretDatum.currentTier, match.secretDatum.maxTier)
+
 			html += "<tr><td>[AdminPowerAuditValue(trait)]</td><td>[AdminPowerAuditValue(owner)]</td><td>[matchName]</td><td>[matchTrait]</td><td>[matchTier]</td></tr>"
+
 		html += "</table>"
 	else
 		html += "<p class='none'>No Cursed Energy trait slots are currently occupied.</p>"
-	html += "<p><b>[withPowerCount]</b> of <b>[totalPlayers]</b> online player entries currently have a Secret or Saga.</p>"
-	html += "</body></html>"
-	usr << browse(html, "window=secret_saga_audit;size=1100x700")
-	Log("Admin", "[ExtractInfo(usr)] viewed the Secret/Saga audit ([withPowerCount]/[totalPlayers] powered players).")
+
+	html += "<h3>Archived Secret Entries</h3>"
+	if(archive.SecretUsers && archive.SecretUsers.len)
+		var/secretArchive = html_encode(jointext(archive.SecretUsers, "\n"))
+		html += "<div class='archiveBox'>[secretArchive]</div>"
+	else
+		html += "<p class='none'>No archived Secret entries.</p>"
+
+	html += "<h3>Archived Saga Entries</h3>"
+	if(archive.SagaUsers && archive.SagaUsers.len)
+		var/sagaArchive = html_encode(jointext(archive.SagaUsers, "\n"))
+		html += "<div class='archiveBox'>[sagaArchive]</div>"
+	else
+		html += "<p class='none'>No archived Saga entries.</p>"
+
+	html += "</div></body></html>"
+	usr << browse(html, "window=secret_saga_database;size=1120x760")
+	Log("Admin", "[ExtractInfo(usr)] viewed the combined Secret/Saga database ([withPowerCount]/[totalPlayers] powered players).")
+
+
+/mob/Admin3/verb/View_AG_Database()
+	set category = "Admin"
+
+	if(!archive)
+		archive = new()
+
+	archive.loadAGs()
+	winset(src, "gridAG.grid", "cells=0x0")
+	winset(src, "gridAG", "is-visible=true")
+
+	var/height = 1
+	var/width = 0
+
+	for(var/ag in archive.AGs)
+		if(width > 3)
+			height++
+			width = 0
+		src << output(ag, "gridAG.grid:[++width],[height]")
+
+
+mob/Admin3/verb/View_Secret_And_Saga_Audit()
+	set name = "View Secret/Saga Audit"
+	set category = "Admin"
+
+	src.OpenSecretSagaDatabase()
