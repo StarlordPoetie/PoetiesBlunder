@@ -79,9 +79,12 @@ var/list/ticking_generic = list()
     src << jointext(ticking_ai, ", ")
     src << length(ticking_ai)
 
-/mob/Admin4/verb/removeAllfromTicking()
+/mob/Admin4/verb/removeAllfromTickingAI()
     for(var/datum/i in ticking_ai)
         ticking_ai -= i
+/mob/Admin4/verb/removeAllfromTickingTurf()
+    for(var/datum/i in ticking_turf)
+        ticking_turf -= i
 
 
 
