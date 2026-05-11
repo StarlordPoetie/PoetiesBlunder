@@ -10,6 +10,7 @@
 	var/HeldSkill        = FALSE  // Enable held-charge behavior for this skill
 	var/ChargePeriod     = 3      // Max hold time in seconds, hold too long = fizzle
 	var/SweetSpot        = 0      // Seconds from charge start when sweet spot opens (0 = disabled)
+	var/SweetSpotWindow  = 0.3    // Width of the sweet spot window in seconds (default 0.3s = 3 ticks)
 	var/SweetSpotBenefit = 1.5    // ChargeBenefit value when the sweet spot window is hit
 	var/ChargeOverlay    = null   // Icon displayed on mob while charging
 	var/ChargeWaveIcon   = 'Icons/Effects/KenShockwave.dmi'  // Icon for periodic charge shockwave
@@ -25,32 +26,19 @@
 
 // This avoids stat changes to skills persisting across use (mostly for projectiles)
 
-var/global/list/held_skill_runtime_vars = list(
-	"ChargeBenefit",
-	"Using", "cooldown_remaining", "cooldown_start", "cooldown_end_time",
-	"BeamUsing", "BuffUsing", "BeamTimeUsed", "Charges",
-	"CooldownScalingCounter", "ZanzoAmount",
-	"Mastery", "Sealed", "Temporary", "Copied", "RevNum", "altered",
-	"TempStream", "TempSize", "TempRadius",
-	"granted_getsuga", "granted_jujisho",
-	"granted_enkidu", "granted_enuma_elish",
-)
-
-/obj/Skills/proc/_HeldSkillSnapshotVars()
-	var/list/snap = list()
-	for(var/V in src.vars)
-		if(V in held_skill_runtime_vars) continue
-		var/val = src.vars[V]
-		if(istype(val, /list)) continue
-		if(istype(val, /datum)) continue
-		snap[V] = val
-	return snap
-
-/obj/Skills/proc/_HeldSkillRestoreVars(list/snap)
-	if(!snap) return
-	for(var/V in snap)
-		if(V in held_skill_runtime_vars) continue
-		src.vars[V] = snap[V]
+/obj/Skills/Projectile/proc/ResetHeldConfig()
+	if(!HeldSkill) return
+	DamageMult = initial(DamageMult)
+	AccMult    = initial(AccMult)
+	LockX      = initial(LockX)
+	LockY      = initial(LockY)
+	Distance   = initial(Distance)
+	Radius     = initial(Radius)
+	Explode    = initial(Explode)
+	Homing     = initial(Homing)
+	MultiHit   = initial(MultiHit)
+	Stream     = initial(Stream)
+	Blasts     = initial(Blasts)
 
 /client/var/tmp/SweetSpotHeldSkillDebug = FALSE
 /client/var/tmp/list/held_skill_key_cache = null
@@ -131,7 +119,7 @@ var/global/list/held_skill_runtime_vars = list(
 	// Key binding check also gates verb-list clicks on unbound skills (maybe?)
 	var/key = findHeldSkillKey(C, Z)
 	if(!key)
-		src << "<font color='red'>Bind [Z.name] to a key first.</font>"
+		src << "<font color='red'>Bind [Z.name] to a key first. (Relogging should fix this. If you cannot relog, wait a few minutes and try again.)</font>"
 		return
 
 	// re-entry guard
@@ -291,15 +279,25 @@ var/global/list/held_skill_runtime_vars = list(
 		C.images += fill
 
 	if(Z && Z.SweetSpot > 0 && Z.ChargePeriod > 0)
+		// VariableSweetSpot is laid out like Progress (1-pixel slanted
+		// diagonal in orange). Tiling it at the same pixel_x positions a
+		// Progress marker would occupy means the orange lands on exactly
+		// the same screen columns the red fill tip will pass through, so
+		// the indicator spans precisely the hit window for any combination
+		// of SweetSpot, SweetSpotWindow, and ChargePeriod.
+		// window_ticks here mirrors the same rounding ReleaseHeldSkill
+		// applies so the visible orange covers exactly the integer ticks
+		// that actually count as a sweet-spot hit, no more, no less.
+		var/window_ticks = max(1, round(Z.SweetSpotWindow * 10))
 		var/start_ratio = clamp(Z.SweetSpot / Z.ChargePeriod, 0, 1)
-		var/end_ratio = clamp((Z.SweetSpot + 0.3) / Z.ChargePeriod, 0, 1)
+		var/end_ratio = clamp((Z.SweetSpot * 10 + window_ticks) / (Z.ChargePeriod * 10), 0, 1)
 		var/first_offset = max(0, floor(segment_count * start_ratio) - 1)
-		var/last_offset = max(first_offset, floor(segment_count * end_ratio) - 4)
+		var/last_offset = max(first_offset, floor(segment_count * end_ratio) - 1)
 		var/first_px = start_x + fill_left_inset_x + first_offset
 		var/last_px = start_x + fill_left_inset_x + last_offset
 		held_charge_bar_sweet_refs = list()
 		for(var/px = first_px, px <= last_px, px++)
-			var/image/sweet = image(icon_file, src, "SweetSpot")
+			var/image/sweet = image(icon_file, src, "VariableSweetSpot")
 			sweet.layer = bg.layer + 0.2
 			sweet.pixel_x = px
 			sweet.pixel_y = start_y
@@ -416,10 +414,14 @@ var/global/list/held_skill_runtime_vars = list(
 	var/benefit = clamp(hold_ticks / (Z.ChargePeriod * 10), 0.0, 1.0)
 	var/sweet_spot_hit = FALSE
 
-	// Sweet spot window is SweetSpot to SweetSpot + 0.3s
-	if(Z.SweetSpot && hold_ticks >= Z.SweetSpot * 10 && hold_ticks <= Z.SweetSpot * 10 + 3)
-		benefit = Z.SweetSpotBenefit
-		sweet_spot_hit = TRUE
+	// Sweet spot window is SweetSpot to SweetSpot + SweetSpotWindow seconds.
+	// Window width clamps to at least 1 tick so a near-zero SweetSpotWindow
+	// still has a hittable frame.
+	if(Z.SweetSpot)
+		var/window_ticks = max(1, round(Z.SweetSpotWindow * 10))
+		if(hold_ticks >= Z.SweetSpot * 10 && hold_ticks <= Z.SweetSpot * 10 + window_ticks)
+			benefit = Z.SweetSpotBenefit
+			sweet_spot_hit = TRUE
 
 	Z.ChargeBenefit = benefit
 	ClearHeldChargeState()
@@ -429,15 +431,7 @@ var/global/list/held_skill_runtime_vars = list(
 			if(m && m.client && m.Admin && m.client.SweetSpotHeldSkillDebug)
 				m << "<font color='#66ff99'>(SweetSpot Debug) [src] hit [Z.name]'s sweet spot at [round(hold_ticks / 10, 0.1)]s.</font>"
 
-	// See the comment near OnHeldRelease above
-	var/list/_held_release_snap = null
-	if(istype(Z, /obj/Skills/Projectile))
-		_held_release_snap = Z._HeldSkillSnapshotVars()
-
 	Z.OnHeldRelease(src, benefit, sweet_spot_hit)
-
-	if(_held_release_snap)
-		Z._HeldSkillRestoreVars(_held_release_snap)
 
 // FizzleHeldSkill for skill being overheld, interrupted, or cancelled
 

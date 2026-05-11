@@ -1294,7 +1294,7 @@ mob
 		SubDefTax(Val, Forced=0)
 			if(src.Satiated&&!Drunk||Forced)
 				Val*=4
-			DefTax=clamp(DefTax+Val, 0, 1);
+			DefTax=clamp(DefTax-Val, 0, 1);
 		AddDefCut(Val)
 			DefCut=clamp(DefCut+Val, 0, 1);
 		AddRecovTax(Val)

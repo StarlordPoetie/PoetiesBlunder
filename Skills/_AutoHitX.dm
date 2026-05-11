@@ -7792,15 +7792,20 @@ obj
 	var
 		tmp/Suspended = null
 		tmp/judgement_cut_chain_active = FALSE
+		tmp/judgement_cut_bonus_value = 1
+		tmp/judgement_cut_bonus_chain_count = 0
+		tmp/judgement_cut_bonus_end_time = 0
 
 /obj/Skills/AutoHit/Judgement_Cut
+	SkillCost=TIER_5_COST
 	name = "Judgement Cut"
 	Area = "Target"
+	NeedsSword=1
 	Distance = 8
-	DamageMult = 10
+	DamageMult = 5
 	StrOffense = 1
 	EndDefense = 1
-	Cooldown = 150
+	Cooldown = 75
 	ComboMaster = 1
 	GuardBreak = 1
 	NoLock = 1
@@ -7818,16 +7823,16 @@ obj
 	var/tmp/mob/chain_user = null
 	var/tmp/mob/chain_target = null
 	var/tmp/initial_charge_period = 3
-	var/tmp/saved_cooldown = 150
+	var/tmp/saved_cooldown = 75
 	var/tmp/reengage_deadline = 0
 	var/tmp/window_loop_running = FALSE
 	var/tmp/overlay_loop_running = FALSE
 
 	proc/RollSweetSpot()
-		// minimum 0.3, maximum ChargePeriod -0.3.
 		var/min_ss = 3
 		var/period_ticks = round(ChargePeriod * 10)
-		var/max_ss = max(min_ss, period_ticks - 3)
+		var/window_ticks = max(1, round(SweetSpotWindow * 10))
+		var/max_ss = max(min_ss, period_ticks - window_ticks)
 		return rand(min_ss, max_ss) / 10
 
 	proc/StartChain(mob/user, mob/target)
@@ -7837,6 +7842,7 @@ obj
 		chain_count = 0
 		DamageMult = 10
 		ChargePeriod = initial_charge_period
+		SweetSpotWindow = 0.3
 		SweetSpot = RollSweetSpot()
 		target.Suspended = user
 		user.judgement_cut_chain_active = TRUE
@@ -7861,6 +7867,7 @@ obj
 		chain_count = 0
 		DamageMult = 10
 		ChargePeriod = initial_charge_period
+		SweetSpotWindow = 0.3
 		SweetSpot = initial_charge_period / 2
 		Cooldown = saved_cooldown
 		if(user)
@@ -7878,16 +7885,11 @@ obj
 					EndChain()
 				break
 			if(chain_user && chain_user.held_skill == src)
-				var/image/I = image('Slash - Future.dmi')
-				I.pixel_x = -32
-				I.pixel_y = -32
-				I.transform = matrix().Turn(rand(0, 359))
-				I.layer = MOB_LAYER + 0.5
-				chain_target.overlays += I
-				var/mob/t = chain_target
-				//I have to clean this up a bit later
-				spawn(6)
-					if(t) t.overlays -= I
+				var/obj/Effects/HE = new(null, 'Slash - Future.dmi', -32, -32, 0, 1, 6)
+				HE.appearance_flags = KEEP_APART | RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+				HE.transform = matrix().Turn(rand(0, 359))
+				HE.Target = chain_target
+				chain_target.vis_contents += HE
 			sleep(1)
 		overlay_loop_running = FALSE
 
@@ -7912,7 +7914,7 @@ obj
 				window_loop_running = FALSE
 				return
 			sleep(1)
-		// Window expired 
+		// Window expired
 		if(chain_active && (!user.held_skill || user.held_skill != src))
 			window_loop_running = FALSE
 			EndChain()
@@ -7929,8 +7931,11 @@ obj
 		DamageMult = 10 * (1.2 ** (chain_count - 1))
 		p.Target = chain_target
 		p.Activate(src, ignoreCuck=TRUE, ignoreAttackLock=TRUE)
-		// Prepare the next charge cycle
+		p.judgement_cut_bonus_value = 1.2 ** (chain_count - 1)
+		p.judgement_cut_bonus_chain_count = chain_count
+		p.judgement_cut_bonus_end_time = world.time + 30
 		ChargePeriod = max(0.6, initial_charge_period - (chain_count * 0.3))
+		SweetSpotWindow = max(0.1, ChargePeriod * 0.1)
 		SweetSpot = RollSweetSpot()
 		p.held_skill_last_release = 0
 		spawn() ScheduleReengageWindow(p)

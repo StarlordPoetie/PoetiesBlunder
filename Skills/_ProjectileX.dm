@@ -5797,6 +5797,10 @@ obj
 								Owner.WarpStrikeHidingWeapon = 0
 								Owner.AppearanceOff()
 								Owner.AppearanceOn()
+							if(SkillPath)
+								var/obj/Skills/Projectile/source = locate(SkillPath) in Owner
+								if(source && source.HeldSkill)
+									source.ResetHeldConfig()
 							Owner.active_projectiles -= src
 							Owner = null
 						loc = null
