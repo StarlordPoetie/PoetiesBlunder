@@ -7792,15 +7792,19 @@ obj
 	var
 		tmp/Suspended = null
 		tmp/judgement_cut_chain_active = FALSE
+		tmp/judgement_cut_bonus_value = 1
+		tmp/judgement_cut_bonus_chain_count = 0
+		tmp/judgement_cut_bonus_end_time = 0
 
 /obj/Skills/AutoHit/Judgement_Cut
+	SkillCost=TIER_5_COST
 	name = "Judgement Cut"
 	Area = "Target"
 	Distance = 8
-	DamageMult = 10
+	DamageMult = 5
 	StrOffense = 1
 	EndDefense = 1
-	Cooldown = 150
+	Cooldown = 75
 	ComboMaster = 1
 	GuardBreak = 1
 	NoLock = 1
@@ -7818,7 +7822,7 @@ obj
 	var/tmp/mob/chain_user = null
 	var/tmp/mob/chain_target = null
 	var/tmp/initial_charge_period = 3
-	var/tmp/saved_cooldown = 150
+	var/tmp/saved_cooldown = 75
 	var/tmp/reengage_deadline = 0
 	var/tmp/window_loop_running = FALSE
 	var/tmp/overlay_loop_running = FALSE
@@ -7909,7 +7913,7 @@ obj
 				window_loop_running = FALSE
 				return
 			sleep(1)
-		// Window expired 
+		// Window expired
 		if(chain_active && (!user.held_skill || user.held_skill != src))
 			window_loop_running = FALSE
 			EndChain()
@@ -7926,6 +7930,9 @@ obj
 		DamageMult = 10 * (1.2 ** (chain_count - 1))
 		p.Target = chain_target
 		p.Activate(src, ignoreCuck=TRUE, ignoreAttackLock=TRUE)
+		p.judgement_cut_bonus_value = 1.2 ** (chain_count - 1)
+		p.judgement_cut_bonus_chain_count = chain_count
+		p.judgement_cut_bonus_end_time = world.time + 30
 		ChargePeriod = max(0.6, initial_charge_period - (chain_count * 0.3))
 		SweetSpotWindow = max(0.1, ChargePeriod * 0.1)
 		SweetSpot = RollSweetSpot()

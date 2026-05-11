@@ -37,7 +37,7 @@
 		WindUp=3
 		IgnoreWindUpReduction=1
 		WindupMessage="<b>sheathes their blade...</b>"
-		ActiveMessage="yells: <font size = +1><b>JACKPOT!</b></font size>"
+		ActiveMessage="unleashes a myriad of slashes in the blink of an eye!"
 		Shockwaves=3
 		Shockwave=4
 		HitSparkIcon='Slash - Future.dmi'
@@ -69,4 +69,27 @@ obj/Skills/Queue
 		verb/Judgment_Cut_End()
 			set category="Skills"
 			set name="Judgment Cut End"
-			usr.SetQueue(src)
+			var/mob/p = usr
+			var/in_window = (p.judgement_cut_bonus_end_time > world.time)
+			var/bonus = p.judgement_cut_bonus_value
+			var/cc = p.judgement_cut_bonus_chain_count
+			p.judgement_cut_bonus_end_time = 0
+			p.judgement_cut_bonus_value = 1
+			p.judgement_cut_bonus_chain_count = 0
+			if(in_window && bonus > 1)
+				var/obj/Skills/AutoHit/Judgment_Cut_End/followup = locate() in p
+				var/saved_q_dmg = src.DamageMult
+				var/saved_f_dmg = followup ? followup.DamageMult : 0
+				var/saved_f_msg = followup ? followup.ActiveMessage : null
+				src.DamageMult = saved_q_dmg * bonus
+				if(followup)
+					followup.DamageMult = saved_f_dmg * bonus
+					if(cc >= 3)
+						followup.ActiveMessage = "yells: <font size = +1><b>JACKPOT!</b></font size>"
+				var/obj/Skills/Queue/Judgment_Cut_End/q = src
+				spawn(100)
+					q.DamageMult = saved_q_dmg
+					if(followup)
+						followup.DamageMult = saved_f_dmg
+						followup.ActiveMessage = saved_f_msg
+			p.SetQueue(src)
