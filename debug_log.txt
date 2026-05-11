@@ -1,0 +1,2493 @@
+
+-------
+Sun May 03 16:29 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+World opened on network port 1304.
+
+-------
+Sun May 03 17:03 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+World opened on network port 1304.
+
+-------
+Sun May 03 17:18 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: Cannot execute null.Get().
+proc name: GetStr (/mob/proc/GetStr)
+  source file: _1CodeFolder/_JinxUtility.dm,1607
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): GetStr(1)
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: GetEnd (/mob/proc/GetEnd)
+  source file: _1CodeFolder/_JinxUtility.dm,1995
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): GetEnd(1)
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: GetSpd (/mob/proc/GetSpd)
+  source file: _1CodeFolder/_JinxUtility.dm,2162
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): GetSpd(1)
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: GetFor (/mob/proc/GetFor)
+  source file: _1CodeFolder/_JinxUtility.dm,1803
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): GetFor(1)
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: GetOff (/mob/proc/GetOff)
+  source file: _1CodeFolder/_JinxUtility.dm,2309
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): GetOff(1)
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: GetDef (/mob/proc/GetDef)
+  source file: _1CodeFolder/_JinxUtility.dm,2427
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): GetDef(1)
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Poetiethegreat has no race to check!
+runtime error: Cannot execute null.Get().
+proc name: HasPureDamage (/mob/proc/HasPureDamage)
+  source file: _1CodeFolder/_BinaryChecks.dm,1181
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): HasPureDamage(0)
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: HasPureReduction (/mob/proc/HasPureReduction)
+  source file: _1CodeFolder/_BinaryChecks.dm,1215
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): HasPureReduction()
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Poetiethegreat has no race to check!
+runtime error: Cannot execute null.Get().
+proc name: DemonicPower (/mob/proc/DemonicPower)
+  source file: _1CodeFolder/_BinaryChecks.dm,1789
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): DemonicPower()
+Poetiethegreat (/mob/Creation): Get Scouter Reading(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: HasMythical (/mob/proc/HasMythical)
+  source file: _1CodeFolder/_BinaryChecks.dm,1801
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): HasMythical()
+Poetiethegreat (/mob/Creation): Get Scouter Reading(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: HasHellPower (/mob/proc/HasHellPower)
+  source file: _1CodeFolder/_BinaryChecks.dm,1819
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): HasHellPower()
+Poetiethegreat (/mob/Creation): Get Scouter Reading(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: HasZenkaiPower (/mob/proc/HasZenkaiPower)
+  source file: _1CodeFolder/_BinaryChecks.dm,1836
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): HasZenkaiPower()
+Poetiethegreat (/mob/Creation): Get Scouter Reading(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: HasPowerReplacement (/mob/proc/HasPowerReplacement)
+  source file: _1CodeFolder/_BinaryChecks.dm,1877
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): HasPowerReplacement()
+Poetiethegreat (/mob/Creation): get potential()
+temp potential power(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): Get Scouter Reading(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: get potential (/mob/proc/get_potential)
+  source file: _1CodeFolder/_JinxUtility.dm,3621
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): get potential()
+temp potential power(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): Get Scouter Reading(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: HasPowerReplacement (/mob/proc/HasPowerReplacement)
+  source file: _1CodeFolder/_BinaryChecks.dm,1877
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): HasPowerReplacement()
+Poetiethegreat (/mob/Creation): get potential()
+temp potential power(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): Get Scouter Reading(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: get potential (/mob/proc/get_potential)
+  source file: _1CodeFolder/_JinxUtility.dm,3621
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): get potential()
+temp potential power(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): Get Scouter Reading(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: bad index
+proc name: Get Scouter Reading (/mob/proc/Get_Scouter_Reading)
+  source file: _1CodeFolder/Stats.dm,1489
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): Get Scouter Reading(Poetiethegreat (/mob/Creation))
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: HasPowerReplacement (/mob/proc/HasPowerReplacement)
+  source file: _1CodeFolder/_BinaryChecks.dm,1877
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): HasPowerReplacement()
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Cannot execute null.Get().
+proc name: GetPowerReplacement (/mob/proc/GetPowerReplacement)
+  source file: _1CodeFolder/_BinaryChecks.dm,1881
+  usr: (src)
+  src: Poetiethegreat (/mob/Creation)
+  src.loc: Dirt6 (1,1,13) (/turf/Dirt6)
+  call stack:
+Poetiethegreat (/mob/Creation): GetPowerReplacement()
+Poetiethegreat (/mob/Creation): GetAssess()
+Poetiethegreat (/mob/Creation): Character Sheet()
+runtime error: Poetiethegreat has no race to check!
+runtime error: Poetiethegreat has no race to check!
+runtime error: Poetiethegreat has no race to check!
+runtime error: Cannot execute null.Get().
+proc name: HasIntimidation (/mob/proc/HasIntimidation)
+  source file: _1CodeFolder/_BinaryChecks.dm,1932
+runtime error: bad index
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2015
+runtime error: bad index
+proc name: HasMaouKi (/mob/proc/HasMaouKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,1959
+runtime error: Cannot execute null.Get().
+proc name: GetAssess (/mob/proc/GetAssess)
+  source file: _1CodeFolder/Stats.dm,66
+Mon May  4 00:45:49 2026
+World opened on network port 1304.
+
+-------
+Sun May 03 17:46 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+World opened on network port 1304.
+
+-------
+Sun May 03 18:06 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+World opened on network port 1304.
+
+-------
+Sun May 03 18:18 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+
+-------
+Sun May 03 18:23 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+
+-------
+Sun May 03 18:56 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+World opened on network port 1304.
+
+-------
+Sun May 03 19:09 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+
+-------
+Sun May 03 19:22 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+World opened on network port 1304.
+
+-------
+Sun May 03 19:37 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tile7 (114,357,1) (/turf/Tile7)
+  call stack:
+PoetieThaDawg (/mob/Players): gatherNames()
+PoetieThaDawg (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: PoetieThaDawg (/mob/Players)
+  src.loc: Tech13 (116,354,1) (/turf/Tech13)
+  call stack:
+PoetieThaDawg (/mob/Players): HasGodKi()
+PoetieThaDawg (/mob/Players): GetKiControlMastery()
+PoetieThaDawg (/mob/Players): Recover("Energy", 0.5)
+PoetieThaDawg (/mob/Players): Available Power()
+PoetieThaDawg (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+Mon May  4 23:09:42 2026
+World opened on network port 1304.
+
+-------
+Mon May 04 16:10 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+  usr: Mazokul (/mob/Players)
+  src: Cursed Energy (/SecretInformation/CursedEnergy)
+  usr.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Cursed Energy (/SecretInformation/CursedEnergy): giveSkills(Mazokul (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): applySecret(Mazokul (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): init(Mazokul (/mob/Players))
+Mazokul (/mob/Players): giveSecret("CursedEnergy")
+Mazokul (/mob/Players): SecretManagement(Mazokul (/mob/Players))
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): gatherNames()
+Mazokul (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Mazokul (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Mazokul (/mob/Players): HasGodKi()
+Mazokul (/mob/Players): GetKiControlMastery()
+Mazokul (/mob/Players): Recover("Energy", 0.5)
+Mazokul (/mob/Players): Available Power()
+Mazokul (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+
+-------
+Tue May 05 06:03 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+  usr: Poetie tha god (/mob/Players)
+  src: Cursed Energy (/SecretInformation/CursedEnergy)
+  usr.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Cursed Energy (/SecretInformation/CursedEnergy): giveSkills(Poetie tha god (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): applySecret(Poetie tha god (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): init(Poetie tha god (/mob/Players))
+Poetie tha god (/mob/Players): giveSecret("CursedEnergy")
+Poetie tha god (/mob/Players): SecretManagement(Poetie tha god (/mob/Players))
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie tha god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie tha god (/mob/Players): gatherNames()
+Poetie tha god (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+  usr: Poetie tha god (/mob/Players)
+  src: Cursed Energy (/SecretInformation/CursedEnergy)
+  usr.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Cursed Energy (/SecretInformation/CursedEnergy): giveSkills(Poetie tha god (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): applySecret(Poetie tha god (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): init(Poetie tha god (/mob/Players))
+Poetie tha god (/mob/Players): giveSecret("CursedEnergy")
+Poetie tha god (/mob/Players): SecretManagement(Poetie tha god (/mob/Players))
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie tha god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie tha god (/mob/Players): gatherNames()
+Poetie tha god (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+Wed May  6 08:57:24 2026
+World opened on network port 1304.
+
+-------
+Wed May 06 01:58 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+  usr: Poetie Tha God (/mob/Players)
+  src: Cursed Energy (/SecretInformation/CursedEnergy)
+  usr.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Cursed Energy (/SecretInformation/CursedEnergy): giveSkills(Poetie Tha God (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): applySecret(Poetie Tha God (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): init(Poetie Tha God (/mob/Players))
+Poetie Tha God (/mob/Players): giveSecret("CursedEnergy")
+Poetie Tha God (/mob/Players): SecretManagement(Poetie Tha God (/mob/Players))
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): gatherNames()
+Poetie Tha God (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie Tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie Tha God (/mob/Players): HasGodKi()
+Poetie Tha God (/mob/Players): GetKiControlMastery()
+Poetie Tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie Tha God (/mob/Players): Available Power()
+Poetie Tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+Thu May  7 01:22:47 2026
+World opened on network port 1304.
+
+-------
+Wed May 06 18:23 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+  usr: Poetie the god (/mob/Players)
+  src: Cursed Energy (/SecretInformation/CursedEnergy)
+  usr.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Cursed Energy (/SecretInformation/CursedEnergy): giveSkills(Poetie the god (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): applySecret(Poetie the god (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): init(Poetie the god (/mob/Players))
+Poetie the god (/mob/Players): giveSecret("CursedEnergy")
+Poetie the god (/mob/Players): SecretManagement(Poetie the god (/mob/Players))
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): gatherNames()
+Poetie the god (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie the god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the god (/mob/Players): HasGodKi()
+Poetie the god (/mob/Players): GetKiControlMastery()
+Poetie the god (/mob/Players): Recover("Energy", 0.5)
+Poetie the god (/mob/Players): Available Power()
+Poetie the god (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: Undefined variable /obj/Skills/Projectile/Divine_Departure/var/HitSparkIcon
+
+proc name: Dismantle (/obj/Skills/Queue/Cursed_Technique_Dismantle/verb/Cursed_Technique_Dismantle)
+  source file: Secrets/Cursed Secret/CursedTechniques.dm,57
+runtime error: Undefined variable /obj/Skills/Projectile/Divine_Departure/var/HitSparkIcon
+
+proc name: Dismantle (/obj/Skills/Queue/Cursed_Technique_Dismantle/verb/Cursed_Technique_Dismantle)
+  source file: Secrets/Cursed Secret/CursedTechniques.dm,57
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: undefined variable /mob/Players/var/MaxHealth
+proc name: activateReversedCursedTechnique (/mob/proc/activateReversedCursedTechnique)
+  source file: Secrets/Cursed Secret/CursedEnergy.dm,355
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+
+-------
+Thu May 07 13:47 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+  usr: Poetie the test (/mob/Players)
+  src: Cursed Energy (/SecretInformation/CursedEnergy)
+  usr.loc: Tile7 (113,355,1) (/turf/Tile7)
+  call stack:
+Cursed Energy (/SecretInformation/CursedEnergy): giveSkills(Poetie the test (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): applySecret(Poetie the test (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): init(Poetie the test (/mob/Players))
+Poetie the test (/mob/Players): giveSecret("CursedEnergy")
+Poetie the test (/mob/Players): SecretManagement(Poetie the test (/mob/Players))
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie the test (/mob/Players)
+  src.loc: Tile7 (113,355,1) (/turf/Tile7)
+  call stack:
+Poetie the test (/mob/Players): gatherNames()
+Poetie the test (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie the test (/mob/Players)
+  src.loc: Tile7 (109,354,1) (/turf/Tile7)
+  call stack:
+Poetie the test (/mob/Players): gatherNames()
+Poetie the test (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+Thu May  7 21:55:12 2026
+World opened on network port 1304.
+
+-------
+Thu May 07 14:56 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+  usr: Poetie tha God (/mob/Players)
+  src: Cursed Energy (/SecretInformation/CursedEnergy)
+  usr.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Cursed Energy (/SecretInformation/CursedEnergy): giveSkills(Poetie tha God (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): applySecret(Poetie tha God (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): init(Poetie tha God (/mob/Players))
+Poetie tha God (/mob/Players): giveSecret("CursedEnergy")
+Poetie tha God (/mob/Players): SecretManagement(Poetie tha God (/mob/Players))
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie tha God (/mob/Players): gatherNames()
+Poetie tha God (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tile34 (116,352,1) (/turf/Tile34)
+  call stack:
+Poetie tha God (/mob/Players): gatherNames()
+Poetie tha God (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tile7 (115,356,1) (/turf/Tile7)
+  call stack:
+Poetie tha God (/mob/Players): HasGodKi()
+Poetie tha God (/mob/Players): GetKiControlMastery()
+Poetie tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie tha God (/mob/Players): Available Power()
+Poetie tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tile7 (115,356,1) (/turf/Tile7)
+  call stack:
+Poetie tha God (/mob/Players): HasGodKi()
+Poetie tha God (/mob/Players): GetKiControlMastery()
+Poetie tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie tha God (/mob/Players): Available Power()
+Poetie tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tile7 (115,356,1) (/turf/Tile7)
+  call stack:
+Poetie tha God (/mob/Players): HasGodKi()
+Poetie tha God (/mob/Players): GetKiControlMastery()
+Poetie tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie tha God (/mob/Players): Available Power()
+Poetie tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tile7 (115,356,1) (/turf/Tile7)
+  call stack:
+Poetie tha God (/mob/Players): HasGodKi()
+Poetie tha God (/mob/Players): GetKiControlMastery()
+Poetie tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie tha God (/mob/Players): Available Power()
+Poetie tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tile7 (115,356,1) (/turf/Tile7)
+  call stack:
+Poetie tha God (/mob/Players): HasGodKi()
+Poetie tha God (/mob/Players): GetKiControlMastery()
+Poetie tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie tha God (/mob/Players): Available Power()
+Poetie tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tile7 (115,356,1) (/turf/Tile7)
+  call stack:
+Poetie tha God (/mob/Players): HasGodKi()
+Poetie tha God (/mob/Players): GetKiControlMastery()
+Poetie tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie tha God (/mob/Players): Available Power()
+Poetie tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tile7 (115,356,1) (/turf/Tile7)
+  call stack:
+Poetie tha God (/mob/Players): HasGodKi()
+Poetie tha God (/mob/Players): GetKiControlMastery()
+Poetie tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie tha God (/mob/Players): Available Power()
+Poetie tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tile7 (115,356,1) (/turf/Tile7)
+  call stack:
+Poetie tha God (/mob/Players): HasGodKi()
+Poetie tha God (/mob/Players): GetKiControlMastery()
+Poetie tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie tha God (/mob/Players): Available Power()
+Poetie tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+  usr: null
+  src: Poetie tha God (/mob/Players)
+  src.loc: Tile7 (115,356,1) (/turf/Tile7)
+  call stack:
+Poetie tha God (/mob/Players): HasGodKi()
+Poetie tha God (/mob/Players): GetKiControlMastery()
+Poetie tha God (/mob/Players): Recover("Energy", 0.5)
+Poetie tha God (/mob/Players): Available Power()
+Poetie tha God (/mob/Players): GainLoop()
+/update_loop/gain_loop (/update_loop/gain_loop): Loop()
+/update_loop/gain_loop (/update_loop/gain_loop): New(0)
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: UsingMasteredMartialStyle (/mob/proc/UsingMasteredMartialStyle)
+  source file: _1CodeFolder/_BinaryChecks.dm,3103
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: UsingMasteredMartialStyle (/mob/proc/UsingMasteredMartialStyle)
+  source file: _1CodeFolder/_BinaryChecks.dm,3103
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+Warning: further proc crash messages are being suppressed to prevent overload...
+World opened on network port 1304.
+
+-------
+Thu May 07 15:50 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+  usr: Poetie The God (/mob/Players)
+  src: Cursed Energy (/SecretInformation/CursedEnergy)
+  usr.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Cursed Energy (/SecretInformation/CursedEnergy): giveSkills(Poetie The God (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): applySecret(Poetie The God (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): init(Poetie The God (/mob/Players))
+Poetie The God (/mob/Players): giveSecret("CursedEnergy")
+Poetie The God (/mob/Players): SecretManagement(Poetie The God (/mob/Players))
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie The God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie The God (/mob/Players): gatherNames()
+Poetie The God (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+Thu May  7 22:55:28 2026
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie The God (/mob/Players)
+  src.loc: Tile7 (114,350,1) (/turf/Tile7)
+  call stack:
+Poetie The God (/mob/Players): gatherNames()
+Poetie The God (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+Fri May  8 09:04:55 2026
+World opened on network port 1304.
+
+-------
+Fri May 08 02:05 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+  usr: Poetie tha god (/mob/Players)
+  src: Cursed Energy (/SecretInformation/CursedEnergy)
+  usr.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Cursed Energy (/SecretInformation/CursedEnergy): giveSkills(Poetie tha god (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): applySecret(Poetie tha god (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): init(Poetie tha god (/mob/Players))
+Poetie tha god (/mob/Players): giveSecret("CursedEnergy")
+Poetie tha god (/mob/Players): SecretManagement(Poetie tha god (/mob/Players))
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie tha god (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie tha god (/mob/Players): gatherNames()
+Poetie tha god (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie tha god (/mob/Players)
+  src.loc: Tile7 (115,346,1) (/turf/Tile7)
+  call stack:
+Poetie tha god (/mob/Players): gatherNames()
+Poetie tha god (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie tha god (/mob/Players)
+  src.loc: Tile7 (115,346,1) (/turf/Tile7)
+  call stack:
+Poetie tha god (/mob/Players): gatherNames()
+Poetie tha god (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie tha god (/mob/Players)
+  src.loc: Tile7 (115,346,1) (/turf/Tile7)
+  call stack:
+Poetie tha god (/mob/Players): gatherNames()
+Poetie tha god (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+  usr: Poetie tha god (/mob/Players)
+  src: Cursed Energy (/SecretInformation/CursedEnergy)
+  usr.loc: Tile7 (115,346,1) (/turf/Tile7)
+  call stack:
+Cursed Energy (/SecretInformation/CursedEnergy): giveSkills(the test victim (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): applySecret(the test victim (/mob/Players))
+Cursed Energy (/SecretInformation/CursedEnergy): init(the test victim (/mob/Players))
+the test victim (/mob/Players): giveSecret("CursedEnergy")
+Poetie tha god (/mob/Players): SecretManagement(the test victim (/mob/Players))
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: the test victim (/mob/Players)
+  src.loc: Tile7 (115,345,1) (/turf/Tile7)
+  call stack:
+the test victim (/mob/Players): gatherNames()
+the test victim (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+Fri May  8 10:18:49 2026
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot create objects of type null.
+proc name: giveSkills (/SecretInformation/proc/giveSkills)
+  source file: Secrets/_ManagementSecret.dm,102
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+runtime error: Cannot read null.secretVariable
+proc name: HasGodKi (/mob/proc/HasGodKi)
+  source file: _1CodeFolder/_BinaryChecks.dm,2026
+Warning: further proc crash messages are being suppressed to prevent overload...
+
+-------
+Fri May 08 04:11 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+Fri May  8 14:00:43 2026
+World opened on network port 1304.
+
+-------
+Fri May 08 07:01 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie the father (/mob/Players)
+  src.loc: Tile7 (115,359,1) (/turf/Tile7)
+  call stack:
+Poetie the father (/mob/Players): gatherNames()
+Poetie the father (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: undefined variable /obj/Skills/Projectile/Cursed_Domain_Dismantle/var/GuardBreak
+proc name: Activate (/mob/proc/Activate)
+  source file: Skills/_AutoHitX.dm,5119
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+Fri May  8 16:18:22 2026
+World opened on network port 1304.
+
+-------
+Fri May 08 09:19 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Bokoko (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Bokoko (/mob/Players): gatherNames()
+Bokoko (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: the baalala (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+the baalala (/mob/Players): gatherNames()
+the baalala (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: the baalala (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+the baalala (/mob/Players): gatherNames()
+the baalala (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+World opened on network port 1304.
+
+-------
+Fri May 08 10:12 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Bualalalala (/mob/Players)
+  src.loc: Tech13 (116,353,1) (/turf/Tech13)
+  call stack:
+Bualalalala (/mob/Players): gatherNames()
+Bualalalala (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Bualalalala (/mob/Players)
+  src.loc: Tech13 (116,353,1) (/turf/Tech13)
+  call stack:
+Bualalalala (/mob/Players): gatherNames()
+Bualalalala (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+Fri May  8 18:50:50 2026
+World opened on network port 1304.
+
+-------
+Fri May 08 11:51 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Kokok ookfnioanfion (/mob/Players)
+  src.loc: Tech13 (115,353,1) (/turf/Tech13)
+  call stack:
+Kokok ookfnioanfion (/mob/Players): gatherNames()
+Kokok ookfnioanfion (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Kokok ookfnioanfion (/mob/Players)
+  src.loc: Tech13 (116,353,1) (/turf/Tech13)
+  call stack:
+Kokok ookfnioanfion (/mob/Players): gatherNames()
+Kokok ookfnioanfion (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Kokok ookfnioanfion (/mob/Players)
+  src.loc: Tile7 (115,351,1) (/turf/Tile7)
+  call stack:
+Kokok ookfnioanfion (/mob/Players): gatherNames()
+Kokok ookfnioanfion (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+Fri May  8 20:48:48 2026
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: the ershsbsb (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+the ershsbsb (/mob/Players): gatherNames()
+the ershsbsb (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Kokok ookfnioanfion (/mob/Players)
+  src.loc: Tile7 (116,349,1) (/turf/Tile7)
+  call stack:
+Kokok ookfnioanfion (/mob/Players): gatherNames()
+Kokok ookfnioanfion (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Kokok ookfnioanfion (/mob/Players)
+  src.loc: Tile7 (116,349,1) (/turf/Tile7)
+  call stack:
+Kokok ookfnioanfion (/mob/Players): gatherNames()
+Kokok ookfnioanfion (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+
+-------
+Sun May 10 19:28 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+World opened on network port 1304.
+
+-------
+Sun May 10 19:45 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Butatauhfuaof (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Butatauhfuaof (/mob/Players): gatherNames()
+Butatauhfuaof (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Butatauhfuaof (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Butatauhfuaof (/mob/Players): gatherNames()
+Butatauhfuaof (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+Mon May 11 03:33:15 2026
+World opened on network port 1304.
+
+-------
+Sun May 10 20:34 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: undefined variable /obj/Skills/Utility/Send_Energy/var/DamageMult
+proc name: View Style/Sig Reqs (/mob/Admin3/verb/View_Style_Sig_Reqs)
+  source file: _1CodeFolder/Admin.dm,199
+  usr: (src)
+  src: Poetie tha god (/mob/Players)
+  src.loc: Tile7 (115,357,1) (/turf/Tile7)
+  call stack:
+Poetie tha god (/mob/Players): View Style/Sig Reqs()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie tha god (/mob/Players)
+  src.loc: Tile7 (115,357,1) (/turf/Tile7)
+  call stack:
+Poetie tha god (/mob/Players): gatherNames()
+Poetie tha god (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie tha god (/mob/Players)
+  src.loc: Tile8 (119,348,1) (/turf/Tile8)
+  call stack:
+Poetie tha god (/mob/Players): gatherNames()
+Poetie tha god (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+Mon May 11 20:57:14 2026
+World opened on network port 1304.
