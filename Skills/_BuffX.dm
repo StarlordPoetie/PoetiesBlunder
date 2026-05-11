@@ -1797,8 +1797,8 @@ NEW VARIABLES
 			ActiveMessage="erupts with immense intensity!!"
 			AllOutPU=1
 			adjust(mob/p)
-				if(p.isRace(SAIYAN)&&p.transActive==1||p.isRace(HALFSAIYAN)&&p.transActive==1)
-					if(p.race.transformations[p.transActive].mastery==100)
+				if(p.isRace(SAIYAN)&&p.transActive==1||p.isRace(HALFSAIYAN)&&p.transActive==1||p.NobodyOriginType=="Pride")
+					if(p.race.transformations[p.transActive].mastery==100||p.NobodyOriginType=="Pride")
 						src.ActiveMessage="erupts with immense intensity, their golden aura overcome with a furious red!!"
 						p.passive_handler.Set("Super Kaioken", 1)
 				if(p.isRace(SAIYAN)&&p.transActive>=2||p.isRace(HALFSAIYAN)&&p.transActive>=2)
@@ -9867,6 +9867,8 @@ NEW VARIABLES
 						SpiralPotential=SpiralPower
 						if(Tyrant)
 							SpiralPotential=2
+						if(p.PilotingProwess<SpiralPotential)
+							p.PilotingProwess=SpiralPotential
 						if(SpiralPotential>=7)
 							OMsg(p, "<b>In response to impossible odds, [p] shatters their limits, evolving beyond their absolute potential!</b>")
 						PowerMult = 1+(0.015*secretLevel*secretLevel)

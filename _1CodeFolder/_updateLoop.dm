@@ -83,8 +83,8 @@ var/list/ticking_generic = list()
     for(var/datum/i in ticking_ai)
         ticking_ai -= i
 /mob/Admin4/verb/removeAllfromTickingTurf()
-    for(var/datum/i in ticking_turf)
-        ticking_turf -= i
+    for(var/turf/t in ticking_turfs)
+        ticking_turfs -= t
 
 
 
