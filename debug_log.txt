@@ -2491,3 +2491,19 @@ Poetie tha god (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate
 Meditate (/obj/Skills/Meditate): Meditation()
 Mon May 11 20:57:14 2026
 World opened on network port 1304.
+
+-------
+Mon May 11 13:58 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie that test (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie that test (/mob/Players): gatherNames()
+Poetie that test (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
