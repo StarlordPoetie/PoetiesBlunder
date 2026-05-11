@@ -23,7 +23,7 @@
 		verb/Jest_of_the_Dead()
 			set category="Skills"
 			usr.Activate(src)
-	Judgment_Cut_Jackpot
+	Judgment_Cut_End
 		AdaptRate=1
 		DamageMult=16
 		Area="Circle"
@@ -34,15 +34,15 @@
 		GuardBreak=1
 		Divide=1
 		Slow=1
-		WindUp=2
+		WindUp=3
 		IgnoreWindUpReduction=1
 		WindupMessage="<b>sheathes their blade...</b>"
 		ActiveMessage="yells: <font size = +1><b>JACKPOT!</b></font size>"
 		Shockwaves=3
 		Shockwave=4
 		HitSparkIcon='Slash - Future.dmi'
-		HitSparkX=-16
-		HitSparkY=-16
+		HitSparkX=-32
+		HitSparkY=-32
 		HitSparkTurns=1
 		HitSparkSize=1
 		HitSparkDispersion=1
@@ -64,7 +64,7 @@ obj/Skills/Queue
 		Stunner=5
 		NeedsSword=1
 		EnergyCost=4
-		FollowUp="/obj/Skills/AutoHit/Judgment_Cut_Jackpot"
+		FollowUp="/obj/Skills/AutoHit/Judgment_Cut_End"
 		Cooldown=75
 		verb/Judgment_Cut_End()
 			set category="Skills"
