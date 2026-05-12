@@ -1407,8 +1407,6 @@ NEW VARIABLES
 							src.ForMult=1.2+ImaginaryBonus
 							src.OffMult=1.2+ImaginaryBonus
 							src.DefMult=1.2+ImaginaryBonus
-							// passives["ManaCapMult"] = 0.1 * usr.SagaLevel
-							// passives["SpiritFlow"] = 0.15 * usr.SagaLevel
 					passives["SpiritSword"] = 0.2 * usr.SagaLevel
 					passives["PULock"] = 1
 					passives["SwordDamage"] = GetKeychainDamage(usr.KeychainAttached) + usr.SagaLevel
