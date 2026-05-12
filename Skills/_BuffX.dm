@@ -1408,6 +1408,8 @@ NEW VARIABLES
 							src.OffMult=1.2+ImaginaryBonus
 							src.DefMult=1.2+ImaginaryBonus
 					passives["SpiritSword"] = 0.2 * usr.SagaLevel
+					if(usr.Class=="Imaginary")
+						passives["KiControl"] = 1
 					passives["PULock"] = 1
 					passives["SwordDamage"] = GetKeychainDamage(usr.KeychainAttached) + usr.SagaLevel
 					passives["SwordAccuracy"] = GetKeychainAccuracy(usr.KeychainAttached) + usr.SagaLevel
