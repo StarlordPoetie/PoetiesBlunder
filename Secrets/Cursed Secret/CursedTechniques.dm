@@ -67,6 +67,8 @@ obj
 				ManaCost=4
 				Cooldown=30
 				IconLock='Large Dismantle.dmi'
+				LockX=-64
+				LockY=-64
 				IconSize=2
 				Variation=0
 
@@ -116,7 +118,7 @@ obj
 				Cooldown=130
 				IconLock='HollowPurple.dmi'
 				IconSize=4
-				Trail='dark_GalaxyTurfshift.dmi'
+				Trail='Dirt1.dmi'
 				Variation=0
 
 				proc/adjustCursedHollowPurple(mob/p)
@@ -261,8 +263,8 @@ obj
 					ManaDrain=1
 					ManaThreshold=1
 					IconLock='Aura_supernova.dmi'
-					LockX=-32
-					LockY=-32
+					LockX=-7
+					LockY=
 					passives=list("PureDamage"=2, "Scorching"=5, "Burning"=3, "FireHerald"=1)
 					ActiveMessage="erupts in Disaster Flames."
 					OffMessage="lets the Disaster Flames gutter out."
