@@ -107,6 +107,7 @@ obj
 				Knockback=50
 				PullIn=8
 				Homing=1
+				Earthshaking=8
 				HyperHoming=1
 				HomingCharge=4
 				LosesHoming=40
