@@ -508,6 +508,8 @@ globalTracker
 		ROYAL_GUARD_CHARGE_MULT=1.0
 		ROYAL_GUARD_DMG_MULT=1.0
 
+		TILE_DURATION_DIVISOR=2
+
 		HARDER_THEY_FALL_BIO_DIVISOR = 100 // if u use this when changie first start it will do big damage
 		HARDER_THEY_FALL_VAI_DIVISOR = 25 // more often no1 has this much vai, in hindsight deus ex machima will give kob more tha nthis, but they will suffer 2x damage ig
 
