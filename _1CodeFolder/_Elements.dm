@@ -662,6 +662,45 @@ globalTracker/var/DEBUFF_STACK_MAX = 100;
 	var/list/debuff = list("Poison", "Burn", "Shatter", "Slow", "Shock", "Crippled", "Confused", "Stunned", "Sheared", "Attracted","Doomed");
 	for(var/db in debuff)
 		src.vars["[db]"] -= amt;
+
+/mob/proc/ClearDebuffs()
+	var/list/cleared = list()
+	var/list/debuff = list("Poison", "Burn", "Shatter", "Slow", "Shock", "Crippled", "Confused", "Sheared", "Attracted", "Terrified", "Doomed")
+	for(var/db in debuff)
+		if(isnum(src.vars["[db]"]) && src.vars["[db]"] > 0)
+			src.vars["[db]"] = 0
+			cleared |= db
+	if(src.AttractedTo)
+		src.AttractedTo = null
+	if(src.TerrifiedOf)
+		src.TerrifiedOf = null
+	if(src.BlindingVenom)
+		src.BlindingVenom = 0
+		if(src.client && src.client.client_plane_master)
+			src.client.client_plane_master.filters = null
+		cleared |= "Blinding Venom"
+	if(src.Stunned)
+		StunClear(src)
+		if(!src.Stunned)
+			cleared |= "Stun"
+	if(src.ReflectedFrozen)
+		src.ReflectedFrozen = 0
+		src.ReflectedFrozenTimer = 0
+		cleared |= "Reflected Freeze"
+	var/list/removableDebuffs = list()
+	if(src.Buffs)
+		for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/Debuff/D in src.Buffs)
+			if(D && src.BuffOn(D))
+				removableDebuffs += D
+		for(var/obj/Skills/Buffs/SlotlessBuffs/DemiFiend/MakajamonApply/M in src.Buffs)
+			if(M && src.BuffOn(M))
+				removableDebuffs += M
+	for(var/obj/Skills/Buffs/D in removableDebuffs)
+		var/debuffName = D.BuffName ? D.BuffName : D.name
+		D.Trigger(src, Override=1)
+		if(debuffName && !src.BuffOn(D))
+			cleared |= debuffName
+	return cleared
 /mob/proc/shouldCleanse(mob/trg)
 	if(trg == src) return 1;
 	if(src.party && trg in src.party.members) return 1;

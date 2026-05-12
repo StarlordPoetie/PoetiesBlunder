@@ -733,6 +733,12 @@ mob/proc/activateReversedCursedTechnique()
 	HealthCut = 0
 	MaxHealth()
 
+	var/list/clearedDebuffs = ClearDebuffs()
+	if(clearedDebuffs && clearedDebuffs.len)
+		src << "Reversed Curse Technique purges your active debuffs: [jointext(clearedDebuffs, ", ")]."
+	else
+		src << "Reversed Curse Technique finds no active debuffs to purge."
+
 	if(cursedEnergySixEyes)
 		healPercent *= 2
 	var/healAmount = round(100 * healPercent, 0.1)
