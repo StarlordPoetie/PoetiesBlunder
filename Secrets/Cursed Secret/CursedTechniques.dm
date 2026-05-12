@@ -241,7 +241,7 @@ obj
 					GainLoop(mob/User)
 						ManaDrain=1.5
 						if(User && User.cursedEnergySixEyes)
-							ManaDrain=1
+							ManaDrain=0.2
 						..()
 						if(User)
 							User.updateCursedEnergySixEyesOverlay()
