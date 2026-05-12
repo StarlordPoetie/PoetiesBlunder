@@ -98,13 +98,14 @@ obj
 				name="Hollow Purple"
 				ActiveMessage="fuses Red and Blue into Hollow Purple!"
 				Distance=40
-				DamageMult=6
+				DamageMult=10
 				AccMult=1.5
-				MultiHit=8
+				MultiHit=19
 				Radius=3
-				ZoneAttack=1
+				ZoneAttack=5
 				FireFromSelf=1
 				Knockback=0
+				MortalWound=0.5
 				PullIn=8
 				Homing=1
 				HyperHoming=1
@@ -113,9 +114,9 @@ obj
 				Deflectable=-1
 				ManaCost=28
 				Cooldown=130
-				IconLock='Purple Spiral.dmi'
-				IconSize=2
-				Trail='mirrorofmisfortune_trail_purple.dmi'
+				IconLock='HollowPurple.dmi'
+				IconSize=4
+				Trail='dark_GalaxyTurfshift.dmi'
 				Variation=0
 
 				proc/adjustCursedHollowPurple(mob/p)
@@ -139,6 +140,7 @@ obj
 				Radius=6
 				ZoneAttack=1
 				FireFromEnemy=1
+				Homing=1
 				FireFromSelf=0
 				Hover=20
 				Knockback=10
@@ -404,14 +406,15 @@ obj
 				CanBeBlocked=0
 				ComboMaster=1
 				DamageMult=9
-				Stunner=6
+				Bolt=2
+				BoltOffset=1
 				Rounds=8
 				Distance=12
 				NoLock=1
 				NoAttackLock=1
 				ActiveMessage="discharges lightning through their Domain's sure-hit field!"
 				Icon='Chidori.dmi'
-				HitSparkIcon='Hit Effect Vampire.dmi'
+				HitSparkIcon='ElecAura8'
 				HitSparkX=-32
 				HitSparkY=-32
 				HitSparkSize=1
@@ -513,7 +516,8 @@ obj
 				ComboMaster=1
 				DamageMult=11
 				Stunner=2
-				Knockback=20
+				Knockback=30
+				Earthshaking=3
 				Distance=2
 				Cooldown=60
 				ManaCost=14
@@ -552,6 +556,7 @@ obj
 				Distance=25
 				Size=2
 				Rounds=3
+				Earthshaking=5
 				Cooldown=60
 				ManaCost=12
 				Icon='TrippyPurpleBlue.dmi'
@@ -624,7 +629,7 @@ obj
 				CanBeDodged=0
 				CanBeBlocked=0
 				DamageMult=0.1
-				Stunner=8
+				Stunner=15
 				Rounds=10
 				Distance=15
 				NoLock=1
