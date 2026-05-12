@@ -2738,6 +2738,7 @@ obj
 				MagicNeeded=1
 				Blizzard
 					ElementalClass="Water"
+					SpellElement="Water"
 					SkillCost=TIER_2_COST
 					Copyable=2
 					Area="Wave"
@@ -2787,6 +2788,7 @@ obj
 						usr.Activate(src)
 				Blizzara
 					ElementalClass="Water"
+					SpellElement="Water"
 					SkillCost=TIER_2_COST
 					Copyable=3
 					Area="Wide Wave"
@@ -2843,6 +2845,7 @@ obj
 						usr.Activate(src)
 				Blizzaga
 					ElementalClass="Water"
+					SpellElement="Water"
 					SkillCost=TIER_2_COST
 					Copyable=4
 					Area="Circle"
@@ -2894,6 +2897,7 @@ obj
 
 				Thunder
 					ElementalClass="Wind"
+					SpellElement="Air"
 					FlickAttack=1
 					SkillCost=TIER_2_COST
 					Copyable=2
@@ -2946,6 +2950,7 @@ obj
 						usr.Activate(src)
 				Thundara
 					ElementalClass="Wind"
+					SpellElement="Air"
 					FlickAttack=1
 					SkillCost=TIER_2_COST
 					Copyable=3
@@ -2988,6 +2993,7 @@ obj
 						usr.Activate(src)
 				Thundaga
 					ElementalClass="Wind"
+					SpellElement="Air"
 					FlickAttack=1
 					SkillCost=TIER_2_COST
 					Copyable=4
@@ -3042,7 +3048,8 @@ obj
 						usr.Activate(src)
 
 				Magnet
-					ElementalClass="Earth"
+					ElementalClass="Dark"
+					SpellElement="Space"
 					FlickAttack=1
 					SkillCost=TIER_4_COST
 					Copyable=4
@@ -3074,7 +3081,8 @@ obj
 						adjust(usr)
 						usr.Activate(src)
 				Gravity
-					ElementalClass="Earth"
+					ElementalClass="Dark"
+					SpellElement="Space"
 					SkillCost=TIER_4_COST
 					Copyable=5
 					Area="Around Target"
@@ -3108,6 +3116,7 @@ obj
 						usr.Activate(src)
 				Stop
 					ElementalClass="Earth"
+					SpellElement="Time"
 					SkillCost=TIER_4_COST
 					Copyable=6
 					Area="Around Target"
@@ -3145,6 +3154,7 @@ obj
 
 				Flare
 					ElementalClass="Fire"
+					SpellElement="Fire"
 					SkillCost=TIER_4_COST
 					Copyable=6
 					Area="Around Target"
@@ -3181,7 +3191,8 @@ obj
 
 
 				Magnetga
-					ElementalClass="Earth"
+					ElementalClass="Dark"
+					SpellElement="Space"
 					SagaSignature=1
 					SignatureTechnique=1
 					SignatureName="Advanced Space Magic"
@@ -3215,7 +3226,8 @@ obj
 						adjust(usr)
 						usr.Activate(src)
 				Graviga
-					ElementalClass="Earth"
+					ElementalClass="Dark"
+					SpellElement="Space"
 					SagaSignature=1
 					SignatureTechnique=1
 					SignatureName="Advanced Space Magic"
@@ -3246,7 +3258,8 @@ obj
 						adjust(usr)
 						usr.Activate(src)
 				Stopga
-					ElementalClass="Earth"
+					ElementalClass="Dark"
+					SpellElement="Time"
 					SagaSignature=1
 					SignatureTechnique=1
 					SignatureName="Advanced Space Magic"
@@ -3273,7 +3286,8 @@ obj
 						usr.Activate(src)
 
 				Holy
-					ElementalClass="Water"
+					ElementalClass="Light"
+					SpellElement="Light"
 					SagaSignature=1
 					SignatureTechnique=2
 					SignatureName="Holy Magic"
@@ -3316,6 +3330,7 @@ obj
 				Burning_Circle
 
 					Area="Around Target"
+					SpellElement="Fire"
 					SignatureTechnique=1
 					ForOffense=1
 					Distance = 10

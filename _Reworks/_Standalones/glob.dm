@@ -406,6 +406,8 @@ globalTracker
 		ATTACK_DELAY_DIVISOR=12
 		ATTACK_DELAY_MAX = 20
 		ATTACK_DELAY_MIN = 2
+		SPEED_FORCE_TRUEMULT = 2
+		SPEED_FORCE_DELAYMULT = 4
 		CYBERIZESAGAS = list("King of Braves")
 		ENERGY_GEN_DIVISOR = 10
 		LIFE_GEN_DIVISOR = 10
@@ -507,6 +509,8 @@ globalTracker
 		SKIMMING_DAMAGE_MULT=0.15
 		ROYAL_GUARD_CHARGE_MULT=1.0
 		ROYAL_GUARD_DMG_MULT=1.0
+
+		TILE_DURATION_DIVISOR=2
 
 		HARDER_THEY_FALL_BIO_DIVISOR = 100 // if u use this when changie first start it will do big damage
 		HARDER_THEY_FALL_VAI_DIVISOR = 25 // more often no1 has this much vai, in hindsight deus ex machima will give kob more tha nthis, but they will suffer 2x damage ig

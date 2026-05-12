@@ -7,11 +7,11 @@
 		StyleSpd=1.25
 		StyleActive="Twin Dragon Fire"
 		passives = list("HybridStyle" = "MysticStyle","Fury" = 2, "Momentum" = 2,  "Harden" = 2, "SpiritHand" = 2, "Instinct" = 2, \
-							"Flow" = 2, "SpiritFlow" = 2, "Combustion" = 50, "Scorching" = 6, "Shattering" = 5, "Heavy Strike" = "Inferno")
+							"Flow" = 2, "SpiritFlow" = 2, "Combustion" = 50, "Scorching" = 6, "Shattering" = 5, "Heavy Strike" = "Inferno", "BlurringStrikes" = 2, "SweepingStrike" = 1)
 		Finisher="/obj/Skills/Queue/Finisher/Bauf_Burst"
 		adjust(mob/p)
 			passives = list("HybridStyle" = "MysticStyle","Fury" = 2, "Momentum" = 2,  "Harden" = 2, "SpiritHand" = 2, "Instinct" = 2, \
-							"Flow" = 2, "SpiritFlow" = 2, "Combustion" = 50, "Scorching" = 6, "Shattering" = 5, "Heavy Strike" = "Inferno")
+							"Flow" = 2, "SpiritFlow" = 2, "Combustion" = 50, "Scorching" = 6, "Shattering" = 5, "Heavy Strike" = "Inferno", "BlurringStrikes" = 2, "SweepingStrike" = 1)
 		verb/Twin_Dragon_Fire()
 			set hidden=1
 			adjust(usr)
@@ -19,8 +19,8 @@
 
 	School_of_the_Undefeated_of_the_East // unarmed + armed
 		SignatureTechnique=3
-		passives = list("HybridStyle" = "SwordStyle", "Fa Jin" = 2, "Momentum" = 2, "BlurringStrikes" = 0.5, "Interception" = 1.5, \
-				"Extend" = 1, "Gum Gum" = 1, "BladeFisting" = 1,  "NeedsSword" = 0, "NoSword" = 1, "Flicker" = 3, "CallousedHands"=0.15)
+		passives = list("HybridStyle" = "SwordStyle", "Fa Jin" = 2, "Momentum" = 2, "BlurringStrikes" = 3, "Interception" = 1.5, \
+				"Extend" = 1, "Gum Gum" = 1, "BladeFisting" = 1,  "NeedsSword" = 0, "NoSword" = 1, "Flicker" = 3, "CallousedHands"=0.25)
 		NeedsSword=0
 		NoSword=1
 		BladeFisting=1
@@ -30,8 +30,8 @@
 		Finisher="/obj/Skills/Queue/Finisher/Winds_Of_The_King"
 		StyleActive = "School of the Undefeated Of The East"
 		adjust(mob/p)
-			passives = list("HybridStyle" = "SwordStyle", "Fa Jin" = 2, "Momentum" = 2, "BlurringStrikes" = 0.5, "Interception" = 1.5, \
-				"Extend" = 1, "Gum Gum" = 1, "BladeFisting" = 1,  "NeedsSword" = 0, "NoSword" = 1, "Flicker" = 3, "CallousedHands"=0.15)
+			passives = list("HybridStyle" = "SwordStyle", "Fa Jin" = 2, "Momentum" = 2, "BlurringStrikes" = 3, "Interception" = 1.5, \
+				"Extend" = 1, "Gum Gum" = 1, "BladeFisting" = 1,  "NeedsSword" = 0, "NoSword" = 1, "Flicker" = 3, "CallousedHands"=0.25)
 		verb/School_of_the_Undefeated_of_the_East()
 			set hidden=1
 			adjust(usr)
@@ -44,11 +44,11 @@
 		StyleStr = 1.35
 		StyleFor = 1.35
 		StyleEnd = 1.3
-		passives = list("HybridStyle" = "MysticStyle", "Heavy Strike" = "ChaosBlaster", "CriticalChance" = 25, "CriticalDamage"= 0.15, "SpiritSword" = 0.5, "SpiritFlow"=2.5, \
+		passives = list("HybridStyle" = "MysticStyle", "Heavy Strike" = "ChaosBlaster", "CriticalChance" = 25, "CriticalDamage"= 0.15, "SpiritSword" = 1.5, "SpiritFlow"=2.5, \
 					"Secret Knives" = "GodSlayer", "MovingCharge"=1, "Tossing"=2)
 		Finisher="/obj/Skills/Queue/Finisher/Hyper_Goner"
 		adjust(mob/p)
-			passives = list("HybridStyle" = "MysticStyle", "CriticalChance" = 25, "CriticalDamage"= 0.15, "SpiritSword" = 0.5, "SpiritFlow"=2.5, \
+			passives = list("HybridStyle" = "MysticStyle", "CriticalChance" = 25, "CriticalDamage"= 0.15, "SpiritSword" = 1.5, "SpiritFlow"=2.5, \
 						"Secret Knives" = "GodSlayer", "MovingCharge"=1, "Tossing"=2)
 
 		verb/God_of_Hyperdeath()

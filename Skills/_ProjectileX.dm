@@ -3632,6 +3632,7 @@ obj
 				MagicNeeded=1
 				Fire
 					ElementalClass="Fire"
+					SpellElement="Fire"
 					SkillCost=TIER_2_COST
 					Copyable=2
 					DamageMult=1
@@ -3651,6 +3652,7 @@ obj
 
 				Fira
 					ElementalClass="Fire"
+					SpellElement="Fire"
 					SkillCost=TIER_2_COST
 					Copyable=3
 					PreRequisite=list("/obj/Skills/Projectile/Magic/Fire")
@@ -3674,6 +3676,7 @@ obj
 						usr.UseProjectile(src)
 				Firaga
 					ElementalClass="Fire"
+					SpellElement="Fire"
 					SkillCost=TIER_2_COST
 					Copyable=4
 					PreRequisite=list("/obj/Skills/Projectile/Magic/Fira")
@@ -3701,6 +3704,7 @@ obj
 
 				Disintegrate
 					ElementalClass="Fire"
+					SpellElement="Fire"
 					SkillCost=TIER_4_COST
 					Copyable=5
 					Distance=50
@@ -3753,6 +3757,7 @@ obj
 						usr.UseProjectile(src)
 				Meteor
 					ElementalClass="Fire"
+					SpellElement="Earth"
 					SkillCost=TIER_4_COST
 					Copyable=5
 					Distance=50
@@ -3850,7 +3855,8 @@ obj
 							adjust(usr)
 							usr.UseProjectile(src)
 					Sunlight_Spear//Holy
-						ElementalClass="Wind"
+						ElementalClass="Light"
+						SpellElement="Light"
 						SignatureTechnique=2
 						HolyMod=5
 						DamageMult=15
@@ -3875,6 +3881,7 @@ obj
 							usr.UseProjectile(src)
 					Hellfire_Nova
 						ElementalClass="Fire"
+						SpellElement="Fire"
 						SignatureTechnique=1
 						SignatureName="Advanced Fire Magic"
 						Distance=50

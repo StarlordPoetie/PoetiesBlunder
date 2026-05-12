@@ -24,8 +24,11 @@
 		StyleComboUnlock = list("/obj/Skills/Buffs/NuStyle/MysticStyle/Magma_Walker" = "/obj/Skills/Buffs/NuStyle/UnarmedStyle/Twin_Dragon_Fire")
 		StyleActive="Ifrit Jambe"
 		passives = list("HybridStyle" = "MysticStyle","Fury" = 2, "Momentum" = 2,  "Harden" = 2, "SpiritHand" = 1.5, "Instinct" = 2, \
-						"Flow" = 2, "SpiritFlow" = 1.5, "Combustion" = 40, "Scorching" = 5, "Shattering" = 5)
+						"Flow" = 2, "SpiritFlow" = 1.5, "Combustion" = 40, "Scorching" = 5, "Shattering" = 7, "CallousedHands" = 0.15, "SweepingStrike" = 1)
 		Finisher="/obj/Skills/Queue/Finisher/Bauf_Burst"
+		adjust(mob/p)
+			passives = list("HybridStyle" = "MysticStyle","Fury" = 2, "Momentum" = 2,  "Harden" = 2, "SpiritHand" = 1.5, "Instinct" = 2, \
+				"Flow" = 2, "SpiritFlow" = 1.5, "Combustion" = 40, "Scorching" = 5, "Shattering" = 7, "CallousedHands" = 0.15, "SweepingStrike" = 1)
 		verb/Ifrit_Jambe()
 			set hidden=1
 			src.Trigger(usr)

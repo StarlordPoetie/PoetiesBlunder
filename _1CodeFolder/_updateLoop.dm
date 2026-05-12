@@ -83,8 +83,8 @@ var/list/ticking_generic = list()
     for(var/datum/i in ticking_ai)
         ticking_ai -= i
 /mob/Admin4/verb/removeAllfromTickingTurf()
-    for(var/datum/i in ticking_turfs)
-        ticking_turfs -= i
+    for(var/turf/t in ticking_turfs)
+        ticking_turfs -= t
 
 
 
@@ -97,12 +97,12 @@ world
         if(ticker % 2 == 0)
             try
                 companion_tick()
-                turf_tick()
             catch()
 
         if(ticker % 5 == 0)
             try
                 ai_tick()
+                turf_tick()
             catch()
 
         try

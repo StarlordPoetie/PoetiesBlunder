@@ -81,7 +81,7 @@
     proc/applyEffects(mob/target, mob/owner, static_damage)
         if(!owner||!target) return
         var/asc = owner.AscensionsAcquired ? owner.AscensionsAcquired + 1 : 1
-        var/DefReduction=sqrt(target.GetDef())
+        var/DefReduction=target.GetDef()
         for(var/x in scalingValues)
             switch(x)
                 if("Damage")
