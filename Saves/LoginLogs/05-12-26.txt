@@ -7,3 +7,5 @@
 <font color=black>05/12/26(12:09:05)<b> Guest-563450474</b> | 127.0.0.1 | 563450474 (<font color=blue>logged in.</font color>)<br>
 <font color=black>05/12/26(12:09:31)<b> Poetiethegreat</b> | 127.0.0.1 | 563450474 (<font color=blue>logged in.</font color>)<br>
 <font color=black>05/12/26(12:11:11)<b> Poetietang</b> | 127.0.0.1 | 563450474 (<font color=blue>logged in.</font color>)<br>
+<font color=black>05/12/26(13:11:24)<b> Poetiethegreat</b> | 127.0.0.1 | 563450474 (<font color=red>logged out.</font color>(Brodo))<br>
+<font color=black>05/12/26(13:11:28)<b> Poetietang</b> | 127.0.0.1 | 563450474 (<font color=red>logged out.</font color>(test boy))<br>
