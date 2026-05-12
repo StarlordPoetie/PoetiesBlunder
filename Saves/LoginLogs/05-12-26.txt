@@ -1,0 +1,5 @@
+<font color=black>05/12/26(06:25:38)<b> Poetietang</b> | 127.0.0.1 | 563450474 (<font color=red>logged out.</font color>(TEsting this shit))<br>
+<font color=black>05/12/26(06:25:39)<b> Poetiethegreat</b> | 127.0.0.1 | 563450474 (<font color=red>logged out.</font color>(Poetie_The God))<br>
+<font color=black>05/12/26(09:36:18)<b> Poetiethegreat</b> | 127.0.0.1 | 563450474 (<font color=blue>logged in.</font color>)<br>
+<font color=black>05/12/26(09:38:37)<b> Poetiethegreat</b> | 127.0.0.1 | 563450474 (<font color=red>logged out.</font color>(Poetie the God))<br>
+<font color=black>05/12/26(09:38:38)<b> Poetiethegreat</b> | 127.0.0.1 | 563450474 (<font color=blue>logged in.</font color>)<br>

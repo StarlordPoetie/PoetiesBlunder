@@ -30,13 +30,12 @@ obj
 					set name="Gamblers Fist"
 					usr.SetQueue(src)
 
-			// Compatibility shim for saved pre-projectile Dismantle skills.
-			// New Cursed Energy users receive /obj/Skills/Projectile/Cursed_Technique_Dismantle.
 			Cursed_Technique_Dismantle
 				SkillCost=0
 				Copyable=0
 				CursedTechnique=1
 				name="Dismantle"
+
 				verb/Cursed_Technique_Dismantle()
 					set category="Skills"
 					set hidden=1
@@ -50,7 +49,7 @@ obj
 				Copyable=0
 				CursedTechnique=1
 				name="Dismantle"
-				ActiveMessage="flicks their finger, unleashing their innate Cursed Technique Dismantle!."
+				ActiveMessage="flicks their finger, unleashing their innate Cursed Technique Dismantle!"
 				Distance=30
 				DamageMult=3
 				AccMult=1.2
@@ -77,12 +76,12 @@ obj
 					set name="Dismantle"
 					usr.UseProjectile(src)
 
-			// Compatibility shim for saved pre-AutoHit Dismantle domain skills.
 			Cursed_Domain_Dismantle
 				SkillCost=0
 				Copyable=0
 				CursedTechnique=1
 				name="Domain Expansion: Dismantle"
+
 				verb/Cursed_Domain_Dismantle()
 					set category="Skills"
 					set name="Domain Expansion: Dismantle"
@@ -92,6 +91,77 @@ obj
 					if(usr.Activate(d))
 						usr.finishCursedEnergyDomainSureHit(d)
 
+			Cursed_Technique_Hollow_Purple
+				SkillCost=0
+				Copyable=0
+				CursedTechnique=1
+				name="Hollow Purple"
+				ActiveMessage="fuses Red and Blue into Hollow Purple!"
+				Distance=40
+				DamageMult=6
+				AccMult=1.5
+				MultiHit=8
+				Radius=3
+				ZoneAttack=1
+				FireFromSelf=1
+				Knockback=0
+				PullIn=8
+				Homing=1
+				HyperHoming=1
+				HomingCharge=4
+				LosesHoming=40
+				Deflectable=-1
+				ManaCost=28
+				Cooldown=130
+				IconLock='Purple Spiral.dmi'
+				IconSize=2
+				Trail='mirrorofmisfortune_trail_purple.dmi'
+				Variation=0
+
+				proc/adjustCursedHollowPurple(mob/p)
+					if(p)
+						p.updateCursedEnergySpatialTechniques()
+
+				verb/Hollow_Purple()
+					set category="Skills"
+					set hidden=1
+					usr.UseProjectile(src)
+
+			Cursed_Technique_Maximum_Meteor
+				SkillCost=0
+				Copyable=0
+				CursedTechnique=1
+				name="Maximum Meteor"
+				ActiveMessage="summons a falling Maximum Meteor!"
+				Distance=35
+				DamageMult=8
+				AccMult=1.1
+				Radius=6
+				ZoneAttack=1
+				FireFromEnemy=1
+				FireFromSelf=0
+				Hover=20
+				Knockback=10
+				Stunner=5
+				Scorching=52
+				Burning=8
+				TurfShift='LavaTile.dmi'
+				Deflectable=-1
+				ManaCost=26
+				Cooldown=100
+				IconLock='DoomMeteor.dmi'
+				IconSize=2
+				Trail='TrailFire.dmi'
+				Variation=0
+
+				proc/adjustCursedMaximumMeteor(mob/p)
+					if(p)
+						p.updateCursedEnergyImmolationTechniques()
+
+				verb/Maximum_Meteor()
+					set category="Skills"
+					set hidden=1
+					usr.UseProjectile(src)
 
 		Buffs
 			SlotlessBuffs
@@ -103,20 +173,20 @@ obj
 					BuffName="Domain Expansion: Gambler's Luck"
 					Slotless=1
 					ManaCost=15
-					TimerLimit = 150
+					TimerLimit=150
 					Cooldown=180
 					VaizardHealth=50
 					BioArmor=30
 					StrMult=2
 					EndMult=2
 					DefMult=2
-					passives = list("UnarmedDamage" = 8, "CriticalChance" = 2, "BlockChance" = 2, "CriticalDamage" = 0.25, "CriticalBlock" = 0.25, "ArmorAscension" = 0.5)
+					passives=list("UnarmedDamage"=8, "CriticalChance"=2, "BlockChance"=2, "CriticalDamage"=0.25, "CriticalBlock"=0.25, "ArmorAscension"=0.5)
 					ActiveMessage="hits the jackpot within their Domain, converting the collapsing barrier into a surge of cursed momentum!"
 
 					GainLoop(mob/User)
 						..()
 						if(User && User.BuffOn(src))
-							User.ManaAmount = 1000000000
+							User.ManaAmount=1000000000
 							User.MaxMana()
 
 					Trigger(mob/User, Override=0)
@@ -129,12 +199,12 @@ obj
 							return FALSE
 						if(!User.canUseCursedEnergyDomainSureHit("Serrated"))
 							return FALSE
-						var/activated = ..()
+						var/activated=..()
 						if(activated)
 							var/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/d = locate(/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion) in User
 							User.collapseCursedEnergyDomainSureHit()
 							if(d && !d.Using && !d.cooldown_remaining)
-								d.Cooldown(p = User)
+								d.Cooldown(p=User)
 						return activated
 
 					verb/Cursed_Domain_Gamblers_Luck()
@@ -142,6 +212,82 @@ obj
 						set name="Domain Expansion: Gambler's Luck"
 						Trigger(usr)
 
+				Limitless
+					SkillCost=0
+					Copyable=0
+					CursedTechnique=1
+					name="Limitless"
+					BuffName="Limitless"
+					Slotless=1
+					ManaDrain=1.5
+					ManaThreshold=1
+					IconLock='Limitless_Smooth_Barrier.dmi'
+					LockX=-32
+					LockY=-32
+					IconLockBlend=1
+					TopOverlayLock='BlueSixEyes.dmi'
+					passives=list("PureReduction"=9, "Deflection"=7, "BulletKill"=6, "Void"=1, "VenomImmune"=1, "InjuryImmune"=1, "DebuffResistance"=6, "Juggernaut"=6, "Reversal"=6)
+					ActiveMessage="lets infinity divide the space around them."
+					OffMessage="allows the Limitless barrier to fall away."
+
+					Trigger(mob/User, Override=0)
+						var/activated=..()
+						if(User)
+							User.updateCursedEnergySixEyesOverlay()
+						return activated
+
+					GainLoop(mob/User)
+						ManaDrain=1.5
+						if(User && User.cursedEnergySixEyes)
+							ManaDrain=1
+						..()
+						if(User)
+							User.updateCursedEnergySixEyesOverlay()
+
+					verb/Limitless()
+						set category="Skills"
+						set name="Limitless"
+						Trigger(usr)
+
+				Disaster_Flames
+					SkillCost=0
+					Copyable=0
+					CursedTechnique=1
+					name="Disaster Flames"
+					BuffName="Disaster Flames"
+					Slotless=1
+					ManaDrain=1
+					ManaThreshold=1
+					IconLock='Aura_supernova.dmi'
+					LockX=-32
+					LockY=-32
+					TopOverlayLock=
+					TopOverlayX=-32
+					TopOverlayY=-32
+					passives=list("PureDamage"=2, "Scorching"=5, "Burning"=3, "FireHerald"=1)
+					ActiveMessage="erupts in Disaster Flames."
+					OffMessage="lets the Disaster Flames gutter out."
+
+					GainLoop(mob/User)
+						..()
+						if(!User || !User.BuffOn(src))
+							return
+						var/SecretInformation/CursedEnergy/ce = User.getCursedEnergySecret()
+						var/tier = ce ? max(1, ce.currentTier) : 1
+						for(var/mob/m in oview(2, User))
+							if(!m || m == User)
+								continue
+							if(User.party && (m in User.party.members))
+								continue
+							if(!m.client && !isAI(m))
+								continue
+							m.AddBurn(1 + tier, User)
+							User.DoDamage(m, TrueDamage(0.4 + (tier * 0.15)))
+
+					verb/Disaster_Flames()
+						set category="Skills"
+						set name="Disaster Flames"
+						Trigger(usr)
 
 		AutoHit
 			Cursed_Domain_Dismantle
@@ -179,6 +325,7 @@ obj
 						return
 					if(usr.Activate(src))
 						usr.finishCursedEnergyDomainSureHit(src)
+
 			Cursed_Voltage_Strike
 				SkillCost=0
 				Copyable=0
@@ -207,6 +354,7 @@ obj
 				Cooldown=45
 				ManaCost=8
 				Instinct=1
+
 				proc/reset2default()
 					name="Cursed Voltage Strike"
 					Area="Strike"
@@ -241,7 +389,8 @@ obj
 					TurfShiftDuration=0
 					TurfShiftDurationSpawn=0
 					TurfShiftDurationDespawn=0
-				adjust(mob/p)
+
+				proc/adjustCursedVoltageStrike(mob/p)
 					reset2default()
 					if(!p || p.cursedEnergyTrait != "Electricity")
 						return
@@ -313,8 +462,9 @@ obj
 				verb/Cursed_Technique_Cleave()
 					set category="Skills"
 					set hidden=1
-					set name = "Cleave"
+					set name="Cleave"
 					usr.Activate(src)
+
 			Shutter_Doors
 				SkillCost=0
 				Copyable=0
@@ -351,88 +501,6 @@ obj
 					set hidden=1
 					usr.Activate(src)
 
-obj
-	Skills
-		Buffs
-			SlotlessBuffs
-				Limitless
-					SkillCost=0
-					Copyable=0
-					CursedTechnique=1
-					name="Limitless"
-					BuffName="Limitless"
-					Slotless=1
-					ManaDrain=1.5
-					ManaThreshold=1
-					IconLock='GojoShockwave.dmi'
-					LockX=-32
-					LockY=-32
-					IconLockBlend=1
-					TopOverlayLock='cosmiceyes.dmi'
-					passives = list("PureReduction" = 6, "Deflection" = 4, "BulletKill" = 6, "Void" = 1, "Flow" = 2)
-					ActiveMessage="lets infinity divide the space around them."
-					OffMessage="allows the Limitless barrier to fall away."
-
-					Trigger(mob/User, Override=0)
-						var/activated = ..()
-						if(User)
-							User.updateCursedEnergySixEyesOverlay()
-						return activated
-
-					GainLoop(mob/User)
-						ManaDrain = 1.5
-						if(User && User.cursedEnergySixEyes)
-							ManaDrain = 1
-						..()
-						if(User)
-							User.updateCursedEnergySixEyesOverlay()
-
-					verb/Limitless()
-						set category="Skills"
-						set name="Limitless"
-						Trigger(usr)
-
-				Disaster_Flames
-					SkillCost=0
-					Copyable=0
-					CursedTechnique=1
-					name="Disaster Flames"
-					BuffName="Disaster Flames"
-					Slotless=1
-					ManaDrain=1
-					ManaThreshold=1
-					IconLock='Flames Aura.dmi'
-					LockX=-32
-					LockY=-32
-					TopOverlayLock='AuraDarkFire3.dmi'
-					TopOverlayX=-32
-					TopOverlayY=-32
-					passives = list("PureDamage" = 2, "Scorching" = 5, "Burning" = 3, "FireHerald" = 1)
-					ActiveMessage="erupts in Disaster Flames."
-					OffMessage="lets the Disaster Flames gutter out."
-
-					GainLoop(mob/User)
-						..()
-						if(!User || !User.BuffOn(src))
-							return
-						var/SecretInformation/CursedEnergy/ce = User.getCursedEnergySecret()
-						var/tier = ce ? max(1, ce.currentTier) : 1
-						for(var/mob/m in oview(2, User))
-							if(!m || m == User)
-								continue
-							if(User.party && (m in User.party.members))
-								continue
-							if(!m.client && !isAI(m))
-								continue
-							m.AddBurn(1 + tier, User)
-							User.DoDamage(m, TrueDamage(0.4 + (tier * 0.15)))
-
-					verb/Disaster_Flames()
-						set category="Skills"
-						set name="Disaster Flames"
-						Trigger(usr)
-
-		AutoHit
 			Cursed_Technique_Red
 				SkillCost=0
 				Copyable=0
@@ -458,9 +526,11 @@ obj
 				HitSparkY=-32
 				HitSparkSize=1
 				LockOut=list("/obj/Skills/AutoHit/Cursed_Technique_Blue")
-				proc/adjust(mob/p)
+
+				proc/adjustCursedTechniqueRed(mob/p)
 					if(p)
 						p.updateCursedEnergySpatialTechniques()
+
 				verb/Cursed_Technique_Red()
 					set category="Skills"
 					set hidden=1
@@ -493,9 +563,11 @@ obj
 				HitSparkY=-32
 				HitSparkSize=1
 				LockOut=list("/obj/Skills/AutoHit/Cursed_Technique_Red")
-				proc/adjust(mob/p)
+
+				proc/adjustCursedTechniqueBlue(mob/p)
 					if(p)
 						p.updateCursedEnergySpatialTechniques()
+
 				verb/Cursed_Technique_Blue()
 					set category="Skills"
 					set hidden=1
@@ -533,9 +605,11 @@ obj
 				HitSparkX=-32
 				HitSparkY=-32
 				HitSparkSize=1
-				proc/adjust(mob/p)
+
+				proc/adjustCursedVolcanicStrike(mob/p)
 					if(p)
 						p.updateCursedEnergyImmolationTechniques()
+
 				verb/Volcanic_Strike()
 					set category="Skills"
 					set hidden=1
@@ -564,6 +638,7 @@ obj
 				HitSparkIcon='TrippyPurpleBlue.dmi'
 				HitSparkX=-32
 				HitSparkY=-32
+
 				verb/Cursed_Domain_Infinite_Void()
 					set category="Skills"
 					set name="Domain Expansion: Infinite Void"
@@ -571,72 +646,3 @@ obj
 						return
 					if(usr.Activate(src))
 						usr.finishCursedEnergyDomainSureHit(src)
-
-		Projectile
-			Cursed_Technique_Hollow_Purple
-				SkillCost=0
-				Copyable=0
-				CursedTechnique=1
-				name="Hollow Purple"
-				ActiveMessage="fuses Red and Blue into Hollow Purple!"
-				Distance=40
-				DamageMult=6
-				AccMult=1.5
-				MultiHit=8
-				Radius=3
-				ZoneAttack=1
-				FireFromSelf=1
-				Knockback=0
-				PullIn=8
-				Homing=1
-				HyperHoming=1
-				HomingCharge=4
-				LosesHoming=40
-				Deflectable=-1
-				ManaCost=28
-				Cooldown=130
-				IconLock='Purple Spiral.dmi'
-				IconSize=2
-				Trail='mirrorofmisfortune_trail_purple.dmi'
-				Variation=0
-				proc/adjust(mob/p)
-					if(p)
-						p.updateCursedEnergySpatialTechniques()
-				verb/Hollow_Purple()
-					set category="Skills"
-					set hidden=1
-					usr.UseProjectile(src)
-
-			Cursed_Technique_Maximum_Meteor
-				SkillCost=0
-				Copyable=0
-				CursedTechnique=1
-				name="Maximum Meteor"
-				ActiveMessage="summons a falling Maximum Meteor!"
-				Distance=35
-				DamageMult=8
-				AccMult=1.1
-				Radius=6
-				ZoneAttack=1
-				FireFromEnemy=1
-				FireFromSelf=0
-				Hover=20
-				Knockback=10
-				Stunner=5
-				Scorching=52
-				Burning=8
-				TurfShift='LavaTile.dmi'
-				Deflectable=-1
-				ManaCost=26
-				Cooldown=100
-				IconLock='DoomMeteor.dmi'
-				IconSize=2
-				Trail='TrailFire.dmi'
-				Variation=0
-				proc/adjust(mob/p)
-					if(p)
-						p.updateCursedEnergyImmolationTechniques()
-				verb/Maximum_Meteor()
-					set category="Skills"
-					set hidden=1
-					usr.UseProjectile(src)

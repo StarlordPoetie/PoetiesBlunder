@@ -2507,3 +2507,97 @@ proc name: gatherNames (/mob/proc/gatherNames)
 Poetie that test (/mob/Players): gatherNames()
 Poetie that test (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
 Meditate (/obj/Skills/Meditate): Meditation()
+Mon May 11 22:37:07 2026
+World opened on network port 1304.
+
+-------
+Mon May 11 15:38 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+World opened on network port 1304.
+
+-------
+Mon May 11 15:44 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: PoetieThaGod (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+PoetieThaGod (/mob/Players): gatherNames()
+PoetieThaGod (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie_The God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie_The God (/mob/Players): gatherNames()
+Poetie_The God (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie_The God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie_The God (/mob/Players): gatherNames()
+Poetie_The God (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie_The God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie_The God (/mob/Players): gatherNames()
+Poetie_The God (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie_The God (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie_The God (/mob/Players): gatherNames()
+Poetie_The God (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie_The God (/mob/Players)
+  src.loc: Tile8 (120,359,1) (/turf/Tile8)
+  call stack:
+Poetie_The God (/mob/Players): gatherNames()
+Poetie_The God (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+Mon May 11 23:47:05 2026
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103

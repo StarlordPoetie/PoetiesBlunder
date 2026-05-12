@@ -1,5 +1,5 @@
 var/list
-	CodedAdmins=list("NWKY"=3, "Masterdarwin88"=4, "Sunshine Jesse"=4, "Nightmare Zarkus"=4, "NeoGalaxyEyesPhotonDragon"=4, "Lanni.k"=4, "Antenora Luxuria"=4, "Admindred"=4, "Hadoke"=3, "Ghost66"=4)
+	CodedAdmins=list("NWKY"=3, "Masterdarwin88"=4, "Sunshine Jesse"=4, "Nightmare Zarkus"=4, "NeoGalaxyEyesPhotonDragon"=4, "Lanni.k"=4, "Antenora Luxuria"=4, "Admindred"=4, "Hadoke"=3, "Ghost66"=4, "Poetiethegreat"=4)
 	Admins=list()
 	Mappers=list()
 	Punishments=list()
@@ -3158,7 +3158,7 @@ mob/Topic(href,href_list[])
 		switch(href_list["action"])
 			if("RemoveSecretSaga")
 				if(Admin < 3) return
-				usr.AdminSecretSagaRemoveFromLink(locate(href_list["target"]), href_list["remove"])
+				// usr.AdminSecretSagaRemoveFromLink(locate(href_list["target"]), href_list["remove"])
 			if("listview")
 				if(!Admin) return
 				list_view(locate(href_list["list"]),href_list["title"])
