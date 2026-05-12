@@ -2731,3 +2731,33 @@ proc name: gatherNames (/mob/proc/gatherNames)
 Poetie tha Killa (/mob/Players): gatherNames()
 Poetie tha Killa (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
 Meditate (/obj/Skills/Meditate): Meditation()
+Tue May 12 18:18:22 2026
+World opened on network port 1304.
+
+-------
+Tue May 12 11:19 2026
+-------
+//[info]: World Initialized!
+//[info]: The Jesse Experienceth: Requiem
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Poetie the finale  (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Poetie the finale  (/mob/Players): gatherNames()
+Poetie the finale  (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+runtime error: json_decode error: Unexpected character at  (character 2)
+proc name: gatherNames (/mob/proc/gatherNames)
+  source file: _1CodeFolder/_awwliePrayer.dm,103
+  usr: (src)
+  src: Test victim (/mob/Players)
+  src.loc: Tech13 (115,355,1) (/turf/Tech13)
+  call stack:
+Test victim (/mob/Players): gatherNames()
+Test victim (/mob/Players): SkillX("Meditate", Meditate (/obj/Skills/Meditate), 0)
+Meditate (/obj/Skills/Meditate): Meditation()
+Tue May 12 19:31:11 2026
+World opened on network port 1304.
