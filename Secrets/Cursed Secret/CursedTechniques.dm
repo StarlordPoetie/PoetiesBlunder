@@ -109,10 +109,9 @@ obj
 				Knockback=50
 				PullIn=8
 				Homing=1
-				Earthshaking=8
 				HyperHoming=1
 				HomingCharge=4
-				LosesHoming=40
+				LosesHoming=0
 				Deflectable=-1
 				ManaCost=28
 				Cooldown=130
