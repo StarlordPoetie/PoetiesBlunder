@@ -292,7 +292,7 @@ mob/Players/Stat()
 				stat("")
 				stat("--BUFFS--")
 				stat("")
-				if(src.StyleActive)
+			if(src.StyleActive)
 					stat("Style: ", "[usr.StyleActive]")
 
 				if(src.ActiveBuff)

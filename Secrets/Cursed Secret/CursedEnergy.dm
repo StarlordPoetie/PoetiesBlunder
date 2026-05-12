@@ -8,6 +8,45 @@
 	maxOutputGainBlackFlash = 35
 	maxOutputDecayRate = 0
 
+
+/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff
+	Cursed_Energy_Maximum_Output
+		BuffName = "Cursed Energy Maximum Output"
+		Mastery=-1
+		UnrestrictedBuff=1
+		StrMult=1.20
+		ForMult=1.20
+		EndMult=1.20
+		SpdMult=1.20
+		DefMult=1.20
+		MakesArmor=0
+		TurfShift='WhiteTurfShift.dmi'
+		TurfShiftInstant=1
+		OffMult=1.20
+		TimerLimit=90
+		passives = list("TechniqueMastery" = 5, "BuffMastery" = 2, "MovementMastery" = 5)
+		FlashChange=1
+		ActiveMessage="surges into Cursed Energy Maximum Output!"
+		OffMessage="lets their Maximum Output fade."
+		adjust(mob/p)
+			ActiveMessage = "surges into Cursed Energy Maximum Output!"
+		Trigger(mob/User, Override = 0)
+			var/wasOn = User && User.BuffOn(src)
+			var/result = ..()
+			if(User)
+				if(User.BuffOn(src))
+					User.maxOutputActive = 1
+					if(User.client)
+						animate(User.client, color=list(1,0,0, 0,1,0, 0,0,1, 1,1,1), time=2)
+						spawn(4)
+							if(User && User.client)
+								animate(User.client, color=null, time=4)
+					User.updateCursedEnergyMaximumOutputHUD()
+				else if(wasOn)
+					User.maxOutputActive = 0
+					User.resetCursedEnergyMaximumOutputGauge()
+			return result
+
 /SecretInformation/CursedEnergy
 	name = "Cursed Energy"
 	maxTier = 5
@@ -362,9 +401,6 @@ mob/proc/endCursedEnergyMaximumOutput(reason = "")
 	for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Cursed_Energy_Maximum_Output/b in src)
 		if(BuffOn(b))
 			b.Trigger(src, Override = 1)
-	for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/BlackFlash_Potential/old in src)
-		if(BuffOn(old))
-			old.Trigger(src, Override = 1)
 	maxOutputActive = 0
 	if(hadOutput)
 		maxOutputGauge = 0
@@ -999,7 +1035,6 @@ mob/proc/cleanupCursedEnergy()
 	if(domainExpansionActive)
 		stopDomainExapansion()
 	var/list/cursedSkills = list(
-		/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/BlackFlash_Potential,
 		/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike,
 		/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion,
 		/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/Cursed_Energy,
