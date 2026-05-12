@@ -255,7 +255,7 @@ obj
 					ManaThreshold=1
 					IconLock='Aura_supernova.dmi'
 					LockX=-7
-					LockY=
+					LockY=0
 					passives=list("PureDamage"=2, "Scorching"=5, "Burning"=3, "FireHerald"=1)
 					ActiveMessage="erupts in Disaster Flames."
 					OffMessage="lets the Disaster Flames gutter out."
