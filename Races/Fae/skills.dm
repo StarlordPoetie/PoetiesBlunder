@@ -18,9 +18,8 @@
 				if(altered) return
 				var/asc = p.AscensionsAcquired
 				spdAdd = 0.15 * asc
-				ManaDrain = 0.01
 				passives = list("ManaStats" = (1+(asc/2)), "Innovation" = 1, "BlurringStrikes" = (0.5+(asc/4)), "Brutalize" = (0.5*(asc+1)),\
-								"SpiritHand" = (0.5*(asc+1)), "SpiritSword" = (0.5*(asc+1)), "ManaLeak" = (4-(0.5*asc)), "Afterimages" = 1)
+								"SpiritHand" = (0.5*(asc+1)), "SpiritSword" = (0.5*(asc+1)), "Afterimages" = 1)
 			Trigger(mob/User, Override = FALSE)
 				if(!User.BuffOn(src))
 					adjust(User)
@@ -36,9 +35,8 @@
 				if(altered) return
 				var/asc = p.AscensionsAcquired
 				forAdd = 0.15 * asc
-				ManaDrain = 0.01
 				passives = list("ManaStats" = (1+(asc/2)), "Innovation" = 1, "DebuffResistance" = (0.1*(asc+1)), "Blubber" = (0.5*(asc+1)),\
-								"FluidForm" = (1+(0.5*asc)), "ManaLeak" = (4-(0.5*asc)), "Afterimages" = 1) //Pixies are supposed to be annoying to put down once they go into Mania.
+								"FluidForm" = (1+(0.5*asc)), "Afterimages" = 1) //Pixies are supposed to be annoying to put down once they go into Mania.
 			Trigger(mob/User, Override = FALSE)
 				if(!User.BuffOn(src))
 					adjust(User)
