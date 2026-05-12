@@ -111,7 +111,7 @@ obj
 				Homing=1
 				HyperHoming=1
 				HomingCharge=4
-				LosesHoming=0
+				LosesHoming=50
 				Deflectable=-1
 				ManaCost=28
 				Cooldown=130
@@ -477,9 +477,9 @@ obj
 				DelayTime=1
 				ComboMaster=2
 				Icon='Cursed_Train_Closing_Doors.dmi'
-				Size=0.5
+				Size=2
 				IconX=0
-				IconY=0
+				IconY=-32
 				Falling=0
 				ActiveMessage="snaps their hands as invisible shutters slam in from all sides, crushing down around the target instantly."
 				HitSparkIcon='BLANK.dmi'
