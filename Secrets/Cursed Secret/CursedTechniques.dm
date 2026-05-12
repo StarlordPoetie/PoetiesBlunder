@@ -98,7 +98,7 @@ obj
 				name="Hollow Purple"
 				ActiveMessage="fuses Red and Blue into Hollow Purple!"
 				Distance=40
-				DamageMult=10
+				DamageMult=4
 				AccMult=1.5
 				MultiHit=19
 				Radius=3
@@ -521,7 +521,7 @@ obj
 				Distance=2
 				Cooldown=60
 				ManaCost=14
-				Icon='GojoShockwave.dmi'
+				Icon='CursedTechnique_Red.dmi'
 				HitSparkIcon='Icons/GojoHitspark.dmi'
 				HitSparkX=-32
 				HitSparkY=-32
