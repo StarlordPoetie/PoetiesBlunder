@@ -98,13 +98,13 @@ obj
 				name="Hollow Purple"
 				ActiveMessage="fuses Red and Blue into Hollow Purple!"
 				Distance=40
-				DamageMult=4
+				DamageMult=2.5
 				AccMult=1.5
 				MultiHit=19
 				Radius=3
 				ZoneAttack=5
 				FireFromSelf=1
-				Knockback=0
+				Knockback=50
 				PullIn=8
 				Homing=1
 				HyperHoming=1
