@@ -193,7 +193,7 @@ proc/AdminPowerAuditTier(var/current, var/max)
 
 	html += "</div></body></html>"
 	usr << browse(html, "window=secret_saga_database;size=1120x760")
-	Log("Admin", "[ExtractInfo(usr)] viewed the combined Secret/Saga database ([withPowerCount]/[totalPlayers] powered players).")
+	Log("Admin", "[ExtractInfo(usr)] viewed the combined Secret/Saga database ([withPowerCount]/[totalPlayers] powered players).", 1)
 
 
 /mob/Admin3/verb/View_AG_Database()
@@ -214,10 +214,3 @@ proc/AdminPowerAuditTier(var/current, var/max)
 			height++
 			width = 0
 		src << output(ag, "gridAG.grid:[++width],[height]")
-
-
-mob/Admin3/verb/View_Secret_And_Saga_Audit()
-	set name = "View Secret/Saga Audit"
-	set category = "Admin"
-
-	src.OpenSecretSagaDatabase()
