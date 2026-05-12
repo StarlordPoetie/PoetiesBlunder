@@ -13,8 +13,6 @@ This document records the current Cursed Energy architecture so future work can 
 - `Skills/_BuffX.dm`, `_1CodeFolder/Gains.dm`, and `_1CodeFolder/_JinxUtility.dm` are central resource-consumption paths. They use `ManaAmount`, `LoseMana()`, `ManaCost`, and `ManaDrain`; Cursed Energy only renames/reduces this resource, it does not replace the underlying Mana storage.
 - `_1CodeFolder/Chat&Verbs.dm` invokes Reverse Cursed Technique from the pose/training toggle.
 - `_1CodeFolder/Creation.dm`, `_1CodeFolder/GainProcsOld.dm`, and `Secrets/_ManagementSecret.dm` revalidate or initialize the secret on creation/login/secret management paths.
-- `_Reworks/Ags/AGDatabase.dm` exposes Cursed Energy users and trait slots in the admin Secret/Saga Database.
-- `_1CodeFolder/AdminSecretSagaDatabase.dm` contains an older standalone Secret/Saga browser with similar Cursed Energy display/removal helper code, but the compiled `.dme` currently includes `_Reworks/Ags/AGDatabase.dm` for the live combined database.
 - `_1CodeFolder/Customization.dm` applies the selected Cursed Energy aura color to the aura overlay.
 - `_1CodeFolder/BattleSystem.dm` calls `cleanupCursedEnergy()` on death cleanup when the mob still has Cursed Energy state.
 
@@ -29,7 +27,7 @@ This document records the current Cursed Energy architecture so future work can 
 
 ## Important variables
 
-Do not casually rename these because they are read across admin tools, login/setup paths, skill hooks, cleanup, and persisted player state:
+Do not casually rename these because they are read across slot-management tools, login/setup paths, skill hooks, cleanup, and persisted player state:
 
 - `Secret` and `secretDatum` identify the active secret and point at `/SecretInformation/CursedEnergy`.
 - `cursedEnergyAuraColor` stores the player-selected aura color.
@@ -67,7 +65,7 @@ Cursed Energy has five unique trait slots: `Serrated`, `Electricity`, `Slash`, `
 
 Trait passives are returned by `/SecretInformation/CursedEnergy/getTraitPassives()` and applied via `refreshCursedEnergyTraitPassives()`. The applied list is copied into `cursedEnergyTraitPassivesApplied` so cleanup can remove only what Cursed Energy added.
 
-Trait-slot ownership is global and ckey-based through `cursed_energy_taken_traits`. Admins can free stale/incorrect slots with `Manage_Cursed_Energy_Slots`, and the Secret/Saga Database displays the occupied trait-slot map.
+Trait-slot ownership is global and ckey-based through `cursed_energy_taken_traits`. Admins can free stale/incorrect slots with `Manage_Cursed_Energy_Slots`.
 
 ## Technique replacement structure
 
@@ -103,13 +101,12 @@ Simple Domain is a short slotless buff with Siphon/FluidForm/PureReduction/Space
 
 ## Admin tools
 
-- `_Reworks/Ags/AGDatabase.dm` contains the live combined Secret/Saga Database. It lists Cursed Energy trait, trait slot, specialization, domain choice, Six Eyes, and trait-passive counts for live players; it also displays the global `cursed_energy_taken_traits` table.
 - `Manage_Cursed_Energy_Slots` lets level-3 admins free a trait slot without removing Cursed Energy from any character.
-- `cleanupCursedEnergy()` sends an admin message after cleaning a character's Cursed Energy state. Secret/Saga removal tools rely on it rather than duplicating cleanup logic.
+- `cleanupCursedEnergy()` sends an admin message after cleaning a character's Cursed Energy state.
 
 ## Known extension points
 
-- Add new unique traits by updating `getAvailableCursedEnergyTraits()`, `getTraitPassives()`, `setupCursedEnergyAwakening()`, `attemptCursedHeavyStrike()`, `attemptCursedToss()`, cleanup skill lists, admin display expectations, and any domain sure-hit mapping.
+- Add new unique traits by updating `getAvailableCursedEnergyTraits()`, `getTraitPassives()`, `setupCursedEnergyAwakening()`, `attemptCursedHeavyStrike()`, `attemptCursedToss()`, cleanup skill lists and any domain sure-hit mapping.
 - Add new Cursed Techniques by defining skill objects in `CursedTechniques.dm`, setting `CursedTechnique=1`, giving them appropriate `ManaCost`/`ManaDrain`, and adding cleanup paths.
 - Add new domain sure-hits by extending `getDomainSureHitSkill()` and preserving the `canUseCursedEnergyDomainSureHit()` and collapse/cooldown flow.
 - Add specialization behavior by extending `getSpecializationPassives()` and the Ki Control specialization refresh path.
@@ -117,7 +114,7 @@ Simple Domain is a short slotless buff with Siphon/FluidForm/PureReduction/Space
 ## Warnings: do not casually rename/remove
 
 - Do not rename `/SecretInformation/CursedEnergy`, `Secret == "Cursed Energy"`, `getCursedEnergySecret()`, or `cleanupCursedEnergy()`; many validation and admin paths depend on those exact checks.
-- Do not rename the `cursedEnergy*` player vars or global `cursed_energy_taken_traits` without migration code because they are persisted and displayed by admin tools.
+- Do not rename the `cursedEnergy*` player vars or global `cursed_energy_taken_traits` without migration code because they are persisted and used by Cursed Energy setup, cleanup, and slot management.
 - Do not remove `CursedTechnique=1` from Cursed Technique skills; that is what makes tier/Six Eyes drain reduction work.
 - Do not replace Mana storage with a separate Cursed Energy pool unless all `ManaAmount`, `ManaCost`, `ManaDrain`, `LoseMana()`, UI rename, buff activation, and upkeep paths are migrated together.
 - Do not delete Black Flash/Divergent Fist fallback helpers; Cursed Energy Heavy Strike still uses them when trait techniques cannot fire.
