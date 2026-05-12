@@ -462,7 +462,6 @@
 		src << "<font color='red'>You can't do that while charging [held_skill.name].</font>"
 		return TRUE
 	if(judgement_cut_chain_active && !istype(Z, /obj/Skills/AutoHit/Judgement_Cut))
-		src << "<font color='red'>You can't do that during Judgement Cut.</font>"
 		return TRUE
 	return FALSE
 

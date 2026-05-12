@@ -49,7 +49,6 @@
 	if(Suspended)
 		return
 	if(judgement_cut_chain_active)
-		src << "<font color='red'>You can't attack during Judgement Cut.</font>"
 		return
 	if(SecondStrike || ThirdStrike || AsuraStrike)
 		BreakAttackRate=1

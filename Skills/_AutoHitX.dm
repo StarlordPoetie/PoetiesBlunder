@@ -7859,7 +7859,6 @@ obj
 		ChargePeriod = initial_charge_period
 		SweetSpotWindow = 0.3
 		SweetSpot = RollSweetSpot()
-		target.Suspended = user
 		user.judgement_cut_chain_active = TRUE
 		saved_cooldown = Cooldown
 		Cooldown = 0
@@ -7873,8 +7872,6 @@ obj
 		var/mob/target = chain_target
 		chain_active = FALSE
 		window_loop_running = FALSE
-		if(target)
-			target.Suspended = null
 		if(user)
 			user.judgement_cut_chain_active = FALSE
 		chain_user = null
