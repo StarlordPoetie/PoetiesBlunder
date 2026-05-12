@@ -269,6 +269,9 @@ mob/proc/AppearanceOn()
 				I.suffix=null
 				I.AlignEquip(src)
 
+	if(src.Secret == "Cursed Energy" || src.cursedEnergySixEyesOverlay || src.cursedEnergySixEyes)
+		src.updateCursedEnergySixEyesOverlay()
+
 mob/proc/AppearanceOff()
 	src.overlays=null
 	src.underlays=null

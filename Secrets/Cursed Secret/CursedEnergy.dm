@@ -414,7 +414,7 @@ mob/proc/getCursedEnergyDrain(var/drain, obj/Skills/S)
 		return drain
 	var/tier = max(1, ce.currentTier)
 	var/reduction = min(0.4, max(0, tier - 1) * 0.1)
-	if(src.cursedEnergySixEyes)
+	if(src.HasSixEyes())
 		reduction = min(0.75, reduction + 0.35)
 	if(reduction <= 0)
 		return drain
@@ -739,7 +739,7 @@ mob/proc/activateReversedCursedTechnique()
 	else
 		src << "Reversed Curse Technique finds no active debuffs to purge."
 
-	if(cursedEnergySixEyes)
+	if(HasSixEyes())
 		healPercent *= 2
 	var/healAmount = round(100 * healPercent, 0.1)
 	if(healAmount > 0)
@@ -797,26 +797,37 @@ mob/proc/updateCursedEnergyImmolationTechniques()
 		meteor.Scorching = 40 + (tier * 12)
 
 
+mob/proc/HasSixEyes()
+	return getCursedEnergySecret() && cursedEnergySixEyes && cursedEnergyTrait == "Spatial Manipulation"
+
+
 mob/proc/removeCursedEnergySixEyesOverlay()
 	if(cursedEnergySixEyesOverlay)
 		overlays -= cursedEnergySixEyesOverlay
+	// Clean up legacy Six Eyes visuals that used to be tied to the Limitless buff.
+	overlays -= image(icon = 'BlueSixEyes.dmi', layer = FLOAT_LAYER-1)
+	overlays -= image(icon = 'cosmiceyes.dmi', pixel_x = 0, pixel_y = 0, layer = FLOAT_LAYER-1)
+	overlays -= image(icon = 'Eyes.dmi', icon_state = "Blindfold", pixel_x = 0, pixel_y = 0, layer = FLOAT_LAYER-1)
 	cursedEnergySixEyesOverlay = null
 
 
-mob/proc/updateCursedEnergySixEyesOverlay()
+mob/proc/applyCursedEnergySixEyesOverlay()
 	removeCursedEnergySixEyesOverlay()
-	if(!cursedEnergySixEyes || cursedEnergyTrait != "Spatial Manipulation")
+	if(!HasSixEyes())
 		return
-	var/obj/Skills/Buffs/SlotlessBuffs/Limitless/lim = locate(/obj/Skills/Buffs/SlotlessBuffs/Limitless) in src
-	if(lim && BuffOn(lim))
-		cursedEnergySixEyesOverlay = image(icon = 'cosmiceyes.dmi', pixel_x = 0, pixel_y = 0, layer = FLOAT_LAYER-1)
-	else
-		cursedEnergySixEyesOverlay = image(icon = 'Eyes.dmi', icon_state = "Blindfold", pixel_x = 0, pixel_y = 0, layer = FLOAT_LAYER-1)
+	cursedEnergySixEyesOverlay = image(icon = 'BlueSixEyes.dmi', layer = FLOAT_LAYER-1)
 	overlays += cursedEnergySixEyesOverlay
 
 
+mob/proc/updateCursedEnergySixEyesOverlay()
+	if(HasSixEyes())
+		applyCursedEnergySixEyesOverlay()
+	else
+		removeCursedEnergySixEyesOverlay()
+
+
 mob/proc/triggerSixEyesCooldownReduction(obj/Skills/exclude, var/includeDomain = 0)
-	if(!cursedEnergySixEyes || cursedEnergyTrait != "Spatial Manipulation")
+	if(!HasSixEyes())
 		return
 	for(var/obj/Skills/s in Skills)
 		if(!s || s == exclude)
