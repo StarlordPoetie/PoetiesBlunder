@@ -289,6 +289,10 @@ mob
 
 			src.ApplyFrenzyCombatHooks(defender, max(0, val), UnarmedAttack, SwordAttack, SpiritAttack)
 
+			if(val > 0)
+				src.gainCursedEnergyMaximumOutput(glob.maxOutputGainOnHit, "damage dealt")
+				defender.gainCursedEnergyMaximumOutput(glob.maxOutputGainOnDamageTaken, "damage taken")
+
 			if(defender.Flying)
 				var/obj/Items/check = defender.EquippedFlyingDevice()
 				if(istype(check))
@@ -334,7 +338,7 @@ mob
 
 			if(src.cursedEnergyTrait && src.hasSecret("Cursed Energy"))
 				var/traitPotency = 1
-				if(src.CheckSlotless("120% Potential"))
+				if(src.CheckSlotless("Cursed Energy Maximum Output"))
 					traitPotency = 2
 
 				switch(src.cursedEnergyTrait)

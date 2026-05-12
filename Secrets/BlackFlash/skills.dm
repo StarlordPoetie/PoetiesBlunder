@@ -1,6 +1,6 @@
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff
-	BlackFlash_Potential
-		BuffName = "120% Potential"
+	Cursed_Energy_Maximum_Output
+		BuffName = "Cursed Energy Maximum Output"
 		Mastery=-1
 		UnrestrictedBuff=1
 		StrMult=1.20
@@ -16,11 +16,25 @@
 		TimerLimit=90
 		passives = list("TechniqueMastery" = 5, "BuffMastery" = 2, "MovementMastery" = 5)
 		DarkChange=1
-		ActiveMessage="...!"
-		OffMessage="cools down."
+		ActiveMessage="surges into Cursed Energy Maximum Output!"
+		OffMessage="lets their Maximum Output fade."
 		adjust(mob/p)
-			if(p.isBlackFlashFirstUse() || p.isCursedEnergyBlackFlashFirstUse()) spawn() p.BlackFlashGlazing(src)
-			else ActiveMessage = "gets in tune with their energy output, unlocking 120% of their potential!"
+			ActiveMessage = "surges into Cursed Energy Maximum Output!"
+		Trigger(mob/User, Override = 0)
+			var/wasOn = User && User.BuffOn(src)
+			var/result = ..()
+			if(User)
+				if(User.BuffOn(src))
+					User.maxOutputActive = 1
+					User.updateCursedEnergyMaximumOutputHUD()
+				else if(wasOn)
+					User.maxOutputActive = 0
+					User.resetCursedEnergyMaximumOutputGauge()
+			return result
+
+	BlackFlash_Potential
+		parent_type = /obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Cursed_Energy_Maximum_Output
+		BuffName = "Cursed Energy Maximum Output"
 
 /obj/Skills/Buffs/SlotlessBuffs
 	BlackFlash_SureStrike
@@ -59,7 +73,7 @@
 	sleep(30)
 	JJKNarrate("In other words... For one minute and thirty seconds...");
 	sleep(30)
-	JJKNarrate("<b>[src] fights at one hundred and twenty percent of their potential.</b>");
+	JJKNarrate("<b>[src] reaches the brink of Cursed Energy Maximum Output.</b>");
 
 
 /mob/proc/

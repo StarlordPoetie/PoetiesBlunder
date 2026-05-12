@@ -1,3 +1,24 @@
+
+
+/client/proc/updateCursedEnergyMaximumOutputHUD()
+	if(!mob || !glob.maxOutputEnabled || !mob.hasSecret("Cursed Energy"))
+		winshow(src, "MaxOutputLabel", 0)
+		winshow(src, "MaxOutputBar", 0)
+		return
+	var/maxGauge = max(1, mob.maxOutputGaugeMax ? mob.maxOutputGaugeMax : glob.maxOutputGaugeMax)
+	var/outputPercent = round(clamp(mob.maxOutputGauge / maxGauge, 0, 1) * 100)
+	winshow(src, "MaxOutputLabel", 1)
+	winshow(src, "MaxOutputBar", 1)
+	winset(src, "MaxOutputBar", "value=[outputPercent]")
+	if(mob.maxOutputActive || mob.CheckSlotless("Cursed Energy Maximum Output"))
+		winset(src, "MaxOutputBar", "bar-color='#7B3CFF'")
+		winset(src, "MaxOutputLabel", "text-color='#B7A4FF'")
+		winset(src, "MaxOutputLabel", "text='MAX OUTPUT'")
+	else
+		winset(src, "MaxOutputBar", "bar-color='#3C7BFF'")
+		winset(src, "MaxOutputLabel", "text-color='#7BA7FF'")
+		winset(src, "MaxOutputLabel", "text='CE OUTPUT'")
+
 mob/verb/Character_Sheet()
 	set category = "Other"
 	src<<browse(src.GetAssess(),"window=Assess;size=275x700")
@@ -271,7 +292,7 @@ mob/Players/Stat()
 				stat("")
 				stat("--BUFFS--")
 				stat("")
-				if(src.StyleActive)
+			if(src.StyleActive)
 					stat("Style: ", "[usr.StyleActive]")
 				if(src.ActiveBuff)
 					stat("Active Buff: ","[usr.ActiveBuff.name]")
@@ -1330,6 +1351,8 @@ mob/proc/Update_Stat_Labels()
 				src<<output("INJURE","BarWound")
 		else
 			winshow(src, "BarWound",0)
+		if(client)
+			client.updateCursedEnergyMaximumOutputHUD()
 		if(src.StyleActive)
 			winshow(src, "StyleLabel",1)
 			winshow(src, "StanceLabel",1)

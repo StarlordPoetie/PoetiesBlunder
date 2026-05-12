@@ -5371,6 +5371,8 @@ mob
 				Z.Cooldown(1, null, src)
 			else
 				Z.Cooldown(1, null, src)
+			if(Z.CursedTechnique)
+				src.consumeCursedEnergyMaximumOutput(Z)
 			if(Z.Copyable)
 				var/copy = Z.Copyable
 				spawn() for(var/mob/m in view(40, src))
