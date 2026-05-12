@@ -23,6 +23,8 @@ obj
 				if(Using || cooldown_remaining)
 					return FALSE
 				var/aaa = p.UseProjectile(src)
+				if(aaa)
+					p.consumeCursedEnergyMaximumOutput(src)
 				return aaa
 			layer=EFFECTS_LAYER
 			Distance=10

@@ -1678,6 +1678,8 @@ mob
 		QueuedHitMessage(var/mob/P)
 			if(!AttackQueue) return
 			src.AttackQueue.Hit=1
+			if(istype(src.AttackQueue, /obj/Skills/Queue/Secret_Heavy_Strike/Black_Flash/Black_Flash_Strike))
+				src.gainCursedEnergyMaximumOutput(glob.maxOutputGainBlackFlash, "Black Flash")
 			src.AttackQueue.Missed=0
 			src.AttackQueue.RanOut=0
 			if(canFaJin())
@@ -1849,6 +1851,8 @@ mob
 						if(src.AttackQueue.AssociatedGear.Uses<=0)
 							src << "[src.AttackQueue] is out of power!"
 			if(src.AttackQueue.Hit)
+				if(src.AttackQueue.CursedTechnique)
+					src.consumeCursedEnergyMaximumOutput(src.AttackQueue)
 				if(src.AttackQueue.GrabTrigger)
 					var/grabPath = src.AttackQueue.GrabTrigger
 					for(var/obj/Skills/Grapple/g in src.Skills)

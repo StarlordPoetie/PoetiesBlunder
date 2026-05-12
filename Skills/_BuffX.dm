@@ -618,6 +618,8 @@ NEW VARIABLES
 			User.BuffingUp=0
 			if(!src.BuffName)
 				src.BuffName="[src.name]"
+			if(returnClause && src.CursedTechnique)
+				User.consumeCursedEnergyMaximumOutput(src)
 			return returnClause
 	ActiveBuffs
 		ActiveSlot=1
