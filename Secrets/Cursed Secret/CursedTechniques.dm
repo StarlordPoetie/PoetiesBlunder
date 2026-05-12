@@ -413,7 +413,7 @@ obj
 				NoAttackLock=1
 				ActiveMessage="discharges lightning through their Domain's sure-hit field!"
 				Icon='Chidori.dmi'
-				HitSparkIcon='ElecAura8'
+				HitSparkIcon='ElecAura8.dmi'
 				HitSparkX=-32
 				HitSparkY=-32
 				HitSparkSize=1
