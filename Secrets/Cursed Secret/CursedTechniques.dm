@@ -224,8 +224,8 @@ obj
 					ManaDrain=1.5
 					ManaThreshold=1
 					IconLock='Limitless_Smooth_Barrier.dmi'
-					LockX=-32
-					LockY=-32
+					LockX=-16
+					LockY=-16
 					IconLockBlend=1
 					TopOverlayLock='BlueSixEyes.dmi'
 					passives=list("PureReduction"=9, "Deflection"=7, "BulletKill"=6, "Void"=1, "VenomImmune"=1, "InjuryImmune"=1, "DebuffResistance"=6, "Juggernaut"=6, "Reversal"=6)
