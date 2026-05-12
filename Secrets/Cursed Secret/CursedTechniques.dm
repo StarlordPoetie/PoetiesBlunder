@@ -261,9 +261,6 @@ obj
 					IconLock='Aura_supernova.dmi'
 					LockX=-32
 					LockY=-32
-					TopOverlayLock=
-					TopOverlayX=-32
-					TopOverlayY=-32
 					passives=list("PureDamage"=2, "Scorching"=5, "Burning"=3, "FireHerald"=1)
 					ActiveMessage="erupts in Disaster Flames."
 					OffMessage="lets the Disaster Flames gutter out."
