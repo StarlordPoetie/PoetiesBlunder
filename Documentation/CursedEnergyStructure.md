@@ -40,7 +40,7 @@ Do not casually rename these because they are read across admin tools, login/set
 - `cursedEnergySpecializationPassiveMigrated` prevents old permanent specialization passives from being removed repeatedly after the Ki Control migration.
 - `cursedEnergyDomainChoice` stores whether the player chose Simple Domain or Hollow Wicker Basket.
 - `cursedEnergyPoseHealReady` and `cursedEnergyPoseHealCooldown` control Reverse Cursed Technique availability.
-- `cursedEnergySixEyes`, `cursedEnergySixEyesOverlay`, and `cursedEnergyInfiniteVoidEscapes` support Spatial Manipulation/Six Eyes/Infinite Void behavior.
+- `cursedEnergySixEyes`, `cursedEnergySixEyesOverlay`, and `cursedEnergyInfiniteVoidEscapes` support Spatial Manipulation/Six Eyes/Infinite Void behavior; Six Eyes visuals are tracked as a passive/base overlay, separate from the Limitless buff overlay.
 - Global `cursed_energy_taken_traits` maps trait names to owner ckeys and enforces unique trait slots.
 - `/obj/Skills` var `CursedTechnique` marks skills for Cursed Energy mana-drain reduction.
 - Active Ki Control buffs use `cursedEnergySpecializationPassivesApplied` to track specialization passives injected into the buff.
@@ -58,7 +58,7 @@ Do not casually rename these because they are read across admin tools, login/set
 - `/SecretInformation/CursedEnergy/grantDomainExpansion()`, `applyCursedDomainExpansionBuff()`, `ensureDomainExpansionVerbs()`, `grantDomainDefense()`, `grantDomainSureHit()`, and `getDomainSureHitSkill()` own Domain Expansion/anti-domain/sure-hit grants.
 - `mob/proc/canUseCursedEnergyDomainSureHit()`, `collapseCursedEnergyDomainSureHit()`, and `finishCursedEnergyDomainSureHit()` validate and collapse domain sure-hit actions.
 - `mob/proc/updateCursedEnergySpatialTechniques()` and `updateCursedEnergyImmolationTechniques()` scale trait techniques by secret tier.
-- `mob/proc/triggerSixEyesCooldownReduction()`, `updateCursedEnergySixEyesOverlay()`, and `tickInfiniteVoidDomain()` support Six Eyes and Infinite Void.
+- `mob/proc/HasSixEyes()`, `applyCursedEnergySixEyesOverlay()`, `removeCursedEnergySixEyesOverlay()`, `updateCursedEnergySixEyesOverlay()`, `triggerSixEyesCooldownReduction()`, and `tickInfiniteVoidDomain()` support Six Eyes visuals/mechanics and Infinite Void.
 - `mob/proc/cleanupCursedEnergy()` removes Cursed Energy skills, passives, renamed Mana, domain state, trait reservations, overlays, and persisted state.
 
 ## Trait system structure

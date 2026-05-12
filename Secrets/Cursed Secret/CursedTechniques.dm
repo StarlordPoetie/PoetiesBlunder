@@ -229,24 +229,15 @@ obj
 					LockX=-16
 					LockY=-16
 					IconLockBlend=1
-					TopOverlayLock='BlueSixEyes.dmi'
 					passives=list("PureReduction"=9, "Deflection"=7, "BulletKill"=6, "Void"=1, "VenomImmune"=1, "InjuryImmune"=1, "DebuffResistance"=6, "Juggernaut"=6, "Reversal"=6)
 					ActiveMessage="lets infinity divide the space around them."
 					OffMessage="allows the Limitless barrier to fall away."
 
-					Trigger(mob/User, Override=0)
-						var/activated=..()
-						if(User)
-							User.updateCursedEnergySixEyesOverlay()
-						return activated
-
 					GainLoop(mob/User)
 						ManaDrain=1.5
-						if(User && User.cursedEnergySixEyes)
+						if(User && User.HasSixEyes())
 							ManaDrain=0.2
 						..()
-						if(User)
-							User.updateCursedEnergySixEyesOverlay()
 
 					verb/Limitless()
 						set category="Skills"
