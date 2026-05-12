@@ -1,11 +1,60 @@
+
+
+/globalTracker/var
+	maxOutputEnabled = 1
+	maxOutputGaugeMax = 100
+	maxOutputGainOnHit = 4
+	maxOutputGainOnDamageTaken = 2.5
+	maxOutputGainBlackFlash = 35
+	maxOutputDecayRate = 0
+
+
+/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff
+	Cursed_Energy_Maximum_Output
+		BuffName = "Cursed Energy Maximum Output"
+		Mastery=-1
+		UnrestrictedBuff=1
+		StrMult=1.20
+		ForMult=1.20
+		EndMult=1.20
+		SpdMult=1.20
+		DefMult=1.20
+		MakesArmor=0
+		TurfShift='WhiteTurfShift.dmi'
+		TurfShiftInstant=1
+		OffMult=1.20
+		TimerLimit=90
+		passives = list("TechniqueMastery" = 5, "BuffMastery" = 2, "MovementMastery" = 5)
+		FlashChange=1
+		ActiveMessage="surges into Cursed Energy Maximum Output!"
+		OffMessage="lets their Maximum Output fade."
+		adjust(mob/p)
+			ActiveMessage = "surges into Cursed Energy Maximum Output!"
+		Trigger(mob/User, Override = 0)
+			var/wasOn = User && User.BuffOn(src)
+			var/result = ..()
+			if(User)
+				if(User.BuffOn(src))
+					User.maxOutputActive = 1
+					if(User.client)
+						animate(User.client, color=list(1,0,0, 0,1,0, 0,0,1, 1,1,1), time=2)
+						spawn(4)
+							if(User && User.client)
+								animate(User.client, color=null, time=4)
+					User.updateCursedEnergyMaximumOutputHUD()
+				else if(wasOn)
+					User.maxOutputActive = 0
+					User.resetCursedEnergyMaximumOutputGauge()
+			return result
+
 /SecretInformation/CursedEnergy
 	name = "Cursed Energy"
 	maxTier = 5
-	givenSkills = list("/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/BlackFlash_Potential")
+	givenSkills = list()
 	var/awakeningConfigured = 0
 	var/domainChoicePrompted = 0
 	var/CursedEnergyBlackFlashChance = 0
-	var/CursedEnergyBlackFlashBaseChance = 5
+	var/CursedEnergyBlackFlashBaseChance = 35
 	var/CursedEnergyBlackFlashFirstTimeUse = 1
 	proc/removeBlackFlashSureStrike(mob/p)
 		if(!p)
@@ -206,13 +255,14 @@
 			if(1)
 				p << "You awaken to the flow of Cursed Energy."
 				giveSkills(p)
-				CursedEnergyBlackFlashBaseChance = 5
+				CursedEnergyBlackFlashBaseChance = 35
+				CursedEnergyBlackFlashChance = max(CursedEnergyBlackFlashChance, CursedEnergyBlackFlashBaseChance)
 				if(prob(10))
 					grantDomainExpansion(p)
 				nextTierUp = 2
 			if(2)
 				p << "Your Cursed Energy control improves."
-				CursedEnergyBlackFlashBaseChance = 25
+				CursedEnergyBlackFlashBaseChance = 35
 				p.passive_handler.Set("Sparks of Black", 1)
 				chooseSpecialization(p)
 				if(prob(20))
@@ -295,6 +345,79 @@ mob
 		image/cursedEnergySixEyesOverlay
 		list/cursedEnergyInfiniteVoidEscapes
 		list/cursedEnergyTraitPassivesApplied
+		maxOutputGauge = 0
+		maxOutputGaugeMax = 100
+		maxOutputActive = 0
+
+mob/proc/updateCursedEnergyMaximumOutputHUD()
+	if(client)
+		client.updateCursedEnergyMaximumOutputHUD()
+
+
+mob/proc/resetCursedEnergyMaximumOutputGauge()
+	maxOutputGaugeMax = max(1, glob.maxOutputGaugeMax)
+	maxOutputGauge = 0
+	updateCursedEnergyMaximumOutputHUD()
+
+
+mob/proc/gainCursedEnergyMaximumOutput(amount, source = "combat")
+	if(!glob.maxOutputEnabled || !hasSecret("Cursed Energy") || !isnum(amount) || amount <= 0)
+		return 0
+	maxOutputGaugeMax = max(1, glob.maxOutputGaugeMax)
+	if(maxOutputActive || CheckSlotless("Cursed Energy Maximum Output"))
+		maxOutputActive = 1
+		updateCursedEnergyMaximumOutputHUD()
+		return 0
+	var/gain = amount
+	maxOutputGauge = clamp(maxOutputGauge + gain, 0, maxOutputGaugeMax)
+	updateCursedEnergyMaximumOutputHUD()
+	if(maxOutputGauge >= maxOutputGaugeMax)
+		activateCursedEnergyMaximumOutput()
+	return gain
+
+
+mob/proc/activateCursedEnergyMaximumOutput()
+	if(!glob.maxOutputEnabled || !hasSecret("Cursed Energy"))
+		return 0
+	if(maxOutputActive || CheckSlotless("Cursed Energy Maximum Output"))
+		maxOutputActive = 1
+		updateCursedEnergyMaximumOutputHUD()
+		return 0
+	var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Cursed_Energy_Maximum_Output/b = findOrAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Cursed_Energy_Maximum_Output)
+	if(!b)
+		return 0
+	b.adjust(src)
+	var/activated = b.Trigger(src, Override = 1)
+	if(activated)
+		maxOutputActive = 1
+		maxOutputGauge = maxOutputGaugeMax
+		OMsg(src, "<font color='#7b7bff'><b>[src]'s cursed energy reaches Maximum Output!</b></font>")
+		updateCursedEnergyMaximumOutputHUD()
+	return activated
+
+
+mob/proc/endCursedEnergyMaximumOutput(reason = "")
+	var/hadOutput = maxOutputActive || CheckSlotless("Cursed Energy Maximum Output")
+	for(var/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Cursed_Energy_Maximum_Output/b in src)
+		if(BuffOn(b))
+			b.Trigger(src, Override = 1)
+	maxOutputActive = 0
+	if(hadOutput)
+		maxOutputGauge = 0
+		if(reason)
+			src << "Cursed Energy Maximum Output is consumed by [reason]."
+		else
+			src << "Cursed Energy Maximum Output fades."
+		updateCursedEnergyMaximumOutputHUD()
+	return hadOutput
+
+
+mob/proc/consumeCursedEnergyMaximumOutput(obj/Skills/S)
+	if(!S || !S.CursedTechnique)
+		return 0
+	if(!hasSecret("Cursed Energy"))
+		return 0
+	return endCursedEnergyMaximumOutput(S.name)
 
 
 proc/logCursedEnergyTraitSlots(var/message)
@@ -912,7 +1035,6 @@ mob/proc/cleanupCursedEnergy()
 	if(domainExpansionActive)
 		stopDomainExapansion()
 	var/list/cursedSkills = list(
-		/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/BlackFlash_Potential,
 		/obj/Skills/Buffs/SlotlessBuffs/BlackFlash_SureStrike,
 		/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion,
 		/obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/Cursed_Energy,

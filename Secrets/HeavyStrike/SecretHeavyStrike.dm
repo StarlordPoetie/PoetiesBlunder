@@ -265,7 +265,7 @@
         HitSparkTurns=1
         HitSparkSize=4
         KBMult = 10
-        BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/BlackFlash_Potential"
+        BuffSelf=0
         adjust(mob/p)
             var/sparks = p.passive_handler.Get("Sparks of Black")
             if(p.hasSecret("Black Flash"))
