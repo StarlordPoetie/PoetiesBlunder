@@ -105,7 +105,6 @@ obj
 				ZoneAttack=5
 				FireFromSelf=1
 				Knockback=0
-				MortalWound=0.5
 				PullIn=8
 				Homing=1
 				HyperHoming=1
