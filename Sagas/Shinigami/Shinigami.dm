@@ -31,6 +31,7 @@ mob/proc/gainShinigami()
 	sh.Ascended = min(1 + src.SagaLevel, 6)
 
 	src.AddSkill(new/obj/Skills/Buffs/SlotlessBuffs/Shinigami_Form)
+	src.AddSkill(new/obj/Skills/Buffs/NuStyle/SwordStyle/Zanjutsu)
 
 	src << "A <b>[src.ZanpakutoClass]</b> Zanpakutō and Shihakushō have formed for you. Name them, learn them, for they are an extension of your soul."
 	src << "Use <b>Shinigami Form</b> to don your Zanpakutō and Shihakushō."
@@ -61,6 +62,7 @@ mob/tierUpSaga(Path)
 
 			if(5)
 				src << "You have mastered your Bankai. Its drain fades..."
+				src.passive_handler.Increase("GodKi", 0.25)
 				switch(ShinigamiRelease)
 					if("Zangetsu")
 						if(!locate(/obj/Skills/Buffs/SpecialBuffs/Sword/Getsuga_Tenshou_Clad, src))
@@ -69,6 +71,7 @@ mob/tierUpSaga(Path)
 				updateShinigamiAscended()
 
 			if(6)
+				src.passive_handler.Increase("GodKi", 0.25)
 				switch(ShinigamiRelease)
 					if("Zangetsu")
 						if(!locate(/obj/Skills/Buffs/SpecialBuffs/Sword/Final_Getsuga_Tenshou, src))
@@ -77,6 +80,7 @@ mob/tierUpSaga(Path)
 				updateShinigamiAscended()
 
 			if(7)
+				src.passive_handler.Increase("GodKi", 0.25)
 				for(var/obj/Skills/Buffs/SlotlessBuffs/Mugetsu_Aftermath/MA in src)
 					if(MA.SlotlessOn)
 						MA.Trigger(src)

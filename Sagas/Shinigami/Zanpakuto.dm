@@ -9,6 +9,7 @@ obj/Items/Sword/Medium/Legendary/Shinigami/Zanpakuto
 	pixel_y = -16
 	Ascended = 2
 	Destructable = 0
+	Stealable = 0
 	ShatterTier = 0
 	PermEquip = 1
 	IsZanpakuto = 1

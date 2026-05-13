@@ -67,6 +67,7 @@
 		var/SL = p.SagaLevel
 		passives = list(
 			"Zornhau"        = 1 + SL,
+			"PhysPleroma"    = 0.5 + (SL/2),
 			"Half-Sword"     = 1 + SL,
 			"Extend"         = 0.5 * SL,
 			"GiantSwings"    = 1,
@@ -75,6 +76,8 @@
 		)
 		if(SL < 3)
 			passives["ManaLeak"] = 2
+		if(SL >= 7)
+			passives["DoubleStrike"] = 5
 		StrMult = 1.1 + (0.1 * SL)
 		ForMult = 1.1 + (0.1 * SL)
 		OffMult = 1.1 + (0.1 * SL)
