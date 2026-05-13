@@ -396,18 +396,22 @@ obj/GoB_Sentinel
 			Owner.overlays += im
 			orbit_images   += im
 
-			// Auto-attack one nearby enemy per step
-			for(var/mob/m in view(2, Owner))
+			// Damage all enemies within 1 tile per tick
+			for(var/mob/m in range(1, Owner))
 				if(!istype(m, /mob/Player)) continue
 				if(m == Owner) continue
 				if(Owner.party && (m in Owner.party.members)) continue
-				var/dmg = Owner.GetStr() * 0.12
+				var/powerDif = Owner.getPower(m)
+				var/statPower = Owner.getStatDmg2()
+				var/endFactor = m.getEndStat(1)
+				var/dmg = (clamp(powerDif,0.1,100000)**glob.DMG_POWER_EXPONENT) * (glob.CONSTANT_DAMAGE_EXPONENT+glob.AUTOHIT_EFFECTIVNESS) ** -(endFactor**glob.DMG_END_EXPONENT / statPower**glob.DMG_STR_EXPONENT)
+				dmg *= 0.5
+				dmg *= Owner.GetDamageMod()
 				if(IsLegendary) dmg *= 1.5
 				dmg *= 1 + (SentinelMastery * 0.05)
 				m.LoseHealth(dmg, Owner)
 				if(WeaponElement)
 					ElementalCheck(Owner, m, 0, bonusElements = list(WeaponElement))
-				break
 
 			sleep(step_delay)
 			elapsed += step_delay

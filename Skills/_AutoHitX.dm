@@ -2625,13 +2625,10 @@ obj
 				Distance=20
 				Area="Arc"
 				ObjIcon=1
-				Icon='fevExplosion - Hellfire.dmi'
-				IconX=-16
-				IconY=-16
 				Size=1.5
 				Rounds=1
 				DelayTime=2
-				HitSparkIcon='Slash.dmi'
+				HitSparkIcon='fevExplosion - Hellfire.dmi'
 				HitSparkX=-32
 				HitSparkY=-32
 				HitSparkTurns=1
