@@ -61,7 +61,7 @@
 		Cooldown=60
 		ManaCost=8
 		SlowAffected=4
-		FatigueDrain=0.25
+		EnergyDrain=0.25
 		//SpdTaxDrain=0.03 replace this with something else
 		ActiveMessage="distorts the space around their target!"
 		OffMessage="releases the spatial distortion!"
