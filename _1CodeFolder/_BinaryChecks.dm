@@ -3238,6 +3238,10 @@ mob
 			return 0
 
 		HasBladeFisting()
+			var/obj/Items/Sword/s2=src.EquippedSecondSword()
+			var/obj/Items/Sword/s3=src.EquippedThirdSword()
+			if(s2||s3)
+				return 0
 			if(passive_handler.Get("BladeFisting"))
 				return 1
 			if(isRace(DEMON)|| (CheckSlotless("Satsui no Hado") && SagaLevel>=6)||isRace(MAKAIOSHIN)||isRace(CELESTIAL))
