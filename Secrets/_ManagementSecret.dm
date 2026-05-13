@@ -5,7 +5,7 @@
 #define MADNESS_ADD_PER_TIER 25
 
 #define VALID_SECRET_LIST list("Jagan Eye", "Haki", "Hamon", "Vampire", "Werewolf", "Heavenly Restriction", "Senjutsu", "Shin",\
-"Ultra Instinct", "Zombie", "Necromancy", "Eldritch", "Eldritch (Shrouded)", "Eldritch (Reflected)", "Black Flash", "Spiral")
+"Ultra Instinct", "Zombie", "Necromancy", "Eldritch", "Eldritch (Shrouded)", "Eldritch (Reflected)", "Black Flash", "Spiral", "Cursed Energy")
 #define RACIAL_SECRETS list("Eldritch (Shrouded)", "Eldritch (Reflected)")
 
 //thank you hadoje
