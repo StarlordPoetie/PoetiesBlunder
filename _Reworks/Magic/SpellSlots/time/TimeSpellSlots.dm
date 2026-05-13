@@ -53,7 +53,8 @@
 		TimerLimit=12
 		Cooldown=60
 		ManaCost=8
-		FatigueDrain=0.5
+		FatigueDrain=0.15
+		EnergyDrain=1.5
 		//SpdTaxDrain=0.02 replace this with something else
 		//StrTaxDrain=0.02 replace this with something else
 		ActiveMessage="begins to decay the flow of time around their target!"
