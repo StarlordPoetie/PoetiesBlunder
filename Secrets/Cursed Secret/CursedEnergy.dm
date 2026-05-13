@@ -104,6 +104,51 @@ var/global/maxOutputDecayRate = 0
 		if(S.type in paths)
 			DeleteSkill(S)
 
+
+/obj/bar/cursed_energy_maximum_output
+	New(client/_client, o, _x, _y)
+		..(_client, "Fury", _x, _y)
+		name = "Maximum Output"
+		linked_var = "maxOutputGauge"
+		if(barbg)
+			barbg.name = "Maximum Output"
+			barbg.maptext_width = 96
+			barbg.maptext = "[CHAT_STYLE]Maximum Output: 0%"
+		Update()
+
+	Update()
+		if(!client || !client.mob)
+			return
+		var/mob/p = client.mob
+		if(!p.hasCursedEnergy())
+			animate(holder, alpha = 0, time = 2)
+			animate(barbg, alpha = 0, time = 2)
+			return
+		var/maxGauge = p.maxOutputGaugeMax ? p.maxOutputGaugeMax : maxOutputGaugeMax
+		var/percent = maxGauge ? clamp(round((p.maxOutputGauge / maxGauge) * 100), 0, 100) : 0
+		if(holder.alpha == 0 || barbg.alpha == 0)
+			animate(holder, alpha = 255, time = 2)
+			animate(barbg, alpha = 255, time = 2)
+		barbg.maptext = "[CHAT_STYLE]Maximum Output: [percent]%"
+		barbg.filters = list(filter(type="outline", size=1, color=rgb(190, 80, 255)))
+		meter.color = p.maxOutputActive ? "#f8f" : "#7b2cff"
+		meter.animateBar(clamp(percent / 100 * 32, 0, 32) - 32, glob.STACK_ANIMATE_TIME)
+
+/mob/proc/initializeCursedEnergyMaximumOutputHUD()
+	if(!client) return
+	if(!client.hud_ids) client.hud_ids = list()
+	if(!client.hud_ids["CursedEnergyMaximumOutput"])
+		client.add_hud("CursedEnergyMaximumOutput", new/obj/bar/cursed_energy_maximum_output(client, "CursedEnergyMaximumOutput", 256, 1))
+	updateCursedEnergyMaximumOutputHUD()
+
+/mob/proc/updateCursedEnergyMaximumOutputHUD()
+	if(client && client.hud_ids && client.hud_ids["CursedEnergyMaximumOutput"])
+		client.hud_ids["CursedEnergyMaximumOutput"]?:Update()
+
+/mob/proc/removeCursedEnergyMaximumOutputHUD()
+	if(client && client.hud_ids && client.hud_ids["CursedEnergyMaximumOutput"])
+		client.remove_hud("CursedEnergyMaximumOutput")
+
 /mob/proc/cursedEnergyStorePowerControl()
 	for(var/obj/Skills/Power_Control/P in src)
 		if(!cursedEnergyPowerControlStored)
@@ -313,6 +358,7 @@ var/global/maxOutputDecayRate = 0
 	if(D && BuffOn(D)) D.Trigger(src, Override = 1)
 	if(domainExpansionActive) stopDomainExapansion()
 	cursedEnergyRemoveSkills()
+	removeCursedEnergyMaximumOutputHUD()
 	cursedEnergyFreeTraitSlot()
 	cursedEnergyAuraColor = null
 	cursedEnergyTrait = null
@@ -338,6 +384,65 @@ var/global/maxOutputDecayRate = 0
 		secretDatum = new /SecretInformation()
 	AdminMessage("[src]'s Cursed Energy secret was cleaned up.")
 
+/mob/proc/setupCursedEnergyAwakening(initial_awaken = 0)
+	if(!istype(secretDatum, /SecretInformation/CursedEnergy))
+		return 0
+	if(!passive_handler)
+		passive_handler = new
+	var/SecretInformation/CursedEnergy/ce = secretDatum
+	if(!cursedEnergyTrait)
+		var/chosenTrait = cursedEnergyPickTrait()
+		if(!chosenTrait || !cursedEnergyReserveTrait(chosenTrait))
+			src << "No Cursed Energy trait slots are available. Cursed Energy was not applied."
+			return 0
+		cursedEnergyTrait = chosenTrait
+		cursedEnergyAuraColor = input(src, "Choose the color of your Cursed Energy aura.", "Cursed Energy") as color|null
+		src << "Your Cursed Energy manifests as [chosenTrait]."
+	else if(!cursedEnergyReserveTrait(cursedEnergyTrait))
+		src << "Your stored Cursed Energy trait is currently reserved by someone else. Cursed Energy could not refresh."
+		return 0
+	Secret = "Cursed Energy"
+	secretDatum = ce
+	if(passive_handler.Get("RenameMana") != "Cursed Energy") passive_handler.Increase(list("RenameMana" = "Cursed Energy"))
+	cursedEnergyStorePowerControl()
+	maxOutputGaugeMax = global.maxOutputGaugeMax
+	cursedEnergyBlackFlashBaseChance = clamp(5 + ((ce.currentTier - 1) * 7.5), 5, 35)
+	cursedEnergyBlackFlashChance = clamp(max(cursedEnergyBlackFlashChance, cursedEnergyBlackFlashBaseChance), cursedEnergyBlackFlashBaseChance, 35)
+	applyCursedEnergyTraitPassives()
+	grantCursedEnergyTraitSkills()
+	cursedEnergyAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Cursed_Energy_Maximum_Output)
+	initializeCursedEnergyMaximumOutputHUD()
+	if(ce.currentTier >= 1)
+		cursedEnergyPoseHealReady = 1
+		if(initial_awaken)
+			src << "Cursed Energy awakens within you."
+			if(prob(10)) grantCursedEnergyDomain()
+	if(ce.currentTier >= 2)
+		cursedEnergySparksOfBlack = 1
+		passive_handler.Set("Cursed Energy Sparks of Black", 1)
+		if(!cursedEnergySpecialization)
+			cursedEnergySpecialization = input(src, "Choose a Cursed Energy specialization.", "Cursed Energy") in CURSED_ENERGY_SPECIALIZATIONS
+		applyCursedEnergySpecializationPassives()
+		if(initial_awaken && ce.currentTier == 2)
+			src << "Your Cursed Energy control sharpens."
+			if(prob(20)) grantCursedEnergyDomain()
+	if(initial_awaken && ce.currentTier == 3)
+		src << "Your Cursed Energy density and precision deepen."
+		if(prob(35)) grantCursedEnergyDomain()
+	if(ce.currentTier >= 4)
+		if(initial_awaken && ce.currentTier == 4) src << "Your innate domain becomes ready to unleash."
+		if(initial_awaken && ce.currentTier == 5) src << "Your mastery over your Domain Expansion improves."
+		grantCursedEnergyDomain()
+	return 1
+
+/mob/proc/refreshCursedEnergyOnLogin()
+	if(Secret == "Cursed Energy" && !istype(secretDatum, /SecretInformation/CursedEnergy))
+		admins << "<font size=+1><b>DEBUG:</b></font size> [src] had Cursed Energy saved without a CursedEnergy SecretInformation datum. Rebuilding the datum during login refresh."
+		secretDatum = new /SecretInformation/CursedEnergy()
+	if(Secret == "Cursed Energy" || istype(secretDatum, /SecretInformation/CursedEnergy))
+		if(!setupCursedEnergyAwakening(0))
+			admins << "<font size=+1><b>DEBUG:</b></font size> [src] has Cursed Energy saved but failed Cursed Energy login refresh. Secret=[Secret], secretDatum=[secretDatum ? secretDatum.type : null]."
+
 /SecretInformation/CursedEnergy
 	name = "Cursed Energy"
 	maxTier = 5
@@ -345,49 +450,8 @@ var/global/maxOutputDecayRate = 0
 
 	applySecret(mob/p)
 		if(!p) return
-		if(!p.cursedEnergyTrait)
-			var/chosenTrait = p.cursedEnergyPickTrait()
-			if(!chosenTrait || !p.cursedEnergyReserveTrait(chosenTrait))
-				p << "No Cursed Energy trait slots are available. Cursed Energy was not applied."
-				return
-			p.cursedEnergyTrait = chosenTrait
-			p.cursedEnergyAuraColor = input(p, "Choose the color of your Cursed Energy aura.", "Cursed Energy") as color|null
-			p << "Your Cursed Energy manifests as [chosenTrait]."
-		else if(!p.cursedEnergyReserveTrait(p.cursedEnergyTrait))
-			p << "Your stored Cursed Energy trait is currently reserved by someone else. Cursed Energy could not refresh."
-			return
-		p.Secret = "Cursed Energy"
 		p.secretDatum = src
-		if(p.passive_handler.Get("RenameMana") != "Cursed Energy") p.passive_handler.Increase(list("RenameMana" = "Cursed Energy"))
-		p.cursedEnergyStorePowerControl()
-		p.maxOutputGaugeMax = maxOutputGaugeMax
-		p.cursedEnergyBlackFlashBaseChance = clamp(5 + ((currentTier - 1) * 7.5), 5, 35)
-		p.cursedEnergyBlackFlashChance = clamp(max(p.cursedEnergyBlackFlashChance, p.cursedEnergyBlackFlashBaseChance), p.cursedEnergyBlackFlashBaseChance, 35)
-		p.applyCursedEnergyTraitPassives()
-		p.grantCursedEnergyTraitSkills()
-		p.cursedEnergyAddSkill(/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Cursed_Energy_Maximum_Output)
-		switch(currentTier)
-			if(1)
-				p.cursedEnergyPoseHealReady = 1
-				p << "Cursed Energy awakens within you."
-				if(prob(10)) p.grantCursedEnergyDomain()
-			if(2)
-				p.cursedEnergySparksOfBlack = 1
-				p.passive_handler.Set("Cursed Energy Sparks of Black", 1)
-				if(!p.cursedEnergySpecialization)
-					p.cursedEnergySpecialization = input(p, "Choose a Cursed Energy specialization.", "Cursed Energy") in CURSED_ENERGY_SPECIALIZATIONS
-				p.applyCursedEnergySpecializationPassives()
-				p << "Your Cursed Energy control sharpens."
-				if(prob(20)) p.grantCursedEnergyDomain()
-			if(3)
-				p << "Your Cursed Energy density and precision deepen."
-				if(prob(35)) p.grantCursedEnergyDomain()
-			if(4)
-				p << "Your innate domain becomes ready to unleash."
-				p.grantCursedEnergyDomain()
-			if(5)
-				p << "Your mastery over your Domain Expansion improves."
-				p.grantCursedEnergyDomain()
+		p.setupCursedEnergyAwakening(1)
 
 /mob/Admin3/verb/FreeCursedEnergyTraitSlot()
 	set category = "Admin"
