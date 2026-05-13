@@ -3240,6 +3240,8 @@ mob
 		HasBladeFisting()
 			var/obj/Items/Sword/s2=src.EquippedSecondSword()
 			var/obj/Items/Sword/s3=src.EquippedThirdSword()
+			if(CelestialAscension=="Demon")
+				return 1
 			if(s2||s3)
 				return 0
 			if(passive_handler.Get("BladeFisting"))
