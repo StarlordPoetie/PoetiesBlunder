@@ -27,7 +27,6 @@ ArmamentEnchantment -> tome creation (articact manufactioning + ArmamentEnchantm
 #define MAX_MAGIC_LEVEL 20
 #define MAX_ELDRITCH_MAGIC 10
 /mob/proc/getTotalMagicLevel()
-    var/actualMax = MAX_MAGIC_LEVEL + (hasEldritchPower() ? MAX_ELDRITCH_MAGIC : 0);
     var/total = 20
     return total
 
