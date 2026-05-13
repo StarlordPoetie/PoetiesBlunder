@@ -145,8 +145,11 @@ transformation
 
 		revertToTrans = null
 
+		dropOverlays = 0;
+
 	proc
 		adjust_transformation_visuals(mob/user)
+			if(dropOverlays) user.AppearanceOff();
 			form_glow = image(icon=form_glow_icon,icon_state = form_glow_icon_state,pixel_x = form_glow_x, pixel_y = form_glow_y)
 			form_aura = image(icon = form_aura_icon, icon_state = form_aura_icon_state, pixel_x = form_aura_x, pixel_y = form_aura_y)
 			form_aura_underlay = image(icon = form_aura_underlay_icon, icon_state = form_aura_underlay_icon_state, pixel_x = form_aura_underlay_x, pixel_y = form_aura_underlay_y)

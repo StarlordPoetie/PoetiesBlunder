@@ -135,8 +135,8 @@ obj/Skills/Buffs/SlotlessBuffs/Spiral/InspiredEvo
 			var/SpiralPower=1
 			m.passive_handler.Set("SpiralSpark", 1)
 			switch(secretLevel)
-				if(1 to 2)
-					SpiralPower=1
+				if(1 to 2)//this will never happen unless the skill is given unnaturally
+					SpiralPower=1//which, i guess, given the subject matter, is more likely than you'd think
 				if(3)
 					SpiralPower=2
 				if(4)
