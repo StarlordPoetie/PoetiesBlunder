@@ -71,6 +71,7 @@
 #define FILE_DIR "Icons/Clothes/Clothes/bottoms"
 #define FILE_DIR "Icons/Clothes/Clothes/shoes"
 #define FILE_DIR "Icons/Clothes/Clothes/tops"
+#define FILE_DIR "Icons/Cursed Energy"
 #define FILE_DIR "Icons/DevilSummoner"
 #define FILE_DIR "Icons/DevilSummoner/Demon Units (unused)"
 #define FILE_DIR "Icons/DevilSummoner/DemonPortraits128"

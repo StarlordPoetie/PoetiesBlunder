@@ -155,6 +155,7 @@ obj
 				Stasis//icicle
 				Feint//zoom!
 				MortalBlow
+				PullIn
 				WarpUser//distinct from feint because this only warps if the projectile connects @___@
 				WarpUserBehind//when set with WarpUser, teleports user behind target instead of random adjacent tile
 				WarpUserFlashChange//when set with WarpUser, applies FlashChange (white silhouette) before and after teleport

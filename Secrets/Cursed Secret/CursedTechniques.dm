@@ -94,7 +94,7 @@
 	adjust(mob/p)
 		if(!p || !p.hasCursedEnergy()) return
 		p.cursedEnergyBlackFlashChance=clamp(p.cursedEnergyBlackFlashChance+5, p.cursedEnergyBlackFlashBaseChance, 35)
-		
+
 /obj/Skills/Queue/Cursed_Technique_Gamblers_Fist
 	SkillCost=0
 	Copyable=0
@@ -199,7 +199,6 @@
 	PullIn=8
 	Homing=1
 	HyperHoming=1
-	HomingCharge=4
 	LosesHoming=50
 	Deflectable=-1
 	ManaCost=28
