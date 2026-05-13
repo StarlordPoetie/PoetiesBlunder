@@ -749,6 +749,10 @@ mob
 	proc
 		giveSecret(path)
 			path = text2path("/SecretInformation/[path]")
+			if(!path)
+				admins << "<font size=+1><b>DEBUG:</b></font size> [src] attempted to receive a secret with an invalid SecretInformation path."
+				src << "That secret could not be granted because its SecretInformation datum path is invalid. Admins have been notified."
+				return
 			var/SecretInformation/secret = new path
 			secretDatum = secret
 			secret.init(src)
@@ -816,6 +820,9 @@ mob/Admin3/verb
 				if("Black Flash")
 					P.Secret="Black Flash"
 					P.giveSecret("BlackFlash")
+				if("Cursed Energy")
+					P.Secret="Cursed Energy"
+					P.giveSecret("CursedEnergy")
 				if("Spiral")
 					P.Secret="Spiral"
 					P.giveSecret("Spiral")

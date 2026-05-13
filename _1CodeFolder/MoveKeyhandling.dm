@@ -63,6 +63,7 @@ mob/Players
 				shell.occupant = src
 				spawn()
 					chrysalisTimerCheck()
+		refreshCursedEnergyOnLogin()
 		spawn()
 			MovementLoop()
 
