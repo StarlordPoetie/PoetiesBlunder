@@ -1,5 +1,3 @@
-/obj/Skills/var/MortalWound = 0
-
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Cursed_Energy_Maximum_Output
 	BuffName = "Cursed Energy Maximum Output"
 	Mastery = -1
