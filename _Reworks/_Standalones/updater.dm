@@ -17,7 +17,7 @@ proc/generateVersionDatum()
 		glob.currentUpdate = updateversion
 
 globalTracker
-	var/UPDATE_VERSION = 16
+	var/UPDATE_VERSION = 17
 	var/tmp/update/currentUpdate
 
 	proc/updatePlayer(mob/p)
@@ -399,7 +399,17 @@ update
 							p.StrAscension += 0.75
 							p.SpdAscension += 0.75
 							p.OffAscension += 0.25
-
+	version17
+		version = 17;
+		updateMob(mob/p)
+			. = ..()
+			if(p.isRace(HUMAN)&&p.Class=="Heroic")
+				if(p.AscensionsAcquired >= 2)
+					p.passive_handler.Increase("PureReduction", 3)
+					p.passive_handler.Increase("PureDamage", 3)
+				if(p.AscensionsAcquired >= 3)
+					p.passive_handler.Increase("PureReduction", 2)
+					p.passive_handler.Increase("PureDamage", 2)
 /globalTracker/var/COOL_GAJA_PLAYERS = list("Thorgigamax", "Gemenilove" )
 /globalTracker/var/GAJA_PER_ASC_CONVERSION = 0.25
 /globalTracker/var/GAJA_MAX_EXCHANGE = 1

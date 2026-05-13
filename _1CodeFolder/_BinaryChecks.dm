@@ -1632,7 +1632,7 @@ mob
 			if(scalingEldritchPower()) return 1;
 			return 0
 		GetFlow()
-			var/Extra=0
+			var/Extra=BaseDef()/4
 			var/Base = passive_handler.Get("Flow")
 			if(Secret == "Heavenly Restriction" && secretDatum?:hasRestriction("Senses"))
 				return 0
