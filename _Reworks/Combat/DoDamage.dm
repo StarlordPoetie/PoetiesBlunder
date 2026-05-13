@@ -362,6 +362,8 @@
 	// Vortex: percentage chance to teleport defender away on hit
 	// Range scales 1:1 with chance (5 Vortex = 5% chance, 5 tiles)
 	if(val > 0)
+		if(src.hasSecret("Cursed Energy")) src.cursedEnergyGainMaximumOutput(maxOutputGainOnHit)
+		if(defender.hasSecret("Cursed Energy")) defender.cursedEnergyGainMaximumOutput(maxOutputGainOnDamageTaken)
 		var/vortex_val = defender.passive_handler.Get("Vortex")
 		if(vortex_val && prob(vortex_val))
 			var/dir = pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)

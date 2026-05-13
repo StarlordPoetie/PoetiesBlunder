@@ -889,6 +889,7 @@ obj
 							usr.SetQueue(new/obj/Skills/Queue/Finisher/Generic_Finisher)
 						return
 					else
+						if(usr.hasSecret("Cursed Energy") && usr.attemptCursedHeavyStrike()) return
 						if(usr.AttackQueue)
 							return // prevent heavy strike from overriding
 						if(usr.passive_handler["Heavy Strike"]&&!usr.ForceHeavyStrike)
