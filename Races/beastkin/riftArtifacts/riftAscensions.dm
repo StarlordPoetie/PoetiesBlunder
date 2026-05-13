@@ -81,7 +81,7 @@
 /ascension/sub_ascension/beastkin/worldwhisper
     endurance = 1;
     defense = 1;
-    passives = list("Freezing" = 2, "Paralyzing" = 2, "IceHeald" = 1, "ThunderHerald" = 1)
+    passives = list("Freezing" = 2, "Paralyzing" = 2, "IceHerald" = 1, "ThunderHerald" = 1)
 /ascension/sub_ascension/beastkin/godword
     force = 0.5;
     offense = 0.5;
