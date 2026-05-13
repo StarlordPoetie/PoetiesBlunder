@@ -5285,6 +5285,8 @@ mob
 						return
 			if(Z.ManaCost && !src.HasDrainlessMana() && !Z.AllOutAttack)
 				var/drain = src.passive_handler.Get("MasterfulCasting") ? Z.ManaCost - (Z.ManaCost * (passive_handler.Get("MasterfulCasting") * 0.3)) : Z.ManaCost
+				var/cursedReduction = src.cursedEnergyManaCostReduction(Z)
+				if(cursedReduction) drain *= (1 - cursedReduction)
 				if(Z.SpellElement)
 					var/elem_mana_red = src.getSpellElementManaCostReduction(Z.SpellElement)
 					if(elem_mana_red)
@@ -5806,6 +5808,8 @@ mob
 				src.GainFatigue(Z.FatigueCost*CostMultiplier)
 			if(Z.ManaCost)
 				var/drain = src.passive_handler.Get("MasterfulCasting") ? Z.ManaCost - (Z.ManaCost * (passive_handler.Get("MasterfulCasting") * 0.3)) : Z.ManaCost
+				var/cursedReduction = src.cursedEnergyManaCostReduction(Z)
+				if(cursedReduction) drain *= (1 - cursedReduction)
 				if(Z.SpellElement)
 					var/elem_mana_red = src.getSpellElementManaCostReduction(Z.SpellElement)
 					if(elem_mana_red)

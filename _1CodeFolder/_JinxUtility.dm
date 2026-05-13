@@ -3707,6 +3707,7 @@ mob
 				b.GodKi=val
 				src.AddSkill(b)
 		SecretToss(var/obj/Skills/Grapple/Toss/Z)
+			if(src.hasSecret("Cursed Energy") && src.attemptCursedToss(Z)) return
 			if(src.RippleActive())
 				for(var/obj/Skills/Buffs/SlotlessBuffs/Ripple/Life_Magnetism_Overdrive/H in src)
 					H.Trigger(src)

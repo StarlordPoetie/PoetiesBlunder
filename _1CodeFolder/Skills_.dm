@@ -271,6 +271,7 @@ mob/proc/SkillX(var/Wut,var/obj/Skills/Z,var/bypass=0)
 
 
 			if("ReverseDash")
+				if(src.hasSecret("Cursed Energy") && src.attemptCursedReverseDash()) return
 				var/Modifier=1
 				if(hasEldritchPower()) summonEldritchMinion();
 				if(src.Secret=="Haki")
