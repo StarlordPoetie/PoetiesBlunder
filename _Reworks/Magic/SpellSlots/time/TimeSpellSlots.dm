@@ -7,7 +7,7 @@
 		ElementalClass="Time"
 		Area="Circle"
 		Distance=5
-		DamageMult=3
+		DamageMult=7
 		Slow=1
 		SpecialAttack=1
 		ForOffense=1
@@ -39,7 +39,7 @@
 		ManaDrain=0.01
 		SpdMult=1.2
 		Godspeed=1
-		passives=list("Godspeed" = 1, "BlurringStrikes" = 1, "FluidForm" = 1)
+		passives=list("Godspeed" = 1, "BlurringStrikes" = 2, "FluidForm" = 1)
 		ActiveMessage="accelerates through time!"
 		OffMessage="slows back to a normal pace..."
 		verb/Haste()
