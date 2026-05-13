@@ -24,7 +24,7 @@
 	SpellSlot=1
 	Lightspeed
 		ElementalClass="Light"
-		DamageMult=3
+		DamageMult=6
 		Speed=0.1
 		AccMult=1.1
 		Distance=15
@@ -38,7 +38,7 @@
 
 	Solar_Burst
 		ElementalClass="Light"
-		DamageMult=5
+		DamageMult=7.5
 		Speed=1
 		AccMult=1.1
 		Homing=1

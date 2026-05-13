@@ -7958,6 +7958,9 @@ obj
 	OnHeldFizzle(mob/p)
 		if(chain_active)
 			EndChain()
+		// Safety net
+		if(p)
+			p.judgement_cut_chain_active = FALSE
 
 	verb/Judgement_Cut()
 		set category = "Skills"
@@ -7983,3 +7986,5 @@ obj
 		else
 			if(world.time > reengage_deadline) return
 		p.BeginHeldSkill(src)
+		if(p.held_skill != src && chain_active && chain_user == p)
+			EndChain()
