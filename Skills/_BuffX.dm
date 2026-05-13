@@ -2055,6 +2055,7 @@ NEW VARIABLES
 					src.Trigger(usr)
 			Vaizard_Mask
 				SignatureTechnique=3
+				SagaSignature=1
 				ManaThreshold=1
 				CooldownStatic = 1
 				Cooldown=60
@@ -2859,6 +2860,7 @@ NEW VARIABLES
 					src.Trigger(usr)
 			Getsuga_Tenshou_Clad
 				SignatureTechnique=3
+				SagaSignature=1
 				TimerLimit=30
 				Cooldown=30
 				passives = list("Heavy Strike" = "GetsugaClad", "CriticalChance" = 25, "CriticalDamage" = 0.25, "Brutalize" = 2, "SwordAscension" = 1, "SpiritSword" = 0.5, "HybridStrike" = 1, "SpiritFlow" = 4)
@@ -2867,25 +2869,14 @@ NEW VARIABLES
 				ForMult=1.3
 				ActiveMessage="coats their blade with the power of Getsuga!"
 				OffMessage="relinquishes Getsuga from their weapon."
-				var/granted_getsuga = FALSE
-				var/granted_jujisho = FALSE
-				proc/CheckMasteryGrants(mob/p)
-					if(Mastery >= 2 && !granted_getsuga)
-						if(!locate(/obj/Skills/Projectile/Getsuga_Tenshou, p))
-							p.AddSkill(new/obj/Skills/Projectile/Getsuga_Tenshou)
-							p << "<font color='#4488ff'><b>Your mastery of Getsuga Tenshou Clad allows you to fire the raw wave — you have learned Getsuga Tenshou!</b></font>"
-						granted_getsuga = TRUE
-					if(Mastery >= 3 && !granted_jujisho)
-						if(!locate(/obj/Skills/Projectile/Getsuga_Jujisho, p))
-							p.AddSkill(new/obj/Skills/Projectile/Getsuga_Jujisho)
-							p << "<font color='#ffcc00'><b>The cross-shaped Getsuga manifests from your mastery, you have learned Getsuga Jujisho!</b></font>"
-						granted_jujisho = TRUE
 				verb/Getsuga_Clad()
 					set name="Getsuga Clad"
 					set category="Skills"
+					if(!usr.InBankai())
+						usr << "Getsuga Clad can only be used in Bankai."
+						return
 					if(!altered)
 						passives = list("Heavy Strike" = "GetsugaClad", "CriticalChance" = 25, "CriticalDamage" = 0.25, "Brutalize" = 2, "SwordAscension" = 1, "SpiritSword" = 0.5, "HybridStrike" = 1)
-					CheckMasteryGrants(usr)
 					src.Trigger(usr)
 			Final_Getsuga_Tenshou
 				SignatureTechnique=4
@@ -2911,12 +2902,29 @@ NEW VARIABLES
 				KenWaveIcon='DarkKiai.dmi'
 				ActiveMessage="dedicates their entire existence to their blade!"
 				OffMessage="sacrifices their potential completely..."
+				Trigger(mob/User, Override=0)
+					var/wasOn = (User.SpecialBuff == src)
+					..()
+					if(wasOn && User.SpecialBuff != src)
+						if(User.Saga == "Shinigami" && User.ShinigamiRelease == "Zangetsu")
+							User.UsedFinalGetsuga = TRUE
+							var/obj/Skills/Buffs/SlotlessBuffs/Mugetsu_Aftermath/MA = locate(/obj/Skills/Buffs/SlotlessBuffs/Mugetsu_Aftermath, User)
+							if(!MA)
+								MA = new/obj/Skills/Buffs/SlotlessBuffs/Mugetsu_Aftermath()
+								User.AddSkill(MA)
+							if(!MA.SlotlessOn)
+								MA.adjust(User)
+								MA.Trigger(User)
 				verb/Final_Getsuga_Tenshou()
 					set category="Skills"
+					if(!usr.InBankai())
+						usr << "Final Getsuga Tenshou can only be used in Bankai."
+						return
+					var/wasOn = usr.BuffOn(src)
 					src.Trigger(usr)
 					if(usr.BuffOn(src))
 						usr.AddSkill(new/obj/Skills/AutoHit/Mugetsu)
-					if(!usr.BuffOn(src))//once you turn it off
+					if(wasOn && !usr.BuffOn(src))//once you turn it off
 						for(var/obj/Skills/AutoHit/Mugetsu/MGS in usr.contents)
 							del MGS
 						for(var/obj/Skills/Buffs/SpecialBuffs/Sword/Final_Getsuga_Tenshou/FGT in usr.contents)
@@ -4192,6 +4200,8 @@ NEW VARIABLES
 
 	SlotlessBuffs
 		Slotless=1
+		var/IsShikaiForm = 0  // set to 1 on any buff that represents an active Shikai state
+		var/IsBankaiForm = 0  // set to 1 on any buff that represents an active Bankai state
 //Racials
 		blobBuff
 			Cooldown = 150
