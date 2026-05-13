@@ -166,7 +166,7 @@ obj/Skills/Projectile/Getsuga_Jujisho
 
 	verb/Getsuga_Jujisho()
 		set category = "Skills"
-		if(!usr.CheckSlotless("Tensa Zangetsu"))
-			usr << "Getsuga Jujisho can only be used in Bankai."
+		if(!usr.InShikai() && !usr.InBankai())
+			usr << "Getsuga Jujisho can only be used in Shikai or Bankai."
 			return
 		FireJujisho(usr)

@@ -5,6 +5,7 @@ obj/Items/Armor/Mobile_Armor/Shinigami_Shihakusho
 	Destructable = 0
 	ShatterTier = 0
 	PermEquip = 1
+	Stealable = 0
 	IsShihakusho = 1
 	Saga = "Shinigami"
 	Cost = 0

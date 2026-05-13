@@ -35,7 +35,7 @@
 		GuardBreak=1
 		Divide=1
 		Slow=1
-		WindUp=3
+		WindUp=1
 		IgnoreWindUpReduction=1
 		WindupMessage="<b>sheathes their blade...</b>"
 		ActiveMessage="unleashes a myriad of slashes in the blink of an eye!"
