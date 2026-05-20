@@ -561,6 +561,7 @@ mob/Creation
 		winset(usr, null, "browser-options=find")
 		client.perspective=MOB_PERSPECTIVE | EDGE_PERSPECTIVE
 		usr.client.view=18
+		var/basehtml = ""
 		usr<<browse("[basehtml][Notes]")
 		winshow(usr, "HungerLabel", 0)
 		winshow(usr, "Hunger", 0)
@@ -632,8 +633,9 @@ mob/Creation/verb
 		statArchive.reset(list(1,1,1,1,1,1))
 		verb_delay=world.time+1
 		race_selecting=0
-		Class = race.classes[race.current_class]
-		winset(usr, "Finalize_Screen.className", "text=\"[race.classes[race.current_class]]\"")
+		ChooseMetahumanOrigin()
+		Class = "Metahuman"
+		winset(usr, "Finalize_Screen.className", "text=\"Metahuman\"")
 		winshow(usr,"Race_Screen",0)
 		winshow(usr,"Finalize_Screen",1)
 		if(length(race.stats_per_class) > 0)
@@ -677,6 +679,7 @@ mob/Creation/proc
 		if(!usrr)
 			usrr=usr
 		usrr.race_selecting=0
+		usrr.ChooseMetahumanOrigin()
 		winshow(usrr,"Race_Screen",0)
 		winshow(usrr,"Finalize_Screen",1)
 		usrr.UpdateBio()
@@ -722,18 +725,9 @@ mob/Players/verb
 				del(src)
 			usr.UpdateBio()
 		if(blah=="Class")
-			if(race.current_class + 1 > length(race.classes))
-				race.current_class = 1
-			else
-				race.current_class++
-			Class = race.classes[race.current_class]
-			setAllStats()
-			winset(usr, "Finalize_Screen.className", "text=\"[race.classes[race.current_class]]\"")
-			if(usr.isRace(NAMEKIAN))
-				if(usr.Class=="Warrior")
-					usr.Class="Warrior"
-				else if(usr.Class=="Dragon")
-					usr.Class="Dragon"
+			src << "Subclass selection has been replaced by trait selection in Metahuman: Rebirth."
+			Class = "Metahuman"
+			winset(usr, "Finalize_Screen.className", "text=\"Metahuman\"")
 
 		if(blah=="Sex")
 			var/list/options = usr.race.gender_options
@@ -785,18 +779,9 @@ mob/Creation/verb
 				del(src)
 			usr.UpdateBio()
 		if(blah=="Class")
-			if(race.current_class + 1 > length(race.classes))
-				race.current_class = 1
-			else
-				race.current_class++
-			Class = race.classes[race.current_class]
-			setAllStats()
-			winset(usr, "Finalize_Screen.className", "text=\"[race.classes[race.current_class]]\"")
-			if(usr.isRace(NAMEKIAN))
-				if(usr.Class=="Warrior")
-					usr.Class="Warrior"
-				else if(usr.Class=="Dragon")
-					usr.Class="Dragon"
+			src << "Subclass selection has been replaced by trait selection in Metahuman: Rebirth."
+			Class = "Metahuman"
+			winset(usr, "Finalize_Screen.className", "text=\"Metahuman\"")
 
 		if(blah=="Sex")
 			var/list/options = usr.race.gender_options
@@ -867,7 +852,8 @@ mob/Creation/verb
 
 mob/proc/UpdateBio()
 	src.PerkDisplay()
-	winset(src,"LabelRace","text=\"[race.name]\"")
+	var/origin_text = metahuman_origin ? metahuman_origin : race.name
+	winset(src,"LabelRace","text=\"[origin_text]\"")
 	winset(src,"LabelSex","text=\"[Gender]\"")
 	winset(src,"LabelType","text=\"[Class]\"")
 	winset(src,"LabelName","text=\"[name]\"")
@@ -899,6 +885,8 @@ mob/proc/UpdateRaceScreen(change = 1)
 			break
 
 	setRace(r,FALSE,TRUE)
+	if(!metahuman_origin)
+		metahuman_origin = "Human"
 	var/list/options = usr.race.gender_options
 	var/current_index = options.Find(usr.Gender)
 
@@ -911,7 +899,7 @@ mob/proc/UpdateRaceScreen(change = 1)
 		usr.Gender = options[1]
 	winset(src,"RaceName","text=[race.name]")
 	winset(usr,"Iconz","image=[race.visual]")
-	winset(src, "className", "text=[race.classes[race.current_class]]")
+	winset(src, "className", "text=Metahuman")
 	src << output(race.desc,"raceblurb")
 
 obj/Login
@@ -1090,6 +1078,7 @@ mob/proc
 		src.EnergyUniqueness=GoCrand(0.8,1.2)
 		src.EnergySignature=rand(1000,9000)
 		race.onFinalization(src)
+		ApplyMetahumanTraits()
 
 		src:UniqueID = ++glob.IDCounter
 		glob.IDs += src:UniqueID
