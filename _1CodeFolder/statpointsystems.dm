@@ -145,5 +145,13 @@ mob/verb/Skill_Points_Done()
 		stat_redoing = FALSE
 		race_selecting = TRUE
 	winshow(src,"Finalize_Screen",0)
+	ChooseMetahumanTraits("Power")
+	ChooseMetahumanTraits("Weakness")
+	ChooseMetahumanPhysicalTraits()
+	RecalcMetahumanTraitPoints()
+	if(metahuman_trait_points_remaining < 0)
+		src << "Your trait build is invalid. Remove traits until you have 0 or more points remaining."
+		winshow(src,"Finalize_Screen",1)
+		return
 	if(!usr.Savable)
 		usr.NewMob()
