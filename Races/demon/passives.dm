@@ -1,5 +1,5 @@
 /proc/collectJSON()
-    var/jsonData = file('passives.json')
+    var/jsonData = file("Races/demon/passives.json")
     jsonData = file2text(jsonData)
     jsonData = json_decode(jsonData)
     glob.JSON_PASSIVES = jsonData
