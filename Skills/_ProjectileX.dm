@@ -155,6 +155,7 @@ obj
 				Stasis//icicle
 				Feint//zoom!
 				MortalBlow
+				PullIn
 				WarpUser//distinct from feint because this only warps if the projectile connects @___@
 				WarpUserBehind//when set with WarpUser, teleports user behind target instead of random adjacent tile
 				WarpUserFlashChange//when set with WarpUser, applies FlashChange (white silhouette) before and after teleport
@@ -209,6 +210,8 @@ obj
 				AngelMagicCompatible
 				CriticalChance
 				LingeringTornado//spawn obj/leftOver/LingeringTornado on hit
+				BypassTempHP=0//if 1, damage bypasses VaizardHealth and BioArmor, hitting Health directly
+				SkillDeicide=0//temporarily adds this much Deicide on hit
 			skillDescription()
 				..()
 				if(MaimCost)
@@ -2474,7 +2477,7 @@ obj
 				StrRate=1
 				ForRate=0
 				EndRate=0.75
-				Knockback=1
+				Knockback=2
 				MultiHit=8
 				DamageMult=2
 				AccMult = 1.25
@@ -3488,13 +3491,15 @@ obj
 					Charge=2
 					DamageMult=0.6
 					Instinct=1
-					AccMult=2
+					AccMult=1
 					Explode=1
 					Distance=100
 					ZoneAttackX=10
 					ZoneAttackY=10
 					Hover=10
 					Variation=0
+					Homing=3
+					HyperHoming=1
 					Cooldown=180
 					verb/Homing_Finisher()
 						set category="Skills"
@@ -6359,7 +6364,21 @@ obj
 									_beamAbsorb = 1
 									m.HealHealth((EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR) * (0.1 * m.passive_handler.Get("WindAbsorb")))
 								if(!_beamAbsorb)
+									var/savedVH_b = 0
+									var/savedBA_b = 0
+									if(src.BypassTempHP)
+										savedVH_b = m.VaizardHealth
+										savedBA_b = m.BioArmor
+										m.VaizardHealth = 0
+										m.BioArmor = 0
+									if(src.SkillDeicide)
+										src.Owner.passive_handler.Increase("Deicide", src.SkillDeicide)
 									src.Owner.DoDamage(a, (EffectiveDamage/glob.GLOBAL_BEAM_DAMAGE_DIVISOR), SpiritAttack=1, Destructive=src.Destructive)
+									if(src.SkillDeicide)
+										src.Owner.passive_handler.Decrease("Deicide", src.SkillDeicide)
+									if(src.BypassTempHP)
+										m.VaizardHealth = savedVH_b
+										m.BioArmor = savedBA_b
 								if(src.CriticalChance)
 									src.Owner.passive_handler.Decrease("CriticalChance", src.CriticalChance)
 									src.Owner.passive_handler.Decrease("CriticalDamage", _skillCritDmgB)
@@ -6409,7 +6428,21 @@ obj
 										_stdAbsorb = 1
 										m.HealHealth(EffectiveDamage * (0.1 * m.passive_handler.Get("WindAbsorb")))
 									if(!_stdAbsorb)
+										var/savedVH = 0
+										var/savedBA = 0
+										if(src.BypassTempHP)
+											savedVH = m.VaizardHealth
+											savedBA = m.BioArmor
+											m.VaizardHealth = 0
+											m.BioArmor = 0
+										if(src.SkillDeicide)
+											src.Owner.passive_handler.Increase("Deicide", src.SkillDeicide)
 										src.Owner.DoDamage(a, EffectiveDamage, SpiritAttack=1, Destructive=src.Destructive)
+										if(src.SkillDeicide)
+											src.Owner.passive_handler.Decrease("Deicide", src.SkillDeicide)
+										if(src.BypassTempHP)
+											m.VaizardHealth = savedVH
+											m.BioArmor = savedBA
 									if(src.CriticalChance)
 										src.Owner.passive_handler.Decrease("CriticalChance", src.CriticalChance)
 										src.Owner.passive_handler.Decrease("CriticalDamage", _skillCritDmgS)

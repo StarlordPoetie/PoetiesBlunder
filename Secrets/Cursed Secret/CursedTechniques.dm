@@ -1,69 +1,69 @@
 /obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Cursed_Energy_Maximum_Output
-	BuffName = "Cursed Energy Maximum Output"
-	Mastery = -1
-	UnrestrictedBuff = 1
-	StrMult = 1.20
-	ForMult = 1.20
-	EndMult = 1.20
-	SpdMult = 1.20
-	DefMult = 1.20
-	OffMult = 1.20
-	MakesArmor = 0
-	TurfShift = 'WhiteTurfShift.dmi'
-	TurfShiftInstant = 1
-	TimerLimit = 90
-	passives = list("TechniqueMastery" = 5, "BuffMastery" = 2, "MovementMastery" = 5)
-	FlashChange = 1
-	ActiveMessage = "surges into Cursed Energy Maximum Output!"
-	OffMessage = "lets their Maximum Output fade."
-	CursedTechnique = 1
+	BuffName="Cursed Energy Maximum Output"
+	Mastery=-1
+	UnrestrictedBuff=1
+	StrMult=1.20
+	ForMult=1.20
+	EndMult=1.20
+	SpdMult=1.20
+	DefMult=1.20
+	OffMult=1.20
+	MakesArmor=0
+	TurfShift='WhiteTurfShift.dmi'
+	TurfShiftInstant=1
+	TimerLimit=90
+	passives=list("TechniqueMastery"=5, "BuffMastery"=2, "MovementMastery"=5)
+	FlashChange=1
+	ActiveMessage="surges into Cursed Energy Maximum Output!"
+	OffMessage="lets their Maximum Output fade."
+	CursedTechnique=1
 
 /obj/Skills/Buffs/SlotlessBuffs/Domain_Expansion/Cursed_Energy
-	BuffName = "Domain Expansion Unleashed!"
-	Mastery = -1
-	CursedTechnique = 1
-	UnrestrictedBuff = 1
-	StrMult = 1.50
-	ForMult = 1.50
-	EndMult = 1.50
-	SpdMult = 1.50
-	DefMult = 1.50
-	OffMult = 1.50
-	MakesArmor = 0
-	TurfShift = 'WhiteTurfShift.dmi'
-	TurfShiftInstant = 1
-	ManaDrain = 2
-	ManaThreshold = 1
-	TimerLimit = 200
-	passives = list("TechniqueMastery" = 5, "BuffMastery" = 2, "MovementMastery" = 5)
-	DarkChange = 1
-	Range = 15
-	range = 15
-	SkillCost = 0
-	Copyable = 0
+	BuffName="Domain Expansion Unleashed!"
+	Mastery=-1
+	CursedTechnique=1
+	UnrestrictedBuff=1
+	StrMult=1.50
+	ForMult=1.50
+	EndMult=1.50
+	SpdMult=1.50
+	DefMult=1.50
+	OffMult=1.50
+	MakesArmor=0
+	TurfShift='WhiteTurfShift.dmi'
+	TurfShiftInstant=1
+	ManaDrain=2
+	ManaThreshold=1
+	TimerLimit=200
+	passives=list("TechniqueMastery"=5, "BuffMastery"=2, "MovementMastery"=5)
+	DarkChange=1
+	Range=15
+	range=15
+	SkillCost=0
+	Copyable=0
 
 /obj/Skills/Queue/Cursed_Energy_Black_Flash_Strike
-	name = "Cursed Energy Black Flash"
-	CursedTechnique = 1
-	SkillCost = 0
-	Copyable = 0
-	Cooldown = 15
-	Duration = 4
-	TextColor = "#5B189A"
-	ActiveMessage = "draws cursed force into a black spark...!"
-	HitMessage = "lands a cursed impact wreathed in black sparks!"
-	DamageMult = (2 ** 2.5)
-	AccuracyMult = 10
-	KBAdd = 10
-	PushOut = 2
-	PushOutWaves = 3
-	PushOutIcon = 'DarkKiai.dmi'
-	HitSparkIcon = 'Black_Flash_Hitspark_1.dmi'
-	HitSparkX = -14
-	HitSparkY = -12
-	HitSparkTurns = 1
-	HitSparkSize = 4
-	KBMult = 10
+	name="Cursed Energy Black Flash"
+	CursedTechnique=1
+	SkillCost=0
+	Copyable=0
+	Cooldown=15
+	Duration=4
+	TextColor="#5B189A"
+	ActiveMessage="draws cursed force into a black spark...!"
+	HitMessage="lands a cursed impact wreathed in black sparks!"
+	DamageMult=(2**2.5)
+	AccuracyMult=10
+	KBAdd=10
+	PushOut=2
+	PushOutWaves=3
+	PushOutIcon='DarkKiai.dmi'
+	HitSparkIcon='Black_Flash_Hitspark_1.dmi'
+	HitSparkX=-14
+	HitSparkY=-12
+	HitSparkTurns=1
+	HitSparkSize=4
+	KBMult=10
 	adjust(mob/p)
 		if(!p || !p.hasCursedEnergy()) return
 		p.cursedEnergyGainMaximumOutput(maxOutputGainCursedBlackFlash)
@@ -71,30 +71,29 @@
 			if(prob(50))
 				p.OMessage(10, "Black sparks cling to [p]'s cursed rhythm!", "<font color=purple>[p] retained Cursed Energy momentum.</font>")
 			else
-				p.cursedEnergyBlackFlashChance = p.cursedEnergyBlackFlashBaseChance
+				p.cursedEnergyBlackFlashChance=p.cursedEnergyBlackFlashBaseChance
 		else
-			p.cursedEnergyBlackFlashChance = p.cursedEnergyBlackFlashBaseChance
+			p.cursedEnergyBlackFlashChance=p.cursedEnergyBlackFlashBaseChance
 
 /obj/Skills/Queue/Cursed_Energy_Divergent_Fist
-	name = "Cursed Energy Divergent Fist"
-	CursedTechnique = 1
-	SkillCost = 0
-	Copyable = 0
-	Cooldown = 15
-	Duration = 5
-	ActiveMessage = "lets cursed force lag behind their fist...!"
-	HitMessage = "strikes twice as cursed force follows after the blow!"
-	DamageMult = 2
-	HitSparkIcon = 'CE Hitspark.dmi'
-	HitSparkTurns = 1
-	HitSparkSize = 1
-	AccuracyMult = 1
-	KBAdd = 5
-	KBMult = 3
+	name="Cursed Energy Divergent Fist"
+	CursedTechnique=1
+	SkillCost=0
+	Copyable=0
+	Cooldown=15
+	Duration=5
+	ActiveMessage="lets cursed force lag behind their fist...!"
+	HitMessage="strikes twice as cursed force follows after the blow!"
+	DamageMult=2
+	HitSparkIcon='CE Hitspark.dmi'
+	HitSparkTurns=1
+	HitSparkSize=1
+	AccuracyMult=1
+	KBAdd=5
+	KBMult=3
 	adjust(mob/p)
 		if(!p || !p.hasCursedEnergy()) return
-		p.cursedEnergyBlackFlashChance = clamp(p.cursedEnergyBlackFlashChance + 5, p.cursedEnergyBlackFlashBaseChance, 35)
-
+		p.cursedEnergyBlackFlashChance=clamp(p.cursedEnergyBlackFlashChance+5, p.cursedEnergyBlackFlashBaseChance, 35)
 
 /obj/Skills/Queue/Cursed_Technique_Gamblers_Fist
 	SkillCost=0
@@ -200,7 +199,6 @@
 	PullIn=8
 	Homing=1
 	HyperHoming=1
-	HomingCharge=4
 	LosesHoming=50
 	Deflectable=-1
 	ManaCost=28
@@ -421,7 +419,7 @@
 	Cooldown=180
 	DamageMult=0.8
 	Rounds=80
-	MortalWound=0.3
+	MortalBlow=0.3
 	PushOutWaves=8
 	ComboMaster=1
 	Size=14

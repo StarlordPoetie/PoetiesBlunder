@@ -228,6 +228,8 @@ obj
 				ForceCost = 0
 
 				PullIn
+				PushOutWaves
+				HomingCharge
 
 				GoldScatter
 
@@ -1546,12 +1548,12 @@ obj
 			Cast_Fist
 				SignatureTechnique=1
 				UnarmedOnly=1
-				Area="Cone"
+				Area="Circle"
 				StrOffense=1
-				DamageMult=6
+				DamageMult=12
 				TurfDirt=1
-				Distance=5
-				Size=3
+				Distance=8
+				//Size=3
 				Knockback=10
 				ShockIcon='KenShockwave.dmi'
 				Shockwave=5
@@ -1560,9 +1562,9 @@ obj
 				Launcher=5
 				PostShockwave=1
 				PreShockwave=0
-				BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Muscle_Expand"
-				FollowUp="/obj/Skills/Queue/Warping_Fist"
-				FollowUpDelay=2
+				//BuffSelf="/obj/Skills/Buffs/SlotlessBuffs/Autonomous/QueueBuff/Muscle_Expand"
+				//FollowUp="/obj/Skills/Queue/Warping_Fist"
+				//FollowUpDelay=2
 				Cooldown=150
 				WindUp=1
 				Earthshaking=20
@@ -2625,13 +2627,10 @@ obj
 				Distance=20
 				Area="Arc"
 				ObjIcon=1
-				Icon='fevExplosion - Hellfire.dmi'
-				IconX=-16
-				IconY=-16
 				Size=1.5
 				Rounds=1
 				DelayTime=2
-				HitSparkIcon='Slash.dmi'
+				HitSparkIcon='fevExplosion - Hellfire.dmi'
 				HitSparkX=-32
 				HitSparkY=-32
 				HitSparkTurns=1
@@ -4280,6 +4279,7 @@ obj
 				SpecialAttack=1
 				Hurricane="/obj/Skills/Projectile/King_of_Braves/Brave_Tornado"
 				GuardBreak=1
+				ComboMaster=1
 				Grapple=1
 				GrabTrigger="/obj/Skills/Grapple/Erupting_Burning_Finger/Removeable"
 				Knockback=1
@@ -7873,7 +7873,6 @@ obj
 	proc/EndChain()
 		if(!chain_active) return
 		var/mob/user = chain_user
-		var/mob/target = chain_target
 		chain_active = FALSE
 		window_loop_running = FALSE
 		if(user)
@@ -7959,6 +7958,9 @@ obj
 	OnHeldFizzle(mob/p)
 		if(chain_active)
 			EndChain()
+		// Safety net
+		if(p)
+			p.judgement_cut_chain_active = FALSE
 
 	verb/Judgement_Cut()
 		set category = "Skills"
@@ -7984,3 +7986,5 @@ obj
 		else
 			if(world.time > reengage_deadline) return
 		p.BeginHeldSkill(src)
+		if(p.held_skill != src && chain_active && chain_user == p)
+			EndChain()
