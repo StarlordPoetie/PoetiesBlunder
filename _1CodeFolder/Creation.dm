@@ -561,6 +561,7 @@ mob/Creation
 		winset(usr, null, "browser-options=find")
 		client.perspective=MOB_PERSPECTIVE | EDGE_PERSPECTIVE
 		usr.client.view=18
+		var/basehtml = ""
 		usr<<browse("[basehtml][Notes]")
 		winshow(usr, "HungerLabel", 0)
 		winshow(usr, "Hunger", 0)
