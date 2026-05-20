@@ -276,7 +276,6 @@
 #include "IconProcs.dm"
 #include "OldMapTilesBecauseIAmGayAndDesperate.dm"
 #include "skintest.dmf"
-#include "_1CodeFolder\.GridStat.dm"
 #include "_1CodeFolder\__Debug.dm"
 #include "_1CodeFolder\__Defines.dm"
 #include "_1CodeFolder\_AITraps.dm"
