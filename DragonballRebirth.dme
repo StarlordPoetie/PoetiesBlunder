@@ -305,7 +305,6 @@
 #include "_1CodeFolder\Build.dm"
 #include "_1CodeFolder\Chat&Verbs.dm"
 #include "_1CodeFolder\Creation.dm"
-#include "_1CodeFolder\MetahumanCreation.dm"
 #include "_1CodeFolder\CursedGear.dm"
 #include "_1CodeFolder\Customization.dm"
 #include "_1CodeFolder\DarwinCode.dm"
